@@ -1,0 +1,70 @@
+﻿<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=11"/>
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>MSM - Terminal MES Mahou San Miguel</title>
+    <link href="/LibreriasJS/libs/pNotify/pnotify.custom.min.css" rel="stylesheet" />
+    <link href="/LibreriasJS/libs/jqueryMobile/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+    <link href="/LibreriasJS/libs/kendoUI/styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="/LibreriasJS/libs/kendoUI/styles/kendo.default.min.css" rel="stylesheet" />
+    <link href="/LibreriasJS/libs/kendoUI/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+    <link href="/LibreriasJS/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/sticky-footer-navbar.css" rel="stylesheet" />
+    <link href="css/terminal.css" rel="stylesheet" />
+    <link href="/LibreriasJS/libs/jqueryUI/jquery-ui.min.css" rel="stylesheet" />
+    <link href="/LibreriasJS/libs/keyboard/css/keyboard.min.css" rel="stylesheet" />
+
+    <script src="../LibreriasJS/libs/kendoUI/cultures/kendo.culture.es-ES.min.js"></script>
+    <script src="../LibreriasJS/libs/kendoUI/cultures/kendo.culture.en-GB.min.js"></script>
+
+    <script data-main="js/main" src="/LibreriasJS/libs/require/require.js"></script>
+
+</head>
+
+<body style="overflow: hidden; float: left; width: 100%; position: absolute;">
+    <!-- CABECERA -->
+    <div id="header">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">                    
+                    <!-- LOGO -->
+                    <div>
+                        <div style="text-align: center;">
+                                <img id="logo" src="" />
+                            </div>
+                        <div id="lblNombrePlanta" style="text-align: center;font-weight:bold;font-size:20px;"></div>
+                    </div>
+                  
+                </div>
+                <!-- MENUS PRINCIPALES -->
+                <div id="navbar" class="collapse navbar-collapse">
+                    <!--<ul id="menuPrincipal" class="nav navbar-nav"></ul>-->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a id="aConfig"><img id="btnConfig" src="img/settings.png" width="56" height="60" /></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+ 
+    <div id="content">
+       <!-- PANEL LOADER -->
+        <div id="loader" class="spinner">
+            Cargando Interfaz MES
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+        <!-- PANEL PRINCIPAL VISTAS -->
+        <div id="panel">            
+            <div id="center-pane"></div>
+        </div>
+    </div>
+    <!-- BARRA FOOTER -->
+    <div id="footer">
+        <img id="imgReloj" src="img/clock.png" /> <label id="lblFecHoraSistema"></label>
+    </div></body>
+</html>

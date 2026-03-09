@@ -1,0 +1,96 @@
+﻿<style>
+    .w-100 {
+        width: 100%;
+    }
+
+    .pad-10 {
+        padding: 10px;
+    }
+
+    .mar-right-25 {
+        margin-right: 25px;
+    }
+
+    .mar-top-20 {
+        margin-top: 20px;
+    }
+
+    .mtop-8 {
+        margin-top: 8px;
+    }
+
+    .tac {
+        text-align: center;
+    }
+
+    .flex-filas {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .flex-jc-sa {
+        justify-content: space-around;
+    }
+    .error {
+        color: red;
+    }
+</style>
+<div>
+    <form id="ExportarSecuenciacion">
+        <div class="" style="padding: 0 12px;">
+            <div id="selectorWO" class="w-100 mar-top-20" style="display:none;">
+                <strong><% print(window.app.idioma.t('PLANIFICADOR_EXPORTAR_WOS_TEXTO')) %></strong>
+                <div style="border:1px solid lightgrey; padding: 8px; margin-top:8px">
+                    <strong><% print(window.app.idioma.t('DESDE')) %>:</strong><br />
+                    <div class="mtop-8 flex-filas flex-jc-sa">
+                        <div>
+                            <label><% print(window.app.idioma.t('ANYO')) %></label>
+                            <select id="selectAnioDesde"></select>
+                        </div>
+                        <div>
+                            <label><% print(window.app.idioma.t('SEMANA')) %></label>
+                            <select id="selectSemanaDesde" style="width: 250px;"></select>
+                        </div>
+                    </div>
+                    <strong class="mtop-8"><% print(window.app.idioma.t('HASTA')) %>:</strong><br />
+                    <div class="mtop-8 flex-filas flex-jc-sa">
+                        <div>
+                            <label ><% print(window.app.idioma.t('ANYO')) %></label>
+                            <select id="selectAnioHasta"></select>
+                        </div>
+                        <div>
+                            <label><% print(window.app.idioma.t('SEMANA')) %></label>
+                            <select id="selectSemanaHasta" style="width: 250px;"></select>
+                        </div>
+                    </div>
+                    <div hidden>
+                        <strong class="mtop-8"><% print(window.app.idioma.t('LINEAS')) %>:</strong><br />
+                        <select class="mtop-8" id="selectLineas" style="width: 100%;"></select>
+                    </div>                    
+                </div>
+            </div>
+            <div id="selectorExcel" class="w-100 mar-top-20">
+                <strong><% print(window.app.idioma.t('PLANIFICADOR_EXPORTAR_INFORME_TEXTO')) %></strong>
+                <div style="border:1px solid lightgrey; padding: 8px; margin-top:8px">
+                    <div class="mtop-8 flex-filas flex-jc-sa">
+                        <div>
+                            <label style="margin-left: 5px;"><% print(window.app.idioma.t('ANYO')) %></label>
+                            <select id="selectAnio"></select>
+                        </div>     
+                        <div>
+                            <label style="margin-left: 5px;"><% print(window.app.idioma.t('SEMANA')) %></label>
+                            <select id="selectSemana" style="width:250px;"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tac mar-top-20">
+                <input type="button" class="mar-right-25" id="btnDialogoGestionAceptar" value="<% print(window.app.idioma.t('ACEPTAR')) %>" />
+                <input type="button" class="" id="btnDialogoGestionCancelar" value="<% print(window.app.idioma.t('CANCELAR')) %>" />
+            </div>
+            <div id="trError" class="error tac mar-top-20" style="display:none;" colspan="2"></div>
+        </div>
+    </form>
+</div>

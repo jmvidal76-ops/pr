@@ -1,0 +1,2563 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MES_MSM_ALTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DepartmentTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Forms">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idLocation" Type="int" Nullable="false" />
+          <Property Name="idTrigger" Type="int" />
+          <Property Name="idSITinfo" Type="int" />
+          <Property Name="triggerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="descript" Type="nvarchar" MaxLength="200" />
+          <Property Name="statusID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="createdOnUTC" Type="datetime" />
+          <Property Name="lastModifyUTC" Type="datetime" />
+          <Property Name="delete" Type="bit" Nullable="false" />
+          <Property Name="idInbox" Type="int" />
+          <Property Name="isValid" Type="int" Nullable="false" />
+          <Property Name="errors" Type="nvarchar(max)" />
+          <Property Name="idFormTemplate" Type="int" />
+          <Property Name="FormTemplate" Type="nvarchar(max)" />
+          <Property Name="FormTemplateXML" Type="xml" />
+          <Property Name="FormValues" Type="nvarchar(max)" />
+          <Property Name="FormValuesXML" Type="xml" />
+          <Property Name="path" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Forms5sLibreSecciones">
+          <Key>
+            <PropertyRef Name="IdForm5s" />
+          </Key>
+          <Property Name="IdForm5s" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdFormTemplate" Type="int" Nullable="false" />
+          <Property Name="Seccion" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FormsFilesV2">
+          <Key>
+            <PropertyRef Name="idForm" />
+            <PropertyRef Name="idFiles" />
+          </Key>
+          <Property Name="idForm" Type="int" Nullable="false" />
+          <Property Name="idFiles" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FormsLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idForm" Type="int" Nullable="false" />
+          <Property Name="createdOn" Type="datetime" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="100" />
+          <Property Name="traza" Type="varchar(max)" />
+          <Property Name="usuario" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="FormsMESData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idForm" Type="int" Nullable="false" />
+          <Property Name="orderId" Type="nvarchar" MaxLength="101" />
+          <Property Name="orderTypeId" Type="nvarchar" MaxLength="101" />
+          <Property Name="turnoId" Type="nvarchar" MaxLength="50" />
+          <Property Name="shcId" Type="nvarchar" MaxLength="50" />
+          <Property Name="lotId" Type="nvarchar" MaxLength="64" />
+          <Property Name="materialId" Type="nvarchar" MaxLength="64" />
+          <Property Name="location" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="inboxTrigger">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idTrigger" Type="int" />
+          <Property Name="createdOnUTC" Type="datetime" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="typeID" Type="nvarchar" MaxLength="20" />
+          <Property Name="attr01" Type="nvarchar" MaxLength="500" />
+          <Property Name="attr02" Type="nvarchar" MaxLength="200" />
+          <Property Name="location" Type="nvarchar" MaxLength="255" />
+          <Property Name="orderId" Type="nvarchar" MaxLength="101" />
+          <Property Name="orderTypeId" Type="nvarchar" MaxLength="101" />
+          <Property Name="orderStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="orderStatusAnt" Type="nvarchar" MaxLength="50" />
+          <Property Name="turnoId" Type="nvarchar" MaxLength="50" />
+          <Property Name="shcId" Type="nvarchar" MaxLength="50" />
+          <Property Name="lotId" Type="nvarchar" MaxLength="64" />
+          <Property Name="materialId" Type="nvarchar" MaxLength="64" />
+          <Property Name="soloLocationID" Type="int" />
+          <Property Name="newDescript" Type="nvarchar" MaxLength="200" />
+          <Property Name="attrPlannedShiftActive" Type="int" />
+          <Property Name="attrPlannedOrderActive" Type="int" />
+          <Property Name="attrPlannedType" Type="int" />
+          <Property Name="attrPlannedOnce" Type="datetime" />
+          <Property Name="attrPlannedDays" Type="int" />
+          <Property Name="attrPlannedWeeks" Type="int" />
+          <Property Name="attrPlannedWeekDays" Type="nvarchar" MaxLength="500" />
+          <Property Name="attrPlannedMonthIsHourly" Type="int" />
+          <Property Name="attrPlannedMonthDay" Type="int" />
+          <Property Name="attrPlannedMonthFrec" Type="int" />
+          <Property Name="attrPlannedMonthNumDay" Type="int" />
+          <Property Name="attrPlannedMonthDayWeek" Type="nvarchar" MaxLength="10" />
+          <Property Name="attrFrecuencyIsCycle" Type="int" />
+          <Property Name="attrFrecuencyHour" Type="time" Precision="0" />
+          <Property Name="attrFrecuencyQuantity" Type="int" />
+          <Property Name="attrFrecuencyUnits" Type="int" />
+          <Property Name="attrFrecuencyFrom" Type="time" Precision="0" />
+          <Property Name="attrFrecuencyTo" Type="time" Precision="0" />
+        </EntityType>
+        <EntityType Name="O2_Llenadoras">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdLinea" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Linea" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VolumenEnvase" Type="int" Nullable="false" />
+          <Property Name="Llenadora" Type="tinyint" Nullable="false" />
+          <Property Name="IdMuestra" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Comentario" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="TCP" Type="smallint" Nullable="false" />
+          <Property Name="O2_TCP" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="CO2_TCP" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="TipoMuestra" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="NumGrifo" Type="tinyint" Nullable="false" />
+          <Property Name="TPO" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="UnidadTPO" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="HSO" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="UnidadHSO" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="DO" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="UnidadDO" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CO2" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="UnidadCO2" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CO2_Ts" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="UnidadCO2_Ts" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="HSV" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="UnidadHSV" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Presion" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="UnidadPresion" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Temperatura" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="UnidadTemperatura" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Temperatura_Ts" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="UnidadTemperatura_Ts" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="PresionVacio" Type="decimal" Precision="8" Scale="4" Nullable="false" />
+          <Property Name="UnidadPresionVacio" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="PresionEspumado" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="UnidadPresionEspumado" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="PresionSoplado" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="UnidadPresionSoplado" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ConsumoGas" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="UnidadConsumoGas" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Fichero" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="O2_Llenadoras_Parametros">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Linea" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ConTPO" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="O2_Llenadoras_Tolerancias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Linea" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LimiteIncremento" Type="decimal" Precision="5" Scale="1" Nullable="false" />
+          <Property Name="ToleranciaIncremento" Type="decimal" Precision="5" Scale="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="O2_Llenadoras_ToleranciasCO2">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Linea" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ToleranciaInferior" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="LimiteInferior" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="LimiteSuperior" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="ToleranciaSuperior" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="descript" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="StorageFiles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fieldName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="uploadOn" Type="datetime" Nullable="false" />
+          <Property Name="size" Type="int" />
+          <Property Name="extension" Type="varchar" MaxLength="50" />
+          <Property Name="type" Type="varchar" MaxLength="100" />
+          <Property Name="documento" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TemplatesForms">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idDepartmentType" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="descript" Type="nvarchar" MaxLength="200" />
+          <Property Name="createdOnUTC" Type="datetime" />
+          <Property Name="lastModifyUTC" Type="datetime" />
+          <Property Name="typeID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="jsonTemplate" Type="nvarchar(max)" />
+          <Property Name="xmlTemplate" Type="xml" />
+          <Property Name="deleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="TemplatesFormsFiles">
+          <Key>
+            <PropertyRef Name="idTemForm" />
+            <PropertyRef Name="idFile" />
+          </Key>
+          <Property Name="idTemForm" Type="int" Nullable="false" />
+          <Property Name="idFile" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TemplatesFormsTypes">
+          <Key>
+            <PropertyRef Name="typeID" />
+          </Key>
+          <Property Name="typeID" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TemplatesLocations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idDepartmentType" Type="int" Nullable="false" />
+          <Property Name="shortName" Type="nvarchar" MaxLength="10" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="descript" Type="nvarchar" MaxLength="200" />
+          <Property Name="idParent" Type="int" />
+          <Property Name="idSITInherit" Type="bit" />
+          <Property Name="idSITLoc" Type="nvarchar" MaxLength="50" />
+          <Property Name="deleted" Type="bit" />
+          <Property Name="createdOnUTC" Type="datetime" />
+          <Property Name="lastUpdatedUTC" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TemplatesLocForms">
+          <Key>
+            <PropertyRef Name="idLoc" />
+            <PropertyRef Name="idTemForm" />
+          </Key>
+          <Property Name="idLoc" Type="int" Nullable="false" />
+          <Property Name="idTemForm" Type="int" Nullable="false" />
+          <Property Name="path" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="TemplatesLocFormTri">
+          <Key>
+            <PropertyRef Name="idLoc" />
+            <PropertyRef Name="idTemForm" />
+            <PropertyRef Name="idTrigger" />
+          </Key>
+          <Property Name="idLoc" Type="int" Nullable="false" />
+          <Property Name="idTemForm" Type="int" Nullable="false" />
+          <Property Name="idTrigger" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TemplatesTriggers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idDepartmentType" Type="int" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="descript" Type="nvarchar" MaxLength="200" />
+          <Property Name="createdOnUTC" Type="datetime" />
+          <Property Name="lastModifyUTC" Type="datetime" />
+          <Property Name="typeID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="locID" Type="nvarchar" MaxLength="255" />
+          <Property Name="attr01" Type="nvarchar" MaxLength="500" />
+          <Property Name="attr02" Type="nvarchar" MaxLength="200" />
+          <Property Name="attrPlannedShiftActive" Type="int" />
+          <Property Name="attrPlannedOrderActive" Type="int" />
+          <Property Name="attrPlannedType" Type="int" />
+          <Property Name="attrPlannedOnce" Type="datetime" />
+          <Property Name="attrPlannedDays" Type="int" />
+          <Property Name="attrPlannedWeeks" Type="int" />
+          <Property Name="attrPlannedWeekDays" Type="nvarchar" MaxLength="500" />
+          <Property Name="attrPlannedMonthIsHourly" Type="int" />
+          <Property Name="attrPlannedMonthDay" Type="int" />
+          <Property Name="attrPlannedMonthFrec" Type="int" />
+          <Property Name="attrPlannedMonthNumDay" Type="int" />
+          <Property Name="attrPlannedMonthDayWeek" Type="nvarchar" MaxLength="10" />
+          <Property Name="attrFrecuencyIsCycle" Type="int" />
+          <Property Name="attrFrecuencyHour" Type="time" Precision="0" />
+          <Property Name="attrFrecuencyQuantity" Type="int" />
+          <Property Name="attrFrecuencyUnits" Type="int" />
+          <Property Name="attrFrecuencyFrom" Type="time" Precision="0" />
+          <Property Name="attrFrecuencyTo" Type="time" Precision="0" />
+          <Property Name="attrValidHasUntil" Type="int" />
+          <Property Name="attrValidFrom" Type="datetime" />
+          <Property Name="attrValidUntil" Type="datetime" />
+          <Property Name="deleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="TemplatesTriggersPlannedMonthNumDayTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TemplatesTriggersPlannedTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TemplatesTriggersTypes">
+          <Key>
+            <PropertyRef Name="typeID" />
+          </Key>
+          <Property Name="typeID" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TiposUnidades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MES_MSM_ALT.dbo.SIT_Locations' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SIT_Locations">
+          <Key>
+            <PropertyRef Name="LocPK" />
+            <PropertyRef Name="LocID" />
+          </Key>
+          <Property Name="LocPK" Type="int" Nullable="false" />
+          <Property Name="LocID" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="LocAlias" Type="nvarchar" MaxLength="64" />
+          <Property Name="ParentLocPK" Type="int" />
+          <Property Name="CommonLocPK" Type="int" />
+          <Property Name="LocPath" Type="nvarchar" MaxLength="450" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MES_MSM_ALT.dbo.SIT_Lots' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SIT_Lots">
+          <Key>
+            <PropertyRef Name="LotPK" />
+            <PropertyRef Name="LotID" />
+            <PropertyRef Name="DefVerPK" />
+            <PropertyRef Name="UomPK" />
+            <PropertyRef Name="LocPK" />
+            <PropertyRef Name="LotStatusPK" />
+            <PropertyRef Name="CreatedBy" />
+            <PropertyRef Name="CreatedOn" />
+            <PropertyRef Name="LastUser" />
+            <PropertyRef Name="LastUpdate" />
+            <PropertyRef Name="LocalInfo" />
+            <PropertyRef Name="RowGuid" />
+            <PropertyRef Name="RowVer" />
+            <PropertyRef Name="RowDeleted" />
+            <PropertyRef Name="RowUpdated" />
+          </Key>
+          <Property Name="LotPK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LotID" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="LotName" Type="nvarchar" MaxLength="128" />
+          <Property Name="DefVerPK" Type="int" Nullable="false" />
+          <Property Name="BomAltPK" Type="int" />
+          <Property Name="MasterLotPK" Type="int" />
+          <Property Name="ParentLotPK" Type="int" />
+          <Property Name="Descript" Type="nvarchar" MaxLength="255" />
+          <Property Name="InitQuantity" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="UomPK" Type="int" Nullable="false" />
+          <Property Name="LocPK" Type="int" Nullable="false" />
+          <Property Name="LotStatusPK" Type="int" Nullable="false" />
+          <Property Name="HutPK" Type="int" />
+          <Property Name="ValidFrom" Type="datetime" />
+          <Property Name="ValidTill" Type="datetime" />
+          <Property Name="SourceLotPK" Type="int" />
+          <Property Name="TargetLotPK" Type="int" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="LastUser" Type="int" Nullable="false" />
+          <Property Name="LastUpdate" Type="datetime" Nullable="false" />
+          <Property Name="LocalInfo" Type="binary" MaxLength="32" Nullable="false" />
+          <Property Name="ContextID" Type="nvarchar" MaxLength="32" />
+          <Property Name="RowGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RowVer" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="RowDeleted" Type="bit" Nullable="false" />
+          <Property Name="RowUpdated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MES_MSM_ALT.dbo.SIT_Materiales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SIT_Materiales">
+          <Key>
+            <PropertyRef Name="IdMaterial" />
+            <PropertyRef Name="IdClase" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Tipo" />
+          </Key>
+          <Property Name="IdMaterial" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="128" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="255" />
+          <Property Name="IdClase" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Clase" Type="nvarchar" MaxLength="255" />
+          <Property Name="Version" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="UdMedida" Type="nvarchar" MaxLength="32" />
+          <Property Name="F_EfectivoDesde" Type="datetime" />
+          <Property Name="F_EfectivoHasta" Type="datetime" />
+          <Property Name="EnUso" Type="bit" />
+          <Property Name="Autor" Type="nvarchar" MaxLength="128" />
+          <Property Name="FechaCreacion" Type="datetime" />
+          <Property Name="FechaUltCreacion" Type="datetime" />
+          <Property Name="ModificadoPor" Type="nvarchar" MaxLength="128" />
+          <Property Name="InfoAdicional" Type="nvarchar" MaxLength="128" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="DescTipo" Type="nvarchar" MaxLength="64" />
+          <Property Name="IdLote" Type="nvarchar" MaxLength="32" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MES_MSM_ALT.dbo.SIT_Orders' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SIT_Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="FecHorAct" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="101" Nullable="false" />
+          <Property Name="typeID" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdProducto" Type="nvarchar" MaxLength="100" />
+          <Property Name="EstadoAct" Type="nvarchar" MaxLength="50" />
+          <Property Name="EstadoAnt" Type="nvarchar" MaxLength="50" />
+          <Property Name="EquipoOrden" Type="nvarchar" MaxLength="255" />
+          <Property Name="FecHorAct" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MES_MSM_ALT.dbo.SIT_Orders_Status' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SIT_Orders_Status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MES_MSM_ALT.dbo.SIT_Orders_Status_Arranques_Cambios' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SIT_Orders_Status_Arranques_Cambios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MES_MSM_ALT.dbo.SIT_Orders_Types' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SIT_Orders_Types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="descript" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MES_MSM_ALT.dbo.SIT_RTDS_Points' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SIT_RTDS_Points">
+          <Key>
+            <PropertyRef Name="PointID" />
+          </Key>
+          <Property Name="Unit" Type="varchar" MaxLength="64" />
+          <Property Name="Point" Type="varchar" MaxLength="256" />
+          <Property Name="PointID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MES_MSM_ALT.dbo.SIT_SHC_Turnos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SIT_SHC_Turnos">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Fecha" />
+            <PropertyRef Name="IdTipoTurno" />
+            <PropertyRef Name="Turno" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Linea" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="InicioTurno" Type="datetime" />
+          <Property Name="FinTurno" Type="datetime" />
+          <Property Name="IdTipoTurno" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Turno" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="InicioTurnoUTC" Type="datetime" />
+          <Property Name="FinTurnoUTC" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MES_MSM_ALT.dbo.SIT_TiposTurno' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SIT_TiposTurno">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Inicio" />
+            <PropertyRef Name="Nombre" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Inicio" Type="datetime" Nullable="false" />
+          <Property Name="Fin" Type="datetime" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Bias" Type="smallint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MES_MSM_ALT.dbo.vTemplatesLocForms' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vTemplatesLocForms">
+          <Key>
+            <PropertyRef Name="idLoc" />
+            <PropertyRef Name="idTemForm" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="typeID" />
+          </Key>
+          <Property Name="idLoc" Type="int" Nullable="false" />
+          <Property Name="idTemForm" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="descript" Type="nvarchar" MaxLength="200" />
+          <Property Name="typeID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="path" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MES_MSM_ALT.dbo.vTemplatesLocFormTri' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vTemplatesLocFormTri">
+          <Key>
+            <PropertyRef Name="idLoc" />
+            <PropertyRef Name="idTemForm" />
+            <PropertyRef Name="idTrigger" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="typeID" />
+          </Key>
+          <Property Name="idLoc" Type="int" Nullable="false" />
+          <Property Name="idTemForm" Type="int" Nullable="false" />
+          <Property Name="idTrigger" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="descript" Type="nvarchar" MaxLength="200" />
+          <Property Name="typeID" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Forms_inboxTrigger">
+          <End Role="inboxTrigger" Type="Self.inboxTrigger" Multiplicity="0..1" />
+          <End Role="Forms" Type="Self.Forms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="inboxTrigger">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="idInbox" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Forms_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Forms" Type="Self.Forms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="statusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Forms_TemplatesLocations">
+          <End Role="TemplatesLocations" Type="Self.TemplatesLocations" Multiplicity="1" />
+          <End Role="Forms" Type="Self.Forms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplatesLocations">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="idLocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormsFilesV2_Forms">
+          <End Role="Forms" Type="Self.Forms" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FormsFilesV2" Type="Self.FormsFilesV2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Forms">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FormsFilesV2">
+              <PropertyRef Name="idForm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormsFilesV2_StorageFiles">
+          <End Role="StorageFiles" Type="Self.StorageFiles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FormsFilesV2" Type="Self.FormsFilesV2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StorageFiles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FormsFilesV2">
+              <PropertyRef Name="idFiles" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormsLog_Forms">
+          <End Role="Forms" Type="Self.Forms" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FormsLog" Type="Self.FormsLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Forms">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FormsLog">
+              <PropertyRef Name="idForm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormsMESData_Forms">
+          <End Role="Forms" Type="Self.Forms" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FormsMESData" Type="Self.FormsMESData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Forms">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FormsMESData">
+              <PropertyRef Name="idForm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationsForms_TemplatesForms">
+          <End Role="TemplatesForms" Type="Self.TemplatesForms" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TemplatesLocForms" Type="Self.TemplatesLocForms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplatesForms">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TemplatesLocForms">
+              <PropertyRef Name="idTemForm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationsForms_TemplatesLocations">
+          <End Role="TemplatesLocations" Type="Self.TemplatesLocations" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TemplatesLocForms" Type="Self.TemplatesLocForms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplatesLocations">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TemplatesLocForms">
+              <PropertyRef Name="idLoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationsFormsTriggers_LocationsForms">
+          <End Role="TemplatesLocForms" Type="Self.TemplatesLocForms" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TemplatesLocFormTri" Type="Self.TemplatesLocFormTri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplatesLocForms">
+              <PropertyRef Name="idLoc" />
+              <PropertyRef Name="idTemForm" />
+            </Principal>
+            <Dependent Role="TemplatesLocFormTri">
+              <PropertyRef Name="idLoc" />
+              <PropertyRef Name="idTemForm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationsFormsTriggers_TemplatesTriggers">
+          <End Role="TemplatesTriggers" Type="Self.TemplatesTriggers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TemplatesLocFormTri" Type="Self.TemplatesLocFormTri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplatesTriggers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TemplatesLocFormTri">
+              <PropertyRef Name="idTrigger" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplatesForms_DepartmentTypes">
+          <End Role="DepartmentTypes" Type="Self.DepartmentTypes" Multiplicity="1" />
+          <End Role="TemplatesForms" Type="Self.TemplatesForms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TemplatesForms">
+              <PropertyRef Name="idDepartmentType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplatesForms_TemplatesFormsTypes">
+          <End Role="TemplatesFormsTypes" Type="Self.TemplatesFormsTypes" Multiplicity="1" />
+          <End Role="TemplatesForms" Type="Self.TemplatesForms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplatesFormsTypes">
+              <PropertyRef Name="typeID" />
+            </Principal>
+            <Dependent Role="TemplatesForms">
+              <PropertyRef Name="typeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplatesFormsFiles_Files">
+          <End Role="StorageFiles" Type="Self.StorageFiles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TemplatesFormsFiles" Type="Self.TemplatesFormsFiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StorageFiles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TemplatesFormsFiles">
+              <PropertyRef Name="idFile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplatesFormsFiles_TemplatesForms">
+          <End Role="TemplatesForms" Type="Self.TemplatesForms" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TemplatesFormsFiles" Type="Self.TemplatesFormsFiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplatesForms">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TemplatesFormsFiles">
+              <PropertyRef Name="idTemForm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplatesLocations_DepartmentTypes">
+          <End Role="DepartmentTypes" Type="Self.DepartmentTypes" Multiplicity="1" />
+          <End Role="TemplatesLocations" Type="Self.TemplatesLocations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TemplatesLocations">
+              <PropertyRef Name="idDepartmentType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplatesLocations_TemplatesLocations">
+          <End Role="TemplatesLocations" Type="Self.TemplatesLocations" Multiplicity="0..1" />
+          <End Role="TemplatesLocations1" Type="Self.TemplatesLocations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplatesLocations">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TemplatesLocations1">
+              <PropertyRef Name="idParent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplatesTriggers_attrPlannedMonthNumDayTypes">
+          <End Role="TemplatesTriggersPlannedMonthNumDayTypes" Type="Self.TemplatesTriggersPlannedMonthNumDayTypes" Multiplicity="0..1" />
+          <End Role="TemplatesTriggers" Type="Self.TemplatesTriggers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplatesTriggersPlannedMonthNumDayTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TemplatesTriggers">
+              <PropertyRef Name="attrPlannedMonthNumDay" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplatesTriggers_DepartmentTypes">
+          <End Role="DepartmentTypes" Type="Self.DepartmentTypes" Multiplicity="1" />
+          <End Role="TemplatesTriggers" Type="Self.TemplatesTriggers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TemplatesTriggers">
+              <PropertyRef Name="idDepartmentType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplatesTriggers_TemplatesTriggersPlannedTypes">
+          <End Role="TemplatesTriggersPlannedTypes" Type="Self.TemplatesTriggersPlannedTypes" Multiplicity="0..1" />
+          <End Role="TemplatesTriggers" Type="Self.TemplatesTriggers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplatesTriggersPlannedTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TemplatesTriggers">
+              <PropertyRef Name="attrPlannedType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplatesTriggers_TemplatesTriggersTypes">
+          <End Role="TemplatesTriggersTypes" Type="Self.TemplatesTriggersTypes" Multiplicity="1" />
+          <End Role="TemplatesTriggers" Type="Self.TemplatesTriggers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplatesTriggersTypes">
+              <PropertyRef Name="typeID" />
+            </Principal>
+            <Dependent Role="TemplatesTriggers">
+              <PropertyRef Name="typeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="checkTriggerCiclico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="checkTriggerOrders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="checkTriggerPlan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="checkTriggerPlanDaily" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="checkTriggerPlanDailyCycle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="checkTriggerPlanMonthly" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="checkTriggerPlanMonthlyTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="checkTriggerPlanOnce" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="checkTriggerPlanWeekly" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="checkTriggerPlanWeeklyCycle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="checkTriggerTurno" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="copyTemplateForm" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idTemplateForm" Type="int" Mode="In" />
+        </Function>
+        <Function Name="createFormFileRelation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idForm" Type="int" Mode="In" />
+          <Parameter Name="idFile" Type="int" Mode="In" />
+        </Function>
+        <Function Name="createTemplateFileRelation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idTemForm" Type="int" Mode="In" />
+          <Parameter Name="idFile" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getTurnoID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="hora" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="MES_MSM_ALTModelStoreContainer">
+          <EntitySet Name="DepartmentTypes" EntityType="Self.DepartmentTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Forms" EntityType="Self.Forms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Forms5sLibreSecciones" EntityType="Self.Forms5sLibreSecciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormsFilesV2" EntityType="Self.FormsFilesV2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormsLog" EntityType="Self.FormsLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormsMESData" EntityType="Self.FormsMESData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="inboxTrigger" EntityType="Self.inboxTrigger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="O2_Llenadoras" EntityType="Self.O2_Llenadoras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="O2_Llenadoras_Parametros" EntityType="Self.O2_Llenadoras_Parametros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="O2_Llenadoras_Tolerancias" EntityType="Self.O2_Llenadoras_Tolerancias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="O2_Llenadoras_ToleranciasCO2" EntityType="Self.O2_Llenadoras_ToleranciasCO2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StorageFiles" EntityType="Self.StorageFiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TemplatesForms" EntityType="Self.TemplatesForms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TemplatesFormsFiles" EntityType="Self.TemplatesFormsFiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TemplatesFormsTypes" EntityType="Self.TemplatesFormsTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TemplatesLocations" EntityType="Self.TemplatesLocations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TemplatesLocForms" EntityType="Self.TemplatesLocForms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TemplatesLocFormTri" EntityType="Self.TemplatesLocFormTri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TemplatesTriggers" EntityType="Self.TemplatesTriggers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TemplatesTriggersPlannedMonthNumDayTypes" EntityType="Self.TemplatesTriggersPlannedMonthNumDayTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TemplatesTriggersPlannedTypes" EntityType="Self.TemplatesTriggersPlannedTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TemplatesTriggersTypes" EntityType="Self.TemplatesTriggersTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TiposUnidades" EntityType="Self.TiposUnidades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SIT_Locations" EntityType="Self.SIT_Locations" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[SIT_Locations].[LocPK] AS [LocPK], 
+[SIT_Locations].[LocID] AS [LocID], 
+[SIT_Locations].[LocAlias] AS [LocAlias], 
+[SIT_Locations].[ParentLocPK] AS [ParentLocPK], 
+[SIT_Locations].[CommonLocPK] AS [CommonLocPK], 
+[SIT_Locations].[LocPath] AS [LocPath]
+FROM [dbo].[SIT_Locations] AS [SIT_Locations]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SIT_Lots" EntityType="Self.SIT_Lots" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[SIT_Lots].[LotPK] AS [LotPK], 
+[SIT_Lots].[LotID] AS [LotID], 
+[SIT_Lots].[LotName] AS [LotName], 
+[SIT_Lots].[DefVerPK] AS [DefVerPK], 
+[SIT_Lots].[BomAltPK] AS [BomAltPK], 
+[SIT_Lots].[MasterLotPK] AS [MasterLotPK], 
+[SIT_Lots].[ParentLotPK] AS [ParentLotPK], 
+[SIT_Lots].[Descript] AS [Descript], 
+[SIT_Lots].[InitQuantity] AS [InitQuantity], 
+[SIT_Lots].[Quantity] AS [Quantity], 
+[SIT_Lots].[UomPK] AS [UomPK], 
+[SIT_Lots].[LocPK] AS [LocPK], 
+[SIT_Lots].[LotStatusPK] AS [LotStatusPK], 
+[SIT_Lots].[HutPK] AS [HutPK], 
+[SIT_Lots].[ValidFrom] AS [ValidFrom], 
+[SIT_Lots].[ValidTill] AS [ValidTill], 
+[SIT_Lots].[SourceLotPK] AS [SourceLotPK], 
+[SIT_Lots].[TargetLotPK] AS [TargetLotPK], 
+[SIT_Lots].[CreatedBy] AS [CreatedBy], 
+[SIT_Lots].[CreatedOn] AS [CreatedOn], 
+[SIT_Lots].[LastUser] AS [LastUser], 
+[SIT_Lots].[LastUpdate] AS [LastUpdate], 
+[SIT_Lots].[LocalInfo] AS [LocalInfo], 
+[SIT_Lots].[ContextID] AS [ContextID], 
+[SIT_Lots].[RowGuid] AS [RowGuid], 
+[SIT_Lots].[RowVer] AS [RowVer], 
+[SIT_Lots].[RowDeleted] AS [RowDeleted], 
+[SIT_Lots].[RowUpdated] AS [RowUpdated]
+FROM [dbo].[SIT_Lots] AS [SIT_Lots]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SIT_Materiales" EntityType="Self.SIT_Materiales" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[SIT_Materiales].[IdMaterial] AS [IdMaterial], 
+[SIT_Materiales].[Nombre] AS [Nombre], 
+[SIT_Materiales].[Descripcion] AS [Descripcion], 
+[SIT_Materiales].[IdClase] AS [IdClase], 
+[SIT_Materiales].[Clase] AS [Clase], 
+[SIT_Materiales].[Version] AS [Version], 
+[SIT_Materiales].[Status] AS [Status], 
+[SIT_Materiales].[UdMedida] AS [UdMedida], 
+[SIT_Materiales].[F_EfectivoDesde] AS [F_EfectivoDesde], 
+[SIT_Materiales].[F_EfectivoHasta] AS [F_EfectivoHasta], 
+[SIT_Materiales].[EnUso] AS [EnUso], 
+[SIT_Materiales].[Autor] AS [Autor], 
+[SIT_Materiales].[FechaCreacion] AS [FechaCreacion], 
+[SIT_Materiales].[FechaUltCreacion] AS [FechaUltCreacion], 
+[SIT_Materiales].[ModificadoPor] AS [ModificadoPor], 
+[SIT_Materiales].[InfoAdicional] AS [InfoAdicional], 
+[SIT_Materiales].[Tipo] AS [Tipo], 
+[SIT_Materiales].[DescTipo] AS [DescTipo], 
+[SIT_Materiales].[IdLote] AS [IdLote]
+FROM [dbo].[SIT_Materiales] AS [SIT_Materiales]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SIT_Orders" EntityType="Self.SIT_Orders" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[SIT_Orders].[Id] AS [Id], 
+[SIT_Orders].[typeID] AS [typeID], 
+[SIT_Orders].[IdProducto] AS [IdProducto], 
+[SIT_Orders].[EstadoAct] AS [EstadoAct], 
+[SIT_Orders].[EstadoAnt] AS [EstadoAnt], 
+[SIT_Orders].[EquipoOrden] AS [EquipoOrden], 
+[SIT_Orders].[FecHorAct] AS [FecHorAct]
+FROM [dbo].[SIT_Orders] AS [SIT_Orders]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SIT_Orders_Status" EntityType="Self.SIT_Orders_Status" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[SIT_Orders_Status].[id] AS [id]
+FROM [dbo].[SIT_Orders_Status] AS [SIT_Orders_Status]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SIT_Orders_Status_Arranques_Cambios" EntityType="Self.SIT_Orders_Status_Arranques_Cambios" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[SIT_Orders_Status_Arranques_Cambios].[id] AS [id]
+FROM [dbo].[SIT_Orders_Status_Arranques_Cambios] AS [SIT_Orders_Status_Arranques_Cambios]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SIT_Orders_Types" EntityType="Self.SIT_Orders_Types" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[SIT_Orders_Types].[id] AS [id], 
+[SIT_Orders_Types].[descript] AS [descript]
+FROM [dbo].[SIT_Orders_Types] AS [SIT_Orders_Types]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SIT_RTDS_Points" EntityType="Self.SIT_RTDS_Points" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[SIT_RTDS_Points].[Unit] AS [Unit], 
+[SIT_RTDS_Points].[Point] AS [Point], 
+[SIT_RTDS_Points].[PointID] AS [PointID]
+FROM [dbo].[SIT_RTDS_Points] AS [SIT_RTDS_Points]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SIT_SHC_Turnos" EntityType="Self.SIT_SHC_Turnos" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[SIT_SHC_Turnos].[Id] AS [Id], 
+[SIT_SHC_Turnos].[Linea] AS [Linea], 
+[SIT_SHC_Turnos].[Fecha] AS [Fecha], 
+[SIT_SHC_Turnos].[InicioTurno] AS [InicioTurno], 
+[SIT_SHC_Turnos].[FinTurno] AS [FinTurno], 
+[SIT_SHC_Turnos].[IdTipoTurno] AS [IdTipoTurno], 
+[SIT_SHC_Turnos].[Turno] AS [Turno], 
+[SIT_SHC_Turnos].[InicioTurnoUTC] AS [InicioTurnoUTC], 
+[SIT_SHC_Turnos].[FinTurnoUTC] AS [FinTurnoUTC]
+FROM [dbo].[SIT_SHC_Turnos] AS [SIT_SHC_Turnos]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SIT_TiposTurno" EntityType="Self.SIT_TiposTurno" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[SIT_TiposTurno].[id] AS [id], 
+[SIT_TiposTurno].[Inicio] AS [Inicio], 
+[SIT_TiposTurno].[Fin] AS [Fin], 
+[SIT_TiposTurno].[Nombre] AS [Nombre], 
+[SIT_TiposTurno].[Bias] AS [Bias]
+FROM [dbo].[SIT_TiposTurno] AS [SIT_TiposTurno]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vTemplatesLocForms" EntityType="Self.vTemplatesLocForms" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vTemplatesLocForms].[idLoc] AS [idLoc], 
+[vTemplatesLocForms].[idTemForm] AS [idTemForm], 
+[vTemplatesLocForms].[name] AS [name], 
+[vTemplatesLocForms].[descript] AS [descript], 
+[vTemplatesLocForms].[typeID] AS [typeID], 
+[vTemplatesLocForms].[path] AS [path]
+FROM [dbo].[vTemplatesLocForms] AS [vTemplatesLocForms]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vTemplatesLocFormTri" EntityType="Self.vTemplatesLocFormTri" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vTemplatesLocFormTri].[idLoc] AS [idLoc], 
+[vTemplatesLocFormTri].[idTemForm] AS [idTemForm], 
+[vTemplatesLocFormTri].[idTrigger] AS [idTrigger], 
+[vTemplatesLocFormTri].[name] AS [name], 
+[vTemplatesLocFormTri].[descript] AS [descript], 
+[vTemplatesLocFormTri].[typeID] AS [typeID]
+FROM [dbo].[vTemplatesLocFormTri] AS [vTemplatesLocFormTri]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Forms_inboxTrigger" Association="Self.FK_Forms_inboxTrigger">
+            <End Role="inboxTrigger" EntitySet="inboxTrigger" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Forms_Status" Association="Self.FK_Forms_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Forms_TemplatesLocations" Association="Self.FK_Forms_TemplatesLocations">
+            <End Role="TemplatesLocations" EntitySet="TemplatesLocations" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormsFilesV2_Forms" Association="Self.FK_FormsFilesV2_Forms">
+            <End Role="Forms" EntitySet="Forms" />
+            <End Role="FormsFilesV2" EntitySet="FormsFilesV2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormsFilesV2_StorageFiles" Association="Self.FK_FormsFilesV2_StorageFiles">
+            <End Role="StorageFiles" EntitySet="StorageFiles" />
+            <End Role="FormsFilesV2" EntitySet="FormsFilesV2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormsLog_Forms" Association="Self.FK_FormsLog_Forms">
+            <End Role="Forms" EntitySet="Forms" />
+            <End Role="FormsLog" EntitySet="FormsLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormsMESData_Forms" Association="Self.FK_FormsMESData_Forms">
+            <End Role="Forms" EntitySet="Forms" />
+            <End Role="FormsMESData" EntitySet="FormsMESData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationsForms_TemplatesForms" Association="Self.FK_LocationsForms_TemplatesForms">
+            <End Role="TemplatesForms" EntitySet="TemplatesForms" />
+            <End Role="TemplatesLocForms" EntitySet="TemplatesLocForms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationsForms_TemplatesLocations" Association="Self.FK_LocationsForms_TemplatesLocations">
+            <End Role="TemplatesLocations" EntitySet="TemplatesLocations" />
+            <End Role="TemplatesLocForms" EntitySet="TemplatesLocForms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationsFormsTriggers_LocationsForms" Association="Self.FK_LocationsFormsTriggers_LocationsForms">
+            <End Role="TemplatesLocForms" EntitySet="TemplatesLocForms" />
+            <End Role="TemplatesLocFormTri" EntitySet="TemplatesLocFormTri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationsFormsTriggers_TemplatesTriggers" Association="Self.FK_LocationsFormsTriggers_TemplatesTriggers">
+            <End Role="TemplatesTriggers" EntitySet="TemplatesTriggers" />
+            <End Role="TemplatesLocFormTri" EntitySet="TemplatesLocFormTri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplatesForms_DepartmentTypes" Association="Self.FK_TemplatesForms_DepartmentTypes">
+            <End Role="DepartmentTypes" EntitySet="DepartmentTypes" />
+            <End Role="TemplatesForms" EntitySet="TemplatesForms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplatesForms_TemplatesFormsTypes" Association="Self.FK_TemplatesForms_TemplatesFormsTypes">
+            <End Role="TemplatesFormsTypes" EntitySet="TemplatesFormsTypes" />
+            <End Role="TemplatesForms" EntitySet="TemplatesForms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplatesFormsFiles_Files" Association="Self.FK_TemplatesFormsFiles_Files">
+            <End Role="StorageFiles" EntitySet="StorageFiles" />
+            <End Role="TemplatesFormsFiles" EntitySet="TemplatesFormsFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplatesFormsFiles_TemplatesForms" Association="Self.FK_TemplatesFormsFiles_TemplatesForms">
+            <End Role="TemplatesForms" EntitySet="TemplatesForms" />
+            <End Role="TemplatesFormsFiles" EntitySet="TemplatesFormsFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplatesLocations_DepartmentTypes" Association="Self.FK_TemplatesLocations_DepartmentTypes">
+            <End Role="DepartmentTypes" EntitySet="DepartmentTypes" />
+            <End Role="TemplatesLocations" EntitySet="TemplatesLocations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplatesLocations_TemplatesLocations" Association="Self.FK_TemplatesLocations_TemplatesLocations">
+            <End Role="TemplatesLocations" EntitySet="TemplatesLocations" />
+            <End Role="TemplatesLocations1" EntitySet="TemplatesLocations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplatesTriggers_attrPlannedMonthNumDayTypes" Association="Self.FK_TemplatesTriggers_attrPlannedMonthNumDayTypes">
+            <End Role="TemplatesTriggersPlannedMonthNumDayTypes" EntitySet="TemplatesTriggersPlannedMonthNumDayTypes" />
+            <End Role="TemplatesTriggers" EntitySet="TemplatesTriggers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplatesTriggers_DepartmentTypes" Association="Self.FK_TemplatesTriggers_DepartmentTypes">
+            <End Role="DepartmentTypes" EntitySet="DepartmentTypes" />
+            <End Role="TemplatesTriggers" EntitySet="TemplatesTriggers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplatesTriggers_TemplatesTriggersPlannedTypes" Association="Self.FK_TemplatesTriggers_TemplatesTriggersPlannedTypes">
+            <End Role="TemplatesTriggersPlannedTypes" EntitySet="TemplatesTriggersPlannedTypes" />
+            <End Role="TemplatesTriggers" EntitySet="TemplatesTriggers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplatesTriggers_TemplatesTriggersTypes" Association="Self.FK_TemplatesTriggers_TemplatesTriggersTypes">
+            <End Role="TemplatesTriggersTypes" EntitySet="TemplatesTriggersTypes" />
+            <End Role="TemplatesTriggers" EntitySet="TemplatesTriggers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MES_MSM_ALTModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="FormsDBEnt" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="FormsLog" EntityType="MES_MSM_ALTModel.FormsLog" />
+          <EntitySet Name="FormsMESData" EntityType="MES_MSM_ALTModel.FormsMESData" />
+          <EntitySet Name="inboxTrigger" EntityType="MES_MSM_ALTModel.inboxTrigger" />
+          <EntitySet Name="Status" EntityType="MES_MSM_ALTModel.Status" />
+          <EntitySet Name="sysdiagrams" EntityType="MES_MSM_ALTModel.sysdiagrams" />
+          <EntitySet Name="TemplatesFormsTypes" EntityType="MES_MSM_ALTModel.TemplatesFormsTypes" />
+          <EntitySet Name="TemplatesLocForms" EntityType="MES_MSM_ALTModel.TemplatesLocForms" />
+          <EntitySet Name="SIT_Locations" EntityType="MES_MSM_ALTModel.SIT_Locations" />
+          <EntitySet Name="SIT_Lots" EntityType="MES_MSM_ALTModel.SIT_Lots" />
+          <EntitySet Name="SIT_Materiales" EntityType="MES_MSM_ALTModel.SIT_Materiales" />
+          <EntitySet Name="SIT_Orders" EntityType="MES_MSM_ALTModel.SIT_Orders" />
+          <EntitySet Name="SIT_Orders_Types" EntityType="MES_MSM_ALTModel.SIT_Orders_Types" />
+          <EntitySet Name="SIT_SHC_Turnos" EntityType="MES_MSM_ALTModel.SIT_SHC_Turnos" />
+          <EntitySet Name="vTemplatesLocForms" EntityType="MES_MSM_ALTModel.vTemplatesLocForms" />
+          <EntitySet Name="vTemplatesLocFormTri" EntityType="MES_MSM_ALTModel.vTemplatesLocFormTri" />
+          <FunctionImport Name="checkTriggerCiclico" />
+          <FunctionImport Name="checkTriggerOrders" />
+          <FunctionImport Name="checkTriggerPlan" />
+          <FunctionImport Name="checkTriggerTurno" />
+          <FunctionImport Name="copyTemplateForm">
+          <Parameter Name="idTemplateForm" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="SIT_TiposTurno" EntityType="MES_MSM_ALTModel.SIT_TiposTurno" />
+          <EntitySet Name="SIT_Orders_Status" EntityType="MES_MSM_ALTModel.SIT_Orders_Status" />
+          <EntitySet Name="SIT_RTDS_Points" EntityType="MES_MSM_ALTModel.SIT_RTDS_Points" />
+          <EntitySet Name="TemplatesTriggersPlannedMonthNumDayTypes" EntityType="MES_MSM_ALTModel.TemplatesTriggersPlannedMonthNumDayTypes" />
+          <EntitySet Name="TemplatesTriggersPlannedTypes" EntityType="MES_MSM_ALTModel.TemplatesTriggersPlannedTypes" />
+          <EntitySet Name="TemplatesTriggersTypes" EntityType="MES_MSM_ALTModel.TemplatesTriggersTypes" />
+          <FunctionImport Name="checkTriggerPlanDaily" />
+          <FunctionImport Name="checkTriggerPlanDailyCycle" />
+          <FunctionImport Name="checkTriggerPlanMonthly" />
+          <FunctionImport Name="checkTriggerPlanMonthlyTypes" />
+          <FunctionImport Name="checkTriggerPlanOnce" />
+          <FunctionImport Name="checkTriggerPlanWeekly" />
+          <FunctionImport Name="checkTriggerPlanWeeklyCycle" />
+          <EntitySet Name="DepartmentTypes" EntityType="MES_MSM_ALTModel.DepartmentTypes" />
+          <EntitySet Name="TemplatesForms" EntityType="MES_MSM_ALTModel.TemplatesForms" />
+          <EntitySet Name="TemplatesLocations" EntityType="MES_MSM_ALTModel.TemplatesLocations" />
+          <EntitySet Name="TemplatesTriggers" EntityType="MES_MSM_ALTModel.TemplatesTriggers" />
+          <AssociationSet Name="FK_TemplatesForms_DepartmentTypes" Association="MES_MSM_ALTModel.FK_TemplatesForms_DepartmentTypes">
+            <End Role="DepartmentTypes" EntitySet="DepartmentTypes" />
+            <End Role="TemplatesForms" EntitySet="TemplatesForms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplatesLocations_DepartmentTypes" Association="MES_MSM_ALTModel.FK_TemplatesLocations_DepartmentTypes">
+            <End Role="DepartmentTypes" EntitySet="DepartmentTypes" />
+            <End Role="TemplatesLocations" EntitySet="TemplatesLocations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplatesTriggers_DepartmentTypes" Association="MES_MSM_ALTModel.FK_TemplatesTriggers_DepartmentTypes">
+            <End Role="DepartmentTypes" EntitySet="DepartmentTypes" />
+            <End Role="TemplatesTriggers" EntitySet="TemplatesTriggers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationsForms_TemplatesForms" Association="MES_MSM_ALTModel.FK_LocationsForms_TemplatesForms">
+            <End Role="TemplatesForms" EntitySet="TemplatesForms" />
+            <End Role="TemplatesLocForms" EntitySet="TemplatesLocForms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplatesForms_TemplatesFormsTypes" Association="MES_MSM_ALTModel.FK_TemplatesForms_TemplatesFormsTypes">
+            <End Role="TemplatesFormsTypes" EntitySet="TemplatesFormsTypes" />
+            <End Role="TemplatesForms" EntitySet="TemplatesForms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationsForms_TemplatesLocations" Association="MES_MSM_ALTModel.FK_LocationsForms_TemplatesLocations">
+            <End Role="TemplatesLocations" EntitySet="TemplatesLocations" />
+            <End Role="TemplatesLocForms" EntitySet="TemplatesLocForms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplatesLocations_TemplatesLocations" Association="MES_MSM_ALTModel.FK_TemplatesLocations_TemplatesLocations">
+            <End Role="TemplatesLocations" EntitySet="TemplatesLocations" />
+            <End Role="TemplatesLocations1" EntitySet="TemplatesLocations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplatesTriggers_attrPlannedMonthNumDayTypes" Association="MES_MSM_ALTModel.FK_TemplatesTriggers_attrPlannedMonthNumDayTypes">
+            <End Role="TemplatesTriggersPlannedMonthNumDayTypes" EntitySet="TemplatesTriggersPlannedMonthNumDayTypes" />
+            <End Role="TemplatesTriggers" EntitySet="TemplatesTriggers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplatesTriggers_TemplatesTriggersPlannedTypes" Association="MES_MSM_ALTModel.FK_TemplatesTriggers_TemplatesTriggersPlannedTypes">
+            <End Role="TemplatesTriggersPlannedTypes" EntitySet="TemplatesTriggersPlannedTypes" />
+            <End Role="TemplatesTriggers" EntitySet="TemplatesTriggers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplatesTriggers_TemplatesTriggersTypes" Association="MES_MSM_ALTModel.FK_TemplatesTriggers_TemplatesTriggersTypes">
+            <End Role="TemplatesTriggersTypes" EntitySet="TemplatesTriggersTypes" />
+            <End Role="TemplatesTriggers" EntitySet="TemplatesTriggers" />
+          </AssociationSet>
+          <AssociationSet Name="TemplatesLocFormTri" Association="MES_MSM_ALTModel.TemplatesLocFormTri">
+            <End Role="TemplatesLocForms" EntitySet="TemplatesLocForms" />
+            <End Role="TemplatesTriggers" EntitySet="TemplatesTriggers" />
+          </AssociationSet>
+          <EntitySet Name="Forms" EntityType="MES_MSM_ALTModel.Forms" />
+          <AssociationSet Name="FK_Forms_inboxTrigger" Association="MES_MSM_ALTModel.FK_Forms_inboxTrigger">
+            <End Role="inboxTrigger" EntitySet="inboxTrigger" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Forms_Status" Association="MES_MSM_ALTModel.FK_Forms_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Forms_TemplatesLocations" Association="MES_MSM_ALTModel.FK_Forms_TemplatesLocations">
+            <End Role="TemplatesLocations" EntitySet="TemplatesLocations" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormsLog_Forms" Association="MES_MSM_ALTModel.FK_FormsLog_Forms">
+            <End Role="Forms" EntitySet="Forms" />
+            <End Role="FormsLog" EntitySet="FormsLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormsMESData_Forms" Association="MES_MSM_ALTModel.FK_FormsMESData_Forms">
+            <End Role="Forms" EntitySet="Forms" />
+            <End Role="FormsMESData" EntitySet="FormsMESData" />
+          </AssociationSet>
+          <EntitySet Name="StorageFiles" EntityType="MES_MSM_ALTModel.StorageFiles" />
+          <AssociationSet Name="TemplatesFormsFiles" Association="MES_MSM_ALTModel.TemplatesFormsFiles">
+            <End Role="StorageFiles" EntitySet="StorageFiles" />
+            <End Role="TemplatesForms" EntitySet="TemplatesForms" />
+          </AssociationSet>
+          <AssociationSet Name="FormsFilesV2" Association="MES_MSM_ALTModel.FormsFilesV2">
+            <End Role="Forms" EntitySet="Forms" />
+            <End Role="StorageFiles" EntitySet="StorageFiles" />
+          </AssociationSet>
+          <FunctionImport Name="createFormFileRelation">
+            <Parameter Name="idForm" Mode="In" Type="Int32" />
+            <Parameter Name="idFile" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="createTemplateFileRelation">
+            <Parameter Name="idTemForm" Mode="In" Type="Int32" />
+            <Parameter Name="idFile" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="SIT_Orders_Status_Arranques_Cambios" EntityType="MES_MSM_ALTModel.SIT_Orders_Status_Arranques_Cambios" />
+          <EntitySet Name="TiposUnidades" EntityType="MES_MSM_ALTModel.TiposUnidades" />
+          <EntitySet Name="O2_Llenadoras" EntityType="MES_MSM_ALTModel.O2_Llenadoras" />
+          <EntitySet Name="O2_Llenadoras_Tolerancias" EntityType="MES_MSM_ALTModel.O2_Llenadoras_Tolerancias" />
+          <EntitySet Name="O2_Llenadoras_Parametros" EntityType="MES_MSM_ALTModel.O2_Llenadoras_Parametros" />
+          <EntitySet Name="O2_Llenadoras_ToleranciasCO2" EntityType="MES_MSM_ALTModel.O2_Llenadoras_ToleranciasCO2" />
+          <EntitySet Name="Forms5sLibreSecciones" EntityType="MES_MSM_ALTModel.Forms5sLibreSecciones" />
+          </EntityContainer>
+        <EntityType Name="FormsLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="idForm" Type="Int32" Nullable="false" />
+          <Property Name="createdOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="type" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="traza" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="usuario" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Forms" Relationship="MES_MSM_ALTModel.FK_FormsLog_Forms" FromRole="FormsLog" ToRole="Forms" />
+        </EntityType>
+        <EntityType Name="FormsMESData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="idForm" Type="Int32" Nullable="false" />
+          <Property Name="orderId" Type="String" MaxLength="101" Unicode="true" FixedLength="false" />
+          <Property Name="orderTypeId" Type="String" MaxLength="101" Unicode="true" FixedLength="false" />
+          <Property Name="turnoId" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="shcId" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="lotId" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="materialId" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="location" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Forms" Relationship="MES_MSM_ALTModel.FK_FormsMESData_Forms" FromRole="FormsMESData" ToRole="Forms" />
+        </EntityType>
+        <EntityType Name="inboxTrigger">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="idTrigger" Type="Int32" />
+          <Property Name="createdOnUTC" Type="DateTime" Precision="3" />
+          <Property Name="name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="typeID" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="attr01" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="attr02" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="location" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="orderId" Type="String" MaxLength="101" Unicode="true" FixedLength="false" />
+          <Property Name="orderTypeId" Type="String" MaxLength="101" Unicode="true" FixedLength="false" />
+          <Property Name="orderStatus" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="orderStatusAnt" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="turnoId" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="shcId" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="lotId" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="materialId" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Type="Int32" Name="soloLocationID" />
+          <Property Type="String" Name="newDescript" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="attrPlannedShiftActive" />
+          <Property Type="Int32" Name="attrPlannedOrderActive" />
+          <Property Type="Int32" Name="attrPlannedType" />
+          <Property Type="DateTime" Name="attrPlannedOnce" Precision="3" />
+          <Property Type="Int32" Name="attrPlannedDays" />
+          <Property Type="Int32" Name="attrPlannedWeeks" />
+          <Property Type="String" Name="attrPlannedWeekDays" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="attrPlannedMonthIsHourly" />
+          <Property Type="Int32" Name="attrPlannedMonthDay" />
+          <Property Type="Int32" Name="attrPlannedMonthFrec" />
+          <Property Type="Int32" Name="attrPlannedMonthNumDay" />
+          <Property Type="String" Name="attrPlannedMonthDayWeek" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="attrFrecuencyIsCycle" />
+          <Property Type="Time" Name="attrFrecuencyHour" Precision="0" />
+          <Property Type="Int32" Name="attrFrecuencyQuantity" />
+          <Property Type="Int32" Name="attrFrecuencyUnits" />
+          <Property Type="Time" Name="attrFrecuencyFrom" Precision="0" />
+          <Property Type="Time" Name="attrFrecuencyTo" Precision="0" />
+          <NavigationProperty Name="Forms" Relationship="MES_MSM_ALTModel.FK_Forms_inboxTrigger" FromRole="inboxTrigger" ToRole="Forms" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="descript" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Forms" Relationship="MES_MSM_ALTModel.FK_Forms_Status" FromRole="Status" ToRole="Forms" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TemplatesFormsTypes">
+          <Key>
+            <PropertyRef Name="typeID" />
+          </Key>
+          <Property Name="typeID" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="TemplatesForms" Relationship="MES_MSM_ALTModel.FK_TemplatesForms_TemplatesFormsTypes" FromRole="TemplatesFormsTypes" ToRole="TemplatesForms" />
+        </EntityType>
+        <EntityType Name="TemplatesLocForms">
+          <Key>
+            <PropertyRef Name="idLoc" />
+            <PropertyRef Name="idTemForm" />
+          </Key>
+          <Property Name="idLoc" Type="Int32" Nullable="false" />
+          <Property Name="idTemForm" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TemplatesForms" Relationship="MES_MSM_ALTModel.FK_LocationsForms_TemplatesForms" FromRole="TemplatesLocForms" ToRole="TemplatesForms" />
+          <NavigationProperty Name="TemplatesLocations" Relationship="MES_MSM_ALTModel.FK_LocationsForms_TemplatesLocations" FromRole="TemplatesLocForms" ToRole="TemplatesLocations" />
+          <NavigationProperty Name="TemplatesTriggers" Relationship="MES_MSM_ALTModel.TemplatesLocFormTri" FromRole="TemplatesLocForms" ToRole="TemplatesTriggers" />
+          <Property Type="String" Name="path" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SIT_Locations">
+          <Key>
+            <PropertyRef Name="LocPK" />
+            <PropertyRef Name="LocID" />
+          </Key>
+          <Property Name="LocPK" Type="Int32" Nullable="false" />
+          <Property Name="LocID" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="LocAlias" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="ParentLocPK" Type="Int32" />
+          <Property Name="CommonLocPK" Type="Int32" />
+          <Property Name="LocPath" Type="String" MaxLength="450" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SIT_Lots">
+          <Key>
+            <PropertyRef Name="LotPK" />
+            <PropertyRef Name="LotID" />
+            <PropertyRef Name="DefVerPK" />
+            <PropertyRef Name="UomPK" />
+            <PropertyRef Name="LocPK" />
+            <PropertyRef Name="LotStatusPK" />
+            <PropertyRef Name="CreatedBy" />
+            <PropertyRef Name="CreatedOn" />
+            <PropertyRef Name="LastUser" />
+            <PropertyRef Name="LastUpdate" />
+            <PropertyRef Name="LocalInfo" />
+            <PropertyRef Name="RowGuid" />
+            <PropertyRef Name="RowVer" />
+            <PropertyRef Name="RowDeleted" />
+            <PropertyRef Name="RowUpdated" />
+          </Key>
+          <Property Name="LotPK" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="LotID" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="LotName" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="DefVerPK" Type="Int32" Nullable="false" />
+          <Property Name="BomAltPK" Type="Int32" />
+          <Property Name="MasterLotPK" Type="Int32" />
+          <Property Name="ParentLotPK" Type="Int32" />
+          <Property Name="Descript" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="InitQuantity" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="UomPK" Type="Int32" Nullable="false" />
+          <Property Name="LocPK" Type="Int32" Nullable="false" />
+          <Property Name="LotStatusPK" Type="Int32" Nullable="false" />
+          <Property Name="HutPK" Type="Int32" />
+          <Property Name="ValidFrom" Type="DateTime" Precision="3" />
+          <Property Name="ValidTill" Type="DateTime" Precision="3" />
+          <Property Name="SourceLotPK" Type="Int32" />
+          <Property Name="TargetLotPK" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUser" Type="Int32" Nullable="false" />
+          <Property Name="LastUpdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LocalInfo" Type="Binary" Nullable="false" MaxLength="32" FixedLength="true" />
+          <Property Name="ContextID" Type="String" MaxLength="32" Unicode="true" FixedLength="false" />
+          <Property Name="RowGuid" Type="Guid" Nullable="false" />
+          <Property Name="RowVer" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" p1:StoreGeneratedPattern="Computed" />
+          <Property Name="RowDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="RowUpdated" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="SIT_Materiales">
+          <Key>
+            <PropertyRef Name="IdMaterial" />
+            <PropertyRef Name="IdClase" />
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Tipo" />
+          </Key>
+          <Property Name="IdMaterial" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="Nombre" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="IdClase" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="Clase" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Version" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
+          <Property Name="UdMedida" Type="String" MaxLength="32" Unicode="true" FixedLength="false" />
+          <Property Name="F_EfectivoDesde" Type="DateTime" Precision="3" />
+          <Property Name="F_EfectivoHasta" Type="DateTime" Precision="3" />
+          <Property Name="EnUso" Type="Boolean" />
+          <Property Name="Autor" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="FechaUltCreacion" Type="DateTime" Precision="3" />
+          <Property Name="ModificadoPor" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="InfoAdicional" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
+          <Property Name="DescTipo" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="IdLote" Type="String" MaxLength="32" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SIT_Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="FecHorAct" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="101" Unicode="true" FixedLength="false" />
+          <Property Name="typeID" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="IdProducto" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="EstadoAct" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="EstadoAnt" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="EquipoOrden" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="FecHorAct" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="SIT_Orders_Types">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="descript" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SIT_SHC_Turnos">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Fecha" />
+            <PropertyRef Name="IdTipoTurno" />
+            <PropertyRef Name="Turno" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Linea" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InicioTurno" Type="DateTime" Precision="3" />
+          <Property Name="FinTurno" Type="DateTime" Precision="3" />
+          <Property Name="IdTipoTurno" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Turno" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="InicioTurnoUTC" Type="DateTime" Precision="3" />
+          <Property Name="FinTurnoUTC" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="vTemplatesLocForms">
+          <Key>
+            <PropertyRef Name="idLoc" />
+            <PropertyRef Name="idTemForm" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="typeID" />
+          </Key>
+          <Property Name="idLoc" Type="Int32" Nullable="false" />
+          <Property Name="idTemForm" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="descript" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="typeID" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="path" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vTemplatesLocFormTri">
+          <Key>
+            <PropertyRef Name="idLoc" />
+            <PropertyRef Name="idTemForm" />
+            <PropertyRef Name="idTrigger" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="typeID" />
+          </Key>
+          <Property Name="idLoc" Type="Int32" Nullable="false" />
+          <Property Name="idTemForm" Type="Int32" Nullable="false" />
+          <Property Name="idTrigger" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="descript" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="typeID" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SIT_TiposTurno">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Inicio" />
+            <PropertyRef Name="Nombre" />
+          </Key>
+          <Property Type="String" Name="id" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Inicio" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="Fin" Precision="3" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="Bias" />
+        </EntityType>
+        <EntityType Name="SIT_Orders_Status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="String" Name="id" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SIT_RTDS_Points">
+          <Key>
+            <PropertyRef Name="PointID" />
+          </Key>
+          <Property Type="String" Name="Unit" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Point" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PointID" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TemplatesTriggersPlannedMonthNumDayTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TemplatesTriggers" Relationship="MES_MSM_ALTModel.FK_TemplatesTriggers_attrPlannedMonthNumDayTypes" FromRole="TemplatesTriggersPlannedMonthNumDayTypes" ToRole="TemplatesTriggers" />
+        </EntityType>
+        <EntityType Name="TemplatesTriggersPlannedTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TemplatesTriggers" Relationship="MES_MSM_ALTModel.FK_TemplatesTriggers_TemplatesTriggersPlannedTypes" FromRole="TemplatesTriggersPlannedTypes" ToRole="TemplatesTriggers" />
+        </EntityType>
+        <EntityType Name="TemplatesTriggersTypes">
+          <Key>
+            <PropertyRef Name="typeID" />
+          </Key>
+          <Property Type="String" Name="typeID" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TemplatesTriggers" Relationship="MES_MSM_ALTModel.FK_TemplatesTriggers_TemplatesTriggersTypes" FromRole="TemplatesTriggersTypes" ToRole="TemplatesTriggers" />
+        </EntityType>
+        <EntityType Name="DepartmentTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="name" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TemplatesForms" Relationship="MES_MSM_ALTModel.FK_TemplatesForms_DepartmentTypes" FromRole="DepartmentTypes" ToRole="TemplatesForms" />
+          <NavigationProperty Name="TemplatesLocations" Relationship="MES_MSM_ALTModel.FK_TemplatesLocations_DepartmentTypes" FromRole="DepartmentTypes" ToRole="TemplatesLocations" />
+          <NavigationProperty Name="TemplatesTriggers" Relationship="MES_MSM_ALTModel.FK_TemplatesTriggers_DepartmentTypes" FromRole="DepartmentTypes" ToRole="TemplatesTriggers" />
+        </EntityType>
+        <EntityType Name="TemplatesForms">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idDepartmentType" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="descript" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="createdOnUTC" Precision="3" />
+          <Property Type="DateTime" Name="lastModifyUTC" Precision="3" />
+          <Property Type="String" Name="typeID" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="jsonTemplate" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="xmlTemplate" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="deleted" />
+          <NavigationProperty Name="DepartmentTypes" Relationship="MES_MSM_ALTModel.FK_TemplatesForms_DepartmentTypes" FromRole="TemplatesForms" ToRole="DepartmentTypes" />
+          <NavigationProperty Name="TemplatesLocForms" Relationship="MES_MSM_ALTModel.FK_LocationsForms_TemplatesForms" FromRole="TemplatesForms" ToRole="TemplatesLocForms" />
+          <NavigationProperty Name="TemplatesFormsTypes" Relationship="MES_MSM_ALTModel.FK_TemplatesForms_TemplatesFormsTypes" FromRole="TemplatesForms" ToRole="TemplatesFormsTypes" />
+          <NavigationProperty Name="StorageFiles" Relationship="MES_MSM_ALTModel.TemplatesFormsFiles" FromRole="TemplatesForms" ToRole="StorageFiles" />
+        </EntityType>
+        <EntityType Name="TemplatesLocations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idDepartmentType" Nullable="false" />
+          <Property Type="String" Name="shortName" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="descript" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="idParent" />
+          <Property Type="Boolean" Name="idSITInherit" />
+          <Property Type="String" Name="idSITLoc" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="deleted" />
+          <Property Type="DateTime" Name="createdOnUTC" Precision="3" />
+          <Property Type="DateTime" Name="lastUpdatedUTC" Precision="3" />
+          <NavigationProperty Name="DepartmentTypes" Relationship="MES_MSM_ALTModel.FK_TemplatesLocations_DepartmentTypes" FromRole="TemplatesLocations" ToRole="DepartmentTypes" />
+          <NavigationProperty Name="TemplatesLocForms" Relationship="MES_MSM_ALTModel.FK_LocationsForms_TemplatesLocations" FromRole="TemplatesLocations" ToRole="TemplatesLocForms" />
+          <NavigationProperty Name="TemplatesLocations1" Relationship="MES_MSM_ALTModel.FK_TemplatesLocations_TemplatesLocations" FromRole="TemplatesLocations" ToRole="TemplatesLocations1" />
+          <NavigationProperty Name="TemplatesLocations2" Relationship="MES_MSM_ALTModel.FK_TemplatesLocations_TemplatesLocations" FromRole="TemplatesLocations1" ToRole="TemplatesLocations" />
+          <NavigationProperty Name="Forms" Relationship="MES_MSM_ALTModel.FK_Forms_TemplatesLocations" FromRole="TemplatesLocations" ToRole="Forms" />
+        </EntityType>
+        <EntityType Name="TemplatesTriggers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idDepartmentType" Nullable="false" />
+          <Property Type="Int32" Name="status" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="descript" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="createdOnUTC" Precision="3" />
+          <Property Type="DateTime" Name="lastModifyUTC" Precision="3" />
+          <Property Type="String" Name="typeID" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="locID" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="attr01" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="attr02" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="attrPlannedShiftActive" />
+          <Property Type="Int32" Name="attrPlannedOrderActive" />
+          <Property Type="Int32" Name="attrPlannedType" />
+          <Property Type="DateTime" Name="attrPlannedOnce" Precision="3" />
+          <Property Type="Int32" Name="attrPlannedDays" />
+          <Property Type="Int32" Name="attrPlannedWeeks" />
+          <Property Type="String" Name="attrPlannedWeekDays" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="attrPlannedMonthIsHourly" />
+          <Property Type="Int32" Name="attrPlannedMonthDay" />
+          <Property Type="Int32" Name="attrPlannedMonthFrec" />
+          <Property Type="Int32" Name="attrPlannedMonthNumDay" />
+          <Property Type="String" Name="attrPlannedMonthDayWeek" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="attrFrecuencyIsCycle" />
+          <Property Type="Time" Name="attrFrecuencyHour" Precision="0" />
+          <Property Type="Int32" Name="attrFrecuencyQuantity" />
+          <Property Type="Int32" Name="attrFrecuencyUnits" />
+          <Property Type="Time" Name="attrFrecuencyFrom" Precision="0" />
+          <Property Type="Time" Name="attrFrecuencyTo" Precision="0" />
+          <Property Type="Int32" Name="attrValidHasUntil" />
+          <Property Type="DateTime" Name="attrValidFrom" Precision="3" />
+          <Property Type="DateTime" Name="attrValidUntil" Precision="3" />
+          <Property Type="Boolean" Name="deleted" />
+          <NavigationProperty Name="DepartmentTypes" Relationship="MES_MSM_ALTModel.FK_TemplatesTriggers_DepartmentTypes" FromRole="TemplatesTriggers" ToRole="DepartmentTypes" />
+          <NavigationProperty Name="TemplatesTriggersPlannedMonthNumDayTypes" Relationship="MES_MSM_ALTModel.FK_TemplatesTriggers_attrPlannedMonthNumDayTypes" FromRole="TemplatesTriggers" ToRole="TemplatesTriggersPlannedMonthNumDayTypes" />
+          <NavigationProperty Name="TemplatesTriggersPlannedTypes" Relationship="MES_MSM_ALTModel.FK_TemplatesTriggers_TemplatesTriggersPlannedTypes" FromRole="TemplatesTriggers" ToRole="TemplatesTriggersPlannedTypes" />
+          <NavigationProperty Name="TemplatesTriggersTypes" Relationship="MES_MSM_ALTModel.FK_TemplatesTriggers_TemplatesTriggersTypes" FromRole="TemplatesTriggers" ToRole="TemplatesTriggersTypes" />
+          <NavigationProperty Name="TemplatesLocForms" Relationship="MES_MSM_ALTModel.TemplatesLocFormTri" FromRole="TemplatesTriggers" ToRole="TemplatesLocForms" />
+        </EntityType>
+        <Association Name="FK_TemplatesForms_DepartmentTypes">
+          <End Type="MES_MSM_ALTModel.DepartmentTypes" Role="DepartmentTypes" Multiplicity="1" />
+          <End Type="MES_MSM_ALTModel.TemplatesForms" Role="TemplatesForms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TemplatesForms">
+              <PropertyRef Name="idDepartmentType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplatesLocations_DepartmentTypes">
+          <End Type="MES_MSM_ALTModel.DepartmentTypes" Role="DepartmentTypes" Multiplicity="1" />
+          <End Type="MES_MSM_ALTModel.TemplatesLocations" Role="TemplatesLocations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TemplatesLocations">
+              <PropertyRef Name="idDepartmentType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplatesTriggers_DepartmentTypes">
+          <End Type="MES_MSM_ALTModel.DepartmentTypes" Role="DepartmentTypes" Multiplicity="1" />
+          <End Type="MES_MSM_ALTModel.TemplatesTriggers" Role="TemplatesTriggers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TemplatesTriggers">
+              <PropertyRef Name="idDepartmentType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationsForms_TemplatesForms">
+          <End Type="MES_MSM_ALTModel.TemplatesForms" Role="TemplatesForms" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MES_MSM_ALTModel.TemplatesLocForms" Role="TemplatesLocForms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplatesForms">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TemplatesLocForms">
+              <PropertyRef Name="idTemForm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplatesForms_TemplatesFormsTypes">
+          <End Type="MES_MSM_ALTModel.TemplatesFormsTypes" Role="TemplatesFormsTypes" Multiplicity="1" />
+          <End Type="MES_MSM_ALTModel.TemplatesForms" Role="TemplatesForms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplatesFormsTypes">
+              <PropertyRef Name="typeID" />
+            </Principal>
+            <Dependent Role="TemplatesForms">
+              <PropertyRef Name="typeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationsForms_TemplatesLocations">
+          <End Type="MES_MSM_ALTModel.TemplatesLocations" Role="TemplatesLocations" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MES_MSM_ALTModel.TemplatesLocForms" Role="TemplatesLocForms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplatesLocations">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TemplatesLocForms">
+              <PropertyRef Name="idLoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplatesLocations_TemplatesLocations">
+          <End Type="MES_MSM_ALTModel.TemplatesLocations" Role="TemplatesLocations" Multiplicity="0..1" />
+          <End Type="MES_MSM_ALTModel.TemplatesLocations" Role="TemplatesLocations1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplatesLocations">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TemplatesLocations1">
+              <PropertyRef Name="idParent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplatesTriggers_attrPlannedMonthNumDayTypes">
+          <End Type="MES_MSM_ALTModel.TemplatesTriggersPlannedMonthNumDayTypes" Role="TemplatesTriggersPlannedMonthNumDayTypes" Multiplicity="0..1" />
+          <End Type="MES_MSM_ALTModel.TemplatesTriggers" Role="TemplatesTriggers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplatesTriggersPlannedMonthNumDayTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TemplatesTriggers">
+              <PropertyRef Name="attrPlannedMonthNumDay" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplatesTriggers_TemplatesTriggersPlannedTypes">
+          <End Type="MES_MSM_ALTModel.TemplatesTriggersPlannedTypes" Role="TemplatesTriggersPlannedTypes" Multiplicity="0..1" />
+          <End Type="MES_MSM_ALTModel.TemplatesTriggers" Role="TemplatesTriggers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplatesTriggersPlannedTypes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TemplatesTriggers">
+              <PropertyRef Name="attrPlannedType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplatesTriggers_TemplatesTriggersTypes">
+          <End Type="MES_MSM_ALTModel.TemplatesTriggersTypes" Role="TemplatesTriggersTypes" Multiplicity="1" />
+          <End Type="MES_MSM_ALTModel.TemplatesTriggers" Role="TemplatesTriggers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplatesTriggersTypes">
+              <PropertyRef Name="typeID" />
+            </Principal>
+            <Dependent Role="TemplatesTriggers">
+              <PropertyRef Name="typeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TemplatesLocFormTri">
+          <End Type="MES_MSM_ALTModel.TemplatesLocForms" Role="TemplatesLocForms" Multiplicity="*" />
+          <End Type="MES_MSM_ALTModel.TemplatesTriggers" Role="TemplatesTriggers" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Forms">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idLocation" Nullable="false" />
+          <Property Type="Int32" Name="idTrigger" />
+          <Property Type="Int32" Name="idSITinfo" />
+          <Property Type="String" Name="triggerName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="descript" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="statusID" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="createdOnUTC" Precision="3" />
+          <Property Type="DateTime" Name="lastModifyUTC" Precision="3" />
+          <Property Type="Boolean" Name="delete" Nullable="false" />
+          <Property Type="Int32" Name="idInbox" />
+          <Property Type="Int32" Name="isValid" Nullable="false" />
+          <Property Type="String" Name="errors" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="idFormTemplate" />
+          <Property Type="String" Name="FormTemplate" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FormTemplateXML" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FormValues" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FormValuesXML" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="inboxTrigger" Relationship="MES_MSM_ALTModel.FK_Forms_inboxTrigger" FromRole="Forms" ToRole="inboxTrigger" />
+          <NavigationProperty Name="Status" Relationship="MES_MSM_ALTModel.FK_Forms_Status" FromRole="Forms" ToRole="Status" />
+          <NavigationProperty Name="TemplatesLocations" Relationship="MES_MSM_ALTModel.FK_Forms_TemplatesLocations" FromRole="Forms" ToRole="TemplatesLocations" />
+          <NavigationProperty Name="FormsLog" Relationship="MES_MSM_ALTModel.FK_FormsLog_Forms" FromRole="Forms" ToRole="FormsLog" />
+          <NavigationProperty Name="FormsMESData" Relationship="MES_MSM_ALTModel.FK_FormsMESData_Forms" FromRole="Forms" ToRole="FormsMESData" />
+          <NavigationProperty Name="StorageFiles" Relationship="MES_MSM_ALTModel.FormsFilesV2" FromRole="Forms" ToRole="StorageFiles" />
+          <Property Type="String" Name="path" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Forms_inboxTrigger">
+          <End Type="MES_MSM_ALTModel.inboxTrigger" Role="inboxTrigger" Multiplicity="0..1" />
+          <End Type="MES_MSM_ALTModel.Forms" Role="Forms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="inboxTrigger">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="idInbox" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Forms_Status">
+          <End Type="MES_MSM_ALTModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="MES_MSM_ALTModel.Forms" Role="Forms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="statusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Forms_TemplatesLocations">
+          <End Type="MES_MSM_ALTModel.TemplatesLocations" Role="TemplatesLocations" Multiplicity="1" />
+          <End Type="MES_MSM_ALTModel.Forms" Role="Forms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplatesLocations">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="idLocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormsLog_Forms">
+          <End Type="MES_MSM_ALTModel.Forms" Role="Forms" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MES_MSM_ALTModel.FormsLog" Role="FormsLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Forms">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FormsLog">
+              <PropertyRef Name="idForm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormsMESData_Forms">
+          <End Type="MES_MSM_ALTModel.Forms" Role="Forms" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MES_MSM_ALTModel.FormsMESData" Role="FormsMESData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Forms">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FormsMESData">
+              <PropertyRef Name="idForm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="StorageFiles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="fieldName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="uploadOn" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="size" />
+          <Property Type="String" Name="extension" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="type" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Binary" Name="documento" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="TemplatesForms" Relationship="MES_MSM_ALTModel.TemplatesFormsFiles" FromRole="StorageFiles" ToRole="TemplatesForms" />
+          <NavigationProperty Name="Forms" Relationship="MES_MSM_ALTModel.FormsFilesV2" FromRole="StorageFiles" ToRole="Forms" />
+        </EntityType>
+        <Association Name="TemplatesFormsFiles">
+          <End Type="MES_MSM_ALTModel.StorageFiles" Role="StorageFiles" Multiplicity="*" />
+          <End Type="MES_MSM_ALTModel.TemplatesForms" Role="TemplatesForms" Multiplicity="*" />
+        </Association>
+        <Association Name="FormsFilesV2">
+          <End Type="MES_MSM_ALTModel.Forms" Role="Forms" Multiplicity="*" />
+          <End Type="MES_MSM_ALTModel.StorageFiles" Role="StorageFiles" Multiplicity="*" />
+        </Association>
+        <EntityType Name="SIT_Orders_Status_Arranques_Cambios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="String" Name="id" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TiposUnidades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="O2_Llenadoras">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdLinea" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Linea" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VolumenEnvase" Type="Int32" Nullable="false" />
+          <Property Name="Llenadora" Type="Byte" Nullable="false" />
+          <Property Name="IdMuestra" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Comentario" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TCP" Type="Int16" Nullable="false" />
+          <Property Name="O2_TCP" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="CO2_TCP" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="TipoMuestra" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="NumGrifo" Type="Byte" Nullable="false" />
+          <Property Name="TPO" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="UnidadTPO" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="HSO" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="UnidadHSO" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DO" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="UnidadDO" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CO2" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="UnidadCO2" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CO2_Ts" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="UnidadCO2_Ts" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="HSV" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="UnidadHSV" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Presion" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="UnidadPresion" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Temperatura" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="UnidadTemperatura" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Temperatura_Ts" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="UnidadTemperatura_Ts" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Fichero" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PresionVacio" Type="Decimal" Nullable="false" Precision="8" Scale="4" />
+          <Property Name="UnidadPresionVacio" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PresionEspumado" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="UnidadPresionEspumado" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PresionSoplado" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="UnidadPresionSoplado" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ConsumoGas" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="UnidadConsumoGas" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="O2_Llenadoras_Tolerancias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Linea" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LimiteIncremento" Type="Decimal" Nullable="false" Precision="5" Scale="1" />
+          <Property Name="ToleranciaIncremento" Type="Decimal" Nullable="false" Precision="5" Scale="1" />
+        </EntityType>
+        <EntityType Name="O2_Llenadoras_Parametros">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Linea" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ConTPO" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="O2_Llenadoras_ToleranciasCO2">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Linea" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LimiteInferior" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="LimiteSuperior" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="ToleranciaInferior" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="ToleranciaSuperior" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+        </EntityType>
+        <EntityType Name="Forms5sLibreSecciones">
+          <Key>
+            <PropertyRef Name="IdForm5s" />
+          </Key>
+          <Property Name="IdForm5s" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdFormTemplate" Type="Int32" Nullable="false" />
+          <Property Name="Seccion" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MES_MSM_ALTModelStoreContainer" CdmEntityContainer="FormsDBEnt">
+          <EntitySetMapping Name="FormsLog">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.FormsLog">
+              <MappingFragment StoreEntitySet="FormsLog">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="idForm" ColumnName="idForm" />
+                <ScalarProperty Name="createdOn" ColumnName="createdOn" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="traza" ColumnName="traza" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormsMESData">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.FormsMESData">
+              <MappingFragment StoreEntitySet="FormsMESData">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="idForm" ColumnName="idForm" />
+                <ScalarProperty Name="orderId" ColumnName="orderId" />
+                <ScalarProperty Name="orderTypeId" ColumnName="orderTypeId" />
+                <ScalarProperty Name="turnoId" ColumnName="turnoId" />
+                <ScalarProperty Name="shcId" ColumnName="shcId" />
+                <ScalarProperty Name="lotId" ColumnName="lotId" />
+                <ScalarProperty Name="materialId" ColumnName="materialId" />
+                <ScalarProperty Name="location" ColumnName="location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inboxTrigger">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.inboxTrigger">
+              <MappingFragment StoreEntitySet="inboxTrigger">
+                <ScalarProperty Name="attrFrecuencyTo" ColumnName="attrFrecuencyTo" />
+                <ScalarProperty Name="attrFrecuencyFrom" ColumnName="attrFrecuencyFrom" />
+                <ScalarProperty Name="attrFrecuencyUnits" ColumnName="attrFrecuencyUnits" />
+                <ScalarProperty Name="attrFrecuencyQuantity" ColumnName="attrFrecuencyQuantity" />
+                <ScalarProperty Name="attrFrecuencyHour" ColumnName="attrFrecuencyHour" />
+                <ScalarProperty Name="attrFrecuencyIsCycle" ColumnName="attrFrecuencyIsCycle" />
+                <ScalarProperty Name="attrPlannedMonthDayWeek" ColumnName="attrPlannedMonthDayWeek" />
+                <ScalarProperty Name="attrPlannedMonthNumDay" ColumnName="attrPlannedMonthNumDay" />
+                <ScalarProperty Name="attrPlannedMonthFrec" ColumnName="attrPlannedMonthFrec" />
+                <ScalarProperty Name="attrPlannedMonthDay" ColumnName="attrPlannedMonthDay" />
+                <ScalarProperty Name="attrPlannedMonthIsHourly" ColumnName="attrPlannedMonthIsHourly" />
+                <ScalarProperty Name="attrPlannedWeekDays" ColumnName="attrPlannedWeekDays" />
+                <ScalarProperty Name="attrPlannedWeeks" ColumnName="attrPlannedWeeks" />
+                <ScalarProperty Name="attrPlannedDays" ColumnName="attrPlannedDays" />
+                <ScalarProperty Name="attrPlannedOnce" ColumnName="attrPlannedOnce" />
+                <ScalarProperty Name="attrPlannedType" ColumnName="attrPlannedType" />
+                <ScalarProperty Name="attrPlannedOrderActive" ColumnName="attrPlannedOrderActive" />
+                <ScalarProperty Name="attrPlannedShiftActive" ColumnName="attrPlannedShiftActive" />
+                <ScalarProperty Name="newDescript" ColumnName="newDescript" />
+                <ScalarProperty Name="soloLocationID" ColumnName="soloLocationID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="idTrigger" ColumnName="idTrigger" />
+                <ScalarProperty Name="createdOnUTC" ColumnName="createdOnUTC" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="typeID" ColumnName="typeID" />
+                <ScalarProperty Name="attr01" ColumnName="attr01" />
+                <ScalarProperty Name="attr02" ColumnName="attr02" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="orderId" ColumnName="orderId" />
+                <ScalarProperty Name="orderTypeId" ColumnName="orderTypeId" />
+                <ScalarProperty Name="orderStatus" ColumnName="orderStatus" />
+                <ScalarProperty Name="orderStatusAnt" ColumnName="orderStatusAnt" />
+                <ScalarProperty Name="turnoId" ColumnName="turnoId" />
+                <ScalarProperty Name="shcId" ColumnName="shcId" />
+                <ScalarProperty Name="lotId" ColumnName="lotId" />
+                <ScalarProperty Name="materialId" ColumnName="materialId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="descript" ColumnName="descript" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplatesFormsTypes">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.TemplatesFormsTypes">
+              <MappingFragment StoreEntitySet="TemplatesFormsTypes">
+                <ScalarProperty Name="typeID" ColumnName="typeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplatesLocForms">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.TemplatesLocForms">
+              <MappingFragment StoreEntitySet="TemplatesLocForms">
+                <ScalarProperty Name="path" ColumnName="path" />
+                <ScalarProperty Name="idLoc" ColumnName="idLoc" />
+                <ScalarProperty Name="idTemForm" ColumnName="idTemForm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SIT_Locations">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.SIT_Locations">
+              <MappingFragment StoreEntitySet="SIT_Locations">
+                <ScalarProperty Name="LocPK" ColumnName="LocPK" />
+                <ScalarProperty Name="LocID" ColumnName="LocID" />
+                <ScalarProperty Name="LocAlias" ColumnName="LocAlias" />
+                <ScalarProperty Name="ParentLocPK" ColumnName="ParentLocPK" />
+                <ScalarProperty Name="CommonLocPK" ColumnName="CommonLocPK" />
+                <ScalarProperty Name="LocPath" ColumnName="LocPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SIT_Lots">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.SIT_Lots">
+              <MappingFragment StoreEntitySet="SIT_Lots">
+                <ScalarProperty Name="LotPK" ColumnName="LotPK" />
+                <ScalarProperty Name="LotID" ColumnName="LotID" />
+                <ScalarProperty Name="LotName" ColumnName="LotName" />
+                <ScalarProperty Name="DefVerPK" ColumnName="DefVerPK" />
+                <ScalarProperty Name="BomAltPK" ColumnName="BomAltPK" />
+                <ScalarProperty Name="MasterLotPK" ColumnName="MasterLotPK" />
+                <ScalarProperty Name="ParentLotPK" ColumnName="ParentLotPK" />
+                <ScalarProperty Name="Descript" ColumnName="Descript" />
+                <ScalarProperty Name="InitQuantity" ColumnName="InitQuantity" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UomPK" ColumnName="UomPK" />
+                <ScalarProperty Name="LocPK" ColumnName="LocPK" />
+                <ScalarProperty Name="LotStatusPK" ColumnName="LotStatusPK" />
+                <ScalarProperty Name="HutPK" ColumnName="HutPK" />
+                <ScalarProperty Name="ValidFrom" ColumnName="ValidFrom" />
+                <ScalarProperty Name="ValidTill" ColumnName="ValidTill" />
+                <ScalarProperty Name="SourceLotPK" ColumnName="SourceLotPK" />
+                <ScalarProperty Name="TargetLotPK" ColumnName="TargetLotPK" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="LastUser" ColumnName="LastUser" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="LocalInfo" ColumnName="LocalInfo" />
+                <ScalarProperty Name="ContextID" ColumnName="ContextID" />
+                <ScalarProperty Name="RowGuid" ColumnName="RowGuid" />
+                <ScalarProperty Name="RowVer" ColumnName="RowVer" />
+                <ScalarProperty Name="RowDeleted" ColumnName="RowDeleted" />
+                <ScalarProperty Name="RowUpdated" ColumnName="RowUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SIT_Materiales">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.SIT_Materiales">
+              <MappingFragment StoreEntitySet="SIT_Materiales">
+                <ScalarProperty Name="IdMaterial" ColumnName="IdMaterial" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdClase" ColumnName="IdClase" />
+                <ScalarProperty Name="Clase" ColumnName="Clase" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UdMedida" ColumnName="UdMedida" />
+                <ScalarProperty Name="F_EfectivoDesde" ColumnName="F_EfectivoDesde" />
+                <ScalarProperty Name="F_EfectivoHasta" ColumnName="F_EfectivoHasta" />
+                <ScalarProperty Name="EnUso" ColumnName="EnUso" />
+                <ScalarProperty Name="Autor" ColumnName="Autor" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="FechaUltCreacion" ColumnName="FechaUltCreacion" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="InfoAdicional" ColumnName="InfoAdicional" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="DescTipo" ColumnName="DescTipo" />
+                <ScalarProperty Name="IdLote" ColumnName="IdLote" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SIT_Orders">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.SIT_Orders">
+              <MappingFragment StoreEntitySet="SIT_Orders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="typeID" ColumnName="typeID" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="EstadoAct" ColumnName="EstadoAct" />
+                <ScalarProperty Name="EstadoAnt" ColumnName="EstadoAnt" />
+                <ScalarProperty Name="EquipoOrden" ColumnName="EquipoOrden" />
+                <ScalarProperty Name="FecHorAct" ColumnName="FecHorAct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SIT_Orders_Types">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.SIT_Orders_Types">
+              <MappingFragment StoreEntitySet="SIT_Orders_Types">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descript" ColumnName="descript" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SIT_SHC_Turnos">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.SIT_SHC_Turnos">
+              <MappingFragment StoreEntitySet="SIT_SHC_Turnos">
+                <ScalarProperty Name="FinTurnoUTC" ColumnName="FinTurnoUTC" />
+                <ScalarProperty Name="InicioTurnoUTC" ColumnName="InicioTurnoUTC" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Linea" ColumnName="Linea" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="InicioTurno" ColumnName="InicioTurno" />
+                <ScalarProperty Name="FinTurno" ColumnName="FinTurno" />
+                <ScalarProperty Name="IdTipoTurno" ColumnName="IdTipoTurno" />
+                <ScalarProperty Name="Turno" ColumnName="Turno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vTemplatesLocForms">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.vTemplatesLocForms">
+              <MappingFragment StoreEntitySet="vTemplatesLocForms">
+                <ScalarProperty Name="path" ColumnName="path" />
+                <ScalarProperty Name="idLoc" ColumnName="idLoc" />
+                <ScalarProperty Name="idTemForm" ColumnName="idTemForm" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="descript" ColumnName="descript" />
+                <ScalarProperty Name="typeID" ColumnName="typeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vTemplatesLocFormTri">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.vTemplatesLocFormTri">
+              <MappingFragment StoreEntitySet="vTemplatesLocFormTri">
+                <ScalarProperty Name="idLoc" ColumnName="idLoc" />
+                <ScalarProperty Name="idTemForm" ColumnName="idTemForm" />
+                <ScalarProperty Name="idTrigger" ColumnName="idTrigger" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="descript" ColumnName="descript" />
+                <ScalarProperty Name="typeID" ColumnName="typeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="checkTriggerCiclico" FunctionName="MES_MSM_ALTModel.Store.checkTriggerCiclico" />
+          <FunctionImportMapping FunctionImportName="checkTriggerOrders" FunctionName="MES_MSM_ALTModel.Store.checkTriggerOrders" />
+          <FunctionImportMapping FunctionImportName="checkTriggerPlan" FunctionName="MES_MSM_ALTModel.Store.checkTriggerPlan" />
+          <FunctionImportMapping FunctionImportName="checkTriggerTurno" FunctionName="MES_MSM_ALTModel.Store.checkTriggerTurno" />
+          <FunctionImportMapping FunctionImportName="copyTemplateForm" FunctionName="MES_MSM_ALTModel.Store.copyTemplateForm" />
+          <EntitySetMapping Name="SIT_TiposTurno">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.SIT_TiposTurno">
+              <MappingFragment StoreEntitySet="SIT_TiposTurno">
+                <ScalarProperty Name="Bias" ColumnName="Bias" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Fin" ColumnName="Fin" />
+                <ScalarProperty Name="Inicio" ColumnName="Inicio" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SIT_Orders_Status">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.SIT_Orders_Status">
+              <MappingFragment StoreEntitySet="SIT_Orders_Status">
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SIT_RTDS_Points">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.SIT_RTDS_Points">
+              <MappingFragment StoreEntitySet="SIT_RTDS_Points">
+                <ScalarProperty Name="PointID" ColumnName="PointID" />
+                <ScalarProperty Name="Point" ColumnName="Point" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplatesTriggersPlannedMonthNumDayTypes">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.TemplatesTriggersPlannedMonthNumDayTypes">
+              <MappingFragment StoreEntitySet="TemplatesTriggersPlannedMonthNumDayTypes">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplatesTriggersPlannedTypes">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.TemplatesTriggersPlannedTypes">
+              <MappingFragment StoreEntitySet="TemplatesTriggersPlannedTypes">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplatesTriggersTypes">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.TemplatesTriggersTypes">
+              <MappingFragment StoreEntitySet="TemplatesTriggersTypes">
+                <ScalarProperty Name="typeID" ColumnName="typeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="checkTriggerPlanDaily" FunctionName="MES_MSM_ALTModel.Store.checkTriggerPlanDaily" />
+          <FunctionImportMapping FunctionImportName="checkTriggerPlanDailyCycle" FunctionName="MES_MSM_ALTModel.Store.checkTriggerPlanDailyCycle" />
+          <FunctionImportMapping FunctionImportName="checkTriggerPlanMonthly" FunctionName="MES_MSM_ALTModel.Store.checkTriggerPlanMonthly" />
+          <FunctionImportMapping FunctionImportName="checkTriggerPlanMonthlyTypes" FunctionName="MES_MSM_ALTModel.Store.checkTriggerPlanMonthlyTypes" />
+          <FunctionImportMapping FunctionImportName="checkTriggerPlanOnce" FunctionName="MES_MSM_ALTModel.Store.checkTriggerPlanOnce" />
+          <FunctionImportMapping FunctionImportName="checkTriggerPlanWeekly" FunctionName="MES_MSM_ALTModel.Store.checkTriggerPlanWeekly" />
+          <FunctionImportMapping FunctionImportName="checkTriggerPlanWeeklyCycle" FunctionName="MES_MSM_ALTModel.Store.checkTriggerPlanWeeklyCycle" />
+          <EntitySetMapping Name="DepartmentTypes">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.DepartmentTypes">
+              <MappingFragment StoreEntitySet="DepartmentTypes">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplatesForms">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.TemplatesForms">
+              <MappingFragment StoreEntitySet="TemplatesForms">
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="xmlTemplate" ColumnName="xmlTemplate" />
+                <ScalarProperty Name="jsonTemplate" ColumnName="jsonTemplate" />
+                <ScalarProperty Name="typeID" ColumnName="typeID" />
+                <ScalarProperty Name="lastModifyUTC" ColumnName="lastModifyUTC" />
+                <ScalarProperty Name="createdOnUTC" ColumnName="createdOnUTC" />
+                <ScalarProperty Name="descript" ColumnName="descript" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="idDepartmentType" ColumnName="idDepartmentType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplatesLocations">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.TemplatesLocations">
+              <MappingFragment StoreEntitySet="TemplatesLocations">
+                <ScalarProperty Name="lastUpdatedUTC" ColumnName="lastUpdatedUTC" />
+                <ScalarProperty Name="createdOnUTC" ColumnName="createdOnUTC" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="idSITLoc" ColumnName="idSITLoc" />
+                <ScalarProperty Name="idSITInherit" ColumnName="idSITInherit" />
+                <ScalarProperty Name="idParent" ColumnName="idParent" />
+                <ScalarProperty Name="descript" ColumnName="descript" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="shortName" ColumnName="shortName" />
+                <ScalarProperty Name="idDepartmentType" ColumnName="idDepartmentType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplatesTriggers">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.TemplatesTriggers">
+              <MappingFragment StoreEntitySet="TemplatesTriggers">
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="attrValidUntil" ColumnName="attrValidUntil" />
+                <ScalarProperty Name="attrValidFrom" ColumnName="attrValidFrom" />
+                <ScalarProperty Name="attrValidHasUntil" ColumnName="attrValidHasUntil" />
+                <ScalarProperty Name="attrFrecuencyTo" ColumnName="attrFrecuencyTo" />
+                <ScalarProperty Name="attrFrecuencyFrom" ColumnName="attrFrecuencyFrom" />
+                <ScalarProperty Name="attrFrecuencyUnits" ColumnName="attrFrecuencyUnits" />
+                <ScalarProperty Name="attrFrecuencyQuantity" ColumnName="attrFrecuencyQuantity" />
+                <ScalarProperty Name="attrFrecuencyHour" ColumnName="attrFrecuencyHour" />
+                <ScalarProperty Name="attrFrecuencyIsCycle" ColumnName="attrFrecuencyIsCycle" />
+                <ScalarProperty Name="attrPlannedMonthDayWeek" ColumnName="attrPlannedMonthDayWeek" />
+                <ScalarProperty Name="attrPlannedMonthNumDay" ColumnName="attrPlannedMonthNumDay" />
+                <ScalarProperty Name="attrPlannedMonthFrec" ColumnName="attrPlannedMonthFrec" />
+                <ScalarProperty Name="attrPlannedMonthDay" ColumnName="attrPlannedMonthDay" />
+                <ScalarProperty Name="attrPlannedMonthIsHourly" ColumnName="attrPlannedMonthIsHourly" />
+                <ScalarProperty Name="attrPlannedWeekDays" ColumnName="attrPlannedWeekDays" />
+                <ScalarProperty Name="attrPlannedWeeks" ColumnName="attrPlannedWeeks" />
+                <ScalarProperty Name="attrPlannedDays" ColumnName="attrPlannedDays" />
+                <ScalarProperty Name="attrPlannedOnce" ColumnName="attrPlannedOnce" />
+                <ScalarProperty Name="attrPlannedType" ColumnName="attrPlannedType" />
+                <ScalarProperty Name="attrPlannedOrderActive" ColumnName="attrPlannedOrderActive" />
+                <ScalarProperty Name="attrPlannedShiftActive" ColumnName="attrPlannedShiftActive" />
+                <ScalarProperty Name="attr02" ColumnName="attr02" />
+                <ScalarProperty Name="attr01" ColumnName="attr01" />
+                <ScalarProperty Name="locID" ColumnName="locID" />
+                <ScalarProperty Name="typeID" ColumnName="typeID" />
+                <ScalarProperty Name="lastModifyUTC" ColumnName="lastModifyUTC" />
+                <ScalarProperty Name="createdOnUTC" ColumnName="createdOnUTC" />
+                <ScalarProperty Name="descript" ColumnName="descript" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="idDepartmentType" ColumnName="idDepartmentType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="TemplatesLocFormTri" TypeName="MES_MSM_ALTModel.TemplatesLocFormTri" StoreEntitySet="TemplatesLocFormTri">
+            <EndProperty Name="TemplatesTriggers">
+              <ScalarProperty Name="ID" ColumnName="idTrigger" />
+            </EndProperty>
+            <EndProperty Name="TemplatesLocForms">
+              <ScalarProperty Name="idTemForm" ColumnName="idTemForm" />
+              <ScalarProperty Name="idLoc" ColumnName="idLoc" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Forms">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.Forms">
+              <MappingFragment StoreEntitySet="Forms">
+                <ScalarProperty Name="path" ColumnName="path" />
+                <ScalarProperty Name="FormValuesXML" ColumnName="FormValuesXML" />
+                <ScalarProperty Name="FormValues" ColumnName="FormValues" />
+                <ScalarProperty Name="FormTemplateXML" ColumnName="FormTemplateXML" />
+                <ScalarProperty Name="FormTemplate" ColumnName="FormTemplate" />
+                <ScalarProperty Name="idFormTemplate" ColumnName="idFormTemplate" />
+                <ScalarProperty Name="errors" ColumnName="errors" />
+                <ScalarProperty Name="isValid" ColumnName="isValid" />
+                <ScalarProperty Name="idInbox" ColumnName="idInbox" />
+                <ScalarProperty Name="delete" ColumnName="delete" />
+                <ScalarProperty Name="lastModifyUTC" ColumnName="lastModifyUTC" />
+                <ScalarProperty Name="createdOnUTC" ColumnName="createdOnUTC" />
+                <ScalarProperty Name="statusID" ColumnName="statusID" />
+                <ScalarProperty Name="descript" ColumnName="descript" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="triggerName" ColumnName="triggerName" />
+                <ScalarProperty Name="idSITinfo" ColumnName="idSITinfo" />
+                <ScalarProperty Name="idTrigger" ColumnName="idTrigger" />
+                <ScalarProperty Name="idLocation" ColumnName="idLocation" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StorageFiles">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.StorageFiles">
+              <MappingFragment StoreEntitySet="StorageFiles">
+                <ScalarProperty Name="documento" ColumnName="documento" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="extension" ColumnName="extension" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="uploadOn" ColumnName="uploadOn" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="fieldName" ColumnName="fieldName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="TemplatesFormsFiles" TypeName="MES_MSM_ALTModel.TemplatesFormsFiles" StoreEntitySet="TemplatesFormsFiles">
+            <EndProperty Name="TemplatesForms">
+              <ScalarProperty Name="ID" ColumnName="idTemForm" />
+            </EndProperty>
+            <EndProperty Name="StorageFiles">
+              <ScalarProperty Name="ID" ColumnName="idFile" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FormsFilesV2" TypeName="MES_MSM_ALTModel.FormsFilesV2" StoreEntitySet="FormsFilesV2">
+            <EndProperty Name="StorageFiles">
+              <ScalarProperty Name="ID" ColumnName="idFiles" />
+            </EndProperty>
+            <EndProperty Name="Forms">
+              <ScalarProperty Name="ID" ColumnName="idForm" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="createFormFileRelation" FunctionName="MES_MSM_ALTModel.Store.createFormFileRelation" />
+          <FunctionImportMapping FunctionImportName="createTemplateFileRelation" FunctionName="MES_MSM_ALTModel.Store.createTemplateFileRelation" />
+          <EntitySetMapping Name="SIT_Orders_Status_Arranques_Cambios">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.SIT_Orders_Status_Arranques_Cambios">
+              <MappingFragment StoreEntitySet="SIT_Orders_Status_Arranques_Cambios">
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposUnidades">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.TiposUnidades">
+              <MappingFragment StoreEntitySet="TiposUnidades">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="O2_Llenadoras">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.O2_Llenadoras">
+              <MappingFragment StoreEntitySet="O2_Llenadoras">
+                <ScalarProperty Name="UnidadConsumoGas" ColumnName="UnidadConsumoGas" />
+                <ScalarProperty Name="ConsumoGas" ColumnName="ConsumoGas" />
+                <ScalarProperty Name="UnidadPresionSoplado" ColumnName="UnidadPresionSoplado" />
+                <ScalarProperty Name="PresionSoplado" ColumnName="PresionSoplado" />
+                <ScalarProperty Name="UnidadPresionEspumado" ColumnName="UnidadPresionEspumado" />
+                <ScalarProperty Name="PresionEspumado" ColumnName="PresionEspumado" />
+                <ScalarProperty Name="UnidadPresionVacio" ColumnName="UnidadPresionVacio" />
+                <ScalarProperty Name="PresionVacio" ColumnName="PresionVacio" />
+                <ScalarProperty Name="Fichero" ColumnName="Fichero" />
+                <ScalarProperty Name="UnidadTemperatura_Ts" ColumnName="UnidadTemperatura_Ts" />
+                <ScalarProperty Name="Temperatura_Ts" ColumnName="Temperatura_Ts" />
+                <ScalarProperty Name="UnidadTemperatura" ColumnName="UnidadTemperatura" />
+                <ScalarProperty Name="Temperatura" ColumnName="Temperatura" />
+                <ScalarProperty Name="UnidadPresion" ColumnName="UnidadPresion" />
+                <ScalarProperty Name="Presion" ColumnName="Presion" />
+                <ScalarProperty Name="UnidadHSV" ColumnName="UnidadHSV" />
+                <ScalarProperty Name="HSV" ColumnName="HSV" />
+                <ScalarProperty Name="UnidadCO2_Ts" ColumnName="UnidadCO2_Ts" />
+                <ScalarProperty Name="CO2_Ts" ColumnName="CO2_Ts" />
+                <ScalarProperty Name="UnidadCO2" ColumnName="UnidadCO2" />
+                <ScalarProperty Name="CO2" ColumnName="CO2" />
+                <ScalarProperty Name="UnidadDO" ColumnName="UnidadDO" />
+                <ScalarProperty Name="DO" ColumnName="DO" />
+                <ScalarProperty Name="UnidadHSO" ColumnName="UnidadHSO" />
+                <ScalarProperty Name="HSO" ColumnName="HSO" />
+                <ScalarProperty Name="UnidadTPO" ColumnName="UnidadTPO" />
+                <ScalarProperty Name="TPO" ColumnName="TPO" />
+                <ScalarProperty Name="NumGrifo" ColumnName="NumGrifo" />
+                <ScalarProperty Name="TipoMuestra" ColumnName="TipoMuestra" />
+                <ScalarProperty Name="CO2_TCP" ColumnName="CO2_TCP" />
+                <ScalarProperty Name="O2_TCP" ColumnName="O2_TCP" />
+                <ScalarProperty Name="TCP" ColumnName="TCP" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdMuestra" ColumnName="IdMuestra" />
+                <ScalarProperty Name="Llenadora" ColumnName="Llenadora" />
+                <ScalarProperty Name="VolumenEnvase" ColumnName="VolumenEnvase" />
+                <ScalarProperty Name="Linea" ColumnName="Linea" />
+                <ScalarProperty Name="IdLinea" ColumnName="IdLinea" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="O2_Llenadoras_Tolerancias">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.O2_Llenadoras_Tolerancias">
+              <MappingFragment StoreEntitySet="O2_Llenadoras_Tolerancias">
+                <ScalarProperty Name="ToleranciaIncremento" ColumnName="ToleranciaIncremento" />
+                <ScalarProperty Name="LimiteIncremento" ColumnName="LimiteIncremento" />
+                <ScalarProperty Name="Linea" ColumnName="Linea" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="O2_Llenadoras_Parametros">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.O2_Llenadoras_Parametros">
+              <MappingFragment StoreEntitySet="O2_Llenadoras_Parametros">
+                <ScalarProperty Name="ConTPO" ColumnName="ConTPO" />
+                <ScalarProperty Name="Linea" ColumnName="Linea" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="O2_Llenadoras_ToleranciasCO2">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.O2_Llenadoras_ToleranciasCO2">
+              <MappingFragment StoreEntitySet="O2_Llenadoras_ToleranciasCO2">
+                <ScalarProperty Name="ToleranciaSuperior" ColumnName="ToleranciaSuperior" />
+                <ScalarProperty Name="ToleranciaInferior" ColumnName="ToleranciaInferior" />
+                <ScalarProperty Name="LimiteSuperior" ColumnName="LimiteSuperior" />
+                <ScalarProperty Name="LimiteInferior" ColumnName="LimiteInferior" />
+                <ScalarProperty Name="Linea" ColumnName="Linea" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Forms5sLibreSecciones">
+            <EntityTypeMapping TypeName="MES_MSM_ALTModel.Forms5sLibreSecciones">
+              <MappingFragment StoreEntitySet="Forms5sLibreSecciones">
+                <ScalarProperty Name="Seccion" ColumnName="Seccion" />
+                <ScalarProperty Name="IdFormTemplate" ColumnName="IdFormTemplate" />
+                <ScalarProperty Name="IdForm5s" ColumnName="IdForm5s" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

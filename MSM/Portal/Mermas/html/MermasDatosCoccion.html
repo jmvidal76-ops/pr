@@ -1,0 +1,119 @@
+﻿<style>
+    .progress-text {
+        top: 55%;
+        left: 44%;
+        width: 10%;
+        background-color: lightgrey;
+        padding: 1%;
+        border: 1px solid darkgray;
+        border-radius: 4px;
+        text-indent: 0;
+    }
+    .mv-edit-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+
+    .mv-edit-label {
+        width: 150px;
+        text-align: right;
+        padding-right: 12px;
+        font-weight: 600;
+        color: #333;
+        box-sizing: border-box;
+    }
+
+    .mv-edit-input {
+        flex: 0 0 36%;
+        max-width: 36%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+        .mv-edit-input .k-widget, .mv-edit-input input {
+            width: 100% !important;
+            box-sizing: border-box;
+        }
+
+    .mv-edit-spacer {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .mv-edit-actions {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 22px;
+        padding-top: 12px;
+        border-top: 1px solid #eee;
+        box-sizing: border-box;
+    }
+
+        .mv-edit-actions .k-button {
+            flex: 0 0 100px;
+            max-width: 40%;
+            box-sizing: border-box;
+        }
+</style>
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('MERMAS')) %> <% print(window.app.idioma.t('DATOS_COCCION2')) %></label>
+</div>
+
+<!-- Filtros Cambios -->
+<div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+    <div class="filtroFechas" style="float: left;">
+        <span class="ml-8"><% print(window.app.idioma.t('DESDE')) %></span>
+        <input id="dtpFechaDesde" style="width: 190px;" />
+        <span class="ml-8"><% print(window.app.idioma.t('HASTA')) %></span>
+        <input id="dtpFecha" style="width: 190px;" />
+        <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+    </div>      
+    <div style="float: right; margin-right: 10px;">
+        <button id="btnEditar" class="k-button k-button-icontext" style="margin-left: 5px;">
+            <span class='k-icon k-i-pencil'></span><% print(window.app.idioma.t('EDITAR')) %>
+        </button>
+        <button id="btnEliminar" class="k-button k-grid-delete" style="margin-left: 5px;">
+            <span class='k-icon k-i-close'></span><% print(window.app.idioma.t('ELIMINAR')) %>
+        </button>
+        <button id="btnLimpiarFiltros" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;">
+            <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+        </button>
+
+        <button id="btnExportarExcel" class="k-button k-button-icontext" style="margin-left: 5px;">
+            <span class='k-icon k-i-excel'></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+        </button>
+    </div>
+</div>
+
+<div id="gridDatosMermas"></div>
+
+<script type="text/template" id="templateEditar">
+    <div class="mv-edit-container" style="padding:18px; width:100%; box-sizing:border-box; overflow-x: hidden;">
+        <div class="mv-edit-row">
+            <label class="mv-edit-label"><%= window.app.idioma.t("CANTIDAD") %>:</label>
+            <div class="mv-edit-input"><input class="mv-edit-input-control" id="editCantidad" /></div>
+            <div class="mv-edit-spacer"></div>
+        </div>
+        <div class="mv-edit-row">
+            <label class="mv-edit-label"><%= window.app.idioma.t("RENDIMIENTO") %>:</label>
+            <div class="mv-edit-input"><input class="mv-edit-input-control" id="editRendimiento" /></div>
+            <div class="mv-edit-spacer"></div>
+        </div>
+        <div class="mv-edit-row">
+            <label class="mv-edit-label"><%= window.app.idioma.t("HUMEDAD") %>:</label>
+            <div class="mv-edit-input"><input class="mv-edit-input-control" id="editHumedad" /></div>
+            <div class="mv-edit-spacer"></div>
+        </div>
+
+        <div class="mv-edit-actions" role="group" aria-label="Acciones edición">
+            <button type="button" class="k-button k-primary" id="btnAceptarEdicion"><%= window.app.idioma.t("ACEPTAR") %></button>
+            <button type="button" class="k-button" id="btnCancelarEdicion"><%= window.app.idioma.t("CANCELAR") %></button>
+        </div>
+    </div>
+</script>

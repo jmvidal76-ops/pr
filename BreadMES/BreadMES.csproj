@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FB069A1F-95FD-4A37-97AD-13B73285C2E8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BreadMES.Envasado</RootNamespace>
+    <AssemblyName>BreadMES</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BreadBase, Version=6.3.2.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_32\BREADBase\6.3.2.0__c0f6ca1d08084ae8\BreadBase.dll</HintPath>
+    </Reference>
+    <Reference Include="CO_MSM_FAB_ENGBread, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libreriasBREAD\CO_MSM_FAB_ENGBread.dll</HintPath>
+    </Reference>
+    <Reference Include="CO_MSM_FAB_ENGBreadExtension, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libreriasBREAD\CO_MSM_FAB_ENGBreadExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="CO_MSM_FAB_ENGTypes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libreriasBREAD\CO_MSM_FAB_ENGTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="CO_MSM_FAB_RTBread, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libreriasBREAD\CO_MSM_FAB_RTBread.dll</HintPath>
+    </Reference>
+    <Reference Include="CO_MSM_FAB_RTBreadExtension, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libreriasBREAD\CO_MSM_FAB_RTBreadExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="CO_MSM_FAB_RTTypes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libreriasBREAD\CO_MSM_FAB_RTTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="CO_MSM_FAB_RT_PW, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\CO_MSM_FAB_RT_PW\1.0.0.0__c0f6ca1d08084ae8\CO_MSM_FAB_RT_PW.dll</HintPath>
+    </Reference>
+    <Reference Include="CO_SitMesComponent_ENGBread, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libreriasBREAD\CO_SitMesComponent_ENGBread.dll</HintPath>
+    </Reference>
+    <Reference Include="CO_SitMesComponent_ENGBreadExtension, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libreriasBREAD\CO_SitMesComponent_ENGBreadExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="CO_SitMesComponent_ENGTypes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libreriasBREAD\CO_SitMesComponent_ENGTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="CO_SitMesComponent_ENG_PW, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libreriasBREAD\CO_SitMesComponent_ENG_PW.dll</HintPath>
+    </Reference>
+    <Reference Include="CO_SitMesComponent_RTBread, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libreriasBREAD\CO_SitMesComponent_RTBread.dll</HintPath>
+    </Reference>
+    <Reference Include="CO_SitMesComponent_RTBreadExtension, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libreriasBREAD\CO_SitMesComponent_RTBreadExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="CO_SitMesComponent_RTTypes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libreriasBREAD\CO_SitMesComponent_RTTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="CO_SitMesComponent_RT_PW, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libreriasBREAD\CO_SitMesComponent_RT_PW.dll</HintPath>
+    </Reference>
+    <Reference Include="MMBread, Version=5.2.2.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\MMBread\5.2.2.0__c0f6ca1d08084ae8\MMBread.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MMTypes, Version=5.2.2.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\MMTypes\5.2.2.0__c0f6ca1d08084ae8\MMTypes.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PDefMBread, Version=1.2.2.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Windows\assembly\GAC_32\PDefMBread\1.2.2.0__c0f6ca1d08084ae8\PDefMBread.dll</HintPath>
+    </Reference>
+    <Reference Include="PDefMTypes, Version=1.2.2.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Windows\assembly\GAC_32\PDefMTypes\1.2.2.0__c0f6ca1d08084ae8\PDefMTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="POMBread, Version=5.2.2.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\..\Windows\assembly\GAC_32\POMBread\5.2.2.0__c0f6ca1d08084ae8\POMBread.dll</HintPath>
+    </Reference>
+    <Reference Include="POMTypes, Version=5.2.2.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\..\Windows\assembly\GAC_32\POMTypes\5.2.2.0__c0f6ca1d08084ae8\POMTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.Oeecli, Version=2.0.0.5, Culture=neutral, PublicKeyToken=cdbdae7e7567df11, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\Interop.Oeecli\2.0.0.5__cdbdae7e7567df11\Interop.Oeecli.dll</HintPath>
+    </Reference>
+    <Reference Include="OEEBread, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\OEEBread\1.0.0.0__c0f6ca1d08084ae8\OEEBread.dll</HintPath>
+    </Reference>
+    <Reference Include="OEETypes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\OEETypes\1.0.0.0__c0f6ca1d08084ae8\OEETypes.dll</HintPath>
+    </Reference>
+    <Reference Include="SHCBread, Version=1.0.2.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libreriasBREAD\SHCBread.dll</HintPath>
+    </Reference>
+    <Reference Include="SHCTypes, Version=1.0.2.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libreriasBREAD\SHCTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="Siemens.Brewing.Domain">
+      <HintPath>libreriasBREAD\Siemens.Brewing.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="Siemens.Brewing.Shared">
+      <HintPath>libreriasBREAD\Siemens.Brewing.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="SITCAB.BREADAttributes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a25dddb5f077262e, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libreriasBREAD\SITCAB.BREADAttributes.dll</HintPath>
+    </Reference>
+    <Reference Include="SitSqlCustomBread, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_32\SitSqlCustomBread\1.0.0.0__c0f6ca1d08084ae8\SitSqlCustomBread.dll</HintPath>
+    </Reference>
+    <Reference Include="SitSqlCustomTypes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_32\SitSqlCustomTypes\1.0.0.0__c0f6ca1d08084ae8\SitSqlCustomTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\DTO\Lot_DTO.cs" />
+    <Compile Include="Envasado\AccionesMejoraBread.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Envasado\BreadFactory.cs" />
+    <Compile Include="Envasado\CalendarioBread.cs" />
+    <Compile Include="Envasado\ContingenciaBread.cs" />
+    <Compile Include="Envasado\MaquinaBread.cs" />
+    <Compile Include="Envasado\MaterialBread.cs" />
+    <Compile Include="Envasado\OrdenesBread.cs" />
+    <Compile Include="Envasado\ProduccionLlenadoraHora.cs" />
+    <Compile Include="Envasado\ParametrosBread.cs" />
+    <Compile Include="Envasado\ParosPerdidasBread.cs" />
+    <Compile Include="Envasado\TiemposBread.cs" />
+    <Compile Include="Envasado\LineasBread.cs" />
+    <Compile Include="Fabricacion\OrdenPreparacionBread.cs" />
+    <Compile Include="Fabricacion\KOPBread.cs" />
+    <Compile Include="Fabricacion\PlantillaPreparacionBread.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Envasado\ZonasBread.cs" />
+    <Compile Include="Utils\ApiClient.cs" />
+    <Compile Include="Utils\Utils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="libreriasBREAD\RTDS\SITCAB.RTDS.dll" />
+    <Content Include="libreriasBREAD\Siemens.Brewing.Core.All.dll" />
+    <Content Include="libreriasBREAD\Siemens.Brewing.Domain.dll" />
+    <Content Include="libreriasBREAD\Siemens.Brewing.Shared.dll" />
+    <Content Include="libreriasBREAD\SITCAB.BREADAttributes.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

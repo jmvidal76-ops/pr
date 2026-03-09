@@ -1,0 +1,23 @@
+﻿<div class="tituloLinea" style="padding-bottom:15px"><%=linea%></div>
+<div class="tableVW" id="divtableWO">
+    <div class="rowTableVW">
+        <div class="tituloLinea cellWOTitulo"><% print(window.app.idioma.t('WO_PALETERA')) %></div>
+        <div class="tituloLinea cellWO verde"><%=data.ordenEnPaletizadora == null ? "--" : data.ordenEnPaletizadora.id%></div>
+    </div>
+    <div class="rowTableVW">
+        <div class="tituloSmall cellWOTitulo"><% print(window.app.idioma.t('OEE_WO')) %></div>
+        <div class="valorWO cellWO" id="oee"><%=data.ordenEnPaletizadora == null ? "--" : data.ordenEnPaletizadora.produccion.oee.toFixed(0) + '%'%></div>
+    </div>
+    <div class="rowTableVW">
+        <div class="tituloSmall cellWOTitulo"><% print(window.app.idioma.t('PALETS')) %></div>
+        <div class="valorWO cellWO verde"><%=data.ordenEnPaletizadora == null ? "--" : kendo.toString(data.ordenEnPaletizadora.produccion.paletsEtiquetadoraProducidos,"n0")%></div>
+    </div>
+    <div class="rowTableVW">
+        <div class="tituloSmall cellWOTitulo"><% print(window.app.idioma.t('CPB')) %></div>
+        <div class="valorWO cellWO verde"><%=data.ordenEnPaletizadora == null ? "--" : kendo.toString(data.ordenEnPaletizadora.produccion.paletsEtiquetadoraProducidos * data.ordenEnPaletizadora.CajasPorPalet,"n0")%></div>
+    </div>
+    <div class="rowTableVW">
+        <div class="tituloSmall cellWOTitulo"><% print(window.app.idioma.t('ENVASES')) %></div>
+        <div class="valorWO cellWO verde"><%=data.ordenEnPaletizadora == null ? "--" : kendo.toString(data.ordenEnPaletizadora.produccion.paletsEtiquetadoraProducidos * data.ordenEnPaletizadora.EnvasesPorPalet,"n0")%></div>
+    </div>  
+</div>

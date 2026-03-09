@@ -1,0 +1,440 @@
+﻿<style>
+    .w100 {
+        width: 100%
+    }
+
+    .w50 {
+        width: 50%;
+    }
+
+    .mb12 {
+        margin-bottom: 12px;
+    }
+
+    .mb4 {
+        margin-bottom: 4px;
+    }
+
+    .mb6 {
+        margin-bottom: 6px;
+    }
+
+    .mb8 {
+        margin-bottom: 8px;
+    }
+
+    .mb20 {
+        margin-bottom: 20px;
+    }
+
+    .mbi {
+        margin-bottom: initial;
+    }
+
+    .mra {
+        margin-right: auto;
+    }
+
+    .mr6 {
+        margin-right: 6px;
+    }
+
+    .mr12 {
+        margin-right: 12px;
+    }
+
+    .mr30 {
+        margin-right: 30px;
+    }
+
+    .ml6 {
+        margin-left: 6px;
+    }
+
+    .ml8 {
+        margin-left: 8px;
+    }
+
+    .ml30 {
+        margin-left: 30px;
+    }
+
+    .ml150 {
+        margin-left: 150px;
+    }
+
+    .mt20 {
+        margin-top: 20px;
+    }
+
+    .flex-columnas {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .flex-filas {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .flex-aic {
+        align-items: center;
+    }
+
+    .flex-g1 {
+        flex-grow: 1;
+    }
+
+    #CamionesEntradaSalidaForm {
+        padding: 8px;
+        border: 1px solid #eee;
+        border-radius: 3px;
+        overflow: auto;
+        min-width: 90rem;
+    }
+
+    .lecturaBascula {
+        border: 2px solid #80808085;
+        border-radius: 4px;
+        padding: 0 10px;
+        font-size: 25px;
+        font-weight: bold;
+        background-color: salmon;
+        /*background-color: palegreen;*/
+        width: 200px;
+        height: 49px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+        .lecturaBascula label {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+    .btnWritePeso {
+        height: 46px;
+        width: 36px;
+        background-color: darkslategrey;
+        color: white;
+        font-weight: bold;
+        font-size: 35px;
+        border-radius: 4px;
+    }
+
+    #CamionesEntradaSalidaForm strong, .inputSmall {
+        width: 15rem;
+    }
+
+    .comboBoxLarge {
+        max-width: 37rem;
+        width: 37rem;
+    }
+
+    .addBtn {
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        background-color: forestgreen;
+        padding: 0;
+        margin-left: 16px;
+    }
+
+        .addBtn[disabled="disabled"] {
+            opacity: 0.5;
+        }
+
+    .k-numeric-wrap:before {
+        content: initial;
+    }
+
+    .k-picker-wrap:before {
+        content: initial;
+    }
+
+    .numberInput {
+        max-width: 15rem;
+    }
+
+    .k-invalid {
+        color: red;
+        border: 1px solid red !important;
+    }
+
+    .k-upload {
+        width: 37rem;
+    }
+
+        .k-upload strong {
+            width: initial !important;
+        }
+
+        .k-upload .k-filename {
+            max-width: 20rem;
+        }
+
+    a.disabled {
+        pointer-events: none;
+        cursor: not-allowed !important;
+        color: #00000085;
+    }
+
+        a.disabled span {
+            opacity: 0.5 !important;
+        }
+
+    .readOnlyNTB {
+        pointer-events: none;
+    }
+
+        .readOnlyNTB .k-numeric-wrap {
+            padding-right: 1px;
+        }
+
+            .readOnlyNTB .k-numeric-wrap .k-select {
+                display: none;
+            }
+
+    .bigNumberInput {
+        height: 50px;
+        width: 250px !important;
+        max-width: 250px !important;
+        font-size: 25px;
+        font-weight: 700;
+    }
+
+        .bigNumberInput .k-numeric-wrap {
+            width: 250px;
+        }
+
+            .bigNumberInput .k-numeric-wrap input {
+                width: 250px !important;
+            }
+
+    #basculaSpacer {
+        display: none;
+        height: 58px;
+    }
+
+    .dropDownCell {
+        width: calc(100% - 22px);
+        color: black;
+        padding: 6px 10px;
+        height: 100%;
+        border-radius: 2px;
+        border: 1px solid #80808085;
+    }
+
+    #CamionesEntradaSalidaForm input::placeholder {
+        color: lightgray;
+        opacity: 1; /* Firefox */
+    }
+
+    @keyframes blink {
+        0%, 20%, 40%, 60%, 80%, 100% {
+            box-shadow: none;
+        }
+
+        10%, 30%, 50%, 70%, 90% {
+            box-shadow: 0 0 10px 5px limegreen;
+        }
+    }
+
+    .blink {
+        animation: blink 2s ease-in-out;
+    }
+</style>
+
+<div style="padding:6px;">
+    <label id="transporteEditado" hidden></label>
+    <form id="CamionesEntradaSalidaForm" class="mb12" style="overflow:auto">
+        <div class="flex-filas w100 mb12">
+            <div id="div_FechaEntrada" class="flex-filas flex-aic divForm">
+                <strong><label class="mbi" for="inpt_FechaEntrada"><% print(window.app.idioma.t('FECHA_HORA')) %> <% print(window.app.idioma.t('ENTRADA')) %></label><span>:</span></strong>
+                <input class="disabledSalida inreq" style="max-width:15em;" id="inpt_FechaEntrada" name="inpt_FechaEntrada" required
+                       data-role="datetimepicker" />
+                <a title="<% print(window.app.idioma.t('FECHA_ACTUAL')) %>" class="k-button ml8 btnFechaActual disabledSalida" inputAsociado="inpt_FechaEntrada"> <span class="k-icon k-i-calendar"></span> </a>
+            </div>
+            <div id="div_FechaSalida" class="flex-filas flex-aic ml150 divForm">
+                <strong><label class="mbi" for="inpt_FechaSalida"><% print(window.app.idioma.t('FECHA_HORA')) %> <% print(window.app.idioma.t('SALIDA')) %></label><span>:</span></strong>
+                <input class="inreq" style="max-width:15em;" id="inpt_FechaSalida" name="inpt_FechaSalida" required
+                       data-role="datetimepicker" />
+                <a title="<% print(window.app.idioma.t('FECHA_ACTUAL')) %>" class="k-button ml8 btnFechaActual" inputAsociado="inpt_FechaSalida"> <span class="k-icon k-i-calendar"></span> </a>
+            </div>
+        </div>
+        <div class="flex-filas w100 mb20 flex-aic">
+            <strong><label class="mbi" for="inpt_operacion"><% print(window.app.idioma.t('OPERACION')) %></label> (*):</strong>
+            <input class="disabledSalida" type="radio" name="inpt_operacion" id="inpt_operacionCargar" style="margin:0 6px 0 0;" value="1" required /><strong style="width:initial"><% print(window.app.idioma.t('CARGA')) %></strong>
+            <input class="ml30 disabledSalida" type="radio" name="inpt_operacion" id="inpt_operacionDescargar" style="margin:0 6px 0 30px;" value="2" required /><strong style="width:initial"><% print(window.app.idioma.t('DESCARGA')) %></strong>
+        </div>
+        <div class="flex-filas w100 mb12">
+            <div id="div_IdMatriculaTractora" class="flex-filas flex-aic divForm" style="flex:1;">
+                <strong><label class="mbi" for="inpt_IdMatriculaTractora"><% print(window.app.idioma.t('MATRICULA')) %></label><span>:</span></strong>
+                <input class="disabledSalida inreq" id="inpt_IdMatriculaTractora" style="max-width:15em;" required tipoForm="MATRICULA_TRACTORA">
+                <input class="addBtn" type="button" value="+" inputAsociado="inpt_IdMatriculaTractora" tabindex="-1" onclick="javascript: window.app.vista.windowES.BotonAddMantenimiento(this)">
+            </div>
+            <div id="div_IdMatriculaRemolque" class="flex-filas flex-aic divForm" style="flex:1.3;">
+                <strong class="ml150"><label class="mbi" for="inpt_IdMatriculaRemolque"><% print(window.app.idioma.t('MATRICULA_REMOLQUE')) %></label><span>:</span></strong>
+                <input class="disabledSalida inreq" id="inpt_IdMatriculaRemolque" style="max-width:15em;" tipoForm="MATRICULA_REMOLQUE" preLoad="true">
+                <input class="addBtn" type="button" value="+" inputAsociado="inpt_IdMatriculaRemolque" tabindex="-1" onclick="javascript: window.app.vista.windowES.BotonAddMantenimiento(this)">
+            </div>
+        </div>
+        <div class="flex-filas w100 mb20 flex-aic">
+            <div class="flex-columnas" style="flex:1.4;align-self:flex-start;">
+                <div id="div_PesoEntrada" class="flex-filas w100 flex-aic mb8 mt20 divForm">
+                    <strong><label class="mbi" for="inpt_PesoEntrada"><% print(window.app.idioma.t('PESO_ENTRADA')) %> (<% print(window.app.idioma.t('KG')) %>) <span id="tipoPesoEntrada"></span></label><span>:</span></strong>
+                    <input class="numberInput disabledSalida bigNumberInput inreq" id="inpt_PesoEntrada" name="inpt_PesoEntrada" type="number" required />
+                </div>
+                <div id="div_PesoSalida" class="flex-filas w100 flex-aic mb8 divForm">
+                    <strong><label class="mbi" for="inpt_PesoSalida"><% print(window.app.idioma.t('PESO_SALIDA')) %> (<% print(window.app.idioma.t('KG')) %>) <span id="tipoPesoSalida"></span></label><span>:</span></strong>
+                    <input class="numberInput bigNumberInput inreq" id="inpt_PesoSalida" name="inpt_PesoSalida" type="number" required>
+                </div>
+                <div id="div_PesoNeto" class="flex-filas w100 flex-aic divForm">
+                    <strong><label class="mbi"><% print(window.app.idioma.t('PESO'))%> <% print(window.app.idioma.t('NETO'))%> (<% print(window.app.idioma.t('KG')) %>) </label>:</strong>
+                    <input class="numberInput readOnlyNTB bigNumberInput" id="inpt_PesoNeto" type="number" readonly tabindex="-1">
+                </div>
+            </div>
+            <div id="div_LecturaBascula" class="flex-filas divForm" style="flex:1.6;align-self:flex-start;">
+                <div class="flex-columnas mr30">
+                    <button type="button" id="btnWritePesoEntrada" class="btnWritePeso mt20 mb6" title="<% print(window.app.idioma.t('CAPTURAR')) %>" tabindex="-1" style="display:flex; align-items:center;">
+                        <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="fill: white; margin-left: -2px; height: 36px;">
+                            <path class="cls-1" d="m390.96,256.47c0,78.28,0,156.56,0,234.85,0,1.78,0,3.57,0,5.35-.03,6.61-2.53,11.85-8.92,14.32-6.05,2.34-11.27.49-15.78-4.06-14.15-14.24-28.37-28.4-42.56-42.6-64.64-64.67-129.29-129.35-193.93-194.02-11.7-11.7-11.66-16.92.22-28.8C207.56,163.9,285.14,86.3,362.72,8.7c1.89-1.89,3.7-3.9,5.8-5.55,8.26-6.5,19.67-2.47,21.93,7.82.61,2.78.5,5.76.5,8.64.02,78.95.02,157.9.02,236.85Z" />
+                        </svg>
+                    </button>
+                    <button type="button" id="btnWritePesoSalida" class="btnWritePeso" title="<% print(window.app.idioma.t('CAPTURAR')) %>" tabindex="-1" style="display:flex; align-items:center;">
+                        <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="fill: white; margin-left: -2px; height: 36px;">
+                            <path class="cls-1" d="m390.96,256.47c0,78.28,0,156.56,0,234.85,0,1.78,0,3.57,0,5.35-.03,6.61-2.53,11.85-8.92,14.32-6.05,2.34-11.27.49-15.78-4.06-14.15-14.24-28.37-28.4-42.56-42.6-64.64-64.67-129.29-129.35-193.93-194.02-11.7-11.7-11.66-16.92.22-28.8C207.56,163.9,285.14,86.3,362.72,8.7c1.89-1.89,3.7-3.9,5.8-5.55,8.26-6.5,19.67-2.47,21.93,7.82.61,2.78.5,5.76.5,8.64.02,78.95.02,157.9.02,236.85Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex-columnas">
+                    <div id="basculaSpacer"></div>
+                    <strong class="mb4" style="width:initial;align-self:center;"><label class="mbi"><% print(window.app.idioma.t('LECTURA_BASCULA')) %></label></strong>
+                    <div class="flex-filas">
+                        <div class="lecturaBascula">
+                            <label id="lblLecturaBascula" style="margin-bottom:0">0,00 kg</label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div id="div_IdOperador" class="flex-filas w100 mb20 flex-aic divForm">
+            <strong><label class="mbi" for="inpt_IdOperador"><% print(window.app.idioma.t('OPERADOR_TRANSPORTE')) %></label><span>:</span></strong>
+            <input class="comboBoxLarge disabledSalida inreq" id="inpt_IdOperador" name="inpt_IdOperador"  tipoForm="OPERADOR" preLoad="true">
+            <input class="addBtn" type="button" value="+" inputAsociado="inpt_IdOperador" tabindex="-1" onclick="javascript: window.app.vista.windowES.BotonAddMantenimiento(this)">
+        </div>
+        <div id="div_IdTransportista" class="flex-filas w100 mb20 flex-aic divForm">
+            <strong><label class="mbi" for="inpt_IdTransportista"><% print(window.app.idioma.t('CONDUCTOR')) %></label><span>:</span></strong>
+            <input class="comboBoxLarge disabledSalida inreq" id="inpt_IdTransportista" name="inpt_IdTransportista" tipoForm="TRANSPORTISTA" preLoad="true">
+            <input class="addBtn" type="button" value="+" inputAsociado="inpt_IdTransportista" tabindex="-1" onclick="javascript: window.app.vista.windowES.BotonAddMantenimiento(this)">
+            <!--<strong class="ml30" style="width:7rem;"><label class="mbi"><% print(window.app.idioma.t('NIF'))%></label>:</strong>
+            <input class="k-textbox" id="inpt_nif" type="text" value="" style="width:15em;max-width: 15em;" disabled tabindex="-1">-->
+        </div>
+        <div id="div_IdCliente" class="flex-filas w100 mb20 flex-aic divForm">
+            <strong><label class="mbi" for="inpt_IdCliente"><% print(window.app.idioma.t('CLIENTE')) %></label><span>:</span></strong>
+            <input class="comboBoxLarge disabledSalida inreq" id="inpt_IdCliente" name="inpt_IdCliente" tipoForm="CLIENTE" preLoad="true">
+            <input class="addBtn" type="button" value="+" inputAsociado="inpt_IdCliente" tabindex="-1" onclick="javascript: window.app.vista.windowES.BotonAddMantenimiento(this)">
+        </div>
+        <div id="div_IdProveedor" class="flex-filas w100 mb20 flex-aic divForm">
+            <strong><label class="mbi" for="inpt_IdProveedor"><% print(window.app.idioma.t('PROVEEDOR')) %></label><span>:</span></strong>
+            <input class="comboBoxLarge disabledSalida inreq" id="inpt_IdProveedor" name="inpt_IdProveedor" tipoForm="PROVEEDOR" preLoad="true">
+            <input class="addBtn" type="button" value="+" inputAsociado="inpt_IdProveedor" tabindex="-1" onclick="javascript: window.app.vista.windowES.BotonAddMantenimiento(this)">
+        </div>
+        <div id="div_LoteProveedor" class="flex-filas w100 mb20 flex-aic divForm">
+            <strong><label class="mbi" for="inpt_LoteProveedor"><% print(window.app.idioma.t('LOTE_PROVEEDOR')) %></label><span>:</span></strong>
+            <input class="k-textbox comboBoxLarge disabledSalida inreq" id="inpt_LoteProveedor" name="inpt_LoteProveedor" type="text">
+        </div>
+        <div id="div_OrdenJDE" class="flex-filas w100 mb20 flex-aic divForm">
+            <strong><label class="mbi" for="inpt_CodigoOrdenJDE"><% print(window.app.idioma.t('ORDEN_APROVISIONAMIENTO_COMPLETO')) %></label><span>:</span></strong>
+            <input id="inpt_CodigoOrdenJDE" name="inpt_CodigoOrdenJDE" type="text" class="k-textbox disabledSalida"
+                   style="max-width: 20rem" placeholder="Código Orden" maxlength="8" inputmode="numeric" pattern="[0-9\s]{13,19}">
+            <input id="inpt_TipoOrdenJDE" name="inpt_TipoOrdenJDE" type="text" class="k-textbox disabledSalida"
+                   style="max-width: 15rem; margin-left:2rem" placeholder="Tipo Orden" maxlength="2">
+        </div>
+        <div id="div_PedidoCliente" class="flex-filas w100 mb20 flex-aic divForm">
+            <strong><label class="mbi" for="inpt_PedidoCliente"><% print(window.app.idioma.t('PEDIDO_CLIENTE')) %></label><span>:</span></strong>
+            <input class="k-textbox comboBoxLarge inreq" id="inpt_PedidoCliente" name="inpt_PedidoCliente" type="text">
+        </div>
+        <div id="div_AlbaranProveedor" class="flex-filas w100 mb20 flex-aic divForm">
+            <strong><label class="mbi" for="inpt_AlbaranProveedor"><% print(window.app.idioma.t('ALBARAN_PROVEEDOR')) %></label><span>:</span></strong>
+            <input class="k-textbox comboBoxLarge disabledSalida inreq" id="inpt_AlbaranProveedor" name="inpt_AlbaranProveedor" type="text">
+        </div>
+        <div id="div_NombreArchivoAlbaranEntrada" class="flex-filas w100 mb20 flex-aic divForm">
+            <strong><label class="mbi" for="inpt_NombreArchivoAlbaranEntrada"><% print(window.app.idioma.t('ALBARAN_ENTRADA')) %></label><span>:</span></strong>
+            <input class="disabledSalida" name="inpt_NombreArchivoAlbaranEntrada" id="inpt_NombreArchivoAlbaranEntrada" type="file">
+            <a title="<% print(window.app.idioma.t('VER_PDF_ALBARAN_ENTRADA')) %>" class="k-button ml30 disabled" id="inpt_visorPDF"><span class="k-icon k-i-pdf"></span> <% print(window.app.idioma.t('VER_PDF')) %></a>
+        </div>
+        <div id="div_IdProducto" class="flex-filas w100 mb20 flex-aic divForm">
+            <strong><label class="mbi" for="inpt_IdProducto"><% print(window.app.idioma.t('MATERIAL')) %></label><span>:</span></strong>
+            <input class="comboBoxLarge inreq" id="inpt_IdProducto" name="inpt_IdProducto" tipoForm="PRODUCTO" preLoad="true">
+            <input class="addBtn" type="button" value="+" inputAsociado="inpt_IdProducto" tabindex="-1" onclick="javascript: window.app.vista.windowES.BotonAddMantenimiento(this)">
+        </div>
+        <div id="div_IdUbicacionInterna" class="flex-filas w100 mb20 flex-aic divForm">
+            <strong><label class="mbi" for="inpt_IdUbicacionInterna"><% print(window.app.idioma.t('UBICACION')) %></label><span>:</span></strong>
+            <input class="comboBoxLarge disabledSalida inreq" id="inpt_IdUbicacionInterna" name="inpt_IdUbicacionInterna" preLoad="true">
+        </div>
+        <div id="div_IdOrigenMercancia" class="flex-filas w100 mb20 flex-aic divForm">
+            <strong><label class="mbi" for="inpt_IdOrigenMercancia"><% print(window.app.idioma.t('ORIGEN')) %></label><span>:</span></strong>
+            <input class="comboBoxLarge disabledSalida inreq" id="inpt_IdOrigenMercancia" name="input_origen" tipoForm="ORIGEN_MERCANCIA" preLoad="true">
+            <input class="addBtn" type="button" value="+" inputAsociado="inpt_IdOrigenMercancia" tabindex="-1" onclick="javascript: window.app.vista.windowES.BotonAddMantenimiento(this)">
+        </div>
+        <div id="div_IdDestinatario" class="flex-filas w100 mb20 flex-aic divForm">
+            <strong><label class="mbi" for="inpt_IdDestinatario"><% print(window.app.idioma.t('DESTINO_AUX')) %></label><span>:</span></strong>
+            <input class="comboBoxLarge disabledSalida inreq" id="inpt_IdDestinatario" name="inpt_IdDestinatario" tipoForm="DESTINATARIO" preLoad="true">
+            <input class="addBtn" type="button" value="+" inputAsociado="inpt_IdDestinatario" tabindex="-1" onclick="javascript: window.app.vista.windowES.BotonAddMantenimiento(this)">
+            <strong class="ml30" style="width:7rem;"><label class="mbi"><% print(window.app.idioma.t('POBLACION'))%></label>:</strong>
+            <input class="k-textbox" id="inpt_poblacion" type="text" value="" style="width:15em;max-width: 15em;" disabled tabindex="-1">
+        </div>
+
+        <div class="flex-filas w100">
+            <div id="div_Observaciones" class="flex-columnas w100 divForm" style="flex:8;">
+                <strong><label for="inpt_Observaciones"><% print(window.app.idioma.t('OBSERVACIONES')) %></label>:</strong>
+                <textarea id="inpt_Observaciones" name="inpt_Observaciones" style="width:98%;max-width:98%;padding:1%;height:50px;"></textarea>
+            </div>
+            <div id="div_ImprimirAlbaran" class="divForm" style="flex: 1; display: flex; justify-content: center; align-self: end;">
+                <a class="k-button disabledSalida" id="inpt_ImprimirAlbaran" title="<% print(window.app.idioma.t('IMPRIMIR_ALBARAN')) %>">
+                    <span><img src='../../../Common/img/impresora.png' style='width:45px;padding:11px 3px;opacity:0.7;' /></span>
+                </a>
+                <button class="hide" id="btnPopoverPrint"></button>
+                <div id="popoverPrintContent" class="hide"><% print(window.app.idioma.t('AVISO_IMPRIMIR_ALBARAN')) %></div>
+            </div>   
+            <div id="div_ImprimirJustificante" class="divForm" style="flex: 1; display: flex; justify-content: center; align-self: end;">
+                <a class="k-button disabledSalida" id="inpt_ImprimirJustificante" title="<% print(window.app.idioma.t('IMPRIMIR_JUSTIFICANTE_BASCULA')) %>">
+                    <span><img src='../../../Common/img/impresora.png' style='width:45px;padding:11px 3px;opacity:0.7;' /></span>
+                </a>
+                <button class="hide" id="btnPopoverPrint2"></button>
+                <div id="popoverPrintContent2" class="hide"><% print(window.app.idioma.t('AVISO_IMPRIMIR_JUSTIFICANTE_BASCULA')) %></div>
+            </div>            
+        </div>
+    </form>
+    <div class="flex-filas w100" style="justify-content:space-between;overflow:hidden">
+        <span></span>
+        <span>
+            <input type="button" data-role="button" class="mr6" id="btnCamionesESAceptar" value="<% print(window.app.idioma.t('GUARDAR')) %>" />
+            <input type="button" data-role="button" class="" id="btnCamionesESCancelar" value="<% print(window.app.idioma.t('SALIR')) %>" />
+        </span>
+        <span>
+            <input type="button" data-role="button" class="mr6" id="btnCamionesESEliminar" value="<% print(window.app.idioma.t('ELIMINAR')) %>" />
+        </span>
+    </div>
+</div>
+
+<script id="visorPDF" type="text/x-kendo-template">
+     <object id="pdfViewer" type="application/pdf" width="100%" height="100%">
+    </object>
+    <p id="errorPdf" style="display:none;position: absolute;text-align: center;width: 200px;top: 50%;right: calc(50% - 100px);"><% print(window.app.idioma.t('ERROR_CARGANDO_PDF')) %></p>
+</script>
+
+
+

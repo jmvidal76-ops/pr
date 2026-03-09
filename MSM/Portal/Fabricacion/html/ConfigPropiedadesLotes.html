@@ -1,0 +1,24 @@
+﻿<style>
+    .width-80 {
+        width: 80%
+    }
+</style>
+<div id="divCabeceraVista" class="divCabeceraVista">
+            <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+                <!--  AQUI EL TITULO-->
+                 <label class="lblCabeceraVista"><% print(window.app.idioma.t('CONFIG_PROPIEDADES_LOTES')) %></label>
+        </div>
+
+
+<!--  AQUI EL CONTENIDO-->
+<div id="container">
+      <div id="grid"></div>
+
+</div>
+
+<script id="tooltip" type="text/x-kendo-template">
+    <div class="k-widget k-tooltip k-tooltip-validation k-invalid-msg k-invalid-msg-delivery" data-for="#= Key #" role="alert">
+        <span class="k-icon k-warning"> </span> #= Message #
+        <div class="k-callout k-callout-n"></div>
+    </div>
+</script>

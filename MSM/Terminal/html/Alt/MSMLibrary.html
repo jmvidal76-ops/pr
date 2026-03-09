@@ -1,0 +1,47 @@
+﻿<style>
+    .cabeceraVista {
+        border: 1px solid black;
+        width: auto;
+        height: 26px;
+        background-color: darkred;
+        color: white;
+        padding: 3px;
+        padding-left: 10px;
+        font-size: 20px;
+    }
+
+    .ajustesBoton {
+        width: 440px;
+        height: 60px;
+        font-size: 21px;
+    }
+</style>
+
+<div class="cabeceraVista">
+    <img src="img/iconoCabecera.png" />
+    <span><% print(window.app.idioma.t("MSM_LIBRARY")) %></span>
+</div>
+<div id="divInstrucEnvasado" style="padding-top: 10px">
+    <button id="btnInstrucEnvasado" class="k-button k-button-icontext ajustesBoton" style="margin-left: 5px;"><% print(window.app.idioma.t('INSTRUCCIONES_TECNICAS_ENVASADO')) %></button>
+</div>
+<div id="divManual" style="padding-top: 10px">
+    <button id="btnManual" class="k-button k-button-icontext ajustesBoton" style="margin-left: 5px;"><% print(window.app.idioma.t('MANUAL_APPCC')) %></button>
+</div>
+<div id="divPlanVigilancia" style="padding-top: 10px">
+    <button id="btnPlanVigilancia" class="k-button k-button-icontext ajustesBoton" style="margin-left: 5px;"><% print(window.app.idioma.t('PLAN_VIGILANCIA')) %></button>
+</div>
+<div id="divProductoNoConforme" style="padding-top: 10px">
+    <button id="btnProductoNoConforme" class="k-button k-button-icontext ajustesBoton" style="margin-left: 5px;"><% print(window.app.idioma.t('GESTION_PRODUCTO_NO_CONFORME')) %></button>
+</div>
+<div id="divProtocolosEnvasado" style="padding-top: 10px">
+    <button id="btnProtocolosEnvasado" class="k-button k-button-icontext ajustesBoton" style="margin-left: 5px;"><% print(window.app.idioma.t('PROTOCOLOS_ENVASADO')) %></button>
+</div>
+<div id="divPlanesHigiene" style="padding-top: 10px">
+    <button id="btnPlanesHigiene" class="k-button k-button-icontext ajustesBoton" style="margin-left: 5px;"><% print(window.app.idioma.t('PLANES_HIGIENE')) %></button>
+</div>
+<div id="divInstrucQSA" style="padding-top: 10px">
+    <button id="btnInstrucQSA" class="k-button k-button-icontext ajustesBoton" style="margin-left: 5px;"><% print(window.app.idioma.t('INSTRUCCIONES_QSA')) %></button>
+</div>
+<div id="divPoliticas" style="padding-top: 10px">
+    <button id="btnPoliticas" class="k-button k-button-icontext ajustesBoton" style="margin-left: 5px;"><% print(window.app.idioma.t('POLITICAS')) %></button>
+</div>

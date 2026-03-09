@@ -1,0 +1,41 @@
+﻿<style>
+    .cabeceraVista {
+        border: 1px solid black;
+        width: auto;
+        height: 26px;
+        background-color: darkred;
+        color: white;
+        padding: 3px;
+        padding-left: 10px;
+        font-size: 20px;
+    }
+
+    .k-i-arrow-s {
+        margin-top: 10px;
+    }
+
+    .k-i-calendar {
+        margin-top: 30%;
+    }
+
+    .k-i-search {
+        margin-top: 5px;
+    }
+
+    .tamanio {
+        font-size: 20px;
+    }
+</style>
+
+<div id="divCabeceraVista" class="cabeceraVista">
+    <img src="img/iconoCabecera.png" />
+    <span><% print(window.app.idioma.t("CURVA_RENDIMIENTO_TURNO_TE")) %></span>
+</div>
+<div id="divCurvaTurno" style="padding-top: 5px">
+    <label class="tamanio" style="margin-left: 5px;"><% print(window.app.idioma.t('FECHA')) %></label>
+    <input class="tamanio" id="dtpFecha" style="width: 170px;" />
+    <label class="tamanio" style="margin-left: 5px;"><% print(window.app.idioma.t('TURNO')) %></label>
+    <input class="tamanio" id="cmbTurno" style="width: 170px;" />
+    <button id="btnConsultar" class="k-button k-button-icontext tamanio" style="margin-left: 5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+</div>
+<div id="graficaTurno"></div>

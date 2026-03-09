@@ -1,0 +1,57 @@
+﻿<style>
+    #divGrids {
+        height: 20%;
+    }
+
+    #divCombos {
+        padding-bottom: 2em;
+    }
+
+    #divIzquierda {
+        float: left;
+        height: 15%;
+    }
+
+    #divDerecha {
+        float: right;
+        height: 15%;
+    }
+
+    .divTitulos {
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .spTitulos {
+        font-size: 16px;
+    }
+</style>
+
+<div id="divImportar">
+    <div id="divCombos">
+        <div class="divTitulos">
+            <div id="divIzquierda" style="width: 40%;">
+                <span class="spTitulos"><b><% print(window.app.idioma.t("UBICACION_ORIGEN")) %></b></span>
+                <select id="cmbSalaOrigen" name="cmbSala" />
+            </div>
+            <div id="divDerecha" style="width: 40%;">
+                <span class="spTitulos"><b><% print(window.app.idioma.t("UBICACIONES_DESTINO")) %></b></span>
+                <select id="cmbSalaDestino" name="cmbSala" />
+            </div>
+        </div>
+    </div>
+    <div id="divGrid">
+        <div id="gridKOPs"></div>
+    </div>
+    <div id="divBotones" style="width: 100%;">
+        <div id="divIzquierda" style="padding-left:10%; padding-top:2%">
+            <span id="lblError" style="color: red;"></span>
+        </div>
+        <div id="divDerecha" style="margin-right: 45%; padding-top: 2%">
+            <button id="btnAceptar" class='k-button k-button-icontext'><% print(window.app.idioma.t("ACEPTAR")) %></button>
+            <button id="btnCancelar" class='k-button k-button-icontext'><% print(window.app.idioma.t("CANCELAR")) %></button>
+        </div>
+    </div>
+</div>
+
+

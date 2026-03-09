@@ -1,0 +1,84 @@
+﻿<style type="text/css">
+    .toolbar-left {
+        display: inline-flex;
+        gap: 6px; 
+    }
+
+    .toolbar-right {
+        display: inline-flex;
+        float: right;
+        margin-top:4px;
+    }
+
+
+</style>
+
+<div id="window" style="display:none">
+    <span id="barcode" class="barcode"></span>
+</div>
+
+
+<script type="text/x-kendo-template" id="tmpToolbar">
+
+
+
+</script>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('CONTINGENCIA_MMPP_ENVASADO')) %></label>
+</div>
+
+<div class="filtros">
+    <div id="toolbar" class="k-header k-grid-toolbar">
+        <!-- Contenedor de los elementos a la izquierda -->
+        <div class="toolbar-left">
+            <div>
+                <label id="lblUbicacionOri" class="textos" style="line-height:1.2;">
+                    <% print(window.app.idioma.t('UBICACION')) %><br />
+                    <% print(window.app.idioma.t('ORIGEN')) %>
+                </label>
+                <select id="cmbUbicacionOri" style="width: 360px"></select>
+            </div>
+            <div style="margin-top:2px;">
+                <button id="btnConsultar" class="k-button k-button-icontext">
+                    <span class="k-icon k-i-search"></span><% print(window.app.idioma.t('CONSULTAR')) %>
+                </button>
+            </div>
+        </div>
+
+        <!-- Contenedor de los elementos a la derecha -->
+        <div class="toolbar-right">
+            <div>
+                <label id="lblUbicacionDes" class="textos" style="line-height:1.2;">
+                    <% print(window.app.idioma.t('UBICACION')) %><br />
+                    <% print(window.app.idioma.t('DESTINO_AUX')) %>
+                </label>
+                <select id="cmbUbicacionDes" style="width: 360px"></select>
+            </div>
+            <div>
+                <label style="margin-left: 5px; line-height: 1.2;">
+                    <% print(window.app.idioma.t('INICIO')) %><br />
+                    <% print(window.app.idioma.t('CONSUMO')) %>
+                </label>
+                <input id="cmbFechaInicioConsumo" />
+                <label style="margin-left: 5px; line-height: 1.2;">
+                    <% print(window.app.idioma.t('FIN')) %><br />
+                    <% print(window.app.idioma.t('CONSUMO')) %>
+                </label>
+                <input id="cmbFechaFinConsumo" />
+            </div>
+            <div style="margin-top:2px;">
+                <button id="btnProcesar" class="k-button" style="background-color: green; color: white; float:right">
+                    <span class="k-icon k-i-pencil"></span><% print(window.app.idioma.t('PROCESAR')) %>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!--<input type="checkbox" id="chkLotesConsumidos" checked style="display:none" />-->
+    <div id="divContingenciaMMPPEnvasado" style="width:100%;height:calc(100% - 30px);">
+
+    </div>
+    <div id="divWnd"></div>

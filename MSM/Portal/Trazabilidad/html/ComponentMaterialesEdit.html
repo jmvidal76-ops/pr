@@ -1,0 +1,75 @@
+
+<style type="text/css">
+
+    div.k-window-content {
+        padding: 0;
+    }
+
+    .formDialog {
+       
+        padding: 15px;
+        float: left;       
+        
+        box-sizing: border-box;
+       
+    }
+    .formDialog h3 {
+        border-bottom: 1px solid #ccc;
+        /*font-size: 1.4em;*/
+        font-weight: normal;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }  
+    .formDialog label {
+        display: inline-block;
+        font-weight: bold;
+        width: 100px;
+        text-align: left;
+        
+    }
+    .formDialog #toolBarBotones {
+        text-align: center;
+    }
+  
+</style>
+<div id="myObjectTemplate">
+   
+    <div id="alt-center-pane">
+    <form id="objectTemplate" class="formDialog">
+        <div id="divPARTICION"  class="divParametros"> 
+            <div id="divNuevo1">
+                <label for="selectMaterial"><%- window.app.idioma.t("MATERIAL")%>:</label>
+                <select id='selectMaterial'  data-role='dropdownlist' data-bind='source: materiales, value: valueMaterial' data-text-field='DescMaterial' data-value-field='IDMaterial' style='width: 250px' ></select>
+                <br /><br />      
+            </div>    
+            <label for="fechaIni"><%- window.app.idioma.t("FECHA_INICIO")%>:</label>
+            <input id="fechaIni"  style='width: 180px' />
+            <br /><br />  
+            <label for="fechaFin"><%- window.app.idioma.t("FECHA_FIN")%>:</label>
+            <input id="fechaFin"  style='width: 180px' />
+            <br /><br />
+            <div id="divNuevo">
+                <label for="selectUbicacion"><%- window.app.idioma.t("UBICACIONES")%>:</label>
+                <select id='selectUbicacion'  data-role='dropdownlist' data-bind='source: ubicaciones, value: valueUbicacion' data-text-field='Nombre' data-value-field='IdUbicacion' style='width: 250px' ></select>
+                <br /><br /> 
+                <label for="selectLote"><%- window.app.idioma.t("LOTE")%>:</label>
+                <input id='selectLote'  data-role='combobox' data-bind='source: lotes, value: valueLote'  data-text-field='Lotid' data-value-field='Lotid' style='width: 250px' />
+                <br /><br />
+            </div>
+            <label for="inputCantidad"><%- window.app.idioma.t("CANTIDAD")%>:</label>
+            <input id="inputCantidad"  data-role='numerictextbox' data-bind='value: valueCantidad' style='width: 150px' />
+            <label data-bind='text: valueUnidad'style='width: 30px'></label>
+            <br /><br /> 
+        </div>       
+        <div ><label id="lblError" style="color:red; width:230px; text-align:center" ></label></div>
+        
+        <div id="toolBarBotones">
+            <input type="button" id="btnAceptar"   />
+            <input type="button" id="btnCancelar"  />
+        </div>
+        </form>
+        
+    </div>
+    
+</div>

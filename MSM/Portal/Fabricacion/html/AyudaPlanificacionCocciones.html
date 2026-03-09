@@ -1,0 +1,366 @@
+﻿<style>
+    .k-detail-cell .k-tabstrip .k-content {
+        padding: 0.2em;
+        overflow-y: hidden;
+    }
+
+    .table {
+        border: 1px solid #000000;
+        margin: 2px;
+    }
+
+    .table-bordered > thead > tr > th,
+    .table-bordered > tbody > tr > th,
+    .table-bordered > tfoot > tr > th,
+    .table-bordered > thead > tr > td,
+    .table-bordered > tbody > tr > td,
+    .table-bordered > tfoot > tr > td {
+        border: 1px solid black;
+        font-weight: normal;
+    }
+
+    .rTable {
+        display: table;
+    }
+
+    .rTableRow {
+        display: table-row;
+    }
+
+    .rTableCell {
+        display: table-cell;
+        padding: 5px;
+    }
+
+    .rTableCellP {
+        display: table-cell;
+        padding: 5px;
+    }
+
+    .table > tbody > tr > td,
+    .table > tbody > tr > th,
+    .table > tfoot > tr > td,
+    .table > tfoot > tr > th,
+    .table > thead > tr > td,
+    .table > thead > tr > th {
+        padding: 0 0 0 0;
+        vertical-align: middle;
+    }
+
+    .k-grid td {
+        padding: .3em .3em;
+        line-height: 1.6;
+        vertical-align: middle;
+    }
+
+    hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid #ccc;
+        margin-top: 1em;
+        padding: 0;
+        margin-bottom: 0em;
+    }
+
+    .tabPanel .k-content {
+        overflow: hidden !important;
+    }
+
+    @media (max-width: 1024px) {
+        .rTable {
+            display: block;
+            overflow: auto;
+        }
+    }
+
+    .toolbar-fila {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .toolbar-botonera-derecha {
+        flex: 0 0 auto;
+        /*margin-right: 10px;*/
+    }
+
+        .toolbar-botonera-derecha button {
+            margin-left: 5px;
+        }
+
+    .toolbar-campos {
+        flex: 1 1;
+        text-align: center;
+    }
+
+        .toolbar-campos:first-child {
+            flex: 0 0 auto;
+        }
+
+        .toolbar-campos label {
+            margin-left: 5px;
+        }
+
+    .toolbar-titulo {
+        width: 100%;
+        text-align: center;
+    }
+
+    .k-datepicker {
+        width: 8em;
+    }
+
+    .boton-aplicar {
+        background-color: green;
+        color: white;
+        margin-right: 1.16em;
+    }
+
+    .boton-add {
+        background-color: green;
+        color: white;
+    }
+
+    .k-grid,
+    .k-tabstrip,
+    .k-tabstrip .k-content {
+        margin: 0;
+        padding: 0;
+        border-width: 0;
+        overflow-y: hidden;
+    }
+
+    .k-radio-label {
+        padding-top: 2px;
+    }
+
+    #divHTMLContenido {
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+    }
+
+    #PlanificacionFiltracion .k-splitter {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        border-width: 0;
+    }
+
+    #divPestanias,
+    #divPestanias-parent {
+        height: 100%;
+    }
+
+    .k-grid-toolbar .toolbar-label {
+        margin-top: 5px;
+    }
+
+    .toolbar-campos label {
+        margin-left: 5px;
+    }
+
+    .toolbar-campos input[type=number] {
+        width: 12em;
+    }
+
+    .checkbox {
+        padding: 0 !important;
+    }
+
+    th[role=columnheader] > input[type=checkbox] {
+        width: 14px;
+        height: 14px;
+        padding: 0;
+        margin-top: 4px;
+    }
+
+    td.columna-checkbox > input[type=checkbox] {
+        width: 14px;
+        height: 14px;
+        padding: 0;
+        margin-top: 4px;
+    }
+
+    .toolbar-campos .k-input-label {
+        margin-left: 5px;
+    }
+
+    .recuadro {
+        display: flex;
+        gap: 4px;
+    }
+
+    .line {
+        padding: 5px 10px;
+        border: 1px solid #999;
+        text-align: center;
+        font-weight: bold;
+    }
+</style>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('AYUDA_PLANIFICACION_COCCIONES')) %></label>
+</div>
+
+<div id="PlanificacionFiltracion" class="divContenidoVista">
+    <div id="divPestanias">
+        <ul>
+            <li class="k-state-active"><% print(window.app.idioma.t('PREVISION_COCCIONES')) %></li>
+            <li><% print(window.app.idioma.t('CONFIGURACION')) %> <% print(window.app.idioma.t('MERMAS')) %></li>
+            <li><% print(window.app.idioma.t('CONFIGURACION')) %></li>
+        </ul>
+
+        <div id="gridPlanificacionCoccion">
+            <div id="vsplitPanelPlanCoccion">
+                <div id="gridCocCzaEnvasarCzaAltaDensidad"></div>
+                <div id="gridCocCzaAltaDensidadMostoFrio"></div>
+                <div id="gridCocMostoFrio"></div>
+            </div>
+        </div>
+
+        <div id="gridConfiguracionMermas">
+            <div id="vsplitPanelMermas">
+                <div id="gridCocMermasEnvasado"></div>
+                <div id="gridCocMermasFiltracion"></div>
+                <div id="gridCocMermasFermGuarda"></div>
+            </div>
+        </div>
+
+        <div id="gridConfiguracion">
+            <div id="vsplitPanelConfiguracion">
+                <div id="gridCocCoefAumentoVol"></div>
+                <div id="gridCocConfiguracion"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="tmplGridCocCzaEnvasarCzaAltaDensidadToolbar">
+    <div class="toolbar-titulo"><label><% print(window.app.idioma.t("CERV_ENVASAR_CERV_AD")) %></label></div>
+    <div class="k-header toolbar-fila">
+        <div class="toolbar-campos">
+            <label class="k-input-label"><% print(window.app.idioma.t("SEMANAS_PROYECCION")) %></label>
+            <input id='txtCocSemanas' type='number' style='width: 80px;'>
+        </div>
+        <div class="toolbar-botonera-derecha">
+            <button id='btnCocActualizar' class='k-button k-button-icontext'>
+                <% print(window.app.idioma.t('ACTUALIZAR')) %>
+            </button>
+            <button id="btnCocCzaEnvasarCzaAltaDensidadExcel" class='k-button k-button-icontext'>
+                <span class='k-icon k-i-excel'></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+            </button>
+            <button id="btnCocCzaEnvasarCzaAltaDensidadLimpiarFiltros" class='k-button k-button-icontext'>
+                <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+            </button>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="tmplGridCocCzaAltaDensidadMostoFrioToolbar">
+    <div class="toolbar-titulo"><label><% print(window.app.idioma.t("CERV_AD_MOSTO_FRIO")) %></label></div>
+    <div class="k-header toolbar-fila">
+        <div class="toolbar-botonera-derecha" style="width: 100%; display: flex; justify-content: flex-end;">
+            <button id="btnCocCzaAltaDensidadMostoFrioExcel" class='k-button k-button-icontext'>
+                <span class='k-icon k-i-excel'></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+            </button>
+            <button id="btnCocCzaAltaDensidadMostoFrioLimpiarFiltros" class='k-button k-button-icontext'>
+                <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+            </button>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="tmplGridCocMostoFrioToolbar">
+    <div class="toolbar-titulo"><label><% print(window.app.idioma.t("MOSTO_FRIO")) %></label></div>
+    <div class="k-header toolbar-fila">
+        <div class="toolbar-botonera-derecha" style="width: 100%; display: flex; justify-content: flex-end;">
+            <button id="btnCocMostoFrioExcel" class='k-button k-button-icontext'>
+                <span class='k-icon k-i-excel'></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+            </button>
+            <button id="btnCocMostoFrioLimpiarFiltros" class='k-button k-button-icontext'>
+                <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+            </button>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="tmplGridCocMermasEnvasadoToolbar">
+    <div class="toolbar-titulo"><label><% print(window.app.idioma.t("MERMAS")) %> <% print(window.app.idioma.t("ENVASADO")) %></label></div>
+    <div class="k-header toolbar-fila">
+        <div class="toolbar-campos">
+            <label class="k-input-label"><% print(window.app.idioma.t("NUEVA_MERMA_ENVASADO") + ':  ') %></label>
+            <input id='txtCocMermaEnvasado' type="number" style="width: 150px;" min="0" required />
+        </div>
+        <div class="toolbar-botonera-derecha">
+            <button id='btnCocMermaEnvasadoAplicar' class='k-button k-button-icontext boton-aplicar'>
+                <span class='k-icon k-i-pencil'></span><% print(window.app.idioma.t('APLICAR')) %>
+            </button>
+            <button id="btnCocMermaEnvasadoLimpiarFiltros" class="k-button k-button-icontext boton-limpiar">
+                <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+            </button>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="tmplGridCocMermasFiltracionToolbar">
+    <div class="toolbar-titulo"><label><% print(window.app.idioma.t("MERMAS")) %> <% print(window.app.idioma.t("FILTRACION")) %></label></div>
+    <div class="k-header toolbar-fila">
+        <div class="toolbar-campos">
+            <label class="k-input-label"><% print(window.app.idioma.t("NUEVA_MERMA_FILTRACION") + ':  ') %></label>
+            <input id='txtCocMermaFiltracion' type="number" style="width: 150px;" min="0" required />
+        </div>
+        <div class="toolbar-botonera-derecha">
+            <button id='btnCocMermaFiltracionAplicar' class='k-button k-button-icontext boton-aplicar'>
+                <span class='k-icon k-i-pencil'></span><% print(window.app.idioma.t('APLICAR')) %>
+            </button>
+            <button id="btnCocMermaFiltracionLimpiarFiltros" class="k-button k-button-icontext boton-limpiar">
+                <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+            </button>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="tmplGridCocMermasFermGuardaToolbar">
+    <div class="toolbar-titulo"><label><% print(window.app.idioma.t("MERMAS")) %> <% print(window.app.idioma.t("FERMENTACION_GUARDA")) %></label></div>
+    <div class="k-header toolbar-fila">
+        <div class="toolbar-campos">
+            <label class="k-input-label"><% print(window.app.idioma.t("NUEVA_MERMA_FERMENTACION_GUARDA") + ':  ') %></label>
+            <input id='txtCocMermaFermGuarda' type="number" style="width: 150px;" min="0" required />
+        </div>
+        <div class="toolbar-botonera-derecha">
+            <button id='btnCocMermaFermGuardaAplicar' class='k-button k-button-icontext boton-aplicar'>
+                <span class='k-icon k-i-pencil'></span><% print(window.app.idioma.t('APLICAR')) %>
+            </button>
+            <button id="btnCocMermaFermGuardaLimpiarFiltros" class="k-button k-button-icontext">
+                <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+            </button>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="tmplGridCocCoefAumentoVolToolbar">
+    <div class="toolbar-titulo"><label><% print(window.app.idioma.t("COEFICIENTES_AUMENTO_VOLUMEN")) %></label></div>
+    <div class="k-header toolbar-fila">
+        <div class="toolbar-campos">
+            <label class="k-input-label"><% print(window.app.idioma.t("NUEVO_COEF_AUMENTO_VOLUMEN") + ':  ') %></label>
+            <input id='txtCocCoefAumentoVol' type="number" style="width: 150px;" min="0" required />
+        </div>
+        <div class="toolbar-botonera-derecha">
+            <button id='btnCocCoefAumentoVolAplicar' class='k-button k-button-icontext boton-aplicar'>
+                <span class='k-icon k-i-pencil'></span><% print(window.app.idioma.t('APLICAR')) %>
+            </button>
+            <button id="btnCocCoefAumentoVolLimpiarFiltros" class="k-button k-button-icontext">
+                <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+            </button>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="tmplGridCocConfiguracionToolbar">
+    <div class="toolbar-titulo"><label><% print(window.app.idioma.t("PARAM_CONFIG")) %></label></div>
+</script>
+
+

@@ -1,0 +1,61 @@
+﻿<style>
+    .msgDialogo {
+        width: auto;
+        font-size: 20px;
+        border-bottom: 1px solid black;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    #imgProcesando {         
+        text-align:center;
+        width: 100%;
+        display: none;
+    }
+    .botones {
+   
+        display: flex;
+        align-items: center;
+        justify-content: center;  
+        width: 100%;
+    }
+    .botones button {
+        min-width: 120px;
+        height: 80px;
+        padding-top: 4px;
+        margin: 8px;
+        float: left;
+
+    }
+    .botones .k-button .k-image {
+        height: 24px;
+        float: left;
+        margin-left: 4px;
+    }
+    .divCenter {
+        text-align: center;
+    }
+</style>
+
+<div class="msgDialogo">
+    <%= msg %>
+</div>
+<div id="imgProcesando">
+    <img src="img/ajax-loader.gif" />
+</div>
+<div id="botonesSINO" class="botones">    
+        <button class="btnAceptar"><% print(window.app.idioma.t('SI')) %></button>
+        <button class="btnCancelar"><% print(window.app.idioma.t('NO')) %></button></div>
+</div>
+<div id="botonesAnteriores" class="botones">
+    <div>
+     
+        <button id="#btnAsigAceptar" class="btnAceptar"><% print(window.app.idioma.t('ZONA_ACTUAL')) %></button> 
+        <button id="#btnAsigAceptarAnter" class="btnAceptarAnteriores"><% print(window.app.idioma.t('ZONA_ACTUAL_Y_ANTERIORES')) %></button></div> 
+    <div>
+        <button id="#btnAsigCancelar" class="btnCancelar"><% print(window.app.idioma.t('NO')) %></button></div>
+</div>
+<div  id="divAviso" style="color:red; text-align:center; width: 100%">
+        <%= aviso %>
+</div>

@@ -1,0 +1,84 @@
+﻿<style>
+    .circle_cells {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-size: 25px 28px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 25px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-right: 5px;
+    }
+
+    .pane-content {
+        padding: 0 10px;
+    }
+
+
+    #plantillasConsumosVerticalSplitter {
+        border-width: 0;
+    }
+
+    .k-AsociarUbicacion {
+        float: right
+    }
+
+    .gridDisparadores {
+        height: 99%;
+        width: 99%;
+    }
+
+    .contentDisparador {
+        height: 80%;
+        width: 100%;
+        overflow: hidden
+    }
+
+    #splitterHorizontal {
+        height: 80%;
+        width: 100%;
+        overflow: hidden
+    }
+
+</style>
+
+
+
+<!--  AQUI EL CONTENIDO-->
+    <div id="divCabeceraVista" class="divCabeceraVista">
+        <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+        <!--  AQUI EL TITULO-->
+        <label class="lblCabeceraVista"><% print(window.app.idioma.t('PLANTILLA_CONSUMOS_MMPP')) %></label>
+    </div>
+    <div>
+        <div id="plantillasConsumosVerticalSplitter">
+            <div id="plantillas">
+                <div class="pane-content" style="height:98%">
+                    <div id="gridPlantillasConsumosMMPP" style="width: 100%;height: 100%;"></div>
+                </div>
+            </div>
+            <div id="disparadores" >
+                <div id="splitterHorizontal">
+                    <div id="ubicacionPlantillas" class="contentDisparador" >
+                            <div id="contentUbicacionesPlantillas" class="gridDisparadores" ></div>
+                    </div>
+                    <div id="tiposSemielaborados" class="contentDisparador">
+                            <div id="contentTipoSemielaboradoPlantillas" class="gridDisparadores"></div>
+                    </div>
+                    <div id="disparadorPlantillasKOP" class="contentDisparador">
+                            <div id="contentDisparadorPlantillaKOP" class="gridDisparadores"></div>
+                    </div>
+                    <div id="disparadorPlantillasTransferencia" class="contentDisparador">
+                            <div id="contentDisparadorPlantillaTransferencia" class="gridDisparadores"></div>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+<div id="asociarLotesWindow"></div>

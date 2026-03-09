@@ -1,0 +1,101 @@
+﻿<style>
+    .pad-30 {
+        padding: 30px;
+    }
+
+    .pad-10 {
+        padding: 10px;
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .w-50 {
+        width: 50%;
+    }
+
+    .mar-top-20 {
+        margin-top: 20px;
+    }
+
+    .mar-right-25 {
+        margin-right: 25px;
+    }
+
+    .mar-left-50 {
+        margin-left: 50px;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .tac {
+        text-align: center;
+    }
+
+    .boton {
+        width: 150px;
+        height: 65px;
+    }
+
+    .fila {
+        margin-top: 10px;
+    }
+
+    .flexh {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    .flex-bl {
+        display: flex;
+        align-items: baseline;
+    }
+
+    .form-control-cb {
+        font-size: large;
+        font-weight: bold;
+        display: grid;
+        grid-template-columns: 1em auto;
+        gap: 0.5em;
+    }
+    
+</style>
+
+<div>
+    <form id="CrearEditarContadorMermas" class="pad-30">
+
+        <div id="divClase">
+            <label id="lblClase"></label>
+            <label id="lblClaseMaquina" class="ml-12"></label>
+            <!--<select id="cmbClase" name="cmbClase" class="w-100" required></select>-->
+        </div>
+        <div class="mt-12" id="divContadores">
+            <div class="w-100 mb-8" style="display:flex; align-items:flex-end; justify-content:space-between;">
+                <label id="lblContadores" class=""></label>
+                <div>
+                    <button id="btnAnadirContador" class="k-button k-button-icontext">
+                        <span class='k-icon k-i-plus'></span>
+                    </button>
+                    <button id="btnAnadirTipoGlobal" class="ml-8 k-button k-button-icontext" data-funcion='MER_PROD_GES_1_GestionMermasPortal2'>
+                        <span class='k-icon k-i-plus'></span>
+                    </button>
+                </div>                
+            </div>            
+            <div id="gridContadoresEdit" class="w-100"></div>
+        </div>
+        
+        <div class="tac mar-top-20">
+            <input type="button" class="boton mar-right-25" id="btnDialogoGestionAceptar" />
+            <input type="button" class="boton" id="btnDialogoGestionCancelar" />
+        </div>
+        <div id="trError" class="error tac mar-top-20" style="display:none;" colspan="2">
+        </div>
+    </form>
+</div>
+

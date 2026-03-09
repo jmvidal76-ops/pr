@@ -1,0 +1,81 @@
+﻿<style>
+     #btnAceptarPL {      
+        float:left ;
+        margin-left:150px;
+        /*margin-top:10px;*/
+    }
+    #btnCancelarPL {
+        float:left ;
+        margin-left:20px;
+        /*margin-top:10px;*/
+    }
+</style> 
+
+<div>
+    <form id="EditarCrearParametrosLinea">
+        <div style="float:left; background-color: transparent; border:0; margin-top:10px;">
+            <div style="float:left;border:0;">
+                <label id="lblValorPPR" style="width:0px;font-weight:normal;color:white" "></label>
+            </div>
+            <div style="float:left;border:0;">
+                <label id="lblLinea" style="width:150px;text-align:right;"></label>
+                <label id="lblValorLinea" style="width:250px;font-weight:normal" "></label>
+            </div>
+            <br /><br /><br />
+            <div style="float:left;border:0;">
+                <label id="lblCodigoProducto" style="width:150px;text-align:right;"></label>
+                <label id="lblValorCodigoProducto" style="width:250px;font-weight:normal" "></label>
+            </div>
+            <br /><br /><br />
+            <div style="float:left;border:0;">
+                <label id="lblProducto" style="width:170px;text-align:right;"></label>
+                <label id="lblValorProducto" style="width:250px;font-weight:normal;"></label>
+            </div>
+            <br /><br /><br />
+            <div style="float:left;border:0;">
+                <label id="lblVelocidadNominal" style="width:170px;text-align:right;"></label>
+                <input type="text" style="width:150px" id="ntxtVelocidadNominal" name="txtVelocidadNominal" data-type="number" data-bind="value: VelocidadNominal" data-role="numerictextbox" required />
+                <span class="k-invalid-msg" data-for="txtVelocidadNominal"></span>
+            </div>
+            <br /><br /><br />
+            <div style="float:left;border:0;">
+                <label id="lblVelNomMaqLimitante" style="width:170px;text-align:right;"></label>
+                <input type="text" style="width:150px" id="ntxtVelNomMaqLimitante" name="txtVelNomMaqLimitante" data-type="number" data-bind="value: VelocidadNominalMaqLimitante" data-role="numerictextbox" required />
+                <span class="k-invalid-msg" data-for="txtVelNomMaqLimitante"></span>
+            </div>
+            <br /><br /><br />
+            <div style="float:left;border:0;">
+                <label id="lblObjetivo" for="Descripcion" style="width:170px;text-align:right;"></label>
+                <input type="text" style="width:150px" id="ntxtOEE_Objetivo" name="txtOEE_Objetivo" data-type="number" data-bind="value: OEE_Objetivo" data-role="numerictextbox" required />
+            </div>
+            <br /><br /><br />
+            <div style="float:left;border:0;">
+                <label id="lblCritico" for="Descripcion" style="width:170px;text-align:right;"></label>
+                <input type="text" style="width:150px" id="ntxtOEE_Critico" name="txtOEE_Critico" data-type="number" data-bind="value: OEE_Critico" data-role="numerictextbox" required />
+            </div>
+            <br /><br /><br />
+            <div style="float:left;border:0;">
+                <label id="lblCalculado" for="Descripcion" style="width:170px;text-align:right;"></label>
+                <input type="text" style="width:150px" disabled="disabled" id="ntxtOEE_Calculado" name="txtOEE_Calculado" data-type="number" data-bind="value: OEE_Calculado" data-role="numerictextbox" required />
+                <!--<label id="lblOEEMedio" style="width:150px;text-align:left;font-weight:normal"></label>-->
+            </div>
+            <br /><br /><br />
+            <div style="float:left;border:0;">
+                <label id="lblPreactor" for="Descripcion" style="width:170px;text-align:right;"></label>
+                <input type="text" style="width:150px" id="txtOEE_Preactor" name="txtOEE_Preactor" data-type="number" data-bind="value: OEE_Preactor" data-role="numerictextbox" required />
+                <!--<label id="lblOEEMedio" style="width:150px;text-align:left;font-weight:normal"></label>-->
+            </div>
+            <br /><br /><br />
+            <div style="float:left;border:0;">
+                <label id="lblInhabilitarCalculo" style="width:170px; text-align:right"></label>
+                <input type="checkbox" style="width:15px; vertical-align:text-bottom" id="chkInhabilitar_Calculo" required />
+            </div>
+            <br /><br /><br />
+            <div>
+                <input type="button" id="btnAceptarPL" value="Aceptar" />
+                <input type="button" id="btnCancelarPL" value="Cancelar" />
+            </div>
+        </div>
+    </form>
+</div>
+ 

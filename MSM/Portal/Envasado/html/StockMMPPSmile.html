@@ -1,0 +1,68 @@
+﻿<style type="text/css">
+    .toolbar-left {
+        display: inline-flex;
+        gap: 6px;
+    }
+
+    .toolbar-right {
+        display: inline-flex;
+        float: right;
+        margin-top: 4px;
+    }
+
+    .circle_cells {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-size: 25px 28px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 25px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-right: 5px;
+    }
+
+    .margenInf {
+        margin-bottom: 15px;
+    }
+    .divAncho {
+        min-width: 25px;
+    }
+
+    .divTexto {
+        margin-left: 5px;
+        font-size: 17px;
+    }
+    .sinBorde .list-group-item {
+        border: none;
+        display: flex;
+    }
+    .itemRojo {
+        background-color: #fb0101;
+    }
+    .itemAmarillo {
+        background-color: #f9f382;
+    }
+    .itemVerde {
+        background-color: #90EE90;
+    }
+</style>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('STOCK_MMPP_SMILE')) %></label>
+</div>
+<div id="divContenidoVista">
+    <div id="divFiltrosHeader" class="k-header" style="height: 32px;padding-top: 5px;">
+        <div style="float: left;">
+            <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left: 20px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+        </div>
+    </div>
+    <div id="gridStockMMPPSmile"></div>
+</div>
+
+
+
+
+

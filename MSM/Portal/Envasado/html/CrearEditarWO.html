@@ -1,0 +1,147 @@
+﻿<style>
+
+    #formParoPerdida {
+        margin: 15px;
+    }
+
+    .tdLabel {
+        width: 16% !important;
+    }
+
+    .table th, .table td {
+        border-top: none !important;
+        text-align: right;
+    }
+
+    .table tr {
+        height: 60px !important;
+    }
+
+    .table input, textarea {
+        /*margin-left:5px !important;*/
+        width: 120px;
+    }
+
+    #btnAceptar, #btnCancelar {
+        height: 30px;
+        width: 30%;
+        /*float:left;*/
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+
+    .k-autocomplete,
+    .k-combobox,
+    .k-datepicker,
+    .k-timepicker,
+    .k-datetimepicker,
+    .k-colorpicker,
+    .k-numerictextbox,
+    .k-dropdown,
+    .k-selectbox,
+    .k-textbox,
+    .k-toolbar .k-split-button {
+        width: 100%;
+    }
+
+    .k-numerictextbox {
+        width: 100% !important;
+    }
+
+        .k-numerictextbox .k-numeric-wrap .k-input {
+            width: 96% !important;
+        }
+
+    .k-tooltip-validation {
+        clear: left !important;
+    }
+
+    span.k-widget.k-tooltip-validation {
+        display: inline-block;
+        position: absolute;
+        width: 290px;
+        text-align: left;
+        border: 0;
+        padding: 0;
+        margin: 0;
+        background: none;
+        box-shadow: none;
+        color: red;
+    }
+
+    #fechaFinProgress {
+        position: absolute;
+        top: 11px;
+        width: 20px;
+        height: 20px;
+        right: 80px;
+    }
+</style>
+
+<div style="width:98%;margin:0px;padding:0px;">
+    <form id="CrearEditarWO">
+        <table class="table borderless">
+            <tbody>
+                <tr>
+                    <td><% print(window.app.idioma.t("LINEA")) %></td>
+                    <td><input id="cmbLinea" name="cmbLinea" required /></td>
+                    <td colspan="3"></td>
+                </tr>
+                <tr>
+                    <td style="width:15% !important;"><% print(window.app.idioma.t('NUM_ARTICULO')) %></td>
+                    <td style="width:33% !important;"><input id="cmbProducto" name="cmbProducto" required /></td>
+                    <td style="width:20% !important;"><% print(window.app.idioma.t('CANTIDAD_PLANIFICADA')) %></td>
+                    <td style="width:18% !important; text-align:left;">
+                        <input id="txtCantidad" type="text" name="txtCantidad" required />
+                        <br />
+                        <span class="k-invalid-msg" data-for="txtCantidad"></span>
+                    </td>
+                    <td style="width:14%; text-align:left">
+                        <span id="udMedida"></span><br />
+                        <span id="relacionEnvasesCajasPalets"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><% print(window.app.idioma.t("NOTAS_ORDEN")) %></td>
+                    <td colspan="4"><textarea id="txtDescripcion" style="width:100%;height:80px;" rows="6y"></textarea></td>
+                </tr>
+                <tr>
+                    <td><% print(window.app.idioma.t("ESTADO_WOJDE")) %></td>
+                    <td><select id="cmbEstado" name="cmbEstado" required></select></td>
+                    <td colspan="3">
+                        <span id="spAviso" style="display:none"><% print(window.app.idioma.t('AVISO_ESTÁ_CREANDO')) %></span>
+                    </td>
+                </tr>
+                <tr id="rowFechas" style="display:none">
+                    <td><% print(window.app.idioma.t('FECHA_INICIO_ESTIMADA')) %></td>
+                    <td>
+                        <input id="dtpFechaInicio" name="dtpFechaInicio" />
+                        <br />
+                        <span class="k-invalid-msg" data-for="dtpFechaInicio" style="width:100%"></span>
+                    </td>
+                    <td><% print(window.app.idioma.t('FECHA_FIN_ESTIMADA')) %></td>
+                    <td colspan="2" style="position:relative">
+                        <input id="dtpFechaFinalizado" name="dtpFechaFinalizado" />
+                        <br />
+                        <span class="k-invalid-msg" data-for="dtpFechaFinalizado" style="width:100%"></span>
+                        <div id="fechaFinProgress" hidden>
+                            <img src="../../../LibreriasJS/libs/kendoUI/styles/Default/loading.gif" style="width:100%; height: 100%" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div style="text-align:center; width:100%;">
+                            <button id="btnAceptar"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+                            <button id="btnCancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>

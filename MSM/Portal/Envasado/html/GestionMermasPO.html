@@ -1,0 +1,222 @@
+﻿<style>
+    .k-tabstrip .k-content {
+        margin: 0;
+        padding: 0;
+        border-width: 0;
+        overflow-y: hidden;
+    }
+    .gridDetail2 td[role="gridcell"] .k-button {
+        min-width: 20px !important;
+        padding: 0px 0px 0px 8px !important;
+    }
+    .gridDetailMaquinasContadores td[role="gridcell"] .k-button {
+        min-width: 20px !important;
+        padding: 0px 0px 0px 8px !important;
+    } 
+    .gridDetail2 .k-grid-content {
+        max-height: 500px !important;
+    }
+    .gridDetailMaquinasContadores .k-grid-content {
+        max-height: 500px !important;
+    }
+    .gridDetail .k-grid-content {
+        max-height: 500px;
+    }
+    .global_cont_cell {
+        white-space: nowrap;
+        overflow-x: auto;
+    }
+    /*::-webkit-scrollbar {
+        width: 10px;
+    }*/
+    .global_cont_cell_name {
+        font-weight: bold;
+        margin-right: 2px;
+    }
+    .global_cont_cell_value {
+        margin-right: 10px;
+    }
+    .contador-produccion {
+        background-color: #bccaf6;
+    }
+    .contador-rechazo {
+        background-color: #f7ebb7;
+    }
+    .error {
+        color: red;
+    }
+    .disabled-cb {
+        pointer-events: none;
+        /*accent-color: lightblue;*/
+        width: 13px;
+        appearance: none;
+        height: 13px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-color: lightblue;
+        border: 1px solid rgba(118,118,118,0.5);
+        border-radius: 2px;
+        position: relative;
+    }
+    .disabled-cb:checked::after {
+        content: '✔';
+        color: darkblue;
+        position: absolute;
+        top: -4px;
+        left: 1px;
+/*        transform: translate(-50%, -50%);
+*/        font-weight: bold;
+    }
+    #gridContadoresMermas .k-grouping-row .k-button {
+        min-width: 20px !important;
+        padding: 0px 0px 0px 0px !important;
+        margin-left: 15px;
+    }
+
+    #gridContadoresMermas .k-grouping-row .k-button .k-icon {        
+        margin: 0 4px;
+    }
+
+</style>
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('GESTION_MERMAS_PO')) %></label>
+</div>
+
+<div id="GestionMermasPO" class="divContenidoVista">
+    <div id="divPestanias">
+        <ul>
+            <li class="k-state-active" data-id="1"><% print(window.app.idioma.t('MERMAS')) %></li>
+            <li data-id="2"><% print(window.app.idioma.t('CONTADORES_MAQUINAS')) %></li>
+            <li data-id="3"><% print(window.app.idioma.t('CONFIGURACION_CONTADORES_MERMAS')) %></li>
+        </ul>
+        <div>
+            <!-- Filtros Cambios -->
+            <div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+                <div style="float: left;">
+                    <label style="margin-left:5px;"><% print(window.app.idioma.t('FILTRAR_POR')) %></label>
+                    <select id="selectLinea" style="width:200px;"></select>
+                    <label style="margin-left: 5px;"><% print(window.app.idioma.t('DESDE')) %></label>
+                    <input id="dtpFechaDesde" style="width: 100px;" />
+                    <label style="margin-left: 5px;"><% print(window.app.idioma.t('HASTA')) %></label>
+                    <input id="dtpFechaHasta" style="width: 100px;" />
+                    <button id="btnFiltrarMermas" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+                </div>
+                <div style="float: right; margin-right: 10px;">
+                    <button id="btnAnadirMermas" class="k-button k-button-icontext" data-role='add' data-funcion='MER_PROD_GES_1_GestionMermasPortal' style="margin-left: 5px;">
+                        <span class='k-icon k-i-plus'></span><% print(window.app.idioma.t('ANADIR')) %>
+                    </button>
+                    <button id="btnLimpiarFiltrosMermas" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;">
+                        <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+                    </button>
+                    <button id="btnExportarExcel" class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px;">
+                        <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+                    </button>
+                </div>
+            </div>
+            <div id="gridMermas"></div>
+        </div>
+        <div>
+            <!-- Filtros Cambios -->
+            <div id="divFiltrosHeader2" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+                <div style="float: left;">
+                    <label style="margin-left:5px;"><% print(window.app.idioma.t('FILTRAR_POR')) %></label>
+                    <select id="selectLinea2" style="width:200px;"></select>
+                    <button id="btnFiltrarMaquinasContadores" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+                </div>
+                <div style="float: right; margin-right: 10px;">
+                    <button id="btnAnadirMaquinasContadores" class="k-button k-button-icontext" data-funcion='MER_PROD_GES_1_GestionMermasPortal' data-role='add' style="margin-left: 5px;">
+                        <span class='k-icon k-i-plus'></span><% print(window.app.idioma.t('ANADIR')) %>
+                    </button>
+                    <!--<button id="btnEditarMaquinasContadores" class="k-button k-button-icontext" data-funcion='MER_PROD_GES_1_GestionMermasPortal' data-role='edit' style="margin-left: 5px;">
+                        <span class='k-icon k-i-pencil'></span><% print(window.app.idioma.t('EDITAR')) %>
+                    </button>-->
+                    <button id="btnEliminarMaquinasContadores" class="k-button k-button-icontext" data-funcion='MER_PROD_GES_1_GestionMermasPortal' data-role='delete' style="margin-left: 5px;">
+                        <span class='k-icon k-delete'></span><% print(window.app.idioma.t('ELIMINAR')) %>
+                    </button>
+                    <button id="btnLimpiarFiltrosMaquinasContadores" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;">
+                        <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+                    </button>
+                </div>
+            </div>
+            <div id="gridMaquinasContadoresMermas"></div>
+        </div>
+        <div>
+            <!-- Filtros Cambios -->
+            <div id="divFiltrosHeader3" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+                <!--<div style="float: left;">
+                    <label style="margin-left:5px;"><% print(window.app.idioma.t('FILTRAR_POR')) %></label>
+                    <select id="selectLinea2" style="width:200px;"></select>
+                    <button id="btnFiltrarContadores" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+                </div>-->
+                <div style="float: right; margin-right: 10px;">
+                    <!--<button id="btnAnadirContadores" class="k-button k-button-icontext" data-funcion='MER_PROD_GES_1_GestionMermasPortal' data-role='add' style="margin-left: 5px;">
+                        <span class='k-icon k-i-plus'></span><% print(window.app.idioma.t('ANADIR')) %>
+                    </button>-->
+                    <!--<button id="btnEditarContadores" class="k-button k-button-icontext" data-funcion='MER_PROD_GES_1_GestionMermasPortal' data-role='edit' style="margin-left: 5px;">
+                        <span class='k-icon k-i-pencil'></span><% print(window.app.idioma.t('EDITAR')) %>
+                    </button>-->
+                    <button id="btnEliminarContadores" class="k-button k-button-icontext" data-funcion='MER_PROD_GES_1_GestionMermasPortal' data-role='delete' style="margin-left: 5px;">
+                        <span class='k-icon k-delete'></span><% print(window.app.idioma.t('ELIMINAR')) %>
+                    </button>
+                    <button id="btnLimpiarFiltrosContadores" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;">
+                        <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+                    </button>
+                </div>
+            </div>
+            <div id="gridContadoresMermas"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Grid Detail -->
+<script id="templateMermas" type="text/x-kendo-template">
+    <div class="gridDetail" style="width: 100%; max-height: 600px;">
+    </div>
+</script>
+
+<!-- Grid Detail 2-->
+<script id="templateMermas2" type="text/x-kendo-template">
+    <div class="gridDetail2" style="width: 100%; max-height: 600px;">
+    </div>
+</script>
+    
+<!-- Grid Detail Maquinas Contadores-->
+<script id="templateMaquinasContadoresMermas" type="text/x-kendo-template">
+    <div class="gridDetailMaquinasContadores" style="width: 100%; max-height: 600px;">
+    </div>
+</script>
+
+<!-- Grid Detail Añadir Maquinas Contadores-->
+<script id="templateAnadirTipoGlobal" type="text/x-kendo-template">
+    <div style='padding:30px;'>
+        <input id='btnCrearTipoGlobal' type='text' class='w-100 k-input k-textbox'>
+        <div class="tac mt-12">
+            <input type="button" class="mr-25" id="btnDlgAnadirTipoGlobal" value="<% print(window.app.idioma.t('ACEPTAR')) %>"/>
+            <input type="button" class="" id="btnDlgCancelar" value="<% print(window.app.idioma.t('CANCELAR')) %>"/>
+        </div>
+    </div>
+</script>
+    
+ <script id="templateAnadirMaquinasContadoresMermas" type="text/x-kendo-template">
+    <div class="pad-30">
+        <div class="w-100">
+            <label for="selectLineaMaqCont" class="w-100"><% print(window.app.idioma.t('LINEA')) %></label>
+            <select id="selectLineaMaqCont" name="selectLineaMaqCont" class="w-100" required></select>
+        </div>
+        <div class="w-100 mt-12">
+            <label for="cmbMaquinasContadores" class="w-100"><% print(window.app.idioma.t('MAQUINA')) %></label>
+            <input id="cmbMaquinasContadores" style="width: 100%;"/>
+        </div>
+        <div class="w-100 mt-12">
+            <label class="w-100"><% print(window.app.idioma.t('CONTADORES_MAQUINAS')) %></label>
+            <div id="gridAnadirMaquinaContador"></div>
+        </div>
+        <div class="tac mt-12">
+            <input type="button" class="boton mr-25" id="btnAnadirMaqContAceptar" value="<% print(window.app.idioma.t('ACEPTAR')) %>"/>
+            <input type="button" class="boton" id="btnAnadirMaqContCancelar" value="<% print(window.app.idioma.t('CANCELAR')) %>"/>
+        </div>
+    </div>
+</script>

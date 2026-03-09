@@ -1,0 +1,56 @@
+﻿<style type="text/css">
+    .cabeceraVista {
+        border: 1px solid black;
+        width: auto;
+        height: 26px;
+        background-color: darkred;
+        color: white;
+        padding: 3px;
+        padding-left: 10px;
+        font-size: 20px;
+    }
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    #contenedorBotones {
+        max-height: calc(100vh - 200px);
+        overflow-y: auto; 
+        padding: 10px;        
+        display: flex;
+        flex-direction: column;
+    }
+    .ajustesBoton {
+        width: 700px;
+        height: 80px; 
+        font-size: 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        line-height: 1.2; 
+    }
+
+    #txtBarcode {
+        font-size: 1.2em;
+        margin-top: 0.3em
+    }
+</style>
+
+<div class="cabeceraVista">
+    <img src="img/iconoCabecera.png" />
+    <span><% print(window.app.idioma.t("VER_QR_MMPP_ZONA")) %></span>
+</div>
+
+<!-- Contenedor dinámico donde se generarán los botones -->
+<div id="contenedorBotones" style="padding-top: 10px">
+    <!-- Los botones se generarán aquí dinámicamente -->
+</div>
+
+<div id="window" style="display:none">
+    <span id="barcode" class="barcode"></span>
+</div>

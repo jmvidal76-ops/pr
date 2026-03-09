@@ -1,0 +1,377 @@
+<style>
+    
+
+    tr.filaSemaforo > td {
+        height: 45px;
+    }
+
+    .circle_cells {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-size: 25px 28px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 25px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        /*margin-right: 5px;*/
+    }
+
+    @media (max-width: 1240px) {
+        .textoMedianoNegrita {
+            font-size: 1.7em;
+        }
+        .textoMediano {
+            font-size: 1.7em;
+        }
+        .textoPequenioNegrita {
+            font-size: 0.9em;
+            padding-bottom: 0.3em;
+        }
+        .textoPequenio {
+            font-size: 0.9em;
+            padding-bottom: 0.3em;
+        }
+        .col-right-content {
+            /*margin-left: -2.7em*/
+            width: 32%
+        }
+        .col-left-content {
+            width: 29%
+        }
+        .col-right-content-down {
+            width: 27%
+        }
+    }
+</style>
+<table style="width: 98%; margin: 10px;" class="BloqueLineaCM">
+    <tr>
+        <td class="bloqueLinea borderRadiusLeft" style="position:relative">
+            <table style="width: 80%;">
+                <tr>
+                    <!-- Líneas -->
+                    <td style="position:relative; height:54px">
+                        <div class="textoGrandeNegrita tituloLinea" style="color: #FFFFFF; text-align: center;">
+                            L<%= linea.numLineaDescripcion %>
+                        </div>
+                        <div class="avisoAveria" hidden>
+                            <img src="../../../Common/img/wrench.png" />
+                            <span class="contadorAverias"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- Máquinas -->
+                    <td>
+                        <div id="divLlenadoras" class="wrapper"></div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td class="bloqueInfo borderRadiusRight">
+            <table style="width: 100%;">
+                <tr>
+                    <!-- WOs -->
+                    <td id="tdWo<%= linea.numLinea %>" class="bloqueInfoTop borderRadiusRight">
+                        <div id="oeeWO<%= linea.numLinea %>" class="divOEEWOProgressBar borderRadiusRight">
+                            <% if(linea.ordenEnPaletizadora == null){ %>
+                                <!--<div class="rTable" id="tableWo<%= linea.numLinea %>" style="width: 100%; height: 95px; z-index: 10">
+                                    <div class="rTableRow">
+                                        <div class='rTableCell textoMedianoNegrita' style='height: 80px; color: #FF0000; text-align: center;vertical-align: middle;'>
+                                            <label id='Label1'><% print(window.app.idioma.t("ORDEN_INACTIVA")) %></label>
+                                        </div>
+                                    </div>
+                                </div>-->
+                                <div class="rTable" id="tableWo<%= linea.numLinea %>" style="width: 100%; height: 95px; z-index: 10">
+                                    <!--                                <tr>
+                                    <td colspan="3" style="height:20px;"><div id="progressBarWo<%= linea.numLinea %>" style="width:100%;"></div></td>
+                                    </tr>-->
+                                    <div class="rTableRow">
+                                        <table style="width:99%; margin-left: 10px">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="3" id="lbloeeWO" style="text-align: center;">
+                                                        <label id='Label1' class="textoMedianoNegrita" style='color: #FF0000;'><% print(window.app.idioma.t("ORDEN_INACTIVA")) %></label>&nbsp;
+                                                        <label class="textoMediano"><% print(window.app.idioma.t("OEE_WO")) %> <% print(window.app.idioma.t("SEMANA_CORTO")) %>:</label>&nbsp;
+                                                        <span class="textoMedianoNegrita"><%=TotalesSemana.OEEWO.toLocaleString('es',{minimumFractionDigits: 2,maximumFractionDigits: 2}) %>%</span>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <table align="right">
+                                                            <tr>
+                                                                <td align="right"><label class="textoPequenio"><% print(window.app.idioma.t("PALES_PALETIZADORA")) %> <% print(window.app.idioma.t("SEMANA_CORTO")) %>:&nbsp;</label></td>
+                                                                <td align="right"><label class="textoPequenioNegrita"><%=kendo.toString(TotalesSemana.PaletsWO, "n0") %></label></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="right"><label class="textoPequenio"><% print(window.app.idioma.t("CAJAS_PALETIZADORA")) %> <% print(window.app.idioma.t("SEMANA_CORTO")) %>:&nbsp;</label></td>
+                                                                <td align="right"><label class="textoPequenioNegrita"><%=kendo.toString(TotalesSemana.CPBWO, "n0") %></label></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="right"><label class="textoPequenio"><% print(window.app.idioma.t("ENVASES_PALETIZADORA")) %> <% print(window.app.idioma.t("SEMANA_CORTO")) %>:&nbsp;</label></td>
+                                                                <td align="right"><label class="textoPequenioNegrita"><%=kendo.toString(TotalesSemana.EnvasesWO, "n0") %></label></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            <% } else { %>
+                                <div class="rTable" id="tableWo<%= linea.numLinea %>" style="width: 100%; height: 95px; z-index: 10">
+                                    <!--  <tr>
+                                    <td colspan="3" style="height:20px;"><div id="progressBarWo<%= linea.numLinea %>" style="width:100%;"></div></td>
+                                    </tr>-->
+                                    <div class="rTableRow">
+                                        <table style="width:99%; margin-left: 10px">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="3" id="lbloeeWO" style="text-align: center;">
+                                                        <label class="textoMediano">OEE WO:</label>&nbsp;
+                                                        <span class="textoMedianoNegrita"><% if (linea.ordenEnPaletizadora){ %><% if (isNaN(linea.ordenEnPaletizadora.produccion.oee)) { %> -- <% } else{ %> <%=linea.ordenEnPaletizadora.produccion.oee.toLocaleString('es',{minimumFractionDigits: 2,maximumFractionDigits: 2})%>% <%}%> <% }%></span>&emsp;
+                                                        <label class="textoMedianoNegrita">(<% if (linea.ordenEnPaletizadora){%><%=linea.ordenEnPaletizadora.producto.codigo%> - <%=linea.ordenEnPaletizadora.producto.nombre.trim()%><%}%>)</label>&nbsp;
+                                                        <label class="textoMediano"><% print(window.app.idioma.t("SEMANA_CORTO")) %>:</label>&nbsp;
+                                                        <span class="textoMedianoNegrita"><%=TotalesSemana.OEEWO.toLocaleString('es',{minimumFractionDigits: 2,maximumFractionDigits: 2}) %>%</span>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <table align="left">
+                                                            <tr>
+                                                                <td align="left"><label class="textoPequenio">ID WO:&nbsp;</label> </td>
+                                                                <td align="right"><label class="textoPequenioNegrita"><% if (linea.ordenEnPaletizadora){ %><%=linea.ordenEnPaletizadora.id%><% } %></label></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="left"><label class="textoPequenio"><% print(window.app.idioma.t("INI_REAL")) %>:&nbsp;</label></td>
+                                                                <td align="right"><label class="textoPequenioNegrita"><% if (linea.ordenEnPaletizadora){%><%=linea.ordenEnPaletizadora.fecInicio%> <% } %>&nbsp;</label></td>
+                                                                <td align="left"><label class="textoPequenio"><% print(window.app.idioma.t("INI_PLANIF")) %>:&nbsp;</label></td>
+                                                                <td><label class="textoPequenioNegrita" style="text-align: left"><% if (linea.ordenEnPaletizadora){%><%=linea.ordenEnPaletizadora.fecInicioEstimado%> <% } %></label></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="left"><label class="textoPequenio"><% print(window.app.idioma.t("FIN_ESTIM")) %>:&nbsp;</label></td>
+                                                                <td align="right"><label class="textoPequenioNegrita"><% if (linea.ordenEnPaletizadora){%><%=linea.ordenEnPaletizadora.fecFinEstimadoCalculado%><% }%>&nbsp;</label></td>
+                                                                <td align="left"><label class="textoPequenio"><% print(window.app.idioma.t("FIN_PLANIF")) %>:&nbsp;</label></td>
+                                                                <td align="right"><label id="fechaFinPlan<%= linea.numLinea %>" class="textoPequenioNegrita"><% if (linea.ordenEnPaletizadora){%><%=linea.ordenEnPaletizadora.fecFinEstimado%><% }%>&nbsp;</label></td>
+                                                                <td align="right"><label class="textoPequenioNegrita"><% if (linea.ordenEnPaletizadora){%><%=linea.ordenEnPaletizadora.desfaseTiempoRealPlan%><% }%></label></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table align="center">
+                                                            <tr>
+                                                                <td align="right"><label class="textoPequenio"><% print(window.app.idioma.t("PALETS_PLANIFICADOS")) %>:&nbsp;</label> </td>
+                                                                <td align="right"><label class="textoPequenioNegrita"><% if (linea.ordenEnPaletizadora){%> <%=kendo.toString(linea.ordenEnPaletizadora.cantPlanificada, "n0")%> <% }%></label></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="right"><label class="textoPequenio"><% print(window.app.idioma.t("CAJAS_PLANIFICADAS")) %>:&nbsp;</label></td>
+                                                                <td align="right">
+                                                                    <label class="textoPequenioNegrita"><% if (linea.ordenEnPaletizadora){%> <%=kendo.toString(linea.ordenEnPaletizadora.cantPlanificada * linea.ordenEnPaletizadora.CajasPorPalet, "n0") %> <% }%></label>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="right"><label class="textoPequenio"><% print(window.app.idioma.t("ENVASES_PLANIFICADOS")) %>:&nbsp;</label></td>
+                                                                <td align="right"><label class="textoPequenioNegrita"><% if (linea.ordenEnPaletizadora){%> <%=kendo.toString(linea.ordenEnPaletizadora.cantPlanificada * linea.ordenEnPaletizadora.EnvasesPorPalet, "n0") %> <% }%></label></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table align="right">
+                                                            <tr>
+                                                                <td align="right"> <label class="textoPequenio"><% print(window.app.idioma.t("PALES_PALETIZADORA")) %>:&nbsp;</label></td>
+                                                                <td align="right"><label class="textoPequenioNegrita"><% if (linea.ordenEnPaletizadora){%> <%=kendo.toString(linea.ordenEnPaletizadora.produccion.paletsEtiquetadoraProducidos, "n0")%> <% }%>&nbsp;</label></td>
+                                                                <td align="right"> <label class="textoPequenio"><% print(window.app.idioma.t("SEMANA_CORTO")) %>:&nbsp;</label></td>
+                                                                <td align="right"><label class="textoPequenioNegrita"><%=kendo.toString(TotalesSemana.PaletsWO, "n0") %></label></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="right"><label class="textoPequenio"><% print(window.app.idioma.t("CAJAS_PALETIZADORA")) %>:&nbsp;</label></td>
+                                                                <td align="right"> <label class="textoPequenioNegrita"><% if (linea.ordenEnPaletizadora){%> <%=kendo.toString(linea.ordenEnPaletizadora.produccion.paletsEtiquetadoraProducidos * linea.ordenEnPaletizadora.CajasPorPalet, "n0") %> <% } %>&nbsp;</label></td>
+                                                                <td align="right"><label class="textoPequenio"><% print(window.app.idioma.t("SEMANA_CORTO")) %>:&nbsp;</label></td>
+                                                                <td align="right"><label class="textoPequenioNegrita"><%=kendo.toString(TotalesSemana.CPBWO, "n0") %></label></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="right"><label class="textoPequenio"><% print(window.app.idioma.t("ENVASES_PALETIZADORA")) %>:&nbsp;</label></td>
+                                                                <td align="right"> <label class="textoPequenioNegrita"><% if (linea.ordenEnPaletizadora){%> <%=kendo.toString(linea.ordenEnPaletizadora.produccion.paletsEtiquetadoraProducidos * linea.ordenEnPaletizadora.EnvasesPorPalet, "n0") %> <% } %>&nbsp;</label></td>
+                                                                <td align="right"><label class="textoPequenio"><% print(window.app.idioma.t("SEMANA_CORTO")) %>:&nbsp;</label></td>
+                                                                <td align="right"><label class="textoPequenioNegrita"><%=kendo.toString(TotalesSemana.EnvasesWO, "n0") %></label></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="height: 1px; background-color: #000000;"></td>
+                </tr>
+                <tr>
+                    <!-- Turnos -->
+                    <td id="tdTurno<%= linea.numLinea %>" class="bloqueInfoBottom borderRadiusRight">
+                        <div id="oeeTurno<%= linea.numLinea %>" class="divOEETurnoProgressBar borderRadiusRight">
+                            <% if(!turnoProductivo){ %>
+                            <!--<div class="rTable" id="Div2" style="width: 100%; z-index: 10">
+                                <div class="rTableRow">
+                                    <div class='rTableCell textoMedianoNegrita' style='height: 40px; color: #FF0000; text-align: center; vertical-align: middle;'>
+                                        <label id='Label2'><% print(window.app.idioma.t("TURNO_INACTIVO")) %></label>
+                                    </div>
+                                </div>
+                            </div>-->
+                            <div class="rTable" id="tableTurno<%= linea.numLinea %>" style="width: 100%; height: 95px; z-index: 10">
+                                <!--  <tr>
+                                    <td colspan="3" style="height:20px;"><div id="progressBarTurno<%= linea.numLinea %>" class="k-widget k-progressbar k-progressbar-horizontal" style="width:100%;"></div></td>
+                                </tr>-->
+                                <div class="rTableRow">
+                                    <div class="rTableCell" style="width: 25%; height: 75px; vertical-align: middle; padding-left: 10px;">
+                                        <table style="border-collapse: collapse; border-spacing: 0; float: left;">
+                                            <tr>
+                                                <td class="textoPequenio">
+                                                    <% print(window.app.idioma.t("PRODUCCION_LLENADORA")) %> <% print(window.app.idioma.t("SEMANA_CORTO")) %>:&nbsp;
+                                                </td>
+                                                <td class="textoPequenioNegrita">
+                                                    <%=kendo.toString(TotalesSemana.EnvasesTurno, "n0") %>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="rTableCell" style="width: 50%; text-align: center; vertical-align: middle;">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <label id="Label2" class="textoMedianoNegrita" style='color: #FF0000;'><% print(window.app.idioma.t("TURNO_INACTIVO")) %></label>&nbsp;
+                                                    <label class="textoMediano">Rend. <% print(window.app.idioma.t("TURNO")) %> <% print(window.app.idioma.t("OEE")) %> <% print(window.app.idioma.t("SEMANA_CORTO")) %>:</label>&nbsp;
+                                                    <label class="textoMedianoNegrita"><%=TotalesSemana.OEETurno.toLocaleString('es',{minimumFractionDigits: 2,maximumFractionDigits: 2}) %>%</label>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="rTableCell" style="vertical-align: middle; padding-right: 10px;">
+                                        <table style="border-collapse: collapse; border-spacing: 0; float: right;">
+                                            <tr>
+                                                <td class="textoPequenio">
+                                                    <% print(window.app.idioma.t("PRODUCCION_PALETIZADORA")) %> <% print(window.app.idioma.t("SEMANA_CORTO")) %>:&nbsp;
+                                                </td>
+                                                <td class="textoPequenioNegrita">
+                                                    <%=kendo.toString(TotalesSemana.PaletsTurno, "n0") %>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } else { %>
+                            <div class="rTable" id="tableTurno<%= linea.numLinea %>" style="width: 100%; height: 95px; z-index: 10">
+                                <!--  <tr>
+                                    <td colspan="3" style="height:20px;"><div id="progressBarTurno<%= linea.numLinea %>" class="k-widget k-progressbar k-progressbar-horizontal" style="width:100%;"></div></td>
+                                </tr>-->
+                                <div class="rTableRow">
+                                    <div class="rTableCell" style="width: 40%; height: 75px; vertical-align: middle; padding-left: 10px;">
+                                        <table style="border-collapse: collapse; border-spacing: 0; float: left;">
+                                            <tr>
+                                                <td class="textoPequenio">
+                                                    <div><% print(window.app.idioma.t("PRODUCCION_LLENADORA")) %>:&nbsp;</div>
+                                                </td>
+                                                <td class="textoPequenioNegrita">
+                                                    <%=kendo.toString(EnvasesTurno, "n0")%>
+                                                </td>
+                                                <td class="textoPequenio" style="margin-left: 25px">
+                                                    <% print(window.app.idioma.t("SEMANA_CORTO")) %>:&nbsp;
+                                                </td>
+                                                <td class="textoPequenioNegrita">
+                                                    <%=kendo.toString(TotalesSemana.EnvasesTurno, "n0") %>
+                                                </td>
+                                            </tr>
+                                            <tr class="filaSemaforo">
+                                                <td>
+                                                    <label class="textoPequenio" style="float:left"><% print(window.app.idioma.t("TURNO_ACTUAL_CORTO")) %>:&nbsp;</label>
+                                                </td>
+                                                <td>
+                                                    <div class='circle_cells' style='background-color: <%=TurnoActualSemaforo%>' />
+                                                </td>
+                                                <td>
+                                                    <label class="textoPequenio" style="float:left; margin-left: 25px"><% print(window.app.idioma.t("ANTERIOR_CORTO")) %>:&nbsp;</label>
+                                                </td>
+                                                <td>
+                                                    <div class='circle_cells' style='background-color: <%=TurnoAnteriorSemaforo%>' />
+                                                </td>
+                                                <td>
+                                                    <label class="textoPequenio" style="float:left"><% print(window.app.idioma.t("ARRANQUE_WO_CORTO")) %>:&nbsp;</label>
+                                                </td>
+                                                <td>
+                                                    <div class='circle_cells' style='background-color: <%=ArranqueWOSemaforo%>' />
+                                                </td>
+                                                <td>
+                                                    <label class="textoPequenio" style="float:left; margin-left: 25px"><% print(window.app.idioma.t("FINALIZACION_WO_CORTO")) %>:&nbsp;</label>
+                                                </td>
+                                                <td>
+                                                    <div class='circle_cells' style='background-color: <%=FinalizacionWOSemaforo%>' />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="rTableCell" style="width: 35%; text-align: center; vertical-align: middle;">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <label id="lbloeeTurno" class="textoMediano">Rend. <% print(window.app.idioma.t("TURNO")) %>:&nbsp;</label>
+                                                    <label id="tdOeeTurno<%= linea.numLinea %>" class="textoMedianoNegrita"> <%=OEETurno.toLocaleString('es',{minimumFractionDigits: 2,maximumFractionDigits: 2})%>%</label>&nbsp;
+                                                    <label class="textoMediano"><% print(window.app.idioma.t("OEE")) %> <% print(window.app.idioma.t("SEMANA_CORTO")) %>:</label>&nbsp;
+                                                    <label class="textoMedianoNegrita"><%=TotalesSemana.OEETurno.toLocaleString('es',{minimumFractionDigits: 2,maximumFractionDigits: 2}) %>%</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                <label id="lbloeeTurnoObj" class="textoPequenio" style="float:left"><% print(window.app.idioma.t("OBJETIVO")) %>:&nbsp;</label>
+                                                                <label class="textoPequenioNegrita"><%=linea.oeeObjetivo.toLocaleString('es',{minimumFractionDigits: 2,maximumFractionDigits: 2}) %>% -&nbsp; </label>
+
+                                                            </td>
+                                                            <td>
+                                                                <label class="textoPequenio" style="float:left"><% print(window.app.idioma.t("CRITICO")) %>:&nbsp;</label>
+                                                                <label class="textoPequenioNegrita"><%=linea.oeeCritico.toLocaleString('es',{minimumFractionDigits: 2,maximumFractionDigits: 2})%>%</label>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="rTableCell" style="vertical-align: middle; padding-right: 10px;">
+                                        <table style="border-collapse: collapse; border-spacing: 0; float: right;">
+                                            <tr>
+                                                <td class="textoPequenio">
+                                                    <% print(window.app.idioma.t("PRODUCCION_PALETIZADORA")) %>:&nbsp;
+                                                </td>
+                                                <td class="textoPequenioNegrita">
+                                                    <%=kendo.toString(PaletsTurno, "n0") %>&nbsp;
+                                                </td>
+                                                <td class="textoPequenio">
+                                                    <% print(window.app.idioma.t("SEMANA_CORTO")) %>:&nbsp;
+                                                </td>
+                                                <td class="textoPequenioNegrita">
+                                                    <%=kendo.toString(TotalesSemana.PaletsTurno, "n0") %>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                        </div>
+                        </td>
+                </tr>
+            </table>
+            </td>
+    </tr>
+</table>

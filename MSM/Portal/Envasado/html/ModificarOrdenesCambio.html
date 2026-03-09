@@ -1,0 +1,77 @@
+<style>
+    .k-detail-cell .k-tabstrip .k-content {
+        padding: 0.2em;
+    }
+
+    .details ul {
+        list-style: none;
+        margin: 15px;
+        padding: 0;
+    }
+
+    .details ul li {
+        margin: 0;
+        line-height: 1.7em;
+    }
+
+    .details label {
+        display: inline-block;
+        width: 180px;
+        padding-right: 10px;
+        text-align: right;
+        font-style: normal;
+        font-weight: bold;
+    }
+</style>
+
+ <!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('MOD_ORDENES_CAMBIO')) %>
+</label>
+</div>
+
+ <!-- Filtros -->
+<div id="divFiltros" style="background-color:#f5d1d1;height:35px;width:100%; padding-top:5px;">
+    <div style="float:left;">
+        <label style="margin-left:5px;"><% print(window.app.idioma.t('FECHA')) %> <% print(window.app.idioma.t('DESDE')) %></label>
+        <input id="dtpFechaDesde" style="width:175px;"/>
+        <label style="margin-left:5px;"><% print(window.app.idioma.t('FECHA')) %> <% print(window.app.idioma.t('HASTA')) %></label>
+        <input id="dtpFechaHasta" style="width:175px;" />
+        <button id="btnFiltrar" class="k-button k-button-icontext" style="background-color:darkorange; color:white;margin-left:5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('FILTRAR')) %></button>
+    </div>
+   <div style="float:right; margin-right:10px;">
+        <button id="btnLimpiarFiltros" class="k-button k-button-icontext k-i-delete" style="background-color:darkorange; color:white;margin-left:5px;"><span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %></button>
+     </div>
+</div>
+
+<div id="gridModOrdenesCambio"></div>
+
+ <!-- Detail Grid -->
+<script type="text/x-kendo-template" id="template">
+    <div class="container" style="width:98%;">
+
+        <ul>
+            <li class="k-state-active">
+              <% print(window.app.idioma.t('ACCIONES')) %>
+            </li>
+        </ul>
+        <div>
+            <div class="details">
+                <ul>
+                    <li>
+                        <label><% print(window.app.idioma.t('CAMBIAR_ESTADO')) %></label>&nbsp;&nbsp;
+                        <select id="selectEstado">
+                            <option><% print(window.app.idioma.t('EN_CURSO')) %></option>
+                            <option><% print(window.app.idioma.t('PAUSAR')) %></option>
+                            <option><% print(window.app.idioma.t('CANCELAR')) %></option>
+                            <option><% print(window.app.idioma.t('CERRAR')) %></option>
+                        </select>
+                    </li>
+                </ul>
+                <button class="k-button k-button k-button-icontext k-grid-save" style="background-color:green;color:white;margin-left:215px;" id="btnGuardarEstado"><span class='k-icon k-save'></span><% print(window.app.idioma.t('GUARDAR')) %></button>
+            </div>
+        </div>
+
+    </div>
+</script>

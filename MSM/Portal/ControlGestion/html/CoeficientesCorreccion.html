@@ -1,0 +1,72 @@
+﻿<style>
+    .k-tabstrip .k-content {
+        margin: 0;
+        padding: 0;
+        border-width: 0;
+        overflow-y: hidden;
+    }
+</style>
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"> <% print(window.app.idioma.t('COEFICIENTES_CORRECCION')) %></label>
+</div>
+
+<div id="CoeficientesCorreccion" class="divContenidoVista">
+    <div id="divPestanias">
+        <ul>
+            <li class="k-state-active" data-id="1"><% print(window.app.idioma.t('COCCION')) %></li>
+            <li data-id="2"><% print(window.app.idioma.t('TCPS')) %></li>
+            <li data-id="3"><% print(window.app.idioma.t('HISTORICO_STOCKS')) %></li>
+        </ul>
+        <div>
+            <div id="divBotonesCoccion" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+                <div style="float: right; margin-right: 10px;">
+                    <button id="btnAnadirCoefCoccion" class="k-button k-button-icontext" style="margin-left: 5px;">
+                        <span class='k-icon k-add'></span><% print(window.app.idioma.t('ANADIR')) %>
+                    </button>
+                    <button id="btnLimpiarFiltrosCoccion" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;">
+                        <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+                    </button>
+                    <button id="btnExportExcelCoccion" class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px;">
+                        <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+                    </button>
+                </div>
+            </div>
+            <div id="gridCoeficientesCoccion"></div>
+        </div>
+        <div>
+            <div id="divBotonesTCP" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+                <div style="float: right; margin-right: 10px;">
+                    <button id="btnAnadirCoefTCP" class="k-button k-button-icontext" style="margin-left: 5px;">
+                        <span class='k-icon k-add'></span><% print(window.app.idioma.t('ANADIR')) %>
+                    </button>
+                    <button id="btnLimpiarFiltrosTCP" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;">
+                        <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+                    </button>
+                    <button id="btnExportExcelTCP" class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px;">
+                        <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+                    </button>
+                </div>
+            </div>
+            <div id="gridCoeficientesTCP"></div>
+        </div>
+        <div>
+            <div id="divBotonesHistorico" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+                <div style="float: right; margin-right: 10px;">
+                    <button id="btnAnadirCoefHistorico" class="k-button k-button-icontext" style="margin-left: 5px;">
+                        <span class='k-icon k-add'></span><% print(window.app.idioma.t('ANADIR')) %>
+                    </button>
+                    <button id="btnLimpiarFiltrosHistorico" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;">
+                        <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+                    </button>
+                    <button id="btnExportExcelHistorico" class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px;">
+                        <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+                    </button>
+                </div>
+            </div>
+            <div id="gridCoeficientesHistorico"></div>
+        </div>
+    </div>
+</div>

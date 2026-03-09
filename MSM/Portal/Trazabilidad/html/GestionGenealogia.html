@@ -1,0 +1,432 @@
+﻿<style>
+    #divHTMLContenido {
+        height: 100%;
+        width: 100%;
+    }
+
+    .k-in .k-image {
+     width: 16px !important;
+     height: 16px !important;
+     float:right
+    }
+
+     .bloqueado
+      {
+        background-color: #FAFAD2;
+      }
+
+    .filters {
+        display:none
+    }
+
+    .k-menu .k-item > .k-link {
+      padding:  0.4em 1em .3em;
+    }
+
+    .listColumn {
+        height:400px !important;
+        overflow-y:auto !important;
+    }
+
+     .fieldlist {
+                /*margin: 0 0 -2em;*/
+                padding: 5px;
+            }
+
+            .fieldlist li {
+                list-style: none;
+                padding-bottom: 1em;
+                 display: inline-block;
+                 width: 45%
+            }
+
+            .fieldlist label {
+                display: block;
+                font-weight: bold;
+                text-transform: uppercase;
+                font-size: 12px;
+                color: #444;
+            }
+
+        .fieldlist input {
+            width: 95%
+        }
+
+        /*.landing-wrapper {
+            height: 5%;
+        }*/
+
+        .landing {
+            width: 100%;
+            position: fixed;
+        }
+
+    .itemTreeEnvasado {
+        background-color: #319C98;
+    }
+
+    .itemTreeFab {
+        background-color: #FF5733;
+    }
+
+    .itemTreeRec {
+        background-color: #DAF7A6;
+    }
+
+    .itemTreeCoc {
+        background-color: #C8A023;
+    }
+
+    .itemTreeFer {
+        background-color: #233AC8;
+    }
+
+    .itemTreeGua {
+        background-color: #23C882;
+    }
+
+    .itemTreeTcp {
+        background-color: #23C1C8;
+    }
+
+    .circle_cells {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-size: 15px 18px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 15px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-right: 5px;
+    }
+
+    .filtros {
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .btnLIMS {
+        position: absolute;
+        top: 5px;
+        left: 428px;
+        height: 30px;
+        width: 50px;
+        z-index: 5;
+        border-bottom-color: #9f9f9f;
+        border-top: 2px solid #c5c5c5;
+    }
+
+    .btnFicherosAdjuntos {
+        position: absolute;
+        top: 5px;
+        left: 478px;
+        height: 30px;
+        width: 130px;
+        z-index: 5;
+        border-bottom-color: #9f9f9f;
+        border-top: 2px solid #c5c5c5;
+    }
+   
+</style>
+
+<script id="templateLeyenda" type="text/x-kendo-template">
+
+     <table class="table">
+        <thead>
+            <tr>
+                <th colspan="2">
+                     <label> <% print(window.app.idioma.t('REFERENCIA_PROCESOS_LOTES')) %></label>
+                </th>
+
+            </tr>
+        </thead>
+            <tbody >
+                <tr style="display: table-row;padding:5px;margin:5px">
+                   <td><div class='circle_cells itemTreeEnvasado' ></div></td>
+                   <td><label><% print(window.app.idioma.t('ENVASADO')) %></label></td>
+                </tr>
+    <tr style="display: table-row;padding:5px;margin:5px">
+                   <td><div class='circle_cells itemTreeFab' ></div></td>
+                   <td> <label><% print(window.app.idioma.t('FABRICACION')) %></label></td>
+                </tr>
+    <tr style="display: table-row;padding:5px;margin:5px">
+                   <td><div class='circle_cells itemTreeRec' ></div></td>
+                   <td><label><% print(window.app.idioma.t('RECEPCION')) %></label></td>
+                </tr>
+    <tr style="display: table-row;padding:5px;margin:5px">
+                   <td><div class='circle_cells itemTreeCoc' ></div></td>
+                   <td> <label><% print(window.app.idioma.t('COCCION')) %></label></td>
+                </tr>
+    <tr style="display: table-row;padding:5px;margin:5px">
+                   <td><div class='circle_cells itemTreeFer' ></div></td>
+                   <td><label><% print(window.app.idioma.t('FERMENTACION')) %></label></td>
+                </tr>
+    <tr style="display: table-row;padding:5px;margin:5px">
+                   <td><div class='circle_cells itemTreeGua' ></div></td>
+                   <td><label><% print(window.app.idioma.t('GUARDA')) %></label></td>
+                </tr>
+     <tr style="display: table-row;padding:5px;margin:5px"">
+                   <td><div class='circle_cells itemTreeTcp' ></div></td>
+                   <td><label><% print(window.app.idioma.t('TCP')) %></label></td>
+                </tr>
+            </tbody>
+        </table>
+</script>
+
+
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+            <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+            <label class="lblCabeceraVista"><% print(window.app.idioma.t('GESTION_GENEALOGIA')) %></label>
+</div>
+<script type="text/x-kendo-template" id="tmpToolbar">
+
+
+    <div id="divFilters" class="k-header k-grid-toolbar" style="overflow-x:auto;display:none;margin-bottom:5px">
+
+        <table style="margin-bottom: 5px" class="table-responsive">
+            <tbody >
+                <tr class="filters" style="display: table-row;">
+                   <th style="padding-left:1em"><% print(window.app.idioma.t('TIPO_MATERIAL')) %></th>
+                    <th style="padding-left:1em"><% print(window.app.idioma.t('CLASE_MATERIAL')) %></th>
+                    <th style="padding-left:1em"><% print(window.app.idioma.t('REFERENCIA')) %></th>
+                    <!--<th style="padding-left:1em"><% print(window.app.idioma.t('PROVEEDOR')) %></th>-->
+
+                    <th style="padding-left:1em"><% print(window.app.idioma.t('ALMACEN')) %></th>
+                    <th style="padding-left:1em"><% print(window.app.idioma.t('ZONA')) %></th>
+                    <th style="padding-left:1em"><% print(window.app.idioma.t('UBICACION')) %></th>
+                    <th style="padding-left:1em"><% print(window.app.idioma.t('PROCESO')) %></th>
+                </tr>
+                <tr class="filters" style="display: table-row;">
+                   <td style="border-width: 0 0 0 1px;padding-right:5px;"><input id="cmbTipoMat" style="width:100%;"/></td>
+                    <td style="border-width: 0 0 0 1px;padding-right:5px;"><input id="cmbClaseMat" style="width:100%;"/></td>
+                    <td style="border-width: 0 0 0 1px;padding-right:5px;"><input style="width:100%"  id="cmbReferencia"/></td>
+                    <!--<td style="border-width: 0 0 0 1px;padding-right:5px;"><input style="width:100%"  id="cmbProveedor"/></td>-->
+                    <td style="border-width: 0 0 0 1px;padding-right:5px;"><input id="cmbAlmacen" style="width:100%" /></td>
+                    <td style="border-width: 0 0 0 1px;padding-right:5px;"><input id="cmbZona" style="width:100%"/></td>
+                    <td style="border-width: 0 0 0 1px;padding-right:5px;"><input id="cmbUbicacion" style="width:100%"/></td>
+                    <td style="border-width: 0 0 0 1px;padding-right:5px;"><input id="cmbProceso" style="width:100%"/></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</script>
+
+<script type="text/x-kendo-template" id="tmpToolbarFiltros">
+    <div class="filtros" >
+
+    <button id="btnHaciaMMPP"  type="button"  class="k-button k-button-icontext" style="margin-right:5px;" >
+      <img class="k-image" alt="" src="../Portal/img/arrow_left.png" style="width: 16px;height: 16px;margin: 3px; float:  left;"/>
+                         <% print(window.app.idioma.t('HACIA_MMPP')) %>
+    </button>
+    <button id="btnHaciaProducto"  type="button"  class="k-button k-button-icontext" style="margin-right:5px;" >
+      <img class="k-image" alt="" src="../Portal/img/arrow_right.png" style="width: 16px;height: 16px;margin: 3px; float:  right;"/>
+                         <% print(window.app.idioma.t('HACIA_PRODUCTO')) %>
+    </button>
+    <input id="cmbLoteMes" style="margin-right:5px;width:28%" placeholder="<% print(window.app.idioma.t('LOTE_MES')) %>" />
+    <input id="cmbLoteProveedor" style="width:15%" placeholder="<% print(window.app.idioma.t('LOTE_PROVEEDOR')) %>" />
+    <input id="cmbDesde" placeholder="<% print(window.app.idioma.t('DESDE')) %>" />
+    <input id="cmbHasta" placeholder="<% print(window.app.idioma.t('HASTA')) %>" />
+    <div style="float:right">
+        <button id="btnLimpiarFiltros"  class="k-button k-button-icontext"  >
+        <span class="k-icon k-i-funnel-clear"></span><% print(window.app.idioma.t('LIMPIAR_FILTROS')) %>
+    </button>
+    <button id="btnFiltros" class="k-button" style="margin-left:5px">
+        <span class="k-icon k-i-plus"></span><% print(window.app.idioma.t('MOSTRAR_FILTROS')) %>
+    </button>
+    <button id="btnConsultar" class="k-button">
+        <span class="k-icon k-i-search"></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+    </div>
+
+    </div>
+</script>
+
+<script type="text/x-kendo-template" id="tmpLIMS">
+    <div>
+        <div style="display: flex;flex-direction: row;align-items: center;
+        justify-content: flex-start;margin-bottom:12px;">
+            <strong style="margin-right: 18px"><label class="mbi"><% print(window.app.idioma.t('ID_LOTE')) %></label>:</strong>
+            <label class="mbi">#=IdLoteMES#</label>
+        </div>
+        <div id="gridLIMS"></div>
+    </div>
+</script>
+
+<div id="gridFilters"></div>
+
+<div id="divSplitter" style="width:100%;">
+    <div id="divGridSuperior" >
+        <div class="divCabeceraVista" style="height:40px">
+
+            <label class="lblCabeceraVista" style="margin-left:10px"><% print(window.app.idioma.t('LOTES')) %> - <span class="txtDirCo"><% print(window.app.idioma.t('HACIA_PRODUCTO')) %></span></label>
+            <button class="k-button k-button-icontext" style="float:right;margin:5px" id="leyendaLotes"><% print(window.app.idioma.t('INFO')) %></button>
+        </div>
+        <div>
+            <div id="treeview" ></div>
+        </div>
+    </div>
+    <div id="divDetalleLote">
+        <button id="btnLIMS" class="k-button k-button-icontext btnLIMS"><% print(window.app.idioma.t('LIMS')) %></button>
+        <button id="btnFicherosAdjuntos" class="k-button k-button-icontext btnFicherosAdjuntos"><% print(window.app.idioma.t('ARCHIVOS_ADJUNTOS')) %></button>
+        <div id="divPestanias">
+            <ul>
+                <!--Pestañas-->
+                <li class="k-state-active" id="liDatosLotes">
+                    <% print(window.app.idioma.t('DATOS_LOTE')) %>
+                </li>
+                <li id="liWO">
+                    <% print(window.app.idioma.t('WO')) %>
+                </li>
+                <li id="liTransferencias">
+                    <% print(window.app.idioma.t('TRANSFERENCIAS')) %>
+                </li>
+                <li id="liMovimientos">
+                    <% print(window.app.idioma.t('MOVIMIENTOS')) %>
+                </li>
+                <li id="liMMPP">
+                    <% print(window.app.idioma.t('MMPP')) %>
+                </li>
+                <li id="liPaletsProducidos" disabled>
+                    <% print(window.app.idioma.t('PALETS_PRODUCIDOS')) %>
+                </li>
+                <!--<li id="liEntradaPlanta">
+                <% print(window.app.idioma.t('ENTRADA_PLANTA')) %>
+            </li>
+            <li id="liSalidaPlanta">
+                <% print(window.app.idioma.t('SALIDA_PLANTA')) %>
+            </li>-->
+            </ul>
+            <div>
+                <!--DATOS DEL LOTE-->
+                <ul class="panelbar">
+                    <li class="k-state-active">
+                        <% print(window.app.idioma.t('DATOS_LOTE')) %>
+                        <div>
+                            <div style="padding:5px">
+                                <div id="gridDatosLote"></div>
+                            </div>
+
+                        </div>
+                    </li>
+                    <li>
+                        <% print(window.app.idioma.t('PROPIEDADES')) %>
+                        <div style="max-height:500px">
+                            <div style="padding:5px" id="dataPropiedades">
+                                <div id="gridPropiedadesLote"></div>
+                            </div>
+                        </div>
+                    </li>
+                    <!--<li>
+                    <% print(window.app.idioma.t('ANALITICAS_LOTE')) %>
+                    <div>
+                        <div style="padding:5px">
+                            <div id="gridAnaliticasLote"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <% print(window.app.idioma.t('CONTROL_CALIDAD')) %>
+                    <div>
+                        <div style="padding:5px">
+                            <div id="gridControlCalidadLote"></div>
+                        </div>
+                    </div>
+                </li>-->
+                </ul>
+
+            </div><!--FIN DATOS LOTES-->
+            <div>
+                <div style="padding:5px">
+                    <div id="gridWO"></div>
+                </div>
+            </div><!--FIN WO-->
+            <div>
+                <div style="padding:5px">
+                    <div id="gridTransferencias"></div>
+                </div>
+            </div><!--FIN TRANSFERENCIAS-->
+            <div>
+                <div style="padding:5px">
+                    <div id="gridMovimientos"></div>
+                </div>
+            </div><!--FIN MOVIMIENTOS-->
+            <div>
+                <!--MATERIAS-->
+                <div style="padding:5px">
+                    <div id="gridMaterias"></div>
+                </div>
+            </div><!--FIN MMPP-->
+            <div>
+                <!--PALETS PRODUCIDOS-->
+                <div style="padding:5px">
+                    <div id="gridPaletsProducidos"></div>
+                </div>
+            </div><!--FIN PALETS PRODUCIDOS-->
+            <div>
+                <!--ENTRADA A PLANTA-->
+                <ul class="panelbar">
+                    <li class="k-state-active">
+                        <% print(window.app.idioma.t('DATOS_DESCARGA')) %>
+                        <div>
+                            <div style="padding:5px">
+                                <div id="gridDatosDescarga_EntradaPlanta"></div>
+                            </div>
+
+                        </div>
+                    </li>
+                    <li>
+                        <% print(window.app.idioma.t('DATOS_TRANSPORTE')) %>
+                        <div>
+                            <div style="padding:5px">
+                                <div id="gridDatosTransporte_EntradaPlanta"></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <% print(window.app.idioma.t('DOCUMENTOS')) %>
+                        <div>
+                            <div style="padding:5px">
+                                <div id="gridDocumentos_EntradaPlanta"></div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div><!--FIN ENTRADA A PLANTA-->
+            <div>
+                <!--SALIDA A PLANTA-->
+                <ul class="panelbar">
+                    <li class="k-state-active">
+                        <% print(window.app.idioma.t('DATOS_CARGA')) %>
+                        <div>
+                            <div style="padding:5px">
+                                <div id="gridDatosCarga_SalidaPlanta"></div>
+                            </div>
+
+                        </div>
+                    </li>
+                    <li>
+                        <% print(window.app.idioma.t('DATOS_TRANSPORTE')) %>
+                        <div>
+                            <div style="padding:5px">
+                                <div id="gridDatosTransporte_SalidaPlanta"></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <% print(window.app.idioma.t('DOCUMENTOS')) %>
+                        <div>
+                            <div style="padding:5px">
+                                <div id="gridDocumentos_SalidaPlanta"></div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div><!--FIN SALIDA A PLANTA-->
+        </div>
+    </div>
+</div>
+<input type="checkbox" id="chkLotesConsumidos" checked style="display:none" />

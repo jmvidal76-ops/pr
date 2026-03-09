@@ -1,0 +1,252 @@
+<style type="text/css">
+    html {
+        display: table;
+    }
+    
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    
+    #body {
+        max-width: 50em;
+        margin: 0 auto;
+    }
+
+    body,
+    th,
+    td {
+        font-family: Arial, Helvetica, sans-serif;
+        color: #000000;
+        padding: 0;
+    }
+    
+    table {
+        margin: 0 auto;
+        border-collapse: collapse;
+        border-spacing: 0;
+        text-align: left;
+    }
+    
+    .vistaCarrusel {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 0;
+        font-weight: normal;
+        text-align: left;
+        display: block;
+    }
+    
+    .maquina {
+        font-size: 22px;
+        font-weight: bold;
+        color: #FFFFFF;
+        text-align: center;
+        vertical-align: middle;
+        /*margin-top: 5px;*/
+        width: 100%;
+        display: table;
+    }
+    
+    .k-progressbar {
+        /*height: 23px;*/
+        border: 0 !important;
+        /* background-image:none; border-radius:0 0 0 0 !important; background-color:#FFFFFF !important; */
+    }
+    /*.k-progressbar {
+        border-radius: 0;
+    }*/
+    
+    .k-header,
+    .k-grid-header,
+    .k-toolbar,
+    .k-dropdown-wrap,
+    .k-picker-wrap,
+    .k-numeric-wrap,
+    .k-grouping-header,
+    .k-pager-wrap,
+    .k-textbox,
+    .k-button,
+    .k-progressbar,
+    .k-draghandle,
+    .k-autocomplete,
+    .k-state-highlight,
+    .k-tabstrip-items .k-item,
+    .k-panelbar .k-tabstrip-items .k-item,
+    .km-pane-wrapper>.km-pane>.km-view>.km-content {
+        background-image: none;
+    }
+    
+    .k-progressbar-horizontal>.k-state-selected,
+    .k-rtl .k-progressbar-horizontal.k-progressbar-reverse>.k-state-selected {
+        left: 0;
+    }
+    /*.k-progressbar > .k-complete.k-state-selected, .k-rtl .k-progressbar > .k-complete.k-state-selected {
+        border-radius: 0;
+    }*/
+    /*.k-progressbar-horizontal > .k-state-selected, .k-rtl .k-progressbar-reverse.k-progressbar-horizontal > .k-state-selected {
+        border-radius: 0;
+    }*/
+    /*.k-state-selected {
+        background-color: #FFFF00;
+        border-color: #FFFF00;
+    }*/
+    
+    .textoGrandeNegrita {
+        font-size: 60px;
+        font-weight: bold;
+        line-height: 0.9em;
+    }
+    
+    .textoMedianoNegrita {
+        font-size: 30px;
+        font-weight: bold;
+        line-height: 0.9em;
+    }
+    
+    .textoMediano {
+        font-size: 1.7em;
+        font-weight: normal;
+        line-height: 1.0em;
+    }
+    
+    .textoPequenioNegrita {
+        font-size: 20px;
+        font-weight: bold;
+        text-align: right
+    }
+    
+    .textoPequenio {
+        font-size: 20px;
+        font-weight: normal;
+        float: left
+    }
+    
+    .ui-pnotify {
+        display: none !important;
+    }
+    /* Hace que los bocadillos de notificación que aparecen con los cambios de estado, que producen scroll, no se muestren */
+    
+    .ui-pnotify stack-bottomright {
+        display: none !important;
+    }
+    
+    .alert ui-pnotify-container alert-success ui-pnotify-shadow {
+        display: none !important;
+    }
+    
+    .rTable {
+        display: table;
+        position: relative;
+    }
+    
+    .rTableRow {
+        display: table-row;
+    }
+    
+    .rTableCell {
+        display: table-cell;
+        padding: 10px;
+    }
+    
+    .divOEEWOProgressBar {
+        height: 98.1%;
+        width: 99.8%;
+        margin-top: 1px;
+        z-index: 0;
+        background-color: #FFFFFF;
+    }
+    
+    .divOEETurnoProgressBar {
+        height: 98%;
+        width: 99.8%;
+        margin-top: 1px;
+        z-index: 0;
+        background-color: #FFFFFF;
+    }
+    
+    .borderRadiusLeft {
+        border-radius: 10px 0px 0px 10px;
+    }
+    
+    .borderRadiusRight {
+        border-radius: 0px 10px 10px 0px;
+    }
+    
+    .bloqueLinea {
+        width: 200px;
+        /*height: 201px;*/
+        background-color: #9FC5F8;
+        border-right: 1px solid #000000;
+        vertical-align: top;
+    }
+    
+    .bloqueInfo {
+        background-color: #FFFFFF;
+        vertical-align: top;
+    }
+    
+    .bloqueInfoTop {
+        height: 95px;
+        vertical-align: top;
+    }
+    
+    .bloqueInfoBottom {
+        height: 95px;
+        vertical-align: top;
+    }
+    
+    .k-progressbar>.k-state-selected.k-complete,
+    .k-rtl .k-progressbar>.k-state-selected.k-complete {
+        border-radius: 10px;
+    }
+    
+    body {
+        margin: 0;
+    }
+    /*.outer-container {
+        display: table;
+      height: 100%;
+      width:100%;
+      margin: 0 auto;
+    }
+
+    .inner-container {
+        display: table-cell;
+      vertical-align: middle;  
+    }*/
+    
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 130px;
+    }
+    
+    .wrapper div {
+        /*width: 24px;*/
+        /*border-color:white;
+            border-style:solid;
+            border-width:thin;*/
+        padding-bottom: 5px;
+        padding-left: 5px
+    }
+    
+    @media (max-width: 1240px) {
+        .listadoLineasCuadroMando {
+            margin-top: -1px
+        }
+    }
+</style>
+
+
+<div id="listadoLineasCuadroMando<%= id %>" class="center listadoLineasCuadroMando"></div>

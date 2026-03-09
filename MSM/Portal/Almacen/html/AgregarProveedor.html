@@ -1,0 +1,23 @@
+﻿<div id="divWndProveedor" style="padding:10px">
+    <form>
+        <div class="col-md-11 form-group">
+            <div class="col-lg-3"><label for="idProveedorNew"><% print(window.app.idioma.t('ID_PROVEEDOR')) %>*</label></div>
+            <div class="col-lg-7"><input id="idProveedorNew" style="width:100% !important" class="k-textbox"></div>
+        </div>
+        <div class="col-md-11 form-group">
+            <div class="col-lg-3"><label for="nombreProveedorNew"><% print(window.app.idioma.t('NOMBRE')) %>*</label></div>
+            <div class="col-lg-7"><input id="nombreProveedorNew" style="width:100% !important" type="text" class="k-textbox"></div>
+
+        </div>
+
+
+        <div class="col-md-11">
+            <center>
+                <label id="errorProveedor" style="color:red"></label><br />
+                <button id="btnSubmitProveedor" class="k-button" type="button" data-role="button" role="button" aria-disabled="false" tabindex="0">
+                    <% print(window.app.idioma.t('CREAR')) %>
+                </button>
+            </center>
+        </div>
+    </form>
+</div>

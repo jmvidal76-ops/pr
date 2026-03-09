@@ -1,0 +1,596 @@
+﻿<style>
+    .gridP {
+        /*height:120px;*/
+        overflow: hidden;
+    }
+
+    .pad-10 {
+        padding: 10px;
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .mar-top-10 {
+        margin-top: 10px;
+    }
+
+    .pD {
+        height: 30%;
+        width: 90%;
+        overflow: hidden;
+    }
+
+    .pDM {
+        height: 10%;
+        width: 90%;
+        overflow: hidden;
+    }
+
+    .tac {
+        text-align: center;
+    }
+
+    .bloqueOrden {
+        width: 100%;
+        height: 16px;
+        padding: 5px;
+        border-bottom: solid 1px gray;
+        overflow: hidden;
+    }
+
+    .cabecera {
+        height: 17px;
+        overflow: hidden;
+        padding: 3px;
+    }
+
+    .cabecera_2 {
+        padding: 3px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #loader {
+        top: 35%;
+    }
+
+    #loaderReport {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 100%;
+        width: 100%;
+        background-color: gray;
+        opacity: 0.6;
+        display: none;
+    }
+
+        #loaderReport div {
+            position: relative;
+            top: 45%;
+            left: 45%;
+            height: 90px;
+            width: 90px;
+            background-color: white;
+            border-radius: 50px;
+        }
+
+        #loaderReport img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -32px; /* -1 * image width / 2 */
+            margin-top: -32px; /* -1 * image height / 2 */
+        }
+
+    .celdaLlenadora {
+        font-weight: bold;
+        background-color: #fdd;
+    }
+
+    #panelLlenadoras_p5 tr:first-child td {
+        font-weight: bold;
+    }
+
+    #panelLlenadoras_p5 table tr:nth-child(4) {
+        font-weight: bold;
+    }
+
+    #panelLlenadoras_p5 table tr:nth-child(7) {
+        font-weight: bold;
+    }
+
+    #panelLlenadoras_p5 thead th {
+        font-weight: bold !important;
+    }
+    /* agomezn 010616: 043 que Parte de Turno no corte algunas columnas de datos de la izquierda al exportar a PDF */
+    .k-grid-header th.k-header, .k-filter-row th {
+        overflow: hidden;
+        border-style: solid;
+        border-width: 0 0 1px 1px;
+        padding: .3em .4em .1em .3em;
+        font-weight: normal;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-align: left;
+    }
+
+    .k-grid td {
+        border-style: solid;
+        border-width: 0 0 0 1px;
+        padding: .1em .2em .0em .3em;
+        overflow: hidden;
+        line-height: 1.6em;
+        vertical-align: middle;
+        text-overflow: ellipsis;
+    }
+
+    .bloqueOrden {
+        padding: 3px;
+    }
+
+    /*#right-panel .k-icon.k-expand-next, .k-icon.k-expand-prev, .k-icon.k-collapse-prev {
+        display: none !important;
+    }*/
+
+    .center_v {
+        height: 60%;
+        padding-left: 0.4em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .gestion_turnos {
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: space-around;
+        height: 60%;
+        align-items: center;
+    }
+
+        .gestion_turnos b {
+            margin-right: 8px;
+        }
+
+    .circle_cells {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-size: 25px 28px;
+        background-position: center center;
+        background-color: transparent;
+        vertical-align: middle;
+        line-height: 25px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-right: 5px;
+        text-align: center;
+    }
+
+    .centerText {
+        font-size: large;
+        margin: unset;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .contParosPerdidas, #gridAccionesCorrectivas {
+        height: calc((100% - 32px))
+    }
+
+    .iconGrid {
+        background-image: url('../../../Common/img/grid-table.png');
+        background-size: 16px;
+    }
+
+        .iconGrid.unselected {
+            background-image: url('../../../Common/img/grid-table-unselected.png');
+        }
+
+    .iconChart {
+        background-image: url('../../../Common/img/bar-chart.png');
+        background-size: 16px;
+    }
+
+        .iconChart.unselected {
+            background-image: url('../../../Common/img/bar-chart-unselected.png');
+        }
+
+    .panel {
+        overflow: hidden;
+    }
+
+    .panel_comentario {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+        .panel_comentario span {
+            font-weight: bold;
+        }
+
+    .ta_comentario {
+        margin-left: 20px;
+        padding: 8px;
+        height: calc(90% - 18px);
+        width: calc((100% - 260px));
+        max-width: calc((100% - 260px));
+    }
+
+    .botonPortal {
+        height: 26px;
+        margin-left: 15px;
+        padding: 2px 12px 2px;
+    }
+
+    #gridAccionesCorrectivas [role='gridcell'] {
+        padding: 0;
+        border-bottom: 1px solid #b8b5b5;
+    }
+
+    .ac_maquina {
+        padding: 0em 0.2em 0em 0.3em;
+        height: 8.4em;
+        display: flex;
+        align-items: center;
+    }
+
+    .ac_sub-container {
+        display: flex;
+        flex-direction: column;
+        height: 8.4em;
+    }
+
+    .ac_sub-row {
+        height: 33%;
+        display: flex;
+        align-items: center;
+        border-bottom: solid 1px #d5d5d5;
+        box-sizing: border-box;
+        padding: 0em 0.2em 0em 0.3em;
+    }
+
+    .acm1 {
+        height: 2.8em;
+    }
+
+    .acm2 {
+        height: 5.6em;
+    }
+
+    .acm3 {
+    }
+
+    .acm1 .ac_sub-row {
+        height: 100%;
+    }
+
+    .acm2 .ac_sub-row {
+        height: 50%;
+    }
+
+
+    .ac_sub_row_comment {
+        height: 100%;
+        overflow: hidden;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    #gridAccionesCorrectivas tr .ac_sub-row.active {
+        background-color: #dff5df;
+    }
+
+    #gridAccionesCorrectivas .manual {
+        background-color: #ffc96647;
+    }
+
+    #gridAccionesCorrectivas tr.k-alt .ac_sub-row.active {
+        background-color: #c1e5c0;
+    }
+</style>
+
+<div id="panelPrincipal" style="height: 100%; width: 100%;">
+    <div id="pHorizontal" style="height: 100%; width: 100%;">
+        <div id="divCabeceraVista" class="divCabeceraVista">
+            <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+            <label class="lblCabeceraVista"><% print(window.app.idioma.t('PARTE_RELEVO_TURNO')) %></label>
+        </div>
+        <!-- Filtros Cambios -->
+        <div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+            <div style="float: left;">
+                <label style="margin-left:5px;"><% print(window.app.idioma.t('LINEA')) %></label>
+                <select id="cmbLinea" style="width:200px;"></select>
+                <label style="margin-left: 5px;"><% print(window.app.idioma.t('FECHA')) %></label>
+                <input id="dtpFecha" style="width: 100px;" />
+                <label style="margin-left: 5px;"><% print(window.app.idioma.t('TURNO')) %></label>
+                <input id="cmbTurnos" style="width: 100px;" />
+                <label id="lblDescTurno" style="margin-left: 5px;"></label>
+                <button id="btnConsultar" class="k-button k-button-icontext" style="margin-left: 5px; display:none;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+            </div>
+        </div>
+        <div id="pCentral" style="height: calc(100% - 67px); width: 100%; overflow: hidden; font-size: 12px; position: relative;">
+            <div id="pVertical" style="height: 100%; width: 100%; overflow: hidden;">
+                <div id="left-panel" style="height: 100%; width: 98%; overflow: hidden;">
+                    <div id="pGrafTablas" style="height: 100%;">
+                        <div id="grafOEE" style="overflow: hidden;">
+                        </div>
+                        <div id="panelProgramaEnvasado" style="display:flex; flex-direction:column;">
+                            <div class="k-header cabecera_2">
+                                <div>
+                                    <b><% print(window.app.idioma.t('VER_PROGRAMA_ENVASADO')) %></b>
+                                </div>
+                            </div>
+                            <div id="programaEnvasado" style="flex-grow:1"></div>
+                        </div>
+                        <div id="panelParosPerdidas">
+                            <div class="k-header cabecera_2">
+                                <div>
+                                    <b><% print(window.app.idioma.t('PAROS_PERDIDAS')) %></b>
+                                    <!--<button type="button" class="btnModoVista" id="parosPerdidasGrid" style="margin-left: 20px" title="<% print(window.app.idioma.t('TABLA')) %>"></button>
+                                    <button type="button" class="btnModoVista" id="parosPerdidasChart" style="margin-left: 8px" title="<% print(window.app.idioma.t('GRAFICO')) %>"></button>-->
+                                </div>
+                                <span><select id="cmbTipoParos" style="width:200px;"></select></span>
+                            </div>
+                            <div class="contParosPerdidas" id="gridParosPerdidas"></div>
+                            <div class="contParosPerdidas" style="overflow-y: auto">
+                                <div id="chartParosPerdidas" style="height:100%"></div>
+
+                            </div>
+                        </div>
+                        <!--<div id="panelAccionesCorrectivas">
+                            <div class="k-header cabecera" style="height:initial">
+                                <b><% print(window.app.idioma.t('ACCIONES_CORRECTIVAS')) %></b>
+                                <span style="margin-left: 20px;">
+                                    <input type="button" class="botonPortal" id="btnCrearACAuto" value="<% print(window.app.idioma.t('CREAR_ACCIONES_CORRECTIVAS_AUTO')) %>" />
+                                    <input type="button" class="botonPortal" id="btnCrearAC" value="<% print(window.app.idioma.t('CREAR_ACCION_CORRECTIVA_TURNO')) %>" />
+                                    <input type="button" class="botonPortal" id="btnBorrarAC" disabled value="<% print(window.app.idioma.t('BORRAR_ACCIONES_CORRECTIVAS_TURNO')) %>" />
+                                    <button class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px; float: right;" onclick="window.app.vista.mostrarModalFiltroExcelAC()">
+                                        <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+                                    </button>
+                                </span>
+                            </div>
+                            <div id="gridAccionesCorrectivas"></div>
+                        </div>-->
+                        <div id="panelComentarioTurno">
+                            <div id="panel3" style="height:100%">
+                                <div class="panel_comentario" style="display: flex; align-items: center;">
+                                    <span style="margin-left:8px"><% print(window.app.idioma.t('COMENTARIO_TURNO')) %></span>
+                                    <textarea class="ta_comentario" id="tfComentarioTurno" />
+                                    <input type="button" class="botonPortal" id="btnEditarComentario" value="<% print(window.app.idioma.t('GUARDAR')) %>" />
+                                </div>
+                                <div style="display: flex; justify-content: center; align-items: center;">
+                                    <input type="button" class="botonPortal" id="btnIrAccionesCorrectivas" value="<% print(window.app.idioma.t('ACCIONES_CORRECTIVAS')) %>" style="margin-left: 0px" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div id="right-panel" style="overflow: hidden;">
+                    <div id="panelGestionTurno" style="overflow: hidden;">
+                        <div class="k-header cabecera"><b><% print(window.app.idioma.t('GESTION_TURNOS')) %></b></div>
+                        <div class="gestion_turnos">
+                            <div>
+                                <div id="semaforoTurno" class='circle_cells'></div>
+                            </div>
+                            <div>
+                                <b><% print(window.app.idioma.t('ARRANQUE_WO')) %></b>
+                                <div id="semaforoArranqueWOTurno" class='circle_cells'></div>
+                            </div>
+                            <div>
+                                <b><% print(window.app.idioma.t('FINALIZACION_WO')) %></b>
+                                <div id="semaforoFinalizacionWOTurno" class='circle_cells'></div>
+                            </div>
+                            <div>
+                                <b title="<% print(window.app.idioma.t('CALIDAD')) %>">Q</b>
+                                <div id="semaforoCalidadTurno" class='circle_cells' title="<% print(window.app.idioma.t('CALIDAD')) %>"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="panel2">
+                        <div id="panelTPO">
+                            <div class="k-header cabecera"><b><% print(window.app.idioma.t('TPO')) %></b></div>
+                            <div class="center_v">
+                                <p id="valorTPO" class="centerText"></p>
+                            </div>
+                        </div>
+                        <div id="panelParosSinJustificar">
+                            <div class="k-header cabecera"><b><% print(window.app.idioma.t('PORCENTAJE_PAROS_SIN_JUSTIFICAR')) %></b></div>
+                            <div class="center_v">
+                                <span class="centerText"><span id="valorParosSinJustificar"></span><span> %</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="panelArranques">
+                        <div class="k-header cabecera"><b><% print(window.app.idioma.t('ARRANQUES')) %></b></div>
+                        <div id="gridArranques"></div>
+                    </div>
+                    <div id="panelCambios">
+                        <div class="k-header cabecera"><b><% print(window.app.idioma.t('CAMBIOS')) %></b></div>
+                        <div id="gridCambios"></div>
+                    </div>
+                    <div id="panelProductos">
+                        <div class="k-header cabecera"><b><% print(window.app.idioma.t('PRODUCTOS_ENVASADOS')) %></b></div>
+                        <div id="gridProduccion"></div>
+                    </div>
+                    <div id="panelOEE">
+                        <div id="gridOEE"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="loaderReport">
+                <!--<img src="img/reportloader.gif" />-->
+                <div><img src="img/cargando.gif" /></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="ACMaquinaTemplate" type="text/x-kendo-template">
+    #let m = data.Manual;#
+    #let acm = data.MaquinaId == null ? data.Items.length : 3;#
+    <div class="ac_maquina#=(m ? ' manual acm'+acm : '')#">#=data.MaquinaNombre#</div>
+</script>
+
+<script id="ACComentarioParoTemplate" type="text/x-kendo-template">
+    #let m = data.Manual;#
+    #let acm = data.MaquinaId == null ? data.Items.length : 3;#
+    <div class="ac_sub-container#=(m ? ' acm'+acm : '')#">
+        # for (let i = 0; i < data.Items.length; i++) {#
+            <div class="ac_sub-row#=(data.Items[i].Estado ? ' active' : '')#" style="justify-content: space-between;">
+                <span class ="ac_sub_row_comment" style="#:(data.Items[i].ParoId > 0 ? 'align-items:flex-start;' : '')#" title="#:data.Items[i].ComentarioParo#">
+                    #= data.Items[i].ComentarioParo #
+                </span>
+                # if (data.Items[i].ParoId > 0){ #
+                    <button type="button" class="k-button k-button-icontext botonEditarParo" title="<% print(window.app.idioma.t('EDITAR_PARO_MAYOR')) %>"
+                        id="btnEditarParo_#=data.Items[i].ParoId#" style="width: 30px; min-width: initial;" onclick='window.app.vista.editarParo(#=data.Items[i].ParoId#)'>
+                        <span class='k-icon k-i-pencil' style="margin-left:-2px;"></span>
+                    </button>
+                # } #
+            </div>
+        # } #
+    </div>
+</script>
+
+<script id="ACDuracionTemplate" type="text/x-kendo-template">
+    #let m = data.Manual;#
+    #let acm = data.MaquinaId == null ? data.Items.length : 3;#
+    <div class="ac_sub-container#=(m ? ' acm'+acm : '')#">
+        # for (let i = 0; i < data.Items.length; i++) {#
+            <div class="ac_sub-row#=(data.Items[i].Estado ? ' active' : '')#">
+                #= data.Items[i].ParoId == null ? '' : ConversorHorasMinutosSegundos(data.Items[i].Duracion) #
+            </div>
+        # } #
+    </div>
+</script>
+
+<script id="ACRendimientoPerdidoTemplate" type="text/x-kendo-template">
+    #let m = data.Manual;#
+    #let acm = data.MaquinaId == null ? data.Items.length : 3;#
+    <div class="ac_sub-container#=(m ? ' acm'+acm : '')#">
+        # for (let i = 0; i < data.Items.length; i++) {#
+            <div class="ac_sub-row#=(data.Items[i].Estado ? ' active' : '')#">
+                #= data.Items[i].ParoId == null ? '' : data.Items[i].PerdidaRendimiento.toFixed(2) + '%' #
+            </div>
+        # } #
+    </div>
+</script>
+
+<script id="ACResponsableTemplate" type="text/x-kendo-template">
+    #let m = data.Manual;#
+    #let acm = data.MaquinaId == null ? data.Items.length : 3;#
+    <div class="ac_sub-container#=(m ? ' acm'+acm : '')#">
+        # for (let i = 0; i < data.Items.length; i++) {#
+            <div class="ac_sub-row#=(data.Items[i].Estado ? ' active' : '')#">
+                 <input class='k-textbox w-100' id="responsable_#=data.Items[i].Id#" type='text'
+                    value='#= data.Items[i].Responsable #'
+                    initial-value='#= data.Items[i].Responsable #'
+                    onfocusout='window.app.vista.editarAccionCorrectiva(#=data.Items[i].Id#)'/>
+            </div>
+        # } #
+    </div>
+</script>
+
+<script id="ACObservacionesTemplate" type="text/x-kendo-template">
+    #let m = data.Manual;#
+    #let acm = data.MaquinaId == null ? data.Items.length : 3;#
+    <div class="ac_sub-container#=(m ? ' acm'+acm : '')#">
+        # for (let i = 0; i < data.Items.length; i++) {#
+            <div class="ac_sub-row#=(data.Items[i].Estado ? ' active' : '')#">
+                 <input class='k-textbox w-100' id="observaciones_#=data.Items[i].Id#" type='text'
+                    value='#= data.Items[i].Observaciones #'
+                    initial-value='#= data.Items[i].Observaciones #'
+                    title='#= data.Items[i].Observaciones #'
+                    onfocusout='window.app.vista.editarAccionCorrectiva(#=data.Items[i].Id#)'/>
+            </div>
+        # } #
+    </div>
+</script>
+
+<script id="ACAccionRealizadaTemplate" type="text/x-kendo-template">
+    #let m = data.Manual;#
+    #let acm = data.MaquinaId == null ? data.Items.length : 3;#
+    <div class="ac_sub-container#=(m ? ' acm'+acm : '')#">
+        # for (let i = 0; i < data.Items.length; i++) {#
+            <div class="ac_sub-row#=(data.Items[i].Estado ? ' active' : '')#">
+                 <input class='k-textbox w-100' id="accion_realizada_#=data.Items[i].Id#" type='text'
+                    value='#= data.Items[i].AccionRealizada #'
+                    initial-value='#= data.Items[i].AccionRealizada #'
+                    title='#= data.Items[i].AccionRealizada #'
+                    onfocusout='window.app.vista.editarAccionCorrectiva(#=data.Items[i].Id#)'/>
+
+            </div>
+        # } #
+    </div>
+</script>
+
+<script id="ACEstadoTemplate" type="text/x-kendo-template">
+    #let m = data.Manual;#
+    #let acm = data.MaquinaId == null ? data.Items.length : 3;#
+    <div class="ac_sub-container#=(m ? ' acm'+acm : '')#">
+        # for (let i = 0; i < data.Items.length; i++) {#
+            <div class="ac_sub-row#=(data.Items[i].Estado ? ' active' : '')#">
+                <select class='cmbEstado' id="cmbEstado_#=data.Items[i].Id#" style="width:100px;" data-id="#=data.Items[i].Id#" initial-value='#= (data.Items[i].Estado ? 1 : 0) #'></select>
+            </div>
+        # } #
+    </div>
+</script>
+
+<script id="ACFiltroExcelTemplate" type="text/x-kendo-template">
+    <div>
+        <div>
+            <label style="margin-left:5px;"><% print(window.app.idioma.t('LINEA')) %></label>
+            <select id="cmbLineaACExcel" style="width:100%;"></select>
+        </div>
+        <div style="margin-top: 12px">
+            <label style="margin-left: 5px;"><% print(window.app.idioma.t('FECHA_INICIO')) %></label>
+            <input id="dtpFechaInicioACExcel" style="width: 100px;" />
+            <label style="margin-left: 10px;"><% print(window.app.idioma.t('FECHA_FIN')) %></label>
+            <input id="dtpFechaFinACExcel" style="width: 100px;" />
+        </div>
+        <div style="margin-top: 12px; display: flex; flex-direction: row-reverse; justify-content: space-between; align-items: center;">
+            <button id="btnExportarACExcel" class="k-button k-button-icontext" style="margin-right: 5px;"><span class='k-icon k-i-excel'></span><% print(window.app.idioma.t('EXPORTAR')) %></button>
+            <div id="imgProcesando" style="display:none;margin-left: 25px;">
+                <img src="img/ajax-loader.gif">
+            </div>
+        </div>
+        <div id="trError" class="error tac" style="display:none; padding: 8px"></div>
+    </div>
+</script>
+
+<!-- Grid Detail Motivos Paro-->
+<script id="templateDetailMotivosParo" type="text/x-kendo-template">
+    <div class="gridDetailMotivosParo" style="width: 100%;">
+    </div>
+</script>
+    
+<!-- Grid Detail Motivos Paro-->
+<script id="templateDetailEquiposParo" type="text/x-kendo-template">
+    <div class="gridDetailEquiposParo" style="width: 100%;">
+    </div>
+</script>
+
+<!-- Grid Detail Descripcion Paro-->
+<script id="templateDetailDescripcionParo" type="text/x-kendo-template">
+    <div class="gridDetailDescripcionParo" style="width: 100%;">
+    </div>
+</script>
+    
+<!-- Grid Detail Info Paro-->
+<!--<script id="templateDetailInfoParo" type="text/x-kendo-template">
+    <div class="gridDetailInfoParo" style="width: 100%;">
+    </div>
+</script>-->
+
+
+

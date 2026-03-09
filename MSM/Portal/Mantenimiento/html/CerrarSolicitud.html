@@ -1,0 +1,69 @@
+﻿<style>
+
+    .pad-30 {
+        padding: 30px;
+    }
+
+    .pad-10 {
+        padding: 10px;
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .mar-top-20 {
+        margin-top: 20px;
+    }
+
+    .mar-right-25 {
+        margin-right: 25px;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .tac {
+        text-align: center;
+    }
+
+    .boton {
+        width: 150px;
+        height: 65px;
+    }
+
+    .fila {
+        margin-top: 10px;
+    }
+
+    .lbl-required {
+        display: inline;
+        margin-right: 6px;
+    }
+</style>
+
+
+<div>
+    <form id="CerrarSolicitud" class="pad-30">
+
+        <div class="fila">
+            <label id="lblComentarioCierre" for="tfComentarioCierre" class="w-100 lbl-required" data-lng-key="COMENTARIO_CIERRE"></label><label>*</label>
+            <textarea class="pad-10 w-100 keyboardOn" id="tfComentarioCierre" name="tfComentarioCierre" style="width:97%;" required />
+        </div>
+
+        <div class="mar-top-20"><i id="lblJustificacionParos" data-lng-key="AVISO_JUSTIFICACION_PAROS_CIERRE_OT"></i></div>
+
+        <div id="crearOTProgramada" style="margin-top: 12px; font-weight: bold; cursor: help; display:none;" data-lng-title-key="CIERRE_OT_PROGRAMADA_INFO">
+            <input id="cb_OTProgramada" type="checkbox" style="margin-right: 12px;transform: scale(1.5);">
+            <span data-lng-key="CREAR_OT_PROGRAMADA"></span>
+        </div>
+
+        <div class="tac mar-top-20">
+            <input type="button" class="boton mar-right-25" id="btnGestionCerrar" data-lng-val-key="ACEPTAR" />
+            <input type="button" class="boton" id="btnGestionCancelar" data-lng-val-key="CANCELAR" />
+        </div>
+        <div id="trError" class="error tac mar-top-20" style="display:none;" colspan="2">
+        </div>
+    </form>
+</div>

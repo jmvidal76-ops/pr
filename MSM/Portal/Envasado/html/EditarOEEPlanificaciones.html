@@ -1,0 +1,65 @@
+﻿<style>
+    #btnAceptarOEEPlan {
+        float: left;
+        margin-left: 150px;
+        /*margin-top:10px;*/
+    }
+    #btnCancelarOEEPlan {
+        float: left;
+        margin-left: 20px;
+        /*margin-top:10px;*/
+    }
+</style> 
+
+<div>
+    <form id="EditarOEEPlanificaciones">
+        <input type="hidden" id="hdIdOEEPlanificaciones" />
+        <div style="float:left; background-color: transparent; border:0; margin-top:10px;">
+            <div style="float:left;border:0;">
+                <label id="lblLinea" style="width:150px;text-align:right;"></label>
+                <label id="lblValorLinea" style="width:250px;font-weight:normal"></label>
+            </div>
+            <br /><br /><br />
+            <div style="float:left;border:0;">
+                <label id="lblCodigoProducto" style="width:150px;text-align:right;"></label>
+                <label id="lblValorCodigoProducto" style="width:250px;font-weight:normal" "></label>
+            </div>
+            <br /><br /><br />
+            <div style="float:left;border:0;">
+                <label id="lblProducto" style="width:170px;text-align:right;"></label>
+                <label id="lblValorProducto" style="width:250px;font-weight:normal;"></label>
+            </div>
+            <br /><br /><br />
+            <div style="float:left;border:0;">
+                <label id="lblMediaAC" for="Descripcion" style="width:170px;text-align:right;"></label>
+                <input type="text" style="width:150px" id="ntxtMediaAC" name="txtMediaAC" data-type="number" data-bind="value: MediaAC" data-role="numerictextbox" required />
+            </div>
+            <br /><br /><br />
+            <div style="float:left;border:0;">
+                <label id="lblOEEPlanificado" for="Descripcion" style="width:170px;text-align:right;"></label>
+                <input type="text" style="width:150px" id="ntxtOEEPlanificado" name="txtOEEPlanificado" data-type="number" data-bind="value: OEEPlanificado" data-role="numerictextbox" required />
+            </div>
+            <br /><br /><br />
+            <div style="float:left;border:0;">
+                <label id="lblAjusteOEE" for="ntxtAjusteOEE" style="width:170px;text-align:right;"></label>
+                <input type="number" style="width:150px" id="ntxtAjusteOEE" name="ntxtAjusteOEE" data-type="number" data-bind="value: AjusteOEE" data-role="numerictextbox" min="-100" max="100" />
+            </div>
+            <br /><br /><br />
+            <div style="float:left;border:0;">
+                <label id="lblInhabilitarCalculoAC" style="width:170px; text-align:right"></label>
+                <input type="checkbox" style="width:15px; vertical-align:text-bottom" id="chkInhabilitarCalculoAC" required />
+            </div>
+            <br /><br /><br />
+            <div style="float:left;border:0;">
+                <label id="lblInhabilitarCalculoOEE" style="width:170px; text-align:right"></label>
+                <input type="checkbox" style="width:15px; vertical-align:text-bottom" id="chkInhabilitarCalculoOEE" required />
+            </div>
+            <br /><br /><br />
+            <div>
+                <input type="button" id="btnAceptarOEEPlan" value="Aceptar" />
+                <input type="button" id="btnCancelarOEEPlan" value="Cancelar" />
+            </div>
+        </div>
+    </form>
+</div>
+ 

@@ -1,0 +1,41 @@
+﻿<style>
+    .divFormato {
+        float: left;
+    }
+    .labelFormato {
+        width: 130px;
+        text-align: right;
+    }
+    .k-numerictextbox {
+        width: 100px;
+        margin-left: 10px
+    }
+</style> 
+
+<div>
+    <form id="EditarParametrosPlanta">
+        <div style="float:left; background-color: Transparent;border:0;">
+            <div class="divFormato">
+                <label id="lblLinea" class="labelFormato"></label>
+                <label id="lblValorLinea" style="width:165px; font-weight:normal; margin-left:10px"></label>
+            </div>
+            <br /><br /><br />
+            <div class="divFormato">
+                <label id="lbltipoParametro" class="labelFormato"></label>
+                <label id="lblValortipoParametro" style="width: 285px; font-weight: normal; margin-left: 10px"></label>
+            </div>
+            <br /><br /><br />
+            <div class="divFormato">
+                <label id="lblValor" class="labelFormato"></label>
+                <input type="text" id="ntxtValor" name="txtValor" required />
+                <span class="k-invalid-msg" data-for="txtValor"></span>
+            </div>
+            <br /><br /><br />
+            <div style="text-align:center; margin-bottom: 5px">
+                <input type="button" id="btnAceptarPP" value="Aceptar" />
+                <input type="button" id="btnCancelarPP" style="margin-left: 10px" value="Cancelar" />
+            </div>
+        </div>
+    </form>
+</div>
+ 

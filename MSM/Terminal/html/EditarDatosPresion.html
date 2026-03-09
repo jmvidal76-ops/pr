@@ -1,0 +1,134 @@
+﻿<style>
+    boton {
+        height: 65px !important;
+    }
+
+    .fila {
+        margin-top: 10px;
+    }
+
+    .key {
+        height: 85px !important;
+        font-size: 30px;
+        width: 85px !important;
+        margin-right: 10px;
+        padding: 10px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+
+    .k-numeric-wrap .k-select {
+        display: none !important;
+    }
+
+    .k-numerictextbox .k-state-hover {
+        background-color: white !important;
+    }
+
+    .k-numerictextbox .k-state-default {
+        background-color: white !important;
+    }
+</style>
+
+<script>
+    function cambiarValor(digito) {
+        if ($("#txtCantidad").val() == '') {
+            $("#txtCantidad").val(digito);
+        } else {
+            var valor = $("#txtCantidad").val() + "" + digito;
+            $("#txtCantidad").val(valor);
+        }
+    }
+
+    function cambiarSigno(signo) {
+        if ($("#txtCantidad").val() == '') {
+            $("#txtCantidad").val(signo);
+        } else {
+            return;
+        }
+    }
+
+    function cambiarComa(coma) {
+        if ($("#txtCantidad").val() == '') {
+            return;
+        } else {
+            if ($("#txtCantidad").val().includes(',')) {
+                return;
+            }
+            var valor = $("#txtCantidad").val() + "" + coma;
+            $("#txtCantidad").val(valor);
+        }
+    }
+
+    function eliminarCaracter() {
+        $("#txtCantidad").val($("#txtCantidad").val().slice(0, -1))
+    }
+</script>
+
+<div>
+    <form id="AsignarEspumado">
+        <div style="margin-left: 20px; margin-bottom: 5px">
+            <label id="lblCantidad" for="ntxtCantidad"></label>
+            <input type="text" id="txtCantidad" class='k-textbox' pattern="^[-]?[0-9]*,?[0-9]+$" style="width:300px" />
+        </div>
+        <div class="fila">
+            <table style="margin: auto;">
+                <tr>
+                    <td>
+                        <input type="button" class="k-button key" id="btnKey7" value="7" onclick="cambiarValor(7); " />
+                    </td>
+                    <td>
+                        <input type="button" class="k-button key" id="btnKey8" value="8" onclick="cambiarValor(8); " />
+                    </td>
+                    <td>
+                        <input type="button" class="k-button key" id="btnKey9" value="9" onclick="cambiarValor(9); " />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" class="k-button key" id="btnKey4" value="4" onclick="cambiarValor(4); " />
+                    </td>
+                    <td>
+                        <input type="button" class="k-button key" id="btnKey5" value="5" onclick="cambiarValor(5); " />
+                    </td>
+                    <td>
+                        <input type="button" class="k-button key" id="btnKey6" value="6" onclick="cambiarValor(6); " />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" class="k-button key" id="btnKey1" value="1" onclick="cambiarValor(1); " />
+                    </td>
+                    <td>
+                        <input type="button" class="k-button key" id="btnKey2" value="2" onclick="cambiarValor(2); " />
+                    </td>
+                    <td>
+                        <input type="button" class="k-button key" id="btnKey3" value="3" onclick="cambiarValor(3); " />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" class="k-button key" id="btnKeyMenos" value="-" onclick="cambiarSigno('-'); " />
+                    </td>
+                    <td>
+                        <input type="button" class="k-button key" id="btnKey0" value="0" onclick="cambiarValor(0); " />
+                    </td>
+                    <td>
+                        <input type="button" class="k-button key" id="btnKeyComa" value="," onclick="cambiarComa(','); " />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a class="btnComprobar k-button key" onclick="eliminarCaracter(); ">
+                            <img src="img/atras.png" />
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="text-align:center;margin-top:22px;">
+            <input type="button" class="boton" style="width:150px;height:55px;margin-right:25px" id="btnAceptarPresion" value="Aceptar" />
+            <input type="button" class="boton" style="width:150px;height:55px" id="btnCancelarPresion" value="Cancelar" />
+        </div>
+    </form>
+</div>

@@ -1,0 +1,36 @@
+﻿<style>
+    .margen-izq {
+        margin-left: 10px;
+    }
+
+    .boton-add {
+        background-color: green;
+        color: white;
+        float: right;
+    }
+</style>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('ADHERENCIA_CONFIG_MOTIVOS')) %></label>
+</div>
+<div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+    <div style="float: left;">
+        <label class="margen-izq"><% print(window.app.idioma.t("CAUSA")) %></label>
+        <input type='text' id='txtCausa' class='k-textbox'>
+        <label class="margen-izq"><% print(window.app.idioma.t("MOTIVO")) %></label>
+        <input type='text' id='txtMotivo' class='k-textbox'>
+        <label class="margen-izq"><% print(window.app.idioma.t("ORIGEN")) %></label>
+        <input type='text' id='txtOrigen' class='k-textbox'>
+        <label class="margen-izq"><% print(window.app.idioma.t("DESCRIPCION")) %></label>
+        <input type='text' id='txtDescripcion' class='k-textbox' style='width: 400px;'>
+        <button id='btnNuevoMotivo' class='k-button k-button-icontex boton-add margen-izq'><span class='k-icon k-add'></span>
+            <% print(window.app.idioma.t("INSERTAR")) %>
+        </button>
+    </div>
+    <div style="float: right; margin-right: 10px;">
+        <button id='btnEditarMotivo' class='k-button k-button-icontext'><% print(window.app.idioma.t("EDITAR")) %></button>
+        <button id='btnEliminarMotivo' class='k-button k-button-icontext'><% print(window.app.idioma.t("ELIMINAR")) %></button>
+    </div>
+</div>
+<div id="gridMotivos"></div>

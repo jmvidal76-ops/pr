@@ -1,0 +1,26 @@
+﻿<style>
+    .cabeceraVista {
+        border: 1px solid black;
+        width: auto;
+        height: 26px;
+        background-color: darkred;
+        color: white;
+        padding: 3px;
+        padding-left: 10px;
+        font-size: 20px;
+    }
+
+    .k-i-arrow-s {
+        margin-top: 10px;
+    }
+
+    .k-grid-content {
+        min-height: 200px;
+    }
+</style>
+
+<div class="cabeceraVista">
+    <img src="img/iconoCabecera.png" />
+    <span><% print(window.app.idioma.t("SOLICITUD_INTERVENCION_MANTENIMIENTO")) %></span>
+</div>
+<div id="gridSolicitudesIntervencionTerminal"></div>

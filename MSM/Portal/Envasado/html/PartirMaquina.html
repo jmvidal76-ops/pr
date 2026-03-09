@@ -1,0 +1,41 @@
+﻿<style>
+    .rTable {
+        display: table;
+    }
+
+    .rTableRow {
+        display: table-row;
+    }
+
+    .rTableCell {
+        display: table-cell;
+        padding: 10px;
+    }
+</style>
+<div>
+    <form id="EditarDatosGenerales">
+        <div style="width: 100%;">
+
+            <div style="float: left; background-color: Transparent; border: 0;" class="rTable">
+                <div class="rTableRow" style="float: left; border: 0;">
+                    <div class="rTableCell">
+                        <label id="lblNuevaHora" style="width: 150px; text-align: right;"></label>
+                    </div>
+          
+                    
+                    <div class="rTableCell">
+                        <input type="text" id="nuevaHora" style="width: 170px" />
+                    </div>
+                </div>
+                
+                <div id="divAceptar" style="text-align: center; width: 100%; float: left">
+                    <button id="btnAceptar"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+                    <button id="btnCancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+                </div>
+                <div id="imgProcesando" style="text-align: center; width: 100%; float: left; margin-top: 5px">
+                    <img src="img/ajax-loader.gif" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

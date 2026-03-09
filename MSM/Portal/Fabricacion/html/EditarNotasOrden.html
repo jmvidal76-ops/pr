@@ -1,0 +1,63 @@
+﻿<style type="text/css">
+    .table borderless notas {
+        margin-left: 15px !important;
+    }
+
+        .table borderless notas th, .table borderless notas td {
+            border-top: none !important;
+            padding: 0px !important;
+            /*text-align: right;*/
+        }
+
+        .table borderless notas tr {
+            height: 15px !important;
+        }
+
+        .table borderless notas input, textarea {
+            margin-left: 5px !important;
+            width: 120px;
+        }
+
+    #btnAceptar, #btnCancelar, #btnEditarAux {
+        height: 30px;
+        width: 30%;
+        /*float:left;*/
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+    /*.k-grid .k-state-selected { background-color:lightyellow; }*/
+</style>
+
+
+<div style="width: 98%; margin: 0px; padding: 0px;">
+    <form id="Notas">
+        <table class="table borderless notas">
+            <tbody>
+                <tr id="trNotas">
+                    <td colspan="2" style="padding: 0px !important;">
+                        <textarea id="editor" rows="20" cols="52" class="txtNotas"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div style="text-align: center; width: 100%;">
+                            <div id="divBtnAceptar" style="display: inline">
+                                <button id="btnAceptar"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+                            </div>
+                            <div id="divBtnCancelar" style="display: inline">
+                                <button id="btnCancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <label style="display: none" id="idOrden"></label>
+    </form>
+</div>
+
+

@@ -1,0 +1,141 @@
+﻿<style>
+    /*body, html {
+      font-family: arial, sans-serif;
+      font-size: 11pt;
+    }
+
+    #visualization {
+      box-sizing: border-box;
+      width: 100%;
+      height: 300px;
+    }*/
+
+    .k-state-selected {
+        background-color:#F1C40F;
+        border-color:#F1C40F;
+    }
+
+    .siloclass {
+        width: 16%;
+        margin-right: 12px;
+        margin-left: 12px;
+        margin-top: 20px;
+    }
+
+    .info {
+        margin-top: 5px;
+        float: left;
+        width: 100%;
+        text-align: center;
+    }
+
+    .k-progress-status {
+        color: white;
+        font-size: 12px;
+        font-weight: bolder;
+    }
+
+    .sombras {
+        -moz-box-shadow: -5px -5px 5px #888;
+        -webkit-box-shadow: -5px -5px 5px #888;
+        box-shadow: -0px -5px 5px #888;
+    }
+
+    .progressclass {
+        width: 100px;
+        height: 60%;
+        margin-bottom: 12px;
+    }
+
+    .k-progress-status {
+        transform: rotate(0deg) translateX(-1%) translateY(270%) !important;
+    }
+
+    /*.borderless, .borderless td, .borderless th {
+        border: none !important;
+    }*/
+
+    .progressclass {
+        background-color: #bcc6cc;
+    }
+
+    /*.borderless, .borderless th {
+        table-layout: auto;
+        border: none !important;
+        width: auto !important;
+    }
+
+        .borderless td {
+            white-space: nowrap!important;
+            //width: 25px !important;
+        }
+    */
+    .rowfield {
+        padding-bottom: 15px;
+        margin-left: 20px;
+    }
+
+        .rowfield label {
+            width: 100px;
+            margin-left: 5px;
+            vertical-align: top;
+        }
+
+        .rowfield span {
+            width: 200px;
+            display: inline-table;
+        }
+</style>
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('COCCION')) %></label>
+</div>
+<div id="toolbar" style="overflow: hidden;"></div>
+<!--<div id="splitter" style="height: 100%;">-->
+<div id="visualizationPrimeraLinea" style="text-align: center; display: flex; justify-content: center; width: 100%; height: 35%; float: left;"></div>
+<div id="visualizationSegundaLinea" style="text-align: center; display: flex; justify-content: center; width: 100%; height: 35%; float: left;"></div>
+<div id="divDetails" style="width: 100%; float: left;">
+    <ul>
+        <li class="k-state-active"><% print(window.app.idioma.t('DETALLE_EQUIPO')) %>
+        </li>
+    </ul>
+    <div>
+        <div style="width: 100%; background-color: white;">
+            <div style="float: left; display: inline-block; border: 0;">
+                <br />
+                <div class="rowfield">
+                    <label><% print(window.app.idioma.t('IDEQUIPO')) %>:</label>
+                    <span id="lblEquipo"></span>
+                    <label style="width: 140px;"><% print(window.app.idioma.t('NOMBRE_EQUIPO')) %>:</label>
+                    <span style="width: 250px;" id="lblNombreEquipo"></span>
+                </div>
+
+                <div class="rowfield">
+                    <label><% print(window.app.idioma.t('ID_MATERIAL')) %>:</label>
+                    <span id="lblIdMaterial"></span>
+                    <label style="width: 140px;"><% print(window.app.idioma.t('DESCRIPCION_MATERIAL')) %>:</label>
+                    <span id="lblMaterial" style="width: 250px;"></span>
+                    <label style="width: 150px;"><% print(window.app.idioma.t('LOTE_PROVEEDOR')) %>:</label>
+                    <span id="lblNumSerie"></span>
+                </div>
+
+                <div class="rowfield">
+                    <label style="width: 105px;"><% print(window.app.idioma.t('CANTIDAD_INICIAL')) %>:</label>
+                    <span id="lblInitQuantity" style="width: 195px;"></span>
+                    <label style="width: 140px;"><% print(window.app.idioma.t('CANTIDAD_ACTUAL')) %>:</label>
+                    <span style="width: 250px;" id="lblQty"></span>
+                    <label><% print(window.app.idioma.t('UD_MEDIDA')) %>:</label>
+                    <span id="lblUOM"></span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--</div>-->
+
+
+
+

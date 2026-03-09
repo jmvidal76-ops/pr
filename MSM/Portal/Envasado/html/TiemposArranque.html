@@ -1,0 +1,22 @@
+﻿
+ <!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('TIEMPOS_DE_ARRANQUE')) %></label>
+</div>
+<div id="divFiltros" class="k-header" style="height:35px;width:100%; padding-top:5px;">
+    <div style="float:left; margin-left:10px;">
+        <label><% print(window.app.idioma.t('TIEMPO_OBJETIVO_LLENADORA')) %></label>
+        <input id="txtTiempoObjetivo1" style="width:80px;" maxlength="4" data-type="number" data-role="numerictextbox" required/>
+        <label><% print(window.app.idioma.t('TIEMPO_OBJETIVO_PALETIZADORA')) %></label>
+        <input id="txtTiempoObjetivo2" style="width:80px;" maxlength="4" data-type="number" data-role="numerictextbox" required />
+        <label><% print(window.app.idioma.t('TIEMPO_SECUENCIADOR')) %></label>
+        <input id="txtTiempoPreactor" style="width:80px;" maxlength="4" data-type="number" data-role="numerictextbox" required />
+        <label><% print(window.app.idioma.t('INHABILITAR_CALCULO')) %></label>
+        <input type="checkbox" id="chkInhabilitarCalculoArranque" style="width:30px; vertical-align:text-bottom" />
+        <button id="btnAsignarTiempos" class="k-button k-button-icontext k-grid-add" style="background-color:green;color:white;"><span class='k-icon k-add'></span><% print(window.app.idioma.t('ASIGNAR_TIEMPOS')) %></button>
+    </div>
+</div>
+
+<!-- Grid -->
+<div id="gridTiemposArranque"></div>

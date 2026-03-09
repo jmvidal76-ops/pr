@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2702CC7F-26F1-44C0-B07C-9EFE7016E44A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Common.Models</RootNamespace>
+    <AssemblyName>Common.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AlbaranPosicion\AlbaranPosicionCalidadDto.cs" />
+    <Compile Include="Almacen\CodigoJDE\DTO_MaestroEAN.cs" />
+    <Compile Include="Almacen\ControlStock\AvisoStockMMPPFabricacionDto.cs" />
+    <Compile Include="Almacen\ControlStock\ProcesoLoteDto.cs" />
+    <Compile Include="Almacen\ControlStock\OperacionLoteDto.cs" />
+    <Compile Include="Almacen\JDEPropiedadRecepcionDto.cs" />
+    <Compile Include="Almacen\JDERecepcionMaterialDto.cs" />
+    <Compile Include="Almacen\Proveedor\ProveedorEANDto.cs" />
+    <Compile Include="Envasado\TipoEnumEstadoMermas.cs" />
+    <Compile Include="Envasado\TipoEnumMaquinasClases.cs" />
+    <Compile Include="Envasado\TipoEnumTipoParo.cs" />
+    <Compile Include="Fabricacion\KOPs\DTO_KOPs_Multivalor.cs" />
+    <Compile Include="Fabricacion\KOPs\DTO_ImportarKOPs.cs" />
+    <Compile Include="Fabricacion\MaestroParametrosFabricacionDto.cs" />
+    <Compile Include="Fabricacion\ParametrosFabricacionDto.cs" />
+    <Compile Include="Fabricacion\LoteAsociadoDto.cs" />
+    <Compile Include="Fabricacion\Orden\DTO_Orden_Planificada.cs" />
+    <Compile Include="Fabricacion\Orden\DTO_Orden.cs" />
+    <Compile Include="Fabricacion\MaterialSAIDto.cs" />
+    <Compile Include="Fabricacion\Orden\DTO_Orden_Planificada_Parametro.cs" />
+    <Compile Include="Fabricacion\Orden\DTO_Orden_Gantt.cs" />
+    <Compile Include="Fabricacion\PlantillaLotesOrdenAsociadoDto.cs" />
+    <Compile Include="Fabricacion\PlantillaLotesAsociadosDto.cs" />
+    <Compile Include="Fabricacion\PrefijosLoteSAIDto.cs" />
+    <Compile Include="Fabricacion\DisparadorTransferenciaDto.cs" />
+    <Compile Include="Fabricacion\PlantillaDisparadoresKOPDto.cs" />
+    <Compile Include="Fabricacion\PlantillaTiposSemielaboradosDto.cs" />
+    <Compile Include="Fabricacion\DisparadorKOPDto.cs" />
+    <Compile Include="Fabricacion\Sala\DTO_SalaOrigenDTO.cs" />
+    <Compile Include="Fabricacion\TipoEnumerado\ValidacionNumeroMaxEnum.cs" />
+    <Compile Include="Fabricacion\UbicacionesPlantillaConsumoDto.cs" />
+    <Compile Include="Fabricacion\TipoSemielaboradoPlantillaConsumoDto.cs" />
+    <Compile Include="Fabricacion\PlantillaUbicacionesDto.cs" />
+    <Compile Include="Fabricacion\KOPs\DTO_KOPs_Config.cs" />
+    <Compile Include="Fabricacion\KOPs\DTO_MostosCoccion.cs" />
+    <Compile Include="Fabricacion\KOPs\DTO_ZonaKOPs.cs" />
+    <Compile Include="Fabricacion\Orden\DTO_Orden_Detalle.cs" />
+    <Compile Include="Fabricacion\Orden\DTO_KOPs.cs" />
+    <Compile Include="Lote\AccionPropiedadLoteDto.cs" />
+    <Compile Include="Lote\PropiedadLoteDto.cs" />
+    <Compile Include="Lote\LoteSinCodigoJDEDto.cs" />
+    <Compile Include="Lote\LotePositionDto.cs" />
+    <Compile Include="Lote\TipoMaterialMovimientoEnum.cs" />
+    <Compile Include="Mantenimiento\TipoEnumEstadosSolicitudMantenimiento.cs" />
+    <Compile Include="Material\ClaseMaterialDto.cs" />
+    <Compile Include="Material\MaterialUnitsDto.cs" />
+    <Compile Include="Material\MaterialDto.cs" />
+    <Compile Include="Material\PropiedadesExtendidasDto.cs" />
+    <Compile Include="Material\TipoMaterialDto.cs" />
+    <Compile Include="Operation\AnularHabilitarEtiquetasDto.cs" />
+    <Compile Include="Operation\ConsumDto.cs" />
+    <Compile Include="Operation\FechaProduccionDto.cs" />
+    <Compile Include="Operation\PaletsProductoAcabadoMuestrasDto.cs" />
+    <Compile Include="Operation\ProcesoLoteEnum.cs" />
+    <Compile Include="Operation\OperacionesControlStockEnum.cs" />
+    <Compile Include="Operation\ProduccionDto.cs" />
+    <Compile Include="Operation\ProduccionesDto.cs" />
+    <Compile Include="Operation\UpdPartitionDto.cs" />
+    <Compile Include="Operation\ProductionOffSetsDto.cs" />
+    <Compile Include="OrdenesMuestras\SubDepartamentoDto.cs" />
+    <Compile Include="OrdenesMuestras\DepartamentoDto.cs" />
+    <Compile Include="OrdenesMuestras\TipoMuestrasDto.cs" />
+    <Compile Include="OrdenesMuestras\DetalleMuestrasDto.cs" />
+    <Compile Include="OrdenesMuestras\OrdenesMuestrasDto.cs" />
+    <Compile Include="Planta\TipoEnumProcesoPerroGuardian.cs" />
+    <Compile Include="RTDS\RTDSValuesDto.cs" />
+    <Compile Include="Sample\SampleDto.cs" />
+    <Compile Include="Sample\TipoOperacionEnum.cs" />
+    <Compile Include="Operation\TipoOperacionDto.cs" />
+    <Compile Include="Operation\OperationDto.cs" />
+    <Compile Include="TAG\TagDto.cs" />
+    <Compile Include="Transporte\AlbaranDto.cs" />
+    <Compile Include="Transporte\AlbaranPosicionDto.cs" />
+    <Compile Include="Transporte\AlbaranPosicionLoteDto.cs" />
+    <Compile Include="Transporte\ClienteDto.cs" />
+    <Compile Include="Transporte\ParametrosAlbaranDto.cs" />
+    <Compile Include="Transporte\ProveedorEANDto.cs" />
+    <Compile Include="Transporte\LoteUbicacionDto.cs" />
+    <Compile Include="Transporte\FiltersOADto.cs" />
+    <Compile Include="Transporte\TipoOrdenAprovisionamientoDto.cs" />
+    <Compile Include="Transporte\MatriculaRemolqueDto.cs" />
+    <Compile Include="Transporte\MatriculaTractoraDto.cs" />
+    <Compile Include="Transporte\DestinatarioDto.cs" />
+    <Compile Include="Transporte\OperadorDto.cs" />
+    <Compile Include="Transporte\LotStatusDto.cs" />
+    <Compile Include="Transporte\OrdenAprovisionamientoDto.cs" />
+    <Compile Include="Transporte\DocumentoDto.cs" />
+    <Compile Include="Transporte\TipoDocumentoDto.cs" />
+    <Compile Include="Transporte\TransportistaDto.cs" />
+    <Compile Include="Operation\UpdProduccionDto.cs" />
+    <Compile Include="Trazabilidad\Estado\InfoLoteProductoAcabadoDto.cs" />
+    <Compile Include="Trazabilidad\Estado\LoteConsumidoDto.cs" />
+    <Compile Include="Trazabilidad\Estado\ProAcaMMPPDto.cs" />
+    <Compile Include="Trazabilidad\Fabricacion\MovimientoLoteCantidadDto.cs" />
+    <Compile Include="Trazabilidad\Fabricacion\TransferenciaLoteFabricacionDto.cs" />
+    <Compile Include="Trazabilidad\Fabricacion\MovimientoLoteDto.cs" />
+    <Compile Include="Trazabilidad\Genealogia\ControlCalidadDto.cs" />
+    <Compile Include="Trazabilidad\Genealogia\FilterDto.cs" />
+    <Compile Include="Trazabilidad\Genealogia\LoteSemielaboradoDto.cs" />
+    <Compile Include="Trazabilidad\Genealogia\PaletDto.cs" />
+    <Compile Include="Trazabilidad\Genealogia\MMPPDto.cs" />
+    <Compile Include="Trazabilidad\Genealogia\ProcesosDto.cs" />
+    <Compile Include="Trazabilidad\Genealogia\DataGridDto.cs" />
+    <Compile Include="Trazabilidad\Genealogia\LoteDto.cs" />
+    <Compile Include="Trazabilidad\Estado\PaletMMPPDto.cs" />
+    <Compile Include="Trazabilidad\MaestroTipoLoteManualSemielaboradosDto.cs" />
+    <Compile Include="Trazabilidad\TransferenciaTCPDto.cs" />
+    <Compile Include="Ubicacion\BarcodeDto.cs" />
+    <Compile Include="Ubicacion\UbicacionDescargaDto.cs" />
+    <Compile Include="Ubicacion\EquipoDto.cs" />
+    <Compile Include="Ubicacion\UbicacionConResumenOrdenesDto.cs" />
+    <Compile Include="Ubicacion\UbicacionPuntosVerificacionDto.cs" />
+    <Compile Include="Ubicacion\UbicacionLoteDto.cs" />
+    <Compile Include="Ubicacion\UnidadAlmacenamientoDto.cs" />
+    <Compile Include="Ubicacion\EstadoUbicacionDto.cs" />
+    <Compile Include="Ubicacion\PoliticaAlmacenamientoDto.cs" />
+    <Compile Include="Ubicacion\PoliticaLlenadoDto.cs" />
+    <Compile Include="Ubicacion\PoliticaVaciadoDto.cs" />
+    <Compile Include="Ubicacion\TipoAlmacenDto.cs" />
+    <Compile Include="Ubicacion\TipoUbicacionDto.cs" />
+    <Compile Include="Ubicacion\TipoZonaDto.cs" />
+    <Compile Include="Ubicacion\UbicacionDto.cs" />
+    <Compile Include="Transporte\ProductoDto.cs" />
+    <Compile Include="Transporte\ProveedorDto.cs" />
+    <Compile Include="Transporte\MatriculaDto.cs" />
+    <Compile Include="Transporte\OrigenMercanciaDto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transporte\TransporteDto.cs" />
+    <Compile Include="Ubicacion\AlmacenDto.cs" />
+    <Compile Include="Ubicacion\GrupoUbicacionDto.cs" />
+    <Compile Include="Ubicacion\ZonaUbicacionDto.cs" />
+    <Compile Include="Ubicacion\ZonaDto.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Fabricacion\KOPs\Importar\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

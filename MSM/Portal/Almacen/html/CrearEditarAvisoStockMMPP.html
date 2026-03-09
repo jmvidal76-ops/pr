@@ -1,0 +1,55 @@
+﻿<style>
+    .fila {
+        margin-left: 10px;
+        margin-top: 20px;
+    }
+
+    .textos {
+        width: 205px;
+        text-align: right;
+    }
+</style>
+
+<div>
+    <form id="CrearEditarAvisoStockMMPP">
+        <div class="alert alert-info" style="margin-left: 10px; padding: 5px; width: 748px" role="alert">
+            <span class="glyphicon glyphicon-info-sign"></span>
+            <label id="lblInfo"><% print(window.app.idioma.t('INFO_DESTINATARIOS')) %></label>
+        </div>
+        <div class="fila">
+            <label id="lblMaterial" class="textos"><% print(window.app.idioma.t('MATERIAL')) %></label>
+            <select id="cmbMaterial" style="width: 550px" />
+        </div>
+        <div class="fila">
+            <label id="lblUbicacion" class="textos"><% print(window.app.idioma.t('UBICACION')) %></label>
+            <select id="cmbUbicacion" style="width: 550px" />
+        </div>
+        <div class="fila">
+            <label id="lblDestinatariosNivelCritico" class="textos"><% print(window.app.idioma.t('DESTINATARIOS_NIVEL_CRITICO')) %></label>
+            <input type="text" class="k-textbox" style="width: 550px" id="txtDestinatariosNivelCritico" />
+        </div>
+        <div class="fila">
+            <label id="lblCantidadNivelCritico" class="textos"><% print(window.app.idioma.t('CANTIDAD_NIVEL_CRITICO')) %></label>
+            <input type="text" style="width: 140px" id="ntxtCantidadNivelCritico" data-type="number" data-role="numerictextbox" />
+        </div>
+        <div class="fila">
+            <label id="lblDestinatariosNivelAviso" class="textos"><% print(window.app.idioma.t('DESTINATARIOS_NIVEL_AVISO')) %></label>
+            <input type="text" class="k-textbox" style="width: 550px" id="txtDestinatariosNivelAviso" />
+        </div>
+        <div class="fila">
+            <label id="lblCantidadNivelAviso" class="textos"><% print(window.app.idioma.t('CANTIDAD_NIVEL_AVISO')) %></label>
+            <input type="text" style="width: 140px" id="ntxtCantidadNivelAviso" data-type="number" data-role="numerictextbox" />
+        </div>
+        <div class="fila" style="display: flex; align-items: center">
+            <label id="lblTextoCuerpoCorreo" class="textos"><% print(window.app.idioma.t('TEXTO_CUERPO_CORREO')) %></label>
+            <textarea id="txtTextoCuerpoCorreo" style="width: 545px; margin-left: 4px" rows="3" />
+        </div>
+        <div class="fila" id="trError" style="display:none; text-align:center;">
+            <span id="lblError" style="color: red;"><% print(window.app.idioma.t('ERROR_CANTIDAD_NIVEL_CRITICO')) %> </span>
+        </div>
+        <div style="text-align: center; margin-top: 15px">
+            <input type="button" id="btnAceptarAviso" style="margin-right: 20px" value="Aceptar" />
+            <input type="button" id="btnCancelarAviso" value="Cancelar" />
+        </div>
+    </form>
+</div>

@@ -1,0 +1,124 @@
+﻿<style type="text/css">
+    
+    #CrearWO > div{
+        min-height: 60px;
+        padding: 5px
+    }
+
+       #formParoPerdida {
+        margin: 15px;
+    }
+
+    .tdLabel {
+        width: 16% !important;
+    }
+
+    .table th, .table td {
+        border-top: none !important;
+        /*text-align: right;*/
+    }
+
+    .table tr {
+        height: 60px !important;
+    }
+
+    .table input, textarea {
+        margin-left: 5px !important;
+        width: 120px;
+    }
+
+    #btnAceptar, #btnCancelar, #btnEditarAux {
+        height: 30px;
+        width: 30%;
+        /*float:left;*/
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+
+    /*.k-grid .k-state-selected { background-color:lightyellow; }*/
+
+
+    .k-autocomplete,
+    .k-combobox,
+    .k-datepicker,
+    .k-timepicker,
+    .k-datetimepicker,
+    .k-colorpicker,
+    .k-numerictextbox,
+    .k-dropdown,
+    .k-selectbox,
+    .k-textbox,
+    .k-toolbar .k-split-button {
+        width: 100% ;
+    }
+
+
+    .k-numerictextbox {
+        width: 100%;
+    }
+
+        .k-numerictextbox .k-numeric-wrap .k-input {
+            width: 96% ;
+        }
+
+</style>
+
+
+<div style="width: 98%; margin: 0px; padding: 0px;">
+    <form id="CrearWO">
+        <table class="table borderless">
+            <tbody>
+                <tr id="trFecha">
+                    <td style="width: 23% !important;"><% print(window.app.idioma.t('FECHA_INICIO_ESTIMADA')) %></td>
+                    <td style="width: 73% !important;">
+                        <input id="lblFecha" style="width: 100%" />
+                        <br /><br />
+                    </td>
+                </tr>
+                <tr id="trMaterialCoccion" >
+                    <td style="width: 23% !important;"><% print(window.app.idioma.t('MATERIAL')) %></td>
+                    <td style="width: 73% !important;">
+                      
+                        <select id="cmbMaterialCoccion" name="cmbMaterial" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 23% !important;"><% print(window.app.idioma.t('SALA_COCCION')) %></td>
+                    <td style="width: 73% !important;">
+                        <select id="cmbSala" name="cmbSala" />
+                    </td>
+                </tr>
+                <tr id="destinationTr">
+                    <td style="width: 23% !important;"><% print(window.app.idioma.t('DESTINO_AUX')) %></td>
+                    <td style="width: 73% !important;">
+                        <select id="destination" />
+                        <br />
+                        <br />
+                    </td>
+                </tr>           
+                <tr id="trCantidad">
+                    <td style="width: 23% !important;"><% print(window.app.idioma.t('CANTIDAD')) %></td>
+                    <td style="width: 73% !important;">
+                        <input id="txtCantidad" type="text" name="txtCantidad" />
+                        <br /><br />
+                        <span id="lblError" style="color: red"></span>
+                        <span id="destinationError" style="color: red"></span>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>        
+        <div style="text-align: center; width: 100%;">
+            <button id="btnEditarAux"><% print(window.app.idioma.t("ACEPTAR")) %></button>              
+            <button id="btnCancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+        </div>
+        
+     
+    </form>
+</div>
+
+

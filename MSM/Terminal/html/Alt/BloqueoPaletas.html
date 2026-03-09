@@ -1,0 +1,59 @@
+﻿<style>
+    .cabeceraVista {
+        border: 1px solid black;
+        width: auto;
+        height: 26px;
+        background-color: darkred;
+        color: white;
+        padding: 3px;
+        padding-left: 10px;
+        font-size: 20px;
+    }
+
+    .ajustesBoton {
+        width: 440px;
+        height: 60px;
+        font-size: 21px;
+    }
+
+    .btn-bloqueo {
+        width: 100px;
+        margin-right: 10px;
+    }
+
+    .btn-cancelar {
+        width: 120px;
+        margin-left: 20px;
+    }
+</style>
+
+<div class="cabeceraVista">
+    <img src="img/iconoCabecera.png" />
+    <span><% print(window.app.idioma.t("BLOQUEO_PALETAS")) %></span>
+</div>
+
+<!-- Contenedor dinámico donde se generarán los botones -->
+<div id="contenedorLlenadoras" style="padding-top: 10px">
+    <!-- Los botones se generarán aquí dinámicamente -->
+</div>
+
+<!--Modal Bloqueo de Paletas-->
+<script id="BloqueoPaletasTemplate" type="text/x-kendo-template">
+    <div style="width: 400px;padding:18px;display: flex;flex-direction: column;align-items: flex-start;">
+        <div style="width:100%;display: flex;flex-direction: row;align-items: center;justify-content: space-between;margin-bottom:12px;">
+            <strong style="margin-right:18px; width:100px;min-width:250px;"><label class="mbi"><% print(window.app.idioma.t('DESEA_BLOQUEO_PALETAS')) %></label>:</strong>
+        </div>
+        <div style="width:100%;flex-direction: column;align-items: flex-start;margin-bottom:12px;">
+            <label for="inpt_Paletas" style="font-weight:300;"><% print(window.app.idioma.t('NUM_PALETAS_BLOQUEAR')) %></label>:
+            <input id="inpt_Paletas" type="number" min="1" value="2" style="margin-left:10px;width:40px;padding:2%;height:26px;">
+        </div>
+            <div style="width:100%;flex-direction: column;align-items: flex-start;margin-bottom:12px;min-width:300px;">
+            <label for="inpt_Offset" style="font-weight:350;"><% print(window.app.idioma.t('TIEMPO_VIAJE_PALETERA')) %> (min.)</label>:
+            <input id="inpt_Offset" type="number" min="0" value="#=Offset#"  style="margin-left:10px;width:40px;padding:2%;height:26px;">
+        </div>
+        <span style="align-self: end; margin-top: 20px;">
+            <input type="button" data-role="button" id="btnAceptarBloqueo" value="#:window.app.idioma.t('ACEPTAR')#" class="btn-bloqueo"/>
+            <input type="button" data-role="button" id="btnCancelarBloqueo" value="#:window.app.idioma.t('CANCELAR')#" class="btn-cancelar"/>
+        </span>
+    </div>
+</script>

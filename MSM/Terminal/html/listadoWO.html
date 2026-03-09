@@ -1,0 +1,132 @@
+﻿<style>
+    .cabeceraVista {
+        border: 1px solid black;
+        width: auto;
+        height: 26px;
+        background-color: darkred;
+        color: white;
+        padding: 3px;
+        padding-left: 10px;
+        font-size: 20px;
+    }
+
+    .menuZonaEspecial {
+        width: auto;
+        padding-top: 5px;
+        padding-left: 20px;
+        font-size: 18px;
+    }
+
+    .botonesSeleccion {
+        margin-left: 10px;
+        float: left;
+    }
+
+    .btnLinea {
+        float: left;
+        margin-left: 20px;
+        height: 50px;
+        line-height: 18px;
+    }
+
+    .btnZona {
+        float: left;
+        margin-left: 20px;
+        height: 50px;
+    }
+
+    .btnEstandar {
+        float: left;
+        margin-left: 20px;
+        height: 50px;
+    }
+
+    .lblLineasZonas {
+        float: left;
+        margin-left: 20px;
+        margin-top: 12px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .asignacionProduccion {
+        float: left;
+        margin-left: 20px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    #listado {
+        overflow-y: auto;
+        width: 100%;
+        float: left;
+    }
+    #listadoWO {
+        margin-top: 15px;
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-bottom: 15px;
+        overflow-x: hidden;
+        padding-right: 1px;
+         
+               
+    }
+    #listadoWOAsignada {
+        outline-style: solid;
+        outline-color: black;
+        margin-top: 15px;
+        margin-left: 2%;
+        margin-right: 2%; 
+        min-height: 175px;
+        background-color: gray;
+        padding-right: 1px;
+        
+    }
+
+    #lblSelZon, #lblSelLin {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    #lblSelZon3, #lblSelLin3 {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    #lblSelZon2, #lblSelLin2 {
+        font-size: 20px;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    #msgDialogo {
+        font-size: 20px !important;
+    }
+</style>
+
+<div class="cabeceraVista">
+    <img src="img/iconoCabecera.png" />
+    <span><% print(window.app.idioma.t("TIT_LISTADO_WO")) %></span>
+</div>
+
+<div class="menuZonaEspecial">
+    <div id="divZELineas" class="row">
+        <div class="lblLineasZonas" id="lblLineas"><span id="lblSelLin"></span><span id="lblSelLin2"></span><span id="lblSelLin3"></span></div>
+        <div class="botonesSeleccion" id="botonesLineas"></div>
+        <div id="divAsignacionProduccion" class="asignacionProduccion" hidden>
+            <span id="lblPorcentajeAsignado" style="float: left; margin-top: 10px;"><% print(window.app.idioma.t('PORCENTAJE_PROD_ASIGNADO')) %></span>
+            <button id="btnCambioAsignacion" class="btnEstandar"><% print(window.app.idioma.t('ASIGNAR_PRODUCCION')) %></button>
+        </div>
+        <button id="btnConfigurarMaquinas" class="btnEstandar" hidden><% print(window.app.idioma.t('CONFIG_EMPAQUETADORAS_PALETIZADORAS')) %></button>
+    </div>
+    <div id="divZEZonas" class="row" style="overflow: hidden;">
+        <div class="lblLineasZonas" id="lblZonas"><span id="lblSelZon"></span><span id="lblSelZon2"></span><span id="lblSelZon3"></span></div>
+        <div class="botonesSeleccion" id="botonesZonas"></div>
+    </div>
+</div>
+<div id="listado">
+    <div id="listadoWOAsignada" >
+    </div>
+    <div id="listadoWO">
+    </div>
+</div>

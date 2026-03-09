@@ -1,0 +1,64 @@
+﻿<style>
+    .k-scheduler-timecolumn {
+        display:none
+    }
+</style>
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('CALENDARIO_DE_FÁBRICA')) %></label>
+</div>
+
+
+<div id="scheduler"></div>
+
+<script id="event-time-template" type="text/x-kendo-template">
+  # if (isAllDay) { #
+     #= window.app.idioma.t('TODO_EL_DIA') #
+  # } else { #
+     #= kendo.toString(start, "t") # - #= kendo.toString(end, "t") #
+  # }  #
+</script>
+<script id="event-template" type="text/x-kendo-template">
+  <div>#: title ? window.app.idioma.t(title.replace(" ","_").toUpperCase()) :"" #</div>
+  
+</script>
+<script id="customEditorTemplate" type="text/x-kendo-template">
+    <div class="k-edit-label">
+        <label for="title">#=window.app.idioma.t('TIPO')#</label>
+    </div>
+    <div data-container-for="title" class="k-edit-field">        
+        <select id="title" data-role="dropdownlist" data-value-field="value" data-text-field="text" data-bind="value:title" onChange="CheckSelectedTypeToEnableSaveButton(this.value);">
+              <option value="Fiesta Nacional">#=window.app.idioma.t('FIESTA_NACIONAL')#</option>
+              <option value="Fiesta autonómica">#=window.app.idioma.t('FIESTA_AUTONÓMICA')#</option>          
+              <option value="Fiesta local">#=window.app.idioma.t('FIESTA_LOCAL')#</option>          
+              <option value="Puente empresa">#=window.app.idioma.t('PUENTE_EMPRESA')#</option>          
+          </select>
+    </div>
+
+    <div class="k-edit-label">
+        <label for="start">#= window.app.idioma.t('FECHA')#</label>
+    </div>
+    <div data-container-for="start" class="k-edit-field">
+        <input type="text" 
+               data-role="datetimepicker" 
+               data-interval="15"
+               data-type="date" 
+               data-bind="value:start,invisible:isAllDay" 
+               name="start"/>
+        <input type="text" data-type="date" data-role="datepicker" data-bind="value:start,visible:isAllDay" name="start" />
+        <!--<span data-bind="text: startTimezone"></span>-->
+        <span data-for="start" class="k-invalid-msg" style="display: none;"></span>
+      </div>
+</script>
+<script type="text/javascript"> // agomezn 010616: 049 que obligue a que se seleccione un tipo al pasar un día a festivo con doble click en Calendario de fábrica
+    function CheckSelectedTypeToEnableSaveButton(selectedValue) {
+        if ((selectedValue != undefined) && (selectedValue !== "")) {
+            // document.getElementsByClassName("k-button k-primary k-scheduler-update")[0].style.display="block";
+            var buttonsContainer = $(".k-edit-buttons");
+            var saveButton = buttonsContainer.find(".k-scheduler-update");
+            $(saveButton).show();
+        }
+    }
+</script>

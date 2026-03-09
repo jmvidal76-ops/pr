@@ -1,0 +1,106 @@
+<div id="total" style="width: 100%; height: 100%; float: left;">
+    <div id="infoOrden" style="width: 95%; height: auto; float: left; margin-top: 3%; margin-left: 3%;">
+        <div id="orden" style="width: 40%; float: left;">
+            <label><% print(window.app.idioma.t('ORDEN')) %>: </label>
+            <span id="lblOrden"></span>
+        </div>
+        <div id="tipo" style="width: 40%; float: right; margin-right:6%;">
+            &nbsp;<label><% print(window.app.idioma.t('TIPO')) %>: </label>
+            <span id="lblTipo"></span>
+        </div>
+    </div>
+    <div id="divFiltracionMosto" style="width: 95%; height: auto; float: left; margin-top: 20px; margin-left: 3%; display: none">
+        <span id="Span1" style="font-weight: bold;"><% print(window.app.idioma.t('MATERIAL')) %>: </span>
+        <span id="txtMaterialFilt" style="width: 500px;" />
+    </div>
+    <div id="divMaterialNormal" style="width: 95%; height: auto; float: left; margin-top: 20px; margin-left: 3%;">
+        <span id="lblMat" style="font-weight: bold;"><% print(window.app.idioma.t('MATERIAL')) %>: </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" id="ddlMaterial" name="ddlMaterial" style="width: 500px;" />
+    </div>
+    <div id="divAreadestino" style="width: 95%; height: auto; float: left; margin-top: 20px; margin-left: 3%;">
+        <span id="lblTankFilter" style="font-weight: bold;"><% print(window.app.idioma.t('AREA_DESTINO')) %>: </span>&nbsp;&nbsp;&nbsp;
+        <input type="text" id="cmbAreaDestino" style="width: 500px;" />
+    </div>
+    <div id="infoDestino" style="width: 95%; height: auto; float: left; margin-top: 20px; margin-left: 3%;">
+        <label><% print(window.app.idioma.t('DESTINO')) %>: </label>
+        <input type="text" id="ddlDestinos" name="ddlDestinos" style="width: 500px;" />
+    </div>
+    <div id="infoCantidad" style="width: 37%; height: auto; float: left; margin-top: 20px; margin-left: 3%;">
+        <label><% print(window.app.idioma.t('CANTIDAD')) %>: </label>
+        <span id="txtCantidadFija" style="display: none;"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" id="txtCantidad" name="txtCantidad" />
+    </div>
+    <div id="divCantidadDisponible" style="width: 45%; height: auto; float: right; margin-top: 30px">
+        <label id="lblCant"><% print(window.app.idioma.t('CANTIDAD_DISPONIBLE')) %>: </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span id="txtCantidadDisponible" />
+    </div>    
+    <div id="prefilledDate" style="width: 95%; height: auto; float: left; margin-top: 20px;margin-left: 3%;display:none">
+        <div style="float: left;width: 50%;"><div style="width: 25%;float: left;"><label id="startDateLabel" style="font-weight: bold;"><% print(window.app.idioma.t('START_DATETIME_TRANSFER')) %>: </label></div>&nbsp;&nbsp;&nbsp;&nbsp;<input id="startDateField" style="width: 155px;"/></div>        
+        <div style="float: left;width: 45%;margin-left: 5%;"><div style="width: 25%;float: left;"><label id="endDateLabel" style="font-weight: bold;"><% print(window.app.idioma.t('END_DATETIME_TRANSFER')) %>: </label></div>&nbsp;&nbsp;&nbsp;&nbsp;<input id="endDateField" style="width: 155px;"/></div>
+    </div>   
+    <div id="divInfo" style="width: 95%; height: auto; float: left; margin-top: 20px; margin-left: 3%; text-align: center;">
+        <span id="lbl" style="display: none;">LABEL</span>
+    </div>
+    <div id="bot" style="width: 100%; height: auto; float: left; text-align: center; margin-top: 20px;">
+        <button id="btnAcept"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+        <button id="btnCancel"><% print(window.app.idioma.t("CANCELAR")) %></button>
+    </div>
+</div>
+
+
+
+<!--<div id="total" style="width: 100%; height: 100%; float: left;">
+    <div id="infoOrden" style="width: 97%; height: auto; float: left; margin-top:3%; margin-left:1%;">
+        <div id="tipo" style="width:auto;float:left;">
+            <label><% print(window.app.idioma.t('TIPO')) %>: </label>
+            <span  id="lblTipo"></span>
+        </div>
+        <div id="orden" style="width:auto;float:left; margin-left: 3.5%; ">
+            <label><% print(window.app.idioma.t('ORDEN')) %>: </label>
+            <span  id="lblOrden"></span>
+        </div>
+
+        <div id="divFiltracionMosto" style="width: auto; float: left;display:none;margin-left: 30px; margin-top:0px;">
+                <span id="Span1" style="font-weight:bold;"><% print(window.app.idioma.t('MATERIAL_FABRICADO')) %>: </span>
+                <span id="txtMaterialFilt" style="width:500px;" />
+        </div>  
+        
+        <div id="Div1" style="width: auto; float: left; margin-left:22%; margin-top:-19px;">
+            <label id="lblCant"><% print(window.app.idioma.t('CANTIDAD_DISPONIBLE')) %>: </label>
+            <span id="txtCantidadDisponible"/><span id="batchUom" class="Uom" style="margin-left:57px;"></span>
+        </div>      
+    </div>
+            
+    <div id="Div2" style="width: 97%; height: auto; float: left; margin-top:20px;margin-left:1%;">
+            <span id="lblMat" style="font-weight:bold;"><% print(window.app.idioma.t('MATERIAL')) %>: </span>
+            <input type="text" id="ddlMaterial" name="ddlMaterial" style="width:805px;" />
+    </div>
+
+    <div id="divAreadestino" style="width: 97%; height: auto;float:left;display:none;margin-left:1%;">
+            <span id="lblTankFilter" style="font-weight:bold;"><% print(window.app.idioma.t('TRASVASE')) %>: </span>
+            <input type="text" id="cmbAreaDestino" style="width:650px; margin-left: 125px;" />
+    </div>
+
+    <div  id="info" style="width: 100%; height: auto; float: left; margin-top:10px;margin-left:1%; text-align:left">
+       
+        <div id="infoDestino" style="width: 95%; float: left;margin-top:10px">
+            <label id="lblDestino"><% print(window.app.idioma.t('DESTINO')) %>: </label>
+            <input type="text" id="ddlDestinos" name="ddlDestinos" style="width:535px; margin-left: 3%;" />
+        </div>        
+
+        <div id="infoCantidad" style="width: auto; float: left;margin-left: 680px; margin-top: -28px;">
+            <label><% print(window.app.idioma.t('CANTIDAD_TRANSFERIDA')) %>: </label>
+            <span id="txtCantidadFija" style="display:none;"></span>
+            <input type="text" id="txtCantidad" name="txtCantidad" style="width:90px; margin-left:8px;" /><span id="transfUom" class="Uom" style="margin-left:6px;"></span>
+        </div>
+    </div>
+    
+    <div id="divInfo" style="width: 97%; height: auto; float: left; margin-top:20px;margin-left:3%; text-align:center;">
+            <span id="lbl" style="display:none;">LABEL</span>
+    </div>
+
+    <div id="botones" style="width: 97%; height: auto; float: left; text-align:left;margin-top:20px;">
+        <button id="btnAceptar" style="margin-left:12px;"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+        <button id="btnCancelar" style="margin-left:800px;"><% print(window.app.idioma.t("CANCELAR")) %></button>
+    </div>
+</div>-->

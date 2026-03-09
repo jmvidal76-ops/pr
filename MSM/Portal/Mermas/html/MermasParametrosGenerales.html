@@ -1,0 +1,71 @@
+﻿<style>
+    .mv-edit-actions {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 22px;
+        padding-top: 12px;
+        border-top: 1px solid #eee;
+        box-sizing: border-box;
+    }
+
+    .mv-edit-row {
+        margin-bottom: 10px;
+    }
+    .mv-edit-input.half-width {
+        flex: 0 0 50%;
+        max-width: 50%;
+        min-width: 0;
+    }
+
+</style>
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('MERMAS')) %> <% print(window.app.idioma.t('PARAMETROS_GENERALES')) %></label>
+</div>
+
+<!-- Toolbar / acciones -->
+<div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+    <div class="filtroFechas" style="float: left;">
+        <!-- Filtros adicionales aquí si los hay -->
+    </div>
+    <div style="float: right; margin-right: 10px;">
+        <button id="btnCrear" class="k-button k-button-icontext" style="margin-left: 5px;">
+            <span class='k-icon k-i-plus'></span><% print(window.app.idioma.t('CREAR')) %>
+        </button>
+        <button id="btnEliminar" class="k-button k-button-icontext k-grid-delete" style="margin-left: 5px;">
+            <span class='k-icon k-i-close'></span><% print(window.app.idioma.t('ELIMINAR')) %>
+        </button>
+        <button id="btnExportarExcel" class="k-button k-button-icontext" style="margin-left: 5px;">
+            <span class='k-icon k-i-excel'></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+        </button>
+    </div>
+</div>
+
+<!-- GRID -->
+<div id="gridParametrosGenerales"></div>
+
+<script type="text/template" id="templateCrearRegistroParametros">
+    <div class="mv-edit-container" style="padding:18px; width:100%; box-sizing:border-box; overflow-x: hidden;">
+        <div class="mv-edit-row">
+            <label class="mv-edit-label"><%= window.app.idioma.t("NOMBRE") %>:</label>
+            <div class="mv-edit-input half-width"><input id="nuevoNombre" class="k-textbox" /></div>
+            <div class="mv-edit-spacer"></div>
+        </div>
+        <div class="mv-edit-row">
+            <label class="mv-edit-label"><%= window.app.idioma.t("DESCRIPCION") %>:</label>
+            <div class="mv-edit-input third-width"><input id="nuevaDescripcion" class="k-textbox" /></div>
+            <div class="mv-edit-spacer"></div>
+        </div>
+        <div class="mv-edit-row">
+            <label class="mv-edit-label"><%= window.app.idioma.t("VALOR") %>:</label>
+            <div class="mv-edit-input half-width"><input id="nuevoValor" class="k-textbox" /></div>
+            <div class="mv-edit-spacer"></div>
+        </div>
+        <div class="mv-edit-actions" role="group" aria-label="Acciones creación">
+            <button type="button" class="k-button k-primary" id="btnCrearAceptar"><%= window.app.idioma.t("ACEPTAR") %></button>
+            <button type="button" class="k-button" id="btnCrearCancelar"><%= window.app.idioma.t("CANCELAR") %></button>
+        </div>
+    </div>
+</script>

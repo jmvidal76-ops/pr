@@ -1,0 +1,23 @@
+﻿<style>
+</style>
+
+<div>
+    <form id="TurnoSelector">
+        <div style="height: 70px; padding: 8px;">
+            <div>
+                <label style="margin-left:5px;"><% print(window.app.idioma.t('LINEA')) %></label>
+                <select id="TScmbLinea" style="width:200px;"></select>
+                <label style="margin-left: 5px;"><% print(window.app.idioma.t('FECHA')) %></label>
+                <input id="TSdtpFecha" style="width: 100px;" />
+                <label style="margin-left: 5px;"><% print(window.app.idioma.t('TURNO')) %></label>
+                <input id="TScmbTurnos" style="width: 100px;" />                
+            </div>
+            <div style="text-align:center; margin-top:10px">
+                <div id="TSturnoConfirmar" style="display:none;">
+                    <label id="TSlblDescTurno" style="margin-left: 5px;"></label>
+                    <button id="TSbtnSeleccionar" class="k-button" style="margin-left: 5px;"><% print(window.app.idioma.t('ACEPTAR')) %></button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

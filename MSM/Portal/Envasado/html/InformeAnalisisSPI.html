@@ -1,0 +1,46 @@
+﻿<table>
+        <tr style="height:10px;"><td></td></tr>
+    <tr>
+<td colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><% print(window.app.idioma.t("LINEA")) %></td>
+        <td colspan="3">
+            &nbsp;&nbsp;&nbsp;
+            <input style="width:230px;" id="cmbLinea" name="cmbLinea" required/>
+        </td>
+    </tr>
+    <tr style="height:30px;"><td></td></tr>
+     <tr>
+         <td colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><% print(window.app.idioma.t("ANYO")) %></td>
+        <td colspan="3">
+            &nbsp;&nbsp;&nbsp;
+            <input style="width:230px;" id="cmbAnyo" name="cmbAnyo" required/>
+        </td>
+    </tr>
+        <tr style="height:30px;"><td></td></tr>
+     <tr>
+<td colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><% print(window.app.idioma.t("SEMANA")) %></td>
+        <td colspan="3">
+            &nbsp;&nbsp;&nbsp;
+            <input style="width:230px;" id="cmbSemana" name="cmbSemana" required/>
+        </td>
+    </tr>
+        <tr style="height:30px;"><td></td></tr>
+     <tr>
+<td colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><% print(window.app.idioma.t("NUMERO_SEMANAS")) %></td>
+        <td colspan="3">
+            &nbsp;&nbsp;&nbsp;
+            <input style="width:230px;" id="txtNumSemanas" type="number" name="txtNumSemanas" required/>
+        </td>
+    </tr>
+        <tr style="height:30px;"><td></td></tr>
+    <tr>
+        <td colspan="6"  style="text-align:center">
+                <button id="btnAceptar" ><% print(window.app.idioma.t("GENERAR_INFORME")) %></button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+                <button id="btnCancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+        </td>
+    </tr>
+</table>

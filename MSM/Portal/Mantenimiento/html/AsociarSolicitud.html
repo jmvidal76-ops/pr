@@ -1,0 +1,65 @@
+﻿<style>
+
+    .pad-30 {
+        padding: 30px;
+    }
+
+    .pad-10 {
+        padding: 10px;
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .h-100 {
+        height: 100%;
+    }
+
+    .mar-top-20 {
+        margin-top: 20px;
+    }
+
+    .mar-right-25 {
+        margin-right: 25px;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .tac {
+        text-align: center;
+    }
+
+    .boton {
+        width: 150px;
+        height: 65px;
+    }
+
+    .fila {
+        margin-top: 10px;
+    }
+
+    .lbl-required {
+        display: inline;
+        margin-right: 6px;
+    }
+</style>
+
+<div>
+    <form id="AsociarParoSolicitud" class="pad-30">
+
+        <div>
+            <label id="lblParos" for="cmbParos" class="w-100"></label>
+            <div id="gridParos" name="gridParos" class="w-100"></div>
+        </div>
+
+        <div class="tac mar-top-20">
+            <input type="button" class="boton mar-right-25" id="btnGestionAsociar" data-lng-val-key="ACEPTAR"/>
+            <input type="button" class="boton" id="btnGestionCancelar" data-lng-val-key="CANCELAR"/>
+        </div>
+        <div id="trError" class="error tac mar-top-20" style="display:none;" colspan="2">
+        </div>
+    </form>
+</div>

@@ -1,0 +1,118 @@
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('GRAFICOS_DINAMICOS')) %></label>
+</div>
+
+<div id="divFiltros" class="k-header" style="height: 35px; width: 100%; padding-top: 5px;">
+    <div style="float: left;">
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('SELECCIONA_CONSULTA')) %></label>
+        <input id="ddlQueries" style="width: 320px;" />
+        <!--<button id="btnFiltros" class="k-button k-button-icontext k-i-plus" style="background-color:darkorange; color:white;margin-left:5px;"><span class='k-icon k-i-plus'></span><% print(window.app.idioma.t('MOSTRAR_FILTROS')) %></button>-->
+        <button id="btnEjecutar" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+    </div>
+    <div id="botones" style="float: right; margin-right: 10px;">
+        <button id="btnExportarPDF" class="k-button k-button-icontext k-grid-pdf" style="margin-left: 5px;">
+            <span class="k-icon k-i-pdf"></span><% print(window.app.idioma.t('EXPORTAR_PDF')) %>
+        </button>
+    </div>
+</div>
+<div id="divWhere" class="k-header" style="width: 100%; padding-top: 15px;">
+    <div id="linea" style="float: left;">
+        &nbsp;&nbsp;
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('LINEA')) %></label>
+        &nbsp;
+        <input id="cmbLinea" name="cmbLinea" style="width: 200px;" />
+            <br />
+            <br />
+    </div>
+    <div id="arranques">
+        &nbsp;&nbsp;
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('TIPO_ARRANQUE')) %></label>
+        &nbsp;
+        <input id="cmbArranques" name="cmbArranques" style="width: 200px;" />
+        <br />
+        <br />
+    </div>
+    <div id="semana">
+        &nbsp;&nbsp;
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('ANYO')) %></label>
+        &nbsp;
+        <input id="cmbAnyo" name="cmbAnyo" />
+        &nbsp;&nbsp;
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('SEMANA')) %></label>
+        &nbsp;
+        <input id="cmbSemana" name="cmbSemana" style="width: 250px;" />
+        &nbsp;&nbsp;
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('NUMERO_SEMANAS')) %></label>
+        &nbsp;
+        <input id="txtNumSemanas" name="txtNumSemanas" style="width: 250px;" />
+        <br />
+        <br />
+    </div>
+    <div id="fechas">
+        &nbsp;&nbsp;
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('FECHA_HORAINICIO')) %></label>
+        &nbsp;
+        <input id="dpInicio" name="dpInicio" />
+        &nbsp;&nbsp;
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('TURNO')) %></label>
+        &nbsp;
+        <input id="cmbTurnosInicio" name="cmbTurnosInicio" />
+        &nbsp;&nbsp;
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('FIN')) %></label>
+        &nbsp;
+        <input id="dpFin" name="dpFin" />
+        &nbsp;&nbsp;
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('TURNO')) %></label>
+        &nbsp;
+        <input id="cmbTurnosFin" name="cmbTurnosFin" />
+        <br />
+        <br />
+    </div>
+    <div id="maquina" style="float: left;width:350px;">
+        &nbsp;&nbsp;
+        <label style="margin-left: 15px;float:left;"><% print(window.app.idioma.t('MAQUINA')) %></label>
+        &nbsp;&nbsp;&nbsp;
+        <select id="cmbMaquina" style="width: 250px;float:left; margin-left:5px;"></select>
+<!--        <br />
+        <button class="k-button" id="todoMaquina" disabled="disabled" style="margin-left:73px;"><% print(window.app.idioma.t('SELECCIONAR_TODO')) %></button>
+        <button class="k-button" id="nadaMaquina" disabled="disabled" >Quitar todo</button>-->
+        <br />
+     </div>
+    <div id="motivo" style="float: left;width:350px;">
+        &nbsp;&nbsp;
+        <label style="margin-left: 5px;float:left;"><% print(window.app.idioma.t('MOTIVO')) %></label>
+        &nbsp;&nbsp;&nbsp;
+        <select id="cmbMotivo" style="width: 250px;float:left;margin-left:5px;"></select>
+<!--        <br />
+        <button class="k-button" id="todoMotivo" style="margin-left:53px;"><% print(window.app.idioma.t('SELECCIONAR_TODO')) %></button>
+        <button class="k-button" id="nadaMotivo">Quitar todo</button>-->
+    </div>
+    <div id="trError" style="display:none; color:red;text-align:center;margin-top:5px;float:left" colspan="2">
+                   <% print(window.app.idioma.t('LOS_CAMPOS_LINEA')) %>
+     </div>
+</div>
+<div id="divVacio" style="background-color: #9E93E1; height: 35px; width: 100%; padding-top: 15px;">
+    &nbsp;&nbsp;<label style="margin-left: 5px;"><% print(window.app.idioma.t('SIN_RESULTADOS')) %></label>
+</div>
+<div id="imgProcesando" style="background-color: transparent; display: none; width: 70%; padding-left: 50%; padding-top: 30px;">
+    <img src="img/cargando.gif" />
+</div>
+<div id="chart"></div>
+<!--<script id="labelTemplate" type="text/x-kendo-template">
+    #
+    var strValue=""; 
+    if (value>0)
+    {
+    strValue = kendo.toString(series.stack).substring(0,7).replace("Linea", "L").replace(" ","") + " - " + kendo.toString(series.name).substring(0,1);
+    }
+    else
+    {
+    strValue ="";
+    }
+    #
+    #= strValue #
+</script>-->
+
+

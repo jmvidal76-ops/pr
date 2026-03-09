@@ -1,0 +1,81 @@
+﻿<style>
+    .circle_state {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-size: 25px 28px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 25px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin: 0px auto;
+    }
+
+    .circle_cells {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-size: 25px 28px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 25px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-right: 5px;
+    }
+    .progress-text {
+        top: 55%;
+        left: 44%;
+        width: 10%;
+        background-color: lightgrey;
+        padding: 1%;
+        border: 1px solid darkgray;
+        border-radius: 4px;
+        text-indent: 0;
+    }
+    .kendo-textbox-legacy {
+        border: 1px solid #bcbcbc;
+        border-radius: 4px;
+        background: #fff;
+        padding: 4px 8px;
+        font-size: 15px;
+        min-width: 110px;
+        box-sizing: border-box;
+        height: 28px;
+        transition: border 0.2s, box-shadow 0.2s;
+    }
+
+        .kendo-textbox-legacy:focus {
+            border-color: #3f51b5;
+            outline: 0;
+            box-shadow: 0 0 2px #3f51b5;
+        }
+</style>
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('REVISION_KOPS_WO')) %></label>
+</div>
+
+<!-- Filtros Cambios -->
+<div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+    <div class="filtroFechas" style="float: left;">
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('FECHA')+' '+window.app.idioma.t('FIN_WO')) %>:</label>
+        <span class="ml-8"><% print(window.app.idioma.t('DESDE')) %></span>
+        <span class="ml-8" id="desdeFecha"></span>
+        <span class="ml-8"><% print(window.app.idioma.t('HASTA')) %></span>
+        <input id="dtpFecha" style="width: 190px;" />
+        <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+    </div>
+    <div style="float: right; margin-right: 10px;">
+        <button id="btnEditar" class="k-button k-button-icontext" style="margin-left: 5px;">
+            <span class='k-icon k-i-pencil'></span><% print(window.app.idioma.t('EDITAR')) %>
+        </button>
+        <button id="btnLimpiarFiltros" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;">
+            <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+        </button>
+    </div>
+</div>
+
+<div id="gridKOPs"></div>

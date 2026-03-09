@@ -1,0 +1,151 @@
+<style>
+    #formParoPerdida {
+        margin: 15px;
+    }
+
+    .tdLabel {
+        width: 16% !important;
+    }
+
+    .table th, .table td {
+        border-top: none !important;
+        text-align: right;
+    }
+
+    .table tr {
+        height: 60px !important;
+    }
+
+    .table input, textarea {
+        margin-left: 5px !important;
+        width: 120px;
+    }
+
+    #btnAceptarConsumo, #btnCancelarConsumo {
+        height: 30px;
+        width: 30%;
+        /*float:left;*/
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+
+    /*.k-grid .k-state-selected { background-color:lightyellow; }*/
+
+
+    .k-autocomplete,
+    .k-combobox,
+    .k-datepicker,
+    .k-timepicker,
+    .k-datetimepicker,
+    .k-colorpicker,
+    .k-numerictextbox,
+    .k-dropdown,
+    .k-selectbox,
+    .k-textbox,
+    .k-toolbar .k-split-button {
+        width: 100% !important;
+    }
+
+
+    .k-numerictextbox {
+        width: 100% !important;
+    }
+
+        .k-numerictextbox .k-numeric-wrap .k-input {
+            width: 96% !important;
+        }
+
+    .k-tooltip-validation {
+        clear: left !important;
+    }
+    /*#udMedida {
+        min-width:15px;
+        margin-left:5px;
+    }*/
+
+
+    span.k-widget.k-tooltip-validation {
+        display: inline-block;
+        position: absolute;
+        width: 290px;
+        text-align: left;
+        border: 0;
+        padding: 0;
+        margin: 0;
+        background: none;
+        box-shadow: none;
+        color: red;
+    }
+</style>
+
+<div style="width: 98%; margin: 0px; padding: 0px; text-align:center">
+    <form id="DeclararProd">
+        <table class="table borderless">
+            <tbody>
+                <tr>
+                    <td style="width: 17% !important;">
+                        <label id="lblBatch"><% print(window.app.idioma.t('ORDEN')) %></label></td>
+                    <td style="width: 30% !important; text-align: left">
+                        <span id="descBatch"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 7% !important;">
+                        <label id="lblTipoMaterial"><% print(window.app.idioma.t('CLASE_MATERIAL')) %></label></td>
+
+                    <td colspan="3" style="text-align:left;">
+                        <input type="text" id="descTipoMaterial" name="descTipoMaterial" style="width: 200px;" />
+                        <span id="idTipoMaterial" style="display: none;"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 7% !important;">
+                        <label id="lblMaterial"><% print(window.app.idioma.t('MATERIAL')) %></label></td>
+                    <td colspan="3" style="text-align:left;">
+                        <input type="text" id="descMaterial" name="descMaterial" style="width: 200px;" />
+                        <span id="idMaterial" style="display: none;"></span>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="width: 17% !important;">
+                        <label id="lblCantidad"><% print(window.app.idioma.t('CANTIDAD')) %></label></td>
+                    <td style="width: 30% !important; text-align: left">
+                        <input id="txtCantidad" type="text" name="txtCantidad" />
+                    </td>
+                    <td colspan="2" style="text-align:right;">
+                        <label id="lblUnidadMedida"><% print(window.app.idioma.t('UNIDAD_MEDIDA')) %></label>                    
+                        <span id="descUnidadMedida"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 17% !important; text-align: right">
+                        <label id="Label1"><% print(window.app.idioma.t('UBICACION_ORIGEN')) %></label></td>
+                    <td colspan="3" style="text-align: left">
+                        <select id="cmbOrigen" name="cmbOrigen"></select>
+                        <label style="color: red; display: none;" id="lblError"><% print(window.app.idioma.t('NO_SE_HAN_ENCONTRADO')) %></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 17% !important; text-align: right">
+                        <label id="Label2"><% print(window.app.idioma.t('EQUIPO_DESTINO')) %></label></td>
+                    <td colspan="3" style="text-align: left">
+                        <select id="cmbDestino" name="cmbDestino"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div style="text-align: center; width: 100%;">
+                            <button id="btnAceptarConsumo"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+                            <button id="btnCancelarConsumo"><% print(window.app.idioma.t("CANCELAR")) %></button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>

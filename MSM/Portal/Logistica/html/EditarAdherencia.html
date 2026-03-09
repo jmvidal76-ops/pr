@@ -1,0 +1,37 @@
+﻿<style>
+    .rTableRow {
+        display: table-row;
+    }
+
+    .rTableCell {
+        display: table-cell;
+        padding: 8px;
+    }
+</style>
+
+<div>
+    <form id="EditarAdherencia">
+            <div class="rTableRow" style="float: left; border: 0;">
+                <div class="rTableCell">
+                    <label id="lblMotivo" style="width: 75px; text-align: right;"></label>
+                </div>
+                <div class="rTableCell">
+                    <select id="cmbMotivos" style="width: 300px" />
+                </div>
+            </div>
+            <br /><br /><br />
+            <div class="rTableRow" style="float: left; border: 0;">
+                <div class="rTableCell" style="vertical-align: middle;">
+                    <label id="lblComentario" style="text-align: right;"></label>
+                </div>
+                <div class="rTableCell">
+                    <textarea id="txtComentario" style="width: 335px; height: 50px" />
+                </div>
+            </div>
+            <br /><br /><br />
+            <div style="text-align: center">
+                <input type="button" id="btnAceptarAdh" value="Aceptar" />
+                <input type="button" id="btnCancelarAdh" value="Cancelar" style="margin-left: 20px" />
+            </div>
+    </form>
+</div>

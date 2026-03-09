@@ -1,0 +1,68 @@
+﻿<style>
+    span.k-widget.k-tooltip-validation {
+        display: inline-block;
+        width: 160px;
+        text-align: left;
+        border: 0;
+        padding: 0;
+        margin: 0;
+        background: none;
+        box-shadow: none;
+        color: red;
+    }
+
+    .k-tooltip-validation .k-warning {
+        display: none;
+    }
+
+    .k-grid .k-grid-content tr.k-grid-edit-row > td[role='gridcell'] .k-tooltip-validation > .k-callout-n {
+        left: auto;
+        margin-left: auto;
+    }
+</style>
+
+<script id="tooltip" type="text/x-kendo-template">
+    <div class="k-widget k-tooltip k-tooltip-validation k-invalid-msg k-invalid-msg-delivery" data-for="#= Key #" role="alert">
+        <span class="k-icon k-warning"> </span> #= Message #
+        <div class="k-callout k-callout-n"></div>
+    </div>
+</script>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <!--  AQUI EL TITULO-->
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('GESTION_CODIGO_JDE')) %></label>
+</div>
+
+
+<!--  AQUI EL CONTENIDO-->
+<div id="container">
+    <div id="grid"></div>
+
+
+</div>
+
+<div id="divWndProveedor">
+    <form>
+        <div class="col-md-11 form-group">
+            <div class="col-lg-3"><label for="idProveedorNew"><% print(window.app.idioma.t('ID_PROVEEDOR')) %></label></div>
+            <div class="col-lg-7"><input id="idProveedorNew" style="width:100% !important"></div>
+        </div>
+        <div class="col-md-11 form-group">
+            <div class="col-lg-3"><label for="nombreProveedorNew"><% print(window.app.idioma.t('NOMBRE')) %></label></div>
+            <div class="col-lg-7"><input id="nombreProveedorNew" style="width:100% !important" type="text" class="k-textbox"></div>
+
+        </div>
+
+
+        <div class="col-md-11">
+            <center>
+                <label id="errorProveedor" style="color:red"></label><br />
+                <button id="btnSubmitProveedor" class="k-button" type="button" data-role="button" role="button" aria-disabled="false" tabindex="0">
+                    <% print(window.app.idioma.t('CREAR')) %>
+                </button>
+            </center>
+        </div>
+    </form>
+</div>
+<input type="file" style="display: none" id="inputFile" accept="xls, xlsx" />

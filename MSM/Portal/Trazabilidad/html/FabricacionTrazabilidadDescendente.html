@@ -1,0 +1,106 @@
+﻿
+<style>
+    .rowCOC {
+        background-color: #fda;
+    }
+    .circle_cells {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-size: 25px 28px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 25px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-right: 5px;
+    }
+</style>
+
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('TRAZABILIDAD_DESCENDENTE')) %></label>
+</div>
+
+<div class="filtros">
+    <div class="k-header k-grid-toolbar">
+        <label style='margin-left: 5px; '><% print(window.app.idioma.t('DESDE')) %></label>
+        <input id='dtpFechaInicio' />
+        <label style='margin-left: 5px; '><% print(window.app.idioma.t('HASTA')) %></label>
+        <input id='dtpFechaFin' />
+        <label class='k-input-label' style='margin-right: 5px;'><% print(window.app.idioma.t('LOTE_PROVEEDOR')) %></label>
+        <input id='cmbLoteProveedor' type='text' class='k-textbox' style='margin-right: 5px; width:20%' />
+        <label style='margin-left: 5px; '><% print(window.app.idioma.t('LOTE_MES')) %></label>
+        <input id='cmbLoteMes' type='text' class='k-textbox' style='margin-right: 5px;width:30%' />
+        <button type='button' data-toggle='popover' data-placement='right' data-container='body' data-content='<% print(window.app.idioma.t("DURACION_LARGA_CONSULTA")) %>'><img src='img/question.png'></button>
+        <button id="btnExportarExcel" class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px; float: right;">
+            <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+        </button>
+        <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left: 5px;float:right"><span class="k-icon k-i-search"></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+        <button type='button' id='btnMostrarLIMS' class='k-button k-button-icontext' style='float:right;'> <span><img src='../../../Common/img/muestra.png' style='width: 16px; opacity: 0.8; margin-right: 6px;' /></span><% print( window.app.idioma.t('LIMS')) %> </button>
+    </div>
+</div>
+
+
+
+<div id="divSplitterV" style="width:100%;">
+    <div id="divPestanias">
+        <ul>
+            <!--Pestañas-->
+            <li class="k-state-active">
+                <% print(window.app.idioma.t('COCCIONES')) %>
+                <span id="loaderCoccion"></span>
+            </li>
+            <li>
+                <% print(window.app.idioma.t('FERMENTACIONES')) %>
+                <span id="loaderFermentacion"></span>
+            </li>
+            <li>
+                <% print(window.app.idioma.t('GUARDAS')) %>
+                <span id="loaderGuarda"></span>
+            </li>
+            <li>
+                <% print(window.app.idioma.t('FILTRACIONES')) %>
+                <span id="loaderFiltracion"></span>
+            </li>
+            <li>
+                <% print(window.app.idioma.t('TCPS')) %>
+                <span id="loaderTCP"></span>
+            </li>
+            <li>
+                <% print(window.app.idioma.t('ENVASADO')) %>
+                <span id="loaderEnvasado"></span>
+            </li>
+            <li>
+                <% print(window.app.idioma.t('PALETS')) %>
+                <span id="loaderMMPP"></span>
+            </li>
+            <li>
+                <% print(window.app.idioma.t('MOVIMIENTOS_LOTES')) %>
+                <span id="loaderMovimientos"></span>
+            </li>
+        </ul>
+        <div><div id="gridCoccion" /></div>
+        <div><div id="gridFermentacion" /></div>
+        <div><div id="gridGuarda" /></div>
+        <div><div id="gridFiltracion" /></div>
+        <div><div id="gridTCP" /></div>
+        <div><div id="gridEnvasado" /></div>
+        <div>
+            <div id="gridPalets" />
+        </div>
+        <div><div id="gridMovimientos" /></div>
+    </div>
+</div>
+
+<script type="text/x-kendo-template" id="tmpLIMS">
+    <div>
+        <div style="display: flex;flex-direction: row;align-items: center;
+        justify-content: flex-start;margin-bottom:12px;">
+            <strong style="margin-right: 18px"><label class="mbi"><% print(window.app.idioma.t('ID_LOTE')) %></label>:</strong>
+            <label class="mbi">#=IdLoteMES#</label>
+        </div>
+        <div id="gridLIMS"></div>
+    </div>
+</script>

@@ -1,0 +1,161 @@
+﻿ 
+div.k-window-content {
+        padding: 0;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+      
+    #tabla_Cabecera {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        min-height: 11em;
+        /*font-size: 80% !important;*/
+      
+        
+    }
+    #tabla_Cabecera #logoForm {
+        text-align: center; 
+        width: 160px;
+        font-weight: bold;
+    }
+    #tabla_Cabecera #logoForm img{
+        width: 100%;
+         box-sizing: border-box;
+         padding: 10px;
+    }
+    #tabla_Cabecera table {
+        margin: 10px;        
+        width: 100%;
+        
+    }
+    #tabla_Cabecera table tr td{
+       vertical-align: top;
+    }
+    #formTemplate {
+       
+    }
+    .formALT {   
+        
+        width: 100%;
+        box-sizing: border-box;
+        padding-left: 20px;
+        padding-bottom: 20px;
+        padding-right: 20px;
+             
+        /*font-size: 80% !important;*/
+    }
+    .formALT > div {
+        display: inline-block;
+        width: 50%;
+        
+    }
+    
+    .formALT h3 {
+        border-bottom: 1px solid #ccc;
+        /*font-size: 1.4em;*/
+        font-weight: normal;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+        
+    .formALT label {
+        display: inline-block;
+        font-weight: bold;
+        width: 90%;
+        text-align: left;
+        
+    }
+    .formALT div > input {        
+        width: 90%;
+       
+    }
+   
+    .formALT div > textarea {        
+        width: 90%;
+       
+    }
+    .formALT div > input[type=checkbox] {        
+       width: auto;
+       margin-left: 60%;
+    }
+    .formALT div > span {        
+        width: 90%;
+       
+    }
+    .formALT div > span.rtdsField {        
+        width: 80%;
+       
+    }
+    .formALT .linkIco {
+        width: 1.5em;
+        height: 1.5em;
+    }
+    /*hide validation message*/
+      .k-tooltip-validation {        
+        display:none !important;
+      }
+     .k-widget > span.k-invalid,
+      input.k-invalid
+      {
+        
+        border-style: solid !important;
+        border-width: 1px !important;
+      }
+      input[type=checkbox].k-invalid
+      {
+        
+        outline-style: solid !important;
+        outline-width: 1px !important;
+
+      }           
+      div[data-readonly] {
+          pointer-events: none;
+        }
+    .invalidRequired {
+         
+        border-color: blue !important;
+        outline-color: blue !important;
+    }
+    .invalidRange {
+        border-color: orange !important;
+       
+    }
+    .k-grid .k-grid-toolbar .k-grid-add,
+    .k-grid tbody .k-grid-edit,
+    .k-grid tbody .k-grid-update,
+    .k-grid tbody .k-grid-cancel,
+    .k-grid tbody .k-grid-delete,
+    .k-grid tbody .toggleDown5s,
+    .k-grid tbody .toggleUp5s,
+    .k-grid tbody .toggleDownRow,
+    .k-grid tbody .toggleUpRow {
+      min-width: 0;
+      min-height: 26px;
+    }
+  
+    .k-grid .k-grid-toolbar .k-grid-add .k-icon,
+    .k-grid tbody .k-grid-edit .k-icon,
+    .k-grid tbody .k-grid-update .k-icon,
+    .k-grid tbody .k-grid-cancel .k-icon,
+    .k-grid tbody .k-grid-delete .k-icon,
+    .k-grid tbody .toggleDown5s,
+    .k-grid tbody .toggleUp5s,
+    .k-grid tbody .toggleDownRow,
+    .k-grid tbody .toggleUpRow   {
+      margin: 0;
+    }
+     /* .k-tooltip-validation {
+       
+        display:none !important;
+      }
+       */
+    /*.k-invalid {
+        border: 1px solid red;
+      }*/
+    /*.formALT div {
+        display:inline-block;
+    }*/
+ 
+   

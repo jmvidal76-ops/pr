@@ -1,0 +1,16 @@
+﻿
+ <!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('LISTADO_WO_MES')) %></label>
+</div>
+
+<div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+    <div style="float: right; margin-right: 10px;">
+        <button id="btnLimpiarFiltros" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;"><span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %></button>
+        <button id="btnExportExcel" class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px;"><span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %></button>
+        <button id="btnCrearWO" class="k-button k-button-icontext k-grid-add" style="margin-left: 5px; background-color:green; color:white;"><span class="k-icon k-add"></span><% print(window.app.idioma.t('CREAR_WO')) %></button>
+    </div>
+</div>
+
+<div id="gridListadoWO"></div>

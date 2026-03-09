@@ -1,0 +1,80 @@
+﻿<style>
+    /*
+            Use the DejaVu Sans font for display and embedding in the PDF file.
+            The standard PDF fonts have no support for Unicode characters.
+        */
+    #gantt {
+        font-family: Arial, Helvetica, sans-serif !important;
+        font-size: 13px;
+    }
+
+    .k-gantt {
+        font-family: "DejaVu Sans", "Arial", sans-serif;
+    }
+
+    /* Hide toolbars during export */
+    .k-pdf-export .k-gantt-toolbar {
+        display: none;
+    }
+
+    #idTooltip {
+        width: 17em !important;
+        text-align: left;
+    }
+
+    #idTooltip2 {
+        width: 32em !important;
+        text-align: left;
+    }
+
+    #idTooltip3 {
+        width: 35em !important;
+        text-align: left;
+    }
+
+    .k-task-complete {
+        width: 0% !important;
+    }
+
+    #idTooltip {
+        width: 35em;
+    }
+
+    #idTitulo {
+        font-size: 14px;
+    }
+
+    #idSubTitulo {
+        font-size: 12px;
+    }
+</style>
+
+<div id="divContenedor">
+    <!-- CABECERA -->
+    <div id="divCabeceraVista" class="divCabeceraVista">
+        <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+        <label class="lblCabeceraVista"><% print(window.app.idioma.t('VER_PROGRAMA_FABRICACION')) %></label>
+    </div>
+    <!-- Filtros Cambios -->
+    <div id="divFiltrosHeader" style="height:32px;width:100%; padding-top:5px;">
+        <div style="float:left;">
+            <label style="margin-left:5px;"><% print(window.app.idioma.t('DESDE')) %></label>
+            <input id="dtpFechaDesde" name="dtpFechaDesde" style="width:120px;" />
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <label style="margin-left:5px;"><% print(window.app.idioma.t('HASTA')) %></label>
+            <input id="dtpFechaHasta" name="dtpFechaHasta" style="width:120px;" />
+            <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left:5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('FILTRAR')) %></button>
+        </div>
+    </div>
+    <div id="gantt"></div>
+    <script id="task-template" type="text/x-kendo-template">
+        <div id="divTooltip">
+                 <div class="template">
+                    <div class="wrapper">
+                            <strong class="title" style="width:100px">#= IdMaterial #  #= DescMaterial #  #= cantidad != null ? parseFloat(cantidad).toFixed(2) : "" #  #= unidad # </strong>
+                    </div>
+                </div>
+        </div>
+    </script>
+</div>
+

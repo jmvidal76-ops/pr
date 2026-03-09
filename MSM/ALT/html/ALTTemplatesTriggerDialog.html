@@ -1,0 +1,222 @@
+
+<link rel="stylesheet" href="/Alt/css/ALTDialogEdit.css" />
+<div id="myTriggerTemplate">
+    <div id="toolbar"></div>
+    <div id="alt-center-pane">
+    <form id="triggerTemplate" style="margin-left: 10px;" class="formDialog">
+            <label><%- window.app.idioma.t("TIPO")%> </label>
+            <select id='selectTypeID' name='type' data-role='dropdownlist' style="width: 160px"  data-bind='source: typesArr, value: triggerTemplate.typeID' data-text-field='name' data-value-field='value' style='width: 130px' ></select>
+            <br /><br />
+
+            <label for="name"><%- window.app.idioma.t("NOMBRE")%></label>
+            <input type="text" class="k-textbox" maxlength="50" name="name" data-bind="value: triggerTemplate.name" maxlenght="50" required />
+            <span class="k-invalid-msg" data-for="name"></span>        
+            <br /><br />
+
+            <label for="txtDescript" maxlenght="150" required><%- window.app.idioma.t("DESCRIPCION")%></label>
+            <textarea id="txtDescript" class="k-textbox" data-bind="value: triggerTemplate.descript"></textarea>
+            <span class="k-invalid-msg" data-for="txtDescript" ></span>
+            <br /><br />
+
+            <div id="divORDEN"  class="divParametros">
+                <label><%- window.app.idioma.t("ALT_tipo_orden")%> </label>
+               
+                <select id="attr01ORDEN" name="attr01ORDEN" data-role="dropdownlist" data-bind="source: ordersTypes, value: triggerTemplate.attr01" data-text-field="name" data-value-field="id"></select>
+                <br />
+                <br />
+                <label><%- window.app.idioma.t("ALT_estado_inicio")%> </label>
+                
+                <span id="spanOrderStatus">
+                     <select id="attr02ORDEN" name="attr02ORDEN" data-role="dropdownlist"  data-bind="source: ordersStatus, value: triggerTemplate.attr02" data-text-field="name" data-value-field="id"></select>
+                </span>
+                <span id="spanOrderStatusArranque" style="display:none">
+                    <select id="attr03ORDEN" name="attr03ORDEN" data-role="dropdownlist"  data-bind="source: ordersStatusArranqueCambio, value: triggerTemplate.attr02" data-text-field="name" data-value-field="id"></select>
+                </span>
+                
+            </div>
+           
+            <div id="divTURNO"  class="divParametros">  
+                <label for="attr01TURNO"><%- window.app.idioma.t("ALT_inicio_turno")%></label><br />              
+                <select id="attr01TURNO" name="attr01TURNO" multiple style="width: 100%" data-bind="source: turnosArr, value: triggerTemplate.attr01" data-text-field="name" data-value-field="value" required></select>
+                <span class="k-invalid-msg" data-for="attr01TURNO"></span>  
+            </div>
+            <div id="divPLANIFICADOV2"  class="divParametros">
+                
+                <label for="attrPlannedOrderActive"><%- window.app.idioma.t("ORD_ENV_ACTIVA")%></label>          
+                <select id="attrPlannedOrderActive" data-role="dropdownlist" name="attrPlannedOrderActive"  style="width: 100px" data-bind="source: sinoArr, value: triggerTemplate.attrPlannedOrderActive" data-text-field="name" data-value-field="value" required></select>
+                <br /><br />
+
+                <label for="attrPlannedShiftActive"><%- window.app.idioma.t("TURNO_ENV_PLAN")%></label>            
+                <select id="attrPlannedShiftActive" data-role="dropdownlist" name="attrPlannedShiftActive"  style="width: 100px" data-bind="source: sinoArr, value: triggerTemplate.attrPlannedShiftActive" data-text-field="name" data-value-field="value" required></select>
+           
+                <br /><br />
+                <fieldset>                 
+
+                    <label for="attrPlannedType"><%- window.app.idioma.t("FRECUENCIA")%></label>           
+                    <select id="attrPlannedType" name="attrPlannedType"  style="width: 160px" data-role="dropdownlist"  data-bind="source: frecuenciaArr, value: triggerTemplate.attrPlannedType" data-text-field="name" data-value-field="value" required></select>
+                    <span class="k-invalid-msg" data-for="attrPlannedType"></span>
+                    <br /><br />
+                    <legend></legend>
+                    <div id="divPLANIFICADOV2tipo1" class="tipoPlanificado">
+                        <!-- una vez -->
+                        <label ><%- window.app.idioma.t("DIA_Y_HORA")%></label>
+                        <input id="attrPlannedOnce" name ="attrPlannedOnce" data-bind="value: triggerTemplate.attrPlannedOnce"  style="width: 160px"  name="attr02PLANIFICADO" required/>
+                    </div>                   
+                    <div id="divPLANIFICADOV2tipo2" class="tipoPlanificado">
+                        <!-- diario-->  
+                        <table class="tablaCampos">
+                            <tr >
+                                <th class="firstTH">
+                                        <label class="labelCampo"><%- window.app.idioma.t("CADA")%></label>
+                                </th>
+                                <th>
+                                    <input id="attrPlannedDays" data-role="numerictextbox" data-min="1" data-max="31" data-format="n0" data-bind="value: triggerTemplate.attrPlannedDays"  style="width: 50px"  name="attrPlannedDays" required/>
+                                    <label class="labelCampo"><%- window.app.idioma.t("DIAS")%></label> 
+                                </th>
+                                <th></th>
+                            </tr>
+                        </table>    
+                    </div>    
+                    <div id="divPLANIFICADOV2tipo3" class="tipoPlanificado">
+                        <!-- semanal -->  
+                        <table class="tablaCampos">
+                                <tr >
+                                    <th class="firstTH">
+                                            <label class="labelCampo"><%- window.app.idioma.t("CADA")%></label>
+                                    </th>
+                                    <th>
+                                        <input id="attrPlannedWeeks" data-role="numerictextbox"  data-min="1" data-max="5" data-format="n0" data-bind="value: triggerTemplate.attrPlannedWeeks"  style="width: 50px"  name="attrPlannedWeeks" required/>
+                                        <label class="labelCampo"><%- window.app.idioma.t("SEMANA_LOS_DIAS")%></label> 
+                                    </th>
+                                    <th>
+                                    </th>
+                                </tr>
+                                <tr >
+                                        <th class="firstTH">
+                                               
+                                        </th>                                        
+                                        <th colspan="2">
+                                            <select id="attrPlannedWeekDays" name="attrPlannedWeekDays" multiple style="width: 100%"  data-bind="source: ciclicoDias, value: triggerTemplate.attrPlannedWeekDays" data-text-field="name" data-value-field="value" required></select>
+                                        </th>
+                                </tr>
+                        </table> 
+                    </div>     
+                    <div id="divPLANIFICADOV2tipo4" class="tipoPlanificado"  >
+                        <!-- mensual -->  
+                        <table class="tablaCampos" style="width:570px">
+                            <tr>
+                                <th class="firstTH">
+                                    <label class="labelCampo"><%- window.app.idioma.t("CADA")%></label>
+                                </th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr >
+                                <!-- <label style="width:4em">Cada</label> -->
+                                <th class="firstTH"><input type="radio" name="attrPlannedMonthIsHourly" value=1  data-bind="checked: triggerTemplate.attrPlannedMonthIsHourly"></th>
+                                <th>
+                                    <label class="labelCampo"><%- window.app.idioma.t("DIA")%></label>
+                                    <input id="attrPlannedMonthDay" data-role="numerictextbox"  data-min="1" data-max="31" data-format="n0" data-bind="value: triggerTemplate.attrPlannedMonthDay, disabled:isDisableMesExacto"  style="width: 50px"  name="attrPlannedMonthDay" required/>
+                                    <label  class="labelCampo"><%- window.app.idioma.t("DE_CADA")%></label> 
+                                    <input id="attrPlannedMonthFrec" data-role="numerictextbox" data-min="1" data-max="12" data-format="n0" data-bind="value: triggerTemplate.attrPlannedMonthFrec,disabled:isDisableMesExacto"  style="width: 50px"  name="attrPlannedMonthFrec" required/>
+                                    <label  class="labelCampo"><%- window.app.idioma.t("MES_ES")%></label>                                    
+                                    <input id="attrFrecuencyHour2" name="attrFrecuencyHour" style="width:6em" data-bind="value: triggerTemplate.attrFrecuencyHour, disabled:isDisableMesExacto" required/>
+                                </th>
+                            </tr>
+                            <tr >
+                                <th class="firstTH"><input type="radio" name="attrPlannedMonthIsHourly" value=0  data-bind="checked: triggerTemplate.attrPlannedMonthIsHourly"></th>                                        
+                                <th >
+                                    <label class="labelCampo"><%- window.app.idioma.t("EL")%></label>
+                                    <select id="attrPlannedMonthNumDay" name="attrPlannedMonthNumDay" data-role="dropdownlist" style="width: 80px" data-bind="source: ciclicoNumDiaMes, value: triggerTemplate.attrPlannedMonthNumDay, disabled:isDisableMesNoExacto"  data-text-field="name" data-value-field="value" required></select>
+                                    <select id="attrPlannedMonthDayWeek" name="attrPlannedMonthDayWeek" data-role="dropdownlist" style="width: 110px" data-bind="source: ciclicoDiasMes, value: triggerTemplate.attrPlannedMonthDayWeek, disabled:isDisableMesNoExacto"  data-text-field="name" data-value-field="value" required></select>
+                                    <label  class="labelCampo"><%- window.app.idioma.t("DE_CADA")%></label> 
+                                    <input id="attrPlannedMonthFrec2" data-role="numerictextbox"  data-min="1" data-max="12" data-format="n0" data-bind="value: triggerTemplate.attrPlannedMonthFrec,disabled:isDisableMesNoExacto"  style="width: 50px"  name="attrPlannedMonthFrec" required/>
+                                    <label  class="labelCampo" ><%- window.app.idioma.t("MES_ES")%></label><input id="attrFrecuencyHour3" name="attrFrecuencyHour" style="width:6em" data-bind="value: triggerTemplate.attrFrecuencyHour, disabled:isDisableMesNoExacto" required/>
+                                </th>
+                            </tr>
+                        </table> 
+                    </div> 
+                    <div id="divPLANIFICADOV2frecuencia" class="tipoPlanificado">
+                        <table class="tablaCampos">
+                                <tr>
+                                        <th class="firstTH"><input type="radio" name="attrFrecuencyIsCycle" value="0"  data-bind="checked: triggerTemplate.attrFrecuencyIsCycle"></th>
+                                        <th>
+                                            <label class="labelCampo" ><%- window.app.idioma.t("HORA")%></label>
+                                            <input id="attrFrecuencyHour" name="attrFrecuencyHour" style="width:6em" data-bind="value: triggerTemplate.attrFrecuencyHour, disabled:isDisableFrecuenciaHora" required/>
+                                        </th>
+                                        <th></th>
+                                </tr>
+                                <tr>
+                                        <th class="firstTH"><input type="radio" name="attrFrecuencyIsCycle" value="1"  data-bind="checked: triggerTemplate.attrFrecuencyIsCycle"></th>
+                                        <th>
+                                            <label class="labelCampo" ><%- window.app.idioma.t("CADA")%></label> <input id="attrFrecuencyQuantity" data-role="numerictextbox"  data-min="1" data-format="n0" data-bind="value: triggerTemplate.attrFrecuencyQuantity, disabled:isDisableFrecuenciaCiclica"  style="width: 50px"  name="attrFrecuencyQuantity" required/>
+                                            <select id="attrFrecuencyUnits" name="attrFrecuencyUnits" data-role="dropdownlist" style="width: 80px" data-bind="source: frecuenciaCiclicaArr, value: triggerTemplate.attrFrecuencyUnits, disabled:isDisableFrecuenciaCiclica"  data-text-field="name" data-value-field="value" required></select>
+                                        </th>
+                                        <th> 
+                                            <label style="width:4em"><%- window.app.idioma.t("DESDE")%></label>
+                                            <input id="attrFrecuencyFrom"  style="width:6em" name="attrFrecuencyFrom" data-bind="value: triggerTemplate.attrFrecuencyFrom, disabled:isDisableFrecuenciaCiclica" required/>
+                                        </th>
+                                </tr>
+                                <tr>
+                                        <th class="firstTH"></th>
+                                        <th></th>
+                                        <th>
+                                            <label style="width:4em"><%- window.app.idioma.t("HASTA")%></label>
+                                            <input id="attrFrecuencyTo"  style="width:6em" name="attrFrecuencyTo" data-bind="value: triggerTemplate.attrFrecuencyTo, disabled:isDisableFrecuenciaCiclica" required/>
+                                        </th>
+                                </tr>
+                        </table>     
+                    </div> 
+                    <div id="divPLANIFICADOV2validez" class="tipoPlanificado">
+                        <table class="tablaCampos">
+                            <tr>
+                                    <th class="firstTH"><label class="labelCampo"><%- window.app.idioma.t("VALIDEZ")%></label></th>
+                                    <th></th>
+                                    <th></th>
+                            </tr>
+                            <tr>
+                                    <th></th>
+                                    <th>
+                                        <label  style="width:5em"><%- window.app.idioma.t("DESDE")%></label>
+                                        <input id="attrValidFrom" name="attrValidFrom"  data-bind="value: triggerTemplate.attrValidFrom"/>
+                                    </th>
+                                    <th></th>
+                            </tr>
+                            <tr>
+                                    <th style="text-align: right"><input type="radio" name="attrValidHasUntil" value=1  data-bind="checked: triggerTemplate.attrValidHasUntil" /></th>
+                                    <th>
+                                       <label style="width:5em"><%- window.app.idioma.t("HASTA")%></label>
+                                       <input id="attrValidUntil" name="attrValidUntil"  data-bind="value: triggerTemplate.attrValidUntil, disabled:isDisableValidez"/>
+                                    </th>
+                                    <th></th>
+                            </tr>
+                            <tr>
+                                    <th style="text-align: right"><input type="radio" name="attrValidHasUntil" value=0  data-bind="checked: triggerTemplate.attrValidHasUntil" /></th>
+                                    <th><%- window.app.idioma.t("SIN_FECHA_FIN")%> </th>
+                                    <th></th>
+                            </tr>
+                        </table>                       
+                    </div> 
+                </fieldset>                
+            </div>  
+
+            <div id="divMATERIAL" class="divParametros">
+                <label><%- window.app.idioma.t("CLASE")%> </label>               
+                <select id="attr01MATERIAL" name="attr01MATERIAL" data-role="dropdownlist" data-bind="source: classArr, value: triggerTemplate.attr01" data-text-field="Clase" data-value-field="IdClase"></select>
+                <br />
+                <br />
+                <label><%- window.app.idioma.t("MATERIAL")%> </label>
+               
+                <input id="attr02MATERIAL" name="attr02MATERIAL" data-role="dropdownlist"  data-bind="source: definitionsArr, value: triggerTemplate.attr02" data-text-field="Nombre" data-filter="contains" data-value-field="IdMaterial"/> 
+            </div>      
+        <br />      
+        <div id="toolBarBotones" >
+            <label id="lblError" style="color:red; width:230px; text-align:center" ></label><br />
+            <input type="button" id="btnAceptar"   />
+            <input type="button" id="btnCancelar"  />
+        </div>
+        </form>
+        
+    </div>
+    
+</div>

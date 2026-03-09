@@ -1,0 +1,73 @@
+<style>
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+
+        #btnAceptar, #btnCancelar {
+        height: 30px;
+        width: 30%;
+        /*float:left;*/
+        margin-left: 5px;
+        margin-top: 10px;
+        text-align:center;
+    }
+</style>
+
+<div style="width: 98%; margin: 0px; padding: 0px;">
+    <form id="DuplicarEntry">
+        <table class="table borderless">
+            <tbody>
+                <tr>
+                    <td style="width: 15%; text-align: right;">
+                        <label id="lblEquipo"><% print(window.app.idioma.t('ETIQUETA')) %>: </label>
+                    </td>
+                    <td style="width: 32%; text-align: left;">
+                        <input type="text" id="txtLabel" name="txtLabel" class="k-textbox" />
+                        <label id="lblErrorEq" style="color: red; display: none;"><% print(window.app.idioma.t('DEBE_SELECCIONAR_UN')) %></label>
+                    </td>
+                    <td style="width: 15%; text-align: right;">
+                        <label id="lblEstado"><% print(window.app.idioma.t('VALOR_MINIMO')) %>: </label>
+                    </td>
+                    <td style="width: 32%; text-align: left;">
+                        <input type="text" id="txtMinimo" name="txtMinimo" />
+                        <label id="lblErrorCant" style="color: red; display: none;"><% print(window.app.idioma.t('DEBE_INTRODUCIR_UN')) %></label>
+                    </td>
+                </tr>
+
+                <tr>
+
+                    <td style="width: 15%; text-align: right;">
+                        <label id="lblTipoOrden"><% print(window.app.idioma.t('VALOR_MAXIMO')) %>: </label>
+                    </td>
+                    <td style="width: 32%; text-align: left;">
+                        <input type="text" id="txtMaximo" name="txtMaximo" />
+                        <label id="lblErrorMat" style="color: red; display: none;"><% print(window.app.idioma.t('DEBE_SELECCIONAR_UN')) %></label>
+                    </td>
+                     <td style="width: 15%; text-align: right;">
+                        <label id="Label1"><% print(window.app.idioma.t('UNIDAD_MEDIDA')) %>: </label>
+                    </td>
+                    <td style="width: 32%; text-align: left;">
+                        <input type="text" id="txtUOM" name="txtUOM" class="k-textbox" />
+                    </td>
+                    <!--               <td style="width:17% !important; text-align:right;"><label id="lblOrdenDest"><% print(window.app.idioma.t('UD_MEDIDA')) %>: </label></td>
+                <td style="width:30% !important; text-align:left;">
+                     <select id="cmbUOM" name="cmbUOM"/> 
+                </td>  -->
+                </tr>
+                <tr id="errorMsg" style="display:none;" >
+                    <th colspan="5" style="text-align:center">
+                        <span style="color:red">LOS VALORES DE MÁXIMO Y MÍNIMO SON INCORRECTOS, REVÍSELOS</span>
+                    </th>            
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div style="text-align: center; width: 100%;">
+                            <button id="btnAceptar"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+                            <button id="btnCancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>

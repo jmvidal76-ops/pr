@@ -1,0 +1,11 @@
+<div class="tituloLinea" style="padding-bottom:50px"><%=linea%></div>
+<div class="tableVW" id="divtableOEE" style="margin-top:75px">
+    <div class="rowTableVW">
+        <div class="tituloTurno cellTableOEE oeeTurno">Rend. <% print(window.app.idioma.t('TURNO')) %></div>
+        <div class="valorTurno cellTableOEE" id="oee" style="text-align:right"><%=data.valoresDesdeInicioTurno.oee.toFixed(0)%>%</div>
+    </div>
+    <div class="rowTableVW">
+        <div class="tituloTurno cellTableOEE oeeTurno"><% print(window.app.idioma.t('ENVASES')) %></div>
+        <div class="valorTurno cellTableOEE verde" style="text-align:right"><% print(kendo.toString(data.valoresDesdeInicioTurno.envases,"n0"))%></div>
+    </div>
+</div>

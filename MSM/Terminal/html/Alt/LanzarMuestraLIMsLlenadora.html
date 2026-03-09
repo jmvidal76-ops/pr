@@ -1,0 +1,79 @@
+﻿<style>
+    .cabeceraVista {
+        border: 1px solid black;
+        width: auto;
+        height: 26px;
+        background-color: darkred;
+        color: white;
+        padding: 3px;
+        padding-left: 10px;
+        font-size: 20px;
+    }
+
+    .circle_cells {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-size: 25px 28px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 25px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-right: 5px;
+    }
+
+    .ajustesBoton {
+        width: 440px;
+        height: 60px;
+        font-size: 21px;
+    }
+
+    .btn-bloqueo {
+        width: 100px;
+        margin-right: 10px;
+    }
+
+    .btn-cancelar {
+        width: 120px;
+        margin-left: 20px;
+    }
+</style>
+
+<div id="divCabeceraVista" class="cabeceraVista">
+    <img src="img/iconoCabecera.png" />
+    <span><% print(window.app.idioma.t("LANZAR_MUESTRA_LIMS_LLENADORA")) %></span>
+</div>
+
+<!-- Contenedor dinámico donde se generarán los botones -->
+<div id="contenedorLlenadoras" style="padding-top: 10px">
+    <!-- Los botones se generarán aquí dinámicamente -->
+</div>
+
+<div id="divTextoMuestras" style="padding: 10px">
+    <span style="font-weight: bold;"><% print(window.app.idioma.t("ULTIMAS_MUESTRAS_LANZADAS")) %></span>
+</div>
+
+<div id="gridMuestrasLlenadora" style="margin-left: 5px"></div>
+
+<!--Modal Comentario Muestra-->
+<script id="ComentarioMuestraTemplate" type="text/x-kendo-template">
+    <div style="padding:18px;display: flex;flex-direction: column;align-items: flex-start;">
+        <div style="width:100%;display: flex;flex-direction: row;align-items: center;justify-content: space-between;margin-bottom:12px;">
+            <strong style="margin-right:18px; width:100px;"><label class="mbi"><% print(window.app.idioma.t('ID_LOTE')) %></label>:</strong>
+            <label class="mbi">#=IdLoteMES#</label>
+        </div>
+        <div style="width:100%;display: flex;flex-direction: row;align-items: center;justify-content: space-between;margin-bottom:12px;">
+            <strong style="margin-right:18px; width:100px;"><label class="mbi"><% print(window.app.idioma.t('FLUJO')) %></label>:</strong>
+            <label class="mbi">#=WorkFlowData#</label>
+        </div>
+        <div style="width:100%;display: flex;flex-direction: column;align-items: flex-start;margin-bottom:12px;">
+            <strong><label for="inpt_comentarios">#:window.app.idioma.t("COMENTARIOS")#</label>:</strong>
+            <textarea id="inpt_comentarios" style="width:98%;max-width:98%;padding:1%;height:50px"><% print(window.app.idioma.t('COMENTARIO_MUESTRA_DEFAULT')) %></textarea>
+        </div>
+        <span style="align-self: end;">
+                <input type="button" data-role="button" style="margin-right:6px" id="btnAceptarComentario" value="#:window.app.idioma.t("ACEPTAR")#"/>
+                <input type="button" data-role="button" id="btnCancelarComentario" value="#:window.app.idioma.t("CANCELAR")#"/>
+       </span>
+    </div>
+</script>

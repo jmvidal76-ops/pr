@@ -1,0 +1,131 @@
+﻿<style>
+    .table th, .table td {
+        border-top: none !important;
+    }
+
+    .table tr {
+        height: 55px !important;
+    }
+
+    #btnAceptar, #btnCancelar {
+        height: 30px;
+        width: 30%;
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+
+    #dlgCrearWO {
+        overflow: hidden !important;
+    }
+
+    /* --- NumericTextbox --- */
+    .k-numerictextbox {
+        width: 100% !important;
+    }
+
+    .k-numerictextbox .k-numeric-wrap {
+        display: flex;
+        align-items: center;
+    }
+
+    /* --- Números y etiquetas --- */
+    .numbersRow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .numbersRow > div {
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        width: 50%;
+    }
+
+    .numbersRow > div > label:first-child {
+        font-weight: normal;
+    }
+
+    .numbersRow > div > label#CantNecOrd {
+        font-weight: bold;
+        margin-left: 30px;
+    }
+</style>
+
+<div style="margin: 0; padding: 0 10px; overflow: hidden">
+    <form id="CrearWO">
+        <table class="table borderless">
+            <tbody>
+                <tr>
+                    <td style="width: 30% !important;"><% print(window.app.idioma.t('MATERIAL')) %></td>
+                    <td>
+                        <label id="txtMaterial" name="txtMaterial"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="width: 100%;">
+                        <div class="numbersRow">
+                            <div>
+                                <label><% print(window.app.idioma.t('CANTIDAD_NECESARIA_ORDENAR')) %></label>
+                                <label id="CantNecOrd">0</label>
+                            </div>
+                            <div>
+                                <label><% print(window.app.idioma.t('NRO_ORDEN_A_CREAR')) %></label>
+                                <input id="CantOrdCrear" />
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 30% !important;"><% print(window.app.idioma.t('FECHA_INICIO_ESTIMADA')) %></td>
+                    <td style="display: flex; height: 55px; width: 100%; align-items: center;">
+                        <input id="dtpFechaInicio" name="dtpFechaInicio" style="flex: 1" />
+                        <button id="btnLastDateWO" class="k-button" style="margin-left: 5px;">
+                            <span class="k-icon k-i-seek-e"></span>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 30% !important;"><% print(window.app.idioma.t('SALA_COCCION')) %></td>
+                    <td style="display: flex; height: 55px; width: 100%; align-items: center;">
+                        <select id="cmbSala" name="cmbSala" style="flex: 1"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 30% !important;"><% print(window.app.idioma.t('DESTINO_AUX')) %></td>
+                    <td style="display: flex; height: 55px; width: 100%; align-items: center;">
+                        <select id="cmbDestino" name="cmbDestino" style="flex: 1"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 30% !important;"><% print(window.app.idioma.t('CANTIDAD')) %></td>
+                    <td>
+                        <input id="txtCantidad" type="text" data-type="number" data-role="numerictextbox" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding: 0;">
+                        <div style="text-align: center; width: 100%;">
+                            <span id="lblError" style="color: red"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div style="text-align: center; width: 100%;">
+                            <button id="btnAceptar"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+                            <button id="btnCancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>

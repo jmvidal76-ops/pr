@@ -1,0 +1,69 @@
+﻿<style>
+    
+    #contenido, #botones {        
+        margin:0px;
+        padding-top: 10px;
+        padding-left: 10px;  
+        width:640px;   
+        
+    }
+    #contenido div {
+        float:left;        
+    }
+
+  
+    #botones {
+        text-align:center;
+        margin-bottom:20px;
+    }
+   
+    #botones button {
+        height:55px;
+        width:50%;        
+        margin-left:10px;
+        margin-top:10px;
+        margin-right:10px;
+    }
+
+.k-icon, 
+.k-tool-icon, 
+.k-grouping-dropclue, 
+.k-drop-hint, 
+.k-column-menu .k-sprite, 
+.k-grid-mobile .k-resize-handle-inner::before, 
+.k-grid-mobile .k-resize-handle-inner::after, 
+.k-pager-numbers .k-current-page .k-link::after, 
+.k-scheduler-toolbar > ul.k-scheduler-views > li.k-current-view > .k-link::after {
+   margin-top:10px;
+}
+
+</style>
+<div id="contenido" style="height:180px">
+    <div style="float:left;width:275px;">
+        <label><% print(window.app.idioma.t('LINEAS')) %></label>
+        <select id="cmbLinea" style=" position:relative;z-index:100;width:275px;"></select>
+    </div>
+    <div style="float:left;width:250px;">
+        <label><% print(window.app.idioma.t('ZONAS')) %></label>
+        <select id="cmbZona" style=" position:relative;z-index:100;width:250px;"></select>
+    </div>
+    <br />
+    <div style="float:left;width:250px;">
+        <label><% print(window.app.idioma.t('ALT_LOCATIONS')) %></label>
+        <select id="cmbPdvs" style=" position:relative;z-index:100;width:250px;"></select>
+    </div>
+    
+</div>
+<br />
+<div id="botones">
+    <div style="float:left;width:275px;">
+         <button id="btnAceptar"><% print(window.app.idioma.t('ACEPTAR')) %></button>
+    </div>
+    <div style="float:left;width:250px;">
+        <button id="btnCancelar"><% print(window.app.idioma.t('CANCELAR')) %></button>
+    </div>
+</div>
+<!--<div id="botones">
+    <button id="btnAceptar"><% print(window.app.idioma.t('ACEPTAR')) %></button>
+    <button id="btnCancelar"><% print(window.app.idioma.t('CANCELAR')) %></button>
+</div>-->

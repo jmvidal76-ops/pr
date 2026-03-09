@@ -1,0 +1,427 @@
+<style>
+    #formParoPerdida {
+        margin: 15px;
+    }
+
+    .k-edit-field, .k-edit-form-container .editor-field {
+        padding: 2px 0px .6em !important;
+    }
+    
+    /*.tdLabel {
+        width: 16% !important;
+    }
+    
+    .table th,
+    .table td {
+        border-top: none !important;
+        text-align: right;
+    }*/
+    /*.table tr{ 
+    height: 60px !important; 
+    }*/
+    
+    .table input,
+    textarea {
+        /*margin-left:5px !important;*/
+        width: 120px;
+    }
+    
+    .k-grid-add {
+        background-color: green;
+        color: white
+    }
+    
+    /*#btnAceptar_CamionesTransito,
+    #btnCancelar_CamionesTransito {
+        height: 30px;
+        width: 30%;
+        float:left;
+        margin-left: 5px;
+        margin-top: 10px;
+    }*/
+    
+    /*.borderless,
+    .borderless td,
+    .borderless th {
+        border: none !important;
+    }*/
+    /*.k-grid .k-state-selected { background-color:lightyellow; }*/
+    
+    .k-autocomplete,
+    .k-combobox,
+    .k-datepicker,
+    .k-timepicker,
+    .k-datetimepicker,
+    .k-colorpicker,
+    .k-numerictextbox,
+    .k-selectbox,
+    .k-textbox,
+    .k-toolbar .k-split-button {
+        width: 100% !important;
+    }
+    
+    /*.k-numerictextbox {
+        width: 100% !important;
+    }
+    
+    .k-numerictextbox .k-numeric-wrap .k-input {
+        width: 96% !important;
+    }
+    
+    .k-tooltip-validation {
+        clear: left !important;
+    }*/
+    /*#udMedida {
+        min-width:15px;
+        margin-left:5px;
+    }*/
+    
+    span.k-widget.k-tooltip-validation {
+        display: inline-block;
+        width: 160px;
+        text-align: left;
+        border: 0;
+        padding: 0;
+        margin: 0;
+        background: none;
+        box-shadow: none;
+        color: red;
+    }
+    
+    .k-tooltip-validation .k-warning {
+        display: none;
+    }
+    
+    .k-invalid {
+        color: red;
+    }
+    
+    .k-animation-container {
+        text-align: left;
+    }
+    
+    /*.table th,
+    .table td {
+        text-align: left;
+    }*/
+    /*span.k-widget.k-tooltip-validation {
+                    display: inline-block;                    
+                    position:absolute;                                        
+                    width: 290px;
+                    text-align: left;
+                    border: 0;
+                    padding: 0;
+                    margin: 0;
+                    background: none;
+                    box-shadow: none;
+                    color: red;
+                }*/
+    
+    /*.k-edit-form-container {
+        width: 800px;
+    }*/
+    /*
+    Decrease the width of the edit form labels. The default one is 30%.
+    The new width should depend on the column titles.
+    Switch the text alignment to the left. By default, it is to the right.
+*/
+    
+    /*.k-popup-edit-form .k-edit-label {
+        width: 20%;
+        text-align: left;
+    }*/
+    /*
+    Increase the width of the textbox containers. The default one is 60%.
+    The sum of label and editor percentage widths should be around 90%, to make up for existing paddings.
+*/
+    
+    /*.k-popup-edit-form .k-edit-field {
+        width: 70%;
+    }*/
+    /*
+    Expand the edit textboxes and any other Kendo UI widgets.
+    In case of unexpected side effects, use widget-specific classes, instead of .k-widget.
+*/
+    
+    /*.k-popup-edit-form .k-edit-field>.k-textbox,
+    .k-popup-edit-form .k-edit-field>.k-widget:not(.k-tooltip) {
+        width: 98%;
+    }*/
+    
+    .k-invalid-msg {
+        position: -ms-page !important;
+    }
+    
+    .k-invalid-msg-delivery {
+        position: fixed;
+    }
+    
+    .k-invalid-msg-reception {
+        position: absolute;
+    }
+    
+    .numericTxtPeso {
+        width: 100% !important;
+    }
+    
+    .marginFormColumn1 {
+        margin-left: 3em
+    }
+    
+    @media screen and (max-width: 1024px) {
+        .numericTxtPeso {
+            width: 100% !important;
+        }
+        .marginFormColumn1 {
+            margin-left: 0em
+        }
+        .inputAdd {
+            width: 90% !important;
+        }
+    }
+    
+    .inputRegistro {
+        width: 50% !important
+    }
+    
+    .txtInput {
+        height: 2.23em !important
+    }
+    
+    .rgAltRow,
+    .rgRow {
+        cursor: pointer !important;
+    }
+</style>
+
+<script id="tooltip" type="text/x-kendo-template">
+    <div class="k-widget k-tooltip k-tooltip-validation k-invalid-msg k-invalid-msg-delivery" data-for="#= Key #" role="alert">
+        <span class="k-icon k-warning"> </span> #= Message #
+        <div class="k-callout k-callout-n"></div>
+    </div>
+</script>
+
+<script id="tooltipReception" type="text/x-kendo-template">
+    <div class="k-widget k-tooltip k-tooltip-validation k-invalid-msg k-invalid-msg-reception" data-for="#= Key #" role="alert">
+        <span class="k-icon k-warning"> </span> #= Message #
+        <div class="k-callout k-callout-n"></div>
+    </div>
+</script>
+<script id="btnAddRDeliveryNote" type="text/x-kendo-tmpl">
+    <a class="k-button k-button-icontext k-grid-add" id="AddRDeliveryNote" href="#">
+        <span class="k-icon k-add"></span>Agregar
+    </a>
+</script>
+
+<script id="fieldsTemplate" type="text/x-kendo-template">
+    <div class="col-md-12" style="margin-top:5px">
+        <li class="fieldList">
+            <div class="col-md-3"><label data-bind="attr: { for: name}, text: label"></label></div>
+            <div class="col-md-5"><input data-bind="attr: { type: type, name: name, class: css},value: value" /></div>
+            <div class="col-md-2"><label data-bind="text: unit"></label></div>
+        </li>
+    </div>
+</script>
+
+<script id="fieldsTemplate" type="text/x-kendo-template">
+    <div class="col-md-12" style="margin-top:5px">
+        <li class="fieldList">
+            <div class="col-md-3"><label data-bind="attr: { for: name}, text: label"></label></div>
+            <div class="col-md-5"><input data-bind="attr: { type: type, name: name, class: css},value: value" /></div>
+            <div class="col-md-2"><label data-bind="text: unit"></label></div>
+        </li>
+    </div>
+</script>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('CAMIONES_PENDIENTES')) %></label>
+</div>
+<div id="splitterCamionesTransito">
+
+    <!-- Grid Acciones Mejora -->
+    <div id="gridTransportes">
+
+    </div>
+
+
+    <div id="divDetalle">
+        <!-- Filtros Detalle -->
+        <div id="divFiltrosDetalle" class="k-header" style="height:32px;width:100%; padding-top:5px;">
+            <div style="float:left;">
+                <label id="lblCabeceraDetalle" style="margin-left:5px;"><% print(window.app.idioma.t('MODIFICAR_TRANSPORTE')) %></label>
+            </div>
+
+
+        </div>
+
+        <!-- Grid Paros -->
+        <div id="divPestanias">
+            <ul>
+                <!--Pestañas-->
+                <li class="k-state-active" id="li_1">
+                    <% print(window.app.idioma.t('TRANSPORTE').toUpperCase()) %>
+                </li>
+                <li id="li_2">
+                    <% print(window.app.idioma.t('DOCUMENTOS').toUpperCase()) %>
+                </li>
+                <li id="li_3">
+                    <% print(window.app.idioma.t('ALBARAN_ENTRADA').toUpperCase()) %>
+                </li>
+                <li id="li_4">
+                    <% print(window.app.idioma.t('ALBARAN_SALIDA').toUpperCase()) %>
+                </li>
+            </ul>
+            <div>
+                <!--Detalle Transporte-->
+                <div id="detalleTransporte" style="overflow-x:hidden">
+                    <div class="demo-section k-content">
+                        <form id="formCamionesTransito" style="padding-top:1em;">
+                            <div class="col-lg-6 form-group marginFormColumn1">
+                                <div class="col-lg-3"><label for="dateFechaEntrada" id="labelFechaEntrada"><% print(window.app.idioma.t('FECHA_ENTRADA').toUpperCase()) %></label></div>
+                                <div class="col-lg-6 col-md-10"><input id="dateFechaEntrada" /></div>
+                                
+
+                            </div>
+                            <div class="col-lg-5  form-group">
+                                <div class="col-lg-3"><label for="selectGranel" id="labelFechaSalida"><% print(window.app.idioma.t('GRANEL').toUpperCase()) %></label></div>
+                                <div class="col-lg-2"><input id="selectGranel" value="2" /></div>
+                            </div>
+                            <div class="col-lg-6 form-group marginFormColumn1">
+                                <div class="col-lg-3"><label for="txtMatriculaTractora" id="labelMatriculaTractora"><% print(window.app.idioma.t('MATRICULA_TRACTORA').toUpperCase()) %>&emsp;* </label></div>
+                                <div class="col-lg-6 col-md-10"><input id="txtMatriculaTractora" maxlength="8" /></div>
+                                <a id="btnAddRegistrationT" class="k-button clsRegistrationT btnAddNewObject" style="background-color:green;color:white"> <span class="k-icon k-add"></span> </a>
+                            </div>
+                            <div class="col-lg-5 form-group">
+                                <div class="col-lg-3"><label for="txtMatriculaRemolque"><% print(window.app.idioma.t('MATRICULA_REMOLQUE').toUpperCase()) %></label></div>
+                                <div class="col-lg-6 col-md-10"><input id="txtMatriculaRemolque" maxlength="9" /></div>
+                                <a id="btnAddRegistrationR" class="k-button clsRegistrationR btnAddNewObject" style="background-color:green;color:white"> <span class="k-icon k-add"></span> </a>
+                            </div>
+                            <div class="col-lg-6 form-group marginFormColumn1">
+                                <div class="col-lg-3"><label for="txtNombreTransportista" id="labelNombreTransportista"><% print(window.app.idioma.t('TRANSPORTISTA').toUpperCase()) %>&emsp;*</label></div>
+                                <div class="col-lg-6  col-md-10"><input id="txtNombreTransportista" style="float:left" /></div>
+                                <a id="btnAddDriver" class="k-button clsDriver btnAddNewObject" style="background-color:green;color:white"> <span class="k-icon k-add"></span> </a>
+                            </div>
+                            <div class="col-lg-5  form-group">
+                                <div class="col-lg-3"><label for="txtDNITransportista" id="labelDNITransportista"><% print(window.app.idioma.t('DNI')) %>&emsp;*</label></div>
+                                <div class="col-lg-7"><input id="txtDNITransportista" type="text" class="k-textbox" style="float:left" /></div>
+                            </div>
+                            <div class="col-lg-6 form-group marginFormColumn1">
+                                <div class="col-lg-3"><label for="selectClienteProveedor"><% print(window.app.idioma.t('CLIENTE').toUpperCase()) %> / <% print(window.app.idioma.t('PROVEEDOR').toUpperCase()) %></label></div>
+                                <div class="col-lg-6 col-md-10"><input id="selectClienteProveedor" /> </div>
+                                <!-- <div class="col-lg-1" style="padding-left:0px">-->
+                                <a id="btnAddClient" class="k-button clsClient btnAddNewObject" style="background-color:green;color:white"> <span class="k-icon k-add"></span> </a>
+
+                                <!-- </div>-->
+                            </div>
+                            <div class="col-lg-5 form-group">
+                                <div class="col-lg-3"><label for="numericTxtPesoEntrada"><% print(window.app.idioma.t('PESO_ENTRADA_KG').toUpperCase()) %></label></div>
+                                <div class="col-lg-6 col-md-10"><input id="numericTxtPesoEntrada" class="numericTxtPeso" title="Peso Entrada" /></div>
+                                <a class="k-button" id="btnCapturarEntrada" title="<% print(window.app.idioma.t('CAPTURAR').toUpperCase()) %>"><span class="k-icon k-i-seek-s"></span></a>
+                            </div>
+                            <div class="col-lg-6 form-group marginFormColumn1">
+                                <div class="col-lg-3"><label for="selectProducto"><% print(window.app.idioma.t('PRODUCTO').toUpperCase()) %></label></div>
+                                <div class="col-lg-6 col-md-10"><input id="selectProducto" style="width: 100%;" /></div>
+                                <a id="btnAddProduct" class="k-button clsProduct btnAddNewObject" style="background-color:green;color:white"> <span class="k-icon k-add"></span> </a>
+
+                            </div>
+                            <div class="col-lg-5 form-group">
+                                <div class="col-lg-3"><label for="numericTxtPesoSalida"><% print(window.app.idioma.t('PESO_SALIDA_KG').toUpperCase()) %>&emsp;</label></div>
+                                <div class="col-lg-6 col-md-10"><input id="numericTxtPesoSalida" class="numericTxtPeso" title="Peso Salida" /></div>
+                                <a class="k-button" id="btnCapturarSalida" title="<% print(window.app.idioma.t('CAPTURAR').toUpperCase()) %>"><span class="k-icon k-i-seek-s"></span></a>
+                            </div>
+                            <div class="col-lg-6 form-group marginFormColumn1">
+                                <div class="col-lg-3"><label for="txtObservacionProducto"><% print(window.app.idioma.t('OBSERVACIONES').toUpperCase()) %> <% print(window.app.idioma.t('PRODUCTO').toUpperCase()) %></label></div>
+                                <div class="col-lg-7"><textarea id="txtObservacionProducto" class="k-textbox"></textarea></div>
+                            </div>
+                            <div class="col-lg-5 form-group">
+                               <div class="col-lg-3"><label for="txtUbicacionInterna" id="labelUbicacionInterna"><% print(window.app.idioma.t('UBICACION_DESCARGA_CARGA').toUpperCase()) %></label></div>
+                                <div class="col-lg-7"><input id="txtUbicacionInterna" style="width: 85% !important;" /></div>
+                            </div>
+                            <div class="col-lg-6 form-group marginFormColumn1">
+                                <div class="col-lg-3"><label for="selectDestino"><% print(window.app.idioma.t('DESTINATARIO').toUpperCase()) %></label></div>
+                                <div class="col-lg-6 col-md-10"><input id="selectDestino" /></div>
+                                <a id="btnAddAdressee" class="k-button clsAdressee btnAddNewObject" style="background-color:green;color:white"> <span class="k-icon k-add"></span> </a>
+
+                            </div>
+                            <div class="col-lg-5 form-group">
+                                <div class="col-lg-3"><label for="txtOrigen" id="labelOrigenMercancia"><% print(window.app.idioma.t('ORIGEN_MERCANCIA').toUpperCase()) %>&emsp;*</label></div>
+                                <div class="col-lg-6 col-md-10"><input id="txtOrigen" /></div>
+                                <a id="btnAddOrigin" class="k-button clsOrigin btnAddNewObject" style="background-color:green;color:white"> <span class="k-icon k-add"></span> </a>
+                            </div>
+                            <div class="col-lg-6 form-group marginFormColumn1">
+                                <div class="col-lg-3"><label for="txtUbicacionExterna" id="labelUbicacionExterna"><% print(window.app.idioma.t('UBICACION_EXTERNA').toUpperCase()) %></label></div>
+                                <div class="col-lg-7"><input id="txtUbicacionExterna" type="text" class="k-textbox" /></div>
+                            </div>
+                            <div class="col-lg-5 form-group">
+                                <div class="col-lg-3"><label for="txtOperador"><% print(window.app.idioma.t('OPERADOR').toUpperCase()) %> <% print(window.app.idioma.t('TRANSPORTE').toUpperCase()) %></label> </div>
+                                <div class="col-lg-6 col-md-10"><input id="txtOperador" /></div>
+                                <a id="btnAddOperator" class="k-button clsOperator btnAddNewObject" style="background-color:green;color:white"> <span class="k-icon k-add"></span> </a>
+                            </div>
+                            <div class="col-lg-6 form-group marginFormColumn1">
+                                <div class="col-lg-3"><label for="txtObservacion"><% print(window.app.idioma.t('OBSERVACIONES').toUpperCase()) %></label></div>
+                                <div class="col-lg-7"><textarea id="txtObservacion" class="k-textbox" rows="3"></textarea></div>
+
+                            </div>
+                            <div class="col-lg-5" style="margin-bottom:1em;margin-top:1em">
+                                <center>
+                                    <button id="btnGuardar" type="button" style="display:none;background-color:#1b63d5;color:white"> 
+                                        <% print(window.app.idioma.t('GUARDAR')) %>
+                                </button>
+                                    <button id="btnCancelarTransporte" type="button" style="display:none"><% print(window.app.idioma.t('CANCELAR')) %></button>
+                                    <button id="btnReiniciarCampos" type="button"> 
+                                        <% print(window.app.idioma.t('LIMPIAR_CAMPOS')) %>
+                                </button>
+                                    <button id="btnImprimirSalida" type="button" style="display:none"> 
+                                        <% print(window.app.idioma.t('IMPRIMIR_SALIDA')) %>
+                                </button>
+                                    <button id="btnFinalizarCamion" type="button" style="display:none"> 
+                                        <% print(window.app.idioma.t('FINALIZAR_CAMION')) %>
+                                </button>
+                                </center>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+
+
+                <!--Detalle Documentos-->
+                <div id="detalleDocumentos">
+                    <form enctype="multipart/form-data">
+                        <div id="gridDocumentos">
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div>
+                <!--Detalle Albaran Entrada-->
+                <div id="detalleAlbaranEntrada">
+                    <form enctype="multipart/form-data">
+                        <div id="gridAlbaranEntrada">
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div>
+                <!--Detalle Albaran Salida-->
+                <div id="detalleAlbaranSalida">
+                    <form enctype="multipart/form-data">
+                        <div id="gridAlbaranSalida">
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</div>
+<div id="divWnd"></div>

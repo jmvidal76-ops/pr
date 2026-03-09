@@ -1,0 +1,48 @@
+﻿<!-- agomezn 220616: creado -->
+<style type="text/css">
+    .k-tabstrip > .k-content, .k-panelbar .k-tabstrip > .k-content {
+        padding: 0 0 0 0;
+    }
+</style>
+
+<!-- Cabecera -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="./img/titulocabecera.png" style="width: 20px; height: 20px; margin-left: 5px;" alt="" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('LISTADO_KOPS_PROCESO')) %></label>
+</div>
+
+<input id="auxDate"/>
+<!-- Grid -->
+<div id="gridListadoKopsManuales">
+        <label id="txtDDL"></label>
+        <label id="txtArea"></label>
+    <div id="divPestanias">
+        <ul>
+            <li class="k-state-active"><% print(window.app.idioma.t('COCCION')) %></li>
+            <li><% print(window.app.idioma.t('FERMENTACION')) %></li>
+            <li><% print(window.app.idioma.t('FILTRACION')) %></li>
+            <li><% print(window.app.idioma.t('PRELLENADO')) %></li>
+        </ul>
+        <div id="gridCoccion" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%;">
+            <div id="gridKopsManualesCoccion"></div>
+        </div>
+        <div id="plhFermentacion" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%;">
+            <div id="gridKopsManualesFermentacion"></div>
+        </div>
+        <div id="plhFiltracion" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%;">
+                        <div id="gridKopsManualesFiltracion"></div>
+        </div>
+        <div id="plhPrellenado" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%;">
+                        <div id="gridKopsManualesPrellenado"></div>
+        </div>        
+    </div>
+</div>
+
+<script type="text/x-kendo-template" id="templateDetalleKOP">
+    <div>
+        <div id="gridDetalleKOPSCOC" style="float: left; width: 100%;"></div>
+        <div id="gridDetalleKOPSFER" style="float: left; width: 100%;"></div>
+        <div id="gridDetalleKOPSFIL" style="float: left; width: 100%;"></div>
+        <div id="gridDetalleKOPSPRE" style="float: left; width: 100%;"></div>
+    </div>
+</script>

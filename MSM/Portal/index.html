@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>MSM - Portal MES Mahou San Miguel</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=11" />
+    <link rel="shortcut icon" id="favicon" type="image/x-icon" href="#" />
+
+    <link href="/LibreriasJS/libs/pNotify/pnotify.custom.min.css" rel="stylesheet" />
+    <link href="/LibreriasJS/libs/jqueryMobile/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/LibreriasJS/libs/kendoUI/styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="/LibreriasJS/libs/kendoUI/styles/kendo.default.min.css" />
+    <link rel="stylesheet" href="/LibreriasJS/libs/kendoUI/styles/kendo.dataviz.min.css" />
+    <link rel="stylesheet" href="/LibreriasJS/libs/kendoUI/styles/kendo.dataviz.default.min.css" />
+    <link href="/LibreriasJS/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/LibreriasJS/libs/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="/LibreriasJS/libs/vis/vis.min.css" rel="stylesheet" />
+    <link href="css/portal.css" rel="stylesheet" />
+
+    <script src="../LibreriasJS/libs/vis/moment-with-locales.min.js"></script>
+    <script src="../LibreriasJS/libs/kendoUI/cultures/kendo.culture.es-ES.min.js"></script>
+    <script src="../LibreriasJS/libs/kendoUI/cultures/kendo.culture.en-GB.min.js"></script>
+
+    <script>require = { urlArgs: "v=1.0.0" }</script>
+    <script data-main="js/main" src="/LibreriasJS/libs/require/require.js"></script>
+
+    <style type="text/css">
+        #alrtMensajeAdministracion {
+            margin: 0 !important;
+            padding: 7px !important;
+            margin-bottom: 0 !important;
+            display: none;
+            border-radius: 0;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- Static navbar -->
+    <div id="contenedor" style="height: 100%; border: 0;">
+        <!-- PANEL LOADER -->
+        <div id="loader" class="spinner" style="">
+            <br />
+            <img id="cargando" src="img/cargando.gif" />
+        </div>
+
+        <div id="vertical" style="height: 100%; border: 0; z-index: 0;">
+            <nav class="navbar navbar-default navbar-static-top" style="padding-left: 0px;">
+                <div class="container" style="padding-left: 0px; margin-left: 10px; width: 99%;">
+                    <div class="navbar-header">
+                        <div style="float: left; margin-top: 5px; margin-right: 28px;">
+                            <div style="text-align: center;">
+                                <img id="logo" src="" />
+                            </div>
+                            <div id="lblNombrePlanta" style="text-align: center; font-weight: bold; font-size: 14px;"></div>
+                        </div>
+                    </div>
+                    <div id="mainNavbar" class="navbar-collapse collapse menuTop">
+                        <ul id="menuPrincipal" class="nav navbar-nav"></ul>
+                    </div>
+                    <!--/.nav-collapse-->
+                </div>
+            </nav>
+            <div id="top-pane" style="display: none;">    
+                <div style="display:flex; flex-direction: column; height:100%; overflow:hidden">
+                    <div class="alert alert-danger" role="alert" id="alrtMensajeAdministracion" name="alrtMensajeAdministracion"></div>
+                    <div id="horizontal" style="flex-grow:1;">
+                        <div id="left-pane">
+                            <div id="cabeceraMenu" class="divCabeceraVista">
+                                <label id="lblCabeceraMenu" class="lblCabeceraVista" style="padding-left: 15px;"></label>
+                            </div>
+                            <div id="panelbar-images"></div>
+                        </div>
+                        <div id="center-pane" style="height: 100%;">
+                            <!--PANEL LOGIN-->
+                            <div id="dlgLogin"></div>
+                            <div id="dlgPopUp"></div>
+                        </div>
+                        <div id="config-pane"></div>
+                    </div>
+                </div>               
+            </div>
+            <div id="bottom-pane" style="display: none; float: left;">
+                <div class=" pane-content" style="width: 98%;">
+                    <div style="float: left;">
+                        <img id="reloj" src="img/reloj_footer.png" style="margin-right: 10px;" />
+                        <label id="lblFechaHoraSistema" style="margin-right: 10px;"></label>
+                        <img id="usuarioLogado" src="img/usuario_footer.png" style="margin-right: 10px;" />
+                        <label id="lblUsuarioLogado" style="margin-right: 10px;"></label>
+                        <img id="pantalla" src="img/pantalla_footer.png" style="margin-right: 10px;" />
+                        <label id="lblPantalla" style="margin-right: 10px;"></label>
+                    </div>
+                    <!-- <div style="float:right;">
+                <img id="mensajeria" src="img/mensajeria.png" style="margin-right:15px;" />
+            </div>-->
+                    <div style="float: right;">
+                        <img id="imgChat" src="img/chat.png" /><label id="lblChat"></label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+

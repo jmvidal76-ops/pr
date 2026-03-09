@@ -1,0 +1,9 @@
+diff a/MSM/MSM.csproj b/MSM/MSM.csproj	(rejected hunks)
+@@ -75,7 +75,6 @@
+     </Reference>
+     <Reference Include="CO_MSM_FAB_ENGBread, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=x86">
+       <SpecificVersion>False</SpecificVersion>
+-      <HintPath>..\..\MAIN\MSM\BreadMES\libreriasBREAD\CO_MSM_FAB_ENGBread.dll</HintPath>
+       <HintPath>..\BreadMES\libreriasBREAD\CO_MSM_FAB_ENGBread.dll</HintPath>
+     </Reference>
+     <Reference Include="CO_MSM_FAB_ENGBreadExtension, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c0f6ca1d08084ae8, processorArchitecture=MSIL">

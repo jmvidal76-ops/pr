@@ -1,0 +1,139 @@
+<style>
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+
+    .k-autocomplete,
+    .k-combobox,
+    .k-datepicker,
+    .k-timepicker,
+    .k-datetimepicker,
+    .k-colorpicker,
+    .k-numerictextbox,
+    .k-dropdown,
+    .k-selectbox,
+    .k-textbox,
+    .k-toolbar .k-split-button {
+        width: 100% !important;
+    }
+
+    .k-numerictextbox {
+        width: 100% !important;
+    }
+        .k-numerictextbox .k-numeric-wrap .k-input {
+            width: 99% !important;
+        }
+
+    .k-content {
+        background-color: #fff;
+    }
+
+    .vertical-scroll {
+        overflow-y: scroll;
+        max-height: 790px;
+    }
+
+    #center-pane {
+        background: white;
+    }
+
+    .form-group-sizing {
+        height: 70px;
+        max-width: 24%;
+    }
+
+    .combosGrid {
+        width: 98%;
+        padding-left: 1%;
+        padding-right: 1%
+    }
+</style>
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('CREAR_MOVIMIENTO_FABRICACION')) %></label>
+</div>
+<div class="container-fluid" style="min-width: 900px;">
+    <div class="row">
+        <form id="frmCrearMovimientoFabricacion" class="form-inline" name="frmCrearMovimientoFabricacion">
+            <div class="col-md-11" style="margin-top: 10px;">
+                <div class="form-group" style="display: flex; align-items: center; margin-left: 5px">
+                    <label style="margin-right: 5px;"><% print(window.app.idioma.t('DESDE')) %></label>
+                    <input id="dtpFechaInicio" style="width: 195px !important; margin-right: 5px;" />
+                    <label style="margin-right: 5px;"><% print(window.app.idioma.t('HASTA')) %></label>
+                    <input id="dtpFechaFin" style="width: 195px !important" />
+                </div>
+            </div>
+            <div class="k-content combosGrid" style="padding-top: 10px; height: 70px; display: flex; justify-content: flex-start;">
+                <div class="form-group" style="width: 18%; margin-right: 10px;">
+                    <label for="cmbTipoLoteOrigen" class="control-label"><% print(window.app.idioma.t('TIPO_LOTE_ORIGEN')) %></label>
+                    <input type="text" name="cmbTipoLoteOrigen" id="cmbTipoLoteOrigen" style="width: 100%;" />
+                </div>
+                <div class="form-group" style="width: 18%; margin-right: 10px;">
+                    <label for="cmbAlmacenLoteOrigen" class="control-label"><% print(window.app.idioma.t('ALMACEN')) %></label>
+                    <input type="text" name="cmbAlmacenLoteOrigen" id="cmbAlmacenLoteOrigen" style="width: 100%;" />
+                </div>
+                <div class="form-group" style="width: 18%; margin-right: 10px;">
+                    <label for="cmbZonaLoteOrigen" class="control-label"><% print(window.app.idioma.t('ZONA')) %></label>
+                    <input type="text" name="cmbZonaLoteOrigen" id="cmbZonaLoteOrigen" style="width: 100%;" />
+                </div>
+                <div class="form-group" style="width: 25%; margin-right: 10px;">
+                    <label for="cmbUbicacionLoteOrigen" class="control-label"><% print(window.app.idioma.t('UBICACION')) %></label>
+                    <input type="text" name="cmbUbicacionLoteOrigen" id="cmbUbicacionLoteOrigen" style="width: 100%;" />
+                </div>
+                <div class="form-group" style="align-self: center; margin-bottom: 12px;">
+                    <label for="chkRestarCantidad" class="control-label"><% print(window.app.idioma.t('RESTAR_CANTIDAD_ORIGEN')) %></label>
+                    <input type="checkbox" name="chkRestarCantidad" id="chkRestarCantidad" style="width: 30px; vertical-align:text-bottom" />
+                </div>
+            </div>
+            <div class="combosGrid">
+                <div id="gridOrigen"></div>
+            </div>
+            <div class="combosGrid" style="margin-top: 10px; height: 70px; display: flex; justify-content: flex-start;">
+                <div class="form-group" style="width: 18%; margin-right: 10px;">
+                    <label for="cmbTipoLoteDestino" class="control-label"><% print(window.app.idioma.t('TIPO_LOTE_DESTINO')) %></label>
+                    <input type="text" name="cmbTipoLoteDestino" id="cmbTipoLoteDestino" style="width: 100%;" />
+                </div>
+                <div class="form-group" style="width: 18%; margin-right: 10px;">
+                    <label for="cmbAlmacenLoteDestino" class="control-label"><% print(window.app.idioma.t('ALMACEN')) %></label>
+                    <input type="text" name="cmbAlmacenLoteDestino" id="cmbAlmacenLoteDestino" style="width: 100%;" />
+                </div>
+                <div class="form-group" style="width: 18%; margin-right: 10px;">
+                    <label for="cmbZonaLoteDestino" class="control-label"><% print(window.app.idioma.t('ZONA')) %></label>
+                    <input type="text" name="cmbZonaLoteDestino" id="cmbZonaLoteDestino" style="width: 100%;" />
+                </div>
+                <div class="form-group" style="width: 25%; margin-right: 10px;">
+                    <label for="cmbUbicacionLoteDestino" class="control-label"><% print(window.app.idioma.t('UBICACION')) %></label>
+                    <input type="text" name="cmbUbicacionLoteDestino" id="cmbUbicacionLoteDestino" style="width: 100%;" />
+                </div>
+                <div class="form-group" style="align-self: center; margin-bottom: 12px;">
+                    <label for="chkSumarCantidad" class="control-label"><% print(window.app.idioma.t('SUMAR_CANTIDAD_DESTINO')) %></label>
+                    <input type="checkbox" name="chkSumarCantidad" id="chkSumarCantidad" style="width: 30px; vertical-align:text-bottom" />
+                </div>
+            </div>
+            <div class="combosGrid">
+                <div id="gridDestino"></div>
+            </div>
+            <div class="col-md-11" style="margin-top: 10px;">
+                <div class="form-group" style="margin-left: 5px;">
+                    <div>
+                        <label for="txtCantidad" class="control-label" style="width: 60px"><% print(window.app.idioma.t('CANTIDAD')) %></label>
+                        <input type="text" name="txtCantidad" id="txtCantidad" style="width: 195px !important" required />
+                        <span style="margin-left: 5px" class="k-invalid-msg" data-for="txtCantidad"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-11" style="margin-top: 10px;">
+                <div class="form-group" style="display: flex; align-items: center; margin-left: 5px">
+                    <label for="dtpFechaMov" style="width: 64px"><% print(window.app.idioma.t('FECHA')) %></label>
+                    <input id="dtpFechaMov" name="dtpFechaMov" style="width: 195px !important" required />
+                    <span style="margin-left: 5px" class="k-invalid-msg" data-for="dtpFechaMov"></span>
+                </div>
+            </div>
+            <div class="col-md-11" style="margin-top: 10px;">
+                <div class="form-group">
+                    <button id="btnCrearMovimiento" class="k-button k-primary" value="CrearMovimiento"><% print(window.app.idioma.t("CREAR_MOVIMIENTO")) %></button>
+                </div>
+            </div>
+        </form>                   
+    </div>
+</div>

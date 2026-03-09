@@ -1,0 +1,75 @@
+﻿<style>
+  
+
+    .divPestanias ul {
+        list-style: none;
+        margin: 15px;
+        padding: 0;
+    }
+
+    .divPestanias ul li {
+        margin: 0;
+        line-height: 1.5em;
+    }
+
+    span.k-widget.k-tooltip-validation {
+        display: inline-block;
+        width: 160px;
+        text-align: left;
+        border: 0;
+        padding: 0;
+        margin: 0;
+        background: none;
+        box-shadow: none;
+        color: red;
+    }
+
+
+    .k-tooltip-validation .k-warning {
+        display: none;
+    }
+
+    .k-grid .k-grid-content tr.k-grid-edit-row > td[role='gridcell'] .k-tooltip-validation > .k-callout-n {
+        left: auto;
+        margin-left: auto;
+    }
+
+</style>
+ <!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('LISTADO_WO_PLANIFICADAS')) %></label>
+</div>
+    <div id="tabsPestanias">
+        <ul>
+            <li id="idCoccion" class="k-state-active tipoOrden"><% print(window.app.idioma.t('COCCION')) %></li>
+            <li id="idTrasiego" class="k-state tipoOrden"><% print(window.app.idioma.t('TRASIEGO')) %></li>
+            <li id="idFiltracion" class="k-state tipoOrden"><% print(window.app.idioma.t('FILTRACION')) %></li>
+            <li id="idParametro" class="k-state tipoOrden"><% print(window.app.idioma.t('PARAMETROS_PLANIFICACION')) %></li>
+
+
+        </ul>
+        <div id="panelCoccìon">
+
+            <div id="gridListadoCoccion"></div>
+
+        </div>
+        <div id="panelTrasiego">
+            <div id="gridListadoTrasiego"></div>
+        </div>
+        <div id="panelFiltracion">
+            <!--<div id="gridListadoFiltracion"></div>-->
+        </div>
+        <div id="panelParametosEdicion">
+                <div id="gridParametro"></div>
+            
+        </div>
+
+</div>
+
+<script id="tooltip" type="text/x-kendo-template">
+    <div class="k-widget k-tooltip k-tooltip-validation k-invalid-msg k-invalid-msg-delivery" data-for="#= Key #" role="alert">
+        <span class="k-icon k-warning"> </span> #= Message #
+        <div class="k-callout k-callout-n"></div>
+    </div>
+</script>

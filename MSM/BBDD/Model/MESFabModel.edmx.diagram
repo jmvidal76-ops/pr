@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5f68ca3594da4031acab2ed7ec213413" Name="Diagram1" ZoomLevel="73">
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.WOPlanificadas" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.TiposWO" Width="1.5" PointX="0.75" PointY="5.625" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_WOPlanificadas_TiposWO" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.Subprocesos" Width="1.5" PointX="3.375" PointY="7.75" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.TiposSubprocesos" Width="1.5" PointX="3" PointY="11.375" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_Subprocesos_TiposSubprocesos" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_TipoSubprocesos_TiposWO" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.OLTPMensajes" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.vListadoWOsKOPsCoccion" Width="1.5" PointX="5.375" PointY="10.75" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.KOPs" Width="1.5" PointX="9.875" PointY="10" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.vEstadoKOP_WO" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.EstadosKOP" Width="1.5" PointX="12.375" PointY="3.875" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_KOPs_EstadosKOP" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.KOPsMultivalor" Width="1.5" PointX="14.625" PointY="11" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_KOPsMultivalor_EstadosKOP" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.ValoresKOPsMultivalor" Width="1.5" PointX="16.875" PointY="15.875" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_ValoresKOPsMultivalor_KOPsMultivalor" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.TiposKOPMultivalor" Width="1.5" PointX="5.375" PointY="4.875" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.VariablesFormulaKOP" Width="1.5" PointX="7.5" PointY="24.625" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.PropiedadesWO" Width="1.5" PointX="5.25" PointY="27.75" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.vListadoWOs" Width="1.5" PointX="12.375" PointY="14.75" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.MaestroKOPs" Width="1.5" PointX="17.625" PointY="7.375" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_MaestroKOPs_EstadosKOP" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_KOPs_MaestroKOPs" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_MaestroKOPs_TiposSubprocesos" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_VariablesFormulaKOP_MaestroKOPs" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_VariablesFormulaKOP_MaestroKOPs_Variables" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.MaestroKOPs_Mostos_Ubicacion" Width="1.5" PointX="19.875" PointY="6.625" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.ModulosSubprocesos" Width="1.5" PointX="5.25" PointY="22.625" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_MaestroKOPs_Mostos_Ubicacion_EstadosKOP" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_MaestroKOPs_Mostos_Ubicacion_MaestroKOPs" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_ModulosSubProcesos_TiposSubprocesos" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.WOs" Width="1.5" PointX="3" PointY="15" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_KOPs_WOs" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_KOPsMultivalor_WOs" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_PropiedadesWO_WOs" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_Subprocesos_WOs" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_WOs_TiposWO" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_WOPlanificadas_WOs" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.MaestroValoresKOPsMultivalor" Width="1.5" PointX="14.625" PointY="14.625" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FKMaestroValoresKOPsMultivalor_EstadosKOP" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_ValoresKOPsMultivalor_MaestroValoresKOPsMultivalor" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.MaestroKOPsMultivalor" Width="1.5" PointX="18.625" PointY="1" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FKMaestroKOPsMultivalor_EstadosKOP" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_KOPsMultivalor_MaestroKOPsMultivalor" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_MaestroKOPsMultivalor_TiposKOPMultivalor" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_MaestroKOPsMultivalor_TiposSubprocesos" />
+        <AssociationConnector Association="MES_MSM_FabricacionModel.FK_MaestroValoresKOPsMultivalor_MaestroKOPsMultivalor" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.vListadoWOsKOPsMultivalorCoccion" Width="1.5" PointX="7.375" PointY="14.75" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.vListadoWOsKOPsMultivalorFermentacion" Width="1.5" PointX="12.375" PointY="19.75" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.vListadoWOsKOPsMultivalorTrasiego" Width="1.5" PointX="19.375" PointY="13.75" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.vMaestroUbicaciones" Width="1.5" PointX="7.375" PointY="4.75" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.vMaestroMateriales" Width="1.5" PointX="14.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MES_MSM_FabricacionModel.vListadoWOsCoccion" Width="1.5" PointX="9.375" PointY="14.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

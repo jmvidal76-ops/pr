@@ -1,0 +1,76 @@
+<style>
+    .k-autocomplete,
+    .k-combobox,
+    .k-datepicker,
+    .k-timepicker,
+    .k-datetimepicker,
+    .k-colorpicker,
+    .k-numerictextbox,
+    .k-selectbox,
+    .k-textbox,
+    .k-toolbar .k-split-button {
+        width: 100% !important;
+    }
+</style>
+
+<script id="tooltip" type="text/x-kendo-template">
+    <div class="k-widget k-tooltip k-tooltip-validation k-invalid-msg k-invalid-msg-delivery" data-for="#= Key #" role="alert">
+        <span class="k-icon k-warning"> </span> #= Message #
+        <div class="k-callout k-callout-n"></div>
+    </div>
+</script>
+
+<script id="tooltipReception" type="text/x-kendo-template">
+    <div class="k-widget k-tooltip k-tooltip-validation k-invalid-msg k-invalid-msg-reception" data-for="#= Key #" role="alert">
+        <span class="k-icon k-warning"> </span> #= Message #
+        <div class="k-callout k-callout-n"></div>
+    </div>
+</script>
+<script id="btnAddRDeliveryNote" type="text/x-kendo-tmpl">
+    <a class="k-button k-button-icontext k-grid-add" id="AddRDeliveryNote" href="#">
+        <span class="k-icon k-add"></span>Agregar
+    </a>
+</script>
+
+<script id="fieldsTemplate" type="text/x-kendo-template">
+    <div class="col-md-12" style="margin-top:5px">
+        <li class="fieldList">
+            <div class="col-md-3"><label data-bind="attr: { for: name}, text: label"></label></div>
+            <div class="col-md-5"><input data-bind="attr: { type: type, name: name, class: css},value: value" /></div>
+            <div class="col-md-2"><label data-bind="text: unit"></label></div>
+        </li>
+    </div>
+</script>
+
+<script id="Script1" type="text/x-kendo-template">
+    <div class="col-md-12" style="margin-top:5px">
+        <li class="fieldList">
+            <div class="col-md-3"><label data-bind="attr: { for: name}, text: label"></label></div>
+            <div class="col-md-5"><input data-bind="attr: { type: type, name: name, class: css},value: value" /></div>
+            <div class="col-md-2"><label data-bind="text: unit"></label></div>
+        </li>
+    </div>
+</script>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('HISTORICO_CAMIONES')) %></label>
+</div>
+<div class="divContenidoVista">
+    <div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px; display: flex; flex-direction: row; justify-content: space-between;">
+        <div style="display: flex; flex-direction: row; align-items: center;">
+            <label style="margin-left: 5px; margin-right:6px;"><% print(window.app.idioma.t('DESDE')) %></label>
+            <input id="dtpFechaDesde" style="max-width: 100px;" />
+            <label style="margin-left: 5px; margin-right: 6px;"><% print(window.app.idioma.t('HASTA')) %></label>
+            <input id="dtpFechaHasta" style="max-width: 100px; " />
+            <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left: 8px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+        </div>
+        <div style="float: right;">
+            <button id="btnExportarExcel" class="k-button k-button-icontext k-grid-excel" style="margin-right: 6px;">
+                <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+            </button> 
+        </div>
+    </div>
+    <div id="gridTransportes"></div>
+</div>
+<div id="divWnd"></div>

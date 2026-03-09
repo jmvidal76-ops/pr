@@ -1,0 +1,103 @@
+<style>
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+
+    #btnAceptar, #btnCancelar {
+        height: 30px;
+        width: 30%;
+        /*float:left;*/
+        margin-left: 5px;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .k-window div.k-window-content {
+        overflow: hidden;
+    }
+
+    .nowrap {
+        word-wrap: break-word;
+        max-height: 3em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .lblOverflow {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .spanInput {
+        border: 1px solid lightgrey;
+        width: 100%;
+        border-radius: 4px;
+        font-size:14px;
+    }
+
+</style>
+
+<div style="width: 98%; margin: 0px; padding: 0px; overflow:hidden">
+    <form id="DuplicarEntry">
+        <table class="table borderless">
+            <tbody>
+                <tr>
+                    <td style="width: 8% !important; text-align: right;">
+                        <label id="lblNumero"></label>
+                    </td>
+                    <td style="width: 20% !important; text-align: left;">
+                        <input type="text" id="txtNumeroKOP" name="txtValor" style="width:76%;" required="required" />
+                    </td>
+                    <td style="text-align: right; position:absolute;right:33em">
+                        <label id="lblCod"> </label>
+                    </td>
+                    <td style="width: 26em !important; text-align: left; position: absolute; right: 5.5em;">
+                        <div class="spanInput k-input">
+                            <label style="width:100%;" id="txtCod"></label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 18% !important; text-align: right;">
+                        <label id="lblProceso"></label>
+                    </td>
+                    <td style="width: 33% !important; text-align: left;">
+                        <input type="text" id="txtFase" name="txtFase" class="k-textbox tipoDato" style="width:200px !important;" disabled="disabled" />
+                    </td>
+                    <td style="width: 18% !important; text-align: right;">
+                        <label id="lblUnidad"></label>
+                    </td>
+                    <td style="width: 35% !important; text-align: left;">
+                        <input type="text" id="txtUnidad" name="txtUnidad" class="k-textbox tipoKop" style="width:200px !important;" disabled="disabled" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 18% !important; text-align: right;">
+                        <label id="lblTipoKOP"></label>
+                    </td>
+                    <td style="width: 33% !important; text-align: left;">
+                        <select id="cmbTipoKOP" name="cmbSala" style="width:200px !important;" />
+                    </td>
+                    <td style="width: 18% !important; text-align: right;">
+                        <label id="lblTipoDato"> </label>
+                    </td>
+                    <td style="width: 35% !important; text-align: left;">
+                        <input type="text" id="txtTipoDato" name="txtTipoDato" class="k-textbox tipoKop" style="width:200px !important;" disabled="disabled" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+
+                        <div style="width: 100%; text-align:center;">
+                            <span id="lblError" style="color:red; float:left;"></span>
+                            <br />
+                            <button id="btnAceptarKOP"><% print(window.app.idioma.t('ACEPTAR')) %></button>
+                            <button id="btnCancelarKOP"><% print(window.app.idioma.t('CANCELAR')) %></button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>

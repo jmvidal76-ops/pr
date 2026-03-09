@@ -1,0 +1,105 @@
+﻿<script>
+    // Import DejaVu Sans font for embedding
+
+    // NOTE: Only required if the Kendo UI stylesheets are loaded
+    // from a different origin, e.g. cdn.kendostatic.com
+    kendo.pdf.defineFont({
+        "DejaVu Sans": "//kendo.cdn.telerik.com/2014.3.1314/styles/fonts/DejaVu/DejaVuSans.ttf",
+        "DejaVu Sans|Bold": "//kendo.cdn.telerik.com/2014.3.1314/styles/fonts/DejaVu/DejaVuSans-Bold.ttf",
+        "DejaVu Sans|Bold|Italic": "//kendo.cdn.telerik.com/2014.3.1314/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf",
+        "DejaVu Sans|Italic": "//kendo.cdn.telerik.com/2014.3.1314/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf"
+    });
+</script>
+
+<style>
+    .gridP {
+        /*height:120px;*/
+        overflow: hidden;
+    }
+
+    .pD {
+        height: 21%;
+        width: 90%;
+        overflow: hidden;
+    }
+
+    .bloqueOrden {
+        width: 100%;
+        height: 16px;
+        padding: 5px;
+        border-bottom: solid 1px gray;
+        overflow: hidden;
+    }
+
+    .cabecera {
+        height: 17px;
+        overflow: hidden;
+        padding: 7px;
+    }
+
+    #loader {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 100%;
+        width: 100%;
+        background-color: gray;
+        opacity: 0.6;
+        display: none;
+    }
+
+        #loader img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -32px; /* -1 * image width / 2 */
+            margin-top: -32px; /* -1 * image height / 2 */
+        }
+
+    .k-tabstrip-wrapper {
+        height: 90%;
+    }
+
+
+    /*.celdaLlenadora {
+        font-weight:bold;
+        background-color: #fdd;
+    }*/
+
+    #pTabsAnalisis {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: auto;
+        height: auto;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    /*.k-tabstrip .k-content {
+    position: absolute;
+    top: 30px;
+    bottom: 0;
+}*/
+</style>
+
+<div id="panelPrincipal" style="height: 100%; width: 100%;">
+    <div id="pHorizontal" style="height: 100%; width: 100%;">
+        <div id="divCabeceraVista" class="divCabeceraVista">
+            <img height="19" src="img/tituloCabecera.png" style="margin-left: 5px;" />
+            <label class="lblCabeceraVista"><% print(window.app.idioma.t("ANÁLISIS_SEMANAL_SPI")) %></label>
+        </div>
+        <div id="toolbar" style="overflow: hidden;">
+        </div>
+        <div id="pCentral" style="height: 100%; width: 100%; overflow: hidden; font-size: 12px; position: relative;">
+
+            <div id="pTabsAnalisis" style="height: 100%; width: 100%; overflow: hidden;">
+                <div id="tabs" style="height: 100%;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

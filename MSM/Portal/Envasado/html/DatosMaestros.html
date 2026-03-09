@@ -1,0 +1,95 @@
+
+
+ <!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('DATOS_MAESTROS')) %></label>
+</div>
+
+<!-- Filtros Paros -->
+<!--<div id="divFiltros" style="background-color:#f5d1d1;height:32px;width:100%; padding-top:5px;">
+    <div style="float:left;">
+        <label style="margin-left:5px;"><% print(window.app.idioma.t('AGRUPAR_POR')) %></label>
+        <select id="selectAgrupacion">
+            <option value="0"><% print(window.app.idioma.t('SIN_AGRUPACION')) %></option>
+            <option value="tipo"><% print(window.app.idioma.t('TIPO')) %></option>
+            <option value="idClase"><% print(window.app.idioma.t('CLASE')) %></option>
+        </select>
+    </div>
+</div>-->
+
+<div id="gridDatosMaestros"></div>
+<script type="text/x-kendo-template" id="template">
+    <div class="container" style="width:98%;display:flex; flex-direction:column;">
+        <!--Primera linea-->
+        <div style="float:left; display:inline-block; background-color: Transparent;border:0;">
+            <div style="float:left; display:inline-block;">
+                <label class="lblColumnaTipo1"><% print(window.app.idioma.t('DESCRIPCION')) %></label>
+                <textarea id="txtDescripcion" style="width:518px;" rows="3" disabled="disabled">#= descripcion #</textarea>
+            </div>
+            <div style="float:left; display:inline-block; margin-left:5px; width:30%;">
+                <label class="lblColumnaTipo2"><% print(window.app.idioma.t('VERSION')) %></label>
+                <input id="txtVersion" value="#= version #" style="width:100px;" disabled="disabled" />
+                <br>
+                <label class="lblColumnaTipo2"><% print(window.app.idioma.t('ESTADO')) %> MES</label>
+                <input id="txtStatus" value="#= estatus #" style="width:100px;" disabled="disabled" />
+            </div>
+            <br />
+        </div>
+        <!--Segunda linea-->
+        <div style="float:left; display:inline-block;background-color:Transparent;border:0;">
+            <div style="float:left; display:inline-block;">
+                <label class="lblColumnaTipo1"><% print(window.app.idioma.t('UD_MEDIDA')) %></label>
+                <input id="txtUdMedida" style="width:100px;" disabled="disabled" value="#= udMedida #" />
+            </div>
+            <div style="float:left; display:inline-block; margin-left:5px;">
+                <label class="lblColumnaTipo2"><% print(window.app.idioma.t('EFECTIVO_DESDE')) %></label>
+                <input id="txtF_EfectivoDesde" value="#= f_efectivoDesde #" style="width:100px;" disabled="disabled" />
+            </div>
+            <div style="float:left; display:inline-block;margin-left:5px;">
+                <label class="lblColumnaTipo4"><% print(window.app.idioma.t('EFECTIVO_HASTA')) %></label>
+                <input id="txtF_EfectivoHasta" value="#= f_efectivoHasta #" style="width:90px;" disabled="disabled" />
+            </div>
+            <div style="float:left; display:inline-block;margin-left:5px;">
+                <label class="lblColumnaTipo2"><% print(window.app.idioma.t('EN_USO')) %></label>
+                <input id="txtEnUso" value="#= enUso #" style="width:30px;" disabled="disabled" />
+            </div>
+        </div>
+        <!--Tercera linea-->
+        <div style="float:left; display:inline-block;background-color: Transparent;border:0;">
+            <div style="float:left; display:inline-block;">
+                <label class="lblColumnaTipo1"><% print(window.app.idioma.t('AUTOR')) %></label>
+                <input id="txtDescripcion" style="width:100px;" disabled="disabled" value="#= autor #" />
+            </div>
+            <div style="float:left; display:inline-block; margin-left:5px;">
+                <label class="lblColumnaTipo2"><% print(window.app.idioma.t('FECHA_CREACION')) %></label>
+                <input id="txtFechaCreacion" value="#= fechaCreacion #" style="width:100px;" disabled="disabled" />
+            </div>
+            <div style="float:left; display:inline-block;margin-left:5px;">
+                <label class="lblColumnaTipo4"><% print(window.app.idioma.t('FECHA_ACTUALIZACION')) %></label>
+                <input id="txtFechaUltCreacion" value="#= fechaUltCreacion #" style="width:90px;" disabled="disabled" />
+            </div>
+            <div style="float:left; display:inline-block;margin-left:5px;">
+                <label class="lblColumnaTipo2"><% print(window.app.idioma.t('MODIFICADO_POR')) %></label>
+                <input id="txtModificadoPor" value="#= modificadoPor #" style="width:100px;" disabled="disabled" />
+            </div>
+        </div>
+
+        <!--Cuarta linea-->
+        <div style="float:left; display:inline-block;background-color: Transparent;border:0;">
+            <div style="float:left; display:inline-block;">
+                <label class="lblColumnaTipo1"><% print(window.app.idioma.t('INFO_ADICIONAL')) %></label>
+                <textarea id="txtInformacion" style="width:733px;" rows="3" disabled="disabled">#= infoAdicional #</textarea>
+            </div>
+        </div>
+
+        <!--Quinta linea-->
+        <div id="divFichaProducto" style="float:left; display:inline-block;background-color: Transparent;border:0;">
+            <div style="float:left; display:inline-block;">
+                <label class=""><% print(window.app.idioma.t("FICHA_PRODUCTO_ACABADO")) %></label>
+                <button type="button" id="botonfpa" onclick="window.open('/Informes/InformeFPA.aspx?prod=#= id #');" style="margin-left:5px;"><% print(window.app.idioma.t('VER_FICHA')) %></button>
+            </div>
+        </div>
+
+    </div>
+</script>

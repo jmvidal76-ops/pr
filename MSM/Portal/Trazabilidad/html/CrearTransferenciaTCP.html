@@ -1,0 +1,142 @@
+<style>
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+
+    .k-autocomplete,
+    .k-combobox,
+    .k-datepicker,
+    .k-timepicker,
+    .k-colorpicker,
+    .k-numerictextbox,
+    .k-dropdown,
+    .k-selectbox,
+    .k-textbox,
+    .k-toolbar .k-split-button {
+        width: 100% !important;
+    }
+
+    .k-numerictextbox {
+        width: 100% !important;
+    }
+
+        .k-numerictextbox .k-numeric-wrap .k-input {
+            width: 96% !important;
+        }
+
+    .k-content {
+        background-color: #fff;
+    }
+
+    .vertical-scroll {
+        overflow-y: scroll;
+        max-height: 790px;
+    }
+
+    #center-pane {
+        background: white;
+    }
+
+    .form-group-sizing {
+        height: 70px;
+        max-width: 24%;
+    }
+
+    .combosGrid {
+        width: 98%;
+        padding-left: 1%;
+        padding-right: 1%
+    }
+</style>
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('CREAR_TRANSFERENCIA_TCP')) %></label>
+</div>
+<div class="container-fluid" style="min-width: 900px;">
+    <div class="row">
+        <form id="frmCrearTransferenciaTCP" class="form-inline" name="frmCrearTransferenciaTCP">
+            <div class="col-md-3" style="margin-top: 10px;">
+                <div class="form-group" style="display: flex; align-items: center;">
+                    <label style="margin-left: 5px; margin-right: 5px;"><% print(window.app.idioma.t('DESDE')) %></label>
+                    <input id="dtpFechaInicio" />
+                    <label style="margin-left: 5px; margin-right: 5px;"><% print(window.app.idioma.t('HASTA')) %></label>
+                    <input id="dtpFechaFin" />
+                </div>
+            </div>
+            <div class="k-content combosGrid" style="padding-top: 10px; height: 70px; display: flex; justify-content: flex-start;">
+                <div class="form-group" style="width: 18%; margin-right: 5px;">
+                    <label for="cmbTipoLoteOrigen" class="control-label"><% print(window.app.idioma.t('TIPO_LOTE_ORIGEN')) %></label>
+                    <input type="text" name="cmbTipoLoteOrigen" id="cmbTipoLoteOrigen" />
+                </div>
+                <div class="form-group" style="width: 18%; margin-right: 5px;">
+                    <label for="cmbAlmacenLoteOrigen" class="control-label"><% print(window.app.idioma.t('ALMACEN')) %></label>
+                    <input type="text" name="cmbAlmacenLoteOrigen" id="cmbAlmacenLoteOrigen" />
+                </div>
+                <div class="form-group" style="width: 18%; margin-right: 5px;">
+                    <label for="cmbZonaLoteOrigen" class="control-label"><% print(window.app.idioma.t('ZONA')) %></label>
+                    <input type="text" name="cmbZonaLoteOrigen" id="cmbZonaLoteOrigen" />
+                </div>
+                <div class="form-group" style="width: 25%; margin-right: 10px;">
+                    <label for="cmbUbicacionLoteOrigen" class="control-label"><% print(window.app.idioma.t('UBICACION')) %></label>
+                    <input type="text" name="cmbUbicacionLoteOrigen" id="cmbUbicacionLoteOrigen" />
+                </div>
+                <div class="form-group" style="align-self: center; margin-bottom: 12px;">
+                    <label for="chkRestarCantidad" class="control-label"><% print(window.app.idioma.t('RESTAR_CANTIDAD_ORIGEN')) %></label>
+                    <input type="checkbox" name="chkRestarCantidad" id="chkRestarCantidad" style="width: 30px; vertical-align:text-bottom" />
+                </div>
+            </div>
+            <div class="combosGrid">
+                <div id="gridOrigen"></div>
+            </div>
+            <div class="col-md-11" style="margin-top: 10px;">
+                <div class="form-group" style="height: 70px; width: 195px;">
+                    <label for="cmbLineaEnvasado" class="control-label"><% print(window.app.idioma.t('FIL_LINEA_ENVASADO')) %></label>
+                    <input id="cmbLineaEnvasado" name="cmbLineaEnvasado" required />
+                    <span class="k-invalid-msg" data-for="cmbLineaEnvasado"></span>
+                </div>
+            </div>
+            <div class="col-md-11">
+                <div class="form-group" style="height: 70px; width: 190px;">
+                    <label for="dtpFechaInicioTransferencia" class="control-label"><% print(window.app.idioma.t('START_DATETIME_TRANSFER')) %></label>
+                    <input id="dtpFechaInicioTransferencia" name="dtpFechaInicioTransferencia" required />
+                    <span class="k-invalid-msg" data-for="dtpFechaInicioTransferencia"></span>
+                </div>
+            </div>
+            <div class="col-md-11">
+                <div class="form-group" style="height: 70px; width: 190px;">
+                    <label for="dtpFechaFinTransferencia" class="control-label"><% print(window.app.idioma.t('END_DATETIME_TRANSFER')) %></label>
+                    <input id="dtpFechaFinTransferencia" name="dtpFechaFinTransferencia" required />
+                    <span class="k-invalid-msg" data-for="dtpFechaFinTransferencia"></span>
+                </div>
+            </div>
+            <div class="col-md-11">
+                <div class="form-group" style="height: 70px;">
+                    <div>
+                        <label for="txtCantidad" class="control-label"><% print(window.app.idioma.t('CANTIDAD')) %></label>
+                    </div>
+                    <div>
+                        <input type="text" name="txtCantidad" id="txtCantidad" style="width: 195px !important" required />
+                        <input id="vpTxtUnidadMedida" style="width: 60px !important" required />
+                    </div>
+                    <div>
+                        <span class="k-invalid-msg" data-for="txtCantidad"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-11">
+                <div class="form-group">
+                    <button id="btnCrearTransferencia" class="k-button k-primary" value="CrearTransferencia"><% print(window.app.idioma.t("CREAR_TRANSFERENCIA")) %></button>
+                </div>
+            </div>
+            <div class="col-md-11">
+                <br />
+                <div class="ui-pnotify" id="result-container" style="width: 50%; opacity: 1; overflow: visible; top: 0; right: 0; position: relative; visibility: hidden">
+                    <div class="alert ui-pnotify-container alert-success ui-pnotify-shadow" style="min-height: 16px; overflow: hidden;">
+                        <h2 class="ui-pnotify-title"><% print(window.app.idioma.t('LOTES_GENERADOS_2')) %> &nbsp;</h2>
+                        <div class="ui-pnotify-text" style="font-size: 14pt" id="result" name="result"></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

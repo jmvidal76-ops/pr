@@ -1,0 +1,27 @@
+﻿ <!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('VER_PROGAMA_ENVASADO')) %></label>
+</div>
+
+ <!-- Filtros -->
+<div id="divFiltros" style="background-color:#f5d1d1;height:35px;width:100%; padding-top:5px;">
+    <div style="float:left;">
+        
+       
+        <label style="margin-left:5px;"><% print(window.app.idioma.t('FECHA_INICIO')) %></label>
+        <input id="dpFechaInicio" disabled="disabled" />
+        &nbsp;&nbsp;&nbsp;
+        <label style="margin-left:5px;"><% print(window.app.idioma.t('TURNO')) %></label>
+            &nbsp;
+        <input id="cmdTurno" name="cmdTurno" style="width:200px; " disabled="disabled" />
+         &nbsp;&nbsp;&nbsp;
+        <button id="btnFiltrar" disabled="disabled" class="k-button k-button-icontext" style="background-color:darkorange; color:white;margin-left:5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('FILTRAR')) %></button>
+         &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+        <label style="margin-left:5px;"><% print(window.app.idioma.t('HORAS_RESTANTES_TURNO')) %></label>&nbsp;
+        <label id="lblHoras" style="margin-left:5px;">0</label>        
+    </div>
+</div>  
+<br />
+<div id="visualization"></div>
+<!--  <div id="log"></div>-->

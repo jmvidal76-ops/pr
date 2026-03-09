@@ -1,0 +1,80 @@
+﻿<style>
+    .pad-30 {
+        padding: 30px;
+    }
+
+    .pad-10 {
+        padding: 10px;
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .w-50 {
+        width: 50%;
+    }
+
+    .mar-top-20 {
+        margin-top: 20px;
+    }
+
+    .mar-right-25 {
+        margin-right: 25px;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .tac {
+        text-align: center;
+    }
+
+    .boton {
+        width: 150px;
+        height: 65px;
+    }
+
+    .fila {
+        margin-top: 10px;
+    }
+
+    .flexh {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    .flex-bl {
+        display: flex;
+        align-items: baseline;
+    }
+
+    .form-control-cb {
+        font-size: large;
+        font-weight: bold;
+        display: grid;
+        grid-template-columns: 1em auto;
+        gap: 0.5em;
+    }
+</style>
+
+<div>
+    <form id="CrearConfiguracionVisualizacionColumnas" class="pad-30">
+
+        <div>
+            <label id="lblNombre" for="tbNombre" class="w-100"></label>
+            <input class='w-100 k-textbox' id="tbNombre" type='text' required/>
+        </div>
+
+        <div class="tac mar-top-20">
+            <input type="button" class="boton mar-right-25" id="btnDialogoAceptar" />
+            <input type="button" class="boton" id="btnDialogoCancelar" />
+        </div>
+        <div id="trError" class="error tac mar-top-20" style="display:none;" colspan="2">
+        </div>
+    </form>
+</div>

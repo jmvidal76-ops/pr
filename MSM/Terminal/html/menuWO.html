@@ -1,0 +1,28 @@
+﻿<style>
+    .botonMenuWO{
+       height:60px !important;
+       font-size:22px;
+       width:380px;
+       margin-right:10px;
+       padding:10px;
+       margin-bottom:10px
+    }
+
+    .k-button .k-image {
+        float:left;
+        margin:5px;
+        margin-right:10px;
+    }
+
+</style>
+
+<div style="font-size: 26px; border-bottom: solid 1px black; margin-bottom: 20px;"><% print(window.app.idioma.t("OPCIONES_DISPONIBLES")) %></div>
+<div style="margin: 10px; width: 310px;">
+    <a id="btnVolverListado" class="botonMenuWO" href="#ListadoWO"><% print(window.app.idioma.t("VOLVER_LISTADO_ORDENES")) %></a>
+    <br />
+    <a id="btnGenerarFPA" class="botonMenuWO" href="#wo/<% print(window.app.sesion.get('linea').id) %>/<%= id %>/fpa"><% print(window.app.idioma.t("FICHA_PRODUCTO_ACABADO")) %></a>
+    <br />
+    <a id="btnListaMateriales" class="botonMenuWO" href="#wo/<% print(window.app.sesion.get('linea').id) %>/<%= id %>/listaMateriales"><% print(window.app.idioma.t("LISTA_MATERIALES")) %></a>
+    <a id="btnComprobarMaterial" class="botonMenuWO" href="#wo/<% print(window.app.sesion.get('linea').id) %>/<%= id %>/comprobar"><% print(window.app.idioma.t("COMPROBACION_MATERIAL")) %></a>
+</div>
+

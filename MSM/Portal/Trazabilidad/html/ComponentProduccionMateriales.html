@@ -1,0 +1,101 @@
+
+<style type="text/css">
+
+    div.k-window-content {
+        padding: 0;
+    }
+
+    .formDialog {
+       
+        padding: 15px;
+        float: left;        
+       
+        box-sizing: border-box;
+       
+    }
+    .formDialog h3 {
+        border-bottom: 1px solid #ccc;
+        /*font-size: 1.4em;*/
+        font-weight: normal;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }  
+    .formDialog label {
+        display: inline-block;
+        font-weight: bold;
+        width: 180px;
+        text-align: left;
+        
+    }
+    .formDialog select {
+        width: 180px;
+    }
+    .formDialog #toolBarBotones {
+        text-align: center;
+    }
+    td{
+        padding: 10px;
+        vertical-align: top;
+    }
+    .divParametros{
+        margin: 0 auto;
+        width: 900px;
+    }
+    .divParametros table {
+        margin: 0 auto; /* or margin: 0 auto 0 auto */
+    }
+  
+</style>
+<div id="myObjectTemplate">
+   
+    <div id="alt-center-pane">
+    <form id="objectTemplate" class="formDialog">
+        <div class="divParametros" >
+            <table>
+                <tr>
+                    <td>
+                        <label for="listUbicaciones"><%- window.app.idioma.t("UBICACIONES_CONSUMO")%> </label> 
+                        <br/> 
+                        <select id="listUbicaciones" size="8" data-bind='source: ubicaciones, value: selectUbicacion.IdUbicacion' data-text-field='NombreUbicacion' data-value-field='IdUbicacion' style="width: 260px"></select>  
+                    </td>
+                    <td>
+                        <label ><%- window.app.idioma.t("VELOCIDAD_NOMINAL")%> </label>
+                        <input id="velocidadNominal" data-format="n0" data-role='numerictextbox' data-bind="value:objectTemplate.VelocidadNominalProducto" />
+                        <br/><br/>
+                        <div id="divProduccionOffset">
+                            <label ><%- window.app.idioma.t("VELOCIDAD_NOMINAL_REF")%> </label>
+                            <input id="velocidadNominalReferencia" data-format="n0" data-role='numerictextbox' data-bind="value:selectUbicacion.VelocidadNominalReferencia" />
+                            <br/><br/>
+                            <label ><%- window.app.idioma.t("TIEMPO_PALETIZADORA")%></label>
+                            <input id="offset" data-role='numerictextbox' data-bind="value:selectUbicacion.Offset"/>
+                            <br/><br/>
+                            <label ><%- window.app.idioma.t("RENDIMIENTO_ORDER")%> (%)</label>
+                            <input id="rendimiento"  data-format="n2" data-role='numerictextbox' data-bind="value:selectUbicacion.Rendimiento"/>
+                            <br/><br/>
+                            <label ><%- window.app.idioma.t("MINUTOS_PALET")%> </label>
+                            <input id="Calculo"  data-format="n2" data-role='numerictextbox' data-bind="value: objectTemplate.Calculo"/>
+                            <br/><br/>
+                            <label></label>
+                            <input type="button" id="actualizarOffsets" style="width:12.4em"/>
+                            <br/>
+                            <br/>
+                            <label id="lblError" style="width:12.4em; text-align:center" ></label></div>
+                        </div>                         
+                    </td>
+                </tr>
+            </table>
+
+        </div>        
+        <label for="listUbicaciones"><%- window.app.idioma.t("MATERIALES_CONSUMIDOS")%> </label>  
+        <div id="gridMateriales" style="width:900px; min-height: 300px"></div>    
+        <br/>
+        <br/>    
+        <div id="toolBarBotones">
+            <input type="button" id="btnCancelar"  />
+        </div>
+        </form>
+        
+    </div>
+    
+</div>

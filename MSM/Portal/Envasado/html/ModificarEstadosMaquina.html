@@ -1,0 +1,44 @@
+﻿
+ <!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('MODIFICACION_ESTADOS_MAQUINA')) %></label>
+</div>
+
+ <!-- Filtros -->
+<div id="divFiltros" class="k-header" style="height:35px;width:100%; padding-top:5px;">
+    <form id="filtroForm">
+        <div style="float:left;">
+            <label style="margin-left:5px;margin-right:5px;"><% print(window.app.idioma.t('LINEA')) %></label>
+            <select id="selectLinea" name="selectLinea" required validationMessage="<% print(window.app.idioma.t('VALIDA_LINEA')) %>"/>
+            
+            <label style="margin-left:5px;margin-right:5px;"><% print(window.app.idioma.t('MAQUINA')) %></label>
+            <select id="selectMaquina" name="selectMaquina" required validationMessage="<% print(window.app.idioma.t('VALIDA_MAQUINA')) %>"/>
+        
+            <label style="margin-left:5px;"><% print(window.app.idioma.t('FECHA')) %></label>
+            <input id="dtpFecha" name="dtpFecha" required validationMessage="<% print(window.app.idioma.t('VALIDA_FECHA_TURNO')) %>"/>
+            
+            <label style="margin-left:5px;margin-right:5px;"><% print(window.app.idioma.t('TURNO')) %></label>
+            <select id="selectTurno" name="selectTurno" required validationMessage="<% print(window.app.idioma.t('VALIDA_TURNO')) %>"/>
+        
+            <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left:5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('FILTRAR')) %></button>
+        </div>
+    </form>
+</div>
+
+<div id="gridModEstadosMaquina"></div>
+
+
+<!-- Popup editor template -->
+<script id="popup_editor" type="text/x-kendo-template">
+    <p></p>
+
+    <div style="float:left; display:inline-block; background-color: Transparent;border:0;">
+        <div style="float:left; display:inline-block;">
+            <label for="tipoLinea" style="width:120px;text-align:right;"><% print(window.app.idioma.t('ESTADO')) %></label>
+            <select id="cmbEstado"></select>
+        </div>
+       
+        <br /><br /><br />
+    </div>
+</script>

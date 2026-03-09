@@ -1,0 +1,130 @@
+﻿<style>
+    boton {      
+        height:65px !important;
+    }
+
+    .fila {
+        margin-left:20px;
+        margin-top:15px;
+    }
+    .key {
+        height: 85px !important;
+        font-size: 30px;
+        width: 85px !important;
+        margin-right: 10px;
+        padding: 10px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+    #EditarPicos .k-dropdown {
+     width: 450px !important;
+}
+     .k-numeric-wrap .k-select {
+    display: none !important;
+}
+    .k-numerictextbox .k-state-hover {
+    background-color: white !important;
+}
+ .k-numerictextbox .k-state-default {
+    background-color: white !important;
+}
+</style> 
+
+<script>
+    function cambiarValor(digito) {
+        var numerictextbox = $("#ntxtCantidad").data("kendoNumericTextBox");
+        if (numerictextbox.value() == null) {
+            numerictextbox.value(parseInt(digito));
+        }
+        else {
+            var valor = numerictextbox.value() + "" + digito;
+            numerictextbox.value(parseInt(valor));
+        }
+        
+       
+    }
+
+    function eliminarDigito() {
+        var numerictextbox = $("#ntxtCantidad").data("kendoNumericTextBox");
+        var valor = numerictextbox.value();
+        valor=Math.floor(valor / 10);
+        numerictextbox.value(parseInt(valor));
+    }
+</script>
+
+<div>
+ <form id="EditarPicos">
+        
+        <div class="fila">
+            <label id="lblOrden" for="cmbOrden" style="width:150px;"></label>
+            <select id="cmbOrden" name="cmbOrden" style="width:300px" required></select>
+        </div>
+      
+        <div class="fila">
+            <label id="lblCantidad" for="ntxtCantidad"></label>
+            <table style="margin: auto;">
+                <tr style="height:55px;">
+                    <td colspan="3">
+                       <input type="number" style="width:300px" id="ntxtCantidad" name="ntxtCantidad" style="margin-bottom:20px;"/>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" class="k-button key" id="btnKey7" value="7"  onclick="cambiarValor(7); "/>
+                    </td>
+                    <td>
+                        <input type="button" class="k-button key" id="btnKey8" value="8"  onclick="cambiarValor(8); " />
+                    </td>
+                    <td>
+                        <input type="button" class="k-button key" id="btnKey9" value="9"  onclick="cambiarValor(9); " />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" class="k-button key" id="btnKey4" value="4"  onclick="cambiarValor(4); " />
+                    </td>
+                    <td>
+                        <input type="button" class="k-button key" id="btnKey5" value="5"  onclick="cambiarValor(5); " />
+                    </td>
+                    <td>
+                        <input type="button" class="k-button key" id="btnKey6" value="6"  onclick="cambiarValor(6); " />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" class="k-button key" id="btnKey1" value="1"  onclick="cambiarValor(1); " />
+                    </td>
+                    <td>
+                        <input type="button" class="k-button key" id="btnKey2" value="2"  onclick="cambiarValor(2); " />
+                    </td>
+                    <td>
+                        <input type="button" class="k-button key" id="btnKey3" value="3"  onclick="cambiarValor(3); " />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" class="k-button key" id="btnKey0" value="0"  onclick="cambiarValor(0); " />
+                    </td>
+                    <!--<td>
+                        <a id="btnValidar" class="btnComprobar">
+                            <img src="img/validar.png" />
+                        </a>
+                    </td>-->
+                    <td>
+                        <a class="btnComprobar k-button key" onclick="eliminarDigito(); " >
+                            <img src="img/atras.png" />
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="text-align:center;margin-top:22px;">
+            <input type="button" class="boton" style="width:150px;height:55px;margin-right:25px" id="btnAceptarEditarCrear" value="Aceptar"/>
+            <input type="button" class="boton" style="width:150px;height:55px" id="btnCancelarEditarCrear" value="Cancelar"/>
+        </div>
+     <div id="trError" style="display:none; color:red;text-align:center;margin-top:5px;" colspan="2">
+        </div>
+    </form>
+ </div>

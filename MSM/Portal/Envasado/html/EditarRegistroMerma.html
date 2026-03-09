@@ -1,0 +1,134 @@
+﻿<style>
+    .pad-30 {
+        padding: 30px;
+    }
+
+    .pad-10 {
+        padding: 10px;
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .w-50 {
+        width: 50%;
+    }
+
+    .mar-top-20 {
+        margin-top: 20px;
+    }
+
+    .mar-right-25 {
+        margin-right: 25px;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .tac {
+        text-align: center;
+    }
+
+    .boton {
+        width: 150px;
+        height: 65px;
+    }
+
+    .fila {
+        margin-top: 10px;
+    }
+
+    .contenedor_contadores {
+        height: 18em;
+        border: 1px solid #bfbfbf;
+        padding: 12px;
+        overflow-y: auto;
+    }
+
+    .tarjetaContadorMerma {
+        border: 1px solid #bfbfbf;
+        padding: 8px;
+        border-radius: 8px;
+    }
+
+    .tarjetaContadorMerma:not(:last-child) {
+        margin-bottom: 8px;
+    }
+
+    .contador_title {
+        margin-right: 8px;
+    }
+    .contador_text {
+        margin-right: 8px;
+    }
+    .contador_valor {
+        width: 100px;
+        margin-right: 8px;
+    }
+    .contador_unidades {
+        width: 100px;
+        margin-right: 8px;
+    }
+    .contador_justificacion {
+        max-width: 84%;
+        width: 84%;
+        height: 15px;
+        margin-top: 6px;
+    }
+</style>
+
+
+<div>
+    <form id="EditarRegistroMerma" class="pad-30">
+
+        <div>
+            <label id="lblMaquina" class="w-100"></label>
+            <p id="inputMaquina" class="w-100"></p>
+        </div>
+        <div class="fila">
+            <label id="lblWO" for="cmbWO" class="w-100"></label>
+            <select id="cmbWO" name="cmbWO" class="w-100"></select>
+            <input id="idTurno" hidden />
+        </div>
+        <div class="fila">
+            <label id="lblProveedor" for="cmbProveedor" class="w-100"></label>
+            <select id="cmbProveedor" name="cmbProveedor" class="w-100" required></select>
+        </div>
+        <div class="fila">
+            <label id="lblObservaciones" for="tfObservaciones" class="w-100"></label>
+            <textarea class="pad-10 w-100" id="tfObservaciones" name="tfObservaciones" style="max-width:97%;" />
+        </div>
+        <div class="fila">
+            <label id="lblContadores" class="w-100"></label>
+            <div id="contenedorContadores" class="w-100 contenedor_contadores" style="width: 97%"></div>
+        </div>
+
+        <div class="tac mar-top-20">
+            <input type="button" class="boton mar-right-25" id="btnDialogoGestionAceptar" />
+            <input type="button" class="boton" id="btnDialogoGestionCancelar" />
+        </div>
+        <div id="trError" class="error tac mar-top-20" style="display:none;" colspan="2">
+        </div>
+    </form>
+</div>
+
+<script id="contadorMermaTemplate" type="text/x-kendo-template">
+    # for (var i = 0; i < data.length; i++) { #
+        <article class='tarjetaContadorMerma' contador-id='#=data[i].Id#'>
+            <label class='contador_title'>#=data[i].ContadorConfiguracion.Descripcion#</label><br/>
+            <label class='contador_title'>#: window.app.idioma.t('VALOR')#:</label>
+            <input class='contador_valor' id='valor_contador_#=data[i].Id#'  type='number' title='numeric' value='#=data[i].Valor#' min='0' data-role="numerictextbox"/>
+            <label class='contador_title'>#: window.app.idioma.t('UNIDADES') #:</label>
+            <input class='contador_unidades k-textbox' id="unidades_contador_#=data[i].Id#" type='text' value='#=data[i].Unidad#'/>
+            <label class='contador_title'>#: window.app.idioma.t('PORCENTAJE_MINIMO') #:</label>
+            <span class='contador_text'>#=data[i].ContadorConfiguracion.PorcentajeMinimo #</span>
+            <label class='contador_title'>#: window.app.idioma.t('PORCENTAJE_MAXIMO') #:</label>
+            <span class='contador_text'>#=data[i].ContadorConfiguracion.PorcentajeMaximo #</span></br>
+            <label class='contador_title'>#: window.app.idioma.t('JUSTIFICACION') #:</label>
+            <textarea class="pad-10 contador_justificacion" id="justificacion_contador_#=data[i].Id#">#=(data[i].Justificacion != null ? data[i].Justificacion : "") #</textarea>
+        </article>
+
+    # } #
+</script>

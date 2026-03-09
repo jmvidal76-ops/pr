@@ -1,0 +1,42 @@
+﻿<style>
+    #btnAceptarMerma {
+        float: left;
+        margin-left: 100px;
+    }
+
+    #btnCancelarMerma {
+        float: left;
+        margin-left: 20px;
+    }
+</style>
+
+<div>
+    <form id="EditarMermas">
+        <div style="float: left; background-color: transparent; border: 0; margin-top: 10px;">
+            <div style="float: left; border: 0;">
+                <label id="lblLinea" style="width: 100px; text-align: right;"></label>
+                <label id="lblValorLinea" style="width: 250px; font-weight: normal"></label>
+            </div>
+            <br /><br /><br />
+            <div style="float: left; border: 0;">
+                <label id="lblCodigoProducto" style="width: 100px; text-align: right;"></label>
+                <label id="lblValorCodigoProducto" style="width: 250px; font-weight: normal"></label>
+            </div>
+            <br /><br /><br />
+            <div style="float: left; border: 0;">
+                <label id="lblProducto" style="width: 100px; text-align: right;"></label>
+                <label id="lblValorProducto" style="width: 250px; font-weight: normal"></label>
+            </div>
+            <br /><br /><br />
+            <div style="float: left; border: 0;">
+                <label id="lblMerma" style="width: 100px; text-align: right;"></label>
+                <input type="text" style="width: 150px" id="ntxtMerma" name="txtMerma" data-type="number" data-bind="value: Merma" data-role="numerictextbox" required />
+            </div>
+            <br /><br /><br />
+            <div>
+                <input type="button" id="btnAceptarMerma" value="Aceptar" />
+                <input type="button" id="btnCancelarMerma" value="Cancelar" />
+            </div>
+        </div>
+    </form>
+</div>

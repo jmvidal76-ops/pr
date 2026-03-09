@@ -1,0 +1,323 @@
+<style>
+    .k-detail-cell .k-tabstrip .k-content {
+        padding: 0.2em;
+    }
+    
+    .details ul {
+        list-style: none;
+        margin: 15px;
+        padding: 0;
+    }
+    
+    .details ul li {
+        margin: 0;
+        line-height: 1.5em;
+    }
+    
+    .details label {
+        display: inline-block;
+        /* width: 140px; */
+        /*width:100px;*/
+        padding-right: 10px;
+        text-align: right;
+        font-style: normal;
+        font-weight: bold;
+    }
+    
+    .table {
+        border: 1px solid #000000;
+        margin: 2px;
+    }
+    
+    .table-bordered>thead>tr>th,
+    .table-bordered>tbody>tr>th,
+    .table-bordered>tfoot>tr>th,
+    .table-bordered>thead>tr>td,
+    .table-bordered>tbody>tr>td,
+    .table-bordered>tfoot>tr>td {
+        border: 1px solid black;
+        font-weight: normal;
+    }
+    
+    .bordeFinoDashed td {
+        text-align: center !important;
+        border: solid 1px lightgray !important;
+        line-height: 1 !important;
+        padding: 3px !important;
+        vertical-align: middle !important;
+    }
+    
+    .rTable {
+        display: table;
+    }
+    
+    .rTableRow {
+        display: table-row;
+    }
+    
+    .rTableCell {
+        display: table-cell;
+        padding: 5px;
+    }
+    
+    .rTableCellP {
+        display: table-cell;
+        padding: 5px;
+    }
+    
+    .rigth {
+        text-align: right;
+    }
+    
+    .bold {
+        font-style: normal;
+        font-weight: bold;
+        text-align: right;
+    }
+    
+    .table>tbody>tr>td,
+    .table>tbody>tr>th,
+    .table>tfoot>tr>td,
+    .table>tfoot>tr>th,
+    .table>thead>tr>td,
+    .table>thead>tr>th {
+        padding: 0 0 0 0;
+        vertical-align: middle;
+    }
+    
+    .k-grid td {
+        padding: .3em .3em;
+        line-height: 1.6;
+        vertical-align: middle;
+    }
+    
+    hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid #ccc;
+        margin-top: 1em;
+        padding: 0;
+        margin-bottom: 0em;
+    }
+    
+    .produccion .k-grid-content {
+        overflow-y: hidden;
+    }
+    
+    #producciontab {
+        line-height: 26px !important;
+    }
+
+    .circle_cells {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-size: 25px 28px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 25px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-right: 5px;
+    }
+
+    .margenInf {
+        margin-bottom: 15px;
+    }
+
+    .divAncho {
+        min-width: 25px;
+    }
+
+    .divTexto {
+        margin-left: 5px;
+        font-size: 17px;
+    }
+
+    .sinBorde .list-group-item {
+        border: none;
+        display: flex;
+    }
+
+    .itemGris {
+        background-color: #888484;
+    }
+
+    .itemRojo {
+        background-color: #DC3F3F;
+    }
+
+    .itemAzul {
+        background-color: #446CE4;
+    }
+
+    .itemAmarillo {
+        background-color: #FCD067;
+    }
+
+    .itemVerde {
+        background-color: #4CDA43;
+    }
+
+    .itemVerdeOscuro {
+        background-color: #048404;
+    }
+</style>
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"> <% print(window.app.idioma.t('GESTION_TURNOS')) %></label>
+</div>
+
+<!-- Filtros Cambios -->
+<div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+    <div style="float: left;">
+        <label style="margin-left:5px;"><% print(window.app.idioma.t('FILTRAR_POR')) %></label>
+        <select id="selectLinea" style="width:200px;"></select>
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('DESDE')) %></label>
+        <input id="dtpFechaDesde" style="width: 100px;" />
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('HASTA')) %></label>
+        <input id="dtpFechaHasta" style="width: 100px;" />
+        <label id="lblMostrarTurnosNoPlanif" style="margin-left: 5px;"><% print(window.app.idioma.t('MOSTRAR_TURNOS_NO_PLANIF')) %></label>
+        <input type="checkbox" id="chkMostrarTurnosNoPlanif" style="width: 30px; vertical-align:text-bottom" />
+        <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+        <button id="btnLeyenda" class="k-button k-button-icontext" style="margin-left: 5px;"><% print(window.app.idioma.t('DESCRIPCION_COLORES')) %></button>
+    </div>
+    <div style="float: right; margin-right: 10px;">
+        <button id="btnLimpiarFiltros" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;">
+            <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+        </button>
+        <button id="btnExportExcel" class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px;">
+            <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+        </button>
+    </div>
+</div>
+
+<div id="gridHistoricoTurno"></div>
+
+<!-- Grid Detail -->
+<script id="templateTurnos" type="text/x-kendo-template">
+    <div class="tabPanel" style="width: 98%;">
+        <ul>
+            <li class="k-state-active">
+                <% print(window.app.idioma.t('RESUMEN')) %>
+            </li>
+            <li>
+                <% print(window.app.idioma.t('DETALLES')) %>
+            </li>
+            <li id="divNotas">
+                <% print(window.app.idioma.t('NOTAS_ORDEN')) %>
+            </li>
+            <li>
+                <% print(window.app.idioma.t('CALIDAD')) %>
+            </li>
+        </ul>
+
+        <div>
+            <div class="produccionTurnoOrden" id="producciontab"></div>
+        </div>
+        <div>
+            <!-- Filtros Cambios -->
+            <div id="divFiltrosDetalle" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+                <div style="float: left;">
+                    <label style="margin-left:5px;"><% print(window.app.idioma.t('MAQUINA')) %></label>
+                    <select id="selectMaquina" style="width:250px;" class="selectMaquina"></select>
+                    <!--<button id="btnFiltrarMaq" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>-->
+                </div>
+                <div style="float: right; margin-right: 10px;line-height:26px;">
+                    <label id="lblPorcentaje" style="float:left;" hidden><% print(window.app.idioma.t('PORCENTAJE_PROD_ASIGNADO')) %></label>
+                    <input name="porcentaje" id="porcentaje" value="100" maxlength="3" style="float:left;width:40px;margin-left:5px;height:24px;padding-left:4px;" hidden />
+                    <label style="margin-left:5px;margin-right:5px;float:left;"><% print(window.app.idioma.t('WO')) %></label>
+                    <input id="selectParticion" style="width:200px;float:left;" class="selectParticion" />
+                    <label style="margin-left:5px;float:left;"><% print(window.app.idioma.t('CONTADOR')) %></label>
+                    <input name="contador" id="contador" value="0" style="float:left;width:75px;margin-left:5px;height:24px;padding-left:4px;" />
+                    <label style="margin-left:5px;float:left;"><% print(window.app.idioma.t('RECHAZOS')) %></label>
+                    <input name="rechazos" value="0" id="rechazos" style="float:left;width:75px;margin-left:5px;height:24px;padding-left:4px;" />
+                    <button id="btnAsignar" class="k-button btnAsignar" style="margin-left: 5px;float:left;width:40px;"><% print(window.app.idioma.t('ASIGNAR')) %></button>
+                    <button id="btnBorrar" class="k-button btnBorrar" style="margin-left: 5px;float:left;width:40px;"><% print(window.app.idioma.t('ELIMINAR')) %></button>
+                </div>
+            </div>
+            <!-- GRID Cambios -->
+        <div class="detalle" id="historicotab"></div>
+        </div>
+        <div>
+            <div id="notesTab" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%;">
+                <form id="Notas">
+                    <table class="table borderless">
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    <textarea id="textNote" rows="20" cols="52"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div style="text-align: center; width: 100%;padding:5px;">
+                                        <button style="background-color:green; color: white;" type="button" class='k-button btnSaveNotes'><% print(window.app.idioma.t('GUARDAR')) %> </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div>
+            <div class="calidad"></div>
+        </div>
+    </div>
+</script>
+
+<script id="templateLeyenda" type="text/x-kendo-template">
+    <h4><% print(window.app.idioma.t('ESTADO_TURNO')) %></h4>
+    <ul class="list-group sinBorde margenInf">
+        <li class="list-group-item">
+            <div class='circle_cells itemGris divAncho'></div>
+            <div class='divTexto'><span><% print(window.app.idioma.t('TURNO_GRIS_INFO')) %></span></div>
+        </li>
+        <li class="list-group-item">
+            <div class='circle_cells itemRojo divAncho'></div>
+            <div class='divTexto'><span><% print(window.app.idioma.t('TURNO_ROJO_INFO')) %></span>
+        </li>
+        <li class="list-group-item">
+            <div class='circle_cells itemVerde divAncho'></div>
+            <div class='divTexto'><span><% print(window.app.idioma.t('TURNO_VERDE_INFO')) %></span>
+        </li>
+        <li class="list-group-item">
+            <div class='circle_cells itemVerdeOscuro divAncho'></div>
+            <div class='divTexto'><span><% print(window.app.idioma.t('TURNO_VERDE_OSCURO_INFO')) %></span>
+        </li>
+        <li class="list-group-item">
+            <div class='circle_cells itemAmarillo divAncho'></div>
+            <div class='divTexto'><span><% print(window.app.idioma.t('TURNO_AMARILLO_INFO')) %></span>
+        </li>
+        <li class="list-group-item">
+            <div class='circle_cells itemAzul divAncho'></div>
+            <div class='divTexto'><span><% print(window.app.idioma.t('TURNO_AZUL_INFO')) %></span>
+        </li>
+    </ul>
+    <h4><% print(window.app.idioma.t('ARRANQUE_WO')) %></h4>
+    <ul class="list-group sinBorde margenInf">
+        <li class="list-group-item">
+            <div class='circle_cells itemRojo divAncho'></div>
+            <div class='divTexto'><span><% print(window.app.idioma.t('ARRANQUE_WO_ROJO_INFO')) %></span>
+        </li>
+        <li class="list-group-item">
+            <div class='circle_cells itemVerde divAncho'></div>
+            <div class='divTexto'><span><% print(window.app.idioma.t('ARRANQUE_WO_VERDE_INFO')) %></span>
+        </li>
+    </ul>
+    <h4><% print(window.app.idioma.t('FINALIZACION_WO')) %></h4>
+    <ul class="list-group sinBorde margenInf">
+        <li class="list-group-item">
+            <div class='circle_cells itemRojo divAncho'></div>
+            <div class='divTexto'><span><% print(window.app.idioma.t('FINALIZACION_WO_ROJO_INFO')) %></span>
+        </li>
+        <li class="list-group-item">
+            <div class='circle_cells itemVerde divAncho'></div>
+            <div class='divTexto'><span><% print(window.app.idioma.t('FINALIZACION_WO_VERDE_INFO')) %></span>
+        </li>
+    </ul>
+</script>

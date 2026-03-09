@@ -1,0 +1,71 @@
+﻿
+<table id="tblLlenadorasWO" class="table bordeFinoDashed" style="border:none !important;float: left !important;height:100%">
+    <tbody>
+        <tr>
+            <td><span><% print(window.app.idioma.t("ESTADO")) %></span> <%=model.estado.nombre%></td>
+            <td><span><% print(window.app.idioma.t("ENVASES_PRODUCIDOS")) %></span> <%=model.datosSeguimiento.CantidadProducidaTurno%></td>
+            <td><span><% print(window.app.idioma.t("HL_ENVASADOS")) %></span>  <%if (model.orden) {%>
+                    <%=(model.datosSeguimiento.CantidadProducidaTurno * model.orden.producto.hectolitros).toFixed(2)%>
+				<%}else{%>0.00<%}%>
+				</td>
+        </tr>
+        <tr>
+            <td><span><% print(window.app.idioma.t("VELOCIDAD_MEDIA")) %></span>
+                <% if (isFinite(Math.round(model.datosSeguimiento.TiempoPlanificadoTurno))) {%>
+                    <% if (!isNaN((model.datosSeguimiento.CantidadProducidaTurno / ( model.datosSeguimiento.TiempoPlanificadoTurno/3600)))) {%>
+                    <%=Math.round(model.datosSeguimiento.CantidadProducidaTurno / ( model.datosSeguimiento.TiempoPlanificadoTurno/3600))%>
+                    <%}else{%>0<%}%>
+                 <%}else{%>0<%}%>
+            </td>
+            <td><span><% print(window.app.idioma.t("RENDIMIENTO")) %></span> 
+                <%if (!isNaN(model.datosSeguimiento.RendimientoTurno) && isFinite(model.datosSeguimiento.RendimientoTurno)) {%>
+                    <%=model.datosSeguimiento.RendimientoTurno.toFixed(2)%> %
+                <%}%>
+
+            </td>
+            <td><span><% print(window.app.idioma.t("DES_VEL_NOMINAL")) %></span>
+                <%if (!isNaN(model.datosSeguimiento.desviacionVelNominalTurno) && isFinite(model.datosSeguimiento.desviacionVelNominalTurno)) {%>
+                    <%=model.datosSeguimiento.desviacionVelNominalTurno.toFixed(0)%>
+                <%}%>
+            </td>
+        </tr>
+        <tr>
+            <td><span><% print(window.app.idioma.t("DISPONIBILIDAD")) %></span> 
+                <%if (!isNaN(model.datosSeguimiento.DisponibilidadTurno) && isFinite(model.datosSeguimiento.DisponibilidadTurno)) {%>
+                    <%=model.datosSeguimiento.DisponibilidadTurno.toFixed(2)%> %
+                <%}%>
+            </td>
+            <td><span><% print(window.app.idioma.t("EFICIENCIA")) %></span> 
+                <%if (!isNaN(model.datosSeguimiento.EficienciaTurno) && isFinite(model.datosSeguimiento.EficienciaTurno)) {%>
+                    <%=model.datosSeguimiento.EficienciaTurno.toFixed(2)%> %
+                <%}%>
+            </td>
+            <td><span><% print(window.app.idioma.t("OEE")) %> <% print(window.app.idioma.t("MAQUINA")) %></span> 
+                <%if (!isNaN(model.datosSeguimiento.OeeMaquina) && isFinite(model.datosSeguimiento.OeeMaquina)) {%>
+                    <%=model.datosSeguimiento.OeeMaquina.toFixed(2)%> %
+                <%}%>
+            </td>
+        </tr>
+        <tr>
+            <td><span><% print(window.app.idioma.t("TOTAL_PAROS")) %></span> 
+                &nbsp;<%=model.datosSeguimiento.StrTiempoTotalParosTurno%></td>
+            <td><span><% print(window.app.idioma.t("PAROS")) %></span> 
+                &nbsp;<%=model.datosSeguimiento.StrTiempoParosMayoresTurno%></td>
+            <td><span><% print(window.app.idioma.t("PERDIDAS")) %></span> 
+                &nbsp;<%=model.datosSeguimiento.StrTiempoPerdidasTurno%>                 
+            </td>
+        </tr>
+        <tr>
+            <td><span><% print(window.app.idioma.t("TOTAL_NO_JUSTI")) %></span> 
+                &nbsp;<%=model.datosSeguimiento.StrTiempoTotalParosNoJustificadosTurno%>
+            </td>
+            <td><span><% print(window.app.idioma.t("PAROS_NO_JUSTI")) %></span> 
+                &nbsp;<%=model.datosSeguimiento.StrTiempoParosMayoresNoJustificadosTurno%>
+            </td>
+            <td><span><% print(window.app.idioma.t("PERDIDAS_NO_JUSTI")) %></span> 
+                &nbsp;<%=model.datosSeguimiento.StrTiempoPerdidasNoJustificadosTurno%>
+            </td>
+        </tr>       
+    </tbody>
+</table>
+

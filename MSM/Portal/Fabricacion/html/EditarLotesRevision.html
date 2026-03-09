@@ -1,0 +1,172 @@
+﻿<style>
+    .fieldlist label {
+        display: block;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 12px;
+        padding-bottom: 2px;
+    }
+
+    .flex-filas {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .w25 {
+        width: 25%
+    }
+
+    .w75 {
+        width: 75%;
+    }
+
+    .cantidad-actual {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+        .cantidad-actual .k-numerictextbox {
+            flex: 1;
+        }
+
+        .cantidad-actual .k-dropdown {
+            width: 120px;
+        }
+
+    #msgDialogo {
+        width: auto;
+        font-size: 14px;
+        border-bottom: 1px solid black;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        padding: 6px;
+        text-align: center; /* <- Cambiado a centrado */
+    }
+
+    #botones {
+        display: flex;
+        justify-content: center;
+        gap: 15px; /* Espacio entre botones */
+        margin: 15px 0 0 0; /* solo margen arriba */
+    }
+
+        #botones button {
+            width: 120px;
+            height: 30px;
+            padding-top: 4px;
+            margin: 0; 
+        }
+</style>
+
+<div id="container" class="divFormControlStock" style="overflow-x:hidden; padding: 10px;">
+    <form id="form" style="height:80%;overflow-y:auto;overflow-x:hidden">
+        <div class="divLote fieldlist">
+            <div id="liLote" style="display:none">
+                <div class="col-lg-3"><label for="vpTxtLote"><% print(window.app.idioma.t('LOTE')) %></label></div>
+                <div class="col-lg-7"><input id="vpTxtLote" class="k-textbox" type="text" style="width:100%; margin-bottom:10px" disabled /></div>
+            </div>
+            <!--<div id="liProceso" class="flex-filas">
+                <div class="w25"><label for="vpTxtProceso"><% print(window.app.idioma.t('PROCESO')) %></label></div>
+                <div class="w75" style=" margin-bottom:10px">
+                    <input id="vpTxtProceso" name="vpTxtProceso" class="k-dropdown" type="text" style="width:70%" validationMessage="Campo obligatorio" disabled />
+                    <span class="k-invalid-msg" data-for="vpTxtProceso"></span>
+                </div>
+            </div>-->
+            <div id="liAlmacen" class="flex-filas">
+                <div class="w25"><label for="vpTxtAlmacen"><% print(window.app.idioma.t('ALMACEN')) %></label></div>
+                <div class="w75" style=" margin-bottom:10px">
+                    <input id="vpTxtAlmacen" class="k-dropdown" type="text" style="width:70%" />
+                </div>
+            </div>
+            <div id="liZona" class="flex-filas">
+                <div class="w25"><label for="vpTxtZona"><% print(window.app.idioma.t('ZONA')) %></label></div>
+                <div class="w75" style=" margin-bottom:10px"><input id="vpTxtZona" class="k-dropdown" type="text" style="width:70%" /></div>
+            </div>
+            <div id="liUbicacion" class="flex-filas">
+                <div class="w25"><label for="vpTxtUbicacion"><% print(window.app.idioma.t('UBICACION')) %></label></div>
+                <div class="w75" style=" margin-bottom:10px">
+                    <input id="vpTxtUbicacion" name="vpTxtUbicacion" class="k-dropdown" type="text" style="width:70%" validationMessage="Campo obligatorio" />
+                    <span class="k-invalid-msg" data-for="vpTxtUbicacion"></span>
+                </div>
+            </div>
+            <div id="liTipoMaterial" class="flex-filas">
+                <div class="w25"><label for="vpTxtTipoMaterial"><% print(window.app.idioma.t('TIPO_MATERIAL')) %></label></div>
+                <div class="w75" style=" margin-bottom:10px"><input id="vpTxtTipoMaterial" class="k-dropdown" type="text" style="width:70%" /></div>
+            </div>
+            <div id="liClaseMaterial" class="flex-filas">
+                <div class="w25"><label for="vpTxtClaseMaterial"><% print(window.app.idioma.t('CLASE_MATERIAL')) %></label></div>
+                <div class="w75" style=" margin-bottom:10px"><input id="vpTxtClaseMaterial" class="k-dropdown" type="text" style="width:70%" /></div>
+            </div>
+            <div id="liMaterial" class="flex-filas">
+                <div class="w25"><label for="vpTxtMaterial"><% print(window.app.idioma.t('MATERIAL')) %></label></div>
+                <div class="w75" style=" margin-bottom:10px">
+                    <input id="vpTxtMaterial" name="vpTxtMaterial" class="k-dropdown" type="text" style="width:70%" validationMessage="Campo obligatorio" />
+                    <span class="k-invalid-msg" data-for="vpTxtMaterial"></span>
+                </div>
+            </div>
+            <div id="liProveedor" class="flex-filas">
+                <div class="w25"><label for="vpTxtProveedor"><% print(window.app.idioma.t('PROVEEDOR')) %></label></div>
+                <div class="w75" style=" margin-bottom:10px">
+                    <input id="vpTxtProveedor" name="vpTxtProveedor" class="k-dropdown" type="text" style="width:70%" validationMessage="Campo obligatorio" />
+                    <span class="k-invalid-msg" data-for="vpTxtProveedor"></span>
+                </div>
+            </div>
+            <div id="liCantidadInicial" class="flex-filas">
+                <div class="w25">
+                    <label for="vpTxtCantidadInicial"><% print(window.app.idioma.t('CANTIDAD_INICIAL')) %></label>
+                </div>
+                <div class="w75" style="margin-bottom:10px">
+                    <input id="vpTxtCantidadInicial" name="vpTxtCantidadInicial" type="text" data-type="number" data-role="numerictextbox"/>
+                    <span class="k-invalid-msg" data-for="vpTxtCantidadInicial"></span>
+                </div>
+            </div>
+            <div id="liCantidad" class="flex-filas">
+                <div class="w25">
+                    <label for="vpTxtCantidadLote"><% print(window.app.idioma.t('CANTIDAD_ACTUAL')) %></label>
+                </div>
+                <div class="w75" style="margin-bottom:10px">
+                    <input id="vpTxtCantidadLote" name="vpTxtCantidadLote" value="0" type="text" data-type="number" data-role="numerictextbox"/>
+                    <input id="vpTxtUnidadMedida" style="margin-left:5px;"/>
+                    <span class="k-invalid-msg" data-for="vpTxtCantidadLote"></span>
+                </div>
+            </div>
+            <div id="liLoteProveedor" class="flex-filas">
+                <div class="w25"><label for="vpTxtLoteProveedor"><% print(window.app.idioma.t('LOTE_PROVEEDOR')) %></label></div>
+                <div class="w75" style="margin-bottom:10px">
+                    <input id="vpTxtLoteProveedor" name="vpTxtLoteProveedor" type="text" class="k-textbox" style="width:70%" validationMessage="Campo obligatorio" />
+                    <span class="k-invalid-msg" data-for="vpTxtLoteProveedor"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12" style=" margin-bottom:10px">
+            <center><span id="result" style="color:red" /></center>
+        </div>
+        <div class="col-md-12">
+            <center>
+                <button id="btnAceptar" class="btnAplicarCambio" style="background-color:green;color:white;padding: 5px 25px;">
+                    <% print(window.app.idioma.t('APLICAR')) %>
+                </button>
+            </center>
+        </div>
+    </form>
+</div>
+
+<!-- Diálogo de confirmación -->
+<script id="ConfirmarEdicionLotesTemplate" type="text/x-kendo-template">
+    <div class="dlg-confirmacion-centro">
+        <div style="text-align:center; margin-bottom:12px;">
+            <span style="font-weight:bold;">#=window.app.idioma.t("CONFIRMAR_ACCION")#</span>
+        </div>
+        <div style="text-align:center; margin-bottom:12px;">
+            #=msg#
+        </div>
+        <div style="text-align:center;">
+            <input type="button" id="btnAceptarConfirmacionLotes" value="#:window.app.idioma.t('ACEPTAR')#" style="min-width:110px; margin:0 10px;" />
+            <input type="button" id="btnCancelarConfirmacionLotes" value="#:window.app.idioma.t('CANCELAR')#" style="min-width:110px; margin:0 10px;" />
+        </div>
+    </div>
+</script>

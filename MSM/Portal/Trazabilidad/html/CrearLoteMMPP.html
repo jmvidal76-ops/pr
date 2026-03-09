@@ -1,0 +1,192 @@
+<style>
+    #formParoPerdida {
+        margin: 15px;
+    }
+
+    .cabecera {
+        width: 30% !important;
+        text-align: right;
+        font-weight: bold;
+    }
+
+    .texto {
+        width: 53% !important;
+        text-align: left;
+    }
+
+    .tdLabel {
+        width: 16% !important;
+    }
+
+    #tablaCambio th, .table td {
+        border-top: none !important;
+        /*text-align: right;*/
+    }
+
+    #tablaCambio tr {
+        height: 60px !important;
+    }
+
+    #tablaCambio input, textarea {
+        margin-left: 5px !important;
+        width: 120px;
+    }
+
+    #btnAceptar, #btnReiniciarForm {
+        /*height: 30px;
+        width: 30%;*/
+        /*float:left;*/
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+
+    /*.k-grid .k-state-selected { background-color:lightyellow; }*/
+
+
+    /*.k-autocomplete,
+    .k-combobox,
+    .k-datepicker,
+    .k-timepicker,
+    .k-datetimepicker,
+    .k-colorpicker,
+    .k-numerictextbox,
+    .k-dropdown,
+    .k-selectbox,
+    .k-textbox,
+    .k-toolbar .k-split-button {
+        width: 100% !important;
+    }*/
+
+
+    .k-numerictextbox {
+        width: 100% !important;
+    }
+
+    .k-numerictextbox .k-numeric-wrap .k-input {
+        width: 96% !important;
+    }
+
+    .fila {
+        width: 90%;
+        margin-left: 5%;
+        float: left;
+        margin-top: 20px;
+    }
+
+    .left {
+        width: 35%;
+        float: left;
+        text-align: right;
+        margin-top: 6px;
+    }
+
+    .right {
+        width: 65%;
+        float: left;
+    }
+
+    .k-content {
+        background-color: #fff;
+        padding: 2em;
+    }
+    .vertical-scroll {
+        overflow-y: scroll;
+        max-height: 790px;
+    }
+    #center-pane {
+        background: white;
+    }
+
+    .no-margin-bottom {
+        margin-bottom: 5px !important;
+    }
+</style>
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('CREAR_LOTE_MMPP')) %></label>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="k-content col-md-8">
+            <form id="frmCrearLoteMMPP" name="frmCrearLoteMMPP">
+                <div class="form-group no-margin-bottom">
+                    <label for="cmbProceso" class="control-label"><% print(window.app.idioma.t('PROCESO')) %></label>
+                    <input type="text" class="k-dropdown" name="cmbProceso" id="cmbProceso" required="required" style="width: 100%;" />
+                    <span class="k-invalid-msg" data-for="cmbProceso"></span>
+                </div>
+                <div class="form-group no-margin-bottom">
+                    <label for="cmbAlmacen" class="control-label"><% print(window.app.idioma.t('ALMACEN')) %></label>
+                    <input type="text" class="k-dropdown" name="cmbAlmacen" id="cmbAlmacen" required="required" style="width: 100%;" />
+                    <span class="k-invalid-msg" data-for="cmbAlmacen"></span>
+                </div>
+                <div class="form-group no-margin-bottom">
+                    <label for="cmbZona" class="control-label"><% print(window.app.idioma.t('ZONA')) %></label>
+                    <input type="text" class="k-dropdown" name="cmbZona" id="cmbZona" required="required" style="width: 100%;" />
+                    <span class="k-invalid-msg" data-for="cmbZona"></span>
+                </div>
+                <div class="form-group no-margin-bottom">
+                    <label for="cmbUbicacion" class="control-label"><% print(window.app.idioma.t('UBICACION')) %></label>
+                    <input type="text" class="k-dropdown" name="cmbUbicacion" id="cmbUbicacion" required="required" style="width: 100%;" />
+                    <span class="k-invalid-msg" data-for="cmbUbicacion"></span>
+                </div>
+                <div class="form-group no-margin-bottom">
+                    <label for="cmbTipoMaterial" class="control-label"><% print(window.app.idioma.t('TIPO_MATERIAL')) %></label>
+                    <input type="text" class="k-dropdown" name="cmbTipoMaterial" id="cmbTipoMaterial" required="required" style="width: 100%;" />
+                    <span class="k-invalid-msg" data-for="cmbTipoMaterial"></span>
+                </div>
+                <div class="form-group no-margin-bottom">
+                    <label for="cmbClaseMaterial" class="control-label"><% print(window.app.idioma.t('CLASE_MATERIAL')) %></label>
+                    <input type="text" class="k-dropdown" name="cmbClaseMaterial" id="cmbClaseMaterial" required="required" style="width: 100%;" />
+                    <span class="k-invalid-msg" data-for="cmbClaseMaterial"></span>
+                </div>
+                <div class="form-group no-margin-bottom">
+                    <label for="vpTxtProveedor" class="control-label"><% print(window.app.idioma.t('PROVEEDOR')) %></label>
+                    <input type="text" class="k-dropdown" name="vpTxtProveedor" id="vpTxtProveedor" required="required" style="width: 100%;" />
+                    <span class="k-invalid-msg" data-for="vpTxtProveedor"></span>
+                </div>
+                <div class="form-group no-margin-bottom">
+                    <label for="txtLoteProveedor" class="control-label"><% print(window.app.idioma.t('LOTE_PROVEEDOR')) %></label>
+                    <input type="text" class="k-textbox" name="txtLoteProveedor" id="txtLoteProveedor" required="required" style="width: 100%;" />
+                    <span class="k-invalid-msg" data-for="txtLoteProveedor"></span>
+                </div>
+                <div class="form-group no-margin-bottom">
+                    <label for="cmbRefMaterial" class="control-label"><% print(window.app.idioma.t('MATERIAL')) %></label>
+                    <input type="text" class="k-dropdown" name="cmbRefMaterial" id="cmbRefMaterial" required="required" style="width: 100%;" />
+                    <span class="k-invalid-msg" data-for="cmbRefMaterial"></span>
+                </div>
+                <div class="form-group no-margin-bottom">
+                    <label for="txtCantidad" class="control-label"><% print(window.app.idioma.t('CANTIDAD')) %></label>
+                    <div>
+                        <input type="text" name="txtCantidad" id="txtCantidad" required="required" style="width: 89% !important;" />
+                        <input id="vpTxtUnidadMedida" style="width: 10% !important" required />
+                        <span class="k-invalid-msg" data-for="txtCantidad"></span>
+                    </div>
+                </div>
+                <div class="form-group no-margin-bottom">
+                    <label for="txtSSCC" class="control-label"><% print(window.app.idioma.t('SSCC')) %></label>
+                    <input type="text" class="k-textbox" name="txtSSCC" id="txtSSCC" style="width: 100%;" />
+                    <span class="k-invalid-msg" data-for="txtSSCC"></span>
+                </div>
+                <div class="form-group no-margin-bottom">
+                    <label for="vpTxtFechaCaducidad" class="control-label"><% print(window.app.idioma.t('FECHA_CADUCIDAD')) %></label>
+                    <input type="text" name="vpTxtFechaCaducidad" id="vpTxtFechaCaducidad" style="width: 100%;" />
+                    <span class="k-invalid-msg" data-for="vpTxtFechaCaducidad"></span>
+                </div>
+                <div class="form-group">
+                    <button id="btnAceptar" class="k-button k-primary" value="Aceptar"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+                    <button id="btnReiniciarForm" class="k-button" value="Cancelar" type="button"><% print(window.app.idioma.t("CANCELAR")) %></button>
+                </div>
+                <div class="ui-pnotify" id="result-container" style="opacity: 1; overflow: visible; top: 0; right: 0; position: relative; visibility: hidden">
+                    <div class="alert ui-pnotify-container alert-success ui-pnotify-shadow" style="min-height: 16px; overflow: hidden;">
+                        <h2 class="ui-pnotify-title"><% print(window.app.idioma.t('LOTE_GENERADO')) %> &nbsp;</h2>
+                        <div class="ui-pnotify-text" style="font-size: 14pt" id="result" name="result"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

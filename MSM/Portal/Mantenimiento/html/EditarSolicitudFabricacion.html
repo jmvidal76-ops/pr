@@ -1,0 +1,94 @@
+﻿<style>
+
+    .pad-30 {
+        padding: 30px;
+    }
+
+    .pad-10 {
+        padding: 10px;
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .mar-top-20 {
+        margin-top: 20px;
+    }
+
+    .mar-right-25 {
+        margin-right: 25px;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .tac {
+        text-align: center;
+    }
+
+    .boton {
+        width: 150px;
+        height: 65px;
+    }
+
+    .fila {
+        margin-top: 10px;
+    }
+
+    .lbl-required {
+        display: inline;
+        margin-right: 6px;
+    }
+</style>
+
+<div>
+    <form id="EditarSolicitud" class="pad-30">
+
+        <div>
+            <label id="lblArea" for="cmbArea" class="w-100 lbl-required" data-lng-key="AREA"></label><label>*</label>
+            <select id="cmbArea" name="cmbArea" class="w-100" data-model-name="AreaFabricacion" required></select>
+        </div>
+        <div class="fila">
+            <label id="lblZona" for="cmbZona" class="w-100 lbl-required" data-lng-key="ZONA"></label><label>*</label>
+            <select id="cmbZona" name="cmbZona" class="w-100" data-model-name="ZonaFabricacion" required></select>
+        </div>
+        <div class="fila">
+            <label id="lblEquipoF" for="cmbEquipoF" class="w-100 lbl-required" data-lng-key="EQUIPO"></label><label>*</label>
+            <select id="cmbEquipoF" name="cmbEquipoF" class="w-100" data-model-name="EquipoFabricacion" required></select>
+        </div>
+        <div class="fila">
+            <label id="lblGrupoConstructivo" for="cmbGrupoConstructivo" class="w-100 lbl-required" data-lng-key="GRUPO_CONSTRUCTIVO"></label><label>*</label>
+            <select id="cmbGrupoConstructivo" name="cmbGrupoConstructivo" class="w-100" data-model-name="GrupoConstructivoFabricacion" required></select>
+        </div>
+        <div class="fila">
+            <label id="lblRepuesto" for="cmbRepuesto" class="w-100 lbl-required" data-lng-key="ELEMENTO"></label>
+            <select id="cmbRepuesto" name="cmbRepuesto" class="w-100" data-model-name="RepuestoFabricacion"></select>
+        </div>
+        <div class="fila">
+            <label id="lblTipoAveria" for="cmbTipoAveria" class="w-100 lbl-required" data-lng-key="TIPO_AVERIA"></label><label>*</label>
+            <select id="cmbTipoAveria" name="cmbTipoAveria" class="w-100" data-model-name="IdTipoAveria" required></select>
+        </div>
+        <div class="fila">
+            <label id="lblDescripcionAveria" for="tfDescripcionAveria" class="w-100 lbl-required" data-lng-key="DESCRIPCION_AVERIA"></label><label>*</label>
+            <textarea class="pad-10 w-100" id="tfDescripcionAveria" name="tfDescripcionAveria" style="width:97%;" maxlength="30" required />
+        </div>
+        <div class="fila">
+            <label id="lblDescripcionProblema" for="tfDescripcionProblema" class="w-100" data-lng-key="DESCRIPCION_PROBLEMA"></label>
+            <textarea class="pad-10 w-100" id="tfDescripcionProblema" name="tfDescripcionProblema" style="width:97%;" maxlength="80" />
+        </div>
+        <div class="fila">
+            <label id="lblComentarioCierre" for="tfComentarioCierre" class="w-100 lbl-required" data-lng-key="COMENTARIO_CIERRE"></label><label id="requiredCloseCommentaryMark">*</label>
+            <textarea class="pad-10 w-100" id="tfComentarioCierre" name="tfComentarioCierre" style="width:97%;" required />
+        </div>
+
+        <div class="tac mar-top-20">
+            <input type="button" class="boton mar-right-25" id="btnGestionEditar" data-lng-val-key="ACEPTAR"/>
+            <input type="button" class="boton" id="btnGestionCancelar" data-lng-val-key="CANCELAR"/>
+        </div>
+        <div id="trError" class="error tac mar-top-20" style="display:none;" colspan="2">
+        </div>
+    </form>
+</div>
+

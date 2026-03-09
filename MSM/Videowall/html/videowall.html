@@ -1,0 +1,38 @@
+﻿<style>
+    .center {
+        text-align: center;
+    }
+
+    div > #lblDescripcionPantalla {
+        word-wrap: break-word;
+    }
+
+    .bottom {
+        margin-bottom:23px;
+        padding: 0px 10px 0px 10px;
+    }
+
+    .error {
+        color: red; 
+    }
+
+    .k-window-titlebar {
+    font-size: 14px !important;
+} 
+
+</style>
+<div>
+    <div class="center bottom">
+        <label id="lblPantalla"></label>
+        <select id="cmbPantalla" style="position: relative;"></select>
+    </div>
+    <div class="bottom">
+        <label id="lblDescripcionPantalla"></label>
+    </div>
+    <div id="divErrorVW" class="bottom error">
+        <label id="lblError"></label>
+    </div>
+    <div id="divAceptar" class="center">
+        <button id="btnAceptar"></button>
+    </div>
+</div>

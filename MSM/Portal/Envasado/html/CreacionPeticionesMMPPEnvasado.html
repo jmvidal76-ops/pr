@@ -1,0 +1,140 @@
+﻿<style type="text/css">
+    #vsplitPanelPeticiones {
+        display: flex;
+        flex-direction: column;
+        height: calc(100vh - 172px);
+        width: 100%;
+    }
+
+    #gridCreacionPeticionesMMPPEnvasado {
+        flex: 65%;
+    }
+
+    #gridCreacionPeticionesMMPPEnvasadoDetalle {
+        flex: 35%;
+    }
+
+
+    .toolbar-left {
+        display: inline-flex;
+        gap: 6px;
+    }
+
+    .toolbar-right {
+        display: inline-flex;
+        float: right;
+        margin-top: 4px;
+    }
+
+    .circle_cells {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-size: 25px 28px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 25px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-right: 5px;
+    }
+
+    .k-grid-header th[data-field="Prioridad"], .k-grid-header th[data-field="CantidadPedir"] {
+        background-color: #ffcc80 !important;
+        color: #000 !important;
+        font-weight: bold !important;
+    }
+
+    .popup-ancho-especial.k-window {
+        min-width: 560px !important;
+    }
+
+    .popup-ancho-especial #botones {
+        display: flex;
+        margin-left: 20%;
+    }
+    .margenInf {
+        margin-bottom: 15px;
+    }
+    .divAncho {
+        min-width: 25px;
+    }
+
+    .divTexto {
+        margin-left: 5px;
+        font-size: 17px;
+    }
+    .sinBorde .list-group-item {
+        border: none;
+        display: flex;
+    }
+    .itemRojo {
+        background-color: #fb0101;
+    }
+    .itemAmarillo {
+        background-color: #f9f382;
+    }
+    .itemVerde {
+        background-color: #90EE90;
+    }
+</style>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('CREACION_PETICIONES_MMPP')) %></label>
+</div>
+<div id="divCabeceraVista" class="divContenidoVista">
+    <div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+        <div style="float: left;">
+            <label style="margin-left: 5px;"><% print(window.app.idioma.t('WORK')) %></label>
+            <select id="selectLinea" style="width:200px;"></select>
+            <label style="margin-left: 5px;">WO</label>
+            <select id="selectWO" class="k-input" style="width:320px;"></select>
+            <label class="k-input-label" style="margin-left: 5px;"><% print(window.app.idioma.t('PRODUCTO')) %></label>
+            <input class="k-textbox" id="txtProducto" style="width: 250px;font-weight:bold;" disabled />
+            <label class="k-input-label" style="margin-left: 5px;"><% print(window.app.idioma.t('PRODUCCION_PLANIFICADA')) %></label>
+            <input class="k-textbox" id="txtProduccion" style="width: 60px;" disabled />
+            <label class="k-input-label" style="margin-left: 5px;">(CPBs/<% print(window.app.idioma.t('ENVASES'))%>) <%print(window.app.idioma.t('POR_PALET'))%> </label>
+            <input class="k-textbox" id="txtCPBSEnv" style="width: 100px;" disabled />
+            <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left: 20px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+            <button id="btnLeyenda" class="k-button k-button-icontext" style="margin-left: 5px;"><% print(window.app.idioma.t('COLORES')) %></button>
+        </div>
+        <div style="margin-right:5px;">
+            <button id="btnPedirMMPP" class="k-button k-button-icontext" style="float:right; background-color: green; color: white;display:none;">
+                <span class="k-icon k-i-play-a"></span><% print(window.app.idioma.t('PEDIR_MMPP')) %>
+            </button>
+        </div>
+    </div>
+    <div id="vsplitPanelPeticiones">
+        <div id="gridCreacionPeticionesMMPPEnvasado"></div>
+        <div id="divFiltrosHeader2" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+            <div style="margin-right:5px;">
+                <button id="btnPedirMMPP2" class="k-button k-button-icontext" style="float:right; background-color: green; color: white;display:none;">
+                    <span class="k-icon k-i-play-a"></span><% print(window.app.idioma.t('PEDIR_MMPP')) %>
+                </button>
+            </div>
+        </div>
+        <div id="gridCreacionPeticionesMMPPEnvasadoDetalle"></div>
+    </div>
+</div>
+
+<script id="templateLeyenda" type="text/x-kendo-template">
+    <ul class="list-group sinBorde margenInf">
+        <li class="list-group-item">
+            <div class='circle_cells itemVerde divAncho'></div>
+            <div class='divTexto'><span><% print(window.app.idioma.t('CREAR_PETICION_VERDE_INFO')) %></span></div>
+        </li>
+        <li class="list-group-item">
+            <div class='circle_cells itemAmarillo divAncho'></div>
+            <div class='divTexto'><span><% print(window.app.idioma.t('CREAR_PETICION_AMARILLO_INFO')) %></span>
+        </li>
+        <li class="list-group-item">
+            <div class='circle_cells itemRojo divAncho'></div>
+            <div class='divTexto'><span><% print(window.app.idioma.t('CREAR_PETICION_ROJO_INFO')) %></span>
+        </li>
+    </ul>
+</script>
+
+
+
+

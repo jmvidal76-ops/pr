@@ -1,0 +1,129 @@
+﻿<style>
+    .rTable {
+        display: table;
+    }
+
+    .rTableRow {
+        display: table-row;
+    }
+
+    .rTableCell {
+        display: table-cell;
+        padding: 10px;
+        vertical-align: top;
+    }
+
+    span.k-tooltip-validation {
+        display: run-in;
+        position: absolute;
+    }
+</style>
+<div id="CrearNoConformidad" style="margin-left: 10px;">
+    <div style="width: 100%;">
+
+        <div style="float: left; background-color: Transparent; border: 0;" class="rTable">
+
+            <div class="rTableRow" style="float: left; border: 0;">
+                <div class="rTableCell">
+                    <label id="lblDescripcion" style="width: 110px; text-align: right; margin-top: 5px;"></label>
+                </div>
+                <div class="rTableCell">
+                    <input type="text" class="k-textbox" style="width: 750px" id="txtDescripcion" />
+                </div>
+            </div>
+            <div class="rTableRow" style="float: left; border: 0;">
+                <div class="rTableCell">
+                    <label id="lblTipo" style="width: 110px; text-align: right; margin-top: 5px;"></label>
+
+                </div>
+                <div class="rTableCell">
+                    <input id="cmbTipo" name="cmbTipo" style="width: 750px;" />
+
+                </div>
+
+            </div>
+        </div>
+        <div id="PREPARACION">
+            <div style="float: left; background-color: Transparent; border: 0;" class="rTable">
+                <div class="rTableRow" style="float: left; border: 0;">
+                    <div class="rTableCell">
+                        <label id="lblUbicacion" style="width: 110px; text-align: right; margin-top: 5px;"></label>
+
+                    </div>
+                    <div class="rTableCell">
+                        <input id="cmbUbicacion" name="cmbUbicacion" style="width: 750px;" />
+
+                    </div>
+                </div>
+                <div class="rTableRow" style="float: left; border: 0;">
+                    <div class="rTableCell">
+                        <label id="lblVolumenFinal" style="width: 110px; text-align: right; margin-top: 5px;"></label>
+
+                    </div>
+                    <div class="rTableCell">
+                        <input style="width: 300px;" id="txtVolumenFinal" />
+
+                    </div>
+                    <div class="rTableCell">
+                        <label id="lblUnidades" style="width: 110px; text-align: right; margin-top: 5px;"></label>
+
+                    </div>
+                    <div class="rTableCell">
+                        <input type="text" class="k-textbox" style="width: 300px" id="txtUnidades" />
+                    </div>
+                </div>
+            </div>
+            <div id="divWO" style="width: 100%;">
+                <div style="float: left; background-color: Transparent; border: 0;" class="rTable">
+                    <div class="rTableRow" style="float: left; border: 0;">
+                        <div class="rTableCell">
+                            <label id="lblMateriasPrimas" style="width: 110px; text-align: right; margin-top: 5px;"></label>
+
+                        </div>
+                    </div>
+                    <div class="rTableRow" style="float: left; border: 0;">
+                        <div class="rTableCell" style="overflow: hidden; width: 100%;">
+                            <div id="gridMateriasPrimas"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div id="TAREA">
+            <div style="float: left; background-color: Transparent; border: 0;" class="rTable">
+                <div class="rTableRow" style="float: left; border: 0;">
+                    <div class="rTableCell">
+                        <label id="lblNotasSupervisor" style="width: 110px; text-align: right;"></label>
+
+                    </div>
+                    <div class="rTableCell">
+                        <textarea id="txtNotasSupervisor" class="k-textbox" style="width: 300px; height: 80px;" rows="6y"; overflow="hidden"></textarea>
+                    </div>
+                </div>
+                <div class="rTableRow" style="float: left; border: 0;">
+                    <div class="rTableCell">
+                        <label id="lblNotasOficial" style="width: 110px; text-align: right;"></label>
+                    </div>
+                    <div class="rTableCell">
+                        <textarea id="txtNotasOficial" class="k-textbox" style="width: 300px; height: 80px;" rows="6y"; overflow="hidden"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="float: left; background-color: Transparent; border: 0; width: 100%" class="rTable">
+            <div id="divError" style="text-align: center; width: 100%; float: left; color:red; padding-bottom: 5px;">
+                <% print(window.app.idioma.t("CAMPOS_OBLIGATORIOS_PLANTILLA")) %>
+            </div>
+            <div id="divErrorPREPARACION" style="text-align: center; width: 100%; float: left; color:red; padding-bottom: 5px;">
+                <% print(window.app.idioma.t("CAMPOS_OBLIGATORIOS_PLANTILLA_PREP")) %>
+            </div>
+        </div>
+        <div style="float: left; background-color: Transparent; border: 0; width: 100%" class="rTable">
+            <div id="divAceptar" style="text-align: center; width: 100%; float: left">
+                <button id="btnAceptarEditar" value="Insertar"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+                <button id="btnCancelar" value="Cancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+            </div>
+        </div>
+    </div>
+</div>

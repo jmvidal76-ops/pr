@@ -1,0 +1,343 @@
+<style>
+    .divBloqueLineaIzq {
+        background-color: Transparent;
+        border-bottom: 1px solid black;
+        border-top: 1px solid black;
+        border-left: 1px solid black;
+        width: 120px;
+        height: 120px;
+        background-color: #9FC5F8;
+    }
+
+    .divBloqueLineaDcho {
+        background-color: Transparent;
+        border: 1px solid black;
+        width: 100%;
+        height: 120px;
+    }
+
+    .k-progressbar {
+        background-color: transparent !important;
+        border: 0px !important;
+        border-radius: 0px !important;
+    }
+
+    .divBloqueLineaIzqTitulo {
+        width: 70px;
+        font-size: 40px;
+        height: 40px;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+    }
+
+    .divOEEWOProgressBar {
+        width: 99.8%;
+        height: 60px;
+        margin-left: 1px;
+        z-index: 0;
+    }
+
+    .divOEEWOContenido {
+        width: 100%;
+        height: 100%;
+        border-bottom: 1px solid black;
+        position: absolute;
+        z-index: 10;
+    }
+
+    .divOEETurnoProgressBar {
+        height: 56px;
+        width: 99.8%;
+        margin-top: 2px;
+        margin-left: 1px;
+        margin-right: 1px;
+        z-index: 0;
+    }
+
+    .divOEETurnoContenido {
+        width: 100%;
+        height: 60px;
+        position: absolute;
+        z-index: 10;
+    }
+
+    .lblOEESup {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .lblOEEInf {
+        font-size: 12px;
+        font-weight: bold;
+    }
+    /*.z1 {
+        width: 25%;
+        position: absolute;
+        top: 0px;
+        left: 1px;
+        margin-left: 5px;
+        margin-top: 5px;
+    }*/
+
+    .z1 {
+        float: left;
+        display: inline-block;
+        width: 25%;
+        top: 0px;
+        left: 1px;
+        margin-left: 10px;
+        margin-top: 5px;
+    }
+    /*.z2 {
+        width: 33%;
+        position: absolute;
+        top: 0px;
+        left: 25%;
+        text-align: center;
+    }*/
+
+    .z2 {
+        display: inline-block;
+        float: left;
+        width: 41%;
+        top: 0px;
+        text-align: center;
+    }
+    /*.z3 {
+        width: 42%;
+        position: absolute;
+        top: 0px;
+        left: 58%;
+    }*/
+
+    .z3 {
+        display: inline-block;
+        position: relative;
+        width: 33%;
+        top: 0px;
+    }
+
+    @media (max-width: 760px) {
+        .lblOEESup {
+            font-size: 18px;
+        }
+    }
+
+    @media (max-width: 685px) {
+        .z3 {
+            display: none;
+        }
+
+        .z2 {
+            left: 50%;
+            width: 50%;
+        }
+
+        .z1 {
+            left: 0px;
+            width: 50%;
+        }
+    }
+
+    .maquinaParada {
+        width: 100%;
+        height: 18px;
+        background-color: red;
+        text-align: center;
+        vertical-align: middle;
+        color: white;
+        margin-bottom: 2px;
+    }
+
+    .maquinaMarcha {
+        width: 100%;
+        height: 18px;
+        background-color: green;
+        text-align: center;
+        vertical-align: middle;
+        color: white;
+        margin-bottom: 2px;
+    }
+
+    .maquinaNoConectada {
+        width: 100%;
+        height: 18px;
+        background-color: orange;
+        text-align: center;
+        vertical-align: middle;
+        color: white;
+        margin-bottom: 2px;
+    }
+
+    .parpadea {
+        font-size: 22px;
+        font-weight: bold;
+        margin-top: 5px;
+        color: red;
+        text-decoration: blink;
+    }
+
+    .k-progressbar {
+        /*height: 23px;*/
+        border: 0 !important;
+        /* background-image:none; border-radius:0 0 0 0 !important; background-color:#FFFFFF !important; */
+    }
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 80px;
+        text-align: center;
+        vertical-align: top;
+    }
+
+        .wrapper div {
+            padding-right: 3px;
+            padding-left: 3px;
+        }
+
+    #listadoLineasCM {
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .tarjeta {
+        border: 1px solid #ccc;
+        padding: 15px;
+        margin: 10px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        display: flex;
+        height: 130px;
+    }
+
+    .tarjeta .estadoImg {
+        width: 60px;
+        height: 60px;
+        background-color: currentColor;
+        mask: url('../../../Common/img/circle.svg');
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: contain;
+        -webkit-mask: url('../../../Common/img/circle.svg');
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        -webkit-mask-size: contain;
+    }
+    .tarjeta .estadoCont {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 120px;
+        font-size: 20px;
+        font-weight: bold;
+        margin-right: 20px;
+    }
+
+    .tarjeta .estado-text {
+        white-space: nowrap;
+    }
+
+    .tarjeta .datosCont {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: 20px;
+        flex-grow: 1;
+        width: 80%;
+    }
+
+    .tarjeta .tiempoCont {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .tarjeta .estadoNombre {
+        color: white;
+        padding: 3px 0;
+        border-radius: 4px;
+        width: 100%;
+        text-align: center;
+        flex: 0;
+    }
+
+    .tarjeta .estadoImgCont {
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    .tarjeta estadoTextCont {
+        flex: 0;
+    }
+
+    .texto1LineaEllipsis {
+        flex: 1 1 0;
+        min-width: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .estado0 {--estado-color: orangered; --icon: url('../../../Common/img/circle.svg')}
+    .estado1 {--estado-color: deepskyblue; --icon: url('../../../Common/img/circle.svg')}
+    .estado2 {--estado-color: #f8b801; --icon: url('../../../Common/img/worker.svg')}
+    .estado3 {--estado-color: limegreen; --icon: url('../../../Common/img/check.svg')}
+
+    .estadoNombre {
+        background-color: var(--estado-color);
+    }
+    .estadoImg {
+        mask: var(--icon) !important;
+        -webkit-mask-image: var(--icon) !important;
+    }
+    .estadoImg, .estado-text {
+        color: var(--estado-color);
+    }
+</style>
+<!-- CABECERA -->
+<div class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t("CUADRO_MANDO_PLANTA")) %></label>
+</div>
+
+<div id="listadoLineasCM"></div>
+
+
+<script id="resumenOTsTemplate" type="text/x-kendo-template">
+        <div>
+        <div class="ots-container">
+            # for (var i = 0; i < OTs.length; i++) { #
+            # let estado = (OTs[i].Estado == 'N0' ? 0 :
+                            OTs[i].Estado == 'N1' ? 1 :
+                            (OTs[i].Estado == 'M4' || OTs[i].Estado == 'M5' ? 3 : 2)) #
+
+            <div class="tarjeta">
+                <div class="estadoCont estado#:estado#">
+                    <div class="estadoNombre"><span>#: (estado < 2 ? window.app.idioma.t('PENDIENTE') : estado == 2 ? window.app.idioma.t('EN_CURSO') : window.app.idioma.t('CERRADA')) #</span></div>
+                    <div class="estadoImgCont">
+                        <span class="estadoImg"></span>
+                    </div>
+                    <div class="estadoTextCont" style="width: 100%;text-align: center;">
+                        <span class="estado-text">#= OTs[i].Estado #: #= OTs[i].EstadoDescripcion #</span>
+                    </div>
+                </div>
+                <div class="datosCont">
+                    <h3 style="margin:0; font-weight:bold;">OT #= OTs[i].NumOT #</h3>
+                    <span style="display:flex;"><strong style="margin-right:12px;">#: window.app.idioma.t('MAQUINA')#:</strong><span class="texto1LineaEllipsis tooltipable">#: OTs[i].Maquina # - #: OTs[i].MaquinaDescripcion # - #: OTs[i].EquipoConstructivoDescripcion #</span></span>
+                    <span style="display:flex;"><strong style="margin-right:12px;">#: window.app.idioma.t('DESCRIPCION')#:</strong><span class="texto1LineaEllipsis tooltipable">#: OTs[i].DescripcionAveria ##: (OTs[i].DescripcionProblema ? ' - '+ OTs[i].DescripcionProblema : '') #</span></span>
+                    <div class="tiempoCont">
+                        <span><strong style="margin-right:12px;">#: window.app.idioma.t('INICIO')#:</strong><span>#: kendo.toString(new Date(OTs[i].FechaCreacion), 'dd/MM/yyyy HH:mm:ss') #</span></span>
+                        # let duracion = DuracionATexto(new Date(OTs[i].FechaCreacion), (OTs[i].FechaCierre ? new Date(OTs[i].FechaCierre) : new Date())) #
+                        <span><strong style="margin-right:12px;">#: window.app.idioma.t('DURACION')#:</strong><span>#: duracion #</span></span>
+                    </div>
+                </div>
+            </div>
+            # } #
+        </div>
+    </div>
+</script>

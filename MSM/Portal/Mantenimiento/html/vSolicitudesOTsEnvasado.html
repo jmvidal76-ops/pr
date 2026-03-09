@@ -1,0 +1,65 @@
+﻿<style>
+    .k-tabstrip .k-content {
+        margin: 0;
+        padding: 0;
+        border-width: 0;
+        overflow-y: hidden;
+    }
+    .k-grid-content {
+        min-height: 200px;
+    }
+    .gridDetail .k-grid-content {
+        min-height: 60px;
+    }
+</style>
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('SOLICITUD_OTS_ENVASADO')) %></label>
+</div>
+
+<div id="SolicitudesOTsDiv" class="divContenidoVista">
+    <div>
+        <!-- Filtros Cambios -->
+        <div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+            <div style="float: left;">
+                <label style="margin-left: 5px;"><% print(window.app.idioma.t('DESDE')) %></label>
+                <input id="dtpFechaDesde" style="width: 180px;" />
+                <label style="margin-left: 5px;"><% print(window.app.idioma.t('HASTA')) %></label>
+                <input id="dtpFechaHasta" style="width: 180px;" />
+                <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+            </div>
+            <div style="float: right; margin-right: 10px;">
+                <button id="btnAsociarParo" class="k-button k-button-icontext" data-funcion='MAN_PROD_SOL_1_GestionSolicitudesOTSPortalEnvasado' style="margin-left: 5px;">
+                    <% print(window.app.idioma.t('ASOCIAR_PAROS_SOLICITUD_MAN')) %>
+                </button>
+                <button id="btnAnadir" class="k-button k-button-icontext" data-funcion='MAN_PROD_SOL_1_GestionSolicitudesOTSPortalEnvasado' style="margin-left: 5px;">
+                    <span class='k-icon k-i-plus'></span><% print(window.app.idioma.t('ANADIR')) %>
+                </button>
+                <button id="btnEditar" class="k-button k-button-icontext" data-funcion='MAN_PROD_SOL_1_GestionSolicitudesOTSPortalEnvasado' style="margin-left: 5px;">
+                    <span class='k-icon k-i-pencil'></span><% print(window.app.idioma.t('EDITAR')) %>
+                </button>
+                <button id="btnValidarArranque" class="k-button k-button-icontext" data-funcion='MAN_PROD_VAL_1_GestionValidacionArranque' style="margin-left: 5px;">
+                    <span class='k-icon k-update'></span><% print(window.app.idioma.t('VALIDACION_ARRANQUE')) %>
+                </button>
+                <button id="btnCerrar" class="k-button k-button-icontext" data-funcion='MAN_PROD_SOL_1_GestionSolicitudesOTSPortalEnvasado' style="margin-left: 5px;">
+                    <span class='k-icon k-delete'></span><% print(window.app.idioma.t('CERRAR')) %>
+                </button>
+                <button id="btnLimpiarFiltros" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;">
+                    <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+                </button>
+                <button id="btnExportarExcel" class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px;">
+                    <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+                </button>
+            </div>
+        </div>
+        <div id="gridSolicitudesOTs"></div>
+    </div>
+</div>
+
+<!-- Grid Detail -->
+<script id="detailTemplate" type="text/x-kendo-template">
+    <div class="gridDetail" style="width: 98%; max-height: 600px;">
+    </div>
+</script>

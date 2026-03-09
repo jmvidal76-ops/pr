@@ -1,0 +1,354 @@
+<style>
+    #gridCurvas {
+        position: relative;
+    }
+    
+    .table {
+        border: 1px solid #000000;
+        margin: 2px;
+        table-layout: fixed;
+    }
+    
+    .selRowProd {
+        background-color: lightgreen;
+    }
+    
+    .table-bordered>thead>tr>th,
+    .table-bordered>tbody>tr>th,
+    .table-bordered>tfoot>tr>th,
+    .table-bordered>thead>tr>td,
+    .table-bordered>tbody>tr>td,
+    .table-bordered>tfoot>tr>td {
+        border: 1px solid black;
+        /*font-weight: normal;*/
+    }
+    
+    .table>tbody>tr>td,
+    .table>tbody>tr>th,
+    .table>tfoot>tr>td,
+    .table>tfoot>tr>th,
+    .table>thead>tr>td,
+    .table>thead>tr>th {
+        vertical-align: middle !important;
+    }
+    
+    .table td {
+        text-align: center;
+        /*font-size: 19px;*/
+        /*font-weight: bold !important;*/
+        padding: 4px !important;
+        padding-left: 8px !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .bordeFinoDashed td {
+        text-align: left !important;
+        border: dashed 1px lightgray !important;
+    }
+    
+    .bordeFinoNoDashed td {
+        text-align: left !important;
+        border: hidden !important;
+    }
+    /*.table span {
+        font-weight: normal;
+    }*/
+    
+    .nowrap {
+        word-wrap: break-word;
+        max-height: 3em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .blueBtn {
+        /*width: 110.977px;*/
+        background-color: royalblue;
+        color: white;
+    }
+    
+    .k-grid table {
+        width: 100% !important;
+    }
+    
+    .k-grid-update {
+        width: 83px;
+    }
+</style>
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('VERDETALLEWO')) %></label>
+</div>
+
+<table id="tablaOrden" class="table bordeFinoDashed" style="margin-bottom: 8px; float: left;">
+    <tbody>
+        <tr style="border: solid 1px black !important; background-color: #ebe9e9">
+            <td id="lblEstado" style="width: 10%; text-align: center !important; border: solid 1px black !important;"><b>
+                <label id="txtEstadoProcCerrado">
+                    <%if (order.estadoActual != null) {%>
+                <%=order.estadoActual.descripcion.toUpperCase()%>
+                <%}%>
+                </label>
+            </b></td>
+            <td><span><b><% print(window.app.idioma.t("IDORDEN")) %>: </b></span>
+                <%= order.id %>
+            </td>
+            <td><span><b><% print(window.app.idioma.t("TIPO_ORDEN")) %>: </b></span>
+                <%if (order.tipoOrden != null) {%>
+                    <%= order.tipoOrden.descripcion.toUpperCase() %>
+                        <%}%>
+            </td>
+
+            <td><span><b><% print(window.app.idioma.t("NUMERO")) %> <%= order.tipoOrden.descripcion.charAt(0).toUpperCase() + order.tipoOrden.descripcion.toLowerCase().slice(1) %> :
+            </b></span>
+                <%= order.id.slice(-4) %>
+            </td>
+        </tr>
+        <tr>
+            <td id="btnAccion" rowspan="4" style="border: solid 1px black !important; margin: 0px; padding: 0px;">
+                <div style="margin-right: auto; margin-left: auto; display: block; text-align: center;">
+                    <img id="imgEstadoOrden" src="img/KOP_Verde.png" width="40" height="40" />
+                </div>
+            </td>
+            <td><span><b><% print(window.app.idioma.t("UBICACION")) %>: </b></span>
+                <% if(order.tipoOrden.id.indexOf("FE")>=0 || order.tipoOrden.id.indexOf("GU")>=0 || order.tipoOrden.id.indexOf("PR")>=0) {%>
+                    <%= order.executionEquipment %>
+                        <% } else { %>
+                            <%= order.equipo %>
+                                <% } %>
+            </td>
+            <td><span><b><% print(window.app.idioma.t("MATERIAL")) %>: </b></span><span id="nombreMaterialOrden"><%if(order.material.idMaterial.indexOf("Dummy") == -1) {%>
+                                                                                        <%if(order.material.idMaterial.indexOf("Dummy") == -1) {%>
+                                                                                            <%=order.material.idMaterial + ' - ' + order.material.nombre %>
+                                                                                        <%} else {%>
+                                                                                            ---
+                                                                                        <%}%>
+                                                                                  </span></td>
+            <td><span><b><% print(window.app.idioma.t("LOTEMES")) %>: </b></span><span id="idMaterialOrden"><%if(order.loteMES.indexOf("Dummy") == -1) {%>
+                                                                                        <%if(order.loteMES.indexOf("Dummy") == -1) {%>
+                                                                                            <%= order.loteMES %>
+                                                                                        <%} else {%>
+                                                                                            ---
+                                                                                        <%}%>
+                                                                                 </span></td>
+        </tr>
+        <tr>
+            <!--<td id="Td1" rowspan="4" style="border: solid 1px black !important; margin: 0px; padding: 0px;"></td>-->
+            <td><span><b><% print(window.app.idioma.t("CANTIDAD_PLANIFICADA")) %>: </b></span><span id="cantidadMaterialOrden"><%= order.cantidad + '    ' + order.material.udMedida.toUpperCase() %> </span></td>
+            <td><span><b><% print(window.app.idioma.t("FECHA_INICIO_ESTIMADA")) %>: </b></span>
+                <%if (order.fecInicioEstimado.indexOf("-")==-1) {%>
+                    <%=order.fecInicioEstimado%>
+                        <%} else {%>
+                            -
+                            <%}%>
+
+            </td>
+            <td><span><b><% print(window.app.idioma.t("FECHA_FIN_ESTIMADA")) %>: </b></span>
+                <%if (order.fecFinEstimado.indexOf("-")==-1) {%>
+                    <%=order.fecFinEstimado%>
+                        <%} else {%>
+                            -
+                            <%}%>
+            </td>
+        </tr>
+        <tr>
+            <!--<td id="Td2" rowspan="4" style="border: solid 1px black !important; margin: 0px; padding: 0px;"></td>-->
+            <td><span><b><% print(window.app.idioma.t("DURACION_ESTIMADA")) %>: </b></span>
+                <%if (order.fecFin.indexOf("-")==-1 && order.fecFin.indexOf("-")==-1) {%>
+                    <%=((order.fecFinLocal - order.fecInicioLocal) / 3600).toFixed(2)%> horas
+                        <%} else {%>
+                            -
+                            <%}%>
+
+            </td>
+            <td>
+                <span><b><% print(window.app.idioma.t("INICIO_REAL")) %>: </b></span>
+                <%if (order.fecInicio.indexOf("-")==-1) {%>
+                    <%=order.fecInicio%>
+                        <%} else {%>
+                            -
+                            <%}%>
+            </td>
+            <td><span><b><% print(window.app.idioma.t("FIN_REAL")) %>: </b></span>
+                <%if (order.fecFin.indexOf("-")==-1) {%>
+                    <%=order.fecFin%>
+                        <%} else {%>
+                            -
+                            <%}%>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+
+<div id="tpInfoOrden" style="overflow: hidden; height: 75%;">
+    <ul>
+        <li class="k-state-active">
+            <% print(window.app.idioma.t('PROCEDIMIENTOS')) %>
+        </li>
+        <li id="divKOPS">
+            <% print(window.app.idioma.t('KOPS_PROCESO')) %>
+        </li>
+        <li id="divCurvas">
+            <% print(window.app.idioma.t('KOPS_CURVAS')) %>
+        </li>
+        <li>
+            <% print(window.app.idioma.t('MATERIAL')) %>
+        </li>
+        <li>
+            <% print(window.app.idioma.t('MEDIDAS')) %>
+        </li>
+        <li id="divLIMS">LIMS
+        </li>
+        <li>
+            <% print(window.app.idioma.t('CONTROL_GESTION')) %>
+        </li>
+        <li>
+            <% print(window.app.idioma.t('TRAZABILIDAD')) %>
+        </li>
+        <a id="btnCerrarOrden" style="margin-left: 250px;" role="button" class="btn btn-success btn-large"><% print(window.app.idioma.t('CERRAR_ORDEN_2')) %></a>
+        <button id='btnUpdateView' style='margin-left: 20px;margin-top: 2.5px;' class='k-button blueBtn'><span style='margin-top: 2.5px;' class='k-icon k-i-refresh'></span> <% print(window.app.idioma.t('ACTUALIZAR')) %></button>
+    </ul>
+
+    <div>
+        <div id="gridProcs" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%;"></div>
+    </div>
+    <div>
+        <div id="gridKOPS" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%;"></div>
+    </div>
+    <div>
+        <div id="divFiltros" class="k-header" style="height: 35px; width: 100%; padding-top: 5px;">
+            <div style="float: left; margin-left: 10px; height: 25px;">
+                <!--  <div id="ddlCurvas" style="float: left; margin-left: 3px;">
+                    <label id="lblNombreCurvaKOP"><% print(window.app.idioma.t('CURVA')) %></label>
+                    &nbsp;&nbsp;
+                    <input type="text" id="cmbCurvas" name="cmbCurvas" style="width: 300px;" />
+                </div>-->
+                <div id="controles" style="float: left;">
+                    <!--  <div id="check2curva" style="float: left; margin-left: 20px;">
+                        <input type="checkbox" id="chkValorCurva" checked="checked" />
+                    </div>-->
+                    <!-- <div id="valoresCurva" style="float: left; margin-left: 10px;display:none">
+                        <div id="lblValorCurva" style="float: left; padding-top: 5px;">
+                            <label><% print(window.app.idioma.t('VALOR')) %>: &nbsp; </label>
+                        </div>
+                        <div id="divtxtValorCurva" style="float: left;">
+                            <input type="text" id="txtValorCurva" />
+                        </div>
+                        <div id="divnumValorCurva" style="float: left;">
+                            <input type="text" id="numValorCurva" />
+                        </div>
+                        <div id="divfecValorCurva" style="float: left;">
+                            <input type="text" id="fecValorCurva" />
+                        </div>
+                    </div>-->
+                    &nbsp;&nbsp;
+                    <!-- <button id="btnAsignarCurva" class="k-button k-button-icontext" style="background-color: green; color: white;">
+                       <img class='k-icon k-i-pencil' alt="icon" /><% print(window.app.idioma.t('APLICAR')) %></button>-->
+                    &nbsp;&nbsp;
+                </div>
+                <div id="botonesCurva" style="float: left;">
+                    <!-- <button id="btnGrafico" class="k-button k-button-icontext blueBtn" >
+                        <img class='k-icon' alt="icon" src="img/chartImg2.png" /><% print(window.app.idioma.t('GRAFICO')) %></button>-->
+                    <button id="btnTabla" class="k-button k-button-icontext blueBtn" style="display: none;">
+                        <img class='k-icon' alt="icon" src="img/tableImg.png" /><% print(window.app.idioma.t('TABLA')) %></button>
+                    <button id="btnPDFCurvaGrafico" class="k-button k-button-icontext k-grid-pdf" style="display: none; float: right; background-color: darkorange; color: white; margin-left: 25px;">
+                        <span class="k-icon k-i-pdf"></span><% print(window.app.idioma.t('EXPORTAR_PDF')) %>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        <div id="gridCurvas" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%; position: relative"></div>
+        <!-- <div id="toolbarMultiValor">
+        </div>-->
+        <div id="chart" style="display: none;"></div>
+    </div>
+    <div>
+        <div id="gridConsumo" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%;"></div>
+        <div id="gridProduccion" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%; margin-top: 12px;"></div>
+        <div id="gridTransferencias" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%; margin-top: 12px;"></div>
+
+    </div>
+    <div>
+        <div id="divcontHistorian" class="k-header" style="height: 35px; width: 100%; padding-top: 5px;">
+            <div style="float: left; margin-left: 10px; height: 25px;">
+                <div id="Div2" style="float: left; margin-left: 3px;">
+                    <div style="float: left;">
+                        <label id="lblProcHist"><% print(window.app.idioma.t('PROCEDIMIENTOS')) %>:</label> &nbsp;
+                        <input type="text" id="cmbProcedimientoHistorian" name="cmbProcedimientoHistorian" /> &nbsp;&nbsp;
+                        <input type="checkbox" id="chkHistorian" /> &nbsp;
+                        <span id="lblContextoOrdenHistorian"><% print(window.app.idioma.t('CONTEXTO_ORDEN_HISTORIAN')) %></span> &nbsp;&nbsp;
+                        <label id="lbl2"><% print(window.app.idioma.t('FECHA_INICIO')) %>:</label> &nbsp;
+                        <span id="lblFechaInicioHistorian" style="display: none;"><% print(window.app.idioma.t('AYER')) %></span> &nbsp;&nbsp;&nbsp;
+                        <label id="lbl3" style="display: none;"><% print(window.app.idioma.t('FECHA_FIN')) %>:</label> &nbsp;
+                        <span id="lblFechaFinHistorian" style="display: none;"><% print(window.app.idioma.t('PRESENTE')) %></span> &nbsp;&nbsp;
+                        <label id="lbl0"><% print(window.app.idioma.t('TAG')) %>: </label> &nbsp;&nbsp;
+                    </div>
+                    <div id="divcmbHistorian" style="float: left;">
+                        <!--<input type="text" id="cmbHistorian" name="cmbHistorian" style="width: 250px;" />-->
+                        <input type="text" id="cmbHistorian" name="cmbHistorian" style="width: 350px;" />
+                    </div>
+                    &nbsp;&nbsp;&nbsp;
+                    <button id="btnConsultarHistorian" class="k-button k-button-icontext"><span class='k-icon k-i-search'></span></button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button id="btnTablaHistorian" class="k-button k-button-icontext blueBtn" style="display: none;">
+                        <img class='k-icon' alt="icon" src="img/tableImg.png" /><% print(window.app.idioma.t('TABLA')) %></button>
+                    <button id="btnPDFGraficoHistorian" class="k-button k-button-icontext k-grid-pdf" style="display: none; float: right; background-color: darkorange; color: white; margin-left: 10px;">
+                        <span class="k-icon k-i-pdf"></span><% print(window.app.idioma.t('EXPORTAR_PDF')) %>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="gridHistorian" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%;"></div>
+
+        <div id="imgCargandoChartHistorian" style="display: none; width: 100%; text-align: center; height: auto; margin-top: 10px;">
+            <img id="img1" src="./img/cargando.gif" />
+        </div>
+        <div id="chartHistorian" style="display: none; width: 100%;"></div>
+
+    </div>
+    <div>
+        <div id="gridLIMS" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%;"></div>
+    </div>
+    <div></div>
+    <div></div>
+</div>
+<script type="text/x-kendo-template" id="templateConsumo">
+    <div id="tpDetalleConsumo">
+        <ul>
+            <li class="k-state-active">
+                <% print(window.app.idioma.t('DETALLE_CONSUMO')) %>
+            </li>
+        </ul>
+        <div>
+            <div id="gridDetalleConsumo" style="float: left; width: 100%;"></div>
+        </div>
+    </div>
+</script>
+<script type="text/x-kendo-template" id="templateProduccion">
+    <div id="tpDetalleProduccion">
+        <ul>
+            <li class="k-state-active">
+                <% print(window.app.idioma.t('DETALLE_PRODUCCION')) %>
+            </li>
+        </ul>
+        <div>
+            <div id="gridDetalleProduccion" style="float: left; width: 100%;"></div>
+        </div>
+    </div>
+</script>
+<script type="text/x-kendo-template" id="templateMultivalor">
+    <div id="tpDetalleMultivalor">
+        <ul>
+            <li class="k-state-active">
+                <% print(window.app.idioma.t('DETALLE')) %>
+            </li>
+        </ul>
+        <div>
+            <div id="gridDetalleMultivalor" style="float: left; width: 100%;"></div>
+        </div>
+    </div>
+</script>

@@ -1,0 +1,177 @@
+<script>
+    // Import DejaVu Sans font for embedding
+
+    // NOTE: Only required if the Kendo UI stylesheets are loaded
+    // from a different origin, e.g. cdn.kendostatic.com
+    kendo.pdf.defineFont({
+        "DejaVu Sans": "//kendo.cdn.telerik.com/2014.3.1314/styles/fonts/DejaVu/DejaVuSans.ttf",
+        "DejaVu Sans|Bold": "//kendo.cdn.telerik.com/2014.3.1314/styles/fonts/DejaVu/DejaVuSans-Bold.ttf",
+        "DejaVu Sans|Bold|Italic": "//kendo.cdn.telerik.com/2014.3.1314/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf",
+        "DejaVu Sans|Italic": "//kendo.cdn.telerik.com/2014.3.1314/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf"
+    });
+</script>
+
+<style>
+    .gridP {
+        /*height:120px;*/
+        overflow: hidden;
+    }
+
+    .pD {
+        height: 30%;
+        width: 90%;
+        overflow: hidden;
+    }
+
+    .pDM {
+        height: 10%;
+        width: 90%;
+        overflow: hidden;
+    }
+
+    .bloqueOrden {
+        width: 100%;
+        height: 16px;
+        padding: 5px;
+        border-bottom: solid 1px gray;
+        overflow: hidden;
+    }
+
+    .cabecera {
+        height: 17px;
+        overflow: hidden;
+        padding: 7px;
+    }
+
+    #loader {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 100%;
+        width: 100%;
+        background-color: gray;
+        opacity: 0.6;
+        display: none;
+    }
+
+        #loader img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -32px; /* -1 * image width / 2 */
+            margin-top: -32px; /* -1 * image height / 2 */
+        }
+
+    .celdaLlenadora {
+        font-weight: bold;
+        background-color: #fdd;
+    }
+
+    #panelLlenadoras_p5 tr:first-child td {
+        font-weight: bold;
+    }
+
+    #panelLlenadoras_p5 table tr:nth-child(4) {
+        font-weight: bold;
+    }
+
+    #panelLlenadoras_p5 table tr:nth-child(7) {
+        font-weight: bold;
+    }
+
+    #panelLlenadoras_p5 thead th {
+        font-weight: bold !important;
+    }
+    /* agomezn 010616: 043 que Parte de Turno no corte algunas columnas de datos de la izquierda al exportar a PDF */
+    .k-grid-header th.k-header, .k-filter-row th {
+        overflow: hidden;
+        border-style: solid;
+        border-width: 0 0 1px 1px;
+        padding: .3em .4em .1em .3em;
+        font-weight: normal;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-align: left;
+    }
+
+    .k-grid td {
+        border-style: solid;
+        border-width: 0 0 0 1px;
+        padding: .1em .2em .0em .3em;
+        overflow: hidden;
+        line-height: 1.6em;
+        vertical-align: middle;
+        text-overflow: ellipsis;
+    }
+
+    .cabecera {
+        padding: 3px;
+    }
+
+    .bloqueOrden {
+        padding: 3px;
+    }
+
+    /*#right-pane .k-icon.k-expand-next, .k-icon.k-expand-prev, .k-icon.k-collapse-prev{ 
+        display: none !important;
+    }*/
+</style>
+
+<div id="panelPrincipal" style="height: 100%; width: 100%;">
+    <div id="pHorizontal" style="height: 100%; width: 100%;">
+        <div id="divCabeceraVista" class="divCabeceraVista">
+            <img height="19" src="img/tituloCabecera.png" style="margin-left: 5px;" />
+            <label class="lblCabeceraVista"><% print(window.app.idioma.t('INFORME_TURNO')) %></label>
+        </div>
+        <div id="toolbar" style="overflow: hidden;">
+        </div>
+        <div id="pCentral" style="height: 100%; width: 100%; overflow: hidden; font-size: 12px; position: relative;">
+
+            <div id="pVertical" style="height: 100%; width: 100%; overflow: hidden;">
+                <div id="left-pane" style="height: 100%; width: 98%; overflow: hidden;">
+
+                    <div id="pGrafTablas" style="height: 100%;">
+                        <div id="grafOEE" style="height: 280px; overflow: hidden;">
+                        </div>
+                        <div id="gridParosMayores" class="gridP">
+                        </div>
+                        <div id="gridPerdidas" class="gridP">
+                        </div>
+                    </div>
+                </div>
+                <div id="right-pane" style="overflow: hidden;">
+                    <div id="panelOrdenes" style="overflow: hidden;">
+                        <div class="k-header cabecera"><b><% print(window.app.idioma.t('PRODUCTOS_ENVASADOS')) %></b></div>
+                        <div id="ordenes" style="overflow-y: scroll !important;overflow-x: hidden !important;height: 72%;"></div>
+                    </div>
+                    <div id="panelLlenadoras_p1" class="pD">
+                    </div>
+
+                    <div id="panelLlenadoras_p2" class="pD">
+                    </div>
+                    <div id="panelEmpaquetadoraEncajondarora_p1" class="pDM">
+                    </div>
+                    <div id="panelPaletizadora_p1" class="pD">
+                    </div>
+                    <div id="panelLlenadoras_p5" class="pD">
+                    </div>
+                    <div id="panelLlenadoras_p3" class="pD">
+                    </div>
+
+                    <!--
+                        <div id="panelDatosAlmacen" class="pD">
+                             
+                        </div>
+                    -->
+                </div>
+            </div>
+            <div id="loader">
+                <img src="img/reportloader.gif" />
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

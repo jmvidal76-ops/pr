@@ -1,0 +1,148 @@
+﻿<style>
+    .circle_cells {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-size: 25px 28px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 25px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-right: 5px;
+    }
+
+    .itemEspera {
+        background-color: #FC801C;
+    }
+
+    .itemCorrecta {
+        background-color: #4CDA43;
+    }
+
+    .itemHabilitada {
+        background-color: #048404;
+    }
+
+    .itemAnulada {
+        background-color: #8B0000;
+    }
+
+    .itemEliminada {
+        background-color: #DC3F3F;
+    }
+
+    .divTexto {
+        margin-left: 5px;
+        font-size: 17px;
+        display: flex;
+        align-items: center;
+    }
+
+    .sinBorde .list-group-item {
+        border: none;
+        display: flex;
+    }
+
+    .pad-10 {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+</style>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('GESTION_PRODUCCIONES')) %></label>
+</div>
+
+<!-- Filtros Cambios -->
+<div id="divProdFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+    <div style="float: left;">
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('DESDE')) %></label>
+        <input id="dtpProdFechaDesde" style="width: 200px;" />
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('HASTA')) %></label>
+        <input id="dtpProdFechaHasta" style="width: 200px;" />
+        <button id="btnProdFiltrarFechas" class="k-button k-button-icontext" style="margin-left: 5px;">
+            <span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %>
+        </button>
+        <button id="btnProdDescripciones" class="k-button k-button-icontext" style="margin-left: 5px;">
+            <img class="k-icon" style="background-image:none;" src="../../../Common/img/info.svg"><% print(window.app.idioma.t('DESCRIPCION_ESTADOS_BLOQUEOS')) %>
+        </button>
+    </div>
+    <div style="float: right; margin-right: 10px;">
+        <button id="btnProdLimpiarFiltros" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;">
+            <span class="k-icon k-i-funnel-clear"></span> <% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+        </button>
+        <button id="btnModificarFecha" class="k-button k-button-icontext" style="margin-left: 5px;">
+            <% print(window.app.idioma.t('MODIFICAR_FECHA')) %>
+        </button>
+        <button id="btnParticion" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;" disabled>
+            <% print(window.app.idioma.t('ASIGNAR_WO')) %>
+        </button>
+        <button id="btnAnular" class="k-button k-button-icontext" style="margin-left: 5px;">
+            <% print(window.app.idioma.t('ANULAR_ETQ')) %>
+        </button>
+        <button id="btnHabilitar" class="k-button k-button-icontext" style="margin-left: 5px;">
+            <% print(window.app.idioma.t('HABILITAR_ETQ')) %>
+        </button>
+        <button id="btnProdExportExcel" class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px;">
+            <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+        </button>
+    </div>
+</div>
+<div id="divComponent"></div>
+
+<script id="templateDescripEstadosBloqueos" type="text/x-kendo-template">
+    <h4><% print(window.app.idioma.t('ESTADO')) %></h4>
+    <ul class="list-group sinBorde margenInf">
+        <li class="list-group-item">
+            <div class='circle_cells itemEspera divAncho'></div>
+            <div class='divTexto'><span><% print(window.app.idioma.t('ESTADO_ESPERA_INFO')) %></span></div>
+        </li>
+        <li class="list-group-item">
+            <div class='circle_cells itemCorrecta divAncho'></div>
+            <div class='divTexto'><span><% print(window.app.idioma.t('ESTADO_CORRECTA_INFO')) %></span>
+        </li>
+        <li class="list-group-item">
+            <div class='circle_cells itemHabilitada divAncho'></div>
+            <div class='divTexto'><span><% print(window.app.idioma.t('ESTADO_HABILITADA_INFO')) %></span>
+        </li>
+        <li class="list-group-item">
+            <div class='circle_cells itemHabilitada divAncho'></div>
+            <div class='divTexto'><span><% print(window.app.idioma.t('ESTADO_IMPORTADA_INFO')) %></span>
+        </li>
+        <li class="list-group-item">
+            <div class='circle_cells itemAnulada divAncho'></div>
+            <div class='divTexto'><span><% print(window.app.idioma.t('ESTADO_ANULADA_INFO')) %></span>
+        </li>
+        <li class="list-group-item">
+            <div class='circle_cells itemEliminada divAncho'></div>
+            <div class='divTexto'><span><% print(window.app.idioma.t('ESTADO_ELIMINADA_INFO')) %></span>
+        </li>
+    </ul>
+    <h4><% print(window.app.idioma.t('BLOQUEO')) %></h4>
+    <ul class="sinBorde margenInf" style="list-style-type: disc;">
+        <li class='pad-10'>
+            <div class='divTexto'><span><% print(window.app.idioma.t('BLOQUEO_CUARENTENA_INFO')) %></span>
+        </li>
+        <li class='pad-10'>
+            <div class='divTexto'><span><% print(window.app.idioma.t('BLOQUEO_DESTRUCCION_INFO')) %></span>
+        </li>
+        <li class='pad-10'>
+            <div class='divTexto'><span><% print(window.app.idioma.t('BLOQUEO_LIBERADO_INFO')) %></span>
+        </li>
+        <li class='pad-10'>
+            <div class='divTexto'><span><% print(window.app.idioma.t('BLOQUEO_NO_CONFORME_INFO')) %></span>
+        </li>
+        <li class='pad-10'>
+            <div class='divTexto'><span><% print(window.app.idioma.t('BLOQUEO_RETENIDO_INFO')) %></span>
+        </li>
+    </ul>
+    <h4><% print(window.app.idioma.t('SSCC_COLOREADO')) %></h4>
+    <ul class="sinBorde margenInf" style="list-style-type: disc;">
+        <li class='pad-10'>
+            <div class='divTexto'><span><% print(window.app.idioma.t('MUESTRA_TOMADA')) %></span>
+        </li>
+    </ul>
+</script>

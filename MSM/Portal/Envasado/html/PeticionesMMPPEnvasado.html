@@ -1,0 +1,66 @@
+﻿<style type="text/css">
+    .toolbar-left {
+        display: inline-flex;
+        gap: 6px;
+    }
+
+    .toolbar-right {
+        display: inline-flex;
+        float: right;
+        margin-top: 4px;
+    }
+    .circle_cells {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-size: 25px 28px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 25px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-right: 5px;
+    }
+</style>
+
+<div id="window" style="display:none">
+    <span id="barcode" class="barcode"></span>
+</div>
+
+
+<script type="text/x-kendo-template" id="tmpToolbar">
+
+</script>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('PETICIONES_MMPP')) %></label>
+</div>
+
+<div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+    <div style="float: left;">
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('DESDE')) %></label>
+        <input id="dtpFechaDesde" />
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('HASTA')) %></label>
+        <input id="dtpFechaHasta" />
+        <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+    </div>
+    <div style="margin-right:5px;">
+        <button id="btnEliminar" class="k-button k-button-icontext k-grid-delete" style="float:right">
+            <span class="k-icon k-delete"></span><% print(window.app.idioma.t('CANCELAR')) %>
+        </button>
+    </div>
+</div>
+
+<!--<input type="checkbox" id="chkLotesConsumidos" checked style="display:none" />-->
+<div id="gridPeticionesMMPPEnvasado" style="width:100%;height:calc(100% - 30px);"></div>
+
+<script type="text/x-kendo-template" id="detailTemplate">
+    <div>
+        <div><div class="detalle"></div></div>
+    </div>
+</script>
+
+
+
+

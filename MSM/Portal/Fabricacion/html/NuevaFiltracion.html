@@ -1,0 +1,114 @@
+﻿<style type="text/css">
+    
+    #CrearWO > div{
+        min-height: 60px;
+        padding: 5px
+    }
+
+       #formParoPerdida {
+        margin: 15px;
+    }
+
+    .tdLabel {
+        width: 16% !important;
+    }
+    .table {
+
+        margin-bottom: 0px;
+    }
+    .table th, .table td {
+        border-top: none !important;
+        /*text-align: right;*/
+    }
+
+    .table tr {
+        height: 60px !important;
+    }
+
+    .table input, textarea {
+        margin-left: 5px !important;
+        width: 120px;
+    }
+
+    #btnAceptar, #btnCancelar, #btnEditarAux {
+        height: 30px;
+        width: 30%;
+        /*float:left;*/
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+
+    /*.k-grid .k-state-selected { background-color:lightyellow; }*/
+
+
+    .k-autocomplete,
+    .k-combobox,
+    .k-datepicker,
+    .k-timepicker,
+    .k-datetimepicker,
+    .k-colorpicker,
+    .k-numerictextbox,
+    .k-dropdown,
+    .k-selectbox,
+    .k-textbox,
+    .k-toolbar .k-split-button {
+        width: 100% ;
+    }
+
+
+    .k-numerictextbox {
+        width: 100%;
+    }
+
+        .k-numerictextbox .k-numeric-wrap .k-input {
+            width: 96% ;
+        }
+
+</style>
+
+
+<div style="width: 100%; margin: 0px; padding: 0px;">
+    <form id="CrearWO">
+        <table class="table borderless">
+            <tbody>
+              
+                <tr id="trFiltro">
+                    <td style="width: 23% !important;"><% print(window.app.idioma.t('LINEA_FILTRACION')) %></td>
+                    <td style="width: 73% !important;">                   
+                        <input type="text" id="ddlLinea" name="ddlLinea" />
+                    </td>
+                </tr>    
+                <tr id="trFecha" style="display:none">
+                    <td style="width: 23% !important;"><% print(window.app.idioma.t('FECHA')) %></td>
+                    <td style="width: 73% !important;">
+                       <input id="lblFecha"  style="width: 100%" />                      
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <% print(window.app.idioma.t('MATERIALES')) %><br/><br/>
+            <div id="gridMaterialesAux"></div>
+            <label id="lblError" style="color:red"></label>
+        </div>        
+        <div style="text-align: center; width: 100%;">
+            <div id="divBtnAceptar" style="display:inline">
+                <button id="btnAceptar"><% print(window.app.idioma.t("ACEPTAR")) %></button>                              
+              
+                </div>
+             <div id="divBtnEditar"  style="display:none">
+                <button id="btnEditarAux"><% print(window.app.idioma.t("EDITAR")) %></button>
+              
+              </div>
+              <button id="btnCancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+        </div>
+          <label style="display:none" id="idOrden"></label>
+     
+    </form>
+</div>
+
+

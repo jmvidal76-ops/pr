@@ -1,0 +1,200 @@
+<style>
+    #formParoPerdida {
+        margin: 15px;
+    }
+
+    /*.cabecera {
+        width: 25% !important;
+        text-align: right;
+        font-weight: bold;
+    }*/
+
+    .texto {
+        width: 53% !important;
+        text-align: left;
+    }
+
+    .tdLabel {
+        width: 16% !important;
+    }
+
+    #tablaCambio th,
+    .table td {
+        border-top: none !important;
+        /*text-align: right;*/
+    }
+
+    #tablaCambio tr {
+        height: 60px !important;
+    }
+
+    #tablaCambio input,
+    textarea {
+        margin-left: 5px !important;
+        width: 120px;
+    }
+
+    #btnAceptarOrden,
+    #btnCancelar {
+        /*height: 25px;
+        width: 25%;*/
+        /*float:left;*/
+        margin-left: 5px;
+        /*margin-top: 10px;*/
+    }
+
+    .borderless,
+    .borderless td,
+    .borderless th {
+        border: none !important;
+    }
+    /*.k-grid .k-state-selected { background-color:lightyellow; }*/
+
+    .k-autocomplete,
+    .k-combobox,
+    .k-datepicker,
+    .k-timepicker,
+    .k-datetimepicker,
+    .k-colorpicker,
+    .k-numerictextbox,
+    .k-dropdown,
+    .k-selectbox,
+    .k-textbox,
+    .k-toolbar .k-split-button {
+        width: 100% !important;
+    }
+
+    .k-numerictextbox {
+        width: 100% !important;
+    }
+
+        .k-numerictextbox .k-numeric-wrap .k-input {
+            width: 96% !important;
+        }
+
+    .fila {
+        width: 95%;
+        margin-left: 5px;
+        float: left;
+        margin-top: 30px;
+    }
+
+    span.k-tooltip-validation {
+        display: run-in;
+        position: absolute
+    }
+</style>
+
+<div id="container">
+    <form id="crearOrdenArranqueCambio">
+        <div class="fila">
+            <div id="titulo" style="width: 25%; float: left; text-align:right;">
+                <label>
+                    <% print(window.app.idioma.t('LINEA')) %> &nbsp;
+                </label>
+            </div>
+            <div id="linea" style="width: 70%; float: left;">
+                <input type="text" id="cmbLineaAC" name="cmbLineaAC" />
+            </div>
+        </div>
+        <div class="fila">
+            <div id="Div2" style="width: 25%; float: left; text-align:right;">
+                <label>
+                    <% print(window.app.idioma.t('INICIO_REAL')) %> &nbsp;
+                </label>
+            </div>
+            <div id="Div3" style="width: 40%; float: left;">
+                <input id="txtInicioReal" name="txtInicioReal" style="width: 180px !important;" />
+            </div>
+            <div id="Div4" style="width: 15%; float: left; text-align:right;">
+                <label><% print(window.app.idioma.t('TURNO')) %> &nbsp;</label>
+            </div>
+            <div id="Div5" style="width: 15%; float: left;">
+                <span id="txtTurno"></span>
+            </div>
+        </div>
+        <%if (tipo == 0) {%>
+        <div class="fila">
+            <div id="titulo2" style="width: 25%; float: left; text-align:right;">
+                <label><% print(window.app.idioma.t('TIPO_ARRANQUE')) %> &nbsp;</label>
+            </div>
+            <div id="divTipoArranque" style="width: 70%; float: left;">
+                <input type="text" id="cmbArranques" name="cmbArranques" />
+            </div>
+        </div>
+        <%}%>
+        <%if (tipo == 1) {%>
+        <div class="fila">
+            <div id="Div1" style="width: 25%; float: left; text-align:right;">
+                <label> <% print(window.app.idioma.t('PRODUCTO_SALIENTE')) %> &nbsp;</label>
+            </div>
+            <div id="divProdSal" style="width: 70%; float: left;">
+                <input id="cmbProductoSaliente" name="cmbProductoSaliente" />
+            </div>
+        </div>
+        <%}%>
+        <div class="fila">
+            <div id="titulo3" style="width: 25%; float: left; text-align:right;">
+                <label> <% print(window.app.idioma.t('PRODUCTO_ENTRANTE')) %> &nbsp;</label>
+            </div>
+            <div id="divProdEnt" style="width: 70%; float: left;">
+                <input id="cmbProductoEntrante" name="cmbProductoEntrante" />
+            </div>
+        </div>
+
+        <div class="fila">
+            <div id="Div6" style="width: 25%; float: left; text-align:right;">
+                <label><% print(window.app.idioma.t('DURACION_LLENADORA')) %> &nbsp;</label>
+            </div>
+            <div id="Div7" style="width: 20%; float: left;">
+                <input type="text" id="txtDuracionLlenadora" class="numerico" name="txtDuracionLlenadora" style="width: 80px !important;" />
+            </div>
+            <div id="Div8" style="width: 25%; float: left;">
+                <label><% print(window.app.idioma.t('DURACION_PALETIZADORA')) %> </label>
+            </div>
+            <div id="Div9" style="width: 20%; float: left;">
+                <input type="text" id="txtDuracionPaletizadora" class="numerico" name="txtDuracionPaletizadora" style="width: 80px !important;" />
+            </div>
+        </div>
+        <div class="fila">
+            <div id="Div10" style="width: 25%; float: left; text-align:right;">
+                <label> <% print(window.app.idioma.t('T_OBJ_LLENADORA')) %> &nbsp;</label>
+            </div>
+            <div id="Div11" style="width: 15%; float: left;">
+                <input type="text" id="txtTObjetivo1" class="numerico" style="width: 80px !important;" /><!--&nbsp;<span id="txtTObjetivo1"></span>-->
+            </div>
+            <div id="Div12" style="width: 10%; float: left; text-align:right;">
+                <span><% print(window.app.idioma.t('MINUTOS_PARO')) %> &nbsp;</span>
+            </div>
+            <div id="Div13" style="width: 25%; float: left; text-align:right;">
+                <label><% print(window.app.idioma.t('T_OBJ_PALETIZADORA')) %> &nbsp;</label>
+            </div>
+            <div id="Div14" style="width: 15%; float: left;">
+                <input type="text" id="txtTObjetivo2" class="numerico" style="width: 80px !important;" /><!--&nbsp;<span id="txtTObjetivo2"></span>-->
+            </div>
+            <div id="Div15" style="width: 10%; float: left; text-align:right;">
+                <span><% print(window.app.idioma.t('MINUTOS_PARO')) %> &nbsp;</span>
+            </div>
+        </div>
+        <div class="fila">
+            <div id="Div16" style="width: 25%; float: left; text-align:right;">
+                <label> <% print(window.app.idioma.t('TIEMPO_SECUENCIADOR')) %> &nbsp;</label>
+            </div>
+            <div id="Div17" style="width: 15%; float: left;">
+                <input type="text" id="txtTiempoPreactor" class="numerico" style="width: 80px !important;" /><!--&nbsp;<span id="txtTiempoPreactor"></span>-->
+            </div>
+            <div id="Div18" style="width: 10%; float: left; text-align:right;">
+                <span><% print(window.app.idioma.t('MINUTOS_PARO')) %> &nbsp;</span>
+            </div>
+        </div>
+        <div class="fila" id="trError" style="display:none; text-align:center;">
+            <span id="lblError" style="color: red;"><% print(window.app.idioma.t('SELECCIONE_VALOR_CAMPOS')) %> </span>
+        </div>
+        <div class="fila">
+            <div style="text-align: center; width: 100%;">
+                <button id="btnAceptar" type="button"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+                <button id="btnCancelar" type="button"><% print(window.app.idioma.t("CANCELAR")) %></button>
+            </div>
+        </div>
+    </form>
+</div>

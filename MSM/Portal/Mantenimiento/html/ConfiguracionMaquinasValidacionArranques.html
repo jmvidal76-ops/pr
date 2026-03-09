@@ -1,0 +1,73 @@
+﻿<style>
+    .pad-30 {
+        padding: 30px;
+    }
+    .w-100 {
+        width: 100%;
+    }
+    .mar-top-10 {
+        margin-top: 10px;
+    }
+    .mar-top-20 {
+        margin-top: 20px;
+    }
+    .error {
+        color: red;
+    }
+    .tac {
+        text-align: center;
+    }
+    .boton {
+        width: 150px;
+        height: 65px;
+    }
+    .mar-right-25 {
+        margin-right: 25px;
+    }
+</style>
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('CONFIGURACION_MAQUINAS_VALIDACION_ARRANQUE')) %></label>
+</div>
+
+<div id="ConfValidacionArranquesDiv" class="divContenidoVista">    
+    <div>
+        <div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">            
+            <div style="float: right; margin-right: 10px;">                
+                <button id="btnAnadir" class="k-button k-button-icontext" data-funcion='MAN_PROD_VAL_1_GestionValidacionArranque' style="margin-left: 5px;">
+                    <span class='k-icon k-i-plus'></span><% print(window.app.idioma.t('ANADIR')) %>
+                </button>
+                <button id="btnEliminar" class="k-button k-button-icontext" data-funcion='MAN_PROD_VAL_1_GestionValidacionArranque' style="margin-left: 5px;">
+                    <span class='k-icon k-delete'></span><% print(window.app.idioma.t('ELIMINAR')) %>
+                </button>                
+                <button id="btnLimpiarFiltros" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;">
+                    <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+                </button>                
+            </div>
+        </div>
+        <div id="gridConfValidacionArranques"></div>
+    </div>
+</div>
+
+<script id="ModalCrearConfValidacionArranque" type="text/x-kendo-template">
+    <form id="CrearConfValidacionArranque" class="pad-30">
+
+        <div id="lineaContainer">
+            <label id="lblLinea" for="cmbLinea" class="w-100">#:window.app.idioma.t('LINEA')#</label>
+            <select id="cmbLinea" name="cmbLinea" class="w-100" required></select>
+        </div>
+        <div class="mar-top-10">
+            <label id="lblMaquina" for="cmbMaquina" class="w-100">#:window.app.idioma.t('MAQUINA')#</label>
+            <select id="cmbMaquina" name="cmbMaquina" class="w-100" required></select>
+        </div>
+
+        <div class="tac mar-top-20">
+            <input type="button" class="mar-right-25" id="btnDialogoGestionAceptar" value="#:window.app.idioma.t('ACEPTAR')#"/>
+            <input type="button" id="btnDialogoGestionCancelar" value="#:window.app.idioma.t('CANCELAR')#"/>
+        </div>
+        <div id="trError" class="error tac mar-top-20" style="display:none;" colspan="2">
+        </div>
+    </form>
+</script>

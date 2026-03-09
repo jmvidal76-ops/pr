@@ -1,0 +1,123 @@
+﻿<style type="text/css">
+    .tdLabel {
+        width: 16% !important;
+    }
+
+    .table th, .table td {
+        border-top: none !important;
+        /*text-align: right;*/
+    }
+
+    .table tr {
+        height: 60px !important;
+    }
+
+    .table input, textarea {
+        margin-left: 5px !important;
+        width: 120px;
+    }
+
+    #btnAceptar, #btnCancelar {
+        height: 30px;
+        width: 30%;
+        /*float:left;*/
+        margin-left: 5px;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+
+    .k-autocomplete,
+    .k-combobox,
+    .k-datepicker,
+    .k-timepicker,
+    .k-datetimepicker,
+    .k-colorpicker,
+    .k-numerictextbox,
+    .k-dropdown,
+    .k-selectbox,
+    .k-textbox,
+    .k-toolbar .k-split-button {
+        width: 100% !important;
+    }
+
+
+    .k-numerictextbox {
+        width: 100% !important;
+    }
+
+        .k-numerictextbox .k-numeric-wrap .k-input {
+            width: 96% !important;
+        }
+</style>
+
+
+<div style="width: 98%; margin: 0px; padding: 0px;">
+    <form id="CrearTR">
+        <table class="table borderless">
+            <tbody>
+                <tr id="dateTr">
+                    <td style="width: 23% !important;"><% print(window.app.idioma.t('FECHA')) %></td>
+                    <td style="width: 73% !important;">
+                        <input id="date" style="width: 100%" />
+                    </td>
+                </tr>
+                <!--<tr id="serieTr">
+                    <td style='width: 23% !important;'><% print(window.app.idioma.t('NUM_TRASIEGO')) %></td>
+                    <td style='width: 73% !important;'>
+                        <input id="serie" />
+                    </td>
+                </tr>-->
+                <tr id="MaterialTr">
+                    <td style="width: 23% !important;"><% print(window.app.idioma.t('MATERIAL')) %></td>
+                    <td style="width: 73% !important;">
+                        <select id="material" />
+                        <br />
+                        <br />
+                        <span id="materialError" style="color: red"></span>
+                    </td>
+                </tr>
+                <tr id="sourceTr">
+                    <td style="width: 23% !important;"><% print(window.app.idioma.t('ORIGEN')) %></td>
+                    <td style="width: 73% !important;">
+                        <select id="source" />
+                        <br />
+                        <br />
+                        <span id="sourceError" style="color: red"></span>
+                    </td>
+                </tr>
+                <tr id="destinationTr">
+                    <td style="width: 23% !important;"><% print(window.app.idioma.t('DESTINO')) %></td>
+                    <td style="width: 73% !important;">
+                        <select id="destination" />
+                        <br />
+                        <br />
+                        <span id="destinationError" style="color: red"></span>
+                    </td>
+                </tr>
+                <tr id="quantityTr">
+                    <td style="width: 23% !important;"><% print(window.app.idioma.t('CANTIDAD')) %></td>
+                    <td style="width: 73% !important;">
+                        <input id="quantity" />
+                        <br />
+                        <br />
+                        <span id="quantityError" style="color: red"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="width: 73% !important;">
+                        <div style="text-align: center; width: 100%;">
+                            <button id="btnAceptar"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+                            <button id="btnCancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+

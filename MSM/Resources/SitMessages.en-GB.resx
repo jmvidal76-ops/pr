@@ -1,0 +1,603 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="-123" xml:space="preserve">
+    <value>SF Batch is empty</value>
+  </data>
+  <data name="-124" xml:space="preserve">
+    <value>SF Batch is already used</value>
+  </data>
+  <data name="-125" xml:space="preserve">
+    <value>There are more orders running in the destination</value>
+  </data>
+  <data name="-126" xml:space="preserve">
+    <value>The selected order is an order Dummy</value>
+  </data>
+  <data name="-127" xml:space="preserve">
+    <value>Extract Batch characteristic  is empty</value>
+  </data>
+  <data name="-128" xml:space="preserve">
+    <value>There too many running orders (#%orderCount%) on Cell %cellId%</value>
+  </data>
+  <data name="-129" xml:space="preserve">
+    <value>There is already a running procedure in the equipment</value>
+  </data>
+  <data name="-130" xml:space="preserve">
+    <value>Please complete all process steps</value>
+  </data>
+  <data name="-132" xml:space="preserve">
+    <value>Produced quantity is zero</value>
+  </data>
+  <data name="SABconsumedQuantityIsZero" xml:space="preserve">
+    <value>Consumed quantity is zero. Do you want complete order?</value>
+  </data>
+  <data name="SABMoreEntriesInDestinationEquipment" xml:space="preserve">
+    <value>There are more running entries in the destination equipment. If you continue the data will be recorder only in POM. Do you want to continue?</value>
+  </data>
+  <data name="SABMoreThenOneEntryInExecutionEquipment" xml:space="preserve">
+    <value>There are too many running orders. Do you want continue?</value>
+  </data>
+  <data name="SABNotEmptyCleanTankStatus" xml:space="preserve">
+    <value>The execution equipment is not in "Empty Clean" status. Do you want to continue?</value>
+  </data>
+  <data name="SABNotOkTankStatus" xml:space="preserve">
+    <value>The execution equipment (%execEquipment%) is in  '%status%'  status but has to be in  %allowedStatus%. Do you want to continue? </value>
+  </data>
+  <data name="SABproducedQuantityIsEnough" xml:space="preserve">
+    <value>Produced quantity is not + or - 10% of planned. Do you want complete order?</value>
+  </data>
+  <data name="CompleteProcedureEndTimeOverwrite" xml:space="preserve">
+    <value>Do you want to overwrite  %kopList% with the new endTime?</value>
+  </data>
+  <data name="SABRequiredFields" xml:space="preserve">
+    <value>Please fill in all required fields (*)</value>
+  </data>
+  <data name="SABWeekManagementNoShiftFound" xml:space="preserve">
+    <value>No shift found for Year and Week selected: all data loaded.</value>
+  </data>
+  <data name="SABInventoryManagementMandatorySourceEquipment" xml:space="preserve">
+    <value>Please select Source equipment first (*)</value>
+  </data>
+  <data name="SABInventoryManagementNOExternalIdFound" xml:space="preserve">
+    <value>No external Id found for equipment</value>
+  </data>
+  <data name="SABInventoryManagementNOExternalIdFoundWithBR" xml:space="preserve">
+    <value>&lt;BR/&gt;No external Id found for equipment</value>
+  </data>
+  <data name="SABInventoryManagementUnrestrictedQty" xml:space="preserve">
+    <value>Qty must be &lt;= than equipment unrestricted qty [%unrestrictedQty%] (*)</value>
+  </data>
+  <data name="SABPlanningManagementSelectRealResource" xml:space="preserve">
+    <value>Please select proper vessel from list (^)</value>
+  </data>
+  <data name="SABTeamManagementDateEquipmentMandatory" xml:space="preserve">
+    <value>Select Date and Equipment to get the related Shifts</value>
+  </data>
+  <data name="SABTeamManagementNoShiftFound" xml:space="preserve">
+    <value>No shift found related to Date and Equipment selected.</value>
+  </data>
+  <data name="-133" xml:space="preserve">
+    <value>There are too many running orders (%orderList%)</value>
+  </data>
+  <data name="SABAskConfirmForTankStatusChangeNoOrder" xml:space="preserve">
+    <value>There are no running orders on this equipment. Do you want to continue?</value>
+  </data>
+  <data name="SABAskConfirmForTankStatusChangeOneOrder" xml:space="preserve">
+    <value>There are Running Orders on this equipment. Do you want to continue?</value>
+  </data>
+  <data name="SABCreateFilterRunCreateFilterFailed" xml:space="preserve">
+    <value>Error: Create Filter Run failed</value>
+  </data>
+  <data name="SABCreateOrderEndTimeGreaterStartTime" xml:space="preserve">
+    <value>Error: End Time should be greater than Start Time</value>
+  </data>
+  <data name="SABCreateOrderErrorCreationFromTemplate" xml:space="preserve">
+    <value>Error: Creation from template failed</value>
+  </data>
+  <data name="SABCreateOrderFailureDueDateProperty" xml:space="preserve">
+    <value>Error: Failure on setting 'DueDate' property!</value>
+  </data>
+  <data name="SABCreateOrderFailureFieldsModification" xml:space="preserve">
+    <value>Error: Failure on fields modification (FinalMaterialID,TypeID, ERPID,Estimated Start &amp; End time)</value>
+  </data>
+  <data name="SABCreateOrderFailureFromTankProperty" xml:space="preserve">
+    <value>Error: Failure on setting 'FromTank' property!</value>
+  </data>
+  <data name="SABCreateOrderFailureOrderLinkedProperty" xml:space="preserve">
+    <value>Error: Failure on setting 'OrderLinked' property!</value>
+  </data>
+  <data name="SABCreateOrderFailureOutFlowDateProperty" xml:space="preserve">
+    <value>Error: Failure on setting 'OutFlowRate' property!</value>
+  </data>
+  <data name="SABCreateOrderFailureResourceProperty" xml:space="preserve">
+    <value>Error: Failure on setting 'Resource' property!</value>
+  </data>
+  <data name="SABCreateOrderInvalidQty" xml:space="preserve">
+    <value>Error: Invalid a Quantity</value>
+  </data>
+  <data name="SABCreateOrderInvalidStartOrEndTime" xml:space="preserve">
+    <value>Error: Invalid Estimated Start or End Time</value>
+  </data>
+  <data name="SABCreateOrderRequiredFields" xml:space="preserve">
+    <value>Error: Please fill in all required fields</value>
+  </data>
+  <data name="SABCreateOrderTemplateNotFound" xml:space="preserve">
+    <value>Error: Template Order not found!</value>
+  </data>
+  <data name="SABCreateOrderTransitionFailed" xml:space="preserve">
+    <value>Error: Transition to Planned status failed!</value>
+  </data>
+  <data name="SABOEEManualInputSelectRow" xml:space="preserve">
+    <value>Please select a row</value>
+  </data>
+  <data name="SABSplitFormSplitOrderRuleError" xml:space="preserve">
+    <value>Error in PLO_SPLIT_ORDER Rule</value>
+  </data>
+  <data name="SABSplitFormTerminateOrderRuleError" xml:space="preserve">
+    <value>ERROR in Rule PLO_TERMINATE_ORDER Rule</value>
+  </data>
+  <data name="SABTankChangeDueDateDefault" xml:space="preserve">
+    <value>Due date empty:&lt;BR/&gt;Set to tomorrow but can be changed.</value>
+  </data>
+  <data name="SABTankChangeDueDateNoEntries" xml:space="preserve">
+    <value>There are no entries related to this equipment:&lt;BR/&gt;Due Date cannot be set.</value>
+  </data>
+  <data name="SABTankChangeDueDateWrongDate" xml:space="preserve">
+    <value>Due Date must be a date in the future.</value>
+  </data>
+  <data name="-134" xml:space="preserve">
+    <value>Dis Error sendig message (%disMessageId%)</value>
+  </data>
+  <data name="-135" xml:space="preserve">
+    <value>Before making a production, you have to declare a consumption</value>
+  </data>
+  <data name="-136" xml:space="preserve">
+    <value>There are batch characteristics not filled  (%list%)</value>
+  </data>
+  <data name="-137" xml:space="preserve">
+    <value>%kopName% is missed</value>
+  </data>
+  <data name="SABStopJustificationFailedUpdate" xml:space="preserve">
+    <value>Error on update operation</value>
+  </data>
+  <data name="SABStopJustificationMergeDifferentOrders" xml:space="preserve">
+    <value>Merge of two different order records is not allowed</value>
+  </data>
+  <data name="SABStopJustificationMergeUpFailed" xml:space="preserve">
+    <value>Error on Merge Up operation</value>
+  </data>
+  <data name="SABStopJustificationNoEndTime" xml:space="preserve">
+    <value>Insert mandatory End Time field</value>
+  </data>
+  <data name="SABStopJustificationNoStartTime" xml:space="preserve">
+    <value>Insert mandatory Start Time field</value>
+  </data>
+  <data name="SABStopJustificationValidationFailed" xml:space="preserve">
+    <value>Operation aborted: %validation_error%</value>
+  </data>
+  <data name="SABStopJustificationWrongTimes" xml:space="preserve">
+    <value>End time should be greater than start time</value>
+  </data>
+  <data name="SABStopJustificationSplit" xml:space="preserve">
+    <value>Split</value>
+  </data>
+  <data name="SABCountersUpdateNoCTRSelected" xml:space="preserve">
+    <value>Please select a counter first</value>
+  </data>
+  <data name="SABUpdateCountersUpdateFailed" xml:space="preserve">
+    <value>Update of the counter failed</value>
+  </data>
+  <data name="SABAskAbortOrder" xml:space="preserve">
+    <value>Are you sure you want abort the process order?</value>
+  </data>
+  <data name="SABOEECounterFutureTimestampError" xml:space="preserve">
+    <value>Timestamp cannot be in the future</value>
+  </data>
+  <data name="SABOEECounterNoTimestampError" xml:space="preserve">
+    <value>Insert mandatory Timestamp field</value>
+  </data>
+  <data name="SABOEECounterProcessingError" xml:space="preserve">
+    <value>Error processing counter: %processing_error%</value>
+  </data>
+  <data name="SABOEECounterValueInvalid" xml:space="preserve">
+    <value>Quantity must be a positive value</value>
+  </data>
+  <data name="SABOEEQuantityTimestampError" xml:space="preserve">
+    <value>Timestamp cannot be lower than the last inserted one</value>
+  </data>
+  <data name="-138" xml:space="preserve">
+    <value>there are orders (%orderList%) running in the selected source equipment (%equipId%)</value>
+  </data>
+  <data name="SABEmptyCleanWarning" xml:space="preserve">
+    <value>Change the quantity to 0 or confirm the quantity inside the tank</value>
+  </data>
+  <data name="SABOEEDataProcessingError" xml:space="preserve">
+    <value>Error processing data: %processing_error%</value>
+  </data>
+  <data name="SAB_OEE_BADCONNECTION" xml:space="preserve">
+    <value>failed connection to OEE server</value>
+  </data>
+  <data name="SAB_OEE_ERROR" xml:space="preserve">
+    <value>unknown error</value>
+  </data>
+  <data name="SAB_OEE_FAIL" xml:space="preserve">
+    <value>operation failed</value>
+  </data>
+  <data name="SAB_OEE_FROZEN_PERIOD" xml:space="preserve">
+    <value>data is inside frozen period</value>
+  </data>
+  <data name="SAB_OEE_INVALIDARG" xml:space="preserve">
+    <value>invalid parameters</value>
+  </data>
+  <data name="SAB_OEE_INVALIDCONFIG" xml:space="preserve">
+    <value>invalid configuration</value>
+  </data>
+  <data name="SAB_OEE_INVALIDDATA" xml:space="preserve">
+    <value>invalid data</value>
+  </data>
+  <data name="SAB_OEE_INVALIDOPERATION" xml:space="preserve">
+    <value>invalid operation</value>
+  </data>
+  <data name="SAB_OEE_INVALID_TIME_RANGE" xml:space="preserve">
+    <value>invalid time range</value>
+  </data>
+  <data name="SAB_OEE_INVALID_VALUE_RANGE" xml:space="preserve">
+    <value>invalid value range</value>
+  </data>
+  <data name="SAB_OEE_TIMEOUT" xml:space="preserve">
+    <value>operation timeout</value>
+  </data>
+  <data name="SABAskCompleteOrder" xml:space="preserve">
+    <value>Are you sure you want complete the process order?</value>
+  </data>
+  <data name="SABAvForTransferTankStatus" xml:space="preserve">
+    <value>The execution equipment is not in "Available for transfer" status. Do you want to continue?</value>
+  </data>
+  <data name="-139" xml:space="preserve">
+    <value>UoM Conversion Fails (%uomSource% -&gt; %uomDest%)</value>
+  </data>
+  <data name="-1000540" xml:space="preserve">
+    <value>No Order Data found for Tank</value>
+  </data>
+  <data name="SABAbortOrderOK" xml:space="preserve">
+    <value>Order %orderId%  sucessfully aborted</value>
+  </data>
+  <data name="SABKopUpdateNotOK" xml:space="preserve">
+    <value>KOP %kopName% not updated</value>
+  </data>
+  <data name="SABKopUpdateOK" xml:space="preserve">
+    <value>KOP %kopName% successfully updated</value>
+  </data>
+  <data name="SABMaxTimeRangeWarning" xml:space="preserve">
+    <value>Selected time range exceed the maximum allowed of %max_time_range% hours.</value>
+  </data>
+  <data name="SABNewOrderOK" xml:space="preserve">
+    <value>Order %newOrderId% successfully created</value>
+  </data>
+  <data name="SABProdDeclareAlreadyDone" xml:space="preserve">
+    <value>Operation not allowed since a production declaration has already been done</value>
+  </data>
+  <data name="SABProductDeclareIsFinal" xml:space="preserve">
+    <value>Final declaration has already been done – further production declarations will fail in SAP</value>
+  </data>
+  <data name="SABStandardSucces" xml:space="preserve">
+    <value>Operation successfully completed</value>
+  </data>
+  <data name="SABSynchOrderOK" xml:space="preserve">
+    <value>Order %oDummy% successfully synchronized by %oReal% SAP order</value>
+  </data>
+  <data name="SABInvalidFormatCalendar" xml:space="preserve">
+    <value>Invalid Format</value>
+  </data>
+  <data name="-140" xml:space="preserve">
+    <value>It's not possible to align the source tank %TANK-ID% with Material %MAT-ID%</value>
+  </data>
+  <data name="-141" xml:space="preserve">
+    <value>System Error %ID%</value>
+  </data>
+  <data name="-142" xml:space="preserve">
+    <value>There is another material (%materialId%) in the destination (%equipId%)</value>
+  </data>
+  <data name="SABAnotherBatchForFL" xml:space="preserve">
+    <value>There is another Batch (%batchId%) in the destination Tank (%sloc%)</value>
+  </data>
+  <data name="SABMultipleBatchesForFL" xml:space="preserve">
+    <value>There are multiple batches in the destination tank (%sloc%).</value>
+  </data>
+  <data name="SABSapWebServiceError" xml:space="preserve">
+    <value>The Batch &amp; Stock interface (SAP Web service) is unavailable</value>
+  </data>
+  <data name="SABOEEDTMErrorDelete" xml:space="preserve">
+    <value>Writing operation (delete downtime) failed</value>
+  </data>
+  <data name="SABOEEDTMErrorMerge" xml:space="preserve">
+    <value>Writing operation (merge downtime) failed</value>
+  </data>
+  <data name="SABOEEDTMErrorMultiOrder" xml:space="preserve">
+    <value>Operation aborted: new downtime period affetcs two different orders</value>
+  </data>
+  <data name="SABOEEDTMErrorSplit" xml:space="preserve">
+    <value>Writing operation (split downtime) failed</value>
+  </data>
+  <data name="SABOEEDTMErrorUpdate" xml:space="preserve">
+    <value>Writing operation (update downtime) failed</value>
+  </data>
+  <data name="SABOEEDTMNoRecordsFound" xml:space="preserve">
+    <value>No downtime records found</value>
+  </data>
+  <data name="SABOEEMergeDownConfirm" xml:space="preserve">
+    <value>Are you sure you want to confirm the merge down operation?</value>
+  </data>
+  <data name="SABOEEMergeUpConfirm" xml:space="preserve">
+    <value>Are you sure you want to confirm the merge up operation?</value>
+  </data>
+  <data name="SABOEENoEquipmentSelected" xml:space="preserve">
+    <value>No equipment selected</value>
+  </data>
+  <data name="SABOEENoFutureTime" xml:space="preserve">
+    <value>End Time cannot be in the future</value>
+  </data>
+  <data name="SABOEENoReasonSelected" xml:space="preserve">
+    <value>Insert mandatory Reason field</value>
+  </data>
+  <data name="SABOEENoTimeSet" xml:space="preserve">
+    <value>Insert mandatory time values</value>
+  </data>
+  <data name="SABOEEUpdateConfirm" xml:space="preserve">
+    <value>Are you sure you want to confirm the update operation?</value>
+  </data>
+  <data name="-143" xml:space="preserve">
+    <value>Order is already started. Please click Refresh</value>
+  </data>
+  <data name="SABMoreOrdersInDestinationEquipment" xml:space="preserve">
+    <value>There are more running orders in the destination equipment. Please contact your system administrator.</value>
+  </data>
+  <data name="-1000005" xml:space="preserve">
+    <value>Tank Quantity for Order = %ORD% was %QTY% and was not in the correct format, Message was not sent to INFOR</value>
+  </data>
+  <data name="-1000108" xml:space="preserve">
+    <value>SABPPAKOP.insertKOPValue returned false for KopCode=%kopName%, equipFullPath=%tankFullPath%, value=%kopValue%</value>
+  </data>
+  <data name="-1000110" xml:space="preserve">
+    <value>Datetime could not be set for KopCode=%kopName%, equipFullPath=%tankFullPath%, value=%kopValue%</value>
+  </data>
+  <data name="-1000202" xml:space="preserve">
+    <value>Property to flag setting of Due-Date (DuedateUpdTFM) was not found for Order = %ORD%</value>
+  </data>
+  <data name="-1000301" xml:space="preserve">
+    <value>No Procedure was found for Process Order %ORD%, message was not sent to INFOR</value>
+  </data>
+  <data name="-1000302" xml:space="preserve">
+    <value>Only one Procedure was expected for Process Order %ORD% but more then 1 were found, message was not sent to INFOR</value>
+  </data>
+  <data name="-1000500" xml:space="preserve">
+    <value>Equipment, Order and Procedure were not available. Message was not sent to Infor</value>
+  </data>
+  <data name="-1000503" xml:space="preserve">
+    <value>Exception to manage tank (KOP-Status, etc.) for Order = %ORD_ID%, Procedure = %ENTRY%, KOP = %KOP%, Equipment = %EQUIP%. Exception was: %EX%</value>
+  </data>
+  <data name="-1000504" xml:space="preserve">
+    <value>Equipment, Order and Procedure were not available. Cannot complete</value>
+  </data>
+  <data name="-1000505" xml:space="preserve">
+    <value>Could not retrieve Running Order and Procedure from Equipment. Pls check that an order is running. Message was not sent to Infor</value>
+  </data>
+  <data name="-1000515" xml:space="preserve">
+    <value>Update Tank Qty failed for Tank = %LOT_EQUIPMENT% because tank was not found in MM</value>
+  </data>
+  <data name="-1000517" xml:space="preserve">
+    <value>Update Tank Qty failed for tank = %LOT_EQUIPMENT% with Exception = %EXCEPTION%</value>
+  </data>
+  <data name="-10005401" xml:space="preserve">
+    <value>Could not start sending Batch Charact. msg to SAP for Order %ORDER%, Error from PM = %ERR%, Error-desc. = %ERRDSC%</value>
+  </data>
+  <data name="-1000542" xml:space="preserve">
+    <value>was not possible to retrieve running order and procedure on Tank. Pls check that an order is running on Tank</value>
+  </data>
+  <data name="-1000543" xml:space="preserve">
+    <value>was not possible to retrieve running order and procedure on Tank. Pls check that an order is running on Tank</value>
+  </data>
+  <data name="-1000544" xml:space="preserve">
+    <value>ERROR: Message was not sent to INFOR.</value>
+  </data>
+  <data name="-1000602" xml:space="preserve">
+    <value>No data found for Order = %ORD%, Message was not sent to INFOR</value>
+  </data>
+  <data name="-1000603" xml:space="preserve">
+    <value>No First-level Entry data found for Order = %ORD%, Message was not sent to INFOR</value>
+  </data>
+  <data name="-1000604" xml:space="preserve">
+    <value>No Procedure (Sub-Entry) data found for Order = %ORD%, Procedure = %SUB_ENTRY%, Message was not sent to INFOR</value>
+  </data>
+  <data name="-1000606" xml:space="preserve">
+    <value>No Equipment data found for Order = %ORD%, Procedure = %SUB_ENTRY%, Equip.=%EQUIP%, Message was not sent to INFOR</value>
+  </data>
+  <data name="-1000607" xml:space="preserve">
+    <value>Alcohol of Order = %ORD%, Procedure = %SUB_ENTRY% was %ALCOHOL% and was not in the correct format, Message was not sent to INFOR</value>
+  </data>
+  <data name="-1000608" xml:space="preserve">
+    <value>End Outflow of Order = %ORD%, Procedure = %SUB_ENTRY% was %DATE% and was not in the correct format, Message was not sent to INFOR</value>
+  </data>
+  <data name="-1000609" xml:space="preserve">
+    <value>Start Outflow of Order = %ORD%, Procedure = %SUB_ENTRY% was %DATE% and was not in the correct format, Message was not sent to INFOR</value>
+  </data>
+  <data name="-1000610" xml:space="preserve">
+    <value>End Inflow of Order = %ORD%, Procedure = %SUB_ENTRY% was %DATE% and was not in the correct format, Message was not sent to INFOR</value>
+  </data>
+  <data name="SABStartStepNoBBTRetrievedFromSAP" xml:space="preserve">
+    <value>No compatible BBTs was retrieved from SAP. Do you want to continue?</value>
+  </data>
+  <data name="SABOEECounterNoOrderSelected" xml:space="preserve">
+    <value>Please select mandatory field Order ID </value>
+  </data>
+  <data name="SABConfirmCropDilutionVol" xml:space="preserve">
+    <value>The quantity in the tank (%tankName%) will be reduced by the value %declaredQty% HL - %OPFECROPDILUTIONVOL_Value% HL . Do you confirm?</value>
+  </data>
+  <data name="SABNotAllowCropDilutionVol" xml:space="preserve">
+    <value>Operation cannot be performed because declared quantity is less than dilution volume</value>
+  </data>
+  <data name="SABCreateOrderFailureCategoryProperty" xml:space="preserve">
+    <value>Error: Failure on setting 'Category' property!</value>
+  </data>
+  <data name="SABCreateOrderFailureCommentProperty" xml:space="preserve">
+    <value>Error: Failure on setting 'Comment' property!</value>
+  </data>
+  <data name="ReverseDestOrderIsNotRunning" xml:space="preserve">
+    <value>Operation not allowed. Consumed order (%orderId%) is not running</value>
+  </data>
+  <data name="ErrorInBackflushProcedure" xml:space="preserve">
+    <value>The backflush procedure finished with errors.  Check if there are problems with the  material consumptions.</value>
+  </data>
+  <data name="UserMustFixErrorsAfterBackflush" xml:space="preserve">
+    <value>There are unfixed errors in the material consumptions. Please resolve these errors before closing the order.</value>
+  </data>
+  <data name="ReverseMaterialIsBackFlushedWithError" xml:space="preserve">
+    <value>There are some BackFlush errors relative to the selected production declaration , please fix them and retry.</value>
+  </data>
+  <data name="ReverseMaterialIsNotYetBackFlushed" xml:space="preserve">
+    <value>The selected production declaration is not yet back flushed, please retry later.</value>
+  </data>
+  <data name="SynchOrderNoMoreOkError" xml:space="preserve">
+    <value>Order %orderId% is no more synchronizable</value>
+  </data>
+  <data name="SendBacthMessageToShopFloor" xml:space="preserve">
+    <value>Error while sending the message to shop floor.</value>
+  </data>
+  <data name="checkCompleteDate" xml:space="preserve">
+    <value>End time cannot be after order start and before now.</value>
+  </data>
+  <data name="checkCompleteDateLessThenDeclarations" xml:space="preserve">
+    <value>Some Production declaration have a date/time greater than the date/time inserted.</value>
+  </data>
+  <data name="-220" xml:space="preserve">
+    <value>Error while trying to save the filter run order id in the order: %OrderID%. %Message%</value>
+  </data>
+  <data name="-144" xml:space="preserve">
+    <value>There are too many running orders (%orderList%) in source equipment (%sourceEquip%)</value>
+  </data>
+  <data name="-145" xml:space="preserve">
+    <value>There are too many running orders (%orderList%) in destination equipment (%sourceEquip%)</value>
+  </data>
+  <data name="OrderAlreadyConfirmed" xml:space="preserve">
+    <value>Order is already confirmed. Please click Refresh</value>
+  </data>
+  <data name="CannotReopenOrder" xml:space="preserve">
+    <value>You can not reopen an order closed more than %days% days ago</value>
+  </data>
+</root>

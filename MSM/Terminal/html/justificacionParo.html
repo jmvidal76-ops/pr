@@ -1,0 +1,113 @@
+﻿<style>
+    .table th, .table td {
+        border-top: none !important;
+    }
+
+    .table input, textarea {
+        width: 120px;
+    }
+
+    #btnAceptar, #btnCancelar, #btnAnular {
+        height: 55px;
+        width: 30%;
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+    .btnFloatNone {
+        float: none !important;
+    }
+
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+
+    #tbParos td {
+        padding-left: 5px !important;
+    }
+
+    .mensajeError {
+        height: 45px !important;
+    }
+</style>
+
+<table class="table borderless" id="tbParos">
+    <tbody>
+        <tr>
+            <td class="col-md-2" style="text-align: right"><% print(window.app.idioma.t("FECHA_HORAINICIO")) %>:</td>
+            <td class="col-md-2" style="text-align: left">
+                <input id="txtFecHora" type="text" value="<%= paro.fechaHora %>" readonly="readonly" style="text-align: left; border: none; font-weight: bold; width: 150px" />
+            </td>
+                
+            <td class="col-md-2" style="text-align: right"><% print(window.app.idioma.t("MAQUINA")) %>:</td>
+            <td class="col-md-2" style="text-align: left">
+                <input id="txtMaquina2" type="text" value="<%= paro.descmaquina %>" readonly="readonly" style="text-align: left; border: none; font-weight: bold" />
+                <input id="txtMaquina" type="text" value="<%= paro.maquina %>" readonly="readonly" style="text-align: left; border: none; font-weight: bold; display: none" />
+            </td>
+            <td class="col-md-2" style="text-align: right"><% print(window.app.idioma.t("DURACION")) %>:</td>
+            <td class="col-md-2" style="text-align: left"><%if(paro.IdTipoParoPerdida==1){%>
+                <input id="txtDuracion" type="text" value="<%= paro.duracion %>" readonly="readonly" style="text-align: left; border: none; font-weight: bold" />
+                <%}else{%>    
+                <input id="txtDuracion" type="text" value="<%= paro.strDuracionPerdidaProduccion %>" readonly="readonly" style="text-align: left; border: none; font-weight: bold" />
+            <%}%>
+        </tr>
+        <%if(paro.IdTipoParoPerdida>1){%>
+        <tr>
+            <td class="col-md-2" style="text-align: right"><% print(window.app.idioma.t("NUMERO_PAROS_MENORES")) %>:</td>
+            <td class="col-md-2" style="text-align: left">
+                <input id="Text1" type="text" value="<%= paro.NumeroParosMenores %>" readonly="readonly" style="text-align: left; border: none; font-weight: bold" />
+            </td>
+            <td class="col-md-2" style="text-align: right"><% print(window.app.idioma.t("DURACION_PAROS_MENORES")) %>:</td>
+            <td class="col-md-2" style="text-align: left">
+                <input id="Text3" type="text" value="<%= paro.StrDuracionParosMenores %>" readonly="readonly" style="text-align: left; border: none; font-weight: bold; width: 150px" /></td>
+            <td class="col-md-2" style="text-align: right"><% print(window.app.idioma.t("DURACION_BAJA_VELOCIDAD")) %>:</td>
+            <td class="col-md-2" style="text-align: left">
+                <input id="Text4" type="text" value="<%= paro.StrDuracionPerdidas %>" readonly="readonly" style="text-align: left; border: none; font-weight: bold" />
+        </tr>
+        <%}%>
+        <tr>
+            <td style="text-align: right"><% print(window.app.idioma.t("MOTIVO")) %> </td>
+            <td colspan="2" style="text-align: left">
+                <select id="cmbMotivo" style="width: 380px;"></select>
+            </td>
+            <td style="text-align: right"><% print(window.app.idioma.t("CAUSA")) %> </td>
+            <td colspan="2" style="text-align: left">
+                <select id="cmbCausa" style="width: 440px"></select>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right"><% print(window.app.idioma.t("MAQUINA_RESPONSABLE")) %> </td>
+            <td colspan="2" style="text-align: left">
+                <select id="cmbMaquinaResponsable" style="width: 380px"></select>
+            </td>
+            <td style="text-align: right"><% print(window.app.idioma.t("EQUIPO_CONSTRUCTIVO")) %> </td>
+            <td colspan="2" style="text-align: left">
+                <select id="cmbEquipoConstructivo" style="width: 440px"></select>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right"><% print(window.app.idioma.t("DESCRIPCION")) %></td>
+            <td colspan="5" style="text-align: left">
+                <select id="cmbDescripcion" style="width: 100%;"></select>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right"><% print(window.app.idioma.t("OBSERVACIONES")) %></td>
+            <td colspan="5">
+                <textarea id="txtObservaciones" name="txtObservaciones" style="width: 100%; height: 100px" class="keyboardOn"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6" style="text-align: center">
+                <button class="btnFloatNone" id="btnAceptar"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+                <button class="btnFloatNone" id="btnCancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+                <button class="btnFloatNone" id="btnAnular"><% print(window.app.idioma.t("ANULAR")) %></button>
+            </td>
+        </tr>
+        <tr id="trError" style="display:none">
+            <td colspan="5" id="lblError" class="mensajeError" style="color:red;"><% print(window.app.idioma.t("FILTROS_OBLIGATORIOS_PARO")) %>
+            </td>
+        </tr>
+    </tbody>
+</table>
+

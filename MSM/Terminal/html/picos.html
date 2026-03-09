@@ -1,0 +1,136 @@
+﻿<style>
+    #gridPicos td {
+        text-align: center !important;
+    }
+
+    .cabeceraVista {
+        border: 1px solid black;
+        width: auto;
+        height: 26px;
+        background-color: darkred;
+        color: white;
+        padding: 3px;
+        padding-left: 10px;
+        font-size: 20px;
+    }
+
+    #gridPicos {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #filtroTurno {
+        padding: 5px;
+        width: auto;
+        height: 46px;
+    }
+
+    .table {
+        margin: 6px;
+        width: 99%;
+        height: 55px;
+        padding: 0px !important;
+        border: 1px solid #000000;
+    }
+
+    .table-bordered > thead > tr > th,
+    .table-bordered > tbody > tr > th,
+    .table-bordered > tfoot > tr > th,
+    .table-bordered > thead > tr > td,
+    .table-bordered > tbody > tr > td,
+    .table-bordered > tfoot > tr > td {
+        border: 1px solid #000000;
+        font-weight: normal;
+    }
+
+    .table td {
+        text-align: center;
+        font-size: 17px !important;
+        /*font-weight:bold !important;*/
+        margin: 0px !important;
+        padding: 0px !important;
+        height: 55px;
+    }
+
+    .k-button .k-image {
+        height: 24px;
+        float: left;
+        margin-left: 4px;
+    }
+
+    #tblResumen {
+        margin: 6px;
+        width: 99%;
+        height: 55px;
+        padding: 0px !important;
+    }
+
+    .table-bordered > thead > tr > th,
+    .table-bordered > tbody > tr > th,
+    .table-bordered > tfoot > tr > th,
+    .table-bordered > thead > tr > td,
+    .table-bordered > tbody > tr > td,
+    .table-bordered > tfoot > tr > td {
+        font-weight: normal;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    #tblResumen td {
+        text-align: left !important;
+        text-align: center !important;
+        vertical-align: middle !important;
+    }
+
+    .k-grid {
+        font-size: 22px;
+    }
+
+    .bordeFinoDashed td {
+        text-align: left !important;
+        border: dashed 1px lightgray !important;
+    }
+
+    .bordeFinoDashed th {
+        line-height: 1 !important;
+        font-weight: normal;
+    }
+
+    .k-i-arrow-s {
+        margin-top: 10px;
+    }
+
+	.k-i-calendar{
+		 margin-top: 30%;
+	}
+</style>
+
+<div class="cabeceraVista">
+    <img src="img/iconoCabecera.png" />
+    <span><% print(window.app.idioma.t("PICOS")) %></span>
+</div>
+
+<table class="table" id="tableNav" style="border-bottom: solid 1px black !important; height: 50px;">
+    <tbody>
+        <tr>
+            <td id="btnTurnoAtras" style="width: 60px; border: solid 1px black; background-color: lightgray;">
+                <img src="img/left.png" style="float: left; width: 32px; margin-left: 10px; margin-top: 4px;" />
+                <% print(window.app.idioma.t('TURNO_MENOS')) %>
+            </td>
+            <td style="border-top: solid 1px black; vertical-align: middle">
+                <button id="btnTurnoActual" style="margin-right: 25px; height: 45px;"><% print(window.app.idioma.t('IR_A_TURNO_ACTUAL')) %></button>
+                <input id="fechaFiltro" style="text-align: center; font-size: 20px; width: 204px;" />
+                <input id="ddlTurno" name="ddlTurno" style="margin-left: 25px;" />
+            </td>
+            <td id="btnTurnoAdelante" style="width: 60px; border: solid 1px black; background-color: lightgray;">
+                <img src="img/right.png" style="float: right; width: 32px; margin-right: 10px; margin-top: 4px;" />
+                <% print(window.app.idioma.t('TURNO_MAS')) %>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="panelDatos" style="position:relative;">
+    <div id="gridPicos"></div>
+</div>
+    

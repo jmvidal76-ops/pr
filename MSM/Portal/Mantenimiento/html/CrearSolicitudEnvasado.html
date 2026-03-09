@@ -1,0 +1,83 @@
+﻿<style>
+
+    .pad-30 {
+        padding: 30px;
+    }
+    
+    .pad-10 {
+        padding: 10px;
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .mar-top-20 {
+        margin-top: 20px;
+    }
+
+    .mar-right-25 {
+        margin-right: 25px;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .tac {
+        text-align: center;
+    }
+
+    .boton {
+        width: 150px;
+        height: 65px;
+    }
+
+    .fila {
+        margin-top: 10px;
+    }
+
+    .lbl-required {
+        display: inline;
+        margin-right: 6px;
+    }
+    
+</style>
+
+<div>
+    <form id="CrearSolicitud" class="pad-30">
+
+        <div id="inputLinea" hidden>
+            <label id="lblLinea" for="cmbLinea" class="w-100 lbl-required" data-lng-key="LINEA"></label><label>*</label>
+            <select id="cmbLinea" name="cmbLinea" class="w-100" data-model-name="Linea"></select>
+        </div>
+        <div>
+            <label id="lblMaquina" for="cmbMaquina" class="w-100 lbl-required" data-lng-key="MAQUINA"></label><label>*</label>
+            <select id="cmbMaquina" name="cmbMaquina" class="w-100" data-model-name="Maquina" required></select>
+        </div>
+        <div class="fila">
+            <label id="lblEquipo" for="cmbEquipo" class="w-100 lbl-required" data-lng-key="EQUIPO_CONSTRUCTIVO"></label><label>*</label>
+            <select id="cmbEquipo" name="cmbEquipo" class="w-100" data-model-name="EquipoConstructivo" required></select>
+        </div>
+        <div class="fila">
+            <label id="lblTipoAveria" for="cmbTipoAveria" class="w-100 lbl-required" data-lng-key="TIPO_AVERIA"></label><label>*</label>
+            <select id="cmbTipoAveria" name="cmbTipoAveria" class="w-100" data-model-name="IdTipoAveria" required></select>
+        </div>
+        <div class="fila">
+            <label id="lblDescripcionAveria" for="tfDescripcionAveria" class="w-100 lbl-required" data-lng-key="DESCRIPCION_AVERIA"></label><label>*</label>
+            <textarea class="pad-10 w-100 keyboardOn" id="tfDescripcionAveria" name="tfDescripcionAveria" style="width:97%;" maxlength="30" required/>
+        </div>
+        <div class="fila">
+            <label id="lblDescripcionProblema" for="tfDescripcionProblema" class="w-100" data-lng-key="DESCRIPCION_PROBLEMA"></label>
+            <textarea class="pad-10 w-100 keyboardOn" id="tfDescripcionProblema" name="tfDescripcionProblema" style="width:97%;" maxlength="80"/>
+        </div>
+
+        <div class="tac mar-top-20">
+            <input type="button" class="boton mar-right-25" id="btnGestionCrear" data-lng-val-key="ACEPTAR" />
+            <input type="button" class="boton" id="btnGestionCancelar" data-lng-val-key="CANCELAR" />
+        </div>
+        <div id="trError" class="error tac mar-top-20" style="display:none;" colspan="2">
+        </div>
+    </form>
+</div>
+

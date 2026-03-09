@@ -1,0 +1,107 @@
+﻿<style>
+    .table th, .table td {
+        border-top: none !important;
+    }
+
+    .table input, textarea {
+        width: 120px;
+    }
+
+    #btnAceptar, #btnCancelar {
+        height: 55px;
+        width: 30%;
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+    .btnFloatNone {
+        float: none !important;
+    }
+
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+
+    .alinearIzquierda {
+        text-align: left !important;
+    }
+
+    .alinearDerecha {
+        text-align: right !important;
+    }
+
+    #paros {
+        margin-bottom: 20px;
+    }
+
+        #paros td {
+            height: 20px !important;
+        }
+
+        #paros tr {
+            height: 20px !important;
+        }
+
+    #tbParos td {
+        padding-left: 5px !important;
+    }
+
+    .mensajeError {
+        height: 45px !important;
+    }
+</style>
+
+<!--<div style="width: 98%; margin: 0px; padding: 0px;">-->
+<table class="table borderless" id="tbParos"><!--style="width: 100%"-->
+    <tbody>
+        <tr>
+            <td class="col-md-2 alinearDerecha"><% print(window.app.idioma.t("PAROS")) %></td><!--style="width: 7% !important;"-->
+            <td colspan="6">
+                <table style="width: 100%" id="paros"></table>
+            </td>
+        </tr>
+        <tr>
+            <td class="alinearDerecha"><% print(window.app.idioma.t("MOTIVO")) %></td>
+            <td colspan="2" class="alinearIzquierda">
+                <select id="cmbMotivo" style="width: 380px;"></select>
+            </td>
+            <td class="alinearDerecha"><% print(window.app.idioma.t("CAUSA")) %></td>
+            <td colspan="2" class="alinearIzquierda">
+                <select id="cmbCausa" style="width: 380px;"></select>
+            </td>
+        </tr>
+        <tr>
+            <td class="alinearDerecha"><% print(window.app.idioma.t("MAQUINA_RESPONSABLE")) %></td>
+            <td colspan="2" class="alinearIzquierda">
+                <select id="cmbMaquinaResponsable" style="width: 380px;"></select>
+            </td>
+            <td class="alinearDerecha"><% print(window.app.idioma.t("EQUIPO_CONSTRUCTIVO")) %></td>
+            <td colspan="2" class="alinearIzquierda">
+                <select id="cmbEquipoConstructivo" style="width: 380px;"></select>
+            </td>
+        </tr>
+        <tr>
+            <td class="alinearDerecha"><% print(window.app.idioma.t("DESCRIPCION")) %></td>
+            <td colspan="5" class="alinearIzquierda">
+                <select id="cmbDescripcion" style="width: 940px;"></select>
+            </td>
+        </tr>
+        <tr>
+            <td alinearDerecha"><% print(window.app.idioma.t("OBSERVACIONES")) %></td>
+            <td colspan="5" class="alinearIzquierda">
+                <textarea id="txtObservaciones" class="keyboardOn" style="width: 940px; height: 100px;"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6" style="text-align: center">
+                <button class="btnFloatNone" id="btnAceptar"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+                <button class="btnFloatNone" id="btnCancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+            </td>
+        </tr>
+        <tr id="trError" style="display: none">
+            <td colspan="4" id="lblError" class="mensajeError" style="color: red;"><% print(window.app.idioma.t("FILTROS_OBLIGATORIOS_PARO")) %>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<!--</div>-->

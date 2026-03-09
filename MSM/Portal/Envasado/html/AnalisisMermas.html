@@ -1,0 +1,108 @@
+﻿<style>
+    .k-tabstrip .k-content {
+        margin: 0;
+        padding: 0;
+        border-width: 0;
+        overflow-y: hidden;
+    }
+
+    .toolbar-fila {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .toolbar-botonera-derecha {
+        flex: 0 0 auto;
+        margin-right: 10px;
+    }
+
+        .toolbar-botonera-derecha button {
+            margin-left: 5px;
+        }
+
+    .toolbar-campos {
+        flex: 1 1;
+        text-align: left;
+    }
+
+        .toolbar-campos:first-child {
+            flex: 0 0 auto;
+        }
+
+        .toolbar-campos label {
+            margin-left: 5px;
+        }
+
+    .circle_cells {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-size: 25px 28px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 25px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-right: 5px;
+    }
+
+    .divTexto {
+        margin-left: 5px;
+        font-size: 17px;
+    }
+</style>
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"> <% print(window.app.idioma.t('ANALISIS_MERMAS')) %></label>
+</div>
+
+<div id="AnalisisMermas" class="divContenidoVista">
+    <div id="divPestaniasMermas">
+        <ul>
+            <li class="k-state-active" data-id="1"><% print(window.app.idioma.t('ANALISIS')) %></li>
+            <li data-id="2"><% print(window.app.idioma.t('CONFIGURACION')) %></li>
+        </ul>
+        <div>
+            <div class="k-header toolbar-fila">
+                <div class="toolbar-campos">
+                    <label><% print(window.app.idioma.t('ANYO')) %></label>
+                    <input id='anioInicio' style='width: 70px !important;'>
+                    <label><% print(window.app.idioma.t('SEMANA_INICIAL')) %></label>
+                    <input id='semanaInicio' style='width: 230px !important;'>
+                    <label><% print(window.app.idioma.t('ANYO')) %></label>
+                    <input id='anioFin' style='width: 70px !important;'>
+                    <label><% print(window.app.idioma.t('SEMANA_FINAL')) %></label>
+                    <input id='semanaFin' style='width: 230px !important;'>
+                    <button id="btnFiltrarAnalisis" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+                    <button id="btnInfoAnalisis" class="k-button k-button-icontext" style="margin-left: 5px;"><img class="k-icon" style="background-image:none;" src="../../../Common/img/info.svg"><% print(window.app.idioma.t('INFORMACION')) %></button>
+                </div>
+                <div class="toolbar-botonera-derecha">
+                    <button id="btnLimpiarFiltrosAnalisis" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;">
+                        <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+                    </button>
+                    <button id="btnExportExcelAnalisis" class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px;">
+                        <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+                    </button>
+                </div>
+            </div>
+            <div id="gridAnalisisMermas"></div>
+        </div>
+        <div>
+            <div id="gridConfigMermas"></div>
+        </div>
+    </div>
+</div>
+
+<script id="templateInfoAnalisis" type="text/x-kendo-template">
+    <h4><% print(window.app.idioma.t('CALCULO_PORC_MERMA_LLEN_ETIQ')) %></h4>
+    <div class='divTexto'><span><% print(window.app.idioma.t('TASA_CONFORMIDAD_INFO')) %></span></div>
+    <div class='divTexto'><span><% print(window.app.idioma.t('PORC_MERMA_LLEN_ETIQ_INFO')) %></span></div>
+    <h4><% print(window.app.idioma.t('CALCULO_IME')) %></h4>
+    <div class='divTexto'><span><% print(window.app.idioma.t('IME_RETORNABLE_INFO')) %></span></div>
+    <div class='divTexto'><span><% print(window.app.idioma.t('IME_RESTO_INFO')) %></span></div>
+</script>

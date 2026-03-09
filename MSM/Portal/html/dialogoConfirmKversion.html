@@ -1,0 +1,45 @@
+﻿<style>
+    #msgDialogo {
+        width: auto;
+        font-size: 14px;
+        border-bottom:1px solid black;
+        margin-bottom:5px;
+        margin-top:5px;
+        padding:6px;
+        text-align:justify;
+    }
+
+    .botonDialogo {
+        width: 150px;
+        height: 65px;
+    }
+
+     .mar-right-25 {
+        margin-right: 25px;
+    }
+
+    #imgProcesando {
+        margin: 15px;
+        margin-left:38px;
+        display:none;
+    }
+
+    .tac {
+        text-align: center;
+    }
+
+    .mar-top-20 {
+        margin-top: 20px;
+    }
+
+</style>
+
+<!-- Plantilla para mostrar un dialogo con aceptar o cancelar, pensado para usarse como una kendoWindow (ej. en vGestionMermasPO.js) -->
+<div id="msgDialogo"></div>
+<div id="imgProcesando">
+    <img src="img/ajax-loader.gif"/>
+</div>
+<div class="tac mar-top-20">
+    <input type="button" class="botonDialogo mar-right-25" style="min-width:70px" id="btnDialogoConfirmAceptar" />
+    <input type="button" class="botonDialogo" style="min-width:70px" id="btnDialogoConfirmCancelar" />
+</div>

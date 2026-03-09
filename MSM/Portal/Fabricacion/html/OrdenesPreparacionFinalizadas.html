@@ -1,0 +1,26 @@
+﻿
+<div id="divCabeceraVista" class="divCabeceraVista">
+            <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+                <!--  AQUI EL TITULO-->
+                 <label class="lblCabeceraVista"><% print(window.app.idioma.t('ORDENES_PREPARACION')) %></label>
+        </div>
+
+
+<!--  AQUI EL CONTENIDO-->
+<div id="container">
+    <div id="gridOrdenesPreparacion"></div>
+</div>
+
+<div id="window" >
+     <div style="height: 100%;">
+         <div style="overflow: auto; height: calc(100% - 70px); padding: 10px">
+              <label><% print(window.app.idioma.t('VOLUMEN_REAL')) %></label>
+              <input style="float:right" id="cantReal" />
+         </div>
+                  <div style="float: right; margin: 10px">
+                    <button id="btnAceptarVolumen" ><% print(window.app.idioma.t('ACEPTAR')) %></button>&nbsp;
+                    <button id="btnCancelarVolumen"><% print(window.app.idioma.t('CANCELAR')) %></button>
+                  </div>
+     
+         </div>
+</div>

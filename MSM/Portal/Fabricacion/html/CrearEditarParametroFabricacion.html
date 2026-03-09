@@ -1,0 +1,39 @@
+﻿<style>
+    .fila {
+        margin-left: 10px;
+        margin-top: 20px;
+    }
+
+    .textos {
+        width: 205px;
+        text-align: right;
+    }
+</style>
+
+<div>
+    <form id="CrearEditarParametroFabricacion">
+        <div class="fila">
+            <label id="lblTipoWO" class="textos"><% print(window.app.idioma.t('TIPO')) %></label>
+            <input type="text" class="k-textbox" style="width: 100px; background-color: #e2dada;" id="txtTipoWO" readonly />
+        </div>
+        <div class="fila">
+            <label id="lblEnumParametro" class="textos"><% print(window.app.idioma.t('PARAMETRO')) %></label>
+            <select id="cmbEnumParametro" style="width: 350px" />
+        </div>
+        <div class="fila">
+            <label id="lblMaterial" class="textos"><% print(window.app.idioma.t('MATERIAL')) %></label>
+            <select id="cmbMaterial" style="width: 350px" />
+        </div>
+        <div class="fila">
+            <label id="lblValor" class="textos"><% print(window.app.idioma.t('VALOR')) %></label>
+            <input type="text" style="width: 80px" id="ntxtValor" data-type="number" data-role="numerictextbox" />
+        </div>
+        <div class="fila" id="trError" style="display:none; text-align:center;">
+            <span id="lblError" style="color: red;"><% print(window.app.idioma.t('ERROR')) %> </span>
+        </div>
+        <div style="text-align: center; margin-top: 15px">
+            <input type="button" id="btnAceptar" style="margin-right: 20px" value="Aceptar" />
+            <input type="button" id="btnCancelar" value="Cancelar" />
+        </div>
+    </form>
+</div>

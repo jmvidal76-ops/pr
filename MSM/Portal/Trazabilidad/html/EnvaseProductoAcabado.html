@@ -1,0 +1,32 @@
+﻿<style>
+    .popover {
+        max-width: initial;
+    }
+</style>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <!--  AQUI EL TITULO-->
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('ENVASE_PRODUCTOACABADO')) %></label>
+</div>
+
+<!--  AQUI EL CONTENIDO-->
+<div id="container" style="height:100%">
+    <div id="gridFilters" style="margin: 5px;">
+        <label for="loteEnvase" class="k-input-label" style="margin-right: 5px;"><% print(window.app.idioma.t('LOTE_ENVASE')) %></label>
+        <button type='button' data-toggle='popover' data-placement='right' data-container='body' data-html="true" data-content='<img src="../../../Common/img/formatoLote.png" />'><img src='img/question.png'></button>
+        <input type="text" id="loteEnvase" class='k-textbox' style="margin-right:5px; width:10%" />
+        <button id="btnConvertir" class="k-button k-button-icontext" style="margin-right:5px;"><% print(window.app.idioma.t('CONVERTIR')) %></button>
+        <label for="idLinea" class="k-input-label" style="margin-right: 5px;"><% print(window.app.idioma.t('LINEA')) %></label>
+        <select id="idLinea" style="width: 230px; margin-right: 5px;"></select>
+        <label for="fecha" class="k-input-label" style="margin-right: 5px;"><% print(window.app.idioma.t('FECHA_ENVASE')) %></label>
+        <input id="fecha" style="margin-right:5px; width:11%" />
+        <label class="k-input-label" style="margin-right: 5px;"><% print(window.app.idioma.t('MAS_MENOS_MINUTOS')) %></label>
+        <input id="minutos" type="number" value="5" min="1" max="10000" class="txtField" style="margin-right: 5px; width: 100px" />
+        <button id="btnConsultar" class="k-button k-button-icontext" style="float:right;"><span class="k-icon k-i-search"></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+    </div>
+    <div id="gridEnvasePale" style="width:100%; height:100%;"></div>
+</div>
+
+
+

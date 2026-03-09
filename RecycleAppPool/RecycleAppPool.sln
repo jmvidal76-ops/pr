@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecycleAppPool", "RecycleAppPool\RecycleAppPool.csproj", "{E0393EA3-5497-48FA-93D8-FF9ADD8E2DD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecycleAppPool.Domain", "RecycleAppPool.Domain\RecycleAppPool.Domain.csproj", "{372CAA2E-2024-42DE-9724-E5748E13069B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecycleAppPool.Infrastructure", "RecycleOperation.Infrastructure\RecycleAppPool.Infrastructure.csproj", "{EF3CEA99-1909-4336-9058-A14B6DA6053B}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://10.2.20.99:8081/tfs/defaultcollection
+		SccProjectUniqueName0 = RecycleOperation.Infrastructure\\RecycleAppPool.Infrastructure.csproj
+		SccProjectName0 = RecycleOperation.Infrastructure
+		SccLocalPath0 = RecycleOperation.Infrastructure
+		SccProjectUniqueName1 = RecycleAppPool.Domain\\RecycleAppPool.Domain.csproj
+		SccProjectName1 = RecycleAppPool.Domain
+		SccLocalPath1 = RecycleAppPool.Domain
+		SccProjectUniqueName2 = RecycleAppPool\\RecycleAppPool.csproj
+		SccProjectName2 = RecycleAppPool
+		SccLocalPath2 = RecycleAppPool
+		SccLocalPath3 = .
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0393EA3-5497-48FA-93D8-FF9ADD8E2DD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0393EA3-5497-48FA-93D8-FF9ADD8E2DD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0393EA3-5497-48FA-93D8-FF9ADD8E2DD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0393EA3-5497-48FA-93D8-FF9ADD8E2DD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{372CAA2E-2024-42DE-9724-E5748E13069B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{372CAA2E-2024-42DE-9724-E5748E13069B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{372CAA2E-2024-42DE-9724-E5748E13069B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{372CAA2E-2024-42DE-9724-E5748E13069B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF3CEA99-1909-4336-9058-A14B6DA6053B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF3CEA99-1909-4336-9058-A14B6DA6053B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF3CEA99-1909-4336-9058-A14B6DA6053B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF3CEA99-1909-4336-9058-A14B6DA6053B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

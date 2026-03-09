@@ -1,0 +1,38 @@
+﻿<style>
+    
+    .cabeceraVista {
+        border: 1px solid black;
+        width: auto;
+        height: 26px;
+        background-color: darkred;
+        color: white;
+        padding: 3px;
+        padding-left: 10px;
+        font-size: 20px;
+    }
+  
+    .k-grid .k-grid-add,
+    .k-grid tbody .k-grid-edit,
+    .k-grid tbody .k-grid-update,
+    .k-grid tbody .k-grid-cancel,
+    .k-grid tbody .k-grid-delete {
+        width: 42px;
+        height: 42px;
+        padding-top: 0.8em;
+      }
+    .k-toolbar {
+        padding-top: 5px;
+        height:15px
+      }
+    .k-dropdown-wrap > span.k-select {
+        padding-top: 0.5em;
+    }
+
+</style>
+
+<div id="divCabeceraVista" class="cabeceraVista">
+    <img src="img/iconoCabecera.png" />
+    <span><% print(window.app.idioma.t("ALT_Runtime")) %></span>
+</div>
+<div id="divAltRuntime" style="overflow: hidden; width: 100%;" >    
+</div>

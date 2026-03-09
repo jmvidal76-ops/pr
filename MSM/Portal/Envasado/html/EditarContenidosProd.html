@@ -1,0 +1,62 @@
+﻿<style>
+     #btnAceptar {      
+        float:left ;
+        margin-left:100px;
+        margin-top:10px;
+    }
+    #btnCancelar {
+        float:left ;
+        margin-left:20px;
+        margin-top:10px;
+    }
+
+</style> 
+
+
+<div>
+ <form id="EditarContenidosProd">
+    <p></p>
+    
+    <div style="float:left; background-color: Transparent;border:0;">
+       
+         <div style="float:left;border:0;">
+             <label id="lblHoraCod" style="width:0px;font-weight:normal;color:white; display:none"></label>
+             <label id="lblTurno" style="width:0px;font-weight:normal;color:white; display:none"></label>
+        </div>
+        <div style="float:left;border:0;">
+            
+            <label id="lblHora" style="width:200px;text-align:right;"></label>
+            <!--<label id="lblValorHora" style="width:150px;font-weight:normal"></label>-->
+            <input type="text" style="width:145px; height:20px;" id="txtHora" name="txtHora" disabled="disabled" required/>
+        </div>
+        <br /><br /><br />
+        <div style="float:left;border:0;">
+            <label id="lblEnvLlen" for="envLlenadora" style="width:200px;text-align:right;"></label> 
+            <input type="text" style="width:150px" id="txtEnvLlenadora" name="txtEnvLlenadora" data-type="number" data-bind="value: EnvasesLlenadora" data-role="numerictextbox"  required/>
+        </div>
+        <br /><br /><br />
+        <div style="float:left;border:0;">
+            <label id="lblPalPalet" for="palPaletizadora" style="width:200px;text-align:right;"></label>
+            <input type="text" style="width:150px" id="txtPalPalet" name="txtPalPalet" data-type="number" data-bind="value: PalesPaletizadora" data-role="numerictextbox"   required/>
+        </div>
+        <br /><br /><br />
+                <div style="float:left;border:0;">
+            <label id="lblRLlenadora" for="rLlenadora" style="width:200px;text-align:right;"></label>
+            <input type="text" style="width:150px" id="txtRLlenadora" name="txtRLlenadora" data-type="number" data-bind="value: RechazadosLlenadora" data-role="numerictextbox"   required/>
+        </div>
+        <br /><br /><br />
+                <div style="float:left;border:0;">
+            <label id="lblrPaletizadora" for="rPaletizadora" style="width:200px;text-align:right;"></label>
+            <input type="text" style="width:150px" id="txtRPaletizadora" name="txtRPaletizadora" data-type="number" data-bind="value: Rechazados3Paletizadora" data-role="numerictextbox"   required/>
+        </div>
+        <br /><br /><br />
+       
+        <div>
+            <input type="button" id="btnAceptar" value="Aceptar" disabled="disabled"/>
+            <input type="button" id="btnCancelar" value="Cancelar"/>
+        </div>
+       
+    </div>
+    </form>
+ </div>
+ 

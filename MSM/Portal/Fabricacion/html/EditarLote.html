@@ -1,0 +1,134 @@
+﻿<style>
+    #formParoPerdida {
+        margin: 15px;
+    }
+
+    .tdLabel {
+        width: 16% !important;
+    }
+
+    .table th, .table td {
+        border-top: none !important;
+    }
+
+    .table tr {
+        height: 60px !important;
+    }
+
+    .table input, textarea {
+        margin-left: 5px !important;
+        width: 120px;
+    }
+
+    #btnAceptar, #btnCancelar {
+        height: 30px;
+        width: 30%;
+        /*float:left;*/
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+
+    /*.k-grid .k-state-selected { background-color:lightyellow; }*/
+
+
+    .k-autocomplete,
+    .k-combobox,
+    .k-datepicker,
+    .k-timepicker,
+    .k-datetimepicker,
+    .k-colorpicker,
+    .k-numerictextbox,
+    .k-dropdown,
+    .k-selectbox,
+    .k-textbox,
+    .k-toolbar .k-split-button {
+        width: 100% !important;
+    }
+
+
+    .k-numerictextbox {
+        width: 100% !important;
+    }
+
+        .k-numerictextbox .k-numeric-wrap .k-input {
+            width: 96% !important;
+        }
+
+    .k-tooltip-validation {
+        clear: left !important;
+    }
+    /*#udMedida {
+        min-width:15px;
+        margin-left:5px;
+    }*/
+
+
+    span.k-widget.k-tooltip-validation {
+        display: inline-block;
+        position: absolute;
+        width: 290px;
+        text-align: left;
+        border: 0;
+        padding: 0;
+        margin: 0;
+        background: none;
+        box-shadow: none;
+        color: red;
+    }
+</style>
+
+<div style="width: 98%; margin: 0px; padding: 0px;">
+    <form id="DuplicarEntry">
+        <table class="table borderless">
+            <tbody>
+                <tr>
+                    <td style="width: 17% !important; text-align: right;">
+                        <label id="lblEquipo"><% print(window.app.idioma.t('EQUIPO')) %>: </label>
+                    </td>
+                    <td style="width: 30% !important; text-align: left;">
+                     <span id="txtEquipo"></span>
+                    </td>
+                    <td style="width: 17% !important; text-align: right;">
+                        <label id="lblTipoOrden"><% print(window.app.idioma.t('CANTIDAD')) %>: </label>
+                    </td>
+                    <td style="width: 30% !important; text-align: left;">
+                    <span id="txtCantidad"></span>
+                    <input id="txtCantidadAdit" name="txtCantidadAdit"/>
+                    </td>
+                  
+                </tr>
+
+                <tr>
+                      <td style="width: 17% !important; text-align: right;">
+                        <label id="lblEstado"><% print(window.app.idioma.t('MATERIAL')) %>: </label>
+                    </td>
+                    <td style="width: 30% !important; text-align: left;">
+                     <span id="txtMaterial"></span>
+                    </td>                    
+                    <td style="width: 17% !important; text-align: right;">
+                        <label id="lblote"><% print(window.app.idioma.t('LOTE_PROVEEDOR')) %>: </label>
+                    </td>
+                    <td style="width: 30% !important; text-align: left;">
+                    <input type="text" id="txtSerie" name="txtSerie" class="k-textbox" />
+                    </td>
+                    <!--               <td style="width:17% !important; text-align:right;"><label id="lblOrdenDest"><% print(window.app.idioma.t('UD_MEDIDA')) %>: </label></td>
+                <td style="width:30% !important; text-align:left;">
+                     <select id="cmbUOM" name="cmbUOM"/> 
+                </td>  -->
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div style="text-align: center; width: 100%;">
+                            <button id="btnAceptar"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+                            <button id="btnCancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>

@@ -1,0 +1,82 @@
+﻿<style>
+    .pad-30 {
+        padding: 30px;
+    }
+
+    .pad-10 {
+        padding: 10px;
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+    .w-50 {
+        width: 50%;
+    }
+
+    .mar-top-20 {
+        margin-top: 20px;
+    }
+
+    .mar-right-25 {
+        margin-right: 25px;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .tac {
+        text-align: center;
+    }
+
+    .boton {
+        width: 150px;
+        height: 65px;
+    }
+
+    .fila {
+        margin-top: 10px;
+    }
+</style>
+
+
+<div>
+    <form id="CrearMerma" class="pad-30">
+
+        <div id="lineaContainer">
+            <label id="lblLinea" for="cmbLinea" class="w-100"></label>
+            <select id="cmbLinea" name="cmbLinea" class="w-100" required></select>
+        </div>
+        <div id="turnoContainer" class="fila">
+            <label id="lblTurno" class="w-50" for="idTurno"></label><br />
+            <label id="lblFechaDesdeTurnos" for="dtpFechaDesdeTurnos"></label>
+            <input id="dtpFechaDesdeTurnos" style="width: 100px;" />
+            <label id="lblFechaHastaTurnos" for="dtpFechaHastaTurnos" style="margin-left: 5px;"></label>
+            <input id="dtpFechaHastaTurnos" style="width: 100px;" />
+            <button id="btnFiltrarTurnos" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-i-search'></span></button>
+            <div id="gridTurnosMermas" class="w-100 fila" style="height: 280px"></div>
+            <input id="idTurno" hidden required />
+            <input id="idTipoTurno" hidden />
+        </div>
+        <div class="fila">
+            <label id="lblMaquina" for="cmbMaquina" class="w-100"></label>
+            <select id="cmbMaquina" name="cmbMaquina" class="w-100" required></select>
+        </div>
+        <div class="fila">
+            <label id="lblWO" for="cmbWO" class="w-100"></label>
+            <select id="cmbWO" name="cmbWO" class="w-100" ></select>
+        </div>
+        <div class="fila">
+            <label id="lblProveedor" for="cmbProveedor" class="w-100"></label>
+            <select id="cmbProveedor" name="cmbProveedor" class="w-100" required></select>
+        </div>
+
+        <div class="tac mar-top-20">
+            <input type="button" class="boton mar-right-25" id="btnDialogoGestionAceptar" />
+            <input type="button" class="boton" id="btnDialogoGestionCancelar" />
+        </div>
+        <div id="trError" class="error tac mar-top-20" style="display:none;" colspan="2">
+        </div>
+    </form>
+</div>

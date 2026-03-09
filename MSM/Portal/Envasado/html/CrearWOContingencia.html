@@ -1,0 +1,162 @@
+﻿<style>
+    #formParoPerdida {
+        margin: 15px;
+    }
+
+    .tdLabel {
+        width: 16% !important;
+    }
+
+    .table th, .table td {
+        border-top: none !important;
+        text-align: right;
+    }
+
+    .table tr {
+        height: 60px !important;
+    }
+
+    .table input, textarea {
+        /*margin-left:5px !important;*/
+        width: 120px;
+    }
+
+    #btnAceptar, #btnCancelar {
+        height: 30px;
+        width: 30%;
+        /*float:left;*/
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+
+    /*.k-grid .k-state-selected { background-color:lightyellow; }*/
+
+
+    #tableCrearWOC .k-dropdown, .k-datetimepicker {
+        width: 100% !important;
+    }
+
+
+    .k-numerictextbox {
+        width: 100% !important;
+    }
+
+        .k-numerictextbox .k-numeric-wrap .k-input {
+            width: 96% !important;
+        }
+
+    .k-tooltip-validation {
+        clear: left !important;
+    }
+    /*#udMedida {
+        min-width:15px;
+        margin-left:5px;
+    }*/
+
+
+    span.k-widget.k-tooltip-validation {
+        display: inline-block;
+        position: absolute;
+        width: 290px;
+        text-align: left;
+        border: 0;
+        padding: 0;
+        margin: 0;
+        background: none;
+        box-shadow: none;
+        color: red;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        padding: 8px !important;
+    }
+</style>
+
+<div style="width: 98%; margin: 0px; padding: 0px;">
+    <form id="CrearWO">
+        <table id="tableCrearWOC" class="table borderless">
+            <tbody>
+                <tr>
+                    <td><% print(window.app.idioma.t("LINEA")) %></td>
+                    <td>
+                        <input id="cmbLinea" name="cmbLinea" required /></td>
+                    <td colspan="3"></td>
+                    <!--<td><% print(window.app.idioma.t("TIPO_RUTA_FABRICACION")) %></td>
+                <td colspan="2">
+                    <input id="cmbRuta" name="cmbRuta" />
+                </td>-->
+                </tr>
+                <tr>
+                    <td style="width: 15% !important;"><% print(window.app.idioma.t('NUM_ARTICULO')) %></td>
+                    <td style="width: 33% !important;">
+                        <input id="cmbProducto" name="cmbProducto" required /></td>
+                    <td style="width: 20% !important;"><% print(window.app.idioma.t('CANTIDAD_PLANIFICADA')) %></td>
+                    <td style="width: 18% !important; text-align: left;">
+                        <input id="txtCantidad" type="text" name="txtCantidad" required />
+                        <br />
+                        <span class="k-invalid-msg" data-for="txtCantidad"></span>
+                    </td>
+                    <td style="width: 14%; text-align: left">
+                        <span id="udMedida"></span>
+                        <br />
+                        <span id="relacionEnvasesCajasPalets"></span>
+                    </td>
+                </tr>
+
+                <!-- <tr>
+                <td><% print(window.app.idioma.t("FECHA_SOLICITADA")) %></td>
+                <td><input id="dtpFechaSolicitada"  /></td>
+                <td colspan="3">
+                    <% print(window.app.idioma.t("FECHA_ORDEN")) %></td>
+                    <td><input id="dtpFechaOrden" />
+                </td>               
+            </tr>-->
+                <tr>
+                    <td><% print(window.app.idioma.t("OBSERVACIONES")) %></td>
+                    <td colspan="4">
+                        <textarea id="txtDescripcion" style="width: 100%; height: 80px;" rows="6"></textarea></td>
+                </tr>
+
+                <tr id="rowFechas">
+                    <td><% print(window.app.idioma.t('FECHA_INICIO_ESTIMADA')) %></td>
+                    <td>
+                        <input id="dtpFechaInicio" name="dtpFechaInicio" />
+                        <br />
+                        <span class="k-invalid-msg" data-for="dtpFechaInicio" style="width: 100%"></span>
+                    </td>
+                    <td><% print(window.app.idioma.t('FECHA_FIN_ESTIMADA')) %></td>
+                    <td colspan="2">
+                        <input id="dtpFechaFinalizado" name="dtpFechaFinalizado" />
+                        <br />
+                        <span class="k-invalid-msg" data-for="dtpFechaFinalizado" style="width: 100%"></span>
+                    </td>
+                </tr>
+
+
+                <!-- <tr>
+                <td><% print(window.app.idioma.t('ESTADO_WOJDE')) %></td>
+                <td><select id="cmbEstado"></select></td>
+                <td></td>
+                <td></td>
+            </tr>-->
+
+                <!--<tr><td colspan="6"><span id="errors"></span></td></tr>-->
+                <tr>
+                    <td colspan="5">
+                        <div id="divAceptar" style="text-align: center; width: 100%;">
+                            <button id="btnAceptar"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+                            <button id="btnCancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+                        </div>
+                        <div id="imgProcesando" style="text-align: center; width: 100%; float: left; margin-top: 5px">
+                            <img src="img/ajax-loader.gif" />
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>

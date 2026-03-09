@@ -1,0 +1,41 @@
+﻿<link rel="stylesheet" href="/ALT/css/ALTTreeLocations.css" />
+<link rel="stylesheet" href="/ALT/css/ALTDialogEdit.css" />
+<style>
+     .formDialog > input {        
+        width: 180px;
+       
+    }
+    /*
+    .formDialog > input[type=checkbox] {        
+       width: auto;
+       margin-left: 60%;
+    }*/
+    .formDialog > span {        
+        width: 180px;
+       
+    }
+</style>
+<div id="ALTtoolbarTree"></div>
+<div id="ALTtree"></div>
+<div id="ALTInfoMES" class="formDialog" style="overflow-y: auto; width: 100%">
+    <label><%- window.app.idioma.t("ALT_LOCALIZACION")%></label>
+    <input class="k-textbox" id="txtLocation" data-bind="value: filterMES.locationID"/>
+    <hr />
+    <label><%- window.app.idioma.t("TIPO_ORDEN")%></label>
+     <select id="txtOrdenTypeID" data-role="dropdownlist" data-bind="source: lTiposOrdenes, value: filterMES.orderTypeID" data-text-field="text" data-value-field="value"></select>
+    <br /><br />
+    <label><%- window.app.idioma.t("ID_ORDEN")%></label>
+    <input class="k-textbox" data-bind="value: filterMES.orderID" id="txtOrdenID" />   
+    <hr />
+    <label><%- window.app.idioma.t("TIPO_TURNO")%></label>
+    <select id="txtTurnoID" data-role="dropdownlist" data-bind="source: lTiposTurnos, value: filterMES.turnoID" data-text-field="text" data-value-field="value"></select>
+    <br /><br />
+    <label><%- window.app.idioma.t("ID_TURNO")%></label>
+    <input class="k-textbox" id="txtSHCID" data-bind="value: filterMES.shcID"  />
+    <hr />
+    <label><%- window.app.idioma.t("TIPO_MATERIAL")%></label>
+    <input id="txtMaterialTypeID" data-bind="value: filterMES.materialID"/>
+   <br /><br />
+    <label><%- window.app.idioma.t("LOTE")%></label>
+    <input class="k-textbox" id="txtLotID" data-bind="value: filterMES.lotID"/>
+</div>

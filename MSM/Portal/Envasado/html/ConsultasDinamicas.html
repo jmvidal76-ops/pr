@@ -1,0 +1,54 @@
+﻿
+ <!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('CONSULTAS_VARIAS')) %></label>
+</div>
+
+<div id="divFiltros" class="k-header" style="height:35px;width:100%; padding-top:5px;">
+    <div style="float:left;">
+        <label style="margin-left:5px;"><% print(window.app.idioma.t('SELECCIONA_CONSULTA')) %></label>
+        <input id="ddlQueries" style="width:320px;" />        
+        <button id="btnFiltros" class="k-button k-button-icontext k-i-plus" style="margin-left:5px;"><span class='k-icon k-i-arrow-n'></span><% print(window.app.idioma.t('OCULTAR_FILTROS')) %></button>        
+        <button id="btnEjecutar" class="k-button k-button-icontext" style="margin-left:5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+    </div>
+    <div id="botones" style="float:right; margin-right:10px;">
+         <button id="btnExportExcel" class="k-button k-button-icontext k-grid-excel" style="margin-left:5px;">
+             <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+         </button>
+                 <button id="btnExportarPDF" class="k-button k-button-icontext k-grid-pdf" style="margin-left:5px;">
+             <span class="k-icon k-i-pdf"></span><% print(window.app.idioma.t('EXPORTAR_PDF')) %>
+         </button>
+    </div>
+</div>
+<div id="divWhere" class="k-header" style="height:85px;width:100%; padding-top:15px;">
+            &nbsp;&nbsp;
+        <label style="margin-left:5px;"><% print(window.app.idioma.t('LINEA')) %></label>
+            &nbsp;
+        <input id="cmbLinea" name="cmbLinea" style="width:200px;" />
+                        <br /><br />
+            &nbsp;&nbsp;
+        <label style="margin-left:5px;"><% print(window.app.idioma.t('FECHA_HORAINICIO')) %></label>
+             &nbsp;
+        <input id="dpInicio" name="dpInicio" />
+            &nbsp;&nbsp;
+        <label style="margin-left:5px;"><% print(window.app.idioma.t('TURNO')) %></label>
+            &nbsp;
+        <input id="cmbTurnosInicio" name="cmbTurnosInicio"  />
+            &nbsp;&nbsp;
+        <label style="margin-left:5px;"><% print(window.app.idioma.t('FIN')) %></label>
+            &nbsp;
+        <input id="dpFin" name="dpFin"/>
+            &nbsp;&nbsp;
+        <label style="margin-left:5px;"><% print(window.app.idioma.t('TURNO')) %></label>
+            &nbsp;
+        <input id="cmbTurnosFin" name="cmbTurnosFin"/>
+</div>
+<div id="divVacio" style="background-color:#9E93E1;height:35px;width:100%; padding-top:15px;">
+    &nbsp;&nbsp;<label style="margin-left:5px;"><% print(window.app.idioma.t('SIN_RESULTADOS')) %></label>
+</div>
+<div id="imgProcesando" style="background-color:transparent;display:none; width:70%;padding-left:50%;padding-top:30px;">
+    <img src="img/cargando.gif"/>
+</div>
+<div id="grid"></div>
+

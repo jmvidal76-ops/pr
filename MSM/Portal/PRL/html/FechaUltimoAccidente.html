@@ -1,0 +1,14 @@
+﻿<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('CAMBIAR_FECHA')) %></label>
+</div>
+<div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+    <div style="float: left;">
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('LINEA')) %></label>
+        <select id="selectLinea" style="width:200px;"></select>
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('FECHA')) %></label>
+        <input id="dtpFechaAccidente" style="width: 100px;" />
+        <button id="btnCambiar" class="k-button k-button-icontext" style="margin-left: 5px;"><% print(window.app.idioma.t('GUARDAR')) %></button>
+    </div>
+</div>

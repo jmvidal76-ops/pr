@@ -1,0 +1,46 @@
+﻿<style>
+    #ControlSecuenciacion .k-splitter {
+        height: calc(100% - 36px);
+        margin: 0;
+        padding: 0;
+        border-width: 0;
+    }
+
+    #gridProductosCajas tbody tr {
+        cursor: move;
+    }
+
+    /*#gridProductosCajas .k-grid-content {
+        min-height: 170px;
+    }*/
+</style>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('CONTROL_SECUENCIACION')) %></label>
+</div>
+<div id="ControlSecuenciacion" class="divContenidoVista">
+    <div id="divFiltros" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+        <div style="float: left;">
+            <label style="margin-left: 5px;"><% print(window.app.idioma.t('LINEA')) %></label>
+            <select id="selectLinea" style="width:250px;"></select>
+            <button id="btnConsultar" class="k-button k-button-icontext" style="margin-left:5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+            <label style="margin-left: 10px;"><% print(window.app.idioma.t('PRODUCTO_ETIQUETADORA')) %></label>
+            <label id="codPalet" style="margin-left: 2px;"></label>
+            <label style="margin-left: 10px;"><% print(window.app.idioma.t('FECHA_CONSUMO_PREFERENTE')) %></label>
+            <label id="fechaConsumo" style="margin-left: 2px;"></label>
+        </div>
+        <div style="float: right; margin-right: 10px;">
+            <button id="btnTransferirMES" class="k-button k-button-icontext" style="margin-left: 5px;"><% print(window.app.idioma.t('TRANSFERIR_MES')) %></button>
+            <label id="lblTransfAutomatica" style="margin-left: 5px;"><% print(window.app.idioma.t('TRANSFERENCIA_AUTOMATICA')) %></label>
+            <input type="checkbox" id="chkTransfAutomatica" style="width: 30px; vertical-align:text-bottom" />
+            <button id="btnLimpiarFiltros" class="k-button k-button-icontext" style="margin-left: 5px;">
+                <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+            </button>
+        </div>
+    </div>
+    <div id="vsplitPanelSecuenciacion">
+        <div id="gridPlanificadas"></div>
+        <div id="gridProductosCajas"></div>
+    </div>
+</div>

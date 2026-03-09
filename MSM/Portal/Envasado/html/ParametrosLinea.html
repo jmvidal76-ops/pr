@@ -1,0 +1,26 @@
+﻿<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('PARAMETROS_LINEA')) %></label>
+</div>
+<div id="divFiltros" class="k-header" style="height:35px;width:100%; padding-top:5px;">
+    <div style="float:left;margin-left:10px;height:25px;">
+        <label><% print(window.app.idioma.t('VELOCIDAD_NOMINAL')) %></label>
+        <input type="text" id="txtVelNom" style="width:120px;" maxlength="7" data-type="number" data-role="numerictextbox" required />
+        <label><% print(window.app.idioma.t('VEL_NOM_MAQ_LIMITANTE')) %></label>
+        <input type="text" id="txtVelNomMaqLimitante" style="width:120px;" maxlength="7" data-type="number" data-role="numerictextbox" required />
+        <label><% print(window.app.idioma.t('OEE_OBJETIVO')) %></label>
+        <input type="text" id="txtOeeObj" style="width:120px;" maxlength="6" data-type="number" data-role="numerictextbox" required />
+        <label><% print(window.app.idioma.t('OEE_CRITICO')) %></label>
+        <input type="text" id="txtOeeCri" style="width:120px;" maxlength="6" data-type="number" data-role="numerictextbox" required />
+        <label><% print(window.app.idioma.t('OEE_SECUENCIADOR')) %></label>
+        <input type="text" id="txtOeePreactor" style="width:120px;" maxlength="6" data-type="number" data-role="numerictextbox" required />
+        <label><% print(window.app.idioma.t('INHABILITAR_CALCULO')) %></label>
+        <input type="checkbox" id="chkInhabilitarCalculo" style="width:30px; vertical-align:text-bottom" />
+        <button id="btnAsignarParametros" class="k-button k-button-icontext k-grid-add" style="background-color: green; color: white;">
+            <span class='k-icon k-add'></span><% print(window.app.idioma.t('ASIGNAR')) %>
+        </button>
+    </div>
+</div>
+<div id="gridParametrosLinea"></div>
+

@@ -1,0 +1,200 @@
+﻿<style>
+    #formParoPerdida {
+        margin: 15px;
+    }
+
+    .cabecera {
+        width: 30% !important;
+        text-align: right;
+        font-weight: bold;
+    }
+
+    .texto {
+        width: 53% !important;
+        text-align: left;
+    }
+
+    .tdLabel {
+        width: 16% !important;
+    }
+
+    #tablaCambio th, .table td {
+        border-top: none !important;
+        /*text-align: right;*/
+    }
+
+    #tablaCambio tr {
+        height: 60px !important;
+    }
+
+    #tablaCambio input, textarea {
+        margin-left: 5px !important;
+        width: 120px;
+    }
+
+    #btnAceptar, #btnCancelar {
+        /*height: 30px;
+        width: 30%;*/
+        /*float:left;*/
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+
+    /*.k-grid .k-state-selected { background-color:lightyellow; }*/
+
+
+    .k-autocomplete,
+    .k-combobox,
+    .k-datepicker,
+    .k-timepicker,
+    .k-datetimepicker,
+    .k-colorpicker,
+    .k-numerictextbox,
+    .k-dropdown,
+    .k-selectbox,
+    .k-textbox,
+    .k-toolbar .k-split-button {
+        width: 100% !important;
+    }
+
+
+    .k-numerictextbox {
+        width: 100% !important;
+    }
+
+        .k-numerictextbox .k-numeric-wrap .k-input {
+            width: 96% !important;
+        }
+
+    .fila {
+        width: 90%;
+        margin-left: 5%;
+        float: left;
+        margin-top: 30px;
+    }
+
+    .left {
+        width: 35%;
+        float: left;
+        text-align: right;
+        margin-top:6px;
+    }
+
+    .right {
+        width: 65%;
+        float: left;
+    }
+</style>
+    <div id="container">
+        <div class="fila">
+            <div id="Div37" class="left">
+                <label>
+                    <% print(window.app.idioma.t('ALMACEN')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div38" class="right">
+                <input type="text" id="cmbNewAlmacen" name="cmbNewAlmacen" style="width:150px !important" />
+            </div>
+        </div>
+        <div class="fila">
+            <div id="Div5"class="left">
+                <label>
+                    <% print(window.app.idioma.t('ZONA')) %> &nbsp;
+                </label>
+            </div>
+            <div id="Div6" class="right">
+                <input type="text" id="cmbNewZona" name="cmbNewZona" style="width:150px !important"  />
+            </div>
+        </div>
+        <div class="fila">
+            <div id="Div3" class="left">
+                <label>
+                    <% print(window.app.idioma.t('UBICACION')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div4" class="right">
+                <input type="text" id="cmbUbicacion" name="cmbUbicacion" style="width:150px !important" />
+            </div>
+        </div>
+        <div class="fila">
+            <div id="titulo" class="left">
+                <label>
+                    <% print(window.app.idioma.t('TIPO_MATERIAL')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="linea" class="right">
+                <input type="text" id="cmbTipoMaterial" name="cmbTipoMaterial" style="width:150px !important"   />
+        
+            </div>
+        </div>
+        <div class="fila">
+            <div id="Div1" class="left">
+                <label>
+                    <% print(window.app.idioma.t('CLASE_MATERIAL')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div2" class="right">
+                <input type="text" id="cmbClaseMaterial" name="cmbClaseMaterial" style="width:150px !important"  />
+            </div>
+        </div>
+
+        <div class="fila">
+            <div id="Div7" class="left">
+                <label>
+                    <% print(window.app.idioma.t('MATERIAL')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div8" class="right">
+                <input type="text" id="cmbRefMaterial" name="cmbRefMaterial" style="width:150px !important" />
+            </div>
+        </div>
+        <div class="fila">
+            <div id="Div17" class="left">
+                <label id="lblNewMaterial">
+                    <% print(window.app.idioma.t('LOTE_PROVEEDOR')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div18" class="right">
+                <input type="text" id="txtLoteProveedor" name="txtLoteProveedor" style="width:150px !important" class="k-textbox" />
+            </div>
+        </div>
+        <div class="fila">
+            <div id="Div9" class="left">
+                <label>
+                    <% print(window.app.idioma.t('CANTIDAD')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div10" class="right">
+                <input type="text" id="txtCantidad" name="txtCantidad" style="width:150px !important" />
+            </div>
+        </div>
+        <div class="fila">
+            <div id="Div11" class="left"">
+                <label>
+                    <% print(window.app.idioma.t('SSCC')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div12" class="right">
+                <input type="text" id="txtSSCC" name="txtSSCC" style="width:150px !important"  class="k-textbox"/>
+            </div>
+        </div>
+        <div class="fila">
+            <div style="text-align: center; width: 100%;">
+                <button id="btnNewAceptar" value="Aceptar"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+                <button id="btnNewCancelar" value="Cancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+            </div>
+        </div>
+
+    </div>

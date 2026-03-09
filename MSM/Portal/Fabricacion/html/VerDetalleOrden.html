@@ -1,0 +1,393 @@
+<style>
+
+    #gridCurvas {
+        position: relative;
+        height: calc(100vh - 350px) !important;
+    }
+
+    #tpInfoOrden-3 {
+        height: calc(100vh - 340px) !important;
+    }
+
+    .table {
+        border: 1px solid #000000;
+        margin: 2px;
+        table-layout: fixed;
+    }
+
+    .selRowProd {
+        background-color: lightgreen;
+    }
+
+    .table-bordered > thead > tr > th,
+    .table-bordered > tbody > tr > th,
+    .table-bordered > tfoot > tr > th,
+    .table-bordered > thead > tr > td,
+    .table-bordered > tbody > tr > td,
+    .table-bordered > tfoot > tr > td {
+        border: 1px solid black;
+        /*font-weight: normal;*/
+    }
+
+    .table > tbody > tr > td,
+    .table > tbody > tr > th,
+    .table > tfoot > tr > td,
+    .table > tfoot > tr > th,
+    .table > thead > tr > td,
+    .table > thead > tr > th {
+        vertical-align: middle !important;
+    }
+
+    .table td {
+        text-align: center;
+        /*font-size: 19px;*/
+        /*font-weight: bold !important;*/
+        padding: 4px !important;
+        padding-left: 8px !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+
+    .bordeFinoDashed td {
+        text-align: left !important;
+        border: dashed 1px lightgray !important;
+    }
+
+    .eliminaLims {
+        text-align: center !important;
+    }
+
+    .bordeFinoNoDashed td {
+        text-align: left !important;
+        border: hidden !important;
+    }
+
+    /*.table span {
+        font-weight: normal;
+    }*/
+
+    .nowrap {
+        word-wrap: break-word;
+        max-height: 3em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .blueBtn {
+        /*width: 110.977px;*/
+        background-color: royalblue;
+        color: white;
+    }
+
+    .k-grid table {
+        width: 100% !important;
+    }
+
+    .circle_state {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-size: 25px 28px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 25px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin: 0px auto;
+    }
+
+    .circle_cells {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-size: 25px 28px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 25px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-right: 5px;
+    }
+
+    .btnSAI {
+        margin: 0px auto;
+        display: flex;
+    }
+
+    #iconsalir {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        font-size: 16px;
+        font-weight: bold;
+        font-family: cursive;
+        cursor: pointer;
+    }
+
+    #verticalSplitter {
+        border: none;
+    }
+
+        #verticalSplitter .pane-content {
+            overflow: hidden !important;
+        }
+
+    #tpInfoOrden-4 {
+        overflow-x: hidden;
+    }
+</style>
+
+<!-- CABECERA -->
+<table id="tablaOrden" class="table bordeFinoDashed" style="margin-bottom: 8px; float: left;">
+    <tbody>
+        <tr style="border: solid 1px black !important; background-color: #ebe9e9">
+            <td id="lblEstado" style="width: 10%; text-align: center !important; border: solid 1px black !important;">
+                <b>
+                    <label id="txtEstadoProcCerrado">
+                        <%=order.EstadoActual.Descripcion.toUpperCase()%>
+                    </label>
+                </b>
+            </td>
+            <td><span><b><% print(window.app.idioma.t("IDORDEN")) %>: </b></span><span id="IDORDEN"><%= order.ID %></span></td>
+            <td>
+                <span><b><% print(window.app.idioma.t("TIPO_ORDEN")) %>: </b></span>
+                <%if (order.TipoOrden != null) {%>
+                <%= order.TipoOrden.Descripcion %>
+                <%}%>
+            </td>
+
+            <td>
+                <span>
+                    <b>
+                        <%
+                        var descripcion = order.TipoOrden.Descripcion;
+                        if (descripcion === window.app.idioma.t("CONCENTRADOS")) {
+                            descripcion = window.app.idioma.t("CONCENTRADO");
+                        }
+                        %>
+                        <% print(window.app.idioma.t("NUMERO")) %> <%= descripcion.charAt(0) + descripcion.toLowerCase().slice(1) %>:
+                    </b>
+                </span>
+                <%= order.NumeroDv %>
+            </td>
+        </tr>
+        <tr>
+            <td id="btnAccion" rowspan="4" style="border: solid 1px black !important; margin: 0px; padding: 0px;">
+                <div id="imgEstadoOrden" class="circle_state"></div>
+            </td>
+            <td>
+                <span><b><% print(window.app.idioma.t("UBICACION")) %>: </b></span>
+                <%= order.Equipo %>
+            </td>
+            <td>
+                <span><b><% print(window.app.idioma.t("MATERIAL")) %>: </b></span><span id="nombreMaterialOrden">
+                    <%=order.Material.Nombre %>
+                </span>
+            </td>
+            <td>
+                <span><b><% print(window.app.idioma.t("LOTEMES")) %>: </b></span><span id="idMaterialOrden">
+                    <%= order.LoteMES %>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span><b> <% print(window.app.idioma.t('CANTIDAD_PRODUCIDA')) %>: </b></span><span id="lblProducida"> <%=order.CantidadProducida%> HL</span>
+            </td>
+            <td>
+                <span id="extracto"><span><b id="lblExtracto"><%=order.TituloExtracto%></b></span><span id="lblSobrante"> <%=order.MaterialSobrante%><span> <%=order.UnidadExtracto%></span> </span></span>
+            </td>
+            <td>
+                <span id="loteEficiencia">
+                    <span id="idTipoEficiencia">
+                        <span><b><% print(window.app.idioma.t("EFICIENCIA")) %>: </b></span><span id="lblEficiencia"><%=order.Eficiencia%> %</span>
+                    </span>
+                    <span id="idTipoLoteLevadura" style="display:none">
+                        <span><b><%=order.TituloLoteLevadura%> </b></span><span id="lblLote"><%=order.LoteLevadura%></span><span><%=order.UnidadLoteLevadura%></span>
+                    </span>
+                </span>
+            </td>
+        </tr>
+        <tr id="porcentajesFiltracion" style="display:none">
+            <td>
+                <span><b><% print(window.app.idioma.t("PORC_PRESION_FILTRO")) %>: </b></span>
+                <span id="pctPresionValue"><%= order.PctePresion %></span>
+                <span>%</span>
+            </td>
+            <td>
+                <span><b><% print(window.app.idioma.t("PORC_TIERRAS_FILTRO")) %>: </b></span>
+                <span id="pctTierrasValue"><%= order.PcteTierras %></span>
+                <span>%</span>
+            </td>
+            <td>
+                <span><b><% print(window.app.idioma.t("OEE_WO")) %>: </b></span>
+                <span id="oeeWOValue"><%= order.OEEWO %></span>
+                <span>%</span>
+            </td>
+        </tr>
+        <tr id="propPrellenado" style="display:none">
+            <td>
+                <span><b><% print(window.app.idioma.t("CO2")) %>: </b></span>
+                <span id="CO2Value"><%= order.CO2 %></span>
+                <span>g/l</span>
+            </td>
+            <td>
+                <span><b><% print(window.app.idioma.t("CERVEZA_BARRIL")) %>: </b></span>
+                <span id="cervezaBarril"><%= order.CzaBarril %></span>
+            </td>
+        </tr>
+        <tr class="tipoOrden">
+            <!--<td id="Td1" rowspan="4" style="border: solid 1px black !important; margin: 0px; padding: 0px;"></td>-->
+            <td><span><b><% print(window.app.idioma.t("CANTIDAD_PLANIFICADA")) %>: </b></span><span id="cantidadMaterialOrden"><%= order.Cantidad.toString().replace(".", ",") + '    ' + order.Material.UnidadMedida %> </span></td>
+            <td>
+                <span><b><% print(window.app.idioma.t("FECHA_INICIO_ESTIMADA")) %>: </b></span>
+                <%=order.FecInicioEstimado%>
+            </td>
+            <td>
+                <span><b><% print(window.app.idioma.t("FECHA_FIN_ESTIMADA")) %>: </b></span>
+                <%=order.FecFinEstimado%>
+            </td>
+        </tr>
+        <tr>
+            <!--<td id="Td2" rowspan="4" style="border: solid 1px black !important; margin: 0px; padding: 0px;"></td>-->
+            <td>
+                <span id="spanDEstimada"><b><% print(window.app.idioma.t("DURACION_ESTIMADA")) %>: </b></span>
+                <%=order.duracionEstimada%>
+            </td>
+            <td>
+                <span><b><% print(window.app.idioma.t("INICIO_REAL")) %>: </b></span>
+                <span id="lblFechaInicioReal"><%=order.FecInicio%></span>
+            </td>
+            <td>
+                <span><b><% print(window.app.idioma.t("FIN_REAL")) %>: </b></span>
+                <span id="lblFechaFinReal"><%=order.FecFin%></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="tpInfoOrden" style="overflow: hidden; height: 75%;">
+    <ul>
+        <li class="k-state-active">
+            <% print(window.app.idioma.t('PROCEDIMIENTOS')) %>
+        </li>
+        <li id="divKOPS">
+            <% print(window.app.idioma.t('KOPS_PROCESO')) %>
+        </li>
+        <li id="divCurvas">
+            <% print(window.app.idioma.t('KOPS_CURVAS')) %>
+        </li>
+        <li id="divConsumo">
+            <% print(window.app.idioma.t('CONSUMO')) %>
+        </li>
+        <li id="divProduccion">
+            <% print(window.app.idioma.t('PRODUCCION')) %>
+        </li>
+        <li id="divTransferenciasSAI">
+            <% print(window.app.idioma.t('TRANSFERENCIAS_SAI')) %>
+        </li>
+        <li id="divNotas">
+            <% print(window.app.idioma.t('NOTAS_ORDEN')) %>
+        </li>
+        <li id="divLIMS">
+            LIMS
+        </li>
+        <button id='btnCerrarOrden' data-funcion="FAB_PROD_EXE_9_GestionWoActivas" style='margin-left: 70px; margin-top: 2.5px;' role="button" class="k-button blueBtn"><span style='margin-top: 2.5px;' class='k-icon k-i-lock'></span><% print(window.app.idioma.t('CERRAR_ORDEN')) %></button>
+    </ul>
+
+    <div>
+        <div id="gridProcs" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%;"></div>
+    </div>
+    <div>
+        <div id="gridKOPS" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%;"></div>
+    </div>
+    <div>
+        <div id="gridCurvas" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%;"></div>
+        <div id="toolbarMultiValor">
+        </div>
+        <div id="chart" style="display: none;"></div>
+    </div>
+    <div>
+        <div id="divConsumoExterno" style="overflow-x:hidden;">
+            <div id="divFiltrosConsumos" class="k-header" style="height: 35px; width: 100%; padding-top: 5px;">
+                <div style="float: left; margin-left: 10px; height: 25px;">
+                    <label><% print(window.app.idioma.t('CANTIDAD')) %></label>
+                    <input type="text" id="txtCantidadConsumo" style="width:120px;" />
+                    <button id="btnAsignarCantidad" class="k-button k-button-icontext k-grid-add" style="background-color: green; color: white;">
+                        <span class='k-icon k-add'></span><% print(window.app.idioma.t('ASIGNAR')) %>
+                    </button>
+                    <button id="btnEliminarMovConsumo" class="k-button k-button-icontext" style="margin-left: 5px"><% print(window.app.idioma.t('ELIMINAR_MOVIMIENTOS')) %></button>
+                </div>
+            </div>
+
+            <div id="verticalSplitter">
+                <div class="idConsumo">
+                        <div id="gridConsumo" style="width: 100%;height: 100%;"></div>
+                </div>
+                <div >
+                    <div class="pane-content" style="height:94%; padding-top:5px">
+                        <div id="gridConsumosFiltraciones" style="width: 100%; height: 100%; display: none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="idProduccion">
+                <div id="divFiltrosProduccion" class="k-header" style="height: 35px; width: 100%; padding-top: 5px;">
+                    <div style="float: left; margin-left: 10px; height: 25px;">
+                        <label><% print(window.app.idioma.t('CANTIDAD')) %></label>
+                        <input type="text" id="txtCantidadProduccion" style="width:120px;" />
+                        <button id="btnAsignarCantidadProduccion" class="k-button k-button-icontext k-grid-add" style="background-color: green; color: white;">
+                            <span class='k-icon k-add'></span><% print(window.app.idioma.t('ASIGNAR')) %>
+                        </button>
+                        <button id="btnEliminarMovProduccion" class="k-button k-button-icontext" style="margin-left: 5px"><% print(window.app.idioma.t('ELIMINAR_MOVIMIENTOS')) %></button>
+                    </div>
+                </div>
+                <div id="gridProduccion" style="width: 100%;height: 100%;"></div>
+        </div>
+    </div>
+    <div>
+        <div class="idTransferencia">
+            <div class="pane-content" style="height:94%; padding-top:5px">
+                <div id="gridTransferencias" style="width: 100%;height: 100%;"></div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <textarea id="auxEditor" data-funcion="FAB_PROD_EXE_9_GestionWoActivas" rows="20" style="width:100%"></textarea>
+        <center>
+            <button id='btnSaveNotes' data-funcion="FAB_PROD_EXE_9_GestionWoActivas" style="margin-top:5px" type="button" class='k-button btn-success'><% print(window.app.idioma.t('GUARDAR')) %> </button>
+        </center>
+    </div>
+    <div style="position:relative">
+        <div id="gridLIMS" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%;"></div>
+    </div>
+
+    <div></div>
+    <div></div>
+</div>
+<script type="text/x-kendo-template" id="templateConsumo">
+    <div id="tpDetalleConsumo" >
+        <ul>
+            <li class="k-state-active">
+                <% print(window.app.idioma.t('DETALLE_CONSUMO')) %>
+            </li>
+        </ul>
+        <div>
+            <div id="gridDetalleConsumo" style="width:100%"></div>
+        </div>
+    </div>
+</script>
+<script type="text/x-kendo-template" id="templateMultivalor">
+    <div id="tpDetalleMultivalor">
+        <ul>
+            <li class="k-state-active">
+                <% print(window.app.idioma.t('DETALLE')) %>
+            </li>
+        </ul>
+        <div>
+            <div id="gridDetalleMultivalor" style="float: left; width: 100%;"></div>
+        </div>
+    </div>
+</script>

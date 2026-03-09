@@ -1,0 +1,52 @@
+﻿<style>
+    .tdLabel{
+        width:16% !important;
+    }
+
+   .table th, .table td { 
+     border-top: none !important; 
+     text-align:right;
+     }
+
+    .table tr{ 
+    height: 45px !important; 
+    }
+    .table input,textarea{
+        margin-left:5px !important; 
+        width:120px;
+    }
+
+    #btnAceptar,#btnCancelar{
+        height:30px;
+        width:40%;
+        float:left;
+        margin-left:5px;
+        margin-top:10px;
+    }
+
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+</style>
+<div style="width:98%;margin:0px;padding:0px;">
+ <form id="SepararEstadoMaquina">
+    <table class="table borderless">
+        <tbody>
+            <tr>
+                <td style="width:50px"></td>
+                <td style="text-align:right;"><% print(window.app.idioma.t("HORA_SEPARACION")) %></td>
+                <td style="text-align:left;"><input id="tpHoraSeparacion" name="txtHoraSeparacion"/></td>
+                
+            </tr>
+         
+            <tr>
+                <td></td>
+                <td colspan="2"  style="text-align:center;">
+                    <button id="btnAceptar"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+                    <button id="btnCancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+                </td>                
+            </tr>
+        </tbody>
+    </table>
+</form> 
+</div>

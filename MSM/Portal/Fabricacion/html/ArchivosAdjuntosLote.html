@@ -1,0 +1,60 @@
+﻿<style>
+    .mb20 {
+        margin-bottom: 20px;
+    }
+
+    .mbi {
+        margin-bottom: initial;
+    }
+
+    .mr20 {
+        margin-right: 20px;
+    }
+
+    .flex-filas {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .flex-aic {
+        align-items: center;
+    }
+
+    a.disabled {
+        pointer-events: none;
+        cursor: not-allowed !important;
+        color: #00000085;
+    }
+
+        a.disabled span {
+            opacity: 0.5 !important;
+        }
+
+    .k-upload {
+        width: 37rem;
+    }
+
+        .k-upload strong {
+            width: initial !important;
+        }
+
+        .k-upload .k-filename {
+            max-width: 20rem;
+        }
+</style>
+
+<div style="padding:6px;">
+    <div id="div_ArchivosAdjuntosLote" class="flex-filas mb20 flex-aic">
+        <strong class="mr20"> <label class="mbi" for="inpt_ArchivosAdjuntosLote"> <% print(window.app.idioma.t('ARCHIVOS_ADJUNTOS')) %> </label> :</strong>
+        <input name="inpt_ArchivosAdjuntosLote" id="inpt_ArchivosAdjuntosLote" type="file" disabled style="width:100%">
+    </div>
+    <div class="flex-filas" style="justify-content:space-between">
+        <input id="kd-ficheros" style="width:80%; height:100%;"/>
+        <a class="k-button disabled" id="inpt_visorArchivo" style="padding-left: 12px; padding-right: 12px;">
+            <span class="k-icon k-i-attach"></span> <% print(window.app.idioma.t('VER')) %>
+        </a>
+    </div>
+</div>
+

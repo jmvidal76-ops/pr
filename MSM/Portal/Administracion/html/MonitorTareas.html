@@ -1,0 +1,53 @@
+﻿<style type="text/css">
+    #vsplitPanelTareas {
+        display: flex;
+        flex-direction: column;
+        height: calc(100vh - 156px);
+        width: 100%;
+    }
+
+    #gridTareasEjecucion {
+        flex: 0 0 30%;
+        overflow: auto;
+    }
+
+    #gridTareasProgramadas {
+        flex: 1 0 60%; 
+        overflow: auto;
+        margin-bottom: 20px; 
+    }
+
+    #divFiltrosHeader {
+        padding-top: 5px;
+        height: 32px;
+        width: 100%;
+    }
+
+    .titulo-grid {
+        padding: 6px 12px;
+        font-weight: bold;
+        text-align: center; 
+    }
+    
+</style>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('MONITOR_TAREAS')) %></label>
+</div>
+
+<div id="divCabeceraVista" class="divContenidoVista">
+    <div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+        <button id="btnActualizar" class="k-button k-button-icontext">
+            <span class="k-icon k-i-play-a"></span><% print(window.app.idioma.t('ACTUALIZAR')) %>
+        </button>
+    </div>
+
+    <div id="vsplitPanelTareas">
+        <div class="titulo-grid">Tareas en Ejecución</div>
+        <div id="gridTareasEjecucion"></div>
+
+        <div class="titulo-grid">Tareas Programadas</div>
+        <div id="gridTareasProgramadas"></div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+﻿<style>
+    .fila {
+        margin-left: 10px;
+        margin-top: 20px;
+    }
+</style>
+
+<div>
+    <form id="CrearEditarConfiguracionMateriales">
+        <div class="fila">
+            <label id="lblMaterial" style="width: 60px; text-align: right"><% print(window.app.idioma.t('MATERIAL')) %></label>
+            <select id="cmbMateriales" style="width: 580px; margin-left: 5px" />
+        </div>
+        <div class="fila" id="trError" style="display: none; text-align: center; margin-left: 10px; margin-top: 10px ">
+            <span id="lblError" style="color: red;"><% print(window.app.idioma.t('ERROR_MATERIAL_EXISTE')) %> </span>
+        </div>
+        <div style="text-align: center; margin-top: 15px">
+            <input type="button" id="btnAceptarMaterial" style="margin-right: 20px" value="Aceptar" />
+            <input type="button" id="btnCancelarMaterial" value="Cancelar" />
+        </div>
+    </form>
+</div>

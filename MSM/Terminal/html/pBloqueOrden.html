@@ -1,0 +1,140 @@
+﻿<style>
+    .table {
+        border: 1px solid #000000;        
+        table-layout: fixed;
+        background-color:white;
+        width: 100%;
+        margin-bottom: 0px;    
+        
+        
+    }
+
+
+    .table-bordered > thead > tr > th,
+    .table-bordered > tbody > tr > th,
+    .table-bordered > tfoot > tr > th,
+    .table-bordered > thead > tr > td,
+    .table-bordered > tbody > tr > td,
+    .table-bordered > tfoot > tr > td {
+        border: 1px solid black;
+        font-weight: normal;
+    }
+
+    .table td {
+        text-align: center;
+        font-size: 19px;
+        font-weight: bold !important;
+        padding: 4px !important;
+        padding-left: 8px !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .bordeFinoDashed td {
+        text-align: left !important;
+        border: dashed 1px lightgray !important;
+    }
+
+    .bordeFinoNoDashed td {
+        text-align: left !important;
+        border: hidden !important;
+    }
+
+    .table span {
+        font-weight: normal;
+    }
+
+    .nowrap {
+        word-wrap: break-word;
+        max-height: 3em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .cantidades {
+        font-size: 17px !important;
+    }
+</style>
+
+<a href="#wo/<%= window.app.lineaSel.id %>/<%= id %>/menu">
+    <table class="table bordeFinoDashed" >
+        <tbody>
+            <tr style="border: solid 1px black !important; background-color: #ebe9e9">
+                <td id="lblEstado" style="background-color: <%= estadoActual.color %>; width: 10%; text-align: center !important; border: solid 1px black !important;"><%= estadoActual.nombre %></td>
+                <td style="width: 30%;"><span><% print(window.app.idioma.t("IDORDEN")) %> </span><%= idOrdenPadre %></td>
+                <td style="width: 30%;">
+                    <span><% print(window.app.idioma.t("PARTICION")) %> </span>
+                    <%= idSuborden %> de <%= numParticiones %>
+                </td>
+                <td style="width: 30%;"><span><% print(window.app.idioma.t("OEE")) %> </span>
+                    <div id="oee<%= idOrdenPadre%><%= idSuborden%>" style="height: 25px; width: 90%; font-size: 13px; float: right;"></div>
+                </td>
+            </tr>
+            <tr>
+                <td id="btnAccion" rowspan="4" style="border: solid 1px black !important; margin: 0px; padding: 0px;"></td>
+                <td><span><% print(window.app.idioma.t("CODIGO_PRODUCTO")) %></span> <%= producto.codigo %></td>
+                <td><span><% print(window.app.idioma.t("PRODUCTO")) %></span> <%= producto.nombre %></td>
+                <td><span><% print(window.app.idioma.t("TIPO_PRODUCTO")) %></span> <%= producto.tipoProducto.nombre %></td>
+            </tr>
+            <tr>
+                <td rowspan="2">
+                    <table class="bordeFinoNoDashed" style="width: 100%; margin-left: -7px;">
+                        <tr>
+                            <td colspan="3"><span><% print(window.app.idioma.t("CANTIDAD_PALETIZADORA")) %></span></td>
+                        </tr>
+                        <tr>
+                            <td class="cantidades" style="border-top: dashed 1px lightgray !important; border-right: dashed 1px lightgray !important"><span><% print(window.app.idioma.t("PALETS")) %></span> <%= kendo.toString(produccion.paletsEtiquetadoraProducidos, "n0") %></td>
+                            <td class="cantidades" style="border-top: dashed 1px lightgray !important; border-right: dashed 1px lightgray !important"><span><% print(window.app.idioma.t("CPB")) %></span> <%= kendo.toString(produccion.paletsEtiquetadoraProducidos * CajasPorPalet, "n0") %></td>
+                            <td class="cantidades" style="border-top: dashed 1px lightgray !important;"><span><% print(window.app.idioma.t("ENVASES")) %></span> <%= kendo.toString(produccion.paletsEtiquetadoraProducidos * EnvasesPorPalet, "n0") %></td>
+                        </tr>
+                    </table>
+
+                </td>
+                <td rowspan="2">
+                    <table class="bordeFinoNoDashed" style="width: 100%; margin-left: -7px;">
+                        <tr>
+                            <td colspan="3"><span><% print(window.app.idioma.t("CANTIDAD_PLANIFICADA")) %></span></td>
+                        </tr>
+                        <tr>
+                            <td class="cantidades" style="border-top: dashed 1px lightgray !important; border-right: dashed 1px lightgray !important"><span><% print(window.app.idioma.t("PALETS")) %> </span><%= kendo.toString(cantPlanificada, "n0") %></td>
+                            <td class="cantidades" style="border-top: dashed 1px lightgray !important; border-right: dashed 1px lightgray !important"><span><% print(window.app.idioma.t("CPB")) %> </span><%= kendo.toString(cantPlanificada * CajasPorPalet, "n0") %></td>
+                            <td class="cantidades" style="border-top: dashed 1px lightgray !important;"><span><% print(window.app.idioma.t("ENVASES")) %> </span><%= kendo.toString(cantPlanificada * EnvasesPorPalet, "n0") %></td>
+                        </tr>
+                    </table>
+
+                </td>
+                <td rowspan="2" class="nowrap"><div class="nowrap"><span><% print(window.app.idioma.t("OBSERVACIONES")) %></span>&nbsp;<%= descripcion %></div>
+                </td>
+            </tr>
+            <tr>
+                <!--<td><span><% print(window.app.idioma.t("PALETS_PACKS_ENVASES")) %></span>&nbsp;<%= produccion.paletsAlmacen %> / <%= produccion.paletsAlmacen * CajasPorPalet %> / <%= produccion.paletsAlmacen * EnvasesPorPalet %></td>
+                <td><span><% print(window.app.idioma.t("PALETS_PACKS_ENVASES")) %></span>&nbsp;<%= cantPlanificada %> / <%= cantPlanificada * CajasPorPalet %> / <%= cantPlanificada * EnvasesPorPalet %></td>-->
+                <!--<td></td>-->
+            </tr>
+            <tr>
+                <% if(estadoActual.nombre=="Pausada"){ %>
+                    <td><span><% print(window.app.idioma.t("FECHA_INICIO_REAL")) %></span> <%= fecInicio  %></td>
+                    <td><span><% print(window.app.idioma.t("FECHA_FIN_REAL")) %></span> <%= fecFin %></td>
+                    <td><span><% print(window.app.idioma.t("DURACION_REAL")) %></span> <%= window.app.getDateFormat(duracionReal) %></td>
+                <% }else{
+                    if(estadoActual.nombre=="Producción" || estadoActual.nombre=="Iniciando" || estadoActual.nombre=="Iniciar"){                
+                 %>
+                    <td><span><% print(window.app.idioma.t("FECHA_INICIO_REAL")) %></span> <%= fecInicio %></td>
+                    <td><span><% print(window.app.idioma.t("FECHA_FIN_ESTIMADA")) %></span> <%= fecFinEstimadoCalculadoTurno %></td>
+                    <td><span><% print(window.app.idioma.t("DURACION_ESTIMADA")) %></span> <%= duracionCalculadaTurno %></td>
+                <% }else{
+                %>
+                <td><span><% print(window.app.idioma.t("FECHA_INICIO_PLANIFICADA")) %></span> <%= fecInicioEstimado %></td>
+                    <td><span><% print(window.app.idioma.t("FECHA_FIN_PLANIFICADA")) %></span> <%= fecFinEstimado %></td>
+                    <td><span><% print(window.app.idioma.t("DURACION_PLANIFICADA")) %></span> <%= window.app.getDateFormat(duracion) %></td>
+                <%
+                    }
+                }
+                 %> 
+               
+                
+            </tr>
+        </tbody>
+    </table>
+</a>
+    

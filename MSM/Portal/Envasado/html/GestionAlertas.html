@@ -1,0 +1,20 @@
+﻿<style>
+    .backGroundSelected {
+        background-color:#66a6b9;
+        color:white;
+        padding:5px;
+    }
+</style>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+            <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+                 <label class="lblCabeceraVista"><% print(window.app.idioma.t('GESTION_ALERTAS_EMAILS')) %></label>
+        </div>
+
+<div id="grid" ></div>
+
+ <script id="templateMaquina" type="text/x-kendo-template">
+    <span class="#: typeof isDeleted !== 'undefined' ? isDeleted ? 'backGroundSelected':'': ''#"> 
+     #: nombre +' - '+ NombreZona +' - '+ descripcion #
+     </span>
+ </script>

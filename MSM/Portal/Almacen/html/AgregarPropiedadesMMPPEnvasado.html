@@ -1,0 +1,50 @@
+﻿<style>
+    .filaPropiedades {
+        margin-left: 10px;
+        margin-top: 20px;
+    }
+
+    .textos {
+        width: 100px;
+        text-align: right;
+    }
+</style>
+
+<div>
+    <form id="AgregarPropiedadesMMPPEnvasado">
+        <div class="filaPropiedades">
+            <label id="lblTipoPropiedad1" class="textos"><% print(window.app.idioma.t('TIPO_PROPIEDAD')) %></label>
+            <select class="tipoPropiedad" style="width: 150px" />
+            <label id="lblValor1" class="textos"><% print(window.app.idioma.t('VALOR')) %></label>
+            <select class="valorPropiedad" style="width: 150px" />
+        </div>
+        <div class="filaPropiedades">
+            <label id="lblTipoPropiedad2" class="textos"><% print(window.app.idioma.t('TIPO_PROPIEDAD')) %></label>
+            <select class="tipoPropiedad" style="width: 150px" />
+            <label id="lblValor2" class="textos"><% print(window.app.idioma.t('VALOR')) %></label>
+            <select class="valorPropiedad" style="width: 150px" />
+        </div>
+        <div class="filaPropiedades">
+            <label id="lblTipoPropiedad3" class="textos"><% print(window.app.idioma.t('TIPO_PROPIEDAD')) %></label>
+            <select class="tipoPropiedad" style="width: 150px" />
+            <label id="lblValor3" class="textos"><% print(window.app.idioma.t('VALOR')) %></label>
+            <select class="valorPropiedad" style="width: 150px" />
+        </div>
+        <div class="filaPropiedades">
+            <label id="lblTipoPropiedad4" class="textos"><% print(window.app.idioma.t('TIPO_PROPIEDAD')) %></label>
+            <select class="tipoPropiedad" style="width: 150px" />
+            <label id="lblValor4" class="textos"><% print(window.app.idioma.t('VALOR')) %></label>
+            <select class="valorPropiedad" style="width: 150px" />
+        </div>
+        <div class="filaPropiedades">
+            <label id="lblTipoPropiedad5" class="textos"><% print(window.app.idioma.t('TIPO_PROPIEDAD')) %></label>
+            <select class="tipoPropiedad" style="width: 150px" />
+            <label id="lblValor5" class="textos"><% print(window.app.idioma.t('VALOR')) %></label>
+            <select class="valorPropiedad" style="width: 150px" />
+        </div>
+        <div style="text-align: center; margin-top: 15px">
+            <input type="button" id="btnAceptarPropiedades" style="margin-right: 20px" value="Aceptar" />
+            <input type="button" id="btnCancelarPropiedades" value="Cancelar" />
+        </div>
+    </form>
+</div>

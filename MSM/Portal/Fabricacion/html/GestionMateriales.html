@@ -1,0 +1,20 @@
+<!-- agomezn 220616: creado -->
+<style type="text/css">
+.k-tabstrip > .k-content, .k-panelbar .k-tabstrip > .k-content{padding:0 0 0 0;}
+</style>
+
+<!-- Cabecera -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="./img/titulocabecera.png" style="width:20px; height:20px; margin-left:5px;" alt="" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('GESTION_MATERIAS_PRIMAS')) %></label>
+</div>
+<div id="toolbar" style="overflow: hidden;"></div>
+<label id=pass style="display:none">false</label>
+<div id="gridGestionMateriales">    
+</div>
+
+<script type="text/x-kendo-template" id="templateDetalle">
+    <div>
+            <div id="gridDetalleLote" style="float: left; width: 100%;"></div>
+        </div>
+</script>

@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Common.Models.Ubicaciones
+{
+    public class PoliticaVaciadoDto
+    {
+        public int IdPoliticaVaciado { get; set; }
+        public string Descripcion { get; set; }
+
+    }
+}

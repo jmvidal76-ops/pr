@@ -1,0 +1,37 @@
+﻿<style>
+    #btnAceptarConsumo {
+        float: left;
+        margin-left: 140px;
+    }
+
+    #btnCancelarConsumo {
+        float: left;
+        margin-left: 20px;
+    }
+</style>
+
+<div>
+    <form id="CrearConsumoCajaVacia">
+        <div style="float: left; background-color: transparent; border: 0; margin-top: 10px;">
+            <div style="float: left; border: 0;">
+                <label id="lblWO" style="width: 100px; text-align: right;"></label>
+                <select id="cmbWO" style="width: 270px" />
+            </div>
+            <br /><br /><br />
+            <div style="float: left; border: 0;">
+                <label id="lblCajaConsumo" style="width: 100px; text-align: right;"></label>
+                <select id="cmbCajaConsumo" style="width: 270px" />
+            </div>
+            <br /><br /><br />
+            <div style="float: left; border: 0;">
+                <label id="lblCantidadConsumo" style="width: 100px; text-align: right;"></label>
+                <input type="text" style="width: 270px" id="ntxtCantidadConsumo" name="txtCantidadConsumo" data-type="number" data-role="numerictextbox" required />
+            </div>
+            <br /><br /><br />
+            <div>
+                <input type="button" id="btnAceptarConsumo" value="Aceptar" />
+                <input type="button" id="btnCancelarConsumo" value="Cancelar" />
+            </div>
+        </div>
+    </form>
+</div>

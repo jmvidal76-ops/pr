@@ -1,0 +1,512 @@
+<style>
+    .tdHoras {
+        text-align: center;
+        
+    }
+
+        .tdHoras td {
+            padding-bottom: 0px !important;
+            padding-top: 0px !important;
+            border-left-width: 0px !important;
+        }
+
+        .tdHoras th {
+            text-align: center !important;
+        }
+
+    .trImpar {
+        background-color: #f1f1f1;
+    }
+
+    .k-tabstrip > .k-content, .k-panelbar .k-tabstrip > .k-content {
+        padding: 0px !important;
+    }
+
+    .k-tabstrip > .k-content {
+        overflow: hidden !important;
+    }
+
+    .cabeceraCol {
+        overflow: hidden;
+        border-style: solid;
+        border-width: 0 0 1px 1px;
+        padding: .5em .6em .4em .6em;
+        font-weight: normal;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-align: left;
+    }
+
+    .tableBorder {
+        border: solid !important;
+        border-width: 1px 0 0px 0px !important;
+        border-color: #c5c5c5 !important;
+    }
+</style>
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('TURNOS_DE_FÁBRICA')) %></label>
+</div>
+
+<div id="divFiltros" class="k-header" style="height: 35px; width: 100%; padding-top: 5px;">
+    <div style="float: left;">
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('ANYO')) %></label>
+        <select id="selectAnyo"></select>
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('SEMANA')) %></label>
+        <select id="selectSemana" style="width: 220px;"></select>
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('LINEA')) %></label>
+        <select id="selectLinea" style="width: 200px;"></select>
+        <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('FILTRAR')) %></button>
+    </div>
+    <div style="float: right; margin-right: 10px;">
+        <select id="selectTurno"></select>
+        <button id="btnAsignarTurnos" class="k-button k-button-icontext k-grid-add" style="background-color: green; color: white;"><span class='k-icon k-add'></span><% print(window.app.idioma.t('ASIGNAR')) %></button>
+    </div>
+</div>
+<div id="gridTurnosFabrica"></div>
+<script type="text/x-kendo-template" id="template">
+    <div class="container" style="width:98%;">
+
+        <ul>
+            <li class="k-state-active">
+                 <% print(window.app.idioma.t('HORAS_TURNOS_DIA')) %>
+            </li>
+        </ul>
+        <div>
+            <!--<div class="orders"></div>-->
+            <table id="tbHorasDias" style="padding-top:10px;padding-left:10px;width:98%;">
+                <thead>
+                <tr style="font-size=14px;">
+                    <th style="padding-left: 5px;width:10%;" class="k-header cabeceraCol"><% print(window.app.idioma.t('DIA')) %></th>
+                    <th style="padding-left: 5px;width:10%;" class="k-header cabeceraCol"><% print(window.app.idioma.t('FECHA')) %></th>
+                    <th style="padding-left: 5px;" class="k-header cabeceraCol"><% print(window.app.idioma.t('MAÑANA')) %></th>
+                    <th style="padding-left: 5px;" class="k-header cabeceraCol"><% print(window.app.idioma.t('TARDE')) %></th>
+                    <th style="padding-left: 5px;" class="k-header cabeceraCol"><% print(window.app.idioma.t('NOCHE')) %></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr class="trImpar">
+                        <td><% print(window.app.idioma.t('LUNES')) %></td>
+                        <td><span id="fechaLunes#= numeroSemana + idLinea.replace(/\./g,  '')#"></span></td>
+                        <td>
+                            <table class="tdHoras">
+                                <thead>
+                                    <tr>
+                                        <th><% print(window.app.idioma.t('HORAS_DESDE_EL')) %></th>
+                                        <th><% print(window.app.idioma.t('HORAS_DESDE_EL_FIN')) %></th>
+                                    </tr>
+                                </thead>
+                                <tr>
+                                    <td style="border-style:none !important;">
+                                        <input id="mananaLunesHI#= numeroSemana + idLinea.replace(/\./g,  '')#" name="mananaLunesHI#= numeroSemana + idLinea.replace(/\./g,  '')#" type="number" style="width:45%" />
+                                    </td>
+                                    <td style="border-style:none !important;">
+                                        <input id="mananaLunesHF#= numeroSemana + idLinea.replace(/\./g,  '')#" name="mananaLunesHF#= numeroSemana + idLinea.replace(/\./g,  '')#" type="number" style="width:45%" />
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div id="horarioMananaLunes#= numeroSemana + idLinea.replace(/\./g,  '')#" style="text-align:center;"></div>
+                                    </td>   
+                                </tr>
+                            </table>                      
+                        </td>
+                        <td>
+                            <table class="tdHoras">
+                                <thead>
+                                    <tr>
+                                        <th><% print(window.app.idioma.t('HORAS_DESDE_EL')) %></th>
+                                        <th><% print(window.app.idioma.t('HORAS_DESDE_EL_FIN')) %></th>
+                                    </tr>
+                                </thead>
+                                <tr>
+                                    <td style="border-style:none !important;">
+                                        <input id="tardeLunesHI#= numeroSemana + idLinea.replace(/\./g,  '')#" name="tardeLunesHI#= numeroSemana + idLinea.replace(/\./g,  '')#" type="number" style="width:45%" />
+                                    </td>
+                                    <td style="border-style:none !important;">
+                                        <input id="tardeLunesHF#= numeroSemana + idLinea.replace(/\./g,  '')#" name="tardeLunesHF#= numeroSemana + idLinea.replace(/\./g,  '')#" type="number" style="width:45%" />
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div id="horarioTardeLunes#= numeroSemana + idLinea.replace(/\./g,  '')#" style="text-align:center;"></div>
+                                    </td>   
+                                </tr>
+                            </table>   
+                        </td>
+                        <td>
+                            <table class="tdHoras">
+                                <thead>
+                                    <tr>
+                                        <th><% print(window.app.idioma.t('HORAS_DESDE_EL')) %></th>
+                                        <th><% print(window.app.idioma.t('HORAS_DESDE_EL_FIN')) %></th>
+                                    </tr>
+                                </thead>
+                                <tr>
+                                    <td style="border-style:none !important;">
+                                        <input id="nocheLunesHI#= numeroSemana + idLinea.replace(/\./g,  '')#" name="nocheLunesHI#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>
+                                    <td style="border-style:none !important;">
+                                       <input id="nocheLunesHF#= numeroSemana + idLinea.replace(/\./g,  '')#" name="nocheLunesHF#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div id="horarioNocheLunes#= numeroSemana + idLinea.replace(/\./g,  '')#" style="text-align:center;"></div>
+                                    </td>   
+                                </tr>
+                            </table> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><% print(window.app.idioma.t('MARTES')) %></td>
+                        <td><span id="fechaMartes#= numeroSemana + idLinea.replace(/\./g,  '')#"></span></td>
+                        <td>
+                            <table class="tdHoras">
+                                <tr>
+                                    <td style="border-style:none !important;">
+                                        <input id="mananaMartesHI#= numeroSemana + idLinea.replace(/\./g,  '')#" name="mananaMartesHI#= numeroSemana + idLinea.replace(/\./g,  '')#" type="number" style="width:45%" />
+                                    </td>
+                                    <td style="border-style:none !important;">
+                                       <input id="mananaMartesHF#= numeroSemana + idLinea.replace(/\./g,  '')#" name="mananaMartesHF#= numeroSemana + idLinea.replace(/\./g,  '')#" type="number" style="width:45%" />
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div id="horarioMananaMartes#= numeroSemana + idLinea.replace(/\./g,  '')#" style="text-align:center;"></div>
+                                    </td>   
+                                </tr>
+                            </table> 
+                        </td>
+                        <td>
+                            <table class="tdHoras">
+                                <tr>
+                                    <td style="border-style:none !important;">
+                                        <input id="tardeMartesHI#= numeroSemana + idLinea.replace(/\./g,  '')#" name="tardeMartesHI#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>
+                                    <td style="border-style:none !important;">
+                                       <input id="tardeMartesHF#= numeroSemana + idLinea.replace(/\./g,  '')#" name="tardeMartesHF#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                       <div id="horarioTardeMartes#= numeroSemana + idLinea.replace(/\./g,  '')#" style="text-align:center;"></div>
+                                    </td>   
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table class="tdHoras">
+                                <tr>
+                                    <td style="border-style:none !important;">
+                                        <input id="nocheMartesHI#= numeroSemana + idLinea.replace(/\./g,  '')#" name="nocheMartesHI#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>
+                                    <td style="border-style:none !important;">
+                                       <input id="nocheMartesHF#= numeroSemana + idLinea.replace(/\./g,  '')#" name="nocheMartesHF#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                       <div id="horarioNocheMartes#= numeroSemana + idLinea.replace(/\./g,  '')#" style="text-align:center;"></div>
+                                    </td>   
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>  
+                    <tr class="trImpar">
+                        <td><% print(window.app.idioma.t('MIERCOLES')) %></td>
+                        <td><span id="fechaMiercoles#= numeroSemana + idLinea.replace(/\./g,  '')#"></span></td>
+                        <td>
+                            <table class="tdHoras">
+                                <tr>
+                                    <td style="border-style:none !important;">
+                                        <input id="mananaMiercolesHI#= numeroSemana + idLinea.replace(/\./g,  '')#" name="mananaMiercolesHI#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>
+                                    <td style="border-style:none !important;">
+                                       <input id="mananaMiercolesHF#= numeroSemana + idLinea.replace(/\./g,  '')#" name="mananaMiercolesHF#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                      <div id="horarioMananaMiercoles#= numeroSemana + idLinea.replace(/\./g,  '')#" style="text-align:center;"></div>
+                                    </td>   
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table class="tdHoras">
+                                <tr>
+                                    <td style="border-style:none !important;">
+                                        <input id="tardeMiercolesHI#= numeroSemana + idLinea.replace(/\./g,  '')#" name="tardeMiercolesHI#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>
+                                    <td style="border-style:none !important;">
+                                       <input id="tardeMiercolesHF#= numeroSemana + idLinea.replace(/\./g,  '')#" name="tardeMiercolesHF#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                       <div id="horarioTardeMiercoles#= numeroSemana + idLinea.replace(/\./g,  '')#" style="text-align:center;"></div>
+                                    </td>   
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table class="tdHoras">
+                                <tr>
+                                    <td style="border-style:none !important;">
+                                        <input id="nocheMiercolesHI#= numeroSemana + idLinea.replace(/\./g,  '')#" name="nocheMiercolesHI#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>
+                                    <td style="border-style:none !important;">
+                                       <input id="nocheMiercolesHF#= numeroSemana + idLinea.replace(/\./g,  '')#" name="nocheMiercolesHF#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                       <div id="horarioNocheMiercoles#= numeroSemana + idLinea.replace(/\./g,  '')#" style="text-align:center;"></div>
+                                    </td>   
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>  
+                    <tr>
+                        <td><% print(window.app.idioma.t('JUEVES')) %></td>
+                        <td><span id="fechaJueves#= numeroSemana + idLinea.replace(/\./g,  '')#"></span></td>
+                        <td>
+                            <table class="tdHoras">
+                                <tr>
+                                    <td style="border-style:none !important;">
+                                        <input id="mananaJuevesHI#= numeroSemana + idLinea.replace(/\./g,  '')#" name="mananaJuevesHI#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>
+                                    <td style="border-style:none !important;">
+                                       <input id="mananaJuevesHF#= numeroSemana + idLinea.replace(/\./g,  '')#" name="mananaJuevesHF#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                       <div id="horarioMananaJueves#= numeroSemana + idLinea.replace(/\./g,  '')#" style="text-align:center;"></div> 
+                                    </td>   
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table class="tdHoras">
+                                <tr>
+                                    <td style="border-style:none !important;">
+                                        <input id="tardeJuevesHI#= numeroSemana + idLinea.replace(/\./g,  '')#" name="tardeJuevesHI#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>
+                                    <td style="border-style:none !important;">
+                                       <input id="tardeJuevesHF#= numeroSemana + idLinea.replace(/\./g,  '')#" name="tardeJuevesHF#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                       <div id="horarioTardeJueves#= numeroSemana + idLinea.replace(/\./g,  '')#" style="text-align:center;"></div>
+                                    </td>   
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table class="tdHoras">
+                                <tr>
+                                    <td style="border-style:none !important;">
+                                        <input id="nocheJuevesHI#= numeroSemana + idLinea.replace(/\./g,  '')#" name="nocheJuevesHI#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>
+                                    <td style="border-style:none !important;">
+                                       <input id="nocheJuevesHF#= numeroSemana + idLinea.replace(/\./g,  '')#" name="nocheJuevesHF#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                       <div id="horarioNocheJueves#= numeroSemana + idLinea.replace(/\./g,  '')#" style="text-align:center;"></div>
+                                    </td>   
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class="trImpar">
+                        <td><% print(window.app.idioma.t('VIERNES')) %></td>
+                        <td><span id="fechaViernes#= numeroSemana + idLinea.replace(/\./g,  '')#"></span></td>
+                        <td>
+                            <table class="tdHoras">
+                                <tr>
+                                    <td style="border-style:none !important;">
+                                        <input id="mananaViernesHI#= numeroSemana + idLinea.replace(/\./g,  '')#" name="mananaViernesHI#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>
+                                    <td style="border-style:none !important;">
+                                       <input id="mananaViernesHF#= numeroSemana + idLinea.replace(/\./g,  '')#" name="mananaViernesHF#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                       <div id="horarioMananaViernes#= numeroSemana + idLinea.replace(/\./g,  '')#" style="text-align:center;"></div>
+                                    </td>   
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table class="tdHoras">
+                                <tr>
+                                    <td style="border-style:none !important;">
+                                        <input id="tardeViernesHI#= numeroSemana + idLinea.replace(/\./g,  '')#" name="tardeViernesHI#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>
+                                    <td style="border-style:none !important;">
+                                       <input id="tardeViernesHF#= numeroSemana + idLinea.replace(/\./g,  '')#" name="tardeViernesHF#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                       <div id="horarioTardeViernes#= numeroSemana + idLinea.replace(/\./g,  '')#" style="text-align:center;"></div>
+                                    </td>   
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table class="tdHoras">
+                                <tr>
+                                    <td style="border-style:none !important;">
+                                        <input id="nocheViernesHI#= numeroSemana + idLinea.replace(/\./g,  '')#" name="nocheViernesHI#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>
+                                    <td style="border-style:none !important;">
+                                       <input id="nocheViernesHF#= numeroSemana + idLinea.replace(/\./g,  '')#" name="nocheViernesHF#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                       <div id="horarioNocheViernes#= numeroSemana + idLinea.replace(/\./g,  '')#" style="text-align:center;"></div>
+                                    </td>   
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><% print(window.app.idioma.t('SABADO')) %></td>
+                        <td><span id="fechaSabado#= numeroSemana + idLinea.replace(/\./g,  '')#"></span></td>
+                        <td>
+                            <table class="tdHoras">
+                                <tr>
+                                    <td style="border-style:none !important;">
+                                        <input id="mananaSabadoHI#= numeroSemana + idLinea.replace(/\./g,  '')#" name="mananaSabadoHI#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>
+                                    <td style="border-style:none !important;">
+                                       <input id="mananaSabadoHF#= numeroSemana + idLinea.replace(/\./g,  '')#" name="mananaSabadoHF#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                       <div id="horarioMananaSabado#= numeroSemana + idLinea.replace(/\./g,  '')#" style="text-align:center;"></div>
+                                    </td>   
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table class="tdHoras">
+                                <tr>
+                                    <td style="border-style:none !important;">
+                                        <input id="tardeSabadoHI#= numeroSemana + idLinea.replace(/\./g,  '')#" name="tardeSabadoHI#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>
+                                    <td style="border-style:none !important;">
+                                       <input id="tardeSabadoHF#= numeroSemana + idLinea.replace(/\./g,  '')#" name="tardeSabadoHF#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                       <div id="horarioTardeSabado#= numeroSemana + idLinea.replace(/\./g,  '')#" style="text-align:center;"></div>
+                                    </td>   
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table class="tdHoras">
+                                <tr>
+                                    <td style="border-style:none !important;">
+                                        <input id="nocheSabadoHI#= numeroSemana + idLinea.replace(/\./g,  '')#" name="nocheSabadoHI#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>
+                                    <td style="border-style:none !important;">
+                                       <input id="nocheSabadoHF#= numeroSemana + idLinea.replace(/\./g,  '')#" name="nocheSabadoHF#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                       <div id="horarioNocheSabado#= numeroSemana + idLinea.replace(/\./g,  '')#" style="text-align:center;"></div>  
+                                    </td>   
+                                </tr>
+                            </table>              
+                        </td>
+                    </tr>
+                    <tr class="trImpar">
+                        <td><% print(window.app.idioma.t('DOMINGO')) %></td>
+                        <td><span id="fechaDomingo#= numeroSemana + idLinea.replace(/\./g,  '')#"></span></td>
+                        <td>
+                            <table class="tdHoras">
+                                <tr>
+                                    <td style="border-style:none !important;">
+                                        <input id="mananaDomingoHI#= numeroSemana + idLinea.replace(/\./g,  '')#" name="mananaDomingoHI#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>
+                                    <td style="border-style:none !important;">
+                                       <input id="mananaDomingoHF#= numeroSemana + idLinea.replace(/\./g,  '')#" name="mananaDomingoHF#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                       <div id="horarioMananaDomingo#= numeroSemana + idLinea.replace(/\./g,  '')#" style="text-align:center;"></div>
+                                    </td>   
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table class="tdHoras">
+                                <tr>
+                                    <td style="border-style:none !important;">
+                                        <input id="tardeDomingoHI#= numeroSemana + idLinea.replace(/\./g,  '')#" name="tardeDomingoHI#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>
+                                    <td style="border-style:none !important;">
+                                       <input id="tardeDomingoHF#= numeroSemana + idLinea.replace(/\./g,  '')#" name="tardeDomingoHF#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                       <div id="horarioTardeDomingo#= numeroSemana + idLinea.replace(/\./g,  '')#" style="text-align:center;"></div>
+                                    </td>   
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table class="tdHoras">
+                                <tr>
+                                    <td style="border-style:none !important;">
+                                        <input id="nocheDomingoHI#= numeroSemana + idLinea.replace(/\./g,  '')#" name="nocheDomingoHI#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>
+                                    <td style="border-style:none !important;">
+                                       <input id="nocheDomingoHF#= numeroSemana + idLinea.replace(/\./g,  '')#" name="nocheDomingoHF#= numeroSemana + idLinea.replace(/\./g,  '')#"  type="number" style="width:45%"/>
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                       <div id="horarioNocheDomingo#= numeroSemana + idLinea.replace(/\./g,  '')#" style="text-align:center;"></div>
+                                    </td>   
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <table class="tableBorder">
+                <tr>
+                        <td colspan="5" class="k-header">
+                            <div style="width:100%;margin-bottom:5px;">
+                                <div style="text-align:center" id="divGuardarTurnos#= numeroSemana + idLinea.replace(/\./g,  '')#">
+                                    <a class="k-button k-button-icontext k-grid-save" style="background-color:green; color: white;" id="btnGuardarTurnos" ns="#= numeroSemana + idLinea.replace(/\./g,  '')#" >
+                                        <span></span>#= window.app.idioma.t("GUARDAR") #
+                                    </a>
+                                </div>
+                                <!--<select id="selectDesde"  style="width:220px;float:right;"></select> -->               
+                            </div>
+                        </td>
+                    </tr>
+            </table>
+        </div>
+
+    </div>
+</script>

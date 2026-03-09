@@ -1,0 +1,56 @@
+﻿ 
+    div.k-window-content {
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+    .formDialog {
+       
+        padding: 15px;
+        float: left;        
+        /*font-size: 80%;*/
+        box-sizing: border-box;
+       
+    }
+    .formDialog h3 {
+        border-bottom: 1px solid #ccc;
+        /*font-size: 1.4em;*/
+        font-weight: normal;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .formDialog #toolBarBotones {
+            text-align: center;
+    }
+    .formDialog label {
+        display: inline-block;
+        font-weight: bold;
+        width: 200px;
+        text-align: left;
+        
+    }
+    .tablaCampos {
+      
+        width: 450px;
+    }
+    .tablaCampos th{
+        padding: 4px;
+    
+    }
+    .labelCampo {
+        width: auto !important;
+    }
+    .firstTH{
+        text-align: right;
+        width: 60px;
+    }
+   
+    /*.formALT input {
+        
+        width: 150px;
+        
+    }*/
+ 
+   

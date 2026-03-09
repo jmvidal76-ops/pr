@@ -1,0 +1,20 @@
+﻿<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"> <% print(window.app.idioma.t('CURVA_RENDIMIENTO_TURNO')) %></label>
+</div>
+
+<!-- Filtros Cambios -->
+<div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+    <div style="float: left;">
+        <label style="margin-left:5px;"><% print(window.app.idioma.t('LINEA')) %></label>
+        <select id="selectLinea" style="width:200px;"></select>
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('FECHA')) %></label>
+        <input id="dtpFecha" style="width: 100px;" />
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('TURNO')) %></label>
+        <input id="cmbTurno" style="width: 100px;" />
+        <button id="btnConsultar" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+    </div>
+</div>
+
+<div id="grafica"></div>

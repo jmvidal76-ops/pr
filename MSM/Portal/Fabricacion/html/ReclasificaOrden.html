@@ -1,0 +1,42 @@
+<style>
+    #ddlMaterial {
+        width: 400px !important;
+    }
+</style>
+
+
+<div id="total" style="width: 100%; height: 100%; float: left;">
+    <div id="infoOrden" style="width: 95%; height: auto; float: left; margin-top:3%; margin-left:3%;">
+        <div id="orden" style="width:40%;float:left;margin-left:3%;">
+        <label><% print(window.app.idioma.t('ORDEN')) %>: </label>
+        <span  id="lblOrden"></span>
+            </div>
+                <div id="tipo" style="width:40%;float:left;">
+        <label><% print(window.app.idioma.t('TIPO')) %>: </label>
+        <span  id="lblTipo"></span>
+                    </div>
+    </div>
+        <div id="Div2" style="width: 95%; height: auto; float: left; margin-top:20px;margin-left:6%;">
+                <label><% print(window.app.idioma.t('MATERIAL_ACTUAL')) %>: </label>
+                <span id="txtMaterialActual" style="width:500px;" />
+</div>
+    <div id="infoDestino" style="width: 95%; height: auto; float: left; margin-top:20px;margin-left:6%;">
+                <label><% print(window.app.idioma.t('NUEVO_MATERIAL')) %>: </label>
+        <input type="text" id="ddlMaterial" name="ddlMaterial" style="width:420px;" />
+    </div>
+        <div id="Div1" style="width: 37%; height: auto; float: left; margin-top:25px;margin-left:6%;">
+                <label><% print(window.app.idioma.t('CANTIDAD_ACTUAL')) %>: </label>
+    <span id="txtCantidadDisponible"/>
+        </div>
+    <div id="infoCantidad" style="width: 45%; height: auto; float: left; margin-top:20px">
+                &nbsp;&nbsp;&nbsp;<label><% print(window.app.idioma.t('NUEVA_CANTIDAD')) %>: </label>
+                &nbsp;<input type="text" id="txtCantidad" name="txtCantidad" />
+        </div>
+            <div id="divInfo" style="width: 95%; height: auto; float: left; margin-top:20px;margin-left:6%;">
+                    <span id="lbl" style="display:none;">LABEL</span>
+</div>
+    <div id="botones" style="width: 100%; height: auto; float: left; text-align:center;margin-top:20px;">
+        <button id="btnAceptar"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+        <button id="btnCancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+    </div>
+</div>

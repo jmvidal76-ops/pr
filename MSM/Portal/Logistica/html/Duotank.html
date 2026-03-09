@@ -1,0 +1,29 @@
+﻿<style>
+    .k-tabstrip .k-content {
+        margin: 0;
+        padding: 0;
+        border-width: 0;
+        overflow-y: hidden;
+    }
+</style>
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('DUOTANK')) %></label>
+</div>
+
+<div id="divDuotank" class="divContenidoVista">
+    <div id="divPestanias">
+        <ul>
+            <li class="k-state-active"><% print(window.app.idioma.t('ESTADO_CARGA')) %></li>
+            <li><% print(window.app.idioma.t('LISTADO_MATRICULAS')) %></li>
+        </ul>
+        <div>
+            <div id="listadoBloques"></div>
+        </div>
+        <div>
+            <div id="gridMatriculas"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿<!-- CABECERA -->
+<script type="text/x-kendo-template" id="template">
+    <div class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                <% print(window.app.idioma.t('DETALLE_PEDIDO')) %>
+            </li>
+        </ul>
+        <div>
+            <div id="gridDetallePedido"></div>
+        </div>
+    </div>
+</script>
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('LISTA_PEDIDOS')) %></label>
+</div>
+<div id="gridGestionPedidos"></div>
+

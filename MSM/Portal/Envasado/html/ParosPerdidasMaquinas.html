@@ -1,0 +1,121 @@
+﻿<style>
+    .k-detail-cell .k-tabstrip .k-content {
+        padding: 0.2em;
+    }
+
+    .details ul {
+        list-style: none;
+        margin: 15px;
+        padding: 0;
+    }
+
+        .details ul li {
+            margin: 0;
+            line-height: 1.5em;
+        }
+
+    .details label {
+        display: inline-block;
+        /* width: 140px; */
+        width: 100px; /* agomezn 140616: 093 El detalle en Histórico de WO no se ve correctamente a 1366x768 */
+        padding-right: 10px;
+        text-align: right;
+        font-style: normal;
+        font-weight: bold;
+    }
+
+    .table {
+        border: 1px solid #000000;
+        margin: 2px;
+    }
+
+    .table-bordered > thead > tr > th,
+    .table-bordered > tbody > tr > th,
+    .table-bordered > tfoot > tr > th,
+    .table-bordered > thead > tr > td,
+    .table-bordered > tbody > tr > td,
+    .table-bordered > tfoot > tr > td {
+        border: 1px solid black;
+        font-weight: normal;
+    }
+
+    .bordeFinoDashed td {
+        text-align: center !important;
+        border: solid 1px lightgray !important;
+        line-height: 1 !important; /* agomezn 140616: 093 El detalle en Histórico de WO no se ve correctamente a 1366x768 */
+        padding: 3px !important;
+        vertical-align: middle !important;
+    }
+
+    .rTable {
+        display: table;
+    }
+
+    .rTableRow {
+        display: table-row;
+    }
+
+    .rTableCell {
+        display: table-cell;
+        /* padding: 10px; */
+        padding: 10px 10px 10px 5px; /* agomezn 090616: 072 evitar que a 1336x768 los símbolos de porcentaje salten de línea */
+    }
+
+    .rigth {
+        text-align: right;
+    }
+
+    .bold {
+        font-style: normal;
+        font-weight: bold;
+        text-align: right;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        padding: 0 0 0 0;
+        vertical-align: middle;
+    }
+
+    .k-grid td {
+        padding: .3em .3em;
+        line-height: 1.6;
+        vertical-align: middle;
+    }
+
+    .k-grid table {
+        width: 100% !important;
+    }
+</style>
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('PAROS_PERDIDAS_MAQUINA')) %></label>
+</div>
+
+<!-- Filtros Cambios -->
+<div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+    <div style="float: left;">
+        <label style="margin-left:5px;"><% print(window.app.idioma.t('FILTRAR_POR')) %></label>
+        <select id="selectLinea" style="width:200px;"></select>
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('DESDE')) %></label>
+        <input id="dtpFechaDesde" style="width: 100px;" />
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('HASTA')) %></label>
+        <input id="dtpFechaHasta" style="width: 100px;" />
+        <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('FILTRAR')) %></button>
+    </div>
+    <div style="float: right; margin-right: 10px;">
+
+        <button id="btnLimpiarFiltros" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;"><span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %></button>
+
+        <button id="btnExportExcel" class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px;">
+            <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+        </button>
+    </div>
+</div>
+
+<!-- Grid Cambios -->
+<div id="gridSeleccionParosPerdidasMaquinas"></div>
+
+
+

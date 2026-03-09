@@ -1,0 +1,36 @@
+﻿<table>
+        <tr style="height:20px;"><td></td></tr>
+    <tr>
+        <td colspan="1">&nbsp;&nbsp;</td>
+        <td><% print(window.app.idioma.t("LINEA")) %></td>&nbsp;&nbsp;
+        <td colspan="4">
+            <input style="width:200px;" id="cmbLinea" name="cmbLinea" required/>
+        </td>
+    </tr>
+    <tr style="height:30px;"><td></td></tr>
+    <tr>
+        <td colspan="1"></td>
+        <td><% print(window.app.idioma.t("FECHA_HORAINICIO")) %>&nbsp;&nbsp;</td>
+        <td><input id="dpInicio" name="dpInicio"  required/></td>
+        <td colspan="1">&nbsp;&nbsp;&nbsp;</td>
+        <td><% print(window.app.idioma.t("TURNO")) %>&nbsp;&nbsp;</td>
+        <td><input id="cmbTurnosInicio" name="cmbTurnosInicio"  required/></td>
+    </tr>
+        <tr style="height:30px;"><td></td></tr>
+        <tr>
+            <td colspan="1">&nbsp;&nbsp;&nbsp;</td>
+        <td><% print(window.app.idioma.t("FIN")) %>&nbsp;&nbsp;</td>
+        <td><input id="dpFin" name="dpFin"  required/></td>
+            <td colspan="1">&nbsp;&nbsp;&nbsp;</td>
+        <td><% print(window.app.idioma.t("TURNO")) %>&nbsp;&nbsp;</td>
+        <td><input id="cmbTurnosFin" name="cmbTurnosFin"  required/></td>
+    </tr>
+        <tr style="height:30px;"><td></td></tr>
+    <tr>
+        <td colspan="6" style="text-align:center">
+                <button id="btnAceptar" ><% print(window.app.idioma.t("GENERAR_INFORME")) %></button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+                <button id="btnCancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+        </td>
+    </tr>
+</table>

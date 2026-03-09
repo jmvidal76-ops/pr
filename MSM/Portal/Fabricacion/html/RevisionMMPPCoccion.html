@@ -1,0 +1,45 @@
+﻿<style>
+    .progress-text {
+        top: 55%;
+        left: 44%;
+        width: 10%;
+        background-color: lightgrey;
+        padding: 1%;
+        border: 1px solid darkgray;
+        border-radius: 4px;
+        text-indent: 0;
+    }
+</style>
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('REVISION_MMPP_COCCION')) %></label>
+</div>
+
+<!-- Filtros Cambios -->
+<div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+    <div class="filtroFechas" style="float: left;">
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('FECHA')+' '+window.app.idioma.t('FIN_ENFRIAMIENTO')) %>:</label>
+        <span class="ml-8"><% print(window.app.idioma.t('DESDE')) %></span>
+        <span class="ml-8" id="desdeFecha"></span>
+        <span class="ml-8"><% print(window.app.idioma.t('HASTA')) %></span>
+        <input id="dtpFecha" style="width: 190px;" />
+        <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+        <button id="btnFiltroMMPP" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-filter'></span><% print(window.app.idioma.t('MMPP')) %></button>
+        <button id="btnFiltroMMPPAA" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-filter'></span>MMPPAA</button>
+    </div>
+    <div style="float: right; margin-right: 10px;">
+        <button id="btnEditar" class="k-button k-button-icontext" style="margin-left: 5px;">
+            <span class='k-icon k-i-pencil'></span><% print(window.app.idioma.t('EDITAR')) %>
+        </button>
+        <button id="btnEliminar" class="k-button k-grid-delete" style="margin-left: 5px;">
+            <span class='k-icon k-i-close'></span><% print(window.app.idioma.t('ELIMINAR_MOVIMIENTOS')) %>
+        </button>
+        <button id="btnLimpiarFiltros" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;">
+            <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+        </button>
+    </div>
+</div>
+
+<div id="gridConsumos"></div>

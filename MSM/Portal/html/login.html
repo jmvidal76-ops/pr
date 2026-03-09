@@ -1,0 +1,31 @@
+<style>
+    ::-ms-clear {
+        display: none;
+    }
+
+    ::-ms-reveal {
+        display: none;
+    }
+
+    .field-icon {
+        position: relative;
+        cursor: pointer;
+    }
+</style>
+
+<div>
+    <label><% print(window.app.idioma.t('USUARIO')) %></label>
+    <input id="txtUsuario" type="text" value="" />
+</div>
+<div style="margin-left: 35px">
+    <label><% print(window.app.idioma.t('PASS')) %></label>
+    <input id="txtPassword" type="password" value="" /> <i class="glyphicon glyphicon-eye-open field-icon"></i>
+</div>
+<!--<div id="msgErrorLogin">Los datos introducidos no son correctos</div>-->
+<div id="divAceptar">
+    <button id="btnAceptar"><% print(window.app.idioma.t('ACEPTAR')) %></button>
+</div>
+<div id="imgProcesando">
+    <img src="img/ajax-loader.gif"/>
+</div>
+

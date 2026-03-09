@@ -1,0 +1,60 @@
+﻿<style>
+    #btnAceptarPD {
+        float: left;
+        margin-left: 150px;
+    }
+
+    #btnCancelarPD {
+        float: left;
+        margin-left: 20px;
+    }
+</style>
+
+<div>
+    <form id="EditarParametrosDefecto">
+        <div style="float: left; background-color: transparent; border: 0; margin-top:10px;">
+            <div style="float: left; border: 0;">
+                <label id="lblIdObj" hidden></label>
+            </div>
+            <div style="float: left; border: 0;">
+                <label id="lblDefLinea" style="width: 170px; text-align: right;"></label>
+                <label id="lblDefValorLinea" style="width: 250px"></label>
+            </div>
+            <br /><br /><br />
+            <div style="float: left; border: 0;">
+                <label id="lblDefFormatoComun" style="width: 170px; text-align: right;"></label>
+                <label id="lblDefValorFormatoComun" style="width: 250px"></label>
+            </div>
+            <br /><br /><br />
+            <div style="float: left; border: 0;">
+                <label id="lblDefVelNom" style="width: 170px; text-align: right;"></label>
+                <input type="text" style="width: 150px" id="ntxtDefVelNom" data-type="number" data-role="numerictextbox" required />
+            </div>
+            <br /><br /><br />
+            <div style="float: left; border: 0;">
+                <label id="lblDefVelNomMaqLimitante" style="width: 170px; text-align: right;"></label>
+                <input type="text" style="width: 150px" id="ntxtDefVelNomMaqLimitante" data-type="number" data-role="numerictextbox" required />
+            </div>
+            <br /><br /><br />
+            <div style="float: left; border: 0;">
+                <label id="lblDefOeeObj" style="width: 170px; text-align: right;"></label>
+                <input type="text" style="width: 150px" id="ntxtDefOeeObj" data-type="number" data-role="numerictextbox" required />
+            </div>
+            <br /><br /><br />
+            <div style="float: left; border: 0;">
+                <label id="lblDefOeeCri" style="width: 170px; text-align: right;"></label>
+                <input type="text" style="width: 150px" id="ntxtDefOeeCri" data-type="number" data-role="numerictextbox" required />
+            </div>
+            <br /><br /><br />
+            <div style="float: left; border: 0;">
+                <label id="lblDefOeePreactor" style="width: 170px; text-align: right;"></label>
+                <input type="text" style="width: 150px" id="ntxtDefOeePreactor" data-type="number" data-role="numerictextbox" required />
+            </div>
+            <br /><br /><br />
+            <div>
+                <button type="button" id="btnAceptarPD"></button>
+                <button type="button" id="btnCancelarPD"></button>
+            </div>
+        </div>
+    </form>
+</div>

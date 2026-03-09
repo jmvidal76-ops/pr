@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e3dbf6e126d34e66ad05d4761c4d7728" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="MESModel.AnalisisSPI" Width="1.5" PointX="12.625" PointY="0.625" />
+        <EntityTypeShape EntityType="MESModel.AREAS_GESTION" Width="1.5" PointX="9.125" PointY="5.375" />
+        <EntityTypeShape EntityType="MESModel.FUNCIONES" Width="1.5" PointX="10.875" PointY="6" />
+        <AssociationConnector Association="MESModel.FK_FUNCIONES_AREAS" />
+        <EntityTypeShape EntityType="MESModel.PERMISOS" Width="1.5" PointX="9.125" PointY="7.25" />
+        <AssociationConnector Association="MESModel.FK_PERMISOS_FUNCIONES" />
+        <EntityTypeShape EntityType="MESModel.ParametrosPlanta_Admin" Width="1.5" PointX="2.25" PointY="0.5" />
+        <EntityTypeShape EntityType="MESModel.TipoOrden_Fab" Width="1.5" PointX="7.5" PointY="14.125" />
+        <EntityTypeShape EntityType="MESModel.RecursoTipoOrden_FAB" Width="1.5" PointX="7.5" PointY="9.25" />
+        <EntityTypeShape EntityType="MESModel.Planta_FAB" Width="1.5" PointX="0.5" PointY="21.25" />
+        <EntityTypeShape EntityType="MESModel.KOPs_FAB" Width="1.5" PointX="10.875" PointY="14.125" />
+        <EntityTypeShape EntityType="MESModel.KOPs_Planta_FAB" Width="1.5" PointX="7.5" PointY="19.125" />
+        <EntityTypeShape EntityType="MESModel.MMLocations_FAB" Width="1.5" PointX="12.875" PointY="22.625" />
+        <EntityTypeShape EntityType="MESModel.LoteUbicacionMaterial_FAB" Width="1.5" PointX="0.5" PointY="16.125" />
+        <EntityTypeShape EntityType="MESModel.LoteUbicacion_FAB" Width="1.5" PointX="5.875" PointY="30.125" />
+        <EntityTypeShape EntityType="MESModel.Ordenes_FAB" Width="1.5" PointX="4" PointY="0.5" />
+        <EntityTypeShape EntityType="MESModel.Area_FAB" Width="1.5" PointX="14.375" PointY="6.375" />
+        <EntityTypeShape EntityType="MESModel.Celda_FAB" Width="1.5" PointX="14.625" PointY="20.25" />
+        <EntityTypeShape EntityType="MESModel.Equipo_FAB" Width="1.5" PointX="5.875" PointY="23" />
+        <EntityTypeShape EntityType="MESModel.KOPs_FAB_MultiValor" Width="1.5" PointX="7.625" PointY="18.25" />
+        <EntityTypeShape EntityType="MESModel.KOPs_FAB_Historian" Width="1.5" PointX="5.75" PointY="0.5" />
+        <EntityTypeShape EntityType="MESModel.MaterialColor" Width="1.5" PointX="0.5" PointY="26.625" />
+        <EntityTypeShape EntityType="MESModel.ItemsInActiveFiltration" Width="1.5" PointX="11.125" PointY="27.5" />
+        <EntityTypeShape EntityType="MESModel.Lotes_FAB" Width="1.5" PointX="7.625" PointY="28.375" />
+        <EntityTypeShape EntityType="MESModel.Turnos" Width="1.5" PointX="12.625" PointY="15.25" />
+        <EntityTypeShape EntityType="MESModel.EstadosOrden" Width="1.5" PointX="4" PointY="10" />
+        <EntityTypeShape EntityType="MESModel.CocPlanning" Width="1.5" PointX="7.625" PointY="23.125" />
+        <EntityTypeShape EntityType="MESModel.PackingArticleFromJDE" Width="1.5" PointX="4" PointY="8.125" />
+        <EntityTypeShape EntityType="MESModel.PackingPO" Width="1.5" PointX="12.875" PointY="20.625" />
+        <EntityTypeShape EntityType="MESModel.UbicacionLoteByOrden_FAB" Width="1.5" PointX="14.5" PointY="16.25" />
+        <EntityTypeShape EntityType="MESModel.MaquinasLineas" Width="1.5" PointX="2.25" PointY="3.75" />
+        <EntityTypeShape EntityType="MESModel.Ordenes" Width="1.5" PointX="2.25" PointY="25.375" />
+        <EntityTypeShape EntityType="MESModel.Particiones" Width="1.5" PointX="12.625" PointY="7.625" />
+        <EntityTypeShape EntityType="MESModel.TiposTurno" Width="1.5" PointX="4" PointY="5.875" />
+        <EntityTypeShape EntityType="MESModel.TurnosOEE" Width="1.5" PointX="4" PointY="25.75" />
+        <EntityTypeShape EntityType="MESModel.MaquinasLineasPlanConti" Width="1.5" PointX="5.875" PointY="27.25" />
+        <EntityTypeShape EntityType="MESModel.TIPOS_ARRANQUE" Width="1.5" PointX="7.5" PointY="0.5" />
+        <EntityTypeShape EntityType="MESModel.Procedimiento_FAB" Width="1.5" PointX="0.5" PointY="11.625" />
+        <EntityTypeShape EntityType="MESModel.BeerTypes_FAB" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="MESModel.HighDensityBeer_FAB" Width="1.5" PointX="4" PointY="11.875" />
+        <EntityTypeShape EntityType="MESModel.RelHDBeer_HDBeerParameters_FAB" Width="1.5" PointX="0.5" PointY="24.25" />
+        <EntityTypeShape EntityType="MESModel.PlanningDecanting_FAB" Width="1.5" PointX="9.125" PointY="14.125" />
+        <EntityTypeShape EntityType="MESModel.ParametrosOrdenes" Width="1.5" PointX="4" PointY="18.75" />
+        <EntityTypeShape EntityType="MESModel.RelHDBeer_HDBeerParametersWP_FAB" Width="1.5" PointX="2.25" PointY="17.625" />
+        <EntityTypeShape EntityType="MESModel.PackingFromManugistics" Width="1.5" PointX="5.75" PointY="10.875" />
+        <EntityTypeShape EntityType="MESModel.SalasCocciones" Width="1.5" PointX="7.5" PointY="7.375" />
+        <EntityTypeShape EntityType="MESModel.Ordenes_WP" Width="1.5" PointX="2.25" PointY="20.25" />
+        <EntityTypeShape EntityType="MESModel.Ordenes_GU" Width="1.5" PointX="9.125" PointY="9.25" />
+        <EntityTypeShape EntityType="MESModel.RelPPR_COB_ArticlesParametersFIL" Width="1.5" PointX="4" PointY="29.125" />
+        <EntityTypeShape EntityType="MESModel.Ordenes_ENV" Width="1.5" PointX="4" PointY="13.75" />
+        <EntityTypeShape EntityType="MESModel.Ordenes_FIL" Width="1.5" PointX="5.75" PointY="13.125" />
+        <EntityTypeShape EntityType="MESModel.RelPPR_COB_ArticlesParametersPackingLineFIL" Width="1.5" PointX="7.5" PointY="2.375" />
+        <EntityTypeShape EntityType="MESModel.Ordenes_FIL_MAT_PLANNED" Width="1.5" PointX="0.5" PointY="6.25" />
+        <EntityTypeShape EntityType="MESModel.Ordenes_FIL_MAT_PRODUCED" Width="1.5" PointX="9.375" PointY="22.375" />
+        <EntityTypeShape EntityType="MESModel.PackingWo_HighBeer" Width="1.5" PointX="12.875" PointY="18.125" />
+        <EntityTypeShape EntityType="MESModel.EspecificacionMateriales_FAB" Width="1.5" PointX="10.875" PointY="8.625" />
+        <EntityTypeShape EntityType="MESModel.ConsumosMateriales_FAB" Width="1.5" PointX="12.875" PointY="27.375" />
+        <EntityTypeShape EntityType="MESModel.PPR_FAB" Width="1.5" PointX="4" PointY="22" />
+        <EntityTypeShape EntityType="MESModel.REL_PackingWo_HighBeer" Width="1.5" PointX="7.5" PointY="4.875" />
+        
+        <EntityTypeShape EntityType="MESModel.RelPackingWO_COB_ArticlesParameters" Width="1.5" PointX="0.5" PointY="28.5" />
+        <EntityTypeShape EntityType="MESModel.TempNecesidadMostoWP" Width="1.5" PointX="16.125" PointY="2.625" />
+        <EntityTypeShape EntityType="MESModel.RelPackingWOHighBeer_COB_ArticlesParametersWP" Width="1.5" PointX="7.5" PointY="10.875" />
+        <EntityTypeShape EntityType="MESModel.RelPackingWOHighBeer_COB_ArticlesParametersFIL" Width="1.5" PointX="9.375" PointY="19.75" />
+        <EntityTypeShape EntityType="MESModel.Lineas" Width="1.5" PointX="2.25" PointY="12.125" />
+        <EntityTypeShape EntityType="MESModel.TiemposArranque" Width="1.5" PointX="14.375" PointY="2.625" />
+        <EntityTypeShape EntityType="MESModel.TiemposCambio" Width="1.5" PointX="0.5" PointY="2.375" />
+        <EntityTypeShape EntityType="MESModel.FillersByTCP" Width="1.5" PointX="10.875" PointY="0.5" />
+        <EntityTypeShape EntityType="MESModel.DeslizanteLineas" Width="1.5" PointX="11.125" PointY="19" />
+        <EntityTypeShape EntityType="MESModel.AdherenciaDesviacionVolumen" Width="1.75" PointX="5.75" PointY="18.125" />
+        <EntityTypeShape EntityType="MESModel.OrdenesArranque" Width="1.5" PointX="2.25" PointY="6.375" />
+        <EntityTypeShape EntityType="MESModel.OrdenesCambio" Width="1.5" PointX="9.375" PointY="27.625" />
+        <EntityTypeShape EntityType="MESModel.ParametrosLinea" Width="1.5" PointX="5.75" PointY="7.5" />
+        <EntityTypeShape EntityType="MESModel.MailConfiguration" Width="1.5" PointX="7.5" PointY="25.5" />
+        <EntityTypeShape EntityType="MESModel.MailEquipmentNotification" Width="1.5" PointX="9.25" PointY="0.75" />
+        <EntityTypeShape EntityType="MESModel.ParametrosPRL" Width="1.5" PointX="4" PointY="23.875" />
+        <EntityTypeShape EntityType="MESModel.AdherenciaMotivos" Width="1.5" PointX="5.75" PointY="5.5" />
+        <EntityTypeShape EntityType="MESModel.DeslizanteCerveza" Width="1.5" PointX="2.25" PointY="15.125" />
+        <EntityTypeShape EntityType="MESModel.DeslizanteEnvasado" Width="1.5" PointX="11.125" PointY="29.375" />
+        <EntityTypeShape EntityType="MESModel.ParametrosDefecto" Width="1.5" PointX="14.375" PointY="9.75" />
+        <EntityTypeShape EntityType="MESModel.TotalesSemanaCuadroMando" Width="1.5" PointX="16.125" PointY="4.625" />
+        <EntityTypeShape EntityType="MESModel.DescripcionAverias" Width="1.5" PointX="16.125" PointY="13.375" />
+        <EntityTypeShape EntityType="MESModel.EquiposConstructivosEnvasado" Width="1.5" PointX="14.375" PointY="13.375" />
+        <AssociationConnector Association="MESModel.FK_DescripcionAverias_EquiposConstructivosEnvasado" />
+        <EntityTypeShape EntityType="MESModel.MaquinasEnvasado" Width="1.5" PointX="16.125" PointY="7.625" />
+        <EntityTypeShape EntityType="MESModel.ParosPerdidas" Width="1.5" PointX="19.625" PointY="14.125" />
+        <EntityTypeShape EntityType="MESModel.ConfiguracionEmpaquetadoras" Width="1.5" PointX="7.5" PointY="16" />
+        <EntityTypeShape EntityType="MESModel.MermasStockVacio" Width="1.5" PointX="14.375" PointY="0.625" />
+        <EntityTypeShape EntityType="MESModel.MovimientosVacio" Width="1.5" PointX="17.875" PointY="7" />
+        <EntityTypeShape EntityType="MESModel.ProductosCajas" Width="1.5" PointX="16.125" PointY="10.125" />
+        <EntityTypeShape EntityType="MESModel.AdherenciaParametros" Width="1.5" PointX="16.125" PointY="0.625" />
+        <EntityTypeShape EntityType="MESModel.OrdenPlanificado" Width="1.5" PointX="17.875" PointY="0.625" />
+        <EntityTypeShape EntityType="MESModel.ConfiguracionMaquinasCompartidas" Width="1.5" PointX="17.875" PointY="10.125" />
+        <EntityTypeShape EntityType="MESModel.HistoricoMaquinas" Width="1.5" PointX="17.875" PointY="4.625" />
+        <EntityTypeShape EntityType="MESModel.StockVacioParametros" Width="1.5" PointX="21.375" PointY="5.25" />
+        <EntityTypeShape EntityType="MESModel.Equipos" Width="1.5" PointX="17.875" PointY="12.5" />
+        <EntityTypeShape EntityType="MESModel.Maquinas" Width="1.5" PointX="19.625" PointY="9.375" />
+        <EntityTypeShape EntityType="MESModel.StockVacioPrevision" Width="1.5" PointX="19.625" PointY="0.625" />
+        <EntityTypeShape EntityType="MESModel.VideowallPantallas" Width="1.5" PointX="19.625" PointY="3" />
+        <EntityTypeShape EntityType="MESModel.VideowallPantallasLineas" Width="1.5" PointX="19.625" PointY="5.25" />
+        <EntityTypeShape EntityType="MESModel.DeslizanteEnvasadoHl" Width="1.5" PointX="21.375" PointY="12.875" />
+        <EntityTypeShape EntityType="MESModel.StockVacioMinimosMaximos" Width="1.5" PointX="16.375" PointY="26.25" />
+        <EntityTypeShape EntityType="MESModel.JustificacionParosMotivos" Width="1.5" PointX="21.375" PointY="0.625" />
+        <EntityTypeShape EntityType="MESModel.GraficaProduccionTeoricaVSReal" Width="1.5" PointX="21.375" PointY="9.375" />
+        <EntityTypeShape EntityType="MESModel.VideowallConfiguracion" Width="1.5" PointX="19.625" PointY="7.125" />
+        <EntityTypeShape EntityType="MESModel.DeslizanteFormatos" Width="1.5" PointX="14.625" PointY="24" />
+        <EntityTypeShape EntityType="MESModel.DeslizanteGeneral" Width="1.5" PointX="21.375" PointY="3" />
+        <EntityTypeShape EntityType="MESModel.DeslizanteProductos" Width="1.5" PointX="21.375" PointY="7.125" />
+        <EntityTypeShape EntityType="MESModel.DiasSemanaDeslizante" Width="1.5" PointX="23.125" PointY="10" />
+        <EntityTypeShape EntityType="MESModel.DuotankMatriculas" Width="1.5" PointX="21.375" PointY="18.5" />
+        <EntityTypeShape EntityType="MESModel.DuotankZonasCarga" Width="1.5" PointX="21.375" PointY="20.375" />
+        <EntityTypeShape EntityType="MESModel.RelacionCodArticuloCodCaja" Width="1.5" PointX="16.25" PointY="20.75" />
+        <EntityTypeShape EntityType="MESModel.LineasDobleSalidaAsignacion" Width="1.5" PointX="23.125" PointY="0.625" />
+        <EntityTypeShape EntityType="MESModel.LineasDobleSalidaConfiguracion" Width="1.5" PointX="23.125" PointY="7.25" />
+        <EntityTypeShape EntityType="MESModel.Zonas" Width="1.5" PointX="23.125" PointY="2.75" />
+        <EntityTypeShape EntityType="MESModel.EstructuraPermisos" Width="1.5" PointX="12.625" PointY="6" />
+        <AssociationConnector Association="MESModel.FK_FUNCIONES_ESTRUCTURA" />
+        <EntityTypeShape EntityType="MESModel.SIGI_SecuenciacionMES" Width="1.5" PointX="21.375" PointY="15.875" />
+        <EntityTypeShape EntityType="MESModel.SIGI_SecuenciacionSIGI" Width="1.5" PointX="14.625" PointY="25.875" />
+        <EntityTypeShape EntityType="MESModel.LineasProductos" Width="1.5" PointX="16.25" PointY="23.25" />
+
+        <EntityTypeShape EntityType="MESModel.SIGI_Configuracion" Width="1.5" PointX="23.375" PointY="12.75" />
+        <EntityTypeShape EntityType="MESModel.TipoAveria" Width="1.5" PointX="18" PointY="16.5" />
+        <EntityTypeShape EntityType="MESModel.MantenimientoParosRelaciones" Width="1.5" PointX="16.25" PointY="16.5" />
+        <EntityTypeShape EntityType="MESModel.MermasContadorGlobal" Width="2.125" PointX="34.625" PointY="21.75" />
+        <EntityTypeShape EntityType="MESModel.PerroGuardian" Width="1.5" PointX="23.375" PointY="16.75" />
+        <EntityTypeShape EntityType="MESModel.ConfiguracionVisualizacionColumnas" Width="2.75" PointX="16.375" PointY="18.625" />
+        <EntityTypeShape EntityType="MESModel.MailMalaGestionWOLineas" Width="1.5" PointX="25.375" PointY="9.75" />
+        <EntityTypeShape EntityType="MESModel.MantenimientoCambiosEstados" Width="1.5" PointX="23.75" PointY="22.125" />
+        <EntityTypeShape EntityType="MESModel.MantenimientoEstados" Width="1.5" PointX="21.5" PointY="22.125" />
+        <AssociationConnector Association="MESModel.FK_MantenimientoCambiosEstados_MantenimientoEstados" />
+        <EntityTypeShape EntityType="MESModel.AdherenciaDesviacionSecuencia" Width="1.5" PointX="25.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MESModel.AdherenciaDesviacionCongelado" Width="1.5" PointX="27.375" PointY="6.75" />
+        <EntityTypeShape EntityType="MESModel.MensajeAdministracion" Width="1.5" PointX="27.375" PointY="15.75" />
+        <EntityTypeShape EntityType="MESModel.PicosEnvasado" Width="1.5" PointX="27.375" PointY="12.75" />
+        <EntityTypeShape EntityType="MESModel.SIGI_BloqueoPaletsParoLlenadora" Width="1.5" PointX="18.375" PointY="27.75" />
+        <EntityTypeShape EntityType="MESModel.MantenimientoDatosValidacionArranqueOT" Width="1.5" PointX="26.375" PointY="29.625" />
+        <EntityTypeShape EntityType="MESModel.vMantenimientoConfMaquinasValidacionArranque" Width="1.5" PointX="28.375" PointY="27.75" />
+        <EntityTypeShape EntityType="MESModel.MantenimientoConfMaquinasValidacionArranque" Width="1.5" PointX="26.375" PointY="27.75" />
+        <EntityTypeShape EntityType="MESModel.MantenimientoEquivalenciaCausas" Width="1.5" PointX="24.25" PointY="29" />
+        <AssociationConnector Association="MESModel.FK_MantenimientoEquivalenciaCausas_TipoAveria" />
+        <EntityTypeShape EntityType="MESModel.OEEPlanificaciones" Width="1.5" PointX="27.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MESModel.vt_OEEPlanificaciones" Width="1.5" PointX="20.375" PointY="28.75" />
+        <EntityTypeShape EntityType="MESModel.MailPartesCalidadNoValidos" Width="1.5" PointX="14.75" PointY="32.125" />
+        <EntityTypeShape EntityType="MESModel.MailGroup" Width="1.5" PointX="29.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MESModel.MailNotification" Width="1.5" PointX="29.375" PointY="3.75" />
+        <AssociationConnector Association="MESModel.MailNotificationGroup" />
+        <AssociationConnector Association="MESModel.MailPartesCalidadNoValidosGroup" />
+        <EntityTypeShape EntityType="MESModel.MailMalaGestionWO" Width="1.5" PointX="31.625" PointY="4.75" />
+        <AssociationConnector Association="MESModel.MailMalaGestionWOGroup" />
+        <EntityTypeShape EntityType="MESModel.MaestroAreasFabricacion" Width="1.5" PointX="29.375" PointY="7.5" />
+        <EntityTypeShape EntityType="MESModel.MaestroEquiposFabricacion" Width="1.5" PointX="33.75" PointY="7.5" />
+        <EntityTypeShape EntityType="MESModel.MaestroGruposConstructivosFabricacion" Width="1.5" PointX="36.125" PointY="7.5" />
+        <EntityTypeShape EntityType="MESModel.MaestroRepuestosFabricacion" Width="1.5" PointX="38.375" PointY="7.625" />
+        <EntityTypeShape EntityType="MESModel.MaestroZonasFabricacion" Width="1.5" PointX="31.5" PointY="7.5" />
+        <EntityTypeShape EntityType="MESModel.MantenimientoIntervenciones" Width="1.5" PointX="29.5" PointY="11" />
+        <AssociationConnector Association="MESModel.FK_MantenimientoIntervenciones_EquiposConstructivosEnvasado" />
+        <AssociationConnector Association="MESModel.FK_MaestroZonasFabricacion_MaestroAreasFabricacion" />
+        <AssociationConnector Association="MESModel.FK_MantenimientoIntervenciones_MaestroAreasFabricacion" />
+        <AssociationConnector Association="MESModel.FK_MaestroEquiposFabricacion_MaestroZonasFabricacion" />
+        <AssociationConnector Association="MESModel.FK_MaestroGruposConstructivosFabricacion_MaestroEquiposFabricacion" />
+        <AssociationConnector Association="MESModel.FK_MantenimientoIntervenciones_MaestroEquiposFabricacion" />
+        <AssociationConnector Association="MESModel.FK_MaestroRepuestosFabricacion_MaestroGruposConstructivosFabricacion" />
+        <AssociationConnector Association="MESModel.FK_MantenimientoIntervenciones_MaestroGruposConstructivosFabricacion" />
+        <AssociationConnector Association="MESModel.FK_MantenimientoIntervenciones_MaestroRepuestosFabricacion" />
+        <AssociationConnector Association="MESModel.FK_MantenimientoIntervenciones_MaestroZonasFabricacion" />
+        <AssociationConnector Association="MESModel.FK_MantenimientoIntervenciones_TipoAveria" />
+        <EntityTypeShape EntityType="MESModel.MailPartesCalidadPendientes" Width="1.5" PointX="31.625" PointY="1" />
+        <AssociationConnector Association="MESModel.MailPartesCalidadPendientesGroup" />
+        <AssociationConnector Association="MESModel.FK_AdherenciaDesviacionCongelado_AdherenciaMotivos" />
+        <AssociationConnector Association="MESModel.FK_AdherenciaDesviacionSecuencia_AdherenciaMotivos" />
+        <AssociationConnector Association="MESModel.FK_AdherenciaDesviacionVolumen_AdherenciaMotivos" />
+        <EntityTypeShape EntityType="MESModel.MermasContadores" Width="1.5" PointX="30.5" PointY="24.375" />
+        <EntityTypeShape EntityType="MESModel.MermasRegistros" Width="1.5" PointX="28.375" PointY="24.125" />
+        <EntityTypeShape EntityType="MESModel.MermasTurnos" Width="1.5" PointX="26.125" PointY="24.75" />
+        <AssociationConnector Association="MESModel.FK_MermasContadores_MermasRegistros" />
+        <AssociationConnector Association="MESModel.FK_MermasRegistros_MermasTurnos" />
+        <EntityTypeShape EntityType="MESModel.vMermasRegistros" Width="1.5" PointX="32.875" PointY="28.625" />
+        <EntityTypeShape EntityType="MESModel.vMermasTurnos" Width="1.5" PointX="30.875" PointY="28.625" />
+        <EntityTypeShape EntityType="MESModel.MermasMaestroContadores" Width="1.5" PointX="34.75" PointY="23.875" />
+        <EntityTypeShape EntityType="MESModel.MermasMaquinasContadores" Width="1.5" PointX="32.625" PointY="24.125" />
+        <AssociationConnector Association="MESModel.FK_MermasContadores_MermasMaquinasContadores" />
+        <AssociationConnector Association="MESModel.FK_MermasMaestroContadores_MermasContadorGlobal" />
+        <AssociationConnector Association="MESModel.FK_MermasMaquinasContadores_MermasMaestroContadores" />
+        <EntityTypeShape EntityType="MESModel.TurnosConBreak" Width="1.5" PointX="9.25" PointY="2.375" />
+        <EntityTypeShape EntityType="MESModel.vMermasMaquinasContadores" Width="1.5" PointX="34.75" PointY="28.625" />
+        <EntityTypeShape EntityType="MESModel.OEEPlanificacionConfig" Width="1.5" PointX="18.375" PointY="22.75" />
+        <EntityTypeShape EntityType="MESModel.Materiales_FAB" Width="1.5" PointX="11.125" PointY="21.5" />
+        <EntityTypeShape EntityType="MESModel.MermasAnalisisConfig" Width="1.5" PointX="25.375" PointY="18.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

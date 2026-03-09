@@ -1,0 +1,63 @@
+﻿<style>
+    .msgDialogo {
+        width: auto;
+        font-size: 20px;
+        border-bottom: 1px solid black;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    #imgProcesando {         
+        text-align:center;
+        width: 100%;
+        display: none;
+    }
+    .divBotones {   
+        display:inline-block;
+        white-space: nowrap;
+        width: 100%;
+        text-align: center;
+    }
+    .divBotones > div {
+          width: 100%;
+         display:run-in;
+    }
+    .divBotones button {
+        min-width: 120px;
+        height: 80px;
+        padding-top: 4px;
+        margin: 8px;
+
+    }
+   
+    .divCenter {
+        text-align: center;
+        display:inline-block;
+    }
+
+    
+</style>
+<div id="divMsg" class="msgDialogo">
+        <%= msg %>
+
+</div>
+<div id="imgProcesando" class="divCenter">
+    <img src="img/ajax-loader.gif" />
+</div>
+<div id="divZonas" class="divBotones">   
+        <button class="btnAceptar"><% print(window.app.idioma.t('SI')) %></button>      
+        <button class="btnCancelar"><% print(window.app.idioma.t('NO')) %></button>  
+</div>
+<div id="divEstado" class="divBotones">   
+    <div>
+        <button id="btnPausar" ><% print(window.app.idioma.t('PAUSAR')) %></button>
+        <button id="btnFinalizar" ><% print(window.app.idioma.t('FINALIZAR')) %></button> 
+    </div>    
+    <div >
+        <button id="btnCancelarEstado" class="btnCancelar"><% print(window.app.idioma.t('CANCELAR')) %></button>
+    </div>           
+</div>
+<div id="divAviso" style="color:red; text-align:center; display:inline-block; width: 100%">
+        <%= aviso %>
+</div>

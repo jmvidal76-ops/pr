@@ -1,0 +1,65 @@
+﻿<style>
+    .silos {
+        float: left;
+        width: 49%;
+        height: 100%;
+        border: 1px solid black;
+        text-align: center;
+        font-size: small;
+    }
+
+    .lblSilos {
+        float: left;
+        width: 49%;
+        text-align: center;
+        font-size: small;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    #contenedorResumenSilos {
+        margin-top: 4%;
+        margin-left: 10%;
+        width: 80%;
+        height: 400px;
+    }
+
+    .nombreSilo {
+        width: 68%;
+        float: left;
+        text-align: left;
+        padding-left: 10px;
+    }
+
+    .cantidadSilo {
+        width: 20%;
+        float: left;
+        text-align: right;
+    }
+</style>
+
+<div style="width: 98%; margin: 0px; padding: 0px;">
+    <form id="ResumenSilos">
+        <div id="contenedorResumenSilos" style="">
+            <div id="maltas" class="silos"></div>
+            <!--<div id="maltacolor" class="silos"></div>-->
+            <div id="adjunto" class="silos"></div>
+            <!--<div id="aditivo" class="silos"></div>-->
+            <br />
+            <br />
+            <div id="lblMalta" class="lblSilos">
+                <span id="lblNombreMalta" class="nombreSilo"></span>
+                <span id="lblQtyMalta" class="cantidadSilo"></span>
+            </div>
+            <!--<div id="maltacolor" class="silos"></div>-->
+            <div id="lblAdjunto" class="lblSilos">
+                <span id="lblNombreAdjunto" class="nombreSilo"></span>
+                <span id="lblQtyAdjunto" class="cantidadSilo"></span>
+            </div>
+<!--            <div id="lblAditivo" class="lblSilos">
+                <span id="lblNombreAditivo" class="nombreSilo"></span>
+                <span id="lblQtyAditivo" class="cantidadSilo"></span>
+            </div>-->
+        </div>
+    </form>
+</div>

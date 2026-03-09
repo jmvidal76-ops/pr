@@ -1,0 +1,404 @@
+﻿<style>
+    .k-detail-cell .k-tabstrip .k-content {
+        padding: 0.2em;
+    }
+
+    .details ul {
+        list-style: none;
+        margin: 15px;
+        padding: 0;
+    }
+
+        .details ul li {
+            margin: 0;
+            line-height: 1.5em;
+        }
+
+    .details label {
+        display: inline-block;
+        /* width: 140px; */
+        /*width:100px;*/
+        padding-right: 10px;
+        text-align: right;
+        font-style: normal;
+        font-weight: bold;
+    }
+
+    .table {
+        border: 1px solid #000000;
+        margin: 2px;
+    }
+
+    .table-bordered > thead > tr > th,
+    .table-bordered > tbody > tr > th,
+    .table-bordered > tfoot > tr > th,
+    .table-bordered > thead > tr > td,
+    .table-bordered > tbody > tr > td,
+    .table-bordered > tfoot > tr > td {
+        border: 1px solid black;
+        font-weight: normal;
+    }
+
+    .bordeFinoDashed td {
+        text-align: center !important;
+        border: solid 1px lightgray !important;
+        line-height: 1 !important;
+        padding: 3px !important;
+        vertical-align: middle !important;
+    }
+
+    .rTable {
+        display: table;
+    }
+
+    .rTableRow {
+        display: table-row;
+    }
+
+    .rTableCell {
+        display: table-cell;
+        padding: 5px;
+    }
+
+    .rTableCellP {
+        display: table-cell;
+        padding: 5px;
+    }
+
+    .rigth {
+        text-align: right;
+    }
+
+    .bold {
+        font-style: normal;
+        font-weight: bold;
+        text-align: right;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        padding: 0 0 0 0;
+        vertical-align: middle;
+    }
+
+    .k-grid td {
+        padding: .3em .3em;
+        line-height: 1.6;
+        vertical-align: middle;
+    }
+
+    hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid #ccc;
+        margin-top: 1em;
+        padding: 0;
+        margin-bottom: 0em;
+    }
+
+    .centerButton {
+        padding-top: 1%;
+        padding-left: 40%;
+    }
+
+    .tabPanel .k-content {
+        overflow: hidden !important;
+    }
+
+    @media (max-width: 1024px) {
+
+        .rTable {
+            display: block;
+            overflow: auto;
+        }
+    }
+
+    .produccionComponent {
+        height: 450px;
+    }
+
+    #cantidadestab {
+        min-height: 100px;
+    }
+
+    #rechazostab {
+        min-height: 100px;
+    }
+
+    .circle_cells {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-size: 25px 28px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 25px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-right: 5px;
+    }
+
+    .itemEspera {
+        background-color: #FC801C;
+    }
+
+    .itemCorrecta {
+        background-color: #4CDA43;
+    }
+
+    .itemHabilitada {
+        background-color: #048404;
+    }
+
+    .itemAnulada {
+        background-color: #8B0000;
+    }
+
+    .itemEliminada {
+        background-color: #DC3F3F;
+    }
+</style>
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('GESTION_WO_ACTIVAS')) %></label>
+</div>
+
+<div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+    <div style="float: right; margin-right: 10px;">
+        <button id="btnLimpiarFiltros" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;"><span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %></button>
+        <button id="btnExportExcel" class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px;"><span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %></button>
+        <button id="btnCrearWO" class="k-button k-button-icontext k-grid-add" style="margin-left: 5px; background-color:green; color:white;"><span class="k-icon k-add"></span><% print(window.app.idioma.t('CREAR_WO_FINALIZADA')) %></button>
+    </div>
+</div>
+
+<div id="gridGestionWOActivas"></div>
+
+<!-- Detail Grid -->
+<script type="text/x-kendo-template" id="template">
+    <div class="tabPanel" style="width: 98%;">
+        <ul>
+            <li class="k-state-active">
+                <%print(window.app.idioma.t('PROCESO')) %>
+            </li>
+            <li>
+                <%print(window.app.idioma.t('CANTIDADES')) %>
+            </li>
+            <li>
+                <%print(window.app.idioma.t('RECHAZOS')) %>
+            </li>
+            <li id="picosTab">
+                <%print(window.app.idioma.t('PICOS')) %>
+            </li>
+            <li>
+                <% print(window.app.idioma.t('TURNO')) %>
+            </li>
+            <li>
+                <% print(window.app.idioma.t('HISTORICO')) %>
+            </li>
+            <li>
+                <% print(window.app.idioma.t('MMPP')) %>
+            </li>
+            <li id="producciontab">
+                <% print(window.app.idioma.t('PRODUCCION')) %>
+            </li>
+            <li id="divNotas">
+                <% print(window.app.idioma.t('NOTAS_ORDEN')) %>
+            </li>
+            <li id="LIMStab_#: id #">
+                <% print(window.app.idioma.t('LIMS')) %>
+            </li>
+            <li id="hmTab">
+                <% print(window.app.idioma.t('HISTORICO_ASIGNACION_MAQUINAS')) %>
+            </li>
+        </ul>
+
+        <div>
+            <div class="proceso" id="procesotab"></div>
+        </div>
+        <div>
+            <div class="cantidades" id="cantidadestab"></div>
+        </div>
+        <div>
+            <div class="rechazos" id="rechazostab"></div>
+        </div>
+        <div>
+            <div class="picosComponent"></div>
+        </div>
+        <div>
+            <div><div class="produccion" id="producciontab"></div></div>
+        </div>
+        <div>
+            <div><div class="historico" id="historicotab"></div></div>
+        </div>
+        <div>
+            <div><div class="material" id="materialtab"></div></div>
+        </div>
+        <div>
+            <div>
+                <div class="produccionComponent"></div>
+            </div>
+        </div>
+        <div>
+            <div id="gridNotas" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%;">
+                <form id="Notas">
+                    <table class="table borderless">
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    <textarea id="auxEditor" rows="20" cols="52"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div style="text-align: center; width: 100%;padding:5px;">
+                                        <button id='btnSaveNotes' style="background-color:green; color: white;" type="button" class='k-button'><% print(window.app.idioma.t('GUARDAR')) %> </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div><!--gridNotas-->
+        </div>
+        <div>
+            <div>
+                <div class="componentLIMS">
+                    <div id="divLIMS_#: id #"></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div><div class="historicoMaquinas" id="historicoMaquinastab"></div></div>
+        </div>
+    </div>
+</script>
+
+
+<script id="templateCantidades" type="text/x-kendo-template">
+     <div >
+
+        <table class="table bordeFinoDashed" style="">
+                <tr style="background-color: gainsboro;">
+                    <td></td>
+                    <td style="text-align: center;"><% print(window.app.idioma.t('PALETS')) %></td>
+                    <td style="text-align: center;"><% print(window.app.idioma.t('CPB')) %></td>
+                    <td style="text-align: center;"><% print(window.app.idioma.t('ENVASES')) %></td>
+                    <td style="text-align: center;"><% print(window.app.idioma.t('HL_ENVASADOS')) %></td>
+                </tr>
+                <tr style="background-color: white;">
+                    <td style="text-align: left !important;"><% print(window.app.idioma.t('PLANIFICADAS')) %></td>
+                    <td>
+                        <label class="palletsPlanificados" style="font-weight: normal !important; text-align: center!important;">#= kendo.toString(cantPlanificada, "n0") #</label></td>
+                    <td>
+                        <label class="cajasPlanificadas" style="font-weight: normal !important; text-align: center!important;">#= kendo.toString(Math.floor(cantPlanificada * CajasPorPalet), "n0")#</label></td>
+                    <td>
+                        <label style="font-weight: normal !important; text-align: center!important;">#= kendo.toString(Math.floor(cantPlanificada * EnvasesPorPalet), "n0") #</label></td>
+                    <td>
+                        <label style="font-weight: normal !important; text-align: center!important;">#= kendo.toString(Math.floor(cantPlanificada * EnvasesPorPalet) * producto.hectolitros, "n2") #</label></td>
+                </tr>
+                <tr style="background-color: whitesmoke;">
+                    <td style="text-align: left !important;"><% print(window.app.idioma.t('PRODUCIDOS')) %></td>
+                    <td id="tdpaletsProducidos">
+                        <label class="palletsProducidos" style="font-weight: normal !important; text-align: center!important;">#= kendo.toString(produccion.paletsProducidos, "n0") #</label></td>
+                    <td id="tdcajasProducidas">
+                        <label class="cajasProducidas" style="font-weight: normal !important; text-align: center!important;">#=kendo.toString(produccion.cajas, "n0") #</label></td>
+                    <td id="tdenvasesProducidos">
+                        <label style="font-weight: normal !important; text-align: center!important;">#= kendo.toString(produccion.envases, "n0") #</label></td>
+                    <td>
+                        <label style="font-weight: normal !important; text-align: center!important;">#= kendo.toString(produccion.envases * producto.hectolitros, "n2") #</label></td>
+                </tr>
+                <tr style="background-color: whitesmoke;">
+                    <td style="text-align: left !important;"><% print(window.app.idioma.t('ETIQUETADORA_PALETS')) %></td>
+                    <td id="tdpaletsEtiquetadoraProducidos">
+                        <label class="palletsProducidos" style="font-weight: normal !important; text-align: center!important;">#= kendo.toString(produccion.paletsEtiquetadoraProducidos, "n0") #</label></td>
+                    <td>
+                        <label class="cajasProducidas" style="font-weight: normal !important; text-align: center!important;">#= kendo.toString(Math.floor(produccion.paletsEtiquetadoraProducidos * CajasPorPalet), "n0") #</label></td>
+                    <td>
+                        <label style="font-weight: normal !important; text-align: center!important;">#= kendo.toString(Math.floor(produccion.paletsEtiquetadoraProducidos * EnvasesPorPalet), "n0") #</label></td>
+                    <td>
+                        <label style="font-weight: normal !important; text-align: center!important;">#= kendo.toString(Math.floor(produccion.paletsEtiquetadoraProducidos * EnvasesPorPalet) * producto.hectolitros, "n2") #</label></td>
+                </tr>
+                <tr style="background-color: white;">
+                    <td style="text-align: left !important;"><% print(window.app.idioma.t('PICOS')) %></td>
+                    <td>
+                        <label class="palletsPlanificados" style="font-weight: normal !important; text-align: center!important;">#= kendo.toString((isNaN(produccion.cantidadPicosPalets) ? 0 : produccion.cantidadPicosPalets), "n0") #</label></td>
+                    <td id="tdcantidadPicosCajas">
+                        <label class="cajasPlanificadas" style="font-weight: normal !important; text-align: center!important;">#= kendo.toString((isNaN(produccion.cantidadPicosCajas) ? 0 : produccion.cantidadPicosCajas), "n0") #</label></td>
+                    <td>
+                        <label style="font-weight: normal !important; text-align: center!important;">#= kendo.toString((isNaN(Math.floor((produccion.cantidadPicosCajas * EnvasesPorPalet)/ CajasPorPalet)) ? 0 : isFinite(Math.floor((produccion.cantidadPicosCajas * EnvasesPorPalet)/ CajasPorPalet)) ? Math.floor((produccion.cantidadPicosCajas * EnvasesPorPalet)/ CajasPorPalet) : 0), "n0") #</label></td>
+                    <td>
+                        <label style="font-weight: normal !important; text-align: center!important;">#= kendo.toString((isNaN(Math.floor((produccion.cantidadPicosCajas * EnvasesPorPalet)/ CajasPorPalet) * producto.hectolitros) ? 0 : isFinite(Math.floor((produccion.cantidadPicosCajas * EnvasesPorPalet)/ CajasPorPalet) * producto.hectolitros) ? Math.floor((produccion.cantidadPicosCajas * EnvasesPorPalet)/ CajasPorPalet) * producto.hectolitros : 0), "n2") #</label></td>
+                </tr>
+                <tr style="background-color: white;">
+                    <td style="text-align: left !important;"><% print(window.app.idioma.t('NO_CONFORMIDAD_ALMACEN')) %></td>
+                    <td>
+                        <label class="palletsPlanificados" style="font-weight: normal !important; text-align: center!important;">#= (isNaN(Math.floor(produccion.cantidadEnvasesNoConformidad / EnvasesPorPalet)) ? 0 : isFinite(Math.floor(produccion.cantidadEnvasesNoConformidad / EnvasesPorPalet)) ? Math.floor(produccion.cantidadEnvasesNoConformidad / EnvasesPorPalet) : 0) #</label></td>
+                    <td>
+                        <label class="cajasPlanificadas" style="font-weight: normal !important; text-align: center!important;">#= (isNaN(Math.floor((produccion.cantidadEnvasesNoConformidad / EnvasesPorPalet) * CajasPorPalet)) ? 0 : isFinite(Math.floor((produccion.cantidadEnvasesNoConformidad / EnvasesPorPalet) * CajasPorPalet)) ? Math.floor(Math.floor((produccion.cantidadEnvasesNoConformidad / EnvasesPorPalet) * CajasPorPalet)) : 0) #</label></td>
+                    <td>
+                        <label style="font-weight: normal !important; text-align: center!important;">#= (isNaN(produccion.cantidadEnvasesNoConformidad) ? 0 : produccion.cantidadEnvasesNoConformidad) #</label></td>
+                    <td>
+                        <label style="font-weight: normal !important; text-align: center!important;">#= kendo.toString((isNaN(produccion.cantidadEnvasesNoConformidad * producto.hectolitros) ? 0 : produccion.cantidadEnvasesNoConformidad * producto.hectolitros), "n2") #</label></td>
+                </tr>
+                <tr style="background-color: white;">
+                    <td style="text-align: left !important;"><% print(window.app.idioma.t('TOTAL'))%></td>
+                    <td>
+                        <label class="palletsPlanificados" style="font-weight: normal !important; text-align: center!important;">#= kendo.toString((produccion.paletsEtiquetadoraProducidos - (isNaN(produccion.cantidadPicosPalets) ? 0 : produccion.cantidadPicosPalets)), "n0") #</label></td>
+                    <td>
+                        <label class="cajasPlanificadas" style="font-weight: normal !important; text-align: center!important;">#= kendo.toString((((produccion.paletsEtiquetadoraProducidos - (isNaN(produccion.cantidadPicosPalets) ? 0 : produccion.cantidadPicosPalets)) * CajasPorPalet) +  (isNaN(produccion.cantidadPicosCajas) ? 0 : produccion.cantidadPicosCajas)), "n0") #</label></td>
+                    <td>
+                        <label style="font-weight: normal !important; text-align: center!important;">#= kendo.toString(((((produccion.paletsEtiquetadoraProducidos - (isNaN(produccion.cantidadPicosPalets) ? 0 : produccion.cantidadPicosPalets)) * CajasPorPalet) +  (isNaN(produccion.cantidadPicosCajas) ? 0 : produccion.cantidadPicosCajas)) * (isNaN(Math.floor(EnvasesPorPalet/CajasPorPalet)) ? 0 : isFinite(Math.floor(EnvasesPorPalet/CajasPorPalet)) ? Math.floor(EnvasesPorPalet/CajasPorPalet) : 0)), "n0") #</label></td>
+                    <td>
+                        <label style="font-weight: normal !important; text-align: center!important;">#= kendo.toString((((((produccion.paletsEtiquetadoraProducidos - (isNaN(produccion.cantidadPicosPalets) ? 0 : produccion.cantidadPicosPalets)) * CajasPorPalet) +  (isNaN(produccion.cantidadPicosCajas) ? 0 : produccion.cantidadPicosCajas)) * (isNaN(Math.floor(EnvasesPorPalet/CajasPorPalet)) ? 0 : isFinite(Math.floor(EnvasesPorPalet/CajasPorPalet)) ? Math.floor(EnvasesPorPalet/CajasPorPalet) : 0)) * producto.hectolitros), "n2") #</label></td>
+                </tr>
+            </table>
+    </div>
+</script>
+
+<script id="templateRechazos" type="text/x-kendo-template">
+    <div >
+        <table class="table bordeFinoDashed" style="">
+                        <tr style="background-color: gainsboro;">
+                            <td></td>
+                            <td style="text-align: center;"><% print(window.app.idioma.t('CANTIDAD')) %></td>
+                        </tr>
+                        <tr style="background-color: white;">
+                            <td style="text-align: left !important;"><b><% print(window.app.idioma.t('TOTAL')) %></b></td>
+                            <td>
+                                <label class="palletsProducidos" style="font-weight: normal !important; text-align: center!important;"><b>#= rechazosProductoTerminadoAutomatico + rechazosLlenadoraAutomatico + rechazosClasificadorAutomatico + rechazosVaciosAutomatico #</b></label></td>
+                        </tr>
+                        <tr style="background-color: whitesmoke;">
+                            <td style="text-align: left !important;"><% print(window.app.idioma.t('CLASIFICADOR')) %></td>
+                            <td id="tdrechazosClasificadorAutomatico">
+                                <label class="palletsPlanificados" style="font-weight: normal !important; text-align: center!important;">#= rechazosClasificadorAutomatico#</label></td>
+                        </tr>
+                        <tr style="background-color: whitesmoke;">
+                            <td style="text-align: left !important;"><% print(window.app.idioma.t('VACIOS')) %></td>
+                            <td id="tdrechazosVaciosAutomatico">
+                                <label class="palletsProducidos" style="font-weight: normal !important; text-align: center!important;">#= rechazosVaciosAutomatico #</label></td>
+                        </tr>
+                        <tr style="background-color: white;">
+                            <td style="text-align: left !important;"><b><% print(window.app.idioma.t('SUBTOTAL_VACIOS')) %></b></td>
+                            <td>
+                                <label class="palletsProducidos" style="font-weight: normal !important; text-align: center!important;"><b>#= rechazosClasificadorAutomatico + rechazosVaciosAutomatico #</b></label></td>
+                        </tr>
+                        <tr style="background-color: whitesmoke;">
+                            <td style="text-align: left !important;"><% print(window.app.idioma.t('LLENADORA')) %></td>
+                            <td id="tdrechazosLlenadoraAutomatico">
+                                <label class="palletsProducidos" style="font-weight: normal !important; text-align: center!important;">#= rechazosLlenadoraAutomatico #</label></td>
+                        </tr>
+                        <tr style="background-color: whitesmoke;">
+                            <td style="text-align: left !important;"><% print(window.app.idioma.t('PRODUCTO_TERMINADO')) %></td>
+                            <td id="tdrechazosProductoTerminadoAutomatico">
+                                <label class="palletsProducidos" style="font-weight: normal !important; text-align: center!important;">#= rechazosProductoTerminadoAutomatico #</label></td>
+                        </tr>
+                        <tr style="background-color: white;">
+                            <td style="text-align: left !important;"><b><% print(window.app.idioma.t('SUBTOTAL_LLENOS')) %></b></td>
+                            <td>
+                                <label class="palletsProducidos" style="font-weight: normal !important; text-align: center!important;"><b>#= rechazosProductoTerminadoAutomatico + rechazosLlenadoraAutomatico #</b></label></td>
+                        </tr>
+        </table>
+    </div>
+</script>

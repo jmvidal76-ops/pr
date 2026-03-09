@@ -1,0 +1,160 @@
+﻿<style>
+    #btnAceptarKOP {
+        float: left;
+        margin-top: 10px;
+    }
+
+    #btnCancelarKOP {
+        float: left;
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+
+    .table {
+        border: 1px solid #000000;
+        margin: 2px;
+        table-layout: fixed;
+    }
+
+    .table-bordered > thead > tr > th,
+    .table-bordered > tbody > tr > th,
+    .table-bordered > tfoot > tr > th,
+    .table-bordered > thead > tr > td,
+    .table-bordered > tbody > tr > td,
+    .table-bordered > tfoot > tr > td {
+        border: 1px solid black;
+        /*font-weight: normal;*/
+    }
+
+    .table > tbody > tr > td,
+    .table > tbody > tr > th,
+    .table > tfoot > tr > td,
+    .table > tfoot > tr > th,
+    .table > thead > tr > td,
+    .table > thead > tr > th {
+        vertical-align: middle !important;
+    }
+
+    .table td {
+        text-align: center;
+        /*font-size: 19px;*/
+        /*font-weight: bold !important;*/
+        padding: 4px !important;
+        padding-left: 8px !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+
+    .bordeFinoDashed td {
+        text-align: left !important;
+        border: dashed 1px lightgray !important;
+    }
+
+    .bordeFinoNoDashed td {
+        text-align: left !important;
+        border: hidden !important;
+    }
+
+    /*.table span {
+        font-weight: normal;
+    }*/
+
+    .nowrap {
+        word-wrap: break-word;
+        max-height: 3em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .lblOverflow {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .botones {
+        margin-left: 26%;
+    }
+
+    #divIzquierda {
+        float: left;
+    }
+
+    #divDerecha {
+        float: right;
+    }
+</style>
+
+
+
+<div id="divUpdateCurva">
+    <form id="UpdatePosicion">
+        <div style="float:left;border:0;">
+            <span id="txtIdValor" style="display:none;"></span>
+        </div>
+        <table id="tablaOrden" class="table bordeFinoDashed" style="margin-bottom: 8px; float: left;">
+            <tbody>
+                <tr>
+                    <td colspan="2"><span style="font-weight:bold;"><label id="lblCod"></label></span>&nbsp;&nbsp;<label style="font-weight: normal;" id="txtCod"></label></td>
+                    <td><span style="font-weight:bold;"><label id="lblPosicion"></label></span>&nbsp;&nbsp;  <label style="font-weight: normal;" id="txtPosicion"></label></td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <span style="font-weight:bold;"><label id="lblMinimo"></label></span>&nbsp;&nbsp;
+                        <span class="UOMhms" style="display:none;">
+                            <input id="txtDiaMinimo" class="Inputhms" name="txtDia" />d
+                            <input id="txtHoraMinimo" class="Inputhms" name="txtHora" />h
+                            <input id="txtMinutosMinimo" class="Inputhms" name="txtMinutos" />m
+                            <input id="txtSegundosMinimo" class="Inputhms" name="txtSegundos" />s
+                        </span>
+                        <input id="txtMinimo" class="UOMOtros" name="txtMinimo" />
+
+                    </td>
+                    <td>
+
+                        <span style="font-weight:bold;"><label id="lblValor"></label></span>&nbsp;&nbsp;
+                        <span class="UOMhms" style="display:none;">
+                            <input id="txtDiaValor" class="Inputhms" name="txtDia" />d
+                            <input id="txtHoraValor" class="Inputhms" name="txtHora" />h
+                            <input id="txtMinutosValor" class="Inputhms" name="txtMinutos" />m
+                            <input id="txtSegundosValor" class="Inputhms" name="txtSegundos" />s
+                        </span>
+                        <input type="text" id="txtValor" class="UOMOtros" name="txtValor" />
+
+                    </td>
+                    <td>
+                        <span style="font-weight:bold;"><label id="lblMaximo"></label></span>&nbsp;&nbsp;
+                        <span class="UOMhms" style="display:none;">
+                            <input id="txtDiaMaximo" class="Inputhms" name="txtDia" />d
+                            <input id="txtHoraMaximo" class="Inputhms" name="txtHora" />h
+                            <input id="txtMinutosMaximo" class="Inputhms" name="txtMinutos" />m
+                            <input id="txtSegundosMaximo" class="Inputhms" name="txtSegundos" />s
+                        </span>
+                        <input id="txtMaximo" class="UOMOtros" name="txtMaximo" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><span style="font-weight:bold;"><label id="lblDescripcion"></label></span>&nbsp;&nbsp;<input id="txtDescripcion" class="UOMOtros" name="txtDescripcion" style="width: 528px;" /></td>
+                    <td>
+
+                        <span style="font-weight:bold;margin-left:1em"><label id="lblUnidad"></label></span>&nbsp;&nbsp;<label style="font-weight:normal;" id="txtUnidad"></label>
+                        <span style="font-weight:bold; margin-left:2em"><label id="lblActivo"></label></span>&nbsp;&nbsp;<input type="checkbox" id="chxActivo" name="chxActivo" />
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="divBotones" style="width: 100%;">
+            <span id="divIzquierda" style="padding-left: 2%; padding-top: 2%;">
+                <label id="lblErrorValor" style="color:red; font-weight:bold;"> <span id="message" style="color:red"></span></label>
+            </span>
+            <span id="divDerecha" style="margin-right: 43%;">
+                <button id="btnAceptarKOP"><% print(window.app.idioma.t('ACEPTAR')) %></button>
+                <button id="btnCancelarKOP"><% print(window.app.idioma.t('CANCELAR')) %></button>
+            </span>
+        </div>
+
+    </form>
+</div>

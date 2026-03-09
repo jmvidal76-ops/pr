@@ -1,0 +1,30 @@
+﻿<style>
+    .fila {
+        margin-left: 20px;
+        margin-top: 15px;
+    }
+
+    .ancho {
+        width: 120px;
+    }
+</style>
+<div>
+    <form id="fCrearEditarParo">
+        <div class="fila">
+            <label id="lblFechaTurno" style="margin-left: 18px"></label>
+            <input id="dpFechaTurno" class="ancho" required />
+            <label id="lblTurno" style="margin-left: 10px"></label>
+            <select id="cmbTurno" class="ancho" required />
+        </div>
+        <div class="fila">
+            <label id="lblCantidad"></label>
+            <input id="txtCantidad" class="ancho" required />
+        </div>
+        <div id="trError" style="display: none; color:red; text-align: center; margin-top: 10px;">
+        </div>
+        <div style="text-align: center; margin-top: 10px">
+            <input type="button" id="btnAceptarPico" value="Aceptar" />
+            <input type="button" id="btnCancelarPico" value="Cancelar" />
+        </div>
+    </form>
+</div>

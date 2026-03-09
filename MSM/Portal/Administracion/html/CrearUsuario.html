@@ -1,0 +1,65 @@
+﻿<style>
+    #btnAceptar {
+        float: left;
+        margin-left: 150px;
+        margin-top: 10px;
+    }
+
+    #btnCancelar {
+        float: left;
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+
+    .borderdiv {
+        border-radius: 10px !important;
+        border: 1px solid #c5c5c5 !important;
+        padding: 5px !important;
+        margin-left: 10px!important;
+        /*width: 350px !important;*/
+        /*height: 45px !important;*/
+    }
+</style>
+
+
+<div>
+    <form id="CrearUsuario" style="margin-left: 10px;">
+        <p></p>
+
+        <div style="float: left; background-color: Transparent; border: 0;">
+
+            <div style="float: left; border: 0;">
+                <label id="lblUsuario" style="width: 150px; text-align: right;"></label>
+                <input type="text" class="k-textbox" style="width: 180px" id="txtUsuario" required />
+            </div>
+            <br />
+            <br />
+            <br />
+            <div style="float: left; border: 0;">
+                <label id="lblRol" style="width: 150px; text-align: right;"></label>
+                <input id="cmbRol" name="cmbRol" style="width: 180px;" />
+            </div>
+            <div id="divActivo" style="float: left; border: 0; width: 400px">
+                <br />
+                <label id="lblActivo" style="width: 150px; text-align: right;"></label>
+                <input type="checkbox" id="chkActivo" style="width: 14px; height: 14px;" />
+            </div>
+            <br />
+            <br />
+            <div id="divPass" style="float: left; border: 0;">
+                <label id="lblAvisoPass" style="text-align: center;"></label>
+                <br />
+                <label id="lblPassword" style="width: 150px; text-align: right;"></label>
+                <input type="password" class="k-textbox" style="width: 180px" id="txtPassword" required />
+            </div>
+            <br />
+            <br />
+            <br />
+            <div>
+                <input type="button" id="btnAceptar" value="Aceptar" />
+                <input type="button" id="btnCancelar" value="Cancelar" />
+            </div>
+
+        </div>
+    </form>
+</div>

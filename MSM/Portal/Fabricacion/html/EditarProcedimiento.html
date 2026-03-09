@@ -1,0 +1,101 @@
+<style>
+    #formParoPerdida {
+        margin: 15px;
+    }
+
+    .tdLabel {
+        width: 16% !important;
+    }
+
+    #tablaCambio th, .table td {
+        border-top: none !important;
+        /*text-align: right;*/
+    }
+
+    #tablaCambio tr {
+        height: 60px !important;
+    }
+
+    #tablaCambio input, textarea {
+        margin-left: 5px !important;
+        width: 120px;
+    }
+
+    #btnAceptar, #btnCancelar {
+        height: 30px;
+        width: 30%;
+        /*float:left;*/
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+
+    /*.k-grid .k-state-selected { background-color:lightyellow; }*/
+
+
+    .k-autocomplete,
+    .k-combobox,
+    .k-datepicker,
+    .k-timepicker,
+    .k-datetimepicker,
+    .k-colorpicker,
+    .k-numerictextbox,
+    .k-dropdown,
+    .k-selectbox,
+    .k-textbox,
+    .k-toolbar .k-split-button {
+        width: 100% !important;
+    }
+
+
+    .k-numerictextbox {
+        width: 100% !important;
+    }
+
+        .k-numerictextbox .k-numeric-wrap .k-input {
+            width: 96% !important;
+        }
+</style>
+
+<table id="tablaCambio" class="table borderless">
+    <tbody>
+        <tr>
+            <td id="orden" style="width: 23% !important; text-align: right; font-weight: bold;"><% print(window.app.idioma.t('ORDEN')) %>: &nbsp;</td>
+            <td style="width: 73% !important; text-align: left;"><%= order.id %></td>
+        </tr>
+        <tr>
+            <td id="proc" style="width: 23% !important; text-align: right; font-weight: bold;"><% print(window.app.idioma.t('PROCEDIMIENTO')) %>: &nbsp;</td>
+            <td style="width: 73% !important; text-align: left;"><%= proc.Des_Procedimiento.toUpperCase() %></td>
+        </tr>
+        <tr>
+            <td id="Td1" style="width: 23% !important; text-align: right; font-weight: bold;"><% print(window.app.idioma.t('FECHA_HORAINICIO')) %>: &nbsp;</td>
+            <td style="width: 73% !important; text-align: left;">
+                <input type="datetime" id="txtFechaInicio" name="txtFechaInicio" style="width: 222px !important;" />
+            </td>
+        </tr>
+        <tr>
+            <td id="Td2" style="width: 23% !important; text-align: right; font-weight: bold;"><% print(window.app.idioma.t('FIN')) %>: &nbsp;</td>
+            <td style="width: 73% !important; text-align: left;">
+                <input type="datetime" id="txtFechaFin" name="txtFechaFin" style="width: 222px !important;" />
+            </td>
+        </tr>
+        <tr id="trError" style="height: 20px !important; display:none;">
+            <td colspan="2">
+                <span id="lblError"><% print(window.app.idioma.t('_LA_FECHA')) %></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <div style="text-align: center; width: 100%;">
+                    <button id="btnAceptar"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+                    <button id="btnCancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+

@@ -1,0 +1,25 @@
+﻿<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"> <% print(window.app.idioma.t('AJUSTE_STOCK')) %></label>
+</div>
+
+<!-- Filtros Cambios -->
+<div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+    <div style="float: right; margin-right: 10px;">
+        <button id="btnActualizarStocks" class="k-button k-button-icontext" style="margin-left: 5px;">
+            <% print(window.app.idioma.t('ACTUALIZAR_STOCKS')) %>
+        </button>
+        <button id="btnCorregirStock" class="k-button k-button-icontext" style="margin-left: 5px;" disabled>
+            <% print(window.app.idioma.t('CORREGIR_STOCK')) %>
+        </button>
+        <button id="btnExportExcel" class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px;">
+            <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+        </button>
+        <button id="btnLimpiarFiltros" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;">
+            <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+        </button>
+    </div>
+</div>
+
+<div id="gridAjusteStock"></div>

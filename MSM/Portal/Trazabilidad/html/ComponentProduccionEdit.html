@@ -1,0 +1,80 @@
+
+<style type="text/css">
+
+    div.k-window-content {
+        padding: 0;
+    }
+
+    .formDialog {
+        padding: 15px;
+        float: left;    
+        box-sizing: border-box;       
+    }
+    .formDialog h3 {
+        border-bottom: 1px solid #ccc;
+        /*font-size: 1.4em;*/
+        font-weight: normal;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }  
+    .formDialog label {
+        display: inline-block;
+        font-weight: bold;
+        width: 100px;
+        text-align: left;
+        
+    }
+    .formDialog #toolBarBotones {
+        text-align: center;
+    }
+  
+</style>
+<div id="myObjectTemplate">
+   
+    <div id="alt-center-pane">
+    <form id="objectTemplate" class="formDialog">
+            <div id="divPARTICION"  class="divParametros">                
+                <label><%- window.app.idioma.t("PARTICION")%> </label>               
+                <select id="selectParticion" data-role="combobox" data-bind="source: particiones, value: particionValue" data-text-field="Id" data-value-field="Id" style='width: 190px' ></select>
+                
+            </div> 
+            <div id="divESTADO"  class="divParametros">  
+                    <label for="selectEstado"><%- window.app.idioma.t("ESTADO")%>:</label>
+                    <select id='selectEstado' data-role='dropdownlist' data-bind='source: typesEstado, value: valueEstado' data-text-field='text' data-value-field='value' style='width: 150px' ></select>
+                    
+            </div>
+            <div id="divCUARENTENA"  class="divParametros">  
+                <label for="selectCuarentena"><%- window.app.idioma.t("CUARENTENA")%>:</label>
+                <select id='selectCuarentena'  data-role='dropdownlist' data-bind='source: typesCuarentena, value: valueCuarentena' data-text-field='text' data-value-field='value' style='width: 180px' ></select>
+                <br /><br />
+                <label for="dateCuarentena"><%- window.app.idioma.t("FECHA")%>:</label>
+                <input id="dateCuarentena"  style='width: 180px' />
+                <br /><br />
+                <label for="name"><%- window.app.idioma.t("MOTIVO")%>:</label><br />
+                <textarea id="motivoCuarentena"  rows="5" class="k-textbox" data-bind="value: motivoCuarentena" style="width: 100%"></textarea>
+           
+            </div>  
+            <div id="divBLOQUEO" class="divParametros">
+                <label for="selectBloquear"><%- window.app.idioma.t("BLOQUEO")%>:</label>
+                <select id='selectBloquear' data-role='dropdownlist' data-bind='source: typesBloquear, value: valueBloquear' data-text-field='text' data-value-field='value' style='width: 180px' ></select>
+                <br /><br />
+                <label for="dateBloquear"><%- window.app.idioma.t("FECHA")%>:</label>
+                <input id="dateBloquear"  style='width: 180px' />
+                <br /><br />
+                <label for="name"><%- window.app.idioma.t("MOTIVO")%>:</label><br />
+                <textarea id="motivoBloquear"  rows="5" class="k-textbox" data-bind="value: motivoBloquear" style="width: 100%"></textarea>
+            </div>
+
+        <br />
+        <div ><label id="lblError" style="color:red; width:230px; text-align:center" ></label></div>
+        
+        <div id="toolBarBotones">
+            <input type="button" id="btnAceptar"   />
+            <input type="button" id="btnCancelar"  />
+        </div>
+        </form>
+        
+    </div>
+    
+</div>

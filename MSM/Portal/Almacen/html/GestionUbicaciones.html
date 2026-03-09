@@ -1,0 +1,99 @@
+﻿<style type="text/css">
+    #divGestionUbicaciones {
+        height: 100%;
+        width: 100%;
+    }
+
+    .km-barcode:after,
+    .km-barcode:before
+    {
+        content: "\e104";
+    }
+
+    #barcode {
+                width: 300px;
+                margin: 10px auto;
+                text-align:center;
+            }
+
+    .barcodes {
+                width: 300px;
+                margin: 10px auto;
+                text-align:center;
+            }
+
+   
+
+    .window-footer{
+        position: absolute;
+        bottom: 0;display: block; width: 96%;padding: 0px 0 10px;text-align: right;
+      }
+
+    #txtBarcode{font-size:1.2em;margin-top:0.3em}
+
+     .txtBarcode{font-size:1.2em;margin-top:0.3em}
+
+    .k-AsociarUbicacion{
+        float: right
+    }
+
+    /*@media print {
+        #barcode {
+            width: 700px;
+            height:500px;
+        }
+    }*/
+</style>
+<div id="window" style="display:none">
+        <span id="barcode" class="barcode">
+		</span>
+</div>
+
+<div id="windowBarcodes" style="display:none">
+</div>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+            <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+            <label class="lblCabeceraVista"><% print(window.app.idioma.t('GESTION_UBICACIONES')) %></label>
+</div>
+<div id="container" class="divSplitter" style="width: 100%; height: 95%;overflow:hidden">
+   
+    <div id="almacenes" style="width: 100%; height: 20%;overflow:hidden;background:#f0eeee">
+        <div id="almacen1" style="width: 40%; float: left; height: 100%;overflow:hidden;">
+            <div id="divListaAlmacenes" style="width: 100%;height: 100%;"></div>
+        </div>
+       <!-- <div id="empty1" style="width: 5%; float: left; text-align: center;margin-top:4%">
+            <img src="./img/tituloCabecera.png" /></div>-->
+        <div id="almacen2" style="width: 55%; float: left; height: 100%;overflow:hidden;">
+            <div id="divPropAlmacenes" style="width: 100%;height: 100%;"></div>
+        </div>
+    </div>
+   <!-- <div id="vertempty" style="height: 5%; width: 100%; position: relative !important;">
+        <div class="k-splitbar" style="height:30%; width:100%; margin-top:1%;"></div>
+    </div>-->
+    <div id="zona" style="width: 100%; height: 20%;overflow:hidden;background:#f0eeee">
+        <div id="zona1" style="width: 40%; float: left; height: 100%;overflow:hidden;">
+            <div id="divListaZonas" style="width: 100%;height: 100%;"></div>
+        </div>
+        <!--<div id="empty2" style="width: 5%; float: left; text-align: center;margin-top:4%">
+            <img src="./img/tituloCabecera.png" /></div>-->
+        <div id="zona2" style="width: 55%; float: left; height: 100%;overflow:hidden;">
+            <div id="divPropZonas" style="width: 100%;height: 100%;"></div>
+        </div>
+    </div>
+    <!--<div id="Div1" style="height: 5%; width: 100%; position: relative !important;">
+        <div class="k-splitbar" style="height:30%; width:100%; margin-top:1%;"></div>
+    </div>-->
+    <div id="ubicaciones" style="width: 100%; height: 50%;overflow:hidden;background:#f0eeee">
+        <div id="ubicacion1" style="width: 40%; float: left; height: 100%;overflow:hidden;">
+            <div id="divListaUbicaciones" style="width: 100%;height: 100%;"></div>
+
+        </div>
+       <!-- <div id="empty3" style="width: 5%; float: left; text-align: center;margin-top:4%">
+            <img src="./img/tituloCabecera.png" /></div>-->
+        <div id="ubicacion2" style="width: 55%; float: left; height: 100%;overflow:hidden;">
+            <div id="divPropUbicaciones" style="width: 100%;height: 100%;"></div>
+        </div>
+    </div>
+
+</div>

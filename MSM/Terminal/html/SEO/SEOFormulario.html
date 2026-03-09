@@ -1,0 +1,30 @@
+﻿<style>
+    .cabeceraVista {
+        border: 1px solid black;
+        width: auto;
+        height: 26px;
+        background-color: darkred;
+        color: white;
+        padding: 3px;
+        padding-left: 10px;
+        font-size: 20px;
+    }
+
+    .k-i-arrow-s {
+        margin-top: 10px;
+    }
+
+    .k-add {
+        margin-top: 4px;
+    }
+</style>
+
+<div class="cabeceraVista">
+    <img src="img/iconoCabecera.png" />
+    <span><% print(window.app.idioma.t("SEO_FORMULARIO")) %></span>
+</div>
+<div id="divSeoFormulario" style="padding-top: 5px">
+    <label style="margin-left: 5px;"><% print(window.app.idioma.t('FORMULARIO')) %></label>
+    <input id="ddlSeoForm" style="width:300px;" />
+    <button id="btnNuevoSeoForm" class="k-button k-button-icontext" style="margin-left: 5px; background-color: green; color: white;"><span class='k-icon k-add'></span><% print(window.app.idioma.t('NUEVO')) %></button>
+</div>

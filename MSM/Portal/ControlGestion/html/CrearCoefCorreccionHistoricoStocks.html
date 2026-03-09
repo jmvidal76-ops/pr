@@ -1,0 +1,32 @@
+﻿<style>
+    .fila {
+        margin-left: 10px;
+        margin-top: 20px;
+    }
+
+    .textos {
+        width: 95px;
+        text-align: right;
+    }
+</style>
+
+<div>
+    <form id="CrearCoefCorreccionHistorico">
+        <div class="fila">
+            <label id="lblProceso" class="textos"><% print(window.app.idioma.t('PROCESO')) %></label>
+            <select id="cmbProceso" style="width: 155px" />
+        </div>
+        <div class="fila">
+            <label id="lblMaterialHistorico" class="textos"><% print(window.app.idioma.t('MATERIAL')) %></label>
+            <select id="cmbMaterialHistorico" style="width: 540px" />
+        </div>
+        <div class="fila">
+            <label id="lblCoeficienteHistorico" class="textos"><% print(window.app.idioma.t('COEFICIENTE')) %> (%)</label>
+            <input type="text" style="width: 155px" id="ntxtCoeficienteHistorico" data-type="number" data-role="numerictextbox" />
+        </div>
+        <div style="text-align: center; margin-top: 15px">
+            <input type="button" id="btnAceptarCoeficienteHistorico" style="margin-right: 20px" value="Aceptar" />
+            <input type="button" id="btnCancelarCoeficienteHistorico" value="Cancelar" />
+        </div>
+    </form>
+</div>

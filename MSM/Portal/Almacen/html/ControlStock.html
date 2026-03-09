@@ -1,0 +1,111 @@
+﻿<style type="text/css">
+    #divHTMLContenido {
+        height: 100%;
+        width: 100%;
+    }
+
+     .bloqueado
+      {
+        background-color: #FAFAD2;
+      }
+
+    .filters {
+        display:none
+    }
+
+    .k-menu .k-item > .k-link {
+      padding:  0.4em 1em .3em;
+    }
+
+    .listColumn {
+        height:400px !important;
+        overflow-y:auto !important;
+    }
+
+    #txtBarcode{font-size:1.2em;margin-top:0.3em}
+
+    .circle_cells {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-size: 25px 28px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 25px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-right: 5px;
+    }
+
+</style>
+
+<div id="window" style="display:none">
+        <span id="barcode" class="barcode"></span>
+</div>
+
+
+<script type="text/x-kendo-template" id="tmpToolbar"> 
+  <!--  <table style="border-bottom:1px solid \\#\d5d5d5 !important;margin-bottom:5px">
+        <tbody>
+            <tr>
+                <th style="padding-left:1em"><% print(window.app.idioma.t('FECHA_CONSUMO')) %></th>
+                <th style="padding-left:1em" ><% print(window.app.idioma.t('FECHA_CADUCIDAD')) %></th>
+                <th style="padding-left:1em"><% print(window.app.idioma.t('VER_LOTES_NO_CONSUMIDOS')) %></th>
+            </tr>
+            <tr>
+                <td  class="col-md-6 col-lg-3"><input placeholder="<% print(window.app.idioma.t('DESDE')) %>" id="cmbFechaInicioConsumo" style="margin-right:5px" /><input placeholder="<% print(window.app.idioma.t('HASTA')) %>" id="cmbFechaFinConsumo" /></td>
+                <td class="col-md-6 col-lg-3"><input placeholder="<% print(window.app.idioma.t('DESDE')) %>" id="cmbFechaInicioCaducidad"  style="margin-right:5px" /><input placeholder="<% print(window.app.idioma.t('HASTA')) %>" id="cmbFechaFinCaducidad" /></td>
+                <td><input type="checkbox" id="chkLotesConsumidos" checked/>&emsp;<% print(window.app.idioma.t('SI')) %>/<% print(window.app.idioma.t('NO')) %></td>
+            </tr>  
+        </tbody>
+    </table> --> 
+    <!--<div id="divFilters" style="overflow-x:auto;max-width:100%">
+    <table style="margin-bottom: 5px;">
+        <tbody style="overflow-x:auto">
+            <tr class="filters">
+                <th style="padding-left:1em"><% print(window.app.idioma.t('ALMACEN')) %></th>
+                <th style="padding-left:1em"><% print(window.app.idioma.t('ZONA')) %></th>
+                <th style="padding-left:1em"><% print(window.app.idioma.t('UBICACION')) %></th>
+                <th style="padding-left:1em"><% print(window.app.idioma.t('TIPO_MATERIAL')) %></th>
+                <th style="padding-left:1em"><% print(window.app.idioma.t('CLASE_MATERIAL')) %></th>
+                <th style="padding-left:1em"><% print(window.app.idioma.t('REFERENCIA')) %></th>
+                <th style="padding-left:1em"><% print(window.app.idioma.t('LOTE_PROVEEDOR')) %></th>
+                <th style="padding-left:1em"><% print(window.app.idioma.t('LOTES_NO_CONSUMIDOS')) %></th>
+                <th style="padding-left:1em"><% print(window.app.idioma.t('PRIORIDAD')) %></th>
+            </tr>
+            <tr class="filters">
+                <td style="border-width: 0 0 1px 1px;"><input id="cmbAlmacen" style="width:100%" /></td>
+                <td style="border-width: 0 0 1px 1px;"><input id="cmbZona" style="width:100%"/></td>
+                <td style="border-width: 0 0 1px 1px;"><input id="cmbUbicacion" style="width:100%"/></td>
+                <td style="border-width: 0 0 1px 1px;"><input id="cmbTipoMat" style="width:100%"/></td>
+                <td style="border-width: 0 0 1px 1px;"><input id="cmbClaseMat" style="width:100%"/></td>
+                <td style="border-width: 0 0 1px 1px;"><input style="width:100%"  id="cmbReferencia"/></td>
+                <td style="border-width: 0 0 1px 1px;"><input id="cmbLoteProveedor" style="width:100%" /></td>
+                <td style="border-width: 0 0 0 1px;"><input style="width:300px" id="cmbLotesNoConsumidos" style="width:100%" /></td>
+                <td style="border-width: 0 0 1px 1px;"><input style="width:100px"  id="cmbPrioridad" style="width:100%" /></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>-->
+
+</script>
+
+<script type="text/x-kendo-template" id="tmpLIMS">
+    <div>
+        <div style="display: flex;flex-direction: row;align-items: center;
+        justify-content: flex-start;margin-bottom:12px;">
+            <strong style="margin-right: 18px"><label class="mbi"><% print(window.app.idioma.t('ID_LOTE')) %></label>:</strong>
+            <label class="mbi">#=IdLoteMES#</label>
+        </div>
+        <div id="gridLIMS"></div>
+    </div>
+</script>
+
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+            <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+            <label class="lblCabeceraVista"><% print(window.app.idioma.t('CONTROL_STOCK')) %></label>
+</div>
+<!--<input type="checkbox" id="chkLotesConsumidos" checked style="display:none" />-->
+<div id="divControlStock" style="width:100%;height:calc(100% - 30px);"></div>
+<div id="divWnd"></div>

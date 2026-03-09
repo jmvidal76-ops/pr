@@ -1,0 +1,72 @@
+﻿<style>
+    .error {
+        color: red;
+    }
+
+    .boton {
+        width: 150px;
+        height: 65px;
+    }
+
+    .fila {
+        margin-top: 10px;
+    }
+
+    .lbl-required {
+        display: inline;
+        margin-right: 6px;
+    }
+</style>
+
+<div>
+    <form id="CrearSolicitud" class="pad-15 pb-30">
+        <div class="pad-15" style="position: relative; background-color: lightsteelblue; border-radius: 4px;">
+            <label for="buscadorTag" data-lng-key="BUSCADOR_TAG"></label>
+            <select id="buscadorTag" name="buscadorTag" class="w-100"></select>
+            <a role="button" class="k-window-action k-link k-state-hover" style="position: absolute; top: 41px; right: 22px;" 
+               onclick="javascript: var w = $('#buscadorTag').getKendoComboBox(); w.value(null); w.trigger('change')">
+                <span role="presentation" class="k-icon k-i-close">Delete</span>
+            </a>
+        </div>
+        <div class="fila px-15">
+            <label id="lblArea" for="cmbArea" class="w-100 lbl-required" data-lng-key="AREA"></label><label>*</label>
+            <select id="cmbArea" name="cmbArea" class="w-100" data-model-name="AreaFabricacion" required></select>
+        </div>
+        <div class="fila px-15">
+            <label id="lblZona" for="cmbZona" class="w-100 lbl-required" data-lng-key="ZONA"></label><label>*</label>
+            <select id="cmbZona" name="cmbZona" class="w-100" data-model-name="ZonaFabricacion" required></select>
+        </div>
+        <div class="fila px-15">
+            <label id="lblEquipoF" for="cmbEquipoF" class="w-100 lbl-required" data-lng-key="EQUIPO"></label><label>*</label>
+            <select id="cmbEquipoF" name="cmbEquipoF" class="w-100" data-model-name="EquipoFabricacion" required></select>
+        </div>
+        <div class="fila px-15">
+            <label id="lblGrupoConstructivo" for="cmbGrupoConstructivo" class="w-100 lbl-required" data-lng-key="GRUPO_CONSTRUCTIVO"></label><label>*</label>
+            <select id="cmbGrupoConstructivo" name="cmbGrupoConstructivo" class="w-100" data-model-name="GrupoConstructivoFabricacion" required></select>
+        </div>
+        <div class="fila px-15">
+            <label id="lblRepuesto" for="cmbRepuesto" class="w-100 lbl-required" data-lng-key="ELEMENTO"></label>
+            <select id="cmbRepuesto" name="cmbRepuesto" class="w-100" data-model-name="RepuestoFabricacion"></select>
+        </div>
+        <div class="fila px-15">
+            <label id="lblTipoAveria" for="cmbTipoAveria" class="w-100 lbl-required" data-lng-key="TIPO_AVERIA"></label><label>*</label>
+            <select id="cmbTipoAveria" name="cmbTipoAveria" class="w-100" data-model-name="IdTipoAveria" required></select>
+        </div>
+        <div class="fila px-15">
+            <label id="lblDescripcionAveria" for="tfDescripcionAveria" class="w-100 lbl-required" data-lng-key="DESCRIPCION_AVERIA"></label><label>*</label>
+            <textarea class="pad-10 w-100 keyboardOn" id="tfDescripcionAveria" name="tfDescripcionAveria" style="width:97%;" maxlength="30" required />
+        </div>
+        <div class="fila px-15">
+            <label id="lblDescripcionProblema" for="tfDescripcionProblema" class="w-100" data-lng-key="DESCRIPCION_PROBLEMA"></label>
+            <textarea class="pad-10 w-100 keyboardOn" id="tfDescripcionProblema" name="tfDescripcionProblema" style="width:97%;" maxlength="80" />
+        </div>
+
+        <div class="tac mt-20 px-15">
+            <input type="button" class="boton mr-25" id="btnGestionCrear" data-lng-val-key="ACEPTAR"/>
+            <input type="button" class="boton" id="btnGestionCancelar" data-lng-val-key="CANCELAR"/>
+        </div>
+        <div id="trError" class="error tac mt-20 px-15" style="display:none;" colspan="2">
+        </div>
+    </form>
+</div>
+

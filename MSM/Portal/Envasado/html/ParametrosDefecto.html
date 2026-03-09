@@ -1,0 +1,23 @@
+﻿<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('PARAMETROS_POR_DEFECTO_LARGO')) %></label>
+</div>
+<div id="divFiltros" class="k-header" style="height: 35px; width: 100%; padding-top: 5px;">
+    <div style="float: left; margin-left: 10px; height: 25px;">
+        <label><% print(window.app.idioma.t('VELOCIDAD_NOMINAL')) %></label>
+        <input type="text" id="txtParamDefVelNom" style="width:120px;" maxlength="7" data-type="number" data-role="numerictextbox" required />
+        <label><% print(window.app.idioma.t('VEL_NOM_MAQ_LIMITANTE')) %></label>
+        <input type="text" id="txtParamDefVelNomMaqLimitante" style="width:120px;" maxlength="7" data-type="number" data-role="numerictextbox" required />
+        <label><% print(window.app.idioma.t('OEE_OBJETIVO')) %></label>
+        <input type="text" id="txtParamDefOeeObj" style="width:120px;" maxlength="6" data-type="number" data-role="numerictextbox" required />
+        <label><% print(window.app.idioma.t('OEE_CRITICO')) %></label>
+        <input type="text" id="txtParamDefOeeCri" style="width:120px;" maxlength="6" data-type="number" data-role="numerictextbox" required />
+        <label><% print(window.app.idioma.t('OEE_SECUENCIADOR')) %></label>
+        <input type="text" id="txtParamDefOeePreactor" style="width:120px;" maxlength="6" data-type="number" data-role="numerictextbox" required />
+        <button id="btnAsignarParamDef" class="k-button k-button-icontext k-grid-add" style="background-color: green; color: white;">
+            <span class='k-icon k-add'></span><% print(window.app.idioma.t('ASIGNAR')) %>
+        </button>
+    </div>
+</div>
+<div id="gridParametrosDefecto"></div>

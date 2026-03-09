@@ -1,0 +1,124 @@
+﻿<style type="text/css">
+    .cabeceraVista {
+        border: 1px solid black;
+        width: auto;
+        height: 26px;
+        background-color: darkred;
+        color: white;
+        padding: 3px;
+        padding-left: 10px;
+        font-size: 20px;
+    }
+
+    #divFiltrosHeader {
+        display: block;
+        flex-wrap: wrap;
+        height: auto;
+    }
+
+    #divHTMLContenido {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    .grid-container {
+        padding: 40px;
+        margin: auto;
+        text-align: center;
+        max-width: 80%;
+        height: 77%;
+        overflow: hidden;
+    }
+
+    gridCreacionPeticionesMMPPSmile {
+        height: 100%;
+    }
+
+
+    .toolbar-left {
+        float: left;
+        gap: 6px;
+    }
+
+    .toolbar-right {
+        display: inline-flex;
+        float: right;
+        margin-right: 4px;
+    }
+
+    .k-content {
+        overflow: hidden !important;
+    }
+
+    #estCalidad .k-dropdown-wrap.k-state-default {
+        font-size:16px; 
+    }
+
+    #estCalidad .k-icon.k-i-arrow-s {
+        margin-top:8px;
+    }
+
+</style>
+
+<script type="text/x-kendo-template" id="tmpToolbar"></script>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('DEVOLUCIONES_MMPP_SMILE')) %></label>
+</div>
+
+<div id="divFiltrosHeader" class="k-header" style="height: 44px; width: 100%; padding-top: 5px;">
+    <div class="toolbar-left">
+        <input class="k-textbox" id="txtSelectLinea" style="width: 250px; font-weight: bold; background-color: #e1e1e1;margin-left:4px;margin-bottom:4px;" disabled />
+        <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left: 5px; margin-bottom: 5px;"><span class='k-icon k-i-search' style="margin-top:4px;"></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+    </div>
+    <div class="toolbar-right">
+        <button id="btnDevolucionMMPP" class="k-button k-button-icontext" style="float:right; background-color: green; color: white;margin-left:5px;margin-bottom:5px;">
+            <span class="k-icon k-i-play-a"></span><% print(window.app.idioma.t('DEVOLUCION_MMPP')) %>
+        </button>
+    </div>
+</div>
+
+<!--<input type="checkbox" id="chkLotesConsumidos" checked style="display:none" />-->
+<div id="gridDevolucionesMMPPSmile"></div>
+
+<script id="EnviarDevolucionesTemplate" style="width:600px !important;" type="text/x-kendo-template">
+    <div style="font-family: Arial, sans-serif; color: #333; padding: 10px; width: 100%;">
+        <p style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">
+            <% print(window.app.idioma.t('DEVOLUCIONES_LANZAN_SMILE')) %>
+        </p>
+        <ul style="list-style-type: none; padding-left: 0; margin: 0; width: 565px;">
+            <li>#= itemsHtml || "" #</li>
+        </ul>
+
+        <!-- Sección adicional para el Estado Calidad -->
+        <div id="estCalidad" style="margin-top: 25px; margin-right: 20px; padding: 10px; background: #f1f1f1; border-radius: 5px;">
+            <label for="estadoCalidad" style="font-size: 14px; font-weight: bold;">
+                <% print(window.app.idioma.t('ESTADO_CALIDAD')) %>
+            </label>
+            <input id="estadoCalidad" />
+
+            <div id="notasCalidadContainer" style="display: none; margin-top: 10px;">
+                <label for="notasCalidad" style="font-size: 14px; font-weight: bold;">
+                    <% print(window.app.idioma.t('NOTAS_CAMBIO_CALIDAD')) %>
+                </label>
+                <textarea id="notasCalidad" maxlength="250" style="width: 98%; height: 60px; padding: 5px; resize: none;"></textarea>
+            </div>
+            <div style="margin-top: 20px; font-size: 12px; color: #e97676;">
+                <% print(window.app.idioma.t('ESTADO_APLICA_TODO')) %>
+            </div>
+        </div>
+        <span id="botones" style="align-self: end; display: flex; margin-left: 35%; margin-top: 30px;">
+            <input type="button" data-role="button" style="margin-right:6px" id="btnAceptarDevoluciones" value="<% print(window.app.idioma.t('ACEPTAR')) %>" />
+            <input type="button" style="margin-left:10px;" data-role="button" id="btnCancelarDevoluciones" value="<% print(window.app.idioma.t('CANCELAR')) %>" />
+        </span>
+    </div>
+</script>
+
+
+
+
+
+
+

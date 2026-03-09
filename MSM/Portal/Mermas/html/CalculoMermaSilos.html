@@ -1,0 +1,304 @@
+﻿<style>
+    .k-detail-cell .k-tabstrip .k-content {
+        padding: 0.2em;
+        overflow-y: hidden;
+    }
+
+    .table {
+        border: 1px solid #000000;
+        margin: 2px;
+    }
+
+    .table-bordered > thead > tr > th,
+    .table-bordered > tbody > tr > th,
+    .table-bordered > tfoot > tr > th,
+    .table-bordered > thead > tr > td,
+    .table-bordered > tbody > tr > td,
+    .table-bordered > tfoot > tr > td {
+        border: 1px solid black;
+        font-weight: normal;
+    }
+
+    .rTable {
+        display: table;
+    }
+
+    .rTableRow {
+        display: table-row;
+    }
+
+    .rTableCell {
+        display: table-cell;
+        padding: 5px;
+    }
+
+    .table > tbody > tr > td,
+    .table > tbody > tr > th,
+    .table > tfoot > tr > td,
+    .table > tfoot > tr > th,
+    .table > thead > tr > td,
+    .table > thead > tr > th {
+        padding: 0;
+        vertical-align: middle;
+    }
+
+    .k-grid td {
+        padding: .3em .3em;
+        line-height: 1.6;
+        vertical-align: middle;
+    }
+
+    hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid #ccc;
+        margin-top: 1em;
+        padding: 0;
+        margin-bottom: 0em;
+    }
+
+    #divHTMLContenido {
+        height: 100%;
+    }
+
+        /* Reducir tamaño de fuente de los datos de los grids de esta vista (13 seria el tamaño normal)*/
+        #divHTMLContenido .k-grid td {
+            /*font-size: 12px;*/
+        }
+        #divHTMLContenido .k-grid th {
+           /* font-size: 12px;*/
+        }
+        /* Pie de grid: paginador, info, etc. */
+        #divHTMLContenido .k-grid .k-grid-pager,
+        #divHTMLContenido .k-grid .k-pager-wrap,
+        #divHTMLContenido .k-grid .k-pager-nav,
+        #divHTMLContenido .k-grid .k-pager-info {
+            font-size: 11px;
+        }
+
+    #divCabeceraVista {
+        height: 26px;
+    }
+
+    #divContenidoCalculoMerma {
+        height: calc(100% - 26px);
+    }
+
+    /* Cabecera de filtros */
+    #divFiltrosHeader {
+        padding: 4px 8px;
+    }
+
+        #divFiltrosHeader .k-input-label {
+            margin-right: 4px;
+        }
+
+    .boton-calcular {
+        background-color: #cccccc;
+        font-weight: bold;
+    }
+
+    .k-grid,
+    .k-tabstrip,
+    .k-tabstrip .k-content {
+        margin: 0;
+        padding: 0;
+        border-width: 0;
+        overflow-y: hidden;
+    }
+
+    /* Splitter ocupa todo el alto restante */
+    #vspCalculoMerma {
+        height: calc(100% - 40px); 
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+
+    /* Panel de resultados */
+    #panelResultadosMerma {
+        padding: 2px 0 2px 0;
+        text-align: center;
+        /*font-size: 11px;*/
+    }
+
+    .toolbar-titulo {
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 2px;
+        font-size: 11px;
+    }
+
+    /* Contenedor de tablas: centra el bloque, pero sin ancho fijo */
+    #contenedorResultadosMermaTablas {
+        text-align: center; /* centra las tablas inline */
+    }
+        #contenedorResultadosMermaTablas table {
+            display: inline-table;
+            font-size: 14px;
+            width: auto;
+            border-width: 1px;
+            border-collapse: collapse;
+            /*font-size: 11px;*/
+            margin: 0 10px 3px 10px;
+            table-layout: auto;
+        }
+
+        #contenedorResultadosMermaTablas th,
+        #contenedorResultadosMermaTablas td {
+            border-width: 1px;
+            border-style: solid;
+            border-color: #000;
+            text-align: center;
+            padding: 2px 4px;
+            line-height: 1.2;
+            white-space: nowrap; 
+        }
+
+    /* Fila de título "Merma en Extracto" y "Merma en Volumen" */
+    .fila-titulo-merma th {
+        background-color: #FFE4B5; 
+        font-weight: bold;
+    }
+</style>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('CALCULO_MERMA_SILOS')) %></label>
+</div>
+
+<div id="divContenidoCalculoMerma">
+    <!-- Filtros y botones principales -->
+    <div id="divFiltrosHeader" class="k-header">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+                <label class="k-input-label"><% print(window.app.idioma.t('DESDE')) %></label>
+                <input id="dtpFechaDesdeMerma" />
+                <label class="k-input-label"><% print(window.app.idioma.t('HASTA')) %></label>
+                <input id="dtpFechaHastaMerma" />
+                <button id="btnCalculoMermaConsultar" class="k-button k-button-icontext">
+                    <span class="k-icon k-i-search"></span><% print(window.app.idioma.t('CONSULTAR')) %>
+                </button>
+            </div>
+            <div>
+                <button id="btnCalculoMermaLimpiarFiltros" class="k-button k-button-icontext">
+                    <span class="k-icon k-i-funnel-clear"></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+                </button>
+                <button id="btnCalculoMermaExportarExcel" class="k-button k-button-icontext">
+                    <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Zona central: 4 grids + resultados dentro del splitter -->
+    <div id="vspCalculoMerma">
+        <!-- Panel Resultados de merma -->
+        <div id="panelResultadosMerma">
+            <div class="toolbar-titulo">
+                <% print(window.app.idioma.t('RESULTADOS')) %>
+            </div>
+
+            <div id="contenedorResultadosMermaTablas">
+
+                <!-- Tabla 1: Merma en Extracto -->
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="fila-titulo-merma">
+                            <th colspan="7">
+                                <% print(window.app.idioma.t('MERMA_EN_EXTRACTO')) %>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th><% print(window.app.idioma.t('EXISTENCIAS_INICIALES')) %></th>
+                            <th><% print(window.app.idioma.t('ENTRADAS')) %></th>
+                            <th><% print(window.app.idioma.t('SALIDAS')) %></th>
+                            <th><% print(window.app.idioma.t('EXISTENCIAS_FINALES')) %></th>
+                            <th><% print(window.app.idioma.t('EXISTENCIAS_TEORICAS')) %></th>
+                            <th><% print(window.app.idioma.t('MERMA')) %></th>
+                            <th  style="font-weight: bold;">% <% print(window.app.idioma.t('MERMA')) %></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <!-- Valores de ejemplo de momento -->
+                            <td data-campo="EI_Extracto"></td>
+                            <td data-campo="Entradas_Extracto"></td>
+                            <td data-campo="Salidas_Extracto"></td>
+                            <td data-campo="EF_Extracto"></td>
+                            <td data-campo="ET_Extracto"></td>
+                            <td data-campo="Merma_Extracto"></td>
+                            <td data-campo="PorcMerma_Extracto" style="font-weight: bold;"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Tabla 2: Merma en Volumen -->
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="fila-titulo-merma">
+                            <th colspan="7">
+                                <% print(window.app.idioma.t('MERMA_EN_VOLUMEN')) %>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th><% print(window.app.idioma.t('EXISTENCIAS_INICIALES')) %></th>
+                            <th><% print(window.app.idioma.t('ENTRADAS')) %></th>
+                            <th><% print(window.app.idioma.t('SALIDAS')) %></th>
+                            <th><% print(window.app.idioma.t('EXISTENCIAS_FINALES')) %></th>
+                            <th><% print(window.app.idioma.t('EXISTENCIAS_TEORICAS')) %></th>
+                            <th><% print(window.app.idioma.t('MERMA')) %></th>
+                            <th style="font-weight: bold;">% <% print(window.app.idioma.t('MERMA')) %></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <!-- Valores de ejemplo de momento -->
+                            <td data-campo="EI_Volumen"></td>
+                            <td data-campo="Entradas_Volumen"></td>
+                            <td data-campo="Salidas_Volumen"></td>
+                            <td data-campo="EF_Volumen"></td>
+                            <td data-campo="ET_Volumen"></td>
+                            <td data-campo="Merma_Volumen"></td>
+                            <td data-campo="PorcMerma_Volumen" style="font-weight: bold;"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        <div id="gridExistenciasIniciales"></div>
+        <div id="gridMovEntradas"></div>
+        <div id="gridMovSalidas"></div>
+        <div id="gridExistenciasFinales"></div>
+
+    </div>
+</div>
+
+<!-- Toolbars de los grids -->
+<script type="text/html" id="tmplGridExistenciasInicialesToolbar">
+    <div class="toolbar-titulo">
+        <% print(window.app.idioma.t('EXISTENCIAS_INICIALES')) %>
+    </div>
+</script>
+
+<script type="text/html" id="tmplGridMovEntradasToolbar">
+    <div class="toolbar-titulo">
+        <% print(window.app.idioma.t('MOVIMIENTOS_ENTRADA')) %>
+    </div>
+</script>
+
+<script type="text/html" id="tmplGridMovSalidasToolbar">
+    <div class="toolbar-titulo">
+        <% print(window.app.idioma.t('MOVIMIENTOS_SALIDA')) %>
+    </div>
+</script>
+
+<script type="text/html" id="tmplGridExistenciasFinalesToolbar">
+    <div class="toolbar-titulo">
+        <% print(window.app.idioma.t('EXISTENCIAS_FINALES')) %>
+    </div>
+</script>

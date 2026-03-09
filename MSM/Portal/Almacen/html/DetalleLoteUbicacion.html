@@ -1,0 +1,216 @@
+﻿<style>
+    #formParoPerdida {
+        margin: 15px;
+    }
+
+    .cabecera {
+        width: 30% !important;
+        text-align: right;
+        font-weight: bold;
+    }
+
+    .texto {
+        width: 53% !important;
+        text-align: left;
+    }
+
+    .tdLabel {
+        width: 16% !important;
+    }
+
+    #tablaCambio th, .table td {
+        border-top: none !important;
+        /*text-align: right;*/
+    }
+
+    #tablaCambio tr {
+        height: 60px !important;
+    }
+
+    #tablaCambio input, textarea {
+        margin-left: 5px !important;
+        width: 120px;
+    }
+
+    #btnAceptar, #btnCancelar {
+        /*height: 30px;
+        width: 30%;*/
+        /*float:left;*/
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+
+    /*.k-grid .k-state-selected { background-color:lightyellow; }*/
+
+
+    .k-autocomplete,
+    .k-combobox,
+    .k-datepicker,
+    .k-timepicker,
+    .k-datetimepicker,
+    .k-colorpicker,
+    .k-numerictextbox,
+    .k-dropdown,
+    .k-selectbox,
+    .k-textbox,
+    .k-toolbar .k-split-button {
+        width: 100% !important;
+    }
+
+
+    .k-numerictextbox {
+        width: 100% !important;
+    }
+
+        .k-numerictextbox .k-numeric-wrap .k-input {
+            width: 96% !important;
+        }
+
+    .filaDetalle {
+        width: 30%;
+        margin-left: 1%;
+        float: left;
+        margin-top: 20px;
+        height: 60px;
+    }
+
+    .left {
+        width: 37%;
+        float: left;
+        text-align: right;
+        margin-top: 6px;
+    }
+
+    .right {
+        width: 63%;
+        float: left;
+    }
+
+    .rTable {
+        display: table;
+    }
+
+    .rTableRow {
+        display: table-row;
+    }
+
+    .rTableCell {
+        display: table-cell;
+        padding: 10px;
+    }
+
+    .borderdiv {
+        border-radius: 10px !important;
+        border: 1px solid #c5c5c5 !important;
+        /*padding: 5px !important;*/
+        /*margin-left: 10px!important;*/
+    }
+</style>
+<div id="container">
+    <div class="filaDetalle" style="width: 95% !important; height: 40px;">
+        <div style="text-align: center; width: 100%;">
+            <a id='btnMoverLote' class='k-button k-grid-edit' style='width: 140px; margin-left: 20px;'><span class='k-icon k-edit'></span><% print(window.app.idioma.t("MOVERLOTE")) %></a>
+            <a id='btnAjustarLote' class='k-button k-grid-edit' style='width: 140px; margin-left: 20px;'><span class='k-icon k-edit'></span><% print(window.app.idioma.t("AJUSTARLOTE")) %></a>
+            <a id='btnReclasificarLote' class='k-button k-grid-edit' style='width: 140px; margin-left: 20px;'><span class='k-icon k-edit'></span><% print(window.app.idioma.t("RECLASIFICARLOTE")) %></a>
+            <a id='btnBloquearLote' class='k-button k-grid-cancel' style='width: 140px; margin-left: 20px;'><span class='k-icon k-cancel'></span><% print(window.app.idioma.t("BLOQUEARLOTE")) %></a>
+            <a id='btnEliminarLote' class='k-button k-grid-delete' style='width: 140px; margin-left: 20px;'><span class='k-icon k-delete'></span><% print(window.app.idioma.t("ELIMINARLOTE")) %></a>
+
+            <!--<button id="btnMoverLote"><% print(window.app.idioma.t("MOVERLOTE")) %></button>
+            <button id="btnAjustarLote" style="margin-left: 20px;"><% print(window.app.idioma.t("AJUSTARLOTE")) %></button>
+            <button id="btnEliminarLote" style="margin-left: 20px;"><% print(window.app.idioma.t("ELIMINARLOTE")) %></button>
+            <button id="btnBloquearLote" style="margin-left: 20px;"><% print(window.app.idioma.t("BLOQUEARLOTE")) %></button>
+            <button id="btnReclasificarLote" style="margin-left: 20px;"><% print(window.app.idioma.t("RECLASIFICARLOTE")) %></button>-->
+        </div>
+    </div>
+    <div class="rTable borderdiv" style="float: left; margin-top: 10px;">
+        <div style="width: 150px;">
+            <label id="lbljp" style="text-align: left; color: rgb(197, 197, 197); padding: 5px;"><% print(window.app.idioma.t('INFORMACION_LOTE')) %></label>
+        </div>
+        <div class="filaDetalle" style="margin-top: 10px !important;">
+            <div id="Div37" class="left">
+                <label>
+                    <% print(window.app.idioma.t('LOTEMES')) %>: &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div38" class="right">
+              <!--  <textarea id="txtLoteMES" class="k-textbox" rows="3" disabled="disabled" style="width: 150px !important"></textarea>-->
+                <input type="text" class="k-textbox" id="txtLoteMES" name="txtLoteMES" disabled="disabled"/>
+            </div>
+        </div>
+        <div class="filaDetalle" style="margin-top: 10px !important;">
+            <div id="Div5" class="left">
+                <label>
+                    <% print(window.app.idioma.t('MATERIAL')) %>: &nbsp;
+                </label>
+            </div>
+            <div id="Div6" class="right">
+                <input type="text" class="k-textbox" id="txtMaterial" name="txtMaterial" disabled="disabled" />
+            </div>
+        </div>
+        <div class="filaDetalle" style="margin-top: 10px !important;">
+            <div id="Div1" class="left">
+                <label id="Label1">
+                    <% print(window.app.idioma.t('LOTE_PROVEEDOR')) %>: &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div2" class="right">
+                <input type="text" id="txtLoteProveedor" name="txtLoteProveedor" style="width: 80% !important" class="k-textbox" disabled="disabled" />
+                <a id='btnEditarLoteProveedor' class='k-button k-grid-edit' style='min-width: 16px;'><span class='k-icon k-edit'></span></a>
+                <a id='btnGuardarLoteProveedor' class='k-button k-grid-save' style='min-width: 16px; display: none;'>
+                    <img style='width:15px;' src='img/check.png' /></a>
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="filaDetalle" style="margin-top:0px !important;">
+            <div id="Div3" class="left">
+                <label>
+                    <% print(window.app.idioma.t('CANTIDAD_INICIAL')) %>: &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div4" class="right">
+                <input type="text" class="k-textbox" id="txtCantidadIni" name="txtCantidadIni" disabled="disabled" />
+            </div>
+        </div>
+        <div class="filaDetalle" style="margin-top:0px !important;">
+            <div id="titulo" class="left">
+                <label>
+                    <% print(window.app.idioma.t('CANTIDADACT')) %>: &nbsp;
+               
+                </label>
+            </div>
+            <div id="linea" class="right">
+                <input type="text" class="k-textbox" id="txtCantidadActual" name="txtCantidadActual" disabled="disabled" />
+
+            </div>
+        </div>
+
+
+        <div class="filaDetalle" style="margin-top:0px !important;">
+            <div id="Div7" class="left">
+                <label>
+                    <% print(window.app.idioma.t('SSCC')) %>: &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div8" class="right">
+                <input type="text" id="txtSSCC" name="txtSSCC" style="width: 80% !important" class="k-textbox" disabled="disabled" />
+                <a id='btnEditarSSCC' class='k-button k-grid-edit' style='min-width: 16px;'><span class='k-icon k-edit'></span></a>
+                <a id='btnGuardarSSCC' class='k-button k-grid-save' style='min-width: 16px; display: none;'>
+                    <img style='width:15px;' src='img/check.png' /></a>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="filaDetalle" style="width: 98% !important;">
+        <div id="gridOperacionesLote"></div>
+    </div>
+</div>

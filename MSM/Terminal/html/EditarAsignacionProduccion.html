@@ -1,0 +1,70 @@
+﻿<style>
+    .rTable {
+        display: table;
+    }
+
+    .rTableRow {
+        display: table-row;
+    }
+
+    .rTableCell {
+        display: table-cell;
+        padding: 10px;
+        vertical-align: top;
+    }
+
+    #btnAceptarAP, #btnCancelarAP {
+        height: 55px;
+        width: 150px;
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+    #divWO .k-numerictextbox .k-link {
+    display: block;
+    height: 0.7em;
+    line-height: 2em;
+    vertical-align: middle;
+    border-width: 0;
+    padding: 0;
+    padding-bottom: 0px;
+    padding-top: 12px;
+}
+
+    #divWO .k-numerictextbox .k-icon {
+    height: 14px;
+    zoom: 1.4;
+}
+
+    #divWO .k-grid td {
+    font-size: 23px;
+}
+    #divWO .k-grid-header th.k-header > .k-link {
+   
+    font-size: 23px;
+}
+
+    .k-numerictextbox .k-icon {
+    height: 14px;
+    zoom: 1.5;
+}
+
+</style>
+
+<div>
+    <form id="CrearAsignacionProduccion">
+        <div style="width: 100%;">
+            <div style="float: left; background-color: Transparent; border: 0;" class="rTable">
+                <div id="divWO" style="overflow: hidden; width: 100%;">
+                    <div id="gridWO"></div>
+                </div>
+                <div id="divAviso" style="text-align: center; width: 100%; float: left; font-size: 22px">
+                </div>
+                <div id="div1" style="text-align: center; width: 100%; float: left;padding: 10px;">
+                    <button id="btnAceptarAP"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+                    <button id="btnCancelarAP"><% print(window.app.idioma.t("CANCELAR")) %></button>
+                </div>
+            </div>
+        </div> 
+    </form>
+</div>

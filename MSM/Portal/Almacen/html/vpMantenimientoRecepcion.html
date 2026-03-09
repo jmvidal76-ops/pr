@@ -1,0 +1,58 @@
+<div id="container" style="overflow-x:hidden">
+    <form id="formMaintain">
+        <div class="col-md-12 form-group divNombre" style="display:flex;flex-direction:row;align-items:center;">
+            <div class="col-lg-3"><label for="vpTxtNombre"><% print(window.app.idioma.t('NOMBRE').toUpperCase()) %> (*)</label></div>
+            <div class="col-lg-7"><input id="vpTxtNombre" name="vpTxtNombre" type="text" class="k-textbox" required/></div>
+        </div>
+        <!--<div class="col-md-12 form-group divCodigo" style="display:flex;flex-direction:row;align-items:center;">
+            <div class="col-lg-3"><label for="vpTxtCodigo"><% print(window.app.idioma.t('CODIGO').toUpperCase()) %></label></div>
+            <div class="col-lg-7"><input id="vpTxtCodigo" name="vpTxtCodigo" type="text" class="k-textbox" /></div>
+        </div>-->
+        <div class="col-md-12 form-group divNIF" style="display:flex;flex-direction:row;align-items:center;">
+            <div class="col-lg-3"><label for="vpTxtNIF"><% print(window.app.idioma.t('NIF')) %> <span class="req"></span></label></div>
+            <div class="col-lg-7"><input id="vpTxtNIF" name="vpTxtNIF" type="text" class="k-textbox"/></div>
+        </div>
+        <div class="col-md-12 form-group divDireccion" style="display:flex;flex-direction:row;align-items:center;">
+            <div class="col-lg-3"><label for="vpTxtDireccion"><% print(window.app.idioma.t('DIRECCION').toUpperCase()) %></label></div>
+            <div class="col-lg-7"><input id="vpTxtDireccion" name="vpTxtDireccion" type="text" class="k-textbox" /></div>
+        </div>
+        <div class="col-md-12 form-group divPoblacion" style="display:flex;flex-direction:row;align-items:center;">
+            <div class="col-lg-3"><label for="vpTxtPoblacion"><% print(window.app.idioma.t('POBLACION').toUpperCase()) %></label></div>
+            <div class="col-lg-7"><input id="vpTxtPoblacion" name="vpTxtPoblacion" type="text" class="k-textbox" /></div>
+        </div>
+        <div class="col-md-12 form-group divCodigoPostal" style="display:flex;flex-direction:row;align-items:center;">
+            <div class="col-lg-3"><label for="vpTxtCodigoPostal"><% print(window.app.idioma.t('CODIGO_POSTAL').toUpperCase()) %></label></div>
+            <div class="col-lg-7"><input id="vpTxtCodigoPostal" name="vpTxtCodigoPostal" type="text" class="k-textbox" /></div>
+        </div>
+        <div class="col-md-12 form-group divTelefono" style="display:flex;flex-direction:row;align-items:center;">
+            <div class="col-lg-3"><label for="vpTxtTelefono"><% print(window.app.idioma.t('TELEFONO').toUpperCase()) %></label></div>
+            <div class="col-lg-7"><input id="vpTxtTelefono" name="vpTxtTelefono" type="text" class="k-textbox" /></div>
+        </div>
+        <div class="col-md-12 form-group divObservaciones" style="display:flex;flex-direction:row;align-items:center;">
+            <div class="col-lg-3"><label for="vpTxtObservaciones"><% print(window.app.idioma.t('OBSERVACIONES').toUpperCase()) %></label></div>
+            <div class="col-lg-7"><textarea id="vpTxtObservaciones" name="vpTxtObservaciones" class="k-textbox" /></div>
+        </div>
+
+        <div class="col-md-12 form-group divTractora" style="display:flex;flex-direction:row;align-items:center;">
+            <div class="col-lg-3"><label for="vpTxtMatriculaTractora"><% print(window.app.idioma.t('MATRICULA_TRACTORA').toUpperCase()) %> (*)</label></div>
+            <div class="col-lg-7"><input id="vpTxtMatriculaTractora" name="vpTxtMatriculaTractora" type="text" class="k-textbox" required/></div>
+        </div>
+        <div class="col-md-12 form-group divRemolque" style="display:flex;flex-direction:row;align-items:center;">
+            <div class="col-lg-3"><label for="vpTxtMatriculaRemolque"><% print(window.app.idioma.t('MATRICULA_REMOLQUE').toUpperCase()) %> (*)</label></div>
+            <div class="col-lg-7"><input id="vpTxtMatriculaRemolque" name="vpTxtMatriculaTractora" type="text" class="k-textbox" required/></div>
+        </div>
+        <div class="col-md-12 form-group divPesoMaximo" style="display:flex;flex-direction:row;align-items:center;">
+            <div class="col-lg-3"><label for="vpTxtPesoMaximo"><% print(window.app.idioma.t('PESO_MAXIMO_AUTORIZADO').toUpperCase() +' ') %>(kg)</label></div>
+            <div class="col-lg-7"><input id="vpTxtPesoMaximo" name="vpTxtPesoMaximo" type="number" class="k-textbox" /></div>
+        </div>
+
+        <div class="col-md-12">
+            <center>
+                <button class="btnAddMantain" type="button" style="background-color:green;color:white">
+                    <% print(window.app.idioma.t('CREAR')) %>
+                </button>
+            </center>
+        </div>
+    </form>
+
+</div>

@@ -1,0 +1,295 @@
+﻿
+<style>
+    .textoInformativo {
+        font-size: 9vw;
+    }
+
+    .textoCentrado {
+        text-align: center;
+    }
+
+    .titulo-10 {
+        font-size: 10vw;
+    }
+
+    .titulo-9 {
+        font-size: 9vw;
+    }
+
+    .titulo-8 {
+        font-size: 8vw;
+    }
+
+    .titulo-7 {
+        font-size: 7vw;
+    }
+    
+    .titulo-6 {
+        font-size: 6vw;
+    }
+    .titulo-5-6 {
+        font-size: 5.6vw;
+    }
+    .titulo-5-4 {
+        font-size: 5.4vw;
+    }
+    .titulo-5 {
+        font-size: 5.1vw;
+    }
+
+    .titulo-4-7 {
+        font-size: 4.7vw;
+    }
+
+    .titulo-4-5 {
+        font-size: 4.5vw;
+    }
+
+    .titulo-4 {
+        font-size: 4vw;
+    }
+
+    .titulo-3 {
+        font-size: 3vw;
+    }
+
+    .titulo-2 {
+        font-size: 2vw;
+    }
+
+    .alturaanchura100 {
+        height: 100%;
+        width: 100%;
+    }
+
+    .fondoProgressBar {
+        background-image: none;
+        background-color: black;
+        color: white;
+        border-color: black
+    }
+
+    .cellTableLinea {
+        display: table-cell;
+        line-height: 90%;
+        padding-bottom: 9px;
+    }
+
+    .cellTableLineaDescripcion {
+        display: table-cell;
+        line-height: 70%;
+        padding-top: 12px;
+        padding-bottom: 20px;
+    }
+
+    .cellTableLineaDescripcion-2 {
+        display: table-cell;
+        line-height: 80%;
+        padding-top: 12px;
+        padding-bottom: 14px;
+    }
+  
+    .cellTableSubLinea {
+        display: table-cell;
+        line-height: 82%;
+        padding-bottom: 5px;
+    }
+ 
+    .cellTableSubLinea-2 {
+        display: table-cell;
+        line-height: 40%;
+        padding-bottom: 45px;
+        padding-top: 12px;
+    }
+
+    .left10Porcentaje {
+        position: relative;
+        left: 10%
+    }
+
+    .left10vw {
+        position: relative;
+        left: 10vw
+    }
+
+    .left9vw {
+        position: relative;
+        left: 9vw
+    }
+
+    .left17 {
+        position: relative;
+        left: 17%
+    }
+
+    .left20 {
+        position: relative;
+        left: 20%
+    }
+
+    .left38vw {
+        position: relative;
+        left: 38vw;
+    }
+
+    .left47vw {
+        position: relative;
+        left: 47%
+    }
+
+    .left48 {
+        position: relative;
+        left: 48%
+    }
+
+    .left65-5 {
+        position: relative;
+        left: 65.5%
+    }
+
+</style>
+<table class="alturaanchura100">
+    <tr>
+        <td class="bloqueInfo borderRadiusRight">
+            <table class="alturaanchura100">
+                <tr>
+                    <!-- WOs -->
+                    <td id="tdWo<%= data.linea.numLinea %>" class="bloqueInfoTop borderRadiusRight" style="height:49%">
+                        <div class="alturaanchura100">
+                            <div id="oeeWO<%= data.linea.numLinea %>" class="divOEEWOProgressBar borderRadiusRight alturaanchura100 fondoProgressBar">
+                                <% if(data.linea.ordenEnPaletizadora == null){ %>
+                                <div id="tableWo<%= data.linea.numLinea %>" style="position:absolute;width: 100%; height: 95px; z-index: 10;">
+                                    <div class="rTableRow" style="margin-top: 5vw">
+                                        <span class="textoInformativo"><% print(window.app.idioma.t("ORDEN_INACTIVA")) %></span>&emsp;
+                                    </div> 
+                                </div>
+                                <% } else { %>
+                                <div class="rTable alturaanchura100" id="tableWo<%= data.linea.numLinea %>" style=" position:absolute; z-index: 10; ">
+                                    <div class="alturaanchura100">
+                                        <table class="alturaanchura100">
+                                            <tr>
+                                                <td colspan="2" id="lbloeeWO" style="text-align: center;">
+                                                    <table style="margin-top:-0.5%">
+                                                        <tr style="padding-bottom:8vw">
+                                                            <td class="left20">
+                                                                <label class="titulo-6 cellTableLinea">OEE WO:</label>
+                                                            </td>
+                                                            <td class="left65-5">
+                                                                <span class="titulo-7 cellTableLinea"><% if (data.linea.ordenEnPaletizadora){ %><% if (isNaN(data.linea.ordenEnPaletizadora.produccion.oee)) { %> -- <% } else{ %> <%=data.linea.ordenEnPaletizadora.produccion.oee.toLocaleString('es',{minimumFractionDigits: 2,maximumFractionDigits: 2})%>% <%}%> <% }%></span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="left20">
+                                                                <label class="titulo-6 cellTableLinea"><% print(window.app.idioma.t("SEMANA_CORTO")) %>:</label>
+                                                            </td>
+                                                            <td class="left65-5">
+                                                                <span class="titulo-7 cellTableLinea"><%=data.TotalesSemana.OEEWO.toLocaleString('es',{minimumFractionDigits: 2,maximumFractionDigits: 2}) %>%</span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table class="alturaanchura100">
+                                                        <tr>
+                                                            <td class="left10Porcentaje">
+                                                                <label id="descripcion" class="titulo-4 cellTableLineaDescripcion">
+                                                                    (<% if (data.linea.ordenEnPaletizadora){%><%=data.linea.ordenEnPaletizadora.producto.codigo%> - <%=data.linea.ordenEnPaletizadora.producto.nombre.trim()%><%}%>)
+                                                                </label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="position:relative;left:10vw">
+                                                                <label class="titulo-4 cellTableSubLinea"><% print(window.app.idioma.t("PALETS")) %>:</label>
+                                                            
+                                                                <label class="titulo-5 cellTableSubLinea" style="position:relative;left:37.5vw"><% if (data.linea.ordenEnPaletizadora){%> <%=kendo.toString(data.linea.ordenEnPaletizadora.produccion.paletsEtiquetadoraProducidos, "n0")%> <% }%></label>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <% } %>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- Turnos -->
+                    <td id="tdTurno<%= data.linea.numLinea %>">
+                        <div id="oeeTurno<%= data.linea.numLinea %>" class=" alturaanchura100 fondoProgressBar">
+                            <% if(!data.turnoProductivo){ %>
+                            <div class="rTable" id="tableTurno<%= data.linea.numLinea %>" style=" position:absolute;width: 100%; height: 95px; z-index: 10">
+                                <div class="rTableRow">
+                                    <div class="rTableCell alturaanchura100" style="vertical-align: middle; padding-left: 10px; margin-top:2vw">
+                                        <label class="textoInformativo"><% print(window.app.idioma.t("TURNO_INACTIVO")) %></label>&nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                            <% } else { %>
+                            <div class="rTable alturaanchura100" id="tableTurno<%= data.linea.numLinea %>" style="position:absolute; z-index: 10; ">
+                                <div class="anchuraaltura100">
+                                    <div class="rTableCell" style="width: 100%; height: 75px; vertical-align: middle;">
+                                        <table class="anchuraaltura100">
+                                            <tr>
+                                                <td colspan="2" id="lbloeeWO" style="text-align: center;">
+                                                    <table style="margin-top:-0.5%">
+                                                        <tr>
+                                                            <td class="left17">
+                                                                <label id="lbloeeTurno" class="titulo-5-4 cellTableLinea">Rend. <% print(window.app.idioma.t("TURNO")) %>:</label>
+                                                            </td>
+                                                            <td class="left47vw">
+                                                                <label id="tdOeeTurno<%= data.linea.numLinea %>" class="titulo-7 cellTableLinea"> <%=data.OEETurno.toLocaleString('es',{minimumFractionDigits: 2,maximumFractionDigits: 2})%>%</label>
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="left17">
+                                                                <label class="titulo-5-4 cellTableLinea"><% print(window.app.idioma.t("OEE")) %> <% print(window.app.idioma.t("SEMANA_CORTO")) %>:</label>
+                                                            </td>
+                                                            <td class="left47vw">
+                                                                <label class="titulo-7 cellTableLinea"><%=data.TotalesSemana.OEETurno.toLocaleString('es',{minimumFractionDigits: 2,maximumFractionDigits: 2}) %>%</label>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-top:10px">
+                                                    <table>
+                                                        <tr>
+                                                            <td class="left10vw">
+                                                                <label id="lbloeeTurno" class="titulo-4 cellTableSubLinea-2"><% print(window.app.idioma.t("PRODUCCION_LLENADORA")) %>:</label>
+                                                            </td>
+                                                            <td class="left38vw">
+                                                                <label id="tdOeeTurno<%= data.linea.numLinea %>" class="titulo-5 cellTableSubLinea-2"> <%=kendo.toString(data.EnvasesTurno, "n0")%></label>
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="left10vw">
+                                                                <label class="titulo-4 cellTableSubLinea-2"><% print(window.app.idioma.t("SEMANA_CORTO")) %></label>
+                                                            </td>
+                                                            <td class="left38vw">
+                                                                <label class="titulo-5 cellTableSubLinea-2"><%=kendo.toString(data.TotalesSemana.EnvasesTurno, "n0") %></label>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+</table>

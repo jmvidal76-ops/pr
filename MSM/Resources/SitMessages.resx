@@ -1,0 +1,603 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="-1000005" xml:space="preserve">
+    <value>Cantidad a pedir Tanque = %ORD% fue %QTY% y no fue en el formato correcto, el mensaje no fue enviado a INFOR</value>
+  </data>
+  <data name="-1000108" xml:space="preserve">
+    <value>SABPPAKOP.insertKOPValue returned false for KopCode=%kopName%, equipFullPath=%tankFullPath%, value=%kopValue%</value>
+  </data>
+  <data name="-1000110" xml:space="preserve">
+    <value>Fecha no podía ponerse para KopCode=%kopName%, equipFullPath=%tankFullPath%, value=%kopValue%</value>
+  </data>
+  <data name="-1000202" xml:space="preserve">
+    <value>Propiedades para el indicador de configuración de fecha de entrega (DuedateUpdTFM) no se han encontrado para el Orden = %ORD%</value>
+  </data>
+  <data name="-1000301" xml:space="preserve">
+    <value>No se ha encontrado procedimiento para procesar el Orden %ORD%,no mensaje se ha enviado to INFOR</value>
+  </data>
+  <data name="-1000302" xml:space="preserve">
+    <value>Solo un procedimiento se ha esperado para procesar el Orden %ORD% pero se han encontrado más de uno, no mensaje se ha enviado a INFOR</value>
+  </data>
+  <data name="-1000500" xml:space="preserve">
+    <value>Equipo, Orden y procedimiento no estaban disponibles. No mensaje se ha enviado a INFOR</value>
+  </data>
+  <data name="-1000503" xml:space="preserve">
+    <value>Excepción para manejar el Tanque (KOP-Status, etc.) para el Orden = %ORD_ID%, Procedimiento = %ENTRY%, KOP = %KOP%, Equipo = %EQUIP%. Excepción fue: %EX%</value>
+  </data>
+  <data name="-1000504" xml:space="preserve">
+    <value>Equipos, Orden y Procedimientos no disponible. No se puede completar</value>
+  </data>
+  <data name="-1000505" xml:space="preserve">
+    <value>No se pude recuperar Orden de ejecución y procedimiento del equipo. Por favor Pruba que le Orden esta en ejecución. No mensaje se ha enviado a INFOR.</value>
+  </data>
+  <data name="-1000515" xml:space="preserve">
+    <value>Fallo de la actualización de la cantidad del Tanque para el tanque = %LOT_EQUIPMENT% porque no se ha encontrado el Tanque dentro del MM.</value>
+  </data>
+  <data name="-1000517" xml:space="preserve">
+    <value>Fallo de la actualización de la cantidad del Tanque para el tanque = %LOT_EQUIPMENT% con la Excepción = %EXCEPTION%</value>
+  </data>
+  <data name="-1000540" xml:space="preserve">
+    <value>Datos de la orden no encontrados para Tanque</value>
+  </data>
+  <data name="-10005401" xml:space="preserve">
+    <value>No se pudó enviar el mensaje de caracteristicas de lote a SAP para el Orden %ORDER%, Error del PM = %ERR%, Error-desc. = %ERRDSC%</value>
+  </data>
+  <data name="-1000542" xml:space="preserve">
+    <value>No se pudó recuperar el orden de ejecución y el procedimeinto del tanque. Por favor verifica que un orden esta en ejecución para el tanque.</value>
+  </data>
+  <data name="-1000543" xml:space="preserve">
+    <value>No se pudó recuperar el orden de ejecución y el procedimeinto del tanque. Por favor verifica que un orden esta en ejecución para el tanque.</value>
+  </data>
+  <data name="-1000544" xml:space="preserve">
+    <value>ERROR: El mensaje no se ha enviado a INFOR.</value>
+  </data>
+  <data name="-1000602" xml:space="preserve">
+    <value>No datos encontrado para el Orden = %ORD%, No se ha enviado mensaje a INFOR</value>
+  </data>
+  <data name="-1000603" xml:space="preserve">
+    <value>No se ha encontrado una entrada de primer nivel para el Orden = %ORD%, No mensaje se ha enviado a INFOR</value>
+  </data>
+  <data name="-1000604" xml:space="preserve">
+    <value>NO se ha encontrado datos de procedimiento (Sub-Entrada) para el orden = %ORD%, Procedimiento = %SUB_ENTRY%, NO mensaje se ha enviado a INFOR</value>
+  </data>
+  <data name="-1000606" xml:space="preserve">
+    <value>No se ha enontrado datos de equipo para el Orden = %ORD%, Procedimiento = %SUB_ENTRY%, Equipo =%EQUIP%, No mensaje se ha enviado a INFOR</value>
+  </data>
+  <data name="-1000607" xml:space="preserve">
+    <value>Alcohol para el Orden = %ORD%, Procedimiento = %SUB_ENTRY% fue %ALCOHOL% y no fue en el formato correcto, no mensaje se ha enviado a INFOR</value>
+  </data>
+  <data name="-1000608" xml:space="preserve">
+    <value>Fin del flujo de salida del Orden = %ORD%, Procedimiento = %SUB_ENTRY% fue %DATE% y no fue en el formato correcto, No se ha enviado mensaje a INFOR</value>
+  </data>
+  <data name="-1000609" xml:space="preserve">
+    <value>Inicio del flujo de salida del Orden = %ORD%, Procedimiento = %SUB_ENTRY% fue %DATE% y no fue en el formato correcto, no se ha enviado mensaje a INFOR</value>
+  </data>
+  <data name="-1000610" xml:space="preserve">
+    <value>##_End Inflow of Order = %ORD%, Procedure = %SUB_ENTRY% was %DATE% and was not in the correct format, Message was not sent to INFOR</value>
+  </data>
+  <data name="-123" xml:space="preserve">
+    <value>Lote vacio</value>
+  </data>
+  <data name="-124" xml:space="preserve">
+    <value>Lote ya utilizado</value>
+  </data>
+  <data name="-125" xml:space="preserve">
+    <value>Existen más órdenes en ejecución en el destino</value>
+  </data>
+  <data name="-126" xml:space="preserve">
+    <value>La orden seleccionada es una orden simulada</value>
+  </data>
+  <data name="-127" xml:space="preserve">
+    <value>Los datos de extracto de las características del lote están vacíos</value>
+  </data>
+  <data name="-128" xml:space="preserve">
+    <value>Hay demasiado ordenes en ejecución (#%orderCount%) en la celda %cellId%</value>
+  </data>
+  <data name="-129" xml:space="preserve">
+    <value>Ya existe un procedimiento en ejecución en el equipo</value>
+  </data>
+  <data name="-130" xml:space="preserve">
+    <value>Por favor complete todo los procedimientos</value>
+  </data>
+  <data name="-132" xml:space="preserve">
+    <value>La cantidad producida es nula</value>
+  </data>
+  <data name="-133" xml:space="preserve">
+    <value>Hay demasiado ordenes en ejecución (%orderList%)</value>
+  </data>
+  <data name="-134" xml:space="preserve">
+    <value>DIS error enviando un mensaje (%disMessageId%)</value>
+  </data>
+  <data name="-135" xml:space="preserve">
+    <value>Antes de producir, hay que declarar un consumo</value>
+  </data>
+  <data name="-136" xml:space="preserve">
+    <value>Existen caracterisiticas de lote vacias  (%list%)</value>
+  </data>
+  <data name="-137" xml:space="preserve">
+    <value>%kopName% falta</value>
+  </data>
+  <data name="-138" xml:space="preserve">
+    <value>Existe ordenes (%orderList%) en ejecución en el equipo seleccionado (%equipId%)</value>
+  </data>
+  <data name="-139" xml:space="preserve">
+    <value>Fallo en la conversión de Unidad de Medida (UoM) (%uomSource% -&gt; %uomDest%)</value>
+  </data>
+  <data name="-140" xml:space="preserve">
+    <value>No es posible de alinear el tanque fuente %TANK-ID% con el material %MAT-ID%</value>
+  </data>
+  <data name="-141" xml:space="preserve">
+    <value>Error sistema %ID%</value>
+  </data>
+  <data name="-142" xml:space="preserve">
+    <value>Existe otro material (%materialId%) en el destino (%equipId%)</value>
+  </data>
+  <data name="-143" xml:space="preserve">
+    <value>El orden ya es arrancado. Por favor pincha Refrescar</value>
+  </data>
+  <data name="-144" xml:space="preserve">
+    <value>Hay demasiado ordenes en ejecución (%orderList%) en el equipo fuente (%sourceEquip%)</value>
+  </data>
+  <data name="-145" xml:space="preserve">
+    <value>Hay demasiado ordenes en ejecución (%orderList%) en el equipo destino (%sourceEquip%)</value>
+  </data>
+  <data name="-220" xml:space="preserve">
+    <value>Error intentando de guardar el ID del filtro de ejecución de orden en el orden: %OrderID%. %Message%</value>
+  </data>
+  <data name="CannotReopenOrder" xml:space="preserve">
+    <value>No se puede abrir de nuevo un orden cerrado desde más de %days% días.</value>
+  </data>
+  <data name="checkCompleteDate" xml:space="preserve">
+    <value>No se puede que el tiempo de fin sea despues del inicio del orden y antes de ahora.</value>
+  </data>
+  <data name="checkCompleteDateLessThenDeclarations" xml:space="preserve">
+    <value>Algunas declaración de producción tienen una fecha/hora más elevada que la fecha/hora insertada.</value>
+  </data>
+  <data name="CompleteProcedureEndTimeOverwrite" xml:space="preserve">
+    <value>Usted quiere sobrescribir %kopList% con el nuevo tiempo de fin ?</value>
+  </data>
+  <data name="ErrorInBackflushProcedure" xml:space="preserve">
+    <value>El procedimiento de flujo inverso se ha terminado con una error. Verifica si existe algunos problemas con el consumo de material.</value>
+  </data>
+  <data name="OrderAlreadyConfirmed" xml:space="preserve">
+    <value>Orden ya confirmado. Por favor pincha Refrescar</value>
+  </data>
+  <data name="ReverseDestOrderIsNotRunning" xml:space="preserve">
+    <value>Operación no autorizada. Orden consumido (%orderId%) no esta en ejecución</value>
+  </data>
+  <data name="ReverseMaterialIsBackFlushedWithError" xml:space="preserve">
+    <value>Existen varios errores de flujo inverso relativas con la declaración de producción seleccionada, por favor resuelvelas y intenta de nuevo.</value>
+  </data>
+  <data name="ReverseMaterialIsNotYetBackFlushed" xml:space="preserve">
+    <value>NO se ha hecho la operación de flujo inverso en la declaración de producción seleccionada, por favor intenta de nuevo más tarde.</value>
+  </data>
+  <data name="SABAbortOrderOK" xml:space="preserve">
+    <value>Orden %orderId% abortado con éxito</value>
+  </data>
+  <data name="SABAnotherBatchForFL" xml:space="preserve">
+    <value>Existe otro lote (%batchId%) en el tanque de destino (%sloc%)</value>
+  </data>
+  <data name="SABAskAbortOrder" xml:space="preserve">
+    <value>Esta seguro de abortar el orden ?</value>
+  </data>
+  <data name="SABAskCompleteOrder" xml:space="preserve">
+    <value>Esta seguro de completar el orden ?</value>
+  </data>
+  <data name="SABAskConfirmForTankStatusChangeNoOrder" xml:space="preserve">
+    <value>No hay órdenes en ejecución en este equipo. Quiere continuar ?</value>
+  </data>
+  <data name="SABAskConfirmForTankStatusChangeOneOrder" xml:space="preserve">
+    <value>Hay ordenes en ejecución en ests equipo. Quiere continuar ?</value>
+  </data>
+  <data name="SABAvForTransferTankStatus" xml:space="preserve">
+    <value>El equipo de ejecución no esta en el estado "Disponible para transferencia". Quiere continuar ?</value>
+  </data>
+  <data name="SABConfirmCropDilutionVol" xml:space="preserve">
+    <value>La cantidad en el Tanque (%tankName%) se reducirá del valor %declaredQty% HL - %OPFECROPDILUTIONVOL_Value% HL . Usted confirma ?</value>
+  </data>
+  <data name="SABconsumedQuantityIsZero" xml:space="preserve">
+    <value>La cantidad consumida es nula. ¿Está seguro de cerrar la orden ?</value>
+  </data>
+  <data name="SABCountersUpdateNoCTRSelected" xml:space="preserve">
+    <value>Por favor, selecciona un countador primero</value>
+  </data>
+  <data name="SABCreateFilterRunCreateFilterFailed" xml:space="preserve">
+    <value>Error: fallo en la creación de filtro de ejecución</value>
+  </data>
+  <data name="SABCreateOrderEndTimeGreaterStartTime" xml:space="preserve">
+    <value>Error: El tiempo de fin debería ser superior al tiempo de inicio</value>
+  </data>
+  <data name="SABCreateOrderErrorCreationFromTemplate" xml:space="preserve">
+    <value>Error: fallo en la creación desde plantilla</value>
+  </data>
+  <data name="SABCreateOrderFailureCategoryProperty" xml:space="preserve">
+    <value>Error: fallo poniendo las caracteristicas de 'Categoría' !</value>
+  </data>
+  <data name="SABCreateOrderFailureCommentProperty" xml:space="preserve">
+    <value>Error: fallo poniendo las propiedades de 'Comentario' !</value>
+  </data>
+  <data name="SABCreateOrderFailureDueDateProperty" xml:space="preserve">
+    <value>Error: fallo poniendo las propiedades de 'fecha de entrega' !</value>
+  </data>
+  <data name="SABCreateOrderFailureFieldsModification" xml:space="preserve">
+    <value>Error: fallo en la modificación de campos (FinalMaterialID,TypeID, ERPID,Estimated Start &amp; End time)</value>
+  </data>
+  <data name="SABCreateOrderFailureFromTankProperty" xml:space="preserve">
+    <value>Error: fallo poniendo las propiedades de 'desde el tanque' !</value>
+  </data>
+  <data name="SABCreateOrderFailureOrderLinkedProperty" xml:space="preserve">
+    <value>Error: fallo poniendo las propiedades de 'Orden liado' !</value>
+  </data>
+  <data name="SABCreateOrderFailureOutFlowDateProperty" xml:space="preserve">
+    <value>Error: fallo poniendo las propiedades de 'velocidad del flujo de salida' !</value>
+  </data>
+  <data name="SABCreateOrderFailureResourceProperty" xml:space="preserve">
+    <value>Error: fallo poniendo las propiedades de 'Recursos' !</value>
+  </data>
+  <data name="SABCreateOrderInvalidQty" xml:space="preserve">
+    <value>Error: cantidad no válida</value>
+  </data>
+  <data name="SABCreateOrderInvalidStartOrEndTime" xml:space="preserve">
+    <value>Error: tiempo de inicio o de fin no válido</value>
+  </data>
+  <data name="SABCreateOrderRequiredFields" xml:space="preserve">
+    <value>Error: por favor rellena todos los campos obligatorios</value>
+  </data>
+  <data name="SABCreateOrderTemplateNotFound" xml:space="preserve">
+    <value>Error: no se ha encontrado la plantilla del orden !</value>
+  </data>
+  <data name="SABCreateOrderTransitionFailed" xml:space="preserve">
+    <value>Error: fallo en la transición hasta el estado planificado !</value>
+  </data>
+  <data name="SABEmptyCleanWarning" xml:space="preserve">
+    <value>Cambia la cantidad a 0 o confirma la cantidad dentro del tanque</value>
+  </data>
+  <data name="SABInvalidFormatCalendar" xml:space="preserve">
+    <value>Formato no válido</value>
+  </data>
+  <data name="SABInventoryManagementMandatorySourceEquipment" xml:space="preserve">
+    <value>Por favor, seleccione primero el equipo (*)</value>
+  </data>
+  <data name="SABInventoryManagementNOExternalIdFound" xml:space="preserve">
+    <value>No se ha encontrado un ID externo para el equipo</value>
+  </data>
+  <data name="SABInventoryManagementNOExternalIdFoundWithBR" xml:space="preserve">
+    <value>&lt;BR/&gt;No se ha encontrado ID externo para el equipo</value>
+  </data>
+  <data name="SABInventoryManagementUnrestrictedQty" xml:space="preserve">
+    <value>Cantidad debe ser &lt;= a la cantidad libre del equipo [%unrestrictedQty%] (*)</value>
+  </data>
+  <data name="SABKopUpdateNotOK" xml:space="preserve">
+    <value>KOP %kopName% no actualizado</value>
+  </data>
+  <data name="SABKopUpdateOK" xml:space="preserve">
+    <value>KOP %kopName% actualizado con éxito</value>
+  </data>
+  <data name="SABMaxTimeRangeWarning" xml:space="preserve">
+    <value>El tiempo seleccionado excede el máximo número de horas autorizado %max_time_range%</value>
+  </data>
+  <data name="SABMoreEntriesInDestinationEquipment" xml:space="preserve">
+    <value>Hay más procedimientos en ejecución en el equipo de destino. Si usted continúa, solo se va guardar los datos en el POM. ¿Quiere continuar?</value>
+  </data>
+  <data name="SABMoreOrdersInDestinationEquipment" xml:space="preserve">
+    <value>Hay más ordenes en ejecución en el equipo de destino. Por favor contacta su administrador de sistema.</value>
+  </data>
+  <data name="SABMoreThenOneEntryInExecutionEquipment" xml:space="preserve">
+    <value>Hay demasiadas órdenes en ejecución. ¿Desea continuar ?</value>
+  </data>
+  <data name="SABMultipleBatchesForFL" xml:space="preserve">
+    <value>Hay multiples lotes en el tanque de destino (%sloc%).</value>
+  </data>
+  <data name="SABNewOrderOK" xml:space="preserve">
+    <value>Orden %newOrderId% creado con éxito</value>
+  </data>
+  <data name="SABNotAllowCropDilutionVol" xml:space="preserve">
+    <value>La operación no se puede hacer porque la cantidad declarada es inferior al volumen de dilución</value>
+  </data>
+  <data name="SABNotEmptyCleanTankStatus" xml:space="preserve">
+    <value>El equipo de ejecución no esta en el estado 'vacío limpio'. ¿Quiere continuar?</value>
+  </data>
+  <data name="SABNotOkTankStatus" xml:space="preserve">
+    <value>El equipo de ejecución (%execEquipment%) está en estado '%status%'  pero tiene que estar en %allowedStatus%. ¿Quiere continuar?</value>
+  </data>
+  <data name="SABOEECounterFutureTimestampError" xml:space="preserve">
+    <value>Sello de tiempo no puede estar en el futuro</value>
+  </data>
+  <data name="SABOEECounterNoOrderSelected" xml:space="preserve">
+    <value>Por favor selecciona el campo obligatorio ID Orden</value>
+  </data>
+  <data name="SABOEECounterNoTimestampError" xml:space="preserve">
+    <value>Inserta el campo obligatorio sello de tiempo</value>
+  </data>
+  <data name="SABOEECounterProcessingError" xml:space="preserve">
+    <value>Error procesando el countador: %processing_error%</value>
+  </data>
+  <data name="SABOEECounterValueInvalid" xml:space="preserve">
+    <value>Cantidad tiene que ser positiva</value>
+  </data>
+  <data name="SABOEEDataProcessingError" xml:space="preserve">
+    <value>Error procesando daos: %processing_error%</value>
+  </data>
+  <data name="SABOEEDTMErrorDelete" xml:space="preserve">
+    <value>Operación de escritura fallada (eliminar tiempo de paro) </value>
+  </data>
+  <data name="SABOEEDTMErrorMerge" xml:space="preserve">
+    <value>Operación de escritura fallada (fusionar tiempo de paro)</value>
+  </data>
+  <data name="SABOEEDTMErrorMultiOrder" xml:space="preserve">
+    <value>Operación abortada: el periodo del  nuevo tiempo de paro afecta dos ordenes distintos</value>
+  </data>
+  <data name="SABOEEDTMErrorSplit" xml:space="preserve">
+    <value>Operación de escritura fallada (dividir tiempo de paro)</value>
+  </data>
+  <data name="SABOEEDTMErrorUpdate" xml:space="preserve">
+    <value>Operación de escritura fallada (actualizar tiempo de para)</value>
+  </data>
+  <data name="SABOEEDTMNoRecordsFound" xml:space="preserve">
+    <value>No se ha encontrado tiempo de paro</value>
+  </data>
+  <data name="SABOEEManualInputSelectRow" xml:space="preserve">
+    <value>Por favor selecciona una línea</value>
+  </data>
+  <data name="SABOEEMergeDownConfirm" xml:space="preserve">
+    <value>Usted esta seguro de confirmar la operación de fusión por abajo ?</value>
+  </data>
+  <data name="SABOEEMergeUpConfirm" xml:space="preserve">
+    <value>Usted esta seguro de confirmar la operación de fusión por arriba ?</value>
+  </data>
+  <data name="SABOEENoEquipmentSelected" xml:space="preserve">
+    <value>No equipo seleccionado</value>
+  </data>
+  <data name="SABOEENoFutureTime" xml:space="preserve">
+    <value>El tiempo de fin no puede estar en el futuro</value>
+  </data>
+  <data name="SABOEENoReasonSelected" xml:space="preserve">
+    <value>Inserta el campo obligatorio del motivo</value>
+  </data>
+  <data name="SABOEENoTimeSet" xml:space="preserve">
+    <value>Inserta los valores obligatorios de tiempo</value>
+  </data>
+  <data name="SABOEEQuantityTimestampError" xml:space="preserve">
+    <value>El sello de tiempo no puede ser inferior al último insertado</value>
+  </data>
+  <data name="SABOEEUpdateConfirm" xml:space="preserve">
+    <value>Usted esta seguro de confirmar la operación de actualización ?</value>
+  </data>
+  <data name="SABPlanningManagementSelectRealResource" xml:space="preserve">
+    <value>Por favor selecciona el tanque correcto de la lista (^)</value>
+  </data>
+  <data name="SABProdDeclareAlreadyDone" xml:space="preserve">
+    <value>La operación no está permitida porque la declaración de producción ya se ha hecho</value>
+  </data>
+  <data name="SABproducedQuantityIsEnough" xml:space="preserve">
+    <value>La cantidad producida no está en los + o - 10% de lo planificado. ¿Quiere completar la orden ?</value>
+  </data>
+  <data name="SABProductDeclareIsFinal" xml:space="preserve">
+    <value>La declaración final ya se ha hecho – otras declaraciones de produción fallarán en ERP</value>
+  </data>
+  <data name="SABRequiredFields" xml:space="preserve">
+    <value>Por favor rellene todos los campos obligatorios (*)</value>
+  </data>
+  <data name="SABSapWebServiceError" xml:space="preserve">
+    <value>La interfase de lote y de stock no esta disponible (SAP Web service) </value>
+  </data>
+  <data name="SABSplitFormSplitOrderRuleError" xml:space="preserve">
+    <value>Error en la regla PLO_SPLIT_ORDER </value>
+  </data>
+  <data name="SABSplitFormTerminateOrderRuleError" xml:space="preserve">
+    <value>Error en la regla PLO_TERMINATE_ORDER </value>
+  </data>
+  <data name="SABStandardSucces" xml:space="preserve">
+    <value>Operación completada con éxito</value>
+  </data>
+  <data name="SABStartStepNoBBTRetrievedFromSAP" xml:space="preserve">
+    <value>No se han encontrado TCPs compatibles. ¿Desea continuar ?</value>
+  </data>
+  <data name="SABStopJustificationFailedUpdate" xml:space="preserve">
+    <value>Error en la operación de actualización</value>
+  </data>
+  <data name="SABStopJustificationMergeDifferentOrders" xml:space="preserve">
+    <value>Combinar registros de dos órdenes diferentes no está permitido</value>
+  </data>
+  <data name="SABStopJustificationMergeUpFailed" xml:space="preserve">
+    <value>Error en la operación de combinación</value>
+  </data>
+  <data name="SABStopJustificationNoEndTime" xml:space="preserve">
+    <value>Inserte el campo obligatorio de tiempo de fin</value>
+  </data>
+  <data name="SABStopJustificationNoStartTime" xml:space="preserve">
+    <value>Inserte el campo obligatorio de tiempo de inicio</value>
+  </data>
+  <data name="SABStopJustificationSplit" xml:space="preserve">
+    <value>Dividir</value>
+  </data>
+  <data name="SABStopJustificationValidationFailed" xml:space="preserve">
+    <value>Operación abortada: %validation_error%</value>
+  </data>
+  <data name="SABStopJustificationWrongTimes" xml:space="preserve">
+    <value>El tiempo de fin debe ser superior al tiempo de inicio</value>
+  </data>
+  <data name="SABSynchOrderOK" xml:space="preserve">
+    <value>Orden %oDummy% sincronizada con éxito con la orden ERP %oReal% </value>
+  </data>
+  <data name="SABTankChangeDueDateDefault" xml:space="preserve">
+    <value>Fecha límite vacía:&lt;BR/&gt; Puesta a mañana pero se puede modificar.</value>
+  </data>
+  <data name="SABTankChangeDueDateNoEntries" xml:space="preserve">
+    <value>No hay entrada relacionada con este equipo:&lt;BR/&gt; no se puede asignar fecha límite.</value>
+  </data>
+  <data name="SABTankChangeDueDateWrongDate" xml:space="preserve">
+    <value>La fecha límite debe ser en el futuro.</value>
+  </data>
+  <data name="SABTeamManagementDateEquipmentMandatory" xml:space="preserve">
+    <value>Selecciona la fecha y el equipo para obtener el turno relacionado</value>
+  </data>
+  <data name="SABTeamManagementNoShiftFound" xml:space="preserve">
+    <value>No se ha encontrado turno para la fecha y el equipo seleccionados.</value>
+  </data>
+  <data name="SABUpdateCountersUpdateFailed" xml:space="preserve">
+    <value>la actualización del contador ha fallado.</value>
+  </data>
+  <data name="SABWeekManagementNoShiftFound" xml:space="preserve">
+    <value>No se ha encontrado turno para el año y la semana seleccionada: todos los datos cargados.</value>
+  </data>
+  <data name="SAB_OEE_BADCONNECTION" xml:space="preserve">
+    <value>Fallo en la conexión con el serve de OEE</value>
+  </data>
+  <data name="SAB_OEE_ERROR" xml:space="preserve">
+    <value>Error desconocida</value>
+  </data>
+  <data name="SAB_OEE_FAIL" xml:space="preserve">
+    <value>Operación fallada</value>
+  </data>
+  <data name="SAB_OEE_FROZEN_PERIOD" xml:space="preserve">
+    <value>Dato dentro del periodo congelado</value>
+  </data>
+  <data name="SAB_OEE_INVALIDARG" xml:space="preserve">
+    <value>Perametros no válidos</value>
+  </data>
+  <data name="SAB_OEE_INVALIDCONFIG" xml:space="preserve">
+    <value>Configuración no válida</value>
+  </data>
+  <data name="SAB_OEE_INVALIDDATA" xml:space="preserve">
+    <value>Datos no válidos</value>
+  </data>
+  <data name="SAB_OEE_INVALIDOPERATION" xml:space="preserve">
+    <value>Operación no válida</value>
+  </data>
+  <data name="SAB_OEE_INVALID_TIME_RANGE" xml:space="preserve">
+    <value>Gama de tiempo no válida</value>
+  </data>
+  <data name="SAB_OEE_INVALID_VALUE_RANGE" xml:space="preserve">
+    <value>Gama de valores no válida</value>
+  </data>
+  <data name="SAB_OEE_TIMEOUT" xml:space="preserve">
+    <value>Operación timeout</value>
+  </data>
+  <data name="SendBacthMessageToShopFloor" xml:space="preserve">
+    <value>Error enviando el mensaje al sistema de control.</value>
+  </data>
+  <data name="SynchOrderNoMoreOkError" xml:space="preserve">
+    <value>La orden %orderId% no se puede sincronizar más.</value>
+  </data>
+  <data name="UserMustFixErrorsAfterBackflush" xml:space="preserve">
+    <value>Hay errores no resueltos en el consumo de material. Por favor resuelva estos errores antes de cerrar la orden.</value>
+  </data>
+</root>

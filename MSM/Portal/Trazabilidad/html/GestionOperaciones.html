@@ -1,0 +1,330 @@
+<style>
+
+    #formParoPerdida{
+        margin:15px;
+    }
+    .tdLabel{
+        width:16% !important;
+    }
+
+   .table th, .table td { 
+     border-top: none !important; 
+     text-align:right;
+     }
+
+    /*.table tr{ 
+    height: 60px !important; 
+    }*/
+    .table input,textarea{
+        /*margin-left:5px !important;*/ 
+        width:120px;
+    }
+
+    .k-grid-add {
+        background-color:green;color:white
+    }
+
+    #btnAceptar,#btnCancelar{
+        height:30px;
+        width:30%;
+        /*float:left;*/
+        margin-left:5px;
+        margin-top:10px;
+    }
+
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+
+    /*.k-grid .k-state-selected { background-color:lightyellow; }*/
+   
+
+.k-autocomplete,
+.k-combobox,
+.k-datepicker,
+.k-timepicker,
+.k-datetimepicker,
+.k-colorpicker,
+.k-numerictextbox,
+.k-selectbox,
+.k-textbox ,
+.k-toolbar .k-split-button {
+        width: 100% !important;
+    }
+
+
+     .k-numerictextbox {
+        width:100% !important;
+    }
+
+    .k-numerictextbox .k-numeric-wrap .k-input
+    {
+        width:96% !important;
+    }
+
+    .k-tooltip-validation {
+        clear:left !important;
+    }
+    /*#udMedida {
+        min-width:15px;
+        margin-left:5px;
+    }*/
+   
+    span.k-widget.k-tooltip-validation {
+                    display: inline-block;
+                    width: 160px;
+                    text-align: left;
+                    border: 0;
+                    padding: 0;
+                    margin: 0;
+                    background: none;
+                    box-shadow: none;
+                    color: red;
+                }
+
+    .k-tooltip-validation .k-warning {
+                    display: none;
+                }
+
+  .k-invalid {
+        color: red;
+      }
+
+   
+
+  .k-animation-container
+    {
+        text-align: left;
+        }
+    .table th, .table td {
+        text-align: left;
+    }
+    /*span.k-widget.k-tooltip-validation {
+                    display: inline-block;                    
+                    position:absolute;                                        
+                    width: 290px;
+                    text-align: left;
+                    border: 0;
+                    padding: 0;
+                    margin: 0;
+                    background: none;
+                    box-shadow: none;
+                    color: red;
+                }*/
+
+   .k-edit-form-container
+{
+    width: 800px;
+}
+
+/*
+    Decrease the width of the edit form labels. The default one is 30%.
+    The new width should depend on the column titles.
+    Switch the text alignment to the left. By default, it is to the right.
+*/
+
+.k-popup-edit-form .k-edit-label
+{
+    width: 20%;
+    text-align: left;
+}
+
+/*
+    Increase the width of the textbox containers. The default one is 60%.
+    The sum of label and editor percentage widths should be around 90%, to make up for existing paddings.
+*/
+.k-popup-edit-form .k-edit-field
+{
+    width: 70%;
+}
+
+/*
+    Expand the edit textboxes and any other Kendo UI widgets.
+    In case of unexpected side effects, use widget-specific classes, instead of .k-widget.
+*/
+.k-popup-edit-form .k-edit-field > .k-textbox ,
+.k-popup-edit-form .k-edit-field > .k-widget:not(.k-tooltip)
+{
+    width: 80%;
+}
+
+    .k-invalid-msg-delivery {
+        position: fixed;
+    }
+
+    .k-invalid-msg-reception {
+        position: absolute;
+    }
+
+    .k-grid td {
+        border-width: 0 0 1px 1px;
+    }
+
+   
+</style>
+
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+            <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+            <label class="lblCabeceraVista"><% print(window.app.idioma.t('OPERACIONES')) %></label>
+</div>
+   
+        <!-- Grid Acciones Mejora -->
+<div id="detail">
+<div id="gridOperaciones">
+    
+</div>
+    </div>
+<script type="text/x-kendo-template" id="template">        
+                        <div class='k-content'>
+                            <table  class='k-grid-Operaciones'>
+                                <thead>
+                                    <th ><label>#= window.app.idioma.t("FECHA_ENTRADA").toUpperCase() #</label></label></th>
+                                    <th ><label>#= window.app.idioma.t("FECHA_INICIO_OPERACION").toUpperCase()#</label></th>
+                                    <th ><label>#= window.app.idioma.t("FECHA_FIN_OPERACION").toUpperCase() #</label></th>
+                                    <th ><label>#= window.app.idioma.t("TIPO_OPERACION").toUpperCase() #</label></th>
+                                    <th ><label>#= window.app.idioma.t("ID_LOTE").toUpperCase() #</label></th>
+                                    <th ><label>#= window.app.idioma.t("ID_SUBLOTE").toUpperCase() #</label></th>
+                                    <th ><label>#= window.app.idioma.t("ORDEN_ORIGEN").toUpperCase() #</label></th>
+                                    <th ><label>#= window.app.idioma.t("ORDEN_DESTINO").toUpperCase() #</label></th>
+                                    
+                                    
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td ><input type="text" disabled class="k-textbox   " value="#= typeof FechaEntrada != 'undefined' && FechaEntrada != null ?  kendo.toString(FechaEntrada, "dd/MM/yyyy HH:mm:ss"): "" #"></td>
+                                        <td ><input type="text" disabled class="k-textbox" value="#= typeof FechaInicio != 'undefined' && FechaInicio != null ?  kendo.toString(FechaInicio, "dd/MM/yyyy HH:mm:ss"): "" #"></td>
+                                        <td ><input type="text" class="k-textbox  " disabled value="#= typeof FechaFin != 'undefined' && FechaFin != null ?  kendo.toString(FechaFin, "dd/MM/yyyy HH:mm:ss"): "" #"></td>
+                                        <td ><input type="text" class="k-textbox  " disabled value="#= typeof TipoOperacion != 'undefined' && TipoOperacion != null ? TipoOperacion: "" #"></td>  
+                                        <td ><input type="text" class="k-textbox  " disabled value="#= typeof IdLote != 'undefined' && IdLote != null ? IdLote: "" #"></td>
+                                        <td ><input type="text" class="k-textbox " disabled value="#= typeof IdSubLote != 'undefined' && IdSubLote != null ? IdSubLote: "" #"></td>
+                                        <td ><input type="text" class="k-textbox " disabled value="#= typeof IdOrdenOrigen != 'undefined' && IdOrdenOrigen != null ? IdOrdenOrigen: "" #"></td>
+                                        <td ><input type="text" class="k-textbox " disabled value="#= typeof IdOrdenDestino != 'undefined' && IdOrdenDestino != null ? IdOrdenDestino: "" #"></td>
+                                        
+    
+                                    </tr>         
+                                </tbody>
+                            </table>
+                            </br>
+                            <table  class='k-grid-Operaciones'>
+                                <thead>
+                                    <th ><label>#= window.app.idioma.t("UBICACION_ORIGEN").toUpperCase() #</label></th>
+                                    <th ><label>#= window.app.idioma.t("UBICACION_DESTINO").toUpperCase() #</label></th>
+                                    <th ><label>#= window.app.idioma.t("CANTIDAD").toUpperCase() #</label></th>
+                                    <th ><label>#= window.app.idioma.t("UNIDAD_MEDIDA").toUpperCase() #</label></th>
+                                    <th ><label>#= window.app.idioma.t("OPERADOR").toUpperCase() #</label></th>
+                                    <th ><label>#= window.app.idioma.t("PROVEEDOR").toUpperCase() #</label></th>
+                                    <th ><label>#= window.app.idioma.t("EAN").toUpperCase() #</label></th>
+                                    <th ><label>#= window.app.idioma.t("AECOC").toUpperCase() #</label></th>
+                                    
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td ><input type="text" class="k-textbox " disabled value="#= typeof UbicacionOrigen != 'undefined' && UbicacionOrigen != null ? UbicacionOrigen: "" #"></td>
+                                        <td ><input type="text" class="k-textbox " disabled value="#= typeof UbicacionDestino != 'undefined' && UbicacionDestino != null ? UbicacionDestino: "" #"></td>
+                                        <td ><input type="text" class="k-textbox " disabled value="#=typeof Cantidad !== "undefined" && Cantidad !== null ?   kendo.format("{0:n2}", Cantidad) : ""#"></td>
+                                        <td ><input type="text" class="k-textbox " disabled value="#= typeof UnidadesMedida != 'undefined' && UnidadesMedida != null ? UnidadesMedida: "" #"></td>
+                                        <td ><input type="text" class="k-textbox " disabled value="#= typeof OperadorSistema != 'undefined' && OperadorSistema != null ? OperadorSistema: "" #"></td>
+                                        <td ><input type="text" class="k-textbox " disabled value="#= typeof Proveedor != 'undefined' && Proveedor != null ? Proveedor: "" #"></td>
+                                        <td ><input type="text" class="k-textbox " disabled value="#= typeof EAN != 'undefined' && EAN != null ? EAN: "" #"></td>
+                                        <td ><input type="text" class="k-textbox " disabled value="#= typeof AECOC != 'undefined' && AECOC != null ? AECOC: "" #"></td>
+    
+                                    </tr>         
+                                </tbody>
+                            </table>
+                            </br>
+                            <table  class='k-grid-Operaciones'>
+                                <thead>
+                                    
+                                    <th ><label>#= window.app.idioma.t("LOTE_PROVEEDOR").toUpperCase() #</label></th>
+                                    <th ><label><% print(window.app.idioma.t('SSCC_2')) %></label></th>
+                                    <th ><label>#= window.app.idioma.t("ALBARAN_POSICION").toUpperCase() #</label></th>
+                                    <th ><label>#= window.app.idioma.t("CANTIDAD_PREVIA").toUpperCase()#</label></th>
+                                    <th ><label>#= window.app.idioma.t("REFERENCIA_MATERIAL").toUpperCase()#</label></th>
+                                    <th ><label>#= window.app.idioma.t("CANTIDAD_RESTANTE").toUpperCase()#</label></th>
+                                    <th ><label>#= window.app.idioma.t("LOTE_NUEVO").toUpperCase()#</label></th>
+                                    <th ><label>#= window.app.idioma.t("MOTIVO_BLOQUEO").toUpperCase()#</label></th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        
+                                        <td ><input type="text" class="k-textbox " disabled value="#= typeof LoteProveedor != 'undefined' && LoteProveedor != null ? LoteProveedor: "" #"></td>
+                                        <td ><input type="text" class="k-textbox " disabled value="#= typeof SSCC != 'undefined' && SSCC != null ? SSCC: "" #"></td>
+                                        <td ><input type="text" class="k-textbox " disabled value="#= typeof IdAlbaran != 'undefined' && IdAlbaran != null ? IdAlbaran: "" #"></td>
+                                        <td ><input type="text" class="k-textbox " disabled value="#= typeof CantidadPrevia != 'undefined' && CantidadPrevia != null ? kendo.format("{0:n2}", CantidadPrevia): "" #"></td>
+                                        <td ><input type="text" class="k-textbox " disabled value="#= typeof ReferenciaMaterial != 'undefined' && ReferenciaMaterial != null ? ReferenciaMaterial: "" #"></td>
+                                        <td ><input type="text" class="k-textbox " disabled value="#= typeof CantidadRestante != 'undefined' && CantidadRestante != null ? kendo.format("{0:n2}", CantidadRestante): "" #"></td>
+                                        <td ><input type="text" class="k-textbox " disabled value="#= typeof IDLoteNuevo != 'undefined' && IDLoteNuevo != null ? IDLoteNuevo: "" #"></td>
+                                        <td ><input type="text" class="k-textbox " disabled value="#= typeof MotivoBloqueo != 'undefined' && MotivoBloqueo != null ? MotivoBloqueo: "" #"></td>
+                                    </tr>         
+                                </tbody>
+                            </table>
+                            </br>
+                            <table  class='k-grid-Operaciones'>
+                                <thead>
+                                    <th ><label>#= window.app.idioma.t("FECHA_BLOQUEO").toUpperCase()#</label></th>
+                                    <th ><label>#= window.app.idioma.t("MOTIVO_CUARENTENA").toUpperCase()#</label></th>
+                                    <th ><label>#= window.app.idioma.t("FECHA_CUARENTENA").toUpperCase()#</label></th>
+                                    <th ><label>#= window.app.idioma.t("FECHA_CADUCIDAD").toUpperCase()#</label></th>
+                                    <th ><label>#= window.app.idioma.t("ID_MUESTRA_LIMS").toUpperCase()#</label></th>
+                                    <th ><label>#= window.app.idioma.t("PROPIEDADES_EXTENDIDAS").toUpperCase()#</label></th>
+                                    <th ><label>#= window.app.idioma.t("PRIORIDAD").toUpperCase()#</label></th>
+                                    <th ><label>#= window.app.idioma.t("DEFECTUOSO").toUpperCase()#</label></th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td ><input type="text" disabled class="k-textbox" value="#= typeof FechaBloqueo != 'undefined' && FechaBloqueo != null ? kendo.toString(new Date(FechaBloqueo), kendo.culture().calendars.standard.patterns.MES_FechaHora ) : "" #"></td>
+                                        <td ><input type="text" class="k-textbox " disabled value="#= typeof MotivoCuarentena != 'undefined' && MotivoCuarentena != null ? MotivoCuarentena: "" #"></td>
+                                        <td ><input type="text" disabled class="k-textbox" value="#= typeof FechaCuarentena != 'undefined' && FechaCuarentena != null ?  kendo.toString(new Date(FechaCuarentena), kendo.culture().calendars.standard.patterns.MES_FechaHora ) : "" #"></td>
+                                        <td ><input type="text" disabled class="k-textbox" value="#= typeof FechaCaducidad != 'undefined' && FechaCaducidad != null ?  kendo.toString(new Date(FechaCaducidad), kendo.culture().calendars.standard.patterns.MES_FechaHora ): "" #"></td>
+                                        <td ><input type="text" class="k-textbox " disabled value="#= typeof IDMuestraLims != 'undefined' && IDMuestraLims != null ? IDMuestraLims: "" #"></td>
+                                        <td ><input type="text" class="k-textbox " disabled value="#= typeof PropiedadesExtendidas != 'undefined' && PropiedadesExtendidas != null ? PropiedadesExtendidas: "" #"></td>
+                                        <td ><input type="text" class="k-textbox " disabled value="#= typeof Prioridad != 'undefined' && Prioridad != null ? Prioridad: "" #"></td>
+                                        <td ><input type="text" class="k-textbox " disabled value="# if(Defectuoso && Defectuoso != 'No') {#<% print(window.app.idioma.t('SI')) %>#} else {#No#} #"></td>
+                                    </tr>         
+                                </tbody>
+                            </table>
+                        </div>
+             
+
+ </script>
+
+<script type="text/x-kendo-template" id="tmpToolbar"> 
+    <div id="divFilters" class="k-header k-grid-toolbar" style="overflow-x:auto;display:none;margin-bottom:5px">
+
+    <table id="tblFilters">
+           <!-- <colgroup>
+                    <col style="width:150px" />
+                    <col style="width:120px" />
+                    <col style="width:110px" />
+                    <col style="width:110px" />
+                    <col style="width:120px" />
+                    <col style="width:120px" />
+                    <col style="width:130px" />
+                    <col style="width:130px" />
+                    <col style="width:150px" />
+            </colgroup>-->
+       
+        <tbody>
+                <tr>
+                <td style="border-width: 0 0 0 0px;"><input id="filterFechaEntrada_Desde" placeholder="<% print(window.app.idioma.t('DESDE')) %>"  /></td>
+                <td style="border-width: 0 0 0 0px;"><input id="filterFechaEntrada_Hasta" placeholder="<% print(window.app.idioma.t('HASTA')) %>" /></td>
+                <td style="border-width: 0 0 0 0px;"><input id="filterTipoOperacion" placeholder="<% print(window.app.idioma.t('TIPO_OPERACION')) %>"/></td>
+                <td style="border-width: 0 0 0 0px;"><input id="filterIdLote" class="k-textbox" placeholder="<% print(window.app.idioma.t('ID_LOTE')) %>"/></td>
+                <td style="border-width: 0 0 0 0px;"><input id="filterIdSublote" class="k-textbox" placeholder="<% print(window.app.idioma.t('ID_SUBLOTE')) %>"/></td>
+                <td style="border-width: 0 0 0 0px;"><input id="filterOrdenOrigen" class="k-textbox" placeholder="<% print(window.app.idioma.t('ORDEN_ORIGEN')) %>"/></td>
+                <td style="border-width: 0 0 0 0px;"><input id="filterOrdenDestino" class="k-textbox" placeholder="<% print(window.app.idioma.t('ORDEN_DESTINO')) %>"/></td>
+                <td style="border-width: 0 0 0 0px;"><input id="filterUbicacionOrigen" placeholder="<% print(window.app.idioma.t('UBICACION_ORIGEN')) %>"/></td>
+                <td style="border-width: 0 0 0 0px;"><input id="filterUbicacionDestino" placeholder="<% print(window.app.idioma.t('UBICACION_DESTINO')) %>"/></td>
+
+               </tr>
+        </tbody>
+    </table>
+    </div>
+</script>
+
+
+
+
+
+ 

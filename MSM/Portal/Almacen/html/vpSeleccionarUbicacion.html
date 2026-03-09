@@ -1,0 +1,51 @@
+ <style>
+            .fieldlist {
+                margin: 0 0 -2em;
+                padding: 0;
+            }
+
+            .fieldlist li {
+                list-style: none;
+                padding-bottom: 2em;
+            }
+
+            .fieldlist label {
+                display: block;
+                padding-bottom: 1em;
+                font-weight: bold;
+                text-transform: uppercase;
+                font-size: 12px;
+                color: #444;
+            }
+
+        </style>
+<div id="container" class="divFormSeleccionarUbicacion" style="overflow-x:hidden">
+    <form id="form">
+            <ul class="fieldlist">
+                <li id="liAlmacen">
+                    <div class="col-lg-3"><label for="vpTxtAlmacen"><% print(window.app.idioma.t('ALMACEN')) %></label></div>
+                    <div class="col-lg-7">
+                        <input id="vpTxtAlmacen" style="width:100%; margin-bottom:10px" />
+                    </div>
+                </li>
+                <li id="liZona">
+                    <div class="col-lg-3"><label for="vpTxtZona"><% print(window.app.idioma.t('ZONA')) %></label></div>
+                    <div class="col-lg-7"><input id="vpTxtZona" style="width:100%; margin-bottom:10px" /></div>
+                </li>
+                <li id="liUbicacion">
+                    <div class="col-lg-3"><label for="vpTxtUbicacion"><% print(window.app.idioma.t('UBICACION')) %>*</label></div>
+                    <div class="col-lg-7"><input id="vpTxtUbicacion" required style="width:100%; margin-bottom:10px" /></div>
+                </li>
+              
+            </ul>
+
+        <div class="col-md-12">
+            <center>
+                <button class="btnAplicarCambio" type="button" style="background-color:green;color:white">
+                    <% print(window.app.idioma.t('SELECCIONAR')) %>
+                </button>
+            </center>
+        </div>
+    </form>
+
+</div>

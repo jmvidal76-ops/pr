@@ -1,0 +1,247 @@
+﻿<style>
+    .k-detail-cell .k-tabstrip .k-content {
+        padding: 0.2em;
+        overflow-y: hidden;
+    }
+
+    .details ul {
+        list-style: none;
+        margin: 15px;
+        padding: 0;
+    }
+
+        .details ul li {
+            margin: 0;
+            line-height: 1.5em;
+        }
+
+    .details label {
+        display: inline-block;
+        padding-right: 10px;
+        text-align: right;
+        font-style: normal;
+        font-weight: bold;
+    }
+
+    .table {
+        border: 1px solid #000000;
+        margin: 2px;
+    }
+
+    .table-bordered > thead > tr > th,
+    .table-bordered > tbody > tr > th,
+    .table-bordered > tfoot > tr > th,
+    .table-bordered > thead > tr > td,
+    .table-bordered > tbody > tr > td,
+    .table-bordered > tfoot > tr > td {
+        border: 1px solid black;
+        font-weight: normal;
+    }
+
+    .rTable {
+        display: table;
+    }
+
+    .rTableRow {
+        display: table-row;
+    }
+
+    .rTableCell {
+        display: table-cell;
+        padding: 5px;
+    }
+
+    .rTableCellP {
+        display: table-cell;
+        padding: 5px;
+    }
+
+    .table > tbody > tr > td,
+    .table > tbody > tr > th,
+    .table > tfoot > tr > td,
+    .table > tfoot > tr > th,
+    .table > thead > tr > td,
+    .table > thead > tr > th {
+        padding: 0 0 0 0;
+        vertical-align: middle;
+    }
+
+    .k-grid td {
+        padding: .3em .3em;
+        line-height: 1.6;
+        vertical-align: middle;
+    }
+
+    hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid #ccc;
+        margin-top: 1em;
+        padding: 0;
+        margin-bottom: 0em;
+    }
+
+    .tabPanel .k-content {
+        overflow: hidden !important;
+    }
+
+    @media (max-width: 1024px) {
+        .rTable {
+            display: block;
+            overflow: auto;
+        }
+    }
+
+    .toolbar-fila {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .toolbar-botonera-derecha {
+        flex: 0 0 auto;
+        margin-right: 10px;
+    }
+
+        .toolbar-botonera-derecha button {
+            margin-left: 5px;
+        }
+    
+    .toolbar-campos {
+        flex: 1 1;
+        text-align: center;
+    }
+
+        .toolbar-campos:first-child {
+            flex: 0 0 auto;
+        }
+
+        .toolbar-campos label {
+            margin-left: 5px;
+        }
+
+    .toolbar-titulo {
+        width: 100%;
+        text-align: center;
+    }
+
+    .k-datepicker {
+        width: 8em;
+    }
+
+    .imgCabeceraVista {
+        height: 20px;
+        margin-left: 5px;
+    }
+
+    .k-grid,
+    .k-tabstrip,
+    .k-tabstrip .k-content {
+        margin: 0;
+        padding: 0;
+        border-width: 0;
+        overflow-y: hidden;
+    }
+    
+    .k-radio-label {
+        padding-top: 2px;
+    }
+
+    #divHTMLContenido {
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+    }
+
+    #AdherenciaSecuencia .k-splitter {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        border-width: 0;
+    }
+
+    #divPestanias,
+    #divPestanias-parent {
+        height: 100%;
+    }
+
+    li.k-item > label.k-label > input[type=checkbox] {
+        width: 14px;
+        height: 14px;
+        margin-right: 5px;
+    }
+</style>
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" class="imgCabeceraVista" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('PLAN_ADHERENCIA_SECUENCIA')) %></label>
+</div>
+
+<div id="AdherenciaSecuencia" class="divContenidoVista">
+    <div id="divPestanias">
+        <ul>
+            <li class="k-state-active"><% print(window.app.idioma.t('ADHERENCIA_SECUENCIA')) %></li>
+            <li><% print(window.app.idioma.t('PARAMETROS')) %></li>
+        </ul>
+        <!-- ADHERENCIA SECUENCIA -->
+        <div>
+            <div id="gridDesvSecuencia"></div>
+        </div>
+        <!-- PARAMETROS -->
+        <div>
+            <div id="gridParamSecuencia"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="gridDesvSecToolbar">
+    <div class="toolbar-titulo"><label><% print(window.app.idioma.t("DESV_VALUES_TITULO")) %></label></div>
+    <div class="k-header toolbar-fila">
+        <div class="toolbar-campos">
+            <label><% print(window.app.idioma.t("ANYO")) %></label>
+            <input id='anioInicio' style='width: 70px !important;'>
+            <label><% print(window.app.idioma.t("SEMANA_INICIAL")) %></label>
+            <input id='semanaInicio' style='width: 230px !important;'>
+            <label><% print(window.app.idioma.t("ANYO")) %></label>
+            <input id='anioFin' style='width: 70px !important;'>
+            <label><% print(window.app.idioma.t("SEMANA_FINAL")) %></label>
+            <input id='semanaFin' style='width: 230px !important;'>
+        </div>
+        <div class="toolbar-botonera-derecha">
+            <button id='btnShowAdherencias' class='k-button k-button-icontext'>
+                <span class='k-icon k-i-search'></span>
+                <% print(window.app.idioma.t("MOSTRAR_ADHERENCIAS")) %>
+            </button>
+            <button id='btnShowInadherencias' class='k-button k-button-icontext'>
+                <span class='k-icon k-i-search'></span>
+                <% print(window.app.idioma.t("MOSTRAR_INADHERENCIAS")) %>
+            </button>
+            <button id='btnExcelSecuencia' class='k-button k-button-icontext'>
+                <span class='k-icon k-i-excel'></span>
+                <% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+            </button>
+        </div>
+    </div>
+    <div style="margin-top: 10px;" class="k-header toolbar-fila">
+        <div class="toolbar-campos">
+            <input class="k-radio" type="radio" name="vista" id="gridParSecVista0" value="0" checked="checked">
+            <label class="k-radio-label" for="gridParSecVista0">
+                <% print(window.app.idioma.t("SECPLAN_SECPLAN")) %>
+            </label>
+            <input class="k-radio" type="radio" name="vista" id="gridParSecVista1" value="1">
+            <label class="k-radio-label" for="gridParSecVista1">
+                <% print(window.app.idioma.t("SECPLAN_SECREAL")) %>
+            </label>
+        </div>
+        <div class="toolbar-botonera-derecha">
+            <button id='btnEditarRegistro' class='k-button k-button-icontext'>
+                <% print(window.app.idioma.t("EDITAR")) %>
+            </button>
+            <button id='btnEliminarRegistro' class='k-button k-button-icontext'>
+                <% print(window.app.idioma.t("ELIMINAR")) %>
+            </button>
+        </div>
+    </div>
+</script>

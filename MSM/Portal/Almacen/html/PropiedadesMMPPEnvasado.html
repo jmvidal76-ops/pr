@@ -1,0 +1,32 @@
+﻿<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('PROPIEDADES_MMPP_ENVASADO')) %></label>
+</div>
+
+<!-- Filtros -->
+<div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+    <div class="filtroFechas" style="float: left;">
+        <button id="btnMMPPConProp" class="k-button k-button-icontext" style="margin-left: 5px;"><% print(window.app.idioma.t('MMPP_CON_PROP')) %></button>
+        <button id="btnMMPPSinProp" class="k-button k-button-icontext" style="margin-left: 5px;"><% print(window.app.idioma.t('MMPP_SIN_PROP')) %></button>
+        <button id="btnNuevasMMPPSinProp" class="k-button k-button-icontext" style="margin-left: 5px;"><% print(window.app.idioma.t('NUEVAS_MMPP_SIN_PROP')) %></button>
+        <button id="btnLimpiarFiltros" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;">
+            <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+        </button>
+    </div>
+    <div style="float: right; margin-right: 10px;">
+        <button id="btnAgregarPropiedades" class="k-button k-button-icontext" style="margin-left: 5px;" hidden>
+            <span class='k-icon k-add'></span><% print(window.app.idioma.t('AGREGAR'))%> <%print(window.app.idioma.t('PROPIEDADES')) %>
+        </button>
+        <button id="btnPasarASinPropiedades" class="k-button k-button-icontext" style="margin-left: 5px;" hidden>
+            <% print(window.app.idioma.t('PASAR_MMPP_SIN_PROP')) %>
+        </button>
+    </div>
+</div>
+
+<div id="gridPropMMPP"></div>
+<script id="detailTemplate" type="text/x-kendo-template">
+    <div>
+        <div><div class="detalle"></div></div>
+    </div>
+</script>

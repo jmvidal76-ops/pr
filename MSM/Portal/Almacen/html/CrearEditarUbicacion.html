@@ -1,0 +1,288 @@
+﻿<style>
+    #formParoPerdida {
+        margin: 15px;
+    }
+
+    .cabecera {
+        width: 30% !important;
+        text-align: right;
+        font-weight: bold;
+    }
+
+    .texto {
+        width: 53% !important;
+        text-align: left;
+    }
+
+    .tdLabel {
+        width: 16% !important;
+    }
+
+    #tablaCambio th, .table td {
+        border-top: none !important;
+        /*text-align: right;*/
+    }
+
+    #tablaCambio tr {
+        height: 60px !important;
+    }
+
+    #tablaCambio input, textarea {
+        margin-left: 5px !important;
+        width: 120px;
+    }
+
+    #btnAceptar, #btnCancelar {
+        /*height: 30px;
+        width: 30%;*/
+        /*float:left;*/
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+
+    /*.k-grid .k-state-selected { background-color:lightyellow; }*/
+
+
+    .k-autocomplete,
+    .k-combobox,
+    .k-datepicker,
+    .k-timepicker,
+    .k-datetimepicker,
+    .k-colorpicker,
+    .k-numerictextbox,
+    .k-dropdown,
+    .k-selectbox,
+    .k-textbox,
+    .k-toolbar .k-split-button {
+        width: 100% !important;
+    }
+
+
+    .k-numerictextbox {
+        width: 100% !important;
+    }
+
+        .k-numerictextbox .k-numeric-wrap .k-input {
+            width: 96% !important;
+        }
+
+    .fila {
+        width: 90%;
+        margin-left: 5%;
+        float: left;
+        margin-top: 30px;
+    }
+</style>
+<form id="form1">
+    <div id="container">
+        <div class="fila">
+            <div id="Div37" style="width: 25%; float: left; text-align: right;">
+                <label>
+                    <% print(window.app.idioma.t('NOMBRE')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div38" style="width: 25%; float: left;">
+                <input class="k-textbox" id="txtNewNombreUbicacion" name="txtNewNombreUbicacion" style="width: 180px !important;" required />
+                <br />
+                <span class="k-invalid-msg" data-for="txtNewNombreUbicacion"></span>
+            </div>
+
+            <div id="Div5" style="width: 20%; float: left; text-align: right;">
+                <label>
+                    <% print(window.app.idioma.t('ESTADO')) %> &nbsp;
+                </label>
+            </div>
+            <div id="Div6" style="width: 25%; float: left;">
+                <input type="text" id="cmbEstadoUbicacion" name="cmbEstadoUbicacion" />
+            </div>
+        </div>
+        <div class="fila">
+            <div id="Div3" style="width: 25%; float: left; text-align: right;">
+                <label>
+                    <% print(window.app.idioma.t('TIPO_UBICACION')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div4" style="width: 25%; float: left;">
+                <input type="text" id="cmbTipoUbicacion" name="cmbTipoUbicacion" required />
+                <br />
+                <span class="k-invalid-msg" data-for="cmbTipoUbicacion"></span>
+            </div>
+        </div>
+        <div class="fila">
+            <div id="titulo" style="width: 25%; float: left; text-align: right;">
+                <label>
+                    <% print(window.app.idioma.t('ALMACEN')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="linea" style="width: 25%; float: left;">
+                <input type="text" id="cmbNewAlmacen" name="cmbNewAlmacen" required />
+                <br />
+                <span class="k-invalid-msg" data-for="cmbNewAlmacen"></span>
+            </div>
+            <div id="Div1" style="width: 20%; float: left; text-align: right;">
+                <label>
+                    <% print(window.app.idioma.t('ZONA')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div2" style="width: 25%; float: left;">
+                <input type="text" id="cmbNewZona" name="cmbNewZona" required />
+                <br />
+                <span class="k-invalid-msg" data-for="cmbNewZona"></span>
+            </div>
+        </div>
+
+        <div class="fila">
+            <div id="Div7" style="width: 25%; float: left; text-align: right;">
+                <label>
+                    <% print(window.app.idioma.t('POLITICA_ALMACENAMIENTO')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div8" style="width: 25%; float: left;">
+                <input type="text" id="cmbPoliticaAlmacenamiento" name="cmbPoliticaAlmacenamiento" />
+            </div>
+            <div id="Div17" style="width: 20%; float: left; text-align: right;">
+                <label id="lblNewMaterial" style="display: none;">
+                    <% print(window.app.idioma.t('MATERIAL')) %> &nbsp;
+               
+                </label>
+                <label id="lblNewClaseMaterial" style="display: none;">
+                    <% print(window.app.idioma.t('CLASE_MATERIAL')) %> &nbsp;
+               
+                </label>
+                <label id="lblNewTipoMaterial" style="display: none;">
+                    <% print(window.app.idioma.t('TIPO_MATERIAL')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div18" style="width: 25%; float: left;">
+                <input type="text" id="cmbRefMaterial" name="cmbRefMaterial" />
+                <input type="text" id="cmbClaseMaterial" name="cmbClaseMaterial" />
+                <input type="text" id="cmbTipoMaterial" name="cmbTipoMaterial" />
+            </div>
+        </div>
+        <div class="fila">
+            <div id="Div9" style="width: 25%; float: left; text-align: right;">
+                <label>
+                    <% print(window.app.idioma.t('POLITICA_LLENADO')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div10" style="width: 25%; float: left;">
+                <input type="text" id="cmbPoliticaLlenado" name="cmbPoliticaLlenado" />
+            </div>
+            <div id="Div11" style="width: 20%; float: left; text-align: right;">
+                <label>
+                    <% print(window.app.idioma.t('POLITICA_VACIADO')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div12" style="width: 25%; float: left;">
+                <input type="text" id="cmbPoliticaVaciado" name="cmbPoliticaVaciado" />
+            </div>
+        </div>
+        <div class="fila">
+            <div id="Div13" style="width: 25%; float: left; text-align: right;">
+                <label>
+                    <% print(window.app.idioma.t('COO_RELATIVAS')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div14" style="width: 25%; float: left;">
+                <input class="k-textbox" id="txtNewCOORelativas" name="txtNewCOORelativas" style="width: 180px !important;" />
+            </div>
+            <div id="Div15" style="width: 20%; float: left; text-align: right;">
+                <label>
+                    <% print(window.app.idioma.t('COO_ABSOLUTAS')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div16" style="width: 25%; float: left;">
+                <input class="k-textbox" id="txtNewCOOAbsolutas" name="txtNewCOOAbsolutas" style="width: 180px !important;" />
+            </div>
+        </div>
+        <div class="fila">
+            <div id="Div25" style="width: 25%; float: left; text-align: right;">
+                <label>
+                    <% print(window.app.idioma.t('CAPACIDAD_MAXIMA')) %> &nbsp;
+               
+                </label>
+            </div>
+            <!--<div id="Div26" style="width: 25%; float: left;">
+                <input class="k-textbox" id="txtNewCapacidadMaxima" name="txtNewCapacidadMaxima" style="width: 180px !important;" />
+            </div>-->
+            <div id="Div27" style="width: 20%; float: left; text-align: right;">
+                <label>
+                    <% print(window.app.idioma.t('STOCK_ACTUAL')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div28" style="width: 25%; float: left;">
+                <input class="k-textbox" id="txtNewStockActual" name="txtNewStockActual" style="width: 180px !important;" />
+            </div>
+        </div>
+        <div class="fila">
+            <div id="Div29" style="width: 25%; float: left; text-align: right;">
+                <label>
+                    <% print(window.app.idioma.t('STOCK_MINIMO')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div30" style="width: 25%; float: left;">
+                <input class="k-textbox" id="txtNewStockMinimo" name="txtNewStockMinimo" style="width: 180px !important;" />
+            </div>
+            <div id="Div31" style="width: 20%; float: left; text-align: right;">
+                <label>
+                    <% print(window.app.idioma.t('STOCK_CAMPO')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div32" style="width: 25%; float: left;">
+                <input class="k-textbox" id="txtNewStockCampo" name="txtNewStockCampo" style="width: 180px !important;" />
+            </div>
+        </div>
+        <div class="fila">
+            <div id="Div33" style="width: 25%; float: left; text-align: right;">
+                <label>
+                    <% print(window.app.idioma.t('UMBRAL_STOCK_CERO')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div34" style="width: 25%; float: left;">
+                <input class="k-textbox" id="txtNewUmbralStockCero" name="txtNewUmbralStockCero" style="width: 180px !important;" />
+            </div>
+            <div id="Div35" style="width: 20%; float: left; text-align: right;">
+                <label>
+                    <% print(window.app.idioma.t('UMBRAL_LOTE_CERO')) %> &nbsp;
+               
+                </label>
+            </div>
+            <div id="Div36" style="width: 25%; float: left;">
+                <input class="k-textbox" id="txtNewUmbralLoteCero" name="txtNewUmbralLoteCero" style="width: 180px !important;" />
+            </div>
+        </div>
+        <div class="fila">
+            <label id="Span1"> Seleccione ubicacion del modelo de planta:  </label>
+            <input class="k-textbox" id="txtPath" name="txtPath" style="width: 220px !important;" />
+            <button id="btnBuscar" value="Buscar"><% print(window.app.idioma.t("BUSCAR")) %></button>
+        </div>
+        <div class="fila" id="trError" style="display: none; text-align: center;">
+            <span id="lblError" style="color: red;"><% print(window.app.idioma.t('SELECCIONE_VALOR_CAMPOS')) %> </span>
+        </div>
+        <div class="fila">
+            <div style="text-align: center; width: 100%;">
+                <button id="btnNewAceptar" value="Aceptar"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+                <button id="btnNewCancelar" value="Cancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+            </div>
+        </div>
+
+    </div>
+</form>

@@ -1,0 +1,172 @@
+﻿<style>
+    .k-detail-cell .k-tabstrip .k-content {
+        padding: 0.2em;
+        overflow-y: hidden;
+    }
+
+    .table {
+        border: 1px solid #000000;
+        margin: 2px;
+    }
+
+    .table-bordered > thead > tr > th,
+    .table-bordered > tbody > tr > th,
+    .table-bordered > tfoot > tr > th,
+    .table-bordered > thead > tr > td,
+    .table-bordered > tbody > tr > td,
+    .table-bordered > tfoot > tr > td {
+        border: 1px solid black;
+        font-weight: normal;
+    }
+
+    .table > tbody > tr > td,
+    .table > tbody > tr > th,
+    .table > tfoot > tr > td,
+    .table > tfoot > tr > th,
+    .table > thead > tr > td,
+    .table > thead > tr > th {
+        padding: 0 0 0 0;
+        vertical-align: middle;
+    }
+
+    .k-grid td {
+        padding: .3em .3em;
+        line-height: 1.6;
+        vertical-align: middle;
+    }
+
+    .tabPanel .k-content {
+        overflow: hidden !important;
+    }
+
+    .toolbar-fila {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .toolbar-botonera-derecha {
+        flex: 0 0 auto;
+        margin-right: 10px;
+    }
+
+        .toolbar-botonera-derecha button {
+            margin-left: 5px;
+        }
+
+    .toolbar-campos {
+        flex: 1 1;
+        text-align: center;
+    }
+
+        .toolbar-campos:first-child {
+            flex: 0 0 auto;
+        }
+
+        .toolbar-campos label {
+            margin-left: 5px;
+        }
+
+    .toolbar-titulo {
+        width: 100%;
+        text-align: center;
+    }
+
+    .k-datepicker {
+        width: 8em;
+    }
+
+    .k-grid,
+    .k-tabstrip,
+    .k-tabstrip .k-content {
+        margin: 0;
+        padding: 0;
+        border-width: 0;
+        overflow-y: hidden;
+    }
+
+    .k-radio-label {
+        padding-top: 2px;
+    }
+
+    #divHTMLContenido {
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+    }
+
+    #AdherenciaCongelado .k-splitter {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        border-width: 0;
+    }
+
+    #divPestanias,
+    #divPestanias-parent {
+        height: 100%;
+    }
+</style>
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('PLAN_ADHERENCIA_CONGELADO')) %></label>
+</div>
+
+<div id="AdherenciaCongelado" class="divContenidoVista">
+    <div id="divPestanias">
+        <ul>
+            <li class="k-state-active"><% print(window.app.idioma.t('ADHERENCIA_CONGELADO')) %></li>
+            <li><% print(window.app.idioma.t('PARAMETROS')) %></li>
+        </ul>
+        <!-- ADHERENCIA CONGELADO -->
+        <div>
+            <div id="gridDesvCongelado"></div>
+        </div>
+        <!-- PARAMETROS -->
+        <div>
+            <div id="gridParamCongelado"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="gridDesvCongToolbar">
+    <div class="toolbar-titulo"><label><% print(window.app.idioma.t("DESV_VALUES_TITULO")) %></label></div>
+    <div class="k-header toolbar-fila">
+        <div class="toolbar-campos">
+            <label><% print(window.app.idioma.t("ANYO")) %></label>
+            <input id='anioInicio' style='width: 70px !important;'>
+            <label><% print(window.app.idioma.t("SEMANA_INICIAL")) %></label>
+            <input id='semanaInicio' style='width: 230px !important;'>
+            <label><% print(window.app.idioma.t("ANYO")) %></label>
+            <input id='anioFin' style='width: 70px !important;'>
+            <label><% print(window.app.idioma.t("SEMANA_FINAL")) %></label>
+            <input id='semanaFin' style='width: 230px !important;'>
+        </div>
+        <div class="toolbar-botonera-derecha">
+            <button id='btnShowAdherencias' class='k-button k-button-icontext'>
+                <span class='k-icon k-i-search'></span>
+                <% print(window.app.idioma.t("MOSTRAR_ADHERENCIAS")) %>
+            </button>
+            <button id='btnShowInadherencias' class='k-button k-button-icontext'>
+                <span class='k-icon k-i-search'></span>
+                <% print(window.app.idioma.t("MOSTRAR_INADHERENCIAS")) %>
+            </button>
+            <button id='btnExcelCongelado' class='k-button k-button-icontext'>
+                <span class='k-icon k-i-excel'></span>
+                <% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+            </button>
+        </div>
+    </div>
+    <div style="margin-top: 10px; margin-right: 10px; float: right;" class="k-header toolbar-fila">
+        <div>
+            <button id='btnEditarRegistro' class='k-button k-button-icontext'>
+                <% print(window.app.idioma.t("EDITAR")) %>
+            </button>
+            <button id='btnEliminarRegistro' class='k-button k-button-icontext'>
+                <% print(window.app.idioma.t("ELIMINAR")) %>
+            </button>
+        </div>
+    </div>
+</script>

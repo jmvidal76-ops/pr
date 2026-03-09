@@ -1,0 +1,2785 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MES_MSM_FabricacionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EstadosKOP">
+          <Key>
+            <PropertyRef Name="IdEstadoKOP" />
+          </Key>
+          <Property Name="IdEstadoKOP" Type="int" Nullable="false" />
+          <Property Name="DescEstadoKOP" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ColorEstadoKOP" Type="varchar" MaxLength="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KOPs">
+          <Key>
+            <PropertyRef Name="IdKOP" />
+          </Key>
+          <Property Name="IdKOP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ValorMin" Type="varchar" MaxLength="100" />
+          <Property Name="Valor" Type="varchar" MaxLength="100" />
+          <Property Name="ValorMax" Type="varchar" MaxLength="100" />
+          <Property Name="FechaActualizado" Type="datetime" />
+          <Property Name="IdEstadoKOP" Type="int" Nullable="false" />
+          <Property Name="IdWO" Type="int" Nullable="false" />
+          <Property Name="IdMaestroKOP" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KOPsMultivalor">
+          <Key>
+            <PropertyRef Name="IdKOPMultivalor" />
+          </Key>
+          <Property Name="IdKOPMultivalor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMaestroKOPMultivalor" Type="int" Nullable="false" />
+          <Property Name="FechaActualizado" Type="datetime" />
+          <Property Name="IdEstadoKOP" Type="int" Nullable="false" />
+          <Property Name="IdWO" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MaestroKOPs">
+          <Key>
+            <PropertyRef Name="IdMaestroKOP" />
+          </Key>
+          <Property Name="IdMaestroKOP" Type="int" Nullable="false" />
+          <Property Name="CodKOP" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="DescKOP" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="MensajeKOP" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Unidad" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="TipodatoMaestroKOP" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IdTipoKOP" Type="int" Nullable="false" />
+          <Property Name="IdTipoSubproceso" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="FechaActualizado" Type="datetime" />
+          <Property Name="ValorMin" Type="varchar" MaxLength="100" />
+          <Property Name="ValorDefecto" Type="varchar" MaxLength="100" />
+          <Property Name="ValorMax" Type="varchar" MaxLength="100" />
+          <Property Name="Editable" Type="bit" Nullable="false" />
+          <Property Name="IdEstadoKOP" Type="int" Nullable="false" />
+          <Property Name="IdZona" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MaestroKOPs_Mostos_Ubicacion">
+          <Key>
+            <PropertyRef Name="IdMaestroKOP_Mosto_Ubicacion" />
+          </Key>
+          <Property Name="IdMaestroKOP_Mosto_Ubicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMaestroKOP" Type="int" Nullable="false" />
+          <Property Name="IdMosto" Type="nvarchar" MaxLength="64" />
+          <Property Name="ValorMin" Type="varchar" MaxLength="100" />
+          <Property Name="ValorDefecto" Type="varchar" MaxLength="100" />
+          <Property Name="ValorMax" Type="varchar" MaxLength="100" />
+          <Property Name="FechaActualizado" Type="datetime" />
+          <Property Name="IdEstadoKOP" Type="int" Nullable="false" />
+          <Property Name="IdZona" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MaestroKOPsMultivalor">
+          <Key>
+            <PropertyRef Name="IdMaestroKOPMultivalor" />
+          </Key>
+          <Property Name="IdMaestroKOPMultivalor" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CodKOP" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="DescKOP" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="MensajeKOP" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Unidad" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="TipodatoMaestroKOP" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IdTipoSubproceso" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="FechaActualizado" Type="datetime" />
+          <Property Name="IdTipoKOPMultivalor" Type="int" Nullable="false" />
+          <Property Name="IdEstadoKOP" Type="int" Nullable="false" />
+          <Property Name="IdZona" Type="int" Nullable="false" />
+          <Property Name="NKOPMultivalor" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MaestroValoresKOPsMultivalor">
+          <Key>
+            <PropertyRef Name="IdMaestroValorKOPMultivalor" />
+          </Key>
+          <Property Name="IdMaestroValorKOPMultivalor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescValorKOP" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="ValorMin" Type="varchar" MaxLength="100" />
+          <Property Name="ValorDefecto" Type="varchar" MaxLength="100" />
+          <Property Name="ValorMax" Type="varchar" MaxLength="100" />
+          <Property Name="IdMaestroKOPMultivalor" Type="int" Nullable="false" />
+          <Property Name="FechaActualizado" Type="datetime" />
+          <Property Name="Posicion" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="IdEstadoValorKOP" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ModulosSubprocesos">
+          <Key>
+            <PropertyRef Name="IdModuloSubproceso" />
+          </Key>
+          <Property Name="IdModuloSubproceso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Modulo" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="IdTipoSubproceso" Type="int" Nullable="false" />
+          <Property Name="CodigoWO" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="IdZona" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PropiedadesWO">
+          <Key>
+            <PropertyRef Name="IdPropiedadWO" />
+          </Key>
+          <Property Name="IdPropiedadWO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescPropiedadWO" Type="varchar" MaxLength="255" />
+          <Property Name="ValorPropiedadWO" Type="varchar" MaxLength="100" />
+          <Property Name="TipoDatoPropiedadWO" Type="varchar" MaxLength="20" />
+          <Property Name="IdWO" Type="int" Nullable="false" />
+          <Property Name="FechaActualizado" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Subprocesos">
+          <Key>
+            <PropertyRef Name="IdSubproceso" />
+          </Key>
+          <Property Name="IdSubproceso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaInicio" Type="datetime" />
+          <Property Name="FechaFin" Type="datetime" />
+          <Property Name="FechaActualizado" Type="datetime" />
+          <Property Name="LoteSAI" Type="varchar" MaxLength="100" />
+          <Property Name="IdWO" Type="int" Nullable="false" />
+          <Property Name="IdTipoSubproceso" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TiposKOPMultivalor">
+          <Key>
+            <PropertyRef Name="IdTipoKOPMultivalor" />
+          </Key>
+          <Property Name="IdTipoKOPMultivalor" Type="int" Nullable="false" />
+          <Property Name="DescTipoKOPMultivalor" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TiposSubprocesos">
+          <Key>
+            <PropertyRef Name="IdTipoSubproceso" />
+          </Key>
+          <Property Name="IdTipoSubproceso" Type="int" Nullable="false" />
+          <Property Name="DescSubProceso" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Orden" Type="smallint" Nullable="false" />
+          <Property Name="IdTipoWO" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TiposWO">
+          <Key>
+            <PropertyRef Name="IdTipoWO" />
+          </Key>
+          <Property Name="IdTipoWO" Type="int" Nullable="false" />
+          <Property Name="CodWO" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DescTipoWO" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Orden" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ValoresKOPsMultivalor">
+          <Key>
+            <PropertyRef Name="IdValorKOPMultivalor" />
+          </Key>
+          <Property Name="IdValorKOPMultivalor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ValorMin" Type="varchar" MaxLength="100" />
+          <Property Name="Valor" Type="varchar" MaxLength="100" />
+          <Property Name="ValorMax" Type="varchar" MaxLength="100" />
+          <Property Name="FechaActualizado" Type="datetime" />
+          <Property Name="IdKOPMultivalor" Type="int" Nullable="false" />
+          <Property Name="IdMaestroValorKOPMultivalor" Type="int" Nullable="false" />
+          <Property Name="IdEstadoValorKOP" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VariablesFormulaKOP">
+          <Key>
+            <PropertyRef Name="IdVariableFormulaKOP" />
+          </Key>
+          <Property Name="IdVariableFormulaKOP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMaestroKOP" Type="int" Nullable="false" />
+          <Property Name="IdFormulaCalculoKOP" Type="int" Nullable="false" />
+          <Property Name="IdMaestroKOPVariable" Type="int" Nullable="false" />
+          <Property Name="VariableKOP" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="FechaActualizado" Type="datetime" />
+        </EntityType>
+        <EntityType Name="WOPlanificadas">
+          <Key>
+            <PropertyRef Name="IdWOPlanificada" />
+          </Key>
+          <Property Name="IdWOPlanificada" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaInicioPlan" Type="datetime" />
+          <Property Name="FechaFinPlan" Type="datetime" />
+          <Property Name="CantidadPlan" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="NotasWO" Type="varchar" MaxLength="1000" />
+          <Property Name="Procesado" Type="bit" Nullable="false" />
+          <Property Name="IdUbicacionOrigen" Type="int" Nullable="false" />
+          <Property Name="IdUbicacionDestino" Type="int" />
+          <Property Name="IdTipoWO" Type="int" Nullable="false" />
+          <Property Name="IdWO" Type="int" />
+          <Property Name="FechaActualizado" Type="datetime" />
+          <Property Name="IdMaterial" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="IdZonaOrigen" Type="int" />
+        </EntityType>
+        <EntityType Name="WOs">
+          <Key>
+            <PropertyRef Name="IdWO" />
+          </Key>
+          <Property Name="IdWO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodWO" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="LoteMES" Type="varchar" MaxLength="100" />
+          <Property Name="FechaInicioPlan" Type="datetime" />
+          <Property Name="FechaFinPlan" Type="datetime" />
+          <Property Name="CantidadPlan" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="FechaInicioReal" Type="datetime" />
+          <Property Name="FechaFinReal" Type="datetime" />
+          <Property Name="CantidadReal" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="NotasWO" Type="varchar" MaxLength="1000" />
+          <Property Name="IdTipoWO" Type="int" Nullable="false" />
+          <Property Name="IdEstadoWO" Type="int" Nullable="false" />
+          <Property Name="IdEstadoLIMS" Type="int" Nullable="false" />
+          <Property Name="FechaActualizado" Type="datetime" />
+          <Property Name="Recalcular" Type="bit" Nullable="false" />
+          <Property Name="NumWO" Type="int" Nullable="false" />
+          <Property Name="Anio" Type="int" Nullable="false" />
+          <Property Name="IdUbicacion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OLTPMensajes">
+          <Key>
+            <PropertyRef Name="IdOLTPMensaje" />
+            <PropertyRef Name="Modulo" />
+            <PropertyRef Name="Fecha" />
+            <PropertyRef Name="FracSec" />
+            <PropertyRef Name="FechaLote" />
+          </Key>
+          <Property Name="IdOLTPMensaje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Modulo" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Lote" Type="varchar" MaxLength="100" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="Valor" Type="varchar" MaxLength="200" />
+          <Property Name="Unidad" Type="varchar" MaxLength="200" />
+          <Property Name="FracSec" Type="int" Nullable="false" />
+          <Property Name="Procesado" Type="int" Nullable="false" />
+          <Property Name="FechaLote" Type="datetime" Nullable="false" />
+          <Property Name="FechaActualizado" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MES_MSM_Fabricacion.Fab.vEstadoKOP_WO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vEstadoKOP_WO">
+          <Key>
+            <PropertyRef Name="IdWO" />
+            <PropertyRef Name="CodWO" />
+            <PropertyRef Name="IdEstadoKOP" />
+          </Key>
+          <Property Name="IdWO" Type="int" Nullable="false" />
+          <Property Name="CodWO" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="IdEstadoKOP" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MES_MSM_Fabricacion.Fab.vListadoWOsCoccion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vListadoWOsCoccion">
+          <Key>
+            <PropertyRef Name="IdWO" />
+            <PropertyRef Name="CodWO" />
+            <PropertyRef Name="IdUbicacion" />
+            <PropertyRef Name="IdTipoWO" />
+            <PropertyRef Name="DescTipoWO" />
+            <PropertyRef Name="IdEstadoWO" />
+            <PropertyRef Name="DescEstadoWO" />
+            <PropertyRef Name="ColorEstadoWO" />
+            <PropertyRef Name="IdEstadoLIMS" />
+            <PropertyRef Name="DescEstadoLIMS" />
+            <PropertyRef Name="ColorEstadoLIMS" />
+            <PropertyRef Name="IdEstadoKOP" />
+            <PropertyRef Name="ColorEstadoKOP" />
+            <PropertyRef Name="DescEstadoKOP" />
+            <PropertyRef Name="Recalcular" />
+            <PropertyRef Name="Anio" />
+          </Key>
+          <Property Name="IdWO" Type="int" Nullable="false" />
+          <Property Name="CodWO" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="LoteMES" Type="varchar" MaxLength="100" />
+          <Property Name="FechaInicioPlan" Type="datetime" />
+          <Property Name="FechaFinPlan" Type="datetime" />
+          <Property Name="CantidadPlan" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="FechaInicioReal" Type="datetime" />
+          <Property Name="FechaFinReal" Type="datetime" />
+          <Property Name="CantidadReal" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="NotasWO" Type="varchar" MaxLength="1000" />
+          <Property Name="IdUbicacion" Type="int" Nullable="false" />
+          <Property Name="DescZona" Type="nvarchar" MaxLength="255" />
+          <Property Name="IdTipoWO" Type="int" Nullable="false" />
+          <Property Name="DescTipoWO" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="IdEstadoWO" Type="int" Nullable="false" />
+          <Property Name="DescEstadoWO" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ColorEstadoWO" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="IdEstadoLIMS" Type="int" Nullable="false" />
+          <Property Name="DescEstadoLIMS" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ColorEstadoLIMS" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="NCoccion" Type="int" />
+          <Property Name="ExtractoSeco" Type="float" />
+          <Property Name="EficienciaCoccion" Type="float" />
+          <Property Name="IdMaterial" Type="varchar" MaxLength="100" />
+          <Property Name="DescMaterial" Type="nvarchar" MaxLength="4000" />
+          <Property Name="UdMedida" Type="nvarchar" MaxLength="32" />
+          <Property Name="IdEstadoKOP" Type="int" Nullable="false" />
+          <Property Name="ColorEstadoKOP" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="DescEstadoKOP" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Recalcular" Type="bit" Nullable="false" />
+          <Property Name="FechaActualizado" Type="datetime" />
+          <Property Name="Anio" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MES_MSM_Fabricacion.Fab.vListadoWOsKOPsCoccion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vListadoWOsKOPsCoccion">
+          <Key>
+            <PropertyRef Name="IdWO" />
+            <PropertyRef Name="CodWO" />
+            <PropertyRef Name="Recalcular" />
+            <PropertyRef Name="IdTipoSubproceso" />
+            <PropertyRef Name="DescSubProceso" />
+            <PropertyRef Name="IdKOP" />
+            <PropertyRef Name="CodKOP" />
+            <PropertyRef Name="DescKOP" />
+            <PropertyRef Name="MensajeKOP" />
+            <PropertyRef Name="TipodatoKOP" />
+            <PropertyRef Name="Unidad" />
+            <PropertyRef Name="IdTipoKOP" />
+            <PropertyRef Name="IdEstadoKOP" />
+            <PropertyRef Name="DescEstadoKOP" />
+            <PropertyRef Name="ColorEstadoKOP" />
+            <PropertyRef Name="Editable" />
+          </Key>
+          <Property Name="IdWO" Type="int" Nullable="false" />
+          <Property Name="CodWO" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Recalcular" Type="bit" Nullable="false" />
+          <Property Name="IdTipoSubproceso" Type="int" Nullable="false" />
+          <Property Name="DescSubProceso" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IdKOP" Type="int" Nullable="false" />
+          <Property Name="CodKOP" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="DescKOP" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="MensajeKOP" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="ValorMin" Type="varchar" MaxLength="100" />
+          <Property Name="Valor" Type="varchar" MaxLength="100" />
+          <Property Name="ValorMax" Type="varchar" MaxLength="100" />
+          <Property Name="TipodatoKOP" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Unidad" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="IdTipoKOP" Type="int" Nullable="false" />
+          <Property Name="DescTipoKOP" Type="varchar" MaxLength="50" />
+          <Property Name="IdEstadoKOP" Type="int" Nullable="false" />
+          <Property Name="DescEstadoKOP" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ColorEstadoKOP" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="Editable" Type="bit" Nullable="false" />
+          <Property Name="FechaActualizado" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MES_MSM_Fabricacion.Fab.vListadoWOsKOPsMultivalorCoccion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vListadoWOsKOPsMultivalorCoccion">
+          <Key>
+            <PropertyRef Name="IdWO" />
+            <PropertyRef Name="CodWO" />
+            <PropertyRef Name="Recalcular" />
+            <PropertyRef Name="IdTipoSubproceso" />
+            <PropertyRef Name="DescSubProceso" />
+            <PropertyRef Name="IdKOPMultivalor" />
+            <PropertyRef Name="IdMaestroKOPMultivalor" />
+            <PropertyRef Name="CodKOP" />
+            <PropertyRef Name="DescKOP" />
+            <PropertyRef Name="MensajeKOP" />
+            <PropertyRef Name="TipodatoMaestroKOP" />
+            <PropertyRef Name="Unidad" />
+            <PropertyRef Name="IdTipoKOPMultivalor" />
+            <PropertyRef Name="DescTipoKOPMultivalor" />
+            <PropertyRef Name="IdEstadoKOP" />
+            <PropertyRef Name="DescEstadoKOP" />
+            <PropertyRef Name="ColorEstadoKOP" />
+            <PropertyRef Name="IdValorKOPMultivalor" />
+            <PropertyRef Name="Posicion" />
+            <PropertyRef Name="IdEstadoValorKOP" />
+            <PropertyRef Name="ColorEstadoValorKOP" />
+          </Key>
+          <Property Name="IdWO" Type="int" Nullable="false" />
+          <Property Name="CodWO" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Recalcular" Type="bit" Nullable="false" />
+          <Property Name="IdTipoSubproceso" Type="int" Nullable="false" />
+          <Property Name="DescSubProceso" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IdKOPMultivalor" Type="int" Nullable="false" />
+          <Property Name="IdMaestroKOPMultivalor" Type="int" Nullable="false" />
+          <Property Name="CodKOP" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="DescKOP" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="MensajeKOP" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="TipodatoMaestroKOP" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Unidad" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="IdTipoKOPMultivalor" Type="int" Nullable="false" />
+          <Property Name="DescTipoKOPMultivalor" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdEstadoKOP" Type="int" Nullable="false" />
+          <Property Name="DescEstadoKOP" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ColorEstadoKOP" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="IdValorKOPMultivalor" Type="int" Nullable="false" />
+          <Property Name="ValorMin" Type="varchar" MaxLength="100" />
+          <Property Name="Valor" Type="varchar" MaxLength="100" />
+          <Property Name="ValorMax" Type="varchar" MaxLength="100" />
+          <Property Name="Posicion" Type="int" Nullable="false" />
+          <Property Name="IdEstadoValorKOP" Type="int" Nullable="false" />
+          <Property Name="ColorEstadoValorKOP" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="FechaActualizado" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MES_MSM_Fabricacion.Fab.vListadoWOsKOPsMultivalorFermentacion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vListadoWOsKOPsMultivalorFermentacion">
+          <Key>
+            <PropertyRef Name="IdWO" />
+            <PropertyRef Name="CodWO" />
+            <PropertyRef Name="Recalcular" />
+            <PropertyRef Name="IdTipoSubproceso" />
+            <PropertyRef Name="DescSubProceso" />
+            <PropertyRef Name="IdKOPMultivalor" />
+            <PropertyRef Name="CodKOP" />
+            <PropertyRef Name="DescKOP" />
+            <PropertyRef Name="MensajeKOP" />
+            <PropertyRef Name="TipodatoMaestroKOP" />
+            <PropertyRef Name="Unidad" />
+            <PropertyRef Name="IdTipoKOPMultivalor" />
+            <PropertyRef Name="DescTipoKOPMultivalor" />
+            <PropertyRef Name="IdEstadoKOP" />
+            <PropertyRef Name="DescEstadoKOP" />
+            <PropertyRef Name="ColorEstadoKOP" />
+            <PropertyRef Name="IdValorKOPMultivalor" />
+            <PropertyRef Name="Posicion" />
+            <PropertyRef Name="IdEstadoValorKOP" />
+            <PropertyRef Name="ColorEstadoValorKOP" />
+            <PropertyRef Name="IdMaestroKOPMultivalor" />
+          </Key>
+          <Property Name="IdWO" Type="int" Nullable="false" />
+          <Property Name="CodWO" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Recalcular" Type="bit" Nullable="false" />
+          <Property Name="IdTipoSubproceso" Type="int" Nullable="false" />
+          <Property Name="DescSubProceso" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IdKOPMultivalor" Type="int" Nullable="false" />
+          <Property Name="CodKOP" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="DescKOP" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="MensajeKOP" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="TipodatoMaestroKOP" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Unidad" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="IdTipoKOPMultivalor" Type="int" Nullable="false" />
+          <Property Name="DescTipoKOPMultivalor" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdEstadoKOP" Type="int" Nullable="false" />
+          <Property Name="DescEstadoKOP" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ColorEstadoKOP" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="IdValorKOPMultivalor" Type="int" Nullable="false" />
+          <Property Name="ValorMin" Type="varchar" MaxLength="100" />
+          <Property Name="Valor" Type="varchar" MaxLength="100" />
+          <Property Name="ValorMax" Type="varchar" MaxLength="100" />
+          <Property Name="Posicion" Type="int" Nullable="false" />
+          <Property Name="IdEstadoValorKOP" Type="int" Nullable="false" />
+          <Property Name="ColorEstadoValorKOP" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="FechaActualizado" Type="datetime" />
+          <Property Name="IdMaestroKOPMultivalor" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MES_MSM_Fabricacion.Fab.vListadoWOsKOPsMultivalorTrasiego' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vListadoWOsKOPsMultivalorTrasiego">
+          <Key>
+            <PropertyRef Name="IdWO" />
+            <PropertyRef Name="CodWO" />
+            <PropertyRef Name="Recalcular" />
+            <PropertyRef Name="IdTipoSubproceso" />
+            <PropertyRef Name="DescSubProceso" />
+            <PropertyRef Name="IdKOPMultivalor" />
+            <PropertyRef Name="CodKOP" />
+            <PropertyRef Name="DescKOP" />
+            <PropertyRef Name="MensajeKOP" />
+            <PropertyRef Name="TipodatoMaestroKOP" />
+            <PropertyRef Name="Unidad" />
+            <PropertyRef Name="IdTipoKOPMultivalor" />
+            <PropertyRef Name="DescTipoKOPMultivalor" />
+            <PropertyRef Name="IdEstadoKOP" />
+            <PropertyRef Name="DescEstadoKOP" />
+            <PropertyRef Name="ColorEstadoKOP" />
+            <PropertyRef Name="IdValorKOPMultivalor" />
+            <PropertyRef Name="Posicion" />
+            <PropertyRef Name="IdEstadoValorKOP" />
+            <PropertyRef Name="ColorEstadoValorKOP" />
+          </Key>
+          <Property Name="IdWO" Type="int" Nullable="false" />
+          <Property Name="CodWO" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Recalcular" Type="bit" Nullable="false" />
+          <Property Name="IdTipoSubproceso" Type="int" Nullable="false" />
+          <Property Name="DescSubProceso" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IdKOPMultivalor" Type="int" Nullable="false" />
+          <Property Name="CodKOP" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="DescKOP" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="MensajeKOP" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="TipodatoMaestroKOP" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Unidad" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="IdTipoKOPMultivalor" Type="int" Nullable="false" />
+          <Property Name="DescTipoKOPMultivalor" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdEstadoKOP" Type="int" Nullable="false" />
+          <Property Name="DescEstadoKOP" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ColorEstadoKOP" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="IdValorKOPMultivalor" Type="int" Nullable="false" />
+          <Property Name="ValorMin" Type="varchar" MaxLength="100" />
+          <Property Name="Valor" Type="varchar" MaxLength="100" />
+          <Property Name="ValorMax" Type="varchar" MaxLength="100" />
+          <Property Name="Posicion" Type="int" Nullable="false" />
+          <Property Name="IdEstadoValorKOP" Type="int" Nullable="false" />
+          <Property Name="ColorEstadoValorKOP" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="FechaActualizado" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MES_MSM_Fabricacion.Fab.vMaestroMateriales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vMaestroMateriales">
+          <Key>
+            <PropertyRef Name="IdMaterial" />
+            <PropertyRef Name="Origen" />
+          </Key>
+          <Property Name="IdMaterial" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="4000" />
+          <Property Name="IdClase" Type="nvarchar" MaxLength="64" />
+          <Property Name="Clase" Type="nvarchar" MaxLength="255" />
+          <Property Name="Version" Type="nvarchar" MaxLength="32" />
+          <Property Name="Status" Type="nvarchar" MaxLength="32" />
+          <Property Name="UdMedida" Type="nvarchar" MaxLength="32" />
+          <Property Name="F_EfectivoDesde" Type="datetime" />
+          <Property Name="F_EfectivoDesdeUTC" Type="datetime" />
+          <Property Name="F_EfectivoHasta" Type="datetime" />
+          <Property Name="F_EfectivoHastaUTC" Type="datetime" />
+          <Property Name="EnUso" Type="bit" />
+          <Property Name="Autor" Type="nvarchar" MaxLength="128" />
+          <Property Name="FechaCreacion" Type="datetime" />
+          <Property Name="FechaCreacionUTC" Type="datetime" />
+          <Property Name="FechaUltCreacion" Type="datetime" />
+          <Property Name="FechaUltCreacionUTC" Type="datetime" />
+          <Property Name="ModificadoPor" Type="nvarchar" MaxLength="128" />
+          <Property Name="InfoAdicional" Type="nvarchar" MaxLength="128" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="50" />
+          <Property Name="DescTipo" Type="nvarchar" MaxLength="64" />
+          <Property Name="PK_Material" Type="int" />
+          <Property Name="BOM" Type="nvarchar" MaxLength="255" />
+          <Property Name="Origen" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MES_MSM_Fabricacion.Fab.vMaestroUbicaciones' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vMaestroUbicaciones">
+          <Key>
+            <PropertyRef Name="IdUbicacion" />
+          </Key>
+          <Property Name="IdUbicacion" Type="int" Nullable="false" />
+          <Property Name="CodUbicacion" Type="nvarchar" MaxLength="255" />
+          <Property Name="DescUbicacion" Type="nvarchar" MaxLength="255" />
+          <Property Name="IdTipoUbicacion" Type="int" />
+          <Property Name="DescTipoUbicacion" Type="nvarchar" MaxLength="255" />
+          <Property Name="EnumDescTipoUbicacion" Type="nvarchar" MaxLength="255" />
+          <Property Name="IdAlmacen" Type="int" />
+          <Property Name="DescAlmacen" Type="nvarchar" MaxLength="255" />
+          <Property Name="IdZonaUbicacion" Type="int" />
+          <Property Name="IdZona" Type="int" />
+          <Property Name="DescZona" Type="nvarchar" MaxLength="255" />
+          <Property Name="IdTipoZona" Type="int" />
+          <Property Name="DescTipoZona" Type="nvarchar" MaxLength="255" />
+          <Property Name="IdClaseMaterial" Type="nvarchar" MaxLength="64" />
+        </EntityType>
+        <Association Name="FK_KOPs_EstadosKOP">
+          <End Role="EstadosKOP" Type="Self.EstadosKOP" Multiplicity="1" />
+          <End Role="KOPs" Type="Self.KOPs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosKOP">
+              <PropertyRef Name="IdEstadoKOP" />
+            </Principal>
+            <Dependent Role="KOPs">
+              <PropertyRef Name="IdEstadoKOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KOPs_MaestroKOPs">
+          <End Role="MaestroKOPs" Type="Self.MaestroKOPs" Multiplicity="1" />
+          <End Role="KOPs" Type="Self.KOPs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaestroKOPs">
+              <PropertyRef Name="IdMaestroKOP" />
+            </Principal>
+            <Dependent Role="KOPs">
+              <PropertyRef Name="IdMaestroKOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KOPs_WOs">
+          <End Role="WOs" Type="Self.WOs" Multiplicity="1" />
+          <End Role="KOPs" Type="Self.KOPs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WOs">
+              <PropertyRef Name="IdWO" />
+            </Principal>
+            <Dependent Role="KOPs">
+              <PropertyRef Name="IdWO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KOPsMultivalor_EstadosKOP">
+          <End Role="EstadosKOP" Type="Self.EstadosKOP" Multiplicity="1" />
+          <End Role="KOPsMultivalor" Type="Self.KOPsMultivalor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosKOP">
+              <PropertyRef Name="IdEstadoKOP" />
+            </Principal>
+            <Dependent Role="KOPsMultivalor">
+              <PropertyRef Name="IdEstadoKOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KOPsMultivalor_MaestroKOPsMultivalor">
+          <End Role="MaestroKOPsMultivalor" Type="Self.MaestroKOPsMultivalor" Multiplicity="1" />
+          <End Role="KOPsMultivalor" Type="Self.KOPsMultivalor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaestroKOPsMultivalor">
+              <PropertyRef Name="IdMaestroKOPMultivalor" />
+            </Principal>
+            <Dependent Role="KOPsMultivalor">
+              <PropertyRef Name="IdMaestroKOPMultivalor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KOPsMultivalor_WOs">
+          <End Role="WOs" Type="Self.WOs" Multiplicity="1" />
+          <End Role="KOPsMultivalor" Type="Self.KOPsMultivalor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WOs">
+              <PropertyRef Name="IdWO" />
+            </Principal>
+            <Dependent Role="KOPsMultivalor">
+              <PropertyRef Name="IdWO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestroKOPs_EstadosKOP">
+          <End Role="EstadosKOP" Type="Self.EstadosKOP" Multiplicity="1" />
+          <End Role="MaestroKOPs" Type="Self.MaestroKOPs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosKOP">
+              <PropertyRef Name="IdEstadoKOP" />
+            </Principal>
+            <Dependent Role="MaestroKOPs">
+              <PropertyRef Name="IdEstadoKOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestroKOPs_Mostos_Ubicacion_EstadosKOP">
+          <End Role="EstadosKOP" Type="Self.EstadosKOP" Multiplicity="1" />
+          <End Role="MaestroKOPs_Mostos_Ubicacion" Type="Self.MaestroKOPs_Mostos_Ubicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosKOP">
+              <PropertyRef Name="IdEstadoKOP" />
+            </Principal>
+            <Dependent Role="MaestroKOPs_Mostos_Ubicacion">
+              <PropertyRef Name="IdEstadoKOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestroKOPs_Mostos_Ubicacion_MaestroKOPs">
+          <End Role="MaestroKOPs" Type="Self.MaestroKOPs" Multiplicity="1" />
+          <End Role="MaestroKOPs_Mostos_Ubicacion" Type="Self.MaestroKOPs_Mostos_Ubicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaestroKOPs">
+              <PropertyRef Name="IdMaestroKOP" />
+            </Principal>
+            <Dependent Role="MaestroKOPs_Mostos_Ubicacion">
+              <PropertyRef Name="IdMaestroKOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestroKOPs_TiposSubprocesos">
+          <End Role="TiposSubprocesos" Type="Self.TiposSubprocesos" Multiplicity="1" />
+          <End Role="MaestroKOPs" Type="Self.MaestroKOPs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposSubprocesos">
+              <PropertyRef Name="IdTipoSubproceso" />
+            </Principal>
+            <Dependent Role="MaestroKOPs">
+              <PropertyRef Name="IdTipoSubproceso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestroKOPsMultivalor_TiposKOPMultivalor">
+          <End Role="TiposKOPMultivalor" Type="Self.TiposKOPMultivalor" Multiplicity="1" />
+          <End Role="MaestroKOPsMultivalor" Type="Self.MaestroKOPsMultivalor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposKOPMultivalor">
+              <PropertyRef Name="IdTipoKOPMultivalor" />
+            </Principal>
+            <Dependent Role="MaestroKOPsMultivalor">
+              <PropertyRef Name="IdTipoKOPMultivalor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestroKOPsMultivalor_TiposSubprocesos">
+          <End Role="TiposSubprocesos" Type="Self.TiposSubprocesos" Multiplicity="1" />
+          <End Role="MaestroKOPsMultivalor" Type="Self.MaestroKOPsMultivalor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposSubprocesos">
+              <PropertyRef Name="IdTipoSubproceso" />
+            </Principal>
+            <Dependent Role="MaestroKOPsMultivalor">
+              <PropertyRef Name="IdTipoSubproceso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestroValoresKOPsMultivalor_MaestroKOPsMultivalor">
+          <End Role="MaestroKOPsMultivalor" Type="Self.MaestroKOPsMultivalor" Multiplicity="1" />
+          <End Role="MaestroValoresKOPsMultivalor" Type="Self.MaestroValoresKOPsMultivalor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaestroKOPsMultivalor">
+              <PropertyRef Name="IdMaestroKOPMultivalor" />
+            </Principal>
+            <Dependent Role="MaestroValoresKOPsMultivalor">
+              <PropertyRef Name="IdMaestroKOPMultivalor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModulosSubProcesos_TiposSubprocesos">
+          <End Role="TiposSubprocesos" Type="Self.TiposSubprocesos" Multiplicity="1" />
+          <End Role="ModulosSubprocesos" Type="Self.ModulosSubprocesos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposSubprocesos">
+              <PropertyRef Name="IdTipoSubproceso" />
+            </Principal>
+            <Dependent Role="ModulosSubprocesos">
+              <PropertyRef Name="IdTipoSubproceso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PropiedadesWO_WOs">
+          <End Role="WOs" Type="Self.WOs" Multiplicity="1" />
+          <End Role="PropiedadesWO" Type="Self.PropiedadesWO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WOs">
+              <PropertyRef Name="IdWO" />
+            </Principal>
+            <Dependent Role="PropiedadesWO">
+              <PropertyRef Name="IdWO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subprocesos_TiposSubprocesos">
+          <End Role="TiposSubprocesos" Type="Self.TiposSubprocesos" Multiplicity="1" />
+          <End Role="Subprocesos" Type="Self.Subprocesos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposSubprocesos">
+              <PropertyRef Name="IdTipoSubproceso" />
+            </Principal>
+            <Dependent Role="Subprocesos">
+              <PropertyRef Name="IdTipoSubproceso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subprocesos_WOs">
+          <End Role="WOs" Type="Self.WOs" Multiplicity="1" />
+          <End Role="Subprocesos" Type="Self.Subprocesos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WOs">
+              <PropertyRef Name="IdWO" />
+            </Principal>
+            <Dependent Role="Subprocesos">
+              <PropertyRef Name="IdWO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoSubprocesos_TiposWO">
+          <End Role="TiposWO" Type="Self.TiposWO" Multiplicity="1" />
+          <End Role="TiposSubprocesos" Type="Self.TiposSubprocesos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposWO">
+              <PropertyRef Name="IdTipoWO" />
+            </Principal>
+            <Dependent Role="TiposSubprocesos">
+              <PropertyRef Name="IdTipoWO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ValoresKOPsMultivalor_KOPsMultivalor">
+          <End Role="KOPsMultivalor" Type="Self.KOPsMultivalor" Multiplicity="1" />
+          <End Role="ValoresKOPsMultivalor" Type="Self.ValoresKOPsMultivalor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KOPsMultivalor">
+              <PropertyRef Name="IdKOPMultivalor" />
+            </Principal>
+            <Dependent Role="ValoresKOPsMultivalor">
+              <PropertyRef Name="IdKOPMultivalor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ValoresKOPsMultivalor_MaestroValoresKOPsMultivalor">
+          <End Role="MaestroValoresKOPsMultivalor" Type="Self.MaestroValoresKOPsMultivalor" Multiplicity="1" />
+          <End Role="ValoresKOPsMultivalor" Type="Self.ValoresKOPsMultivalor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaestroValoresKOPsMultivalor">
+              <PropertyRef Name="IdMaestroValorKOPMultivalor" />
+            </Principal>
+            <Dependent Role="ValoresKOPsMultivalor">
+              <PropertyRef Name="IdMaestroValorKOPMultivalor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VariablesFormulaKOP_MaestroKOPs">
+          <End Role="MaestroKOPs" Type="Self.MaestroKOPs" Multiplicity="1" />
+          <End Role="VariablesFormulaKOP" Type="Self.VariablesFormulaKOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaestroKOPs">
+              <PropertyRef Name="IdMaestroKOP" />
+            </Principal>
+            <Dependent Role="VariablesFormulaKOP">
+              <PropertyRef Name="IdMaestroKOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VariablesFormulaKOP_MaestroKOPs-Variables">
+          <End Role="MaestroKOPs" Type="Self.MaestroKOPs" Multiplicity="1" />
+          <End Role="VariablesFormulaKOP" Type="Self.VariablesFormulaKOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaestroKOPs">
+              <PropertyRef Name="IdMaestroKOP" />
+            </Principal>
+            <Dependent Role="VariablesFormulaKOP">
+              <PropertyRef Name="IdMaestroKOPVariable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WOPlanificadas_WOs">
+          <End Role="WOs" Type="Self.WOs" Multiplicity="0..1" />
+          <End Role="WOPlanificadas" Type="Self.WOPlanificadas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WOs">
+              <PropertyRef Name="IdWO" />
+            </Principal>
+            <Dependent Role="WOPlanificadas">
+              <PropertyRef Name="IdWO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WOs_TiposWO">
+          <End Role="TiposWO" Type="Self.TiposWO" Multiplicity="1" />
+          <End Role="WOs" Type="Self.WOs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposWO">
+              <PropertyRef Name="IdTipoWO" />
+            </Principal>
+            <Dependent Role="WOs">
+              <PropertyRef Name="IdTipoWO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKMaestroKOPsMultivalor_EstadosKOP">
+          <End Role="EstadosKOP" Type="Self.EstadosKOP" Multiplicity="1" />
+          <End Role="MaestroKOPsMultivalor" Type="Self.MaestroKOPsMultivalor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosKOP">
+              <PropertyRef Name="IdEstadoKOP" />
+            </Principal>
+            <Dependent Role="MaestroKOPsMultivalor">
+              <PropertyRef Name="IdEstadoKOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKMaestroValoresKOPsMultivalor_EstadosKOP">
+          <End Role="EstadosKOP" Type="Self.EstadosKOP" Multiplicity="1" />
+          <End Role="MaestroValoresKOPsMultivalor" Type="Self.MaestroValoresKOPsMultivalor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosKOP">
+              <PropertyRef Name="IdEstadoKOP" />
+            </Principal>
+            <Dependent Role="MaestroValoresKOPsMultivalor">
+              <PropertyRef Name="IdEstadoValorKOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="API_ActualizarKOPSCalculados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Fab">
+          <Parameter Name="IdOrden" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spReplanificarWOCoccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Fab">
+          <Parameter Name="IdUbicacion" Type="int" Mode="In" />
+          <Parameter Name="Procesado" Type="bit" Mode="In" />
+          <Parameter Name="IdTipoWO" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="MES_MSM_FabricacionModelStoreContainer">
+          <EntitySet Name="EstadosKOP" EntityType="Self.EstadosKOP" Schema="Fab" store:Type="Tables" />
+          <EntitySet Name="KOPs" EntityType="Self.KOPs" Schema="Fab" store:Type="Tables" />
+          <EntitySet Name="KOPsMultivalor" EntityType="Self.KOPsMultivalor" Schema="Fab" store:Type="Tables" />
+          <EntitySet Name="MaestroKOPs" EntityType="Self.MaestroKOPs" Schema="Fab" store:Type="Tables" />
+          <EntitySet Name="MaestroKOPs_Mostos_Ubicacion" EntityType="Self.MaestroKOPs_Mostos_Ubicacion" Schema="Fab" store:Type="Tables" />
+          <EntitySet Name="MaestroKOPsMultivalor" EntityType="Self.MaestroKOPsMultivalor" Schema="Fab" store:Type="Tables" />
+          <EntitySet Name="MaestroValoresKOPsMultivalor" EntityType="Self.MaestroValoresKOPsMultivalor" Schema="Fab" store:Type="Tables" />
+          <EntitySet Name="ModulosSubprocesos" EntityType="Self.ModulosSubprocesos" Schema="Fab" store:Type="Tables" />
+          <EntitySet Name="PropiedadesWO" EntityType="Self.PropiedadesWO" Schema="Fab" store:Type="Tables" />
+          <EntitySet Name="Subprocesos" EntityType="Self.Subprocesos" Schema="Fab" store:Type="Tables" />
+          <EntitySet Name="TiposKOPMultivalor" EntityType="Self.TiposKOPMultivalor" Schema="Fab" store:Type="Tables" />
+          <EntitySet Name="TiposSubprocesos" EntityType="Self.TiposSubprocesos" Schema="Fab" store:Type="Tables" />
+          <EntitySet Name="TiposWO" EntityType="Self.TiposWO" Schema="Fab" store:Type="Tables" />
+          <EntitySet Name="ValoresKOPsMultivalor" EntityType="Self.ValoresKOPsMultivalor" Schema="Fab" store:Type="Tables" />
+          <EntitySet Name="VariablesFormulaKOP" EntityType="Self.VariablesFormulaKOP" Schema="Fab" store:Type="Tables" />
+          <EntitySet Name="WOPlanificadas" EntityType="Self.WOPlanificadas" Schema="Fab" store:Type="Tables" />
+          <EntitySet Name="WOs" EntityType="Self.WOs" Schema="Fab" store:Type="Tables" />
+          <EntitySet Name="OLTPMensajes" EntityType="Self.OLTPMensajes" Schema="SSIS" store:Type="Tables" />
+          <EntitySet Name="vEstadoKOP_WO" EntityType="Self.vEstadoKOP_WO" store:Type="Views" store:Schema="Fab">
+            <DefiningQuery>SELECT 
+    [vEstadoKOP_WO].[IdWO] AS [IdWO], 
+    [vEstadoKOP_WO].[CodWO] AS [CodWO], 
+    [vEstadoKOP_WO].[IdEstadoKOP] AS [IdEstadoKOP]
+    FROM [Fab].[vEstadoKOP_WO] AS [vEstadoKOP_WO]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vListadoWOsCoccion" EntityType="Self.vListadoWOsCoccion" store:Type="Views" store:Schema="Fab">
+            <DefiningQuery>SELECT 
+    [vListadoWOsCoccion].[IdWO] AS [IdWO], 
+    [vListadoWOsCoccion].[CodWO] AS [CodWO], 
+    [vListadoWOsCoccion].[LoteMES] AS [LoteMES], 
+    [vListadoWOsCoccion].[FechaInicioPlan] AS [FechaInicioPlan], 
+    [vListadoWOsCoccion].[FechaFinPlan] AS [FechaFinPlan], 
+    [vListadoWOsCoccion].[CantidadPlan] AS [CantidadPlan], 
+    [vListadoWOsCoccion].[FechaInicioReal] AS [FechaInicioReal], 
+    [vListadoWOsCoccion].[FechaFinReal] AS [FechaFinReal], 
+    [vListadoWOsCoccion].[CantidadReal] AS [CantidadReal], 
+    [vListadoWOsCoccion].[NotasWO] AS [NotasWO], 
+    [vListadoWOsCoccion].[IdUbicacion] AS [IdUbicacion], 
+    [vListadoWOsCoccion].[DescZona] AS [DescZona], 
+    [vListadoWOsCoccion].[IdTipoWO] AS [IdTipoWO], 
+    [vListadoWOsCoccion].[DescTipoWO] AS [DescTipoWO], 
+    [vListadoWOsCoccion].[IdEstadoWO] AS [IdEstadoWO], 
+    [vListadoWOsCoccion].[DescEstadoWO] AS [DescEstadoWO], 
+    [vListadoWOsCoccion].[ColorEstadoWO] AS [ColorEstadoWO], 
+    [vListadoWOsCoccion].[IdEstadoLIMS] AS [IdEstadoLIMS], 
+    [vListadoWOsCoccion].[DescEstadoLIMS] AS [DescEstadoLIMS], 
+    [vListadoWOsCoccion].[ColorEstadoLIMS] AS [ColorEstadoLIMS], 
+    [vListadoWOsCoccion].[NCoccion] AS [NCoccion], 
+    [vListadoWOsCoccion].[ExtractoSeco] AS [ExtractoSeco], 
+    [vListadoWOsCoccion].[EficienciaCoccion] AS [EficienciaCoccion], 
+    [vListadoWOsCoccion].[IdMaterial] AS [IdMaterial], 
+    [vListadoWOsCoccion].[DescMaterial] AS [DescMaterial], 
+    [vListadoWOsCoccion].[UdMedida] AS [UdMedida], 
+    [vListadoWOsCoccion].[IdEstadoKOP] AS [IdEstadoKOP], 
+    [vListadoWOsCoccion].[ColorEstadoKOP] AS [ColorEstadoKOP], 
+    [vListadoWOsCoccion].[DescEstadoKOP] AS [DescEstadoKOP], 
+    [vListadoWOsCoccion].[Recalcular] AS [Recalcular], 
+    [vListadoWOsCoccion].[FechaActualizado] AS [FechaActualizado], 
+    [vListadoWOsCoccion].[Anio] AS [Anio]
+    FROM [Fab].[vListadoWOsCoccion] AS [vListadoWOsCoccion]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vListadoWOsKOPsCoccion" EntityType="Self.vListadoWOsKOPsCoccion" store:Type="Views" store:Schema="Fab">
+            <DefiningQuery>SELECT 
+    [vListadoWOsKOPsCoccion].[IdWO] AS [IdWO], 
+    [vListadoWOsKOPsCoccion].[CodWO] AS [CodWO], 
+    [vListadoWOsKOPsCoccion].[Recalcular] AS [Recalcular], 
+    [vListadoWOsKOPsCoccion].[IdTipoSubproceso] AS [IdTipoSubproceso], 
+    [vListadoWOsKOPsCoccion].[DescSubProceso] AS [DescSubProceso], 
+    [vListadoWOsKOPsCoccion].[IdKOP] AS [IdKOP], 
+    [vListadoWOsKOPsCoccion].[CodKOP] AS [CodKOP], 
+    [vListadoWOsKOPsCoccion].[DescKOP] AS [DescKOP], 
+    [vListadoWOsKOPsCoccion].[MensajeKOP] AS [MensajeKOP], 
+    [vListadoWOsKOPsCoccion].[ValorMin] AS [ValorMin], 
+    [vListadoWOsKOPsCoccion].[Valor] AS [Valor], 
+    [vListadoWOsKOPsCoccion].[ValorMax] AS [ValorMax], 
+    [vListadoWOsKOPsCoccion].[TipodatoKOP] AS [TipodatoKOP], 
+    [vListadoWOsKOPsCoccion].[Unidad] AS [Unidad], 
+    [vListadoWOsKOPsCoccion].[IdTipoKOP] AS [IdTipoKOP], 
+    [vListadoWOsKOPsCoccion].[DescTipoKOP] AS [DescTipoKOP], 
+    [vListadoWOsKOPsCoccion].[IdEstadoKOP] AS [IdEstadoKOP], 
+    [vListadoWOsKOPsCoccion].[DescEstadoKOP] AS [DescEstadoKOP], 
+    [vListadoWOsKOPsCoccion].[ColorEstadoKOP] AS [ColorEstadoKOP], 
+    [vListadoWOsKOPsCoccion].[Editable] AS [Editable], 
+    [vListadoWOsKOPsCoccion].[FechaActualizado] AS [FechaActualizado]
+    FROM [Fab].[vListadoWOsKOPsCoccion] AS [vListadoWOsKOPsCoccion]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vListadoWOsKOPsMultivalorCoccion" EntityType="Self.vListadoWOsKOPsMultivalorCoccion" store:Type="Views" store:Schema="Fab">
+            <DefiningQuery>SELECT 
+    [vListadoWOsKOPsMultivalorCoccion].[IdWO] AS [IdWO], 
+    [vListadoWOsKOPsMultivalorCoccion].[CodWO] AS [CodWO], 
+    [vListadoWOsKOPsMultivalorCoccion].[Recalcular] AS [Recalcular], 
+    [vListadoWOsKOPsMultivalorCoccion].[IdTipoSubproceso] AS [IdTipoSubproceso], 
+    [vListadoWOsKOPsMultivalorCoccion].[DescSubProceso] AS [DescSubProceso], 
+    [vListadoWOsKOPsMultivalorCoccion].[IdKOPMultivalor] AS [IdKOPMultivalor], 
+    [vListadoWOsKOPsMultivalorCoccion].[IdMaestroKOPMultivalor] AS [IdMaestroKOPMultivalor], 
+    [vListadoWOsKOPsMultivalorCoccion].[CodKOP] AS [CodKOP], 
+    [vListadoWOsKOPsMultivalorCoccion].[DescKOP] AS [DescKOP], 
+    [vListadoWOsKOPsMultivalorCoccion].[MensajeKOP] AS [MensajeKOP], 
+    [vListadoWOsKOPsMultivalorCoccion].[TipodatoMaestroKOP] AS [TipodatoMaestroKOP], 
+    [vListadoWOsKOPsMultivalorCoccion].[Unidad] AS [Unidad], 
+    [vListadoWOsKOPsMultivalorCoccion].[IdTipoKOPMultivalor] AS [IdTipoKOPMultivalor], 
+    [vListadoWOsKOPsMultivalorCoccion].[DescTipoKOPMultivalor] AS [DescTipoKOPMultivalor], 
+    [vListadoWOsKOPsMultivalorCoccion].[IdEstadoKOP] AS [IdEstadoKOP], 
+    [vListadoWOsKOPsMultivalorCoccion].[DescEstadoKOP] AS [DescEstadoKOP], 
+    [vListadoWOsKOPsMultivalorCoccion].[ColorEstadoKOP] AS [ColorEstadoKOP], 
+    [vListadoWOsKOPsMultivalorCoccion].[IdValorKOPMultivalor] AS [IdValorKOPMultivalor], 
+    [vListadoWOsKOPsMultivalorCoccion].[ValorMin] AS [ValorMin], 
+    [vListadoWOsKOPsMultivalorCoccion].[Valor] AS [Valor], 
+    [vListadoWOsKOPsMultivalorCoccion].[ValorMax] AS [ValorMax], 
+    [vListadoWOsKOPsMultivalorCoccion].[Posicion] AS [Posicion], 
+    [vListadoWOsKOPsMultivalorCoccion].[IdEstadoValorKOP] AS [IdEstadoValorKOP], 
+    [vListadoWOsKOPsMultivalorCoccion].[ColorEstadoValorKOP] AS [ColorEstadoValorKOP], 
+    [vListadoWOsKOPsMultivalorCoccion].[FechaActualizado] AS [FechaActualizado]
+    FROM [Fab].[vListadoWOsKOPsMultivalorCoccion] AS [vListadoWOsKOPsMultivalorCoccion]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vListadoWOsKOPsMultivalorFermentacion" EntityType="Self.vListadoWOsKOPsMultivalorFermentacion" store:Type="Views" store:Schema="Fab">
+            <DefiningQuery>SELECT 
+    [vListadoWOsKOPsMultivalorFermentacion].[IdWO] AS [IdWO], 
+    [vListadoWOsKOPsMultivalorFermentacion].[CodWO] AS [CodWO], 
+    [vListadoWOsKOPsMultivalorFermentacion].[Recalcular] AS [Recalcular], 
+    [vListadoWOsKOPsMultivalorFermentacion].[IdTipoSubproceso] AS [IdTipoSubproceso], 
+    [vListadoWOsKOPsMultivalorFermentacion].[DescSubProceso] AS [DescSubProceso], 
+    [vListadoWOsKOPsMultivalorFermentacion].[IdKOPMultivalor] AS [IdKOPMultivalor], 
+    [vListadoWOsKOPsMultivalorFermentacion].[CodKOP] AS [CodKOP], 
+    [vListadoWOsKOPsMultivalorFermentacion].[DescKOP] AS [DescKOP], 
+    [vListadoWOsKOPsMultivalorFermentacion].[MensajeKOP] AS [MensajeKOP], 
+    [vListadoWOsKOPsMultivalorFermentacion].[TipodatoMaestroKOP] AS [TipodatoMaestroKOP], 
+    [vListadoWOsKOPsMultivalorFermentacion].[Unidad] AS [Unidad], 
+    [vListadoWOsKOPsMultivalorFermentacion].[IdTipoKOPMultivalor] AS [IdTipoKOPMultivalor], 
+    [vListadoWOsKOPsMultivalorFermentacion].[DescTipoKOPMultivalor] AS [DescTipoKOPMultivalor], 
+    [vListadoWOsKOPsMultivalorFermentacion].[IdEstadoKOP] AS [IdEstadoKOP], 
+    [vListadoWOsKOPsMultivalorFermentacion].[DescEstadoKOP] AS [DescEstadoKOP], 
+    [vListadoWOsKOPsMultivalorFermentacion].[ColorEstadoKOP] AS [ColorEstadoKOP], 
+    [vListadoWOsKOPsMultivalorFermentacion].[IdValorKOPMultivalor] AS [IdValorKOPMultivalor], 
+    [vListadoWOsKOPsMultivalorFermentacion].[ValorMin] AS [ValorMin], 
+    [vListadoWOsKOPsMultivalorFermentacion].[Valor] AS [Valor], 
+    [vListadoWOsKOPsMultivalorFermentacion].[ValorMax] AS [ValorMax], 
+    [vListadoWOsKOPsMultivalorFermentacion].[Posicion] AS [Posicion], 
+    [vListadoWOsKOPsMultivalorFermentacion].[IdEstadoValorKOP] AS [IdEstadoValorKOP], 
+    [vListadoWOsKOPsMultivalorFermentacion].[ColorEstadoValorKOP] AS [ColorEstadoValorKOP], 
+    [vListadoWOsKOPsMultivalorFermentacion].[FechaActualizado] AS [FechaActualizado], 
+    [vListadoWOsKOPsMultivalorFermentacion].[IdMaestroKOPMultivalor] AS [IdMaestroKOPMultivalor]
+    FROM [Fab].[vListadoWOsKOPsMultivalorFermentacion] AS [vListadoWOsKOPsMultivalorFermentacion]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vListadoWOsKOPsMultivalorTrasiego" EntityType="Self.vListadoWOsKOPsMultivalorTrasiego" store:Type="Views" store:Schema="Fab">
+            <DefiningQuery>SELECT 
+    [vListadoWOsKOPsMultivalorTrasiego].[IdWO] AS [IdWO], 
+    [vListadoWOsKOPsMultivalorTrasiego].[CodWO] AS [CodWO], 
+    [vListadoWOsKOPsMultivalorTrasiego].[Recalcular] AS [Recalcular], 
+    [vListadoWOsKOPsMultivalorTrasiego].[IdTipoSubproceso] AS [IdTipoSubproceso], 
+    [vListadoWOsKOPsMultivalorTrasiego].[DescSubProceso] AS [DescSubProceso], 
+    [vListadoWOsKOPsMultivalorTrasiego].[IdKOPMultivalor] AS [IdKOPMultivalor], 
+    [vListadoWOsKOPsMultivalorTrasiego].[CodKOP] AS [CodKOP], 
+    [vListadoWOsKOPsMultivalorTrasiego].[DescKOP] AS [DescKOP], 
+    [vListadoWOsKOPsMultivalorTrasiego].[MensajeKOP] AS [MensajeKOP], 
+    [vListadoWOsKOPsMultivalorTrasiego].[TipodatoMaestroKOP] AS [TipodatoMaestroKOP], 
+    [vListadoWOsKOPsMultivalorTrasiego].[Unidad] AS [Unidad], 
+    [vListadoWOsKOPsMultivalorTrasiego].[IdTipoKOPMultivalor] AS [IdTipoKOPMultivalor], 
+    [vListadoWOsKOPsMultivalorTrasiego].[DescTipoKOPMultivalor] AS [DescTipoKOPMultivalor], 
+    [vListadoWOsKOPsMultivalorTrasiego].[IdEstadoKOP] AS [IdEstadoKOP], 
+    [vListadoWOsKOPsMultivalorTrasiego].[DescEstadoKOP] AS [DescEstadoKOP], 
+    [vListadoWOsKOPsMultivalorTrasiego].[ColorEstadoKOP] AS [ColorEstadoKOP], 
+    [vListadoWOsKOPsMultivalorTrasiego].[IdValorKOPMultivalor] AS [IdValorKOPMultivalor], 
+    [vListadoWOsKOPsMultivalorTrasiego].[ValorMin] AS [ValorMin], 
+    [vListadoWOsKOPsMultivalorTrasiego].[Valor] AS [Valor], 
+    [vListadoWOsKOPsMultivalorTrasiego].[ValorMax] AS [ValorMax], 
+    [vListadoWOsKOPsMultivalorTrasiego].[Posicion] AS [Posicion], 
+    [vListadoWOsKOPsMultivalorTrasiego].[IdEstadoValorKOP] AS [IdEstadoValorKOP], 
+    [vListadoWOsKOPsMultivalorTrasiego].[ColorEstadoValorKOP] AS [ColorEstadoValorKOP], 
+    [vListadoWOsKOPsMultivalorTrasiego].[FechaActualizado] AS [FechaActualizado]
+    FROM [Fab].[vListadoWOsKOPsMultivalorTrasiego] AS [vListadoWOsKOPsMultivalorTrasiego]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vMaestroMateriales" EntityType="Self.vMaestroMateriales" store:Type="Views" store:Schema="Fab">
+            <DefiningQuery>SELECT 
+    [vMaestroMateriales].[IdMaterial] AS [IdMaterial], 
+    [vMaestroMateriales].[Nombre] AS [Nombre], 
+    [vMaestroMateriales].[Descripcion] AS [Descripcion], 
+    [vMaestroMateriales].[IdClase] AS [IdClase], 
+    [vMaestroMateriales].[Clase] AS [Clase], 
+    [vMaestroMateriales].[Version] AS [Version], 
+    [vMaestroMateriales].[Status] AS [Status], 
+    [vMaestroMateriales].[UdMedida] AS [UdMedida], 
+    [vMaestroMateriales].[F_EfectivoDesde] AS [F_EfectivoDesde], 
+    [vMaestroMateriales].[F_EfectivoDesdeUTC] AS [F_EfectivoDesdeUTC], 
+    [vMaestroMateriales].[F_EfectivoHasta] AS [F_EfectivoHasta], 
+    [vMaestroMateriales].[F_EfectivoHastaUTC] AS [F_EfectivoHastaUTC], 
+    [vMaestroMateriales].[EnUso] AS [EnUso], 
+    [vMaestroMateriales].[Autor] AS [Autor], 
+    [vMaestroMateriales].[FechaCreacion] AS [FechaCreacion], 
+    [vMaestroMateriales].[FechaCreacionUTC] AS [FechaCreacionUTC], 
+    [vMaestroMateriales].[FechaUltCreacion] AS [FechaUltCreacion], 
+    [vMaestroMateriales].[FechaUltCreacionUTC] AS [FechaUltCreacionUTC], 
+    [vMaestroMateriales].[ModificadoPor] AS [ModificadoPor], 
+    [vMaestroMateriales].[InfoAdicional] AS [InfoAdicional], 
+    [vMaestroMateriales].[Tipo] AS [Tipo], 
+    [vMaestroMateriales].[DescTipo] AS [DescTipo], 
+    [vMaestroMateriales].[PK_Material] AS [PK_Material], 
+    [vMaestroMateriales].[BOM] AS [BOM], 
+    [vMaestroMateriales].[Origen] AS [Origen]
+    FROM [Fab].[vMaestroMateriales] AS [vMaestroMateriales]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vMaestroUbicaciones" EntityType="Self.vMaestroUbicaciones" store:Type="Views" store:Schema="Fab">
+            <DefiningQuery>SELECT 
+    [vMaestroUbicaciones].[IdUbicacion] AS [IdUbicacion], 
+    [vMaestroUbicaciones].[CodUbicacion] AS [CodUbicacion], 
+    [vMaestroUbicaciones].[DescUbicacion] AS [DescUbicacion], 
+    [vMaestroUbicaciones].[IdTipoUbicacion] AS [IdTipoUbicacion], 
+    [vMaestroUbicaciones].[DescTipoUbicacion] AS [DescTipoUbicacion], 
+    [vMaestroUbicaciones].[EnumDescTipoUbicacion] AS [EnumDescTipoUbicacion], 
+    [vMaestroUbicaciones].[IdAlmacen] AS [IdAlmacen], 
+    [vMaestroUbicaciones].[DescAlmacen] AS [DescAlmacen], 
+    [vMaestroUbicaciones].[IdZonaUbicacion] AS [IdZonaUbicacion], 
+    [vMaestroUbicaciones].[IdZona] AS [IdZona], 
+    [vMaestroUbicaciones].[DescZona] AS [DescZona], 
+    [vMaestroUbicaciones].[IdTipoZona] AS [IdTipoZona], 
+    [vMaestroUbicaciones].[DescTipoZona] AS [DescTipoZona], 
+    [vMaestroUbicaciones].[IdClaseMaterial] AS [IdClaseMaterial]
+    FROM [Fab].[vMaestroUbicaciones] AS [vMaestroUbicaciones]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_KOPs_EstadosKOP" Association="Self.FK_KOPs_EstadosKOP">
+            <End Role="EstadosKOP" EntitySet="EstadosKOP" />
+            <End Role="KOPs" EntitySet="KOPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KOPs_MaestroKOPs" Association="Self.FK_KOPs_MaestroKOPs">
+            <End Role="MaestroKOPs" EntitySet="MaestroKOPs" />
+            <End Role="KOPs" EntitySet="KOPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KOPs_WOs" Association="Self.FK_KOPs_WOs">
+            <End Role="WOs" EntitySet="WOs" />
+            <End Role="KOPs" EntitySet="KOPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KOPsMultivalor_EstadosKOP" Association="Self.FK_KOPsMultivalor_EstadosKOP">
+            <End Role="EstadosKOP" EntitySet="EstadosKOP" />
+            <End Role="KOPsMultivalor" EntitySet="KOPsMultivalor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KOPsMultivalor_MaestroKOPsMultivalor" Association="Self.FK_KOPsMultivalor_MaestroKOPsMultivalor">
+            <End Role="MaestroKOPsMultivalor" EntitySet="MaestroKOPsMultivalor" />
+            <End Role="KOPsMultivalor" EntitySet="KOPsMultivalor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KOPsMultivalor_WOs" Association="Self.FK_KOPsMultivalor_WOs">
+            <End Role="WOs" EntitySet="WOs" />
+            <End Role="KOPsMultivalor" EntitySet="KOPsMultivalor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestroKOPs_EstadosKOP" Association="Self.FK_MaestroKOPs_EstadosKOP">
+            <End Role="EstadosKOP" EntitySet="EstadosKOP" />
+            <End Role="MaestroKOPs" EntitySet="MaestroKOPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestroKOPs_Mostos_Ubicacion_EstadosKOP" Association="Self.FK_MaestroKOPs_Mostos_Ubicacion_EstadosKOP">
+            <End Role="EstadosKOP" EntitySet="EstadosKOP" />
+            <End Role="MaestroKOPs_Mostos_Ubicacion" EntitySet="MaestroKOPs_Mostos_Ubicacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestroKOPs_Mostos_Ubicacion_MaestroKOPs" Association="Self.FK_MaestroKOPs_Mostos_Ubicacion_MaestroKOPs">
+            <End Role="MaestroKOPs" EntitySet="MaestroKOPs" />
+            <End Role="MaestroKOPs_Mostos_Ubicacion" EntitySet="MaestroKOPs_Mostos_Ubicacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestroKOPs_TiposSubprocesos" Association="Self.FK_MaestroKOPs_TiposSubprocesos">
+            <End Role="TiposSubprocesos" EntitySet="TiposSubprocesos" />
+            <End Role="MaestroKOPs" EntitySet="MaestroKOPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestroKOPsMultivalor_TiposKOPMultivalor" Association="Self.FK_MaestroKOPsMultivalor_TiposKOPMultivalor">
+            <End Role="TiposKOPMultivalor" EntitySet="TiposKOPMultivalor" />
+            <End Role="MaestroKOPsMultivalor" EntitySet="MaestroKOPsMultivalor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestroKOPsMultivalor_TiposSubprocesos" Association="Self.FK_MaestroKOPsMultivalor_TiposSubprocesos">
+            <End Role="TiposSubprocesos" EntitySet="TiposSubprocesos" />
+            <End Role="MaestroKOPsMultivalor" EntitySet="MaestroKOPsMultivalor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestroValoresKOPsMultivalor_MaestroKOPsMultivalor" Association="Self.FK_MaestroValoresKOPsMultivalor_MaestroKOPsMultivalor">
+            <End Role="MaestroKOPsMultivalor" EntitySet="MaestroKOPsMultivalor" />
+            <End Role="MaestroValoresKOPsMultivalor" EntitySet="MaestroValoresKOPsMultivalor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModulosSubProcesos_TiposSubprocesos" Association="Self.FK_ModulosSubProcesos_TiposSubprocesos">
+            <End Role="TiposSubprocesos" EntitySet="TiposSubprocesos" />
+            <End Role="ModulosSubprocesos" EntitySet="ModulosSubprocesos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PropiedadesWO_WOs" Association="Self.FK_PropiedadesWO_WOs">
+            <End Role="WOs" EntitySet="WOs" />
+            <End Role="PropiedadesWO" EntitySet="PropiedadesWO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subprocesos_TiposSubprocesos" Association="Self.FK_Subprocesos_TiposSubprocesos">
+            <End Role="TiposSubprocesos" EntitySet="TiposSubprocesos" />
+            <End Role="Subprocesos" EntitySet="Subprocesos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subprocesos_WOs" Association="Self.FK_Subprocesos_WOs">
+            <End Role="WOs" EntitySet="WOs" />
+            <End Role="Subprocesos" EntitySet="Subprocesos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoSubprocesos_TiposWO" Association="Self.FK_TipoSubprocesos_TiposWO">
+            <End Role="TiposWO" EntitySet="TiposWO" />
+            <End Role="TiposSubprocesos" EntitySet="TiposSubprocesos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ValoresKOPsMultivalor_KOPsMultivalor" Association="Self.FK_ValoresKOPsMultivalor_KOPsMultivalor">
+            <End Role="KOPsMultivalor" EntitySet="KOPsMultivalor" />
+            <End Role="ValoresKOPsMultivalor" EntitySet="ValoresKOPsMultivalor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ValoresKOPsMultivalor_MaestroValoresKOPsMultivalor" Association="Self.FK_ValoresKOPsMultivalor_MaestroValoresKOPsMultivalor">
+            <End Role="MaestroValoresKOPsMultivalor" EntitySet="MaestroValoresKOPsMultivalor" />
+            <End Role="ValoresKOPsMultivalor" EntitySet="ValoresKOPsMultivalor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VariablesFormulaKOP_MaestroKOPs" Association="Self.FK_VariablesFormulaKOP_MaestroKOPs">
+            <End Role="MaestroKOPs" EntitySet="MaestroKOPs" />
+            <End Role="VariablesFormulaKOP" EntitySet="VariablesFormulaKOP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VariablesFormulaKOP_MaestroKOPs-Variables" Association="Self.FK_VariablesFormulaKOP_MaestroKOPs-Variables">
+            <End Role="MaestroKOPs" EntitySet="MaestroKOPs" />
+            <End Role="VariablesFormulaKOP" EntitySet="VariablesFormulaKOP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WOPlanificadas_WOs" Association="Self.FK_WOPlanificadas_WOs">
+            <End Role="WOs" EntitySet="WOs" />
+            <End Role="WOPlanificadas" EntitySet="WOPlanificadas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WOs_TiposWO" Association="Self.FK_WOs_TiposWO">
+            <End Role="TiposWO" EntitySet="TiposWO" />
+            <End Role="WOs" EntitySet="WOs" />
+          </AssociationSet>
+          <AssociationSet Name="FKMaestroKOPsMultivalor_EstadosKOP" Association="Self.FKMaestroKOPsMultivalor_EstadosKOP">
+            <End Role="EstadosKOP" EntitySet="EstadosKOP" />
+            <End Role="MaestroKOPsMultivalor" EntitySet="MaestroKOPsMultivalor" />
+          </AssociationSet>
+          <AssociationSet Name="FKMaestroValoresKOPsMultivalor_EstadosKOP" Association="Self.FKMaestroValoresKOPsMultivalor_EstadosKOP">
+            <End Role="EstadosKOP" EntitySet="EstadosKOP" />
+            <End Role="MaestroValoresKOPsMultivalor" EntitySet="MaestroValoresKOPsMultivalor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MES_MSM_FabricacionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="WOPlanificadas">
+          <Key>
+            <PropertyRef Name="IdWOPlanificada" />
+          </Key>
+          <Property Name="IdWOPlanificada" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaInicioPlan" Type="DateTime" Precision="3" />
+          <Property Name="FechaFinPlan" Type="DateTime" Precision="3" />
+          <Property Name="CantidadPlan" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="NotasWO" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Procesado" Type="Boolean" Nullable="false" />
+          <Property Name="IdUbicacionOrigen" Type="Int32" Nullable="false" />
+          <Property Name="IdUbicacionDestino" Type="Int32" />
+          <Property Name="IdTipoWO" Type="Int32" Nullable="false" />
+          <Property Name="IdWO" Type="Int32" />
+          <Property Name="FechaActualizado" Type="DateTime" Precision="3" />
+          <Property Name="IdMaterial" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TiposWO" Relationship="MES_MSM_FabricacionModel.FK_WOPlanificadas_TiposWO" FromRole="WOPlanificadas" ToRole="TiposWO" />
+          <NavigationProperty Name="WOs" Relationship="MES_MSM_FabricacionModel.FK_WOPlanificadas_WOs" FromRole="WOPlanificadas" ToRole="WOs" />
+          <Property Name="IdZonaOrigen" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="MESFabEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="WOPlanificadas" EntityType="Self.WOPlanificadas" />
+          <EntitySet Name="TiposWO" EntityType="MES_MSM_FabricacionModel.TiposWO" />
+          <AssociationSet Name="FK_WOPlanificadas_TiposWO" Association="MES_MSM_FabricacionModel.FK_WOPlanificadas_TiposWO">
+            <End Role="TiposWO" EntitySet="TiposWO" />
+            <End Role="WOPlanificadas" EntitySet="WOPlanificadas" />
+          </AssociationSet>
+          <EntitySet Name="Subprocesos" EntityType="MES_MSM_FabricacionModel.Subprocesos" />
+          <EntitySet Name="TiposSubprocesos" EntityType="MES_MSM_FabricacionModel.TiposSubprocesos" />
+          <AssociationSet Name="FK_Subprocesos_TiposSubprocesos" Association="MES_MSM_FabricacionModel.FK_Subprocesos_TiposSubprocesos">
+            <End Role="TiposSubprocesos" EntitySet="TiposSubprocesos" />
+            <End Role="Subprocesos" EntitySet="Subprocesos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoSubprocesos_TiposWO" Association="MES_MSM_FabricacionModel.FK_TipoSubprocesos_TiposWO">
+            <End Role="TiposWO" EntitySet="TiposWO" />
+            <End Role="TiposSubprocesos" EntitySet="TiposSubprocesos" />
+          </AssociationSet>
+          <EntitySet Name="OLTPMensajes" EntityType="MES_MSM_FabricacionModel.OLTPMensajes" />
+          <EntitySet Name="vListadoWOsKOPsCoccion" EntityType="MES_MSM_FabricacionModel.vListadoWOsKOPsCoccion" />
+          <EntitySet Name="KOPs" EntityType="MES_MSM_FabricacionModel.KOPs" />
+          <EntitySet Name="vEstadoKOP_WO" EntityType="MES_MSM_FabricacionModel.vEstadoKOP_WO" />
+          <EntitySet Name="EstadosKOP" EntityType="MES_MSM_FabricacionModel.EstadosKOP" />
+          <AssociationSet Name="FK_KOPs_EstadosKOP" Association="MES_MSM_FabricacionModel.FK_KOPs_EstadosKOP">
+            <End Role="EstadosKOP" EntitySet="EstadosKOP" />
+            <End Role="KOPs" EntitySet="KOPs" />
+          </AssociationSet>
+          <EntitySet Name="KOPsMultivalor" EntityType="MES_MSM_FabricacionModel.KOPsMultivalor" />
+          <AssociationSet Name="FK_KOPsMultivalor_EstadosKOP" Association="MES_MSM_FabricacionModel.FK_KOPsMultivalor_EstadosKOP">
+            <End Role="EstadosKOP" EntitySet="EstadosKOP" />
+            <End Role="KOPsMultivalor" EntitySet="KOPsMultivalor" />
+          </AssociationSet>
+          <EntitySet Name="ValoresKOPsMultivalor" EntityType="MES_MSM_FabricacionModel.ValoresKOPsMultivalor" />
+          <AssociationSet Name="FK_ValoresKOPsMultivalor_KOPsMultivalor" Association="MES_MSM_FabricacionModel.FK_ValoresKOPsMultivalor_KOPsMultivalor">
+            <End Role="KOPsMultivalor" EntitySet="KOPsMultivalor" />
+            <End Role="ValoresKOPsMultivalor" EntitySet="ValoresKOPsMultivalor" />
+          </AssociationSet>
+          <EntitySet Name="TiposKOPMultivalor" EntityType="MES_MSM_FabricacionModel.TiposKOPMultivalor" />
+          <EntitySet Name="VariablesFormulaKOP" EntityType="MES_MSM_FabricacionModel.VariablesFormulaKOP" />
+          <EntitySet Name="PropiedadesWO" EntityType="MES_MSM_FabricacionModel.PropiedadesWO" />
+          <FunctionImport Name="API_ActualizarKOPSCalculados">
+          <Parameter Name="IdOrden" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="MaestroKOPs" EntityType="MES_MSM_FabricacionModel.MaestroKOPs" />
+          <AssociationSet Name="FK_MaestroKOPs_EstadosKOP" Association="MES_MSM_FabricacionModel.FK_MaestroKOPs_EstadosKOP">
+            <End Role="EstadosKOP" EntitySet="EstadosKOP" />
+            <End Role="MaestroKOPs" EntitySet="MaestroKOPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KOPs_MaestroKOPs" Association="MES_MSM_FabricacionModel.FK_KOPs_MaestroKOPs">
+            <End Role="MaestroKOPs" EntitySet="MaestroKOPs" />
+            <End Role="KOPs" EntitySet="KOPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestroKOPs_TiposSubprocesos" Association="MES_MSM_FabricacionModel.FK_MaestroKOPs_TiposSubprocesos">
+            <End Role="TiposSubprocesos" EntitySet="TiposSubprocesos" />
+            <End Role="MaestroKOPs" EntitySet="MaestroKOPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VariablesFormulaKOP_MaestroKOPs" Association="MES_MSM_FabricacionModel.FK_VariablesFormulaKOP_MaestroKOPs">
+            <End Role="MaestroKOPs" EntitySet="MaestroKOPs" />
+            <End Role="VariablesFormulaKOP" EntitySet="VariablesFormulaKOP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VariablesFormulaKOP_MaestroKOPs_Variables" Association="MES_MSM_FabricacionModel.FK_VariablesFormulaKOP_MaestroKOPs_Variables">
+            <End Role="MaestroKOPs" EntitySet="MaestroKOPs" />
+            <End Role="VariablesFormulaKOP" EntitySet="VariablesFormulaKOP" />
+          </AssociationSet>
+          <EntitySet Name="MaestroKOPs_Mostos_Ubicacion" EntityType="MES_MSM_FabricacionModel.MaestroKOPs_Mostos_Ubicacion" />
+          <EntitySet Name="ModulosSubprocesos" EntityType="MES_MSM_FabricacionModel.ModulosSubprocesos" />
+          <AssociationSet Name="FK_MaestroKOPs_Mostos_Ubicacion_EstadosKOP" Association="MES_MSM_FabricacionModel.FK_MaestroKOPs_Mostos_Ubicacion_EstadosKOP">
+            <End Role="EstadosKOP" EntitySet="EstadosKOP" />
+            <End Role="MaestroKOPs_Mostos_Ubicacion" EntitySet="MaestroKOPs_Mostos_Ubicacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestroKOPs_Mostos_Ubicacion_MaestroKOPs" Association="MES_MSM_FabricacionModel.FK_MaestroKOPs_Mostos_Ubicacion_MaestroKOPs">
+            <End Role="MaestroKOPs" EntitySet="MaestroKOPs" />
+            <End Role="MaestroKOPs_Mostos_Ubicacion" EntitySet="MaestroKOPs_Mostos_Ubicacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModulosSubProcesos_TiposSubprocesos" Association="MES_MSM_FabricacionModel.FK_ModulosSubProcesos_TiposSubprocesos">
+            <End Role="TiposSubprocesos" EntitySet="TiposSubprocesos" />
+            <End Role="ModulosSubprocesos" EntitySet="ModulosSubprocesos" />
+          </AssociationSet>
+          <EntitySet Name="WOs" EntityType="MES_MSM_FabricacionModel.WOs" />
+          <AssociationSet Name="FK_KOPs_WOs" Association="MES_MSM_FabricacionModel.FK_KOPs_WOs">
+            <End Role="WOs" EntitySet="WOs" />
+            <End Role="KOPs" EntitySet="KOPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KOPsMultivalor_WOs" Association="MES_MSM_FabricacionModel.FK_KOPsMultivalor_WOs">
+            <End Role="WOs" EntitySet="WOs" />
+            <End Role="KOPsMultivalor" EntitySet="KOPsMultivalor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PropiedadesWO_WOs" Association="MES_MSM_FabricacionModel.FK_PropiedadesWO_WOs">
+            <End Role="WOs" EntitySet="WOs" />
+            <End Role="PropiedadesWO" EntitySet="PropiedadesWO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subprocesos_WOs" Association="MES_MSM_FabricacionModel.FK_Subprocesos_WOs">
+            <End Role="WOs" EntitySet="WOs" />
+            <End Role="Subprocesos" EntitySet="Subprocesos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WOs_TiposWO" Association="MES_MSM_FabricacionModel.FK_WOs_TiposWO">
+            <End Role="TiposWO" EntitySet="TiposWO" />
+            <End Role="WOs" EntitySet="WOs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WOPlanificadas_WOs" Association="MES_MSM_FabricacionModel.FK_WOPlanificadas_WOs">
+            <End Role="WOs" EntitySet="WOs" />
+            <End Role="WOPlanificadas" EntitySet="WOPlanificadas" />
+          </AssociationSet>
+          <EntitySet Name="MaestroValoresKOPsMultivalor" EntityType="MES_MSM_FabricacionModel.MaestroValoresKOPsMultivalor" />
+          <AssociationSet Name="FKMaestroValoresKOPsMultivalor_EstadosKOP" Association="MES_MSM_FabricacionModel.FKMaestroValoresKOPsMultivalor_EstadosKOP">
+            <End Role="EstadosKOP" EntitySet="EstadosKOP" />
+            <End Role="MaestroValoresKOPsMultivalor" EntitySet="MaestroValoresKOPsMultivalor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ValoresKOPsMultivalor_MaestroValoresKOPsMultivalor" Association="MES_MSM_FabricacionModel.FK_ValoresKOPsMultivalor_MaestroValoresKOPsMultivalor">
+            <End Role="MaestroValoresKOPsMultivalor" EntitySet="MaestroValoresKOPsMultivalor" />
+            <End Role="ValoresKOPsMultivalor" EntitySet="ValoresKOPsMultivalor" />
+          </AssociationSet>
+          <EntitySet Name="MaestroKOPsMultivalor" EntityType="MES_MSM_FabricacionModel.MaestroKOPsMultivalor" />
+          <AssociationSet Name="FKMaestroKOPsMultivalor_EstadosKOP" Association="MES_MSM_FabricacionModel.FKMaestroKOPsMultivalor_EstadosKOP">
+            <End Role="EstadosKOP" EntitySet="EstadosKOP" />
+            <End Role="MaestroKOPsMultivalor" EntitySet="MaestroKOPsMultivalor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KOPsMultivalor_MaestroKOPsMultivalor" Association="MES_MSM_FabricacionModel.FK_KOPsMultivalor_MaestroKOPsMultivalor">
+            <End Role="MaestroKOPsMultivalor" EntitySet="MaestroKOPsMultivalor" />
+            <End Role="KOPsMultivalor" EntitySet="KOPsMultivalor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestroKOPsMultivalor_TiposKOPMultivalor" Association="MES_MSM_FabricacionModel.FK_MaestroKOPsMultivalor_TiposKOPMultivalor">
+            <End Role="TiposKOPMultivalor" EntitySet="TiposKOPMultivalor" />
+            <End Role="MaestroKOPsMultivalor" EntitySet="MaestroKOPsMultivalor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestroKOPsMultivalor_TiposSubprocesos" Association="MES_MSM_FabricacionModel.FK_MaestroKOPsMultivalor_TiposSubprocesos">
+            <End Role="TiposSubprocesos" EntitySet="TiposSubprocesos" />
+            <End Role="MaestroKOPsMultivalor" EntitySet="MaestroKOPsMultivalor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestroValoresKOPsMultivalor_MaestroKOPsMultivalor" Association="MES_MSM_FabricacionModel.FK_MaestroValoresKOPsMultivalor_MaestroKOPsMultivalor">
+            <End Role="MaestroKOPsMultivalor" EntitySet="MaestroKOPsMultivalor" />
+            <End Role="MaestroValoresKOPsMultivalor" EntitySet="MaestroValoresKOPsMultivalor" />
+          </AssociationSet>
+          <EntitySet Name="vListadoWOsKOPsMultivalorCoccion" EntityType="MES_MSM_FabricacionModel.vListadoWOsKOPsMultivalorCoccion" />
+          <EntitySet Name="vListadoWOsKOPsMultivalorFermentacion" EntityType="MES_MSM_FabricacionModel.vListadoWOsKOPsMultivalorFermentacion" />
+          <EntitySet Name="vListadoWOsKOPsMultivalorTrasiego" EntityType="MES_MSM_FabricacionModel.vListadoWOsKOPsMultivalorTrasiego" />
+          <EntitySet Name="vMaestroUbicaciones" EntityType="MES_MSM_FabricacionModel.vMaestroUbicaciones" />
+          <FunctionImport Name="spReplanificarWOCoccion">
+            <Parameter Name="IdUbicacion" Mode="In" Type="Int32" />
+            <Parameter Name="Procesado" Mode="In" Type="Boolean" />
+            <Parameter Name="IdTipoWO" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="vMaestroMateriales" EntityType="MES_MSM_FabricacionModel.vMaestroMateriales" />
+          <EntitySet Name="vListadoWOsCoccion" EntityType="MES_MSM_FabricacionModel.vListadoWOsCoccion" />
+        </EntityContainer>
+        <EntityType Name="TiposWO">
+          <Key>
+            <PropertyRef Name="IdTipoWO" />
+          </Key>
+          <Property Name="IdTipoWO" Type="Int32" Nullable="false" />
+          <Property Name="CodWO" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DescTipoWO" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="WOPlanificadas" Relationship="MES_MSM_FabricacionModel.FK_WOPlanificadas_TiposWO" FromRole="TiposWO" ToRole="WOPlanificadas" />
+          <Property Name="Orden" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TiposSubprocesos" Relationship="MES_MSM_FabricacionModel.FK_TipoSubprocesos_TiposWO" FromRole="TiposWO" ToRole="TiposSubprocesos" />
+          <NavigationProperty Name="WOs" Relationship="MES_MSM_FabricacionModel.FK_WOs_TiposWO" FromRole="TiposWO" ToRole="WOs" />
+        </EntityType>
+        <Association Name="FK_WOPlanificadas_TiposWO">
+          <End Type="MES_MSM_FabricacionModel.TiposWO" Role="TiposWO" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.WOPlanificadas" Role="WOPlanificadas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposWO">
+              <PropertyRef Name="IdTipoWO" />
+            </Principal>
+            <Dependent Role="WOPlanificadas">
+              <PropertyRef Name="IdTipoWO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Subprocesos">
+          <Key>
+            <PropertyRef Name="IdSubproceso" />
+          </Key>
+          <Property Name="IdSubproceso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaInicio" Type="DateTime" Precision="3" />
+          <Property Name="FechaFin" Type="DateTime" Precision="3" />
+          <Property Name="FechaActualizado" Type="DateTime" Precision="3" />
+          <Property Name="LoteSAI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IdWO" Type="Int32" Nullable="false" />
+          <Property Name="IdTipoSubproceso" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TiposSubprocesos" Relationship="MES_MSM_FabricacionModel.FK_Subprocesos_TiposSubprocesos" FromRole="Subprocesos" ToRole="TiposSubprocesos" />
+          <NavigationProperty Name="WOs" Relationship="MES_MSM_FabricacionModel.FK_Subprocesos_WOs" FromRole="Subprocesos" ToRole="WOs" />
+        </EntityType>
+        <EntityType Name="TiposSubprocesos">
+          <Key>
+            <PropertyRef Name="IdTipoSubproceso" />
+          </Key>
+          <Property Name="IdTipoSubproceso" Type="Int32" Nullable="false" />
+          <Property Name="DescSubProceso" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Orden" Type="Int16" Nullable="false" />
+          <Property Name="IdTipoWO" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Subprocesos" Relationship="MES_MSM_FabricacionModel.FK_Subprocesos_TiposSubprocesos" FromRole="TiposSubprocesos" ToRole="Subprocesos" />
+          <NavigationProperty Name="TiposWO" Relationship="MES_MSM_FabricacionModel.FK_TipoSubprocesos_TiposWO" FromRole="TiposSubprocesos" ToRole="TiposWO" />
+          <NavigationProperty Name="MaestroKOPs" Relationship="MES_MSM_FabricacionModel.FK_MaestroKOPs_TiposSubprocesos" FromRole="TiposSubprocesos" ToRole="MaestroKOPs" />
+          <NavigationProperty Name="ModulosSubprocesos" Relationship="MES_MSM_FabricacionModel.FK_ModulosSubProcesos_TiposSubprocesos" FromRole="TiposSubprocesos" ToRole="ModulosSubprocesos" />
+          <NavigationProperty Name="MaestroKOPsMultivalor" Relationship="MES_MSM_FabricacionModel.FK_MaestroKOPsMultivalor_TiposSubprocesos" FromRole="TiposSubprocesos" ToRole="MaestroKOPsMultivalor" />
+        </EntityType>
+        <Association Name="FK_Subprocesos_TiposSubprocesos">
+          <End Type="MES_MSM_FabricacionModel.TiposSubprocesos" Role="TiposSubprocesos" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.Subprocesos" Role="Subprocesos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposSubprocesos">
+              <PropertyRef Name="IdTipoSubproceso" />
+            </Principal>
+            <Dependent Role="Subprocesos">
+              <PropertyRef Name="IdTipoSubproceso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoSubprocesos_TiposWO">
+          <End Type="MES_MSM_FabricacionModel.TiposWO" Role="TiposWO" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.TiposSubprocesos" Role="TiposSubprocesos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposWO">
+              <PropertyRef Name="IdTipoWO" />
+            </Principal>
+            <Dependent Role="TiposSubprocesos">
+              <PropertyRef Name="IdTipoWO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="OLTPMensajes">
+          <Key>
+            <PropertyRef Name="IdOLTPMensaje" />
+            <PropertyRef Name="Modulo" />
+            <PropertyRef Name="Fecha" />
+            <PropertyRef Name="FracSec" />
+            <PropertyRef Name="FechaLote" />
+          </Key>
+          <Property Name="IdOLTPMensaje" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Modulo" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Lote" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Valor" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Unidad" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FracSec" Type="Int32" Nullable="false" />
+          <Property Name="Procesado" Type="Int32" Nullable="false" />
+          <Property Name="FechaLote" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaActualizado" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="vListadoWOsKOPsCoccion">
+          <Key>
+            <PropertyRef Name="IdWO" />
+            <PropertyRef Name="CodWO" />
+            <PropertyRef Name="Recalcular" />
+            <PropertyRef Name="IdTipoSubproceso" />
+            <PropertyRef Name="DescSubProceso" />
+            <PropertyRef Name="IdKOP" />
+            <PropertyRef Name="CodKOP" />
+            <PropertyRef Name="DescKOP" />
+            <PropertyRef Name="MensajeKOP" />
+            <PropertyRef Name="TipodatoKOP" />
+            <PropertyRef Name="Unidad" />
+            <PropertyRef Name="IdTipoKOP" />
+            <PropertyRef Name="IdEstadoKOP" />
+            <PropertyRef Name="DescEstadoKOP" />
+            <PropertyRef Name="ColorEstadoKOP" />
+            <PropertyRef Name="Editable" />
+          </Key>
+          <Property Name="IdWO" Type="Int32" Nullable="false" />
+          <Property Name="CodWO" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Recalcular" Type="Boolean" Nullable="false" />
+          <Property Name="IdTipoSubproceso" Type="Int32" Nullable="false" />
+          <Property Name="DescSubProceso" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IdKOP" Type="Int32" Nullable="false" />
+          <Property Name="CodKOP" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="DescKOP" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="MensajeKOP" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ValorMin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Valor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ValorMax" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TipodatoKOP" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Unidad" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="IdTipoKOP" Type="Int32" Nullable="false" />
+          <Property Name="DescTipoKOP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdEstadoKOP" Type="Int32" Nullable="false" />
+          <Property Name="DescEstadoKOP" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ColorEstadoKOP" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Editable" Type="Boolean" Nullable="false" />
+          <Property Name="FechaActualizado" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="KOPs">
+          <Key>
+            <PropertyRef Name="IdKOP" />
+          </Key>
+          <Property Name="IdKOP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ValorMin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Valor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ValorMax" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaActualizado" Type="DateTime" Precision="3" />
+          <Property Name="IdEstadoKOP" Type="Int32" Nullable="false" />
+          <Property Name="IdWO" Type="Int32" Nullable="false" />
+          <Property Name="IdMaestroKOP" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EstadosKOP" Relationship="MES_MSM_FabricacionModel.FK_KOPs_EstadosKOP" FromRole="KOPs" ToRole="EstadosKOP" />
+          <NavigationProperty Name="MaestroKOPs" Relationship="MES_MSM_FabricacionModel.FK_KOPs_MaestroKOPs" FromRole="KOPs" ToRole="MaestroKOPs" />
+          <NavigationProperty Name="WOs" Relationship="MES_MSM_FabricacionModel.FK_KOPs_WOs" FromRole="KOPs" ToRole="WOs" />
+        </EntityType>
+        <EntityType Name="vEstadoKOP_WO">
+          <Key>
+            <PropertyRef Name="IdWO" />
+            <PropertyRef Name="CodWO" />
+            <PropertyRef Name="IdEstadoKOP" />
+          </Key>
+          <Property Name="IdWO" Type="Int32" Nullable="false" />
+          <Property Name="CodWO" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="IdEstadoKOP" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstadosKOP">
+          <Key>
+            <PropertyRef Name="IdEstadoKOP" />
+          </Key>
+          <Property Name="IdEstadoKOP" Type="Int32" Nullable="false" />
+          <Property Name="DescEstadoKOP" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ColorEstadoKOP" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="KOPs" Relationship="MES_MSM_FabricacionModel.FK_KOPs_EstadosKOP" FromRole="EstadosKOP" ToRole="KOPs" />
+          <NavigationProperty Name="KOPsMultivalor" Relationship="MES_MSM_FabricacionModel.FK_KOPsMultivalor_EstadosKOP" FromRole="EstadosKOP" ToRole="KOPsMultivalor" />
+          <NavigationProperty Name="MaestroKOPs" Relationship="MES_MSM_FabricacionModel.FK_MaestroKOPs_EstadosKOP" FromRole="EstadosKOP" ToRole="MaestroKOPs" />
+          <NavigationProperty Name="MaestroKOPs_Mostos_Ubicacion" Relationship="MES_MSM_FabricacionModel.FK_MaestroKOPs_Mostos_Ubicacion_EstadosKOP" FromRole="EstadosKOP" ToRole="MaestroKOPs_Mostos_Ubicacion" />
+          <NavigationProperty Name="MaestroValoresKOPsMultivalor" Relationship="MES_MSM_FabricacionModel.FKMaestroValoresKOPsMultivalor_EstadosKOP" FromRole="EstadosKOP" ToRole="MaestroValoresKOPsMultivalor" />
+          <NavigationProperty Name="MaestroKOPsMultivalor" Relationship="MES_MSM_FabricacionModel.FKMaestroKOPsMultivalor_EstadosKOP" FromRole="EstadosKOP" ToRole="MaestroKOPsMultivalor" />
+        </EntityType>
+        <Association Name="FK_KOPs_EstadosKOP">
+          <End Type="MES_MSM_FabricacionModel.EstadosKOP" Role="EstadosKOP" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.KOPs" Role="KOPs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosKOP">
+              <PropertyRef Name="IdEstadoKOP" />
+            </Principal>
+            <Dependent Role="KOPs">
+              <PropertyRef Name="IdEstadoKOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="KOPsMultivalor">
+          <Key>
+            <PropertyRef Name="IdKOPMultivalor" />
+          </Key>
+          <Property Name="IdKOPMultivalor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMaestroKOPMultivalor" Type="Int32" Nullable="false" />
+          <Property Name="FechaActualizado" Type="DateTime" Precision="3" />
+          <Property Name="IdEstadoKOP" Type="Int32" Nullable="false" />
+          <Property Name="IdWO" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EstadosKOP" Relationship="MES_MSM_FabricacionModel.FK_KOPsMultivalor_EstadosKOP" FromRole="KOPsMultivalor" ToRole="EstadosKOP" />
+          <NavigationProperty Name="ValoresKOPsMultivalor" Relationship="MES_MSM_FabricacionModel.FK_ValoresKOPsMultivalor_KOPsMultivalor" FromRole="KOPsMultivalor" ToRole="ValoresKOPsMultivalor" />
+          <NavigationProperty Name="WOs" Relationship="MES_MSM_FabricacionModel.FK_KOPsMultivalor_WOs" FromRole="KOPsMultivalor" ToRole="WOs" />
+          <NavigationProperty Name="MaestroKOPsMultivalor" Relationship="MES_MSM_FabricacionModel.FK_KOPsMultivalor_MaestroKOPsMultivalor" FromRole="KOPsMultivalor" ToRole="MaestroKOPsMultivalor" />
+        </EntityType>
+        <Association Name="FK_KOPsMultivalor_EstadosKOP">
+          <End Type="MES_MSM_FabricacionModel.EstadosKOP" Role="EstadosKOP" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.KOPsMultivalor" Role="KOPsMultivalor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosKOP">
+              <PropertyRef Name="IdEstadoKOP" />
+            </Principal>
+            <Dependent Role="KOPsMultivalor">
+              <PropertyRef Name="IdEstadoKOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ValoresKOPsMultivalor">
+          <Key>
+            <PropertyRef Name="IdValorKOPMultivalor" />
+          </Key>
+          <Property Name="IdValorKOPMultivalor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ValorMin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Valor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ValorMax" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaActualizado" Type="DateTime" Precision="3" />
+          <Property Name="IdKOPMultivalor" Type="Int32" Nullable="false" />
+          <Property Name="IdMaestroValorKOPMultivalor" Type="Int32" Nullable="false" />
+          <Property Name="IdEstadoValorKOP" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="KOPsMultivalor" Relationship="MES_MSM_FabricacionModel.FK_ValoresKOPsMultivalor_KOPsMultivalor" FromRole="ValoresKOPsMultivalor" ToRole="KOPsMultivalor" />
+          <NavigationProperty Name="MaestroValoresKOPsMultivalor" Relationship="MES_MSM_FabricacionModel.FK_ValoresKOPsMultivalor_MaestroValoresKOPsMultivalor" FromRole="ValoresKOPsMultivalor" ToRole="MaestroValoresKOPsMultivalor" />
+        </EntityType>
+        <Association Name="FK_ValoresKOPsMultivalor_KOPsMultivalor">
+          <End Type="MES_MSM_FabricacionModel.KOPsMultivalor" Role="KOPsMultivalor" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.ValoresKOPsMultivalor" Role="ValoresKOPsMultivalor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KOPsMultivalor">
+              <PropertyRef Name="IdKOPMultivalor" />
+            </Principal>
+            <Dependent Role="ValoresKOPsMultivalor">
+              <PropertyRef Name="IdKOPMultivalor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TiposKOPMultivalor">
+          <Key>
+            <PropertyRef Name="IdTipoKOPMultivalor" />
+          </Key>
+          <Property Name="IdTipoKOPMultivalor" Type="Int32" Nullable="false" />
+          <Property Name="DescTipoKOPMultivalor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MaestroKOPsMultivalor" Relationship="MES_MSM_FabricacionModel.FK_MaestroKOPsMultivalor_TiposKOPMultivalor" FromRole="TiposKOPMultivalor" ToRole="MaestroKOPsMultivalor" />
+        </EntityType>
+        <EntityType Name="VariablesFormulaKOP">
+          <Key>
+            <PropertyRef Name="IdVariableFormulaKOP" />
+          </Key>
+          <Property Name="IdVariableFormulaKOP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMaestroKOP" Type="Int32" Nullable="false" />
+          <Property Name="IdFormulaCalculoKOP" Type="Int32" Nullable="false" />
+          <Property Name="IdMaestroKOPVariable" Type="Int32" Nullable="false" />
+          <Property Name="VariableKOP" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="FechaActualizado" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="MaestroKOPs" Relationship="MES_MSM_FabricacionModel.FK_VariablesFormulaKOP_MaestroKOPs" FromRole="VariablesFormulaKOP" ToRole="MaestroKOPs" />
+          <NavigationProperty Name="MaestroKOPs1" Relationship="MES_MSM_FabricacionModel.FK_VariablesFormulaKOP_MaestroKOPs_Variables" FromRole="VariablesFormulaKOP" ToRole="MaestroKOPs" />
+          </EntityType>
+        <EntityType Name="PropiedadesWO">
+          <Key>
+            <PropertyRef Name="IdPropiedadWO" />
+          </Key>
+          <Property Name="IdPropiedadWO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescPropiedadWO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ValorPropiedadWO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TipoDatoPropiedadWO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IdWO" Type="Int32" Nullable="false" />
+          <Property Name="FechaActualizado" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="WOs" Relationship="MES_MSM_FabricacionModel.FK_PropiedadesWO_WOs" FromRole="PropiedadesWO" ToRole="WOs" />
+        </EntityType>
+        <EntityType Name="MaestroKOPs">
+          <Key>
+            <PropertyRef Name="IdMaestroKOP" />
+          </Key>
+          <Property Name="IdMaestroKOP" Type="Int32" Nullable="false" />
+          <Property Name="CodKOP" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="DescKOP" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="MensajeKOP" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Unidad" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="TipodatoMaestroKOP" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IdTipoKOP" Type="Int32" Nullable="false" />
+          <Property Name="IdTipoSubproceso" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="FechaActualizado" Type="DateTime" Precision="3" />
+          <Property Name="ValorMin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ValorDefecto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ValorMax" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Editable" Type="Boolean" Nullable="false" />
+          <Property Name="IdEstadoKOP" Type="Int32" Nullable="false" />
+          <Property Name="IdZona" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EstadosKOP" Relationship="MES_MSM_FabricacionModel.FK_MaestroKOPs_EstadosKOP" FromRole="MaestroKOPs" ToRole="EstadosKOP" />
+          <NavigationProperty Name="KOPs" Relationship="MES_MSM_FabricacionModel.FK_KOPs_MaestroKOPs" FromRole="MaestroKOPs" ToRole="KOPs" />
+          <NavigationProperty Name="TiposSubprocesos" Relationship="MES_MSM_FabricacionModel.FK_MaestroKOPs_TiposSubprocesos" FromRole="MaestroKOPs" ToRole="TiposSubprocesos" />
+          <NavigationProperty Name="VariablesFormulaKOP" Relationship="MES_MSM_FabricacionModel.FK_VariablesFormulaKOP_MaestroKOPs" FromRole="MaestroKOPs" ToRole="VariablesFormulaKOP" />
+          <NavigationProperty Name="VariablesFormulaKOP1" Relationship="MES_MSM_FabricacionModel.FK_VariablesFormulaKOP_MaestroKOPs_Variables" FromRole="MaestroKOPs" ToRole="VariablesFormulaKOP" />
+          <NavigationProperty Name="MaestroKOPs_Mostos_Ubicacion" Relationship="MES_MSM_FabricacionModel.FK_MaestroKOPs_Mostos_Ubicacion_MaestroKOPs" FromRole="MaestroKOPs" ToRole="MaestroKOPs_Mostos_Ubicacion" />
+        </EntityType>
+        <Association Name="FK_MaestroKOPs_EstadosKOP">
+          <End Type="MES_MSM_FabricacionModel.EstadosKOP" Role="EstadosKOP" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.MaestroKOPs" Role="MaestroKOPs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosKOP">
+              <PropertyRef Name="IdEstadoKOP" />
+            </Principal>
+            <Dependent Role="MaestroKOPs">
+              <PropertyRef Name="IdEstadoKOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KOPs_MaestroKOPs">
+          <End Type="MES_MSM_FabricacionModel.MaestroKOPs" Role="MaestroKOPs" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.KOPs" Role="KOPs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaestroKOPs">
+              <PropertyRef Name="IdMaestroKOP" />
+            </Principal>
+            <Dependent Role="KOPs">
+              <PropertyRef Name="IdMaestroKOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestroKOPs_TiposSubprocesos">
+          <End Type="MES_MSM_FabricacionModel.TiposSubprocesos" Role="TiposSubprocesos" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.MaestroKOPs" Role="MaestroKOPs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposSubprocesos">
+              <PropertyRef Name="IdTipoSubproceso" />
+            </Principal>
+            <Dependent Role="MaestroKOPs">
+              <PropertyRef Name="IdTipoSubproceso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VariablesFormulaKOP_MaestroKOPs">
+          <End Type="MES_MSM_FabricacionModel.MaestroKOPs" Role="MaestroKOPs" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.VariablesFormulaKOP" Role="VariablesFormulaKOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaestroKOPs">
+              <PropertyRef Name="IdMaestroKOP" />
+            </Principal>
+            <Dependent Role="VariablesFormulaKOP">
+              <PropertyRef Name="IdMaestroKOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VariablesFormulaKOP_MaestroKOPs_Variables">
+          <End Type="MES_MSM_FabricacionModel.MaestroKOPs" Role="MaestroKOPs" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.VariablesFormulaKOP" Role="VariablesFormulaKOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaestroKOPs">
+              <PropertyRef Name="IdMaestroKOP" />
+            </Principal>
+            <Dependent Role="VariablesFormulaKOP">
+              <PropertyRef Name="IdMaestroKOPVariable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MaestroKOPs_Mostos_Ubicacion">
+          <Key>
+            <PropertyRef Name="IdMaestroKOP_Mosto_Ubicacion" />
+          </Key>
+          <Property Name="IdMaestroKOP_Mosto_Ubicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMaestroKOP" Type="Int32" Nullable="false" />
+          <Property Name="IdMosto" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="ValorMin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ValorDefecto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ValorMax" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaActualizado" Type="DateTime" Precision="3" />
+          <Property Name="IdEstadoKOP" Type="Int32" Nullable="false" />
+          <Property Name="IdZona" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EstadosKOP" Relationship="MES_MSM_FabricacionModel.FK_MaestroKOPs_Mostos_Ubicacion_EstadosKOP" FromRole="MaestroKOPs_Mostos_Ubicacion" ToRole="EstadosKOP" />
+          <NavigationProperty Name="MaestroKOPs" Relationship="MES_MSM_FabricacionModel.FK_MaestroKOPs_Mostos_Ubicacion_MaestroKOPs" FromRole="MaestroKOPs_Mostos_Ubicacion" ToRole="MaestroKOPs" />
+        </EntityType>
+        <EntityType Name="ModulosSubprocesos">
+          <Key>
+            <PropertyRef Name="IdModuloSubproceso" />
+          </Key>
+          <Property Name="IdModuloSubproceso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Modulo" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IdTipoSubproceso" Type="Int32" Nullable="false" />
+          <Property Name="CodigoWO" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IdZona" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TiposSubprocesos" Relationship="MES_MSM_FabricacionModel.FK_ModulosSubProcesos_TiposSubprocesos" FromRole="ModulosSubprocesos" ToRole="TiposSubprocesos" />
+        </EntityType>
+        <Association Name="FK_MaestroKOPs_Mostos_Ubicacion_EstadosKOP">
+          <End Type="MES_MSM_FabricacionModel.EstadosKOP" Role="EstadosKOP" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.MaestroKOPs_Mostos_Ubicacion" Role="MaestroKOPs_Mostos_Ubicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosKOP">
+              <PropertyRef Name="IdEstadoKOP" />
+            </Principal>
+            <Dependent Role="MaestroKOPs_Mostos_Ubicacion">
+              <PropertyRef Name="IdEstadoKOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestroKOPs_Mostos_Ubicacion_MaestroKOPs">
+          <End Type="MES_MSM_FabricacionModel.MaestroKOPs" Role="MaestroKOPs" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.MaestroKOPs_Mostos_Ubicacion" Role="MaestroKOPs_Mostos_Ubicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaestroKOPs">
+              <PropertyRef Name="IdMaestroKOP" />
+            </Principal>
+            <Dependent Role="MaestroKOPs_Mostos_Ubicacion">
+              <PropertyRef Name="IdMaestroKOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModulosSubProcesos_TiposSubprocesos">
+          <End Type="MES_MSM_FabricacionModel.TiposSubprocesos" Role="TiposSubprocesos" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.ModulosSubprocesos" Role="ModulosSubprocesos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposSubprocesos">
+              <PropertyRef Name="IdTipoSubproceso" />
+            </Principal>
+            <Dependent Role="ModulosSubprocesos">
+              <PropertyRef Name="IdTipoSubproceso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="WOs">
+          <Key>
+            <PropertyRef Name="IdWO" />
+          </Key>
+          <Property Name="IdWO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodWO" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="LoteMES" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaInicioPlan" Type="DateTime" Precision="3" />
+          <Property Name="FechaFinPlan" Type="DateTime" Precision="3" />
+          <Property Name="CantidadPlan" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="FechaInicioReal" Type="DateTime" Precision="3" />
+          <Property Name="FechaFinReal" Type="DateTime" Precision="3" />
+          <Property Name="CantidadReal" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="NotasWO" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="IdTipoWO" Type="Int32" Nullable="false" />
+          <Property Name="IdEstadoWO" Type="Int32" Nullable="false" />
+          <Property Name="IdEstadoLIMS" Type="Int32" Nullable="false" />
+          <Property Name="FechaActualizado" Type="DateTime" Precision="3" />
+          <Property Name="Recalcular" Type="Boolean" Nullable="false" />
+          <Property Name="NumWO" Type="Int32" Nullable="false" />
+          <Property Name="Anio" Type="Int32" Nullable="false" />
+          <Property Name="IdUbicacion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="KOPs" Relationship="MES_MSM_FabricacionModel.FK_KOPs_WOs" FromRole="WOs" ToRole="KOPs" />
+          <NavigationProperty Name="KOPsMultivalor" Relationship="MES_MSM_FabricacionModel.FK_KOPsMultivalor_WOs" FromRole="WOs" ToRole="KOPsMultivalor" />
+          <NavigationProperty Name="PropiedadesWO" Relationship="MES_MSM_FabricacionModel.FK_PropiedadesWO_WOs" FromRole="WOs" ToRole="PropiedadesWO" />
+          <NavigationProperty Name="Subprocesos" Relationship="MES_MSM_FabricacionModel.FK_Subprocesos_WOs" FromRole="WOs" ToRole="Subprocesos" />
+          <NavigationProperty Name="TiposWO" Relationship="MES_MSM_FabricacionModel.FK_WOs_TiposWO" FromRole="WOs" ToRole="TiposWO" />
+          <NavigationProperty Name="WOPlanificadas" Relationship="MES_MSM_FabricacionModel.FK_WOPlanificadas_WOs" FromRole="WOs" ToRole="WOPlanificadas" />
+        </EntityType>
+        <Association Name="FK_KOPs_WOs">
+          <End Type="MES_MSM_FabricacionModel.WOs" Role="WOs" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.KOPs" Role="KOPs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WOs">
+              <PropertyRef Name="IdWO" />
+            </Principal>
+            <Dependent Role="KOPs">
+              <PropertyRef Name="IdWO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KOPsMultivalor_WOs">
+          <End Type="MES_MSM_FabricacionModel.WOs" Role="WOs" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.KOPsMultivalor" Role="KOPsMultivalor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WOs">
+              <PropertyRef Name="IdWO" />
+            </Principal>
+            <Dependent Role="KOPsMultivalor">
+              <PropertyRef Name="IdWO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PropiedadesWO_WOs">
+          <End Type="MES_MSM_FabricacionModel.WOs" Role="WOs" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.PropiedadesWO" Role="PropiedadesWO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WOs">
+              <PropertyRef Name="IdWO" />
+            </Principal>
+            <Dependent Role="PropiedadesWO">
+              <PropertyRef Name="IdWO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subprocesos_WOs">
+          <End Type="MES_MSM_FabricacionModel.WOs" Role="WOs" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.Subprocesos" Role="Subprocesos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WOs">
+              <PropertyRef Name="IdWO" />
+            </Principal>
+            <Dependent Role="Subprocesos">
+              <PropertyRef Name="IdWO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WOs_TiposWO">
+          <End Type="MES_MSM_FabricacionModel.TiposWO" Role="TiposWO" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.WOs" Role="WOs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposWO">
+              <PropertyRef Name="IdTipoWO" />
+            </Principal>
+            <Dependent Role="WOs">
+              <PropertyRef Name="IdTipoWO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WOPlanificadas_WOs">
+          <End Type="MES_MSM_FabricacionModel.WOs" Role="WOs" Multiplicity="0..1" />
+          <End Type="MES_MSM_FabricacionModel.WOPlanificadas" Role="WOPlanificadas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WOs">
+              <PropertyRef Name="IdWO" />
+            </Principal>
+            <Dependent Role="WOPlanificadas">
+              <PropertyRef Name="IdWO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MaestroValoresKOPsMultivalor">
+          <Key>
+            <PropertyRef Name="IdMaestroValorKOPMultivalor" />
+          </Key>
+          <Property Name="IdMaestroValorKOPMultivalor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescValorKOP" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ValorMin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ValorDefecto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ValorMax" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IdMaestroKOPMultivalor" Type="Int32" Nullable="false" />
+          <Property Name="FechaActualizado" Type="DateTime" Precision="3" />
+          <Property Name="Posicion" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="IdEstadoValorKOP" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EstadosKOP" Relationship="MES_MSM_FabricacionModel.FKMaestroValoresKOPsMultivalor_EstadosKOP" FromRole="MaestroValoresKOPsMultivalor" ToRole="EstadosKOP" />
+          <NavigationProperty Name="ValoresKOPsMultivalor" Relationship="MES_MSM_FabricacionModel.FK_ValoresKOPsMultivalor_MaestroValoresKOPsMultivalor" FromRole="MaestroValoresKOPsMultivalor" ToRole="ValoresKOPsMultivalor" />
+          <NavigationProperty Name="MaestroKOPsMultivalor" Relationship="MES_MSM_FabricacionModel.FK_MaestroValoresKOPsMultivalor_MaestroKOPsMultivalor" FromRole="MaestroValoresKOPsMultivalor" ToRole="MaestroKOPsMultivalor" />
+        </EntityType>
+        <Association Name="FKMaestroValoresKOPsMultivalor_EstadosKOP">
+          <End Type="MES_MSM_FabricacionModel.EstadosKOP" Role="EstadosKOP" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.MaestroValoresKOPsMultivalor" Role="MaestroValoresKOPsMultivalor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosKOP">
+              <PropertyRef Name="IdEstadoKOP" />
+            </Principal>
+            <Dependent Role="MaestroValoresKOPsMultivalor">
+              <PropertyRef Name="IdEstadoValorKOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ValoresKOPsMultivalor_MaestroValoresKOPsMultivalor">
+          <End Type="MES_MSM_FabricacionModel.MaestroValoresKOPsMultivalor" Role="MaestroValoresKOPsMultivalor" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.ValoresKOPsMultivalor" Role="ValoresKOPsMultivalor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaestroValoresKOPsMultivalor">
+              <PropertyRef Name="IdMaestroValorKOPMultivalor" />
+            </Principal>
+            <Dependent Role="ValoresKOPsMultivalor">
+              <PropertyRef Name="IdMaestroValorKOPMultivalor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MaestroKOPsMultivalor">
+          <Key>
+            <PropertyRef Name="IdMaestroKOPMultivalor" />
+          </Key>
+          <Property Name="IdMaestroKOPMultivalor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescKOP" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="MensajeKOP" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Unidad" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="TipodatoMaestroKOP" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IdTipoSubproceso" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="FechaActualizado" Type="DateTime" Precision="3" />
+          <Property Name="IdTipoKOPMultivalor" Type="Int32" Nullable="false" />
+          <Property Name="IdEstadoKOP" Type="Int32" Nullable="false" />
+          <Property Name="IdZona" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EstadosKOP" Relationship="MES_MSM_FabricacionModel.FKMaestroKOPsMultivalor_EstadosKOP" FromRole="MaestroKOPsMultivalor" ToRole="EstadosKOP" />
+          <NavigationProperty Name="KOPsMultivalor" Relationship="MES_MSM_FabricacionModel.FK_KOPsMultivalor_MaestroKOPsMultivalor" FromRole="MaestroKOPsMultivalor" ToRole="KOPsMultivalor" />
+          <NavigationProperty Name="TiposKOPMultivalor" Relationship="MES_MSM_FabricacionModel.FK_MaestroKOPsMultivalor_TiposKOPMultivalor" FromRole="MaestroKOPsMultivalor" ToRole="TiposKOPMultivalor" />
+          <NavigationProperty Name="TiposSubprocesos" Relationship="MES_MSM_FabricacionModel.FK_MaestroKOPsMultivalor_TiposSubprocesos" FromRole="MaestroKOPsMultivalor" ToRole="TiposSubprocesos" />
+          <NavigationProperty Name="MaestroValoresKOPsMultivalor" Relationship="MES_MSM_FabricacionModel.FK_MaestroValoresKOPsMultivalor_MaestroKOPsMultivalor" FromRole="MaestroKOPsMultivalor" ToRole="MaestroValoresKOPsMultivalor" />
+          <Property Name="CodKOP" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="NKOPMultivalor" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FKMaestroKOPsMultivalor_EstadosKOP">
+          <End Type="MES_MSM_FabricacionModel.EstadosKOP" Role="EstadosKOP" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.MaestroKOPsMultivalor" Role="MaestroKOPsMultivalor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosKOP">
+              <PropertyRef Name="IdEstadoKOP" />
+            </Principal>
+            <Dependent Role="MaestroKOPsMultivalor">
+              <PropertyRef Name="IdEstadoKOP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KOPsMultivalor_MaestroKOPsMultivalor">
+          <End Type="MES_MSM_FabricacionModel.MaestroKOPsMultivalor" Role="MaestroKOPsMultivalor" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.KOPsMultivalor" Role="KOPsMultivalor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaestroKOPsMultivalor">
+              <PropertyRef Name="IdMaestroKOPMultivalor" />
+            </Principal>
+            <Dependent Role="KOPsMultivalor">
+              <PropertyRef Name="IdMaestroKOPMultivalor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestroKOPsMultivalor_TiposKOPMultivalor">
+          <End Type="MES_MSM_FabricacionModel.TiposKOPMultivalor" Role="TiposKOPMultivalor" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.MaestroKOPsMultivalor" Role="MaestroKOPsMultivalor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposKOPMultivalor">
+              <PropertyRef Name="IdTipoKOPMultivalor" />
+            </Principal>
+            <Dependent Role="MaestroKOPsMultivalor">
+              <PropertyRef Name="IdTipoKOPMultivalor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestroKOPsMultivalor_TiposSubprocesos">
+          <End Type="MES_MSM_FabricacionModel.TiposSubprocesos" Role="TiposSubprocesos" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.MaestroKOPsMultivalor" Role="MaestroKOPsMultivalor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposSubprocesos">
+              <PropertyRef Name="IdTipoSubproceso" />
+            </Principal>
+            <Dependent Role="MaestroKOPsMultivalor">
+              <PropertyRef Name="IdTipoSubproceso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestroValoresKOPsMultivalor_MaestroKOPsMultivalor">
+          <End Type="MES_MSM_FabricacionModel.MaestroKOPsMultivalor" Role="MaestroKOPsMultivalor" Multiplicity="1" />
+          <End Type="MES_MSM_FabricacionModel.MaestroValoresKOPsMultivalor" Role="MaestroValoresKOPsMultivalor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaestroKOPsMultivalor">
+              <PropertyRef Name="IdMaestroKOPMultivalor" />
+            </Principal>
+            <Dependent Role="MaestroValoresKOPsMultivalor">
+              <PropertyRef Name="IdMaestroKOPMultivalor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="vListadoWOsKOPsMultivalorCoccion">
+          <Key>
+            <PropertyRef Name="IdWO" />
+            <PropertyRef Name="CodWO" />
+            <PropertyRef Name="Recalcular" />
+            <PropertyRef Name="IdTipoSubproceso" />
+            <PropertyRef Name="DescSubProceso" />
+            <PropertyRef Name="IdKOPMultivalor" />
+            <PropertyRef Name="IdMaestroKOPMultivalor" />
+            <PropertyRef Name="CodKOP" />
+            <PropertyRef Name="DescKOP" />
+            <PropertyRef Name="MensajeKOP" />
+            <PropertyRef Name="TipodatoMaestroKOP" />
+            <PropertyRef Name="Unidad" />
+            <PropertyRef Name="IdTipoKOPMultivalor" />
+            <PropertyRef Name="DescTipoKOPMultivalor" />
+            <PropertyRef Name="IdEstadoKOP" />
+            <PropertyRef Name="DescEstadoKOP" />
+            <PropertyRef Name="ColorEstadoKOP" />
+            <PropertyRef Name="IdValorKOPMultivalor" />
+            <PropertyRef Name="Posicion" />
+            <PropertyRef Name="IdEstadoValorKOP" />
+            <PropertyRef Name="ColorEstadoValorKOP" />
+          </Key>
+          <Property Name="IdWO" Type="Int32" Nullable="false" />
+          <Property Name="CodWO" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Recalcular" Type="Boolean" Nullable="false" />
+          <Property Name="IdTipoSubproceso" Type="Int32" Nullable="false" />
+          <Property Name="DescSubProceso" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IdKOPMultivalor" Type="Int32" Nullable="false" />
+          <Property Name="IdMaestroKOPMultivalor" Type="Int32" Nullable="false" />
+          <Property Name="CodKOP" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="DescKOP" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="MensajeKOP" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="TipodatoMaestroKOP" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Unidad" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="IdTipoKOPMultivalor" Type="Int32" Nullable="false" />
+          <Property Name="DescTipoKOPMultivalor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdEstadoKOP" Type="Int32" Nullable="false" />
+          <Property Name="DescEstadoKOP" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ColorEstadoKOP" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="IdValorKOPMultivalor" Type="Int32" Nullable="false" />
+          <Property Name="ValorMin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Valor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ValorMax" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Posicion" Type="Int32" Nullable="false" />
+          <Property Name="IdEstadoValorKOP" Type="Int32" Nullable="false" />
+          <Property Name="ColorEstadoValorKOP" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="FechaActualizado" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="vListadoWOsKOPsMultivalorFermentacion">
+          <Key>
+            <PropertyRef Name="IdWO" />
+            <PropertyRef Name="CodWO" />
+            <PropertyRef Name="Recalcular" />
+            <PropertyRef Name="IdTipoSubproceso" />
+            <PropertyRef Name="DescSubProceso" />
+            <PropertyRef Name="IdKOPMultivalor" />
+            <PropertyRef Name="CodKOP" />
+            <PropertyRef Name="DescKOP" />
+            <PropertyRef Name="MensajeKOP" />
+            <PropertyRef Name="TipodatoMaestroKOP" />
+            <PropertyRef Name="Unidad" />
+            <PropertyRef Name="IdTipoKOPMultivalor" />
+            <PropertyRef Name="DescTipoKOPMultivalor" />
+            <PropertyRef Name="IdEstadoKOP" />
+            <PropertyRef Name="DescEstadoKOP" />
+            <PropertyRef Name="ColorEstadoKOP" />
+            <PropertyRef Name="IdValorKOPMultivalor" />
+            <PropertyRef Name="Posicion" />
+            <PropertyRef Name="IdEstadoValorKOP" />
+            <PropertyRef Name="ColorEstadoValorKOP" />
+            <PropertyRef Name="IdMaestroKOPMultivalor" />
+          </Key>
+          <Property Name="IdWO" Type="Int32" Nullable="false" />
+          <Property Name="CodWO" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Recalcular" Type="Boolean" Nullable="false" />
+          <Property Name="IdTipoSubproceso" Type="Int32" Nullable="false" />
+          <Property Name="DescSubProceso" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IdKOPMultivalor" Type="Int32" Nullable="false" />
+          <Property Name="CodKOP" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="DescKOP" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="MensajeKOP" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="TipodatoMaestroKOP" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Unidad" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="IdTipoKOPMultivalor" Type="Int32" Nullable="false" />
+          <Property Name="DescTipoKOPMultivalor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdEstadoKOP" Type="Int32" Nullable="false" />
+          <Property Name="DescEstadoKOP" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ColorEstadoKOP" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="IdValorKOPMultivalor" Type="Int32" Nullable="false" />
+          <Property Name="ValorMin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Valor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ValorMax" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Posicion" Type="Int32" Nullable="false" />
+          <Property Name="IdEstadoValorKOP" Type="Int32" Nullable="false" />
+          <Property Name="ColorEstadoValorKOP" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="FechaActualizado" Type="DateTime" Precision="3" />
+          <Property Name="IdMaestroKOPMultivalor" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vListadoWOsKOPsMultivalorTrasiego">
+          <Key>
+            <PropertyRef Name="IdWO" />
+            <PropertyRef Name="CodWO" />
+            <PropertyRef Name="Recalcular" />
+            <PropertyRef Name="IdTipoSubproceso" />
+            <PropertyRef Name="DescSubProceso" />
+            <PropertyRef Name="IdKOPMultivalor" />
+            <PropertyRef Name="CodKOP" />
+            <PropertyRef Name="DescKOP" />
+            <PropertyRef Name="MensajeKOP" />
+            <PropertyRef Name="TipodatoMaestroKOP" />
+            <PropertyRef Name="Unidad" />
+            <PropertyRef Name="IdTipoKOPMultivalor" />
+            <PropertyRef Name="DescTipoKOPMultivalor" />
+            <PropertyRef Name="IdEstadoKOP" />
+            <PropertyRef Name="DescEstadoKOP" />
+            <PropertyRef Name="ColorEstadoKOP" />
+            <PropertyRef Name="IdValorKOPMultivalor" />
+            <PropertyRef Name="Posicion" />
+            <PropertyRef Name="IdEstadoValorKOP" />
+            <PropertyRef Name="ColorEstadoValorKOP" />
+          </Key>
+          <Property Name="IdWO" Type="Int32" Nullable="false" />
+          <Property Name="CodWO" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Recalcular" Type="Boolean" Nullable="false" />
+          <Property Name="IdTipoSubproceso" Type="Int32" Nullable="false" />
+          <Property Name="DescSubProceso" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IdKOPMultivalor" Type="Int32" Nullable="false" />
+          <Property Name="CodKOP" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="DescKOP" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="MensajeKOP" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="TipodatoMaestroKOP" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Unidad" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="IdTipoKOPMultivalor" Type="Int32" Nullable="false" />
+          <Property Name="DescTipoKOPMultivalor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdEstadoKOP" Type="Int32" Nullable="false" />
+          <Property Name="DescEstadoKOP" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ColorEstadoKOP" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="IdValorKOPMultivalor" Type="Int32" Nullable="false" />
+          <Property Name="ValorMin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Valor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ValorMax" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Posicion" Type="Int32" Nullable="false" />
+          <Property Name="IdEstadoValorKOP" Type="Int32" Nullable="false" />
+          <Property Name="ColorEstadoValorKOP" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="FechaActualizado" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="vMaestroUbicaciones">
+          <Key>
+            <PropertyRef Name="IdUbicacion" />
+          </Key>
+          <Property Name="IdUbicacion" Type="Int32" Nullable="false" />
+          <Property Name="CodUbicacion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DescUbicacion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IdTipoUbicacion" Type="Int32" />
+          <Property Name="DescTipoUbicacion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EnumDescTipoUbicacion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IdAlmacen" Type="Int32" />
+          <Property Name="DescAlmacen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IdZonaUbicacion" Type="Int32" />
+          <Property Name="IdZona" Type="Int32" />
+          <Property Name="DescZona" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IdTipoZona" Type="Int32" />
+          <Property Name="DescTipoZona" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IdClaseMaterial" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vMaestroMateriales">
+          <Key>
+            <PropertyRef Name="IdMaterial" />
+            <PropertyRef Name="Origen" />
+          </Key>
+          <Property Name="IdMaterial" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="IdClase" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Clase" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Version" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="UdMedida" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="F_EfectivoDesde" Type="DateTime" Precision="3" />
+          <Property Name="F_EfectivoDesdeUTC" Type="DateTime" Precision="3" />
+          <Property Name="F_EfectivoHasta" Type="DateTime" Precision="3" />
+          <Property Name="F_EfectivoHastaUTC" Type="DateTime" Precision="3" />
+          <Property Name="EnUso" Type="Boolean" />
+          <Property Name="Autor" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="FechaCreacionUTC" Type="DateTime" Precision="3" />
+          <Property Name="FechaUltCreacion" Type="DateTime" Precision="3" />
+          <Property Name="FechaUltCreacionUTC" Type="DateTime" Precision="3" />
+          <Property Name="ModificadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="InfoAdicional" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DescTipo" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="PK_Material" Type="Int32" />
+          <Property Name="BOM" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Origen" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vListadoWOsCoccion">
+          <Key>
+            <PropertyRef Name="IdWO" />
+            <PropertyRef Name="CodWO" />
+            <PropertyRef Name="IdUbicacion" />
+            <PropertyRef Name="IdTipoWO" />
+            <PropertyRef Name="DescTipoWO" />
+            <PropertyRef Name="IdEstadoWO" />
+            <PropertyRef Name="DescEstadoWO" />
+            <PropertyRef Name="ColorEstadoWO" />
+            <PropertyRef Name="IdEstadoLIMS" />
+            <PropertyRef Name="DescEstadoLIMS" />
+            <PropertyRef Name="ColorEstadoLIMS" />
+            <PropertyRef Name="IdEstadoKOP" />
+            <PropertyRef Name="ColorEstadoKOP" />
+            <PropertyRef Name="DescEstadoKOP" />
+            <PropertyRef Name="Recalcular" />
+            <PropertyRef Name="Anio" />
+          </Key>
+          <Property Name="IdWO" Type="Int32" Nullable="false" />
+          <Property Name="CodWO" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="LoteMES" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaInicioPlan" Type="DateTime" Precision="3" />
+          <Property Name="FechaFinPlan" Type="DateTime" Precision="3" />
+          <Property Name="CantidadPlan" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="FechaInicioReal" Type="DateTime" Precision="3" />
+          <Property Name="FechaFinReal" Type="DateTime" Precision="3" />
+          <Property Name="CantidadReal" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="NotasWO" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="IdUbicacion" Type="Int32" Nullable="false" />
+          <Property Name="DescZona" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IdTipoWO" Type="Int32" Nullable="false" />
+          <Property Name="DescTipoWO" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IdEstadoWO" Type="Int32" Nullable="false" />
+          <Property Name="DescEstadoWO" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ColorEstadoWO" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="IdEstadoLIMS" Type="Int32" Nullable="false" />
+          <Property Name="DescEstadoLIMS" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ColorEstadoLIMS" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="NCoccion" Type="Int32" />
+          <Property Name="ExtractoSeco" Type="Double" />
+          <Property Name="EficienciaCoccion" Type="Double" />
+          <Property Name="IdMaterial" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DescMaterial" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="UdMedida" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="IdEstadoKOP" Type="Int32" Nullable="false" />
+          <Property Name="ColorEstadoKOP" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="DescEstadoKOP" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Recalcular" Type="Boolean" Nullable="false" />
+          <Property Name="FechaActualizado" Type="DateTime" Precision="3" />
+          <Property Name="Anio" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MES_MSM_FabricacionModelStoreContainer" CdmEntityContainer="MESFabEntities">
+          <EntitySetMapping Name="WOPlanificadas">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.WOPlanificadas">
+              <MappingFragment StoreEntitySet="WOPlanificadas">
+                <ScalarProperty Name="IdZonaOrigen" ColumnName="IdZonaOrigen" />
+                <ScalarProperty Name="IdWOPlanificada" ColumnName="IdWOPlanificada" />
+                <ScalarProperty Name="FechaInicioPlan" ColumnName="FechaInicioPlan" />
+                <ScalarProperty Name="FechaFinPlan" ColumnName="FechaFinPlan" />
+                <ScalarProperty Name="CantidadPlan" ColumnName="CantidadPlan" />
+                <ScalarProperty Name="NotasWO" ColumnName="NotasWO" />
+                <ScalarProperty Name="Procesado" ColumnName="Procesado" />
+                <ScalarProperty Name="IdUbicacionOrigen" ColumnName="IdUbicacionOrigen" />
+                <ScalarProperty Name="IdUbicacionDestino" ColumnName="IdUbicacionDestino" />
+                <ScalarProperty Name="IdTipoWO" ColumnName="IdTipoWO" />
+                <ScalarProperty Name="IdWO" ColumnName="IdWO" />
+                <ScalarProperty Name="FechaActualizado" ColumnName="FechaActualizado" />
+                <ScalarProperty Name="IdMaterial" ColumnName="IdMaterial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposWO">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.TiposWO">
+              <MappingFragment StoreEntitySet="TiposWO">
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="DescTipoWO" ColumnName="DescTipoWO" />
+                <ScalarProperty Name="CodWO" ColumnName="CodWO" />
+                <ScalarProperty Name="IdTipoWO" ColumnName="IdTipoWO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subprocesos">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.Subprocesos">
+              <MappingFragment StoreEntitySet="Subprocesos">
+                <ScalarProperty Name="IdTipoSubproceso" ColumnName="IdTipoSubproceso" />
+                <ScalarProperty Name="IdWO" ColumnName="IdWO" />
+                <ScalarProperty Name="LoteSAI" ColumnName="LoteSAI" />
+                <ScalarProperty Name="FechaActualizado" ColumnName="FechaActualizado" />
+                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="IdSubproceso" ColumnName="IdSubproceso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposSubprocesos">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.TiposSubprocesos">
+              <MappingFragment StoreEntitySet="TiposSubprocesos">
+                <ScalarProperty Name="IdTipoWO" ColumnName="IdTipoWO" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="DescSubProceso" ColumnName="DescSubProceso" />
+                <ScalarProperty Name="IdTipoSubproceso" ColumnName="IdTipoSubproceso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OLTPMensajes">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.OLTPMensajes">
+              <MappingFragment StoreEntitySet="OLTPMensajes">
+                <ScalarProperty Name="FechaActualizado" ColumnName="FechaActualizado" />
+                <ScalarProperty Name="FechaLote" ColumnName="FechaLote" />
+                <ScalarProperty Name="Procesado" ColumnName="Procesado" />
+                <ScalarProperty Name="FracSec" ColumnName="FracSec" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Lote" ColumnName="Lote" />
+                <ScalarProperty Name="Modulo" ColumnName="Modulo" />
+                <ScalarProperty Name="IdOLTPMensaje" ColumnName="IdOLTPMensaje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vListadoWOsKOPsCoccion">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.vListadoWOsKOPsCoccion">
+              <MappingFragment StoreEntitySet="vListadoWOsKOPsCoccion">
+                <ScalarProperty Name="FechaActualizado" ColumnName="FechaActualizado" />
+                <ScalarProperty Name="Editable" ColumnName="Editable" />
+                <ScalarProperty Name="ColorEstadoKOP" ColumnName="ColorEstadoKOP" />
+                <ScalarProperty Name="DescEstadoKOP" ColumnName="DescEstadoKOP" />
+                <ScalarProperty Name="IdEstadoKOP" ColumnName="IdEstadoKOP" />
+                <ScalarProperty Name="DescTipoKOP" ColumnName="DescTipoKOP" />
+                <ScalarProperty Name="IdTipoKOP" ColumnName="IdTipoKOP" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="TipodatoKOP" ColumnName="TipodatoKOP" />
+                <ScalarProperty Name="ValorMax" ColumnName="ValorMax" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="ValorMin" ColumnName="ValorMin" />
+                <ScalarProperty Name="MensajeKOP" ColumnName="MensajeKOP" />
+                <ScalarProperty Name="DescKOP" ColumnName="DescKOP" />
+                <ScalarProperty Name="CodKOP" ColumnName="CodKOP" />
+                <ScalarProperty Name="IdKOP" ColumnName="IdKOP" />
+                <ScalarProperty Name="DescSubProceso" ColumnName="DescSubProceso" />
+                <ScalarProperty Name="IdTipoSubproceso" ColumnName="IdTipoSubproceso" />
+                <ScalarProperty Name="Recalcular" ColumnName="Recalcular" />
+                <ScalarProperty Name="CodWO" ColumnName="CodWO" />
+                <ScalarProperty Name="IdWO" ColumnName="IdWO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KOPs">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.KOPs">
+              <MappingFragment StoreEntitySet="KOPs">
+                <ScalarProperty Name="IdMaestroKOP" ColumnName="IdMaestroKOP" />
+                <ScalarProperty Name="IdWO" ColumnName="IdWO" />
+                <ScalarProperty Name="IdEstadoKOP" ColumnName="IdEstadoKOP" />
+                <ScalarProperty Name="FechaActualizado" ColumnName="FechaActualizado" />
+                <ScalarProperty Name="ValorMax" ColumnName="ValorMax" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="ValorMin" ColumnName="ValorMin" />
+                <ScalarProperty Name="IdKOP" ColumnName="IdKOP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vEstadoKOP_WO">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.vEstadoKOP_WO">
+              <MappingFragment StoreEntitySet="vEstadoKOP_WO">
+                <ScalarProperty Name="IdEstadoKOP" ColumnName="IdEstadoKOP" />
+                <ScalarProperty Name="CodWO" ColumnName="CodWO" />
+                <ScalarProperty Name="IdWO" ColumnName="IdWO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadosKOP">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.EstadosKOP">
+              <MappingFragment StoreEntitySet="EstadosKOP">
+                <ScalarProperty Name="ColorEstadoKOP" ColumnName="ColorEstadoKOP" />
+                <ScalarProperty Name="DescEstadoKOP" ColumnName="DescEstadoKOP" />
+                <ScalarProperty Name="IdEstadoKOP" ColumnName="IdEstadoKOP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KOPsMultivalor">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.KOPsMultivalor">
+              <MappingFragment StoreEntitySet="KOPsMultivalor">
+                <ScalarProperty Name="IdWO" ColumnName="IdWO" />
+                <ScalarProperty Name="IdEstadoKOP" ColumnName="IdEstadoKOP" />
+                <ScalarProperty Name="FechaActualizado" ColumnName="FechaActualizado" />
+                <ScalarProperty Name="IdMaestroKOPMultivalor" ColumnName="IdMaestroKOPMultivalor" />
+                <ScalarProperty Name="IdKOPMultivalor" ColumnName="IdKOPMultivalor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ValoresKOPsMultivalor">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.ValoresKOPsMultivalor">
+              <MappingFragment StoreEntitySet="ValoresKOPsMultivalor">
+                <ScalarProperty Name="IdEstadoValorKOP" ColumnName="IdEstadoValorKOP" />
+                <ScalarProperty Name="IdMaestroValorKOPMultivalor" ColumnName="IdMaestroValorKOPMultivalor" />
+                <ScalarProperty Name="IdKOPMultivalor" ColumnName="IdKOPMultivalor" />
+                <ScalarProperty Name="FechaActualizado" ColumnName="FechaActualizado" />
+                <ScalarProperty Name="ValorMax" ColumnName="ValorMax" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="ValorMin" ColumnName="ValorMin" />
+                <ScalarProperty Name="IdValorKOPMultivalor" ColumnName="IdValorKOPMultivalor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposKOPMultivalor">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.TiposKOPMultivalor">
+              <MappingFragment StoreEntitySet="TiposKOPMultivalor">
+                <ScalarProperty Name="DescTipoKOPMultivalor" ColumnName="DescTipoKOPMultivalor" />
+                <ScalarProperty Name="IdTipoKOPMultivalor" ColumnName="IdTipoKOPMultivalor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VariablesFormulaKOP">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.VariablesFormulaKOP">
+              <MappingFragment StoreEntitySet="VariablesFormulaKOP">
+                <ScalarProperty Name="FechaActualizado" ColumnName="FechaActualizado" />
+                <ScalarProperty Name="VariableKOP" ColumnName="VariableKOP" />
+                <ScalarProperty Name="IdMaestroKOPVariable" ColumnName="IdMaestroKOPVariable" />
+                <ScalarProperty Name="IdFormulaCalculoKOP" ColumnName="IdFormulaCalculoKOP" />
+                <ScalarProperty Name="IdMaestroKOP" ColumnName="IdMaestroKOP" />
+                <ScalarProperty Name="IdVariableFormulaKOP" ColumnName="IdVariableFormulaKOP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropiedadesWO">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.PropiedadesWO">
+              <MappingFragment StoreEntitySet="PropiedadesWO">
+                <ScalarProperty Name="FechaActualizado" ColumnName="FechaActualizado" />
+                <ScalarProperty Name="IdWO" ColumnName="IdWO" />
+                <ScalarProperty Name="TipoDatoPropiedadWO" ColumnName="TipoDatoPropiedadWO" />
+                <ScalarProperty Name="ValorPropiedadWO" ColumnName="ValorPropiedadWO" />
+                <ScalarProperty Name="DescPropiedadWO" ColumnName="DescPropiedadWO" />
+                <ScalarProperty Name="IdPropiedadWO" ColumnName="IdPropiedadWO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="API_ActualizarKOPSCalculados" FunctionName="MES_MSM_FabricacionModel.Store.API_ActualizarKOPSCalculados" />
+          <EntitySetMapping Name="MaestroKOPs">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.MaestroKOPs">
+              <MappingFragment StoreEntitySet="MaestroKOPs">
+                <ScalarProperty Name="IdZona" ColumnName="IdZona" />
+                <ScalarProperty Name="IdEstadoKOP" ColumnName="IdEstadoKOP" />
+                <ScalarProperty Name="Editable" ColumnName="Editable" />
+                <ScalarProperty Name="ValorMax" ColumnName="ValorMax" />
+                <ScalarProperty Name="ValorDefecto" ColumnName="ValorDefecto" />
+                <ScalarProperty Name="ValorMin" ColumnName="ValorMin" />
+                <ScalarProperty Name="FechaActualizado" ColumnName="FechaActualizado" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdTipoSubproceso" ColumnName="IdTipoSubproceso" />
+                <ScalarProperty Name="IdTipoKOP" ColumnName="IdTipoKOP" />
+                <ScalarProperty Name="TipodatoMaestroKOP" ColumnName="TipodatoMaestroKOP" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="MensajeKOP" ColumnName="MensajeKOP" />
+                <ScalarProperty Name="DescKOP" ColumnName="DescKOP" />
+                <ScalarProperty Name="CodKOP" ColumnName="CodKOP" />
+                <ScalarProperty Name="IdMaestroKOP" ColumnName="IdMaestroKOP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaestroKOPs_Mostos_Ubicacion">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.MaestroKOPs_Mostos_Ubicacion">
+              <MappingFragment StoreEntitySet="MaestroKOPs_Mostos_Ubicacion">
+                <ScalarProperty Name="IdZona" ColumnName="IdZona" />
+                <ScalarProperty Name="IdEstadoKOP" ColumnName="IdEstadoKOP" />
+                <ScalarProperty Name="FechaActualizado" ColumnName="FechaActualizado" />
+                <ScalarProperty Name="ValorMax" ColumnName="ValorMax" />
+                <ScalarProperty Name="ValorDefecto" ColumnName="ValorDefecto" />
+                <ScalarProperty Name="ValorMin" ColumnName="ValorMin" />
+                <ScalarProperty Name="IdMosto" ColumnName="IdMosto" />
+                <ScalarProperty Name="IdMaestroKOP" ColumnName="IdMaestroKOP" />
+                <ScalarProperty Name="IdMaestroKOP_Mosto_Ubicacion" ColumnName="IdMaestroKOP_Mosto_Ubicacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModulosSubprocesos">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.ModulosSubprocesos">
+              <MappingFragment StoreEntitySet="ModulosSubprocesos">
+                <ScalarProperty Name="IdZona" ColumnName="IdZona" />
+                <ScalarProperty Name="CodigoWO" ColumnName="CodigoWO" />
+                <ScalarProperty Name="IdTipoSubproceso" ColumnName="IdTipoSubproceso" />
+                <ScalarProperty Name="Modulo" ColumnName="Modulo" />
+                <ScalarProperty Name="IdModuloSubproceso" ColumnName="IdModuloSubproceso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WOs">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.WOs">
+              <MappingFragment StoreEntitySet="WOs">
+                <ScalarProperty Name="IdUbicacion" ColumnName="IdUbicacion" />
+                <ScalarProperty Name="Anio" ColumnName="Anio" />
+                <ScalarProperty Name="NumWO" ColumnName="NumWO" />
+                <ScalarProperty Name="Recalcular" ColumnName="Recalcular" />
+                <ScalarProperty Name="FechaActualizado" ColumnName="FechaActualizado" />
+                <ScalarProperty Name="IdEstadoLIMS" ColumnName="IdEstadoLIMS" />
+                <ScalarProperty Name="IdEstadoWO" ColumnName="IdEstadoWO" />
+                <ScalarProperty Name="IdTipoWO" ColumnName="IdTipoWO" />
+                <ScalarProperty Name="NotasWO" ColumnName="NotasWO" />
+                <ScalarProperty Name="CantidadReal" ColumnName="CantidadReal" />
+                <ScalarProperty Name="FechaFinReal" ColumnName="FechaFinReal" />
+                <ScalarProperty Name="FechaInicioReal" ColumnName="FechaInicioReal" />
+                <ScalarProperty Name="CantidadPlan" ColumnName="CantidadPlan" />
+                <ScalarProperty Name="FechaFinPlan" ColumnName="FechaFinPlan" />
+                <ScalarProperty Name="FechaInicioPlan" ColumnName="FechaInicioPlan" />
+                <ScalarProperty Name="LoteMES" ColumnName="LoteMES" />
+                <ScalarProperty Name="CodWO" ColumnName="CodWO" />
+                <ScalarProperty Name="IdWO" ColumnName="IdWO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaestroValoresKOPsMultivalor">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.MaestroValoresKOPsMultivalor">
+              <MappingFragment StoreEntitySet="MaestroValoresKOPsMultivalor">
+                <ScalarProperty Name="IdEstadoValorKOP" ColumnName="IdEstadoValorKOP" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Posicion" ColumnName="Posicion" />
+                <ScalarProperty Name="FechaActualizado" ColumnName="FechaActualizado" />
+                <ScalarProperty Name="IdMaestroKOPMultivalor" ColumnName="IdMaestroKOPMultivalor" />
+                <ScalarProperty Name="ValorMax" ColumnName="ValorMax" />
+                <ScalarProperty Name="ValorDefecto" ColumnName="ValorDefecto" />
+                <ScalarProperty Name="ValorMin" ColumnName="ValorMin" />
+                <ScalarProperty Name="DescValorKOP" ColumnName="DescValorKOP" />
+                <ScalarProperty Name="IdMaestroValorKOPMultivalor" ColumnName="IdMaestroValorKOPMultivalor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaestroKOPsMultivalor">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.MaestroKOPsMultivalor">
+              <MappingFragment StoreEntitySet="MaestroKOPsMultivalor">
+                <ScalarProperty Name="NKOPMultivalor" ColumnName="NKOPMultivalor" />
+                <ScalarProperty Name="CodKOP" ColumnName="CodKOP" />
+                <ScalarProperty Name="IdZona" ColumnName="IdZona" />
+                <ScalarProperty Name="IdEstadoKOP" ColumnName="IdEstadoKOP" />
+                <ScalarProperty Name="IdTipoKOPMultivalor" ColumnName="IdTipoKOPMultivalor" />
+                <ScalarProperty Name="FechaActualizado" ColumnName="FechaActualizado" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdTipoSubproceso" ColumnName="IdTipoSubproceso" />
+                <ScalarProperty Name="TipodatoMaestroKOP" ColumnName="TipodatoMaestroKOP" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="MensajeKOP" ColumnName="MensajeKOP" />
+                <ScalarProperty Name="DescKOP" ColumnName="DescKOP" />
+                <ScalarProperty Name="IdMaestroKOPMultivalor" ColumnName="IdMaestroKOPMultivalor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vListadoWOsKOPsMultivalorCoccion">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.vListadoWOsKOPsMultivalorCoccion">
+              <MappingFragment StoreEntitySet="vListadoWOsKOPsMultivalorCoccion">
+                <ScalarProperty Name="FechaActualizado" ColumnName="FechaActualizado" />
+                <ScalarProperty Name="ColorEstadoValorKOP" ColumnName="ColorEstadoValorKOP" />
+                <ScalarProperty Name="IdEstadoValorKOP" ColumnName="IdEstadoValorKOP" />
+                <ScalarProperty Name="Posicion" ColumnName="Posicion" />
+                <ScalarProperty Name="ValorMax" ColumnName="ValorMax" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="ValorMin" ColumnName="ValorMin" />
+                <ScalarProperty Name="IdValorKOPMultivalor" ColumnName="IdValorKOPMultivalor" />
+                <ScalarProperty Name="ColorEstadoKOP" ColumnName="ColorEstadoKOP" />
+                <ScalarProperty Name="DescEstadoKOP" ColumnName="DescEstadoKOP" />
+                <ScalarProperty Name="IdEstadoKOP" ColumnName="IdEstadoKOP" />
+                <ScalarProperty Name="DescTipoKOPMultivalor" ColumnName="DescTipoKOPMultivalor" />
+                <ScalarProperty Name="IdTipoKOPMultivalor" ColumnName="IdTipoKOPMultivalor" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="TipodatoMaestroKOP" ColumnName="TipodatoMaestroKOP" />
+                <ScalarProperty Name="MensajeKOP" ColumnName="MensajeKOP" />
+                <ScalarProperty Name="DescKOP" ColumnName="DescKOP" />
+                <ScalarProperty Name="CodKOP" ColumnName="CodKOP" />
+                <ScalarProperty Name="IdMaestroKOPMultivalor" ColumnName="IdMaestroKOPMultivalor" />
+                <ScalarProperty Name="IdKOPMultivalor" ColumnName="IdKOPMultivalor" />
+                <ScalarProperty Name="DescSubProceso" ColumnName="DescSubProceso" />
+                <ScalarProperty Name="IdTipoSubproceso" ColumnName="IdTipoSubproceso" />
+                <ScalarProperty Name="Recalcular" ColumnName="Recalcular" />
+                <ScalarProperty Name="CodWO" ColumnName="CodWO" />
+                <ScalarProperty Name="IdWO" ColumnName="IdWO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vListadoWOsKOPsMultivalorFermentacion">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.vListadoWOsKOPsMultivalorFermentacion">
+              <MappingFragment StoreEntitySet="vListadoWOsKOPsMultivalorFermentacion">
+                <ScalarProperty Name="IdMaestroKOPMultivalor" ColumnName="IdMaestroKOPMultivalor" />
+                <ScalarProperty Name="FechaActualizado" ColumnName="FechaActualizado" />
+                <ScalarProperty Name="ColorEstadoValorKOP" ColumnName="ColorEstadoValorKOP" />
+                <ScalarProperty Name="IdEstadoValorKOP" ColumnName="IdEstadoValorKOP" />
+                <ScalarProperty Name="Posicion" ColumnName="Posicion" />
+                <ScalarProperty Name="ValorMax" ColumnName="ValorMax" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="ValorMin" ColumnName="ValorMin" />
+                <ScalarProperty Name="IdValorKOPMultivalor" ColumnName="IdValorKOPMultivalor" />
+                <ScalarProperty Name="ColorEstadoKOP" ColumnName="ColorEstadoKOP" />
+                <ScalarProperty Name="DescEstadoKOP" ColumnName="DescEstadoKOP" />
+                <ScalarProperty Name="IdEstadoKOP" ColumnName="IdEstadoKOP" />
+                <ScalarProperty Name="DescTipoKOPMultivalor" ColumnName="DescTipoKOPMultivalor" />
+                <ScalarProperty Name="IdTipoKOPMultivalor" ColumnName="IdTipoKOPMultivalor" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="TipodatoMaestroKOP" ColumnName="TipodatoMaestroKOP" />
+                <ScalarProperty Name="MensajeKOP" ColumnName="MensajeKOP" />
+                <ScalarProperty Name="DescKOP" ColumnName="DescKOP" />
+                <ScalarProperty Name="CodKOP" ColumnName="CodKOP" />
+                <ScalarProperty Name="IdKOPMultivalor" ColumnName="IdKOPMultivalor" />
+                <ScalarProperty Name="DescSubProceso" ColumnName="DescSubProceso" />
+                <ScalarProperty Name="IdTipoSubproceso" ColumnName="IdTipoSubproceso" />
+                <ScalarProperty Name="Recalcular" ColumnName="Recalcular" />
+                <ScalarProperty Name="CodWO" ColumnName="CodWO" />
+                <ScalarProperty Name="IdWO" ColumnName="IdWO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vListadoWOsKOPsMultivalorTrasiego">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.vListadoWOsKOPsMultivalorTrasiego">
+              <MappingFragment StoreEntitySet="vListadoWOsKOPsMultivalorTrasiego">
+                <ScalarProperty Name="FechaActualizado" ColumnName="FechaActualizado" />
+                <ScalarProperty Name="ColorEstadoValorKOP" ColumnName="ColorEstadoValorKOP" />
+                <ScalarProperty Name="IdEstadoValorKOP" ColumnName="IdEstadoValorKOP" />
+                <ScalarProperty Name="Posicion" ColumnName="Posicion" />
+                <ScalarProperty Name="ValorMax" ColumnName="ValorMax" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="ValorMin" ColumnName="ValorMin" />
+                <ScalarProperty Name="IdValorKOPMultivalor" ColumnName="IdValorKOPMultivalor" />
+                <ScalarProperty Name="ColorEstadoKOP" ColumnName="ColorEstadoKOP" />
+                <ScalarProperty Name="DescEstadoKOP" ColumnName="DescEstadoKOP" />
+                <ScalarProperty Name="IdEstadoKOP" ColumnName="IdEstadoKOP" />
+                <ScalarProperty Name="DescTipoKOPMultivalor" ColumnName="DescTipoKOPMultivalor" />
+                <ScalarProperty Name="IdTipoKOPMultivalor" ColumnName="IdTipoKOPMultivalor" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="TipodatoMaestroKOP" ColumnName="TipodatoMaestroKOP" />
+                <ScalarProperty Name="MensajeKOP" ColumnName="MensajeKOP" />
+                <ScalarProperty Name="DescKOP" ColumnName="DescKOP" />
+                <ScalarProperty Name="CodKOP" ColumnName="CodKOP" />
+                <ScalarProperty Name="IdKOPMultivalor" ColumnName="IdKOPMultivalor" />
+                <ScalarProperty Name="DescSubProceso" ColumnName="DescSubProceso" />
+                <ScalarProperty Name="IdTipoSubproceso" ColumnName="IdTipoSubproceso" />
+                <ScalarProperty Name="Recalcular" ColumnName="Recalcular" />
+                <ScalarProperty Name="CodWO" ColumnName="CodWO" />
+                <ScalarProperty Name="IdWO" ColumnName="IdWO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vMaestroUbicaciones">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.vMaestroUbicaciones">
+              <MappingFragment StoreEntitySet="vMaestroUbicaciones">
+                <ScalarProperty Name="IdClaseMaterial" ColumnName="IdClaseMaterial" />
+                <ScalarProperty Name="DescTipoZona" ColumnName="DescTipoZona" />
+                <ScalarProperty Name="IdTipoZona" ColumnName="IdTipoZona" />
+                <ScalarProperty Name="DescZona" ColumnName="DescZona" />
+                <ScalarProperty Name="IdZona" ColumnName="IdZona" />
+                <ScalarProperty Name="IdZonaUbicacion" ColumnName="IdZonaUbicacion" />
+                <ScalarProperty Name="DescAlmacen" ColumnName="DescAlmacen" />
+                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
+                <ScalarProperty Name="EnumDescTipoUbicacion" ColumnName="EnumDescTipoUbicacion" />
+                <ScalarProperty Name="DescTipoUbicacion" ColumnName="DescTipoUbicacion" />
+                <ScalarProperty Name="IdTipoUbicacion" ColumnName="IdTipoUbicacion" />
+                <ScalarProperty Name="DescUbicacion" ColumnName="DescUbicacion" />
+                <ScalarProperty Name="CodUbicacion" ColumnName="CodUbicacion" />
+                <ScalarProperty Name="IdUbicacion" ColumnName="IdUbicacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spReplanificarWOCoccion" FunctionName="MES_MSM_FabricacionModel.Store.spReplanificarWOCoccion" />
+          <EntitySetMapping Name="vMaestroMateriales">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.vMaestroMateriales">
+              <MappingFragment StoreEntitySet="vMaestroMateriales">
+                <ScalarProperty Name="Origen" ColumnName="Origen" />
+                <ScalarProperty Name="BOM" ColumnName="BOM" />
+                <ScalarProperty Name="PK_Material" ColumnName="PK_Material" />
+                <ScalarProperty Name="DescTipo" ColumnName="DescTipo" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="InfoAdicional" ColumnName="InfoAdicional" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaUltCreacionUTC" ColumnName="FechaUltCreacionUTC" />
+                <ScalarProperty Name="FechaUltCreacion" ColumnName="FechaUltCreacion" />
+                <ScalarProperty Name="FechaCreacionUTC" ColumnName="FechaCreacionUTC" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="Autor" ColumnName="Autor" />
+                <ScalarProperty Name="EnUso" ColumnName="EnUso" />
+                <ScalarProperty Name="F_EfectivoHastaUTC" ColumnName="F_EfectivoHastaUTC" />
+                <ScalarProperty Name="F_EfectivoHasta" ColumnName="F_EfectivoHasta" />
+                <ScalarProperty Name="F_EfectivoDesdeUTC" ColumnName="F_EfectivoDesdeUTC" />
+                <ScalarProperty Name="F_EfectivoDesde" ColumnName="F_EfectivoDesde" />
+                <ScalarProperty Name="UdMedida" ColumnName="UdMedida" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Clase" ColumnName="Clase" />
+                <ScalarProperty Name="IdClase" ColumnName="IdClase" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdMaterial" ColumnName="IdMaterial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vListadoWOsCoccion">
+            <EntityTypeMapping TypeName="MES_MSM_FabricacionModel.vListadoWOsCoccion">
+              <MappingFragment StoreEntitySet="vListadoWOsCoccion">
+                <ScalarProperty Name="Anio" ColumnName="Anio" />
+                <ScalarProperty Name="FechaActualizado" ColumnName="FechaActualizado" />
+                <ScalarProperty Name="Recalcular" ColumnName="Recalcular" />
+                <ScalarProperty Name="DescEstadoKOP" ColumnName="DescEstadoKOP" />
+                <ScalarProperty Name="ColorEstadoKOP" ColumnName="ColorEstadoKOP" />
+                <ScalarProperty Name="IdEstadoKOP" ColumnName="IdEstadoKOP" />
+                <ScalarProperty Name="UdMedida" ColumnName="UdMedida" />
+                <ScalarProperty Name="DescMaterial" ColumnName="DescMaterial" />
+                <ScalarProperty Name="IdMaterial" ColumnName="IdMaterial" />
+                <ScalarProperty Name="EficienciaCoccion" ColumnName="EficienciaCoccion" />
+                <ScalarProperty Name="ExtractoSeco" ColumnName="ExtractoSeco" />
+                <ScalarProperty Name="NCoccion" ColumnName="NCoccion" />
+                <ScalarProperty Name="ColorEstadoLIMS" ColumnName="ColorEstadoLIMS" />
+                <ScalarProperty Name="DescEstadoLIMS" ColumnName="DescEstadoLIMS" />
+                <ScalarProperty Name="IdEstadoLIMS" ColumnName="IdEstadoLIMS" />
+                <ScalarProperty Name="ColorEstadoWO" ColumnName="ColorEstadoWO" />
+                <ScalarProperty Name="DescEstadoWO" ColumnName="DescEstadoWO" />
+                <ScalarProperty Name="IdEstadoWO" ColumnName="IdEstadoWO" />
+                <ScalarProperty Name="DescTipoWO" ColumnName="DescTipoWO" />
+                <ScalarProperty Name="IdTipoWO" ColumnName="IdTipoWO" />
+                <ScalarProperty Name="DescZona" ColumnName="DescZona" />
+                <ScalarProperty Name="IdUbicacion" ColumnName="IdUbicacion" />
+                <ScalarProperty Name="NotasWO" ColumnName="NotasWO" />
+                <ScalarProperty Name="CantidadReal" ColumnName="CantidadReal" />
+                <ScalarProperty Name="FechaFinReal" ColumnName="FechaFinReal" />
+                <ScalarProperty Name="FechaInicioReal" ColumnName="FechaInicioReal" />
+                <ScalarProperty Name="CantidadPlan" ColumnName="CantidadPlan" />
+                <ScalarProperty Name="FechaFinPlan" ColumnName="FechaFinPlan" />
+                <ScalarProperty Name="FechaInicioPlan" ColumnName="FechaInicioPlan" />
+                <ScalarProperty Name="LoteMES" ColumnName="LoteMES" />
+                <ScalarProperty Name="CodWO" ColumnName="CodWO" />
+                <ScalarProperty Name="IdWO" ColumnName="IdWO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,32 @@
+﻿<style>
+    #btnAceptarAjuste {
+        float: left;
+        margin-left: 140px;
+    }
+
+    #btnCancelarAjuste {
+        float: left;
+        margin-left: 20px;
+    }
+</style>
+
+<div>
+    <form id="CrearAjusteManual">
+        <div style="float: left; background-color: transparent; border: 0; margin-top: 10px;">
+            <div style="float: left; border: 0;">
+                <label id="lblCaja" style="width: 100px; text-align: right;"></label>
+                <select id="cmbCaja" style="width: 270px" />
+            </div>
+            <br /><br /><br />
+            <div style="float: left; border: 0;">
+                <label id="lblCantidad" style="width: 100px; text-align: right;"></label>
+                <input type="text" style="width: 270px" id="ntxtCantidad" name="txtCantidad" data-type="number" data-role="numerictextbox" required />
+            </div>
+            <br /><br /><br />
+            <div>
+                <input type="button" id="btnAceptarAjuste" value="Aceptar" />
+                <input type="button" id="btnCancelarAjuste" value="Cancelar" />
+            </div>
+        </div>
+    </form>
+</div>

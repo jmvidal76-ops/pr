@@ -1,0 +1,61 @@
+﻿<style>
+    #divGrids {
+        height: 60%;
+        padding: 2%;
+    }
+
+    #divIzquierda {
+        float: left;
+        width: 48%;
+    }
+
+    #divDerecha {
+        float: right;
+        width: 48%;
+    }
+
+    .divTitulos {
+        padding-bottom: 1em;
+    }
+
+    .spTitulos {
+        font-size: 16px;
+    }
+
+    #gridMostos {
+        margin-top: 64px
+    }
+</style>
+
+<div id="divImportar">
+    <!-- Izquierda-->
+    <div id="divGrids">
+        <div id="divIzquierda">
+            <div class="divTitulos">
+                <span class="spTitulos"><b><% print(window.app.idioma.t("SELECCION_KOPS_MATERIAL")) %></b></span>
+            </div>
+            <div class="form-group">
+                <label for="ddlMaterial">Material</label>
+                <input id="ddlMaterial" name="ddlMaterial" style="width: 100%" />
+            </div>  
+            <div id="gridKOPs"></div>
+            <div style="margin-top: 3%; text-align:center">
+                <!--<span id="lblError" style="color: red;"></span>-->
+            </div>
+        </div>
+        <div></div>
+        <!-- Derecha-->
+        <div id="divDerecha">
+            <div class="divTitulos">
+                <span class="spTitulos"><b><% print(window.app.idioma.t("SELECCION_MATERIAL_DESTINO")) %></b></span>
+            </div>
+            <div id="gridMostos"></div>
+        </div>
+    </div>
+    <div id="divBotones" style="float:left; width:60%; text-align:center; margin-left:20%; padding-top:2%">
+        <div>
+            <button id="btnAceptar" class='k-button k-button-icontext'><% print(window.app.idioma.t("ACEPTAR")) %></button>
+            <button id="btnCancelar" class='k-button k-button-icontext'><% print(window.app.idioma.t("CANCELAR")) %></button>
+        </div>
+    </div>
+</div>

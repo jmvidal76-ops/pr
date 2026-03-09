@@ -1,0 +1,130 @@
+﻿<style type="text/css">
+
+    #CrearWO > div {
+        min-height: 60px;
+        padding: 5px
+    }
+
+    .tdPadding {
+        padding-top: 10px !important;
+    }
+
+    .table th, .table td {
+        border-top: none !important;
+        /*text-align: right;*/
+    }
+
+    .table tr {
+        height: 60px !important;
+    }
+
+    .table input, textarea {
+        /*margin-left: 5px !important;*/
+        width: 120px;
+    }
+
+    #btnAceptar, #btnCancelar {
+        height: 30px;
+        width: 30%;
+        /*float:left;*/
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+
+    /*.k-grid .k-state-selected { background-color:lightyellow; }*/
+
+
+    .k-autocomplete,
+    .k-combobox,
+    .k-datepicker,
+    .k-timepicker,
+    .k-datetimepicker,
+    .k-colorpicker,
+    .k-numerictextbox,
+    .k-dropdown,
+    .k-selectbox,
+    .k-textbox,
+    .k-toolbar .k-split-button {
+        width: 100% !important;
+    }
+
+    #dlgCrearWO {
+        overflow: hidden !important;
+    }
+
+    .k-numerictextbox {
+        width: 100% !important;
+    }
+
+        /*.k-numerictextbox .k-numeric-wrap .k-input {
+            width: 96% !important;
+        }*/
+</style>
+
+<div style="width: 98%; margin: 0px; padding: 0px; overflow: hidden">
+    <form id="CrearWO">
+        <table class="table borderless">
+            <tbody>
+                <tr>
+                    <td style="width: 23% !important;" class="tdPadding"><label id="lblNumero"></label></td>
+                    <td style="width: 73% !important;">
+                        <input id="txtNumeroTipo" type="text" name="txtNumeroTipo" />
+                        <br />
+                        <span id="lblErrorNumero" class="error" style="color: red"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 23% !important;" class="tdPadding"><label><% print(window.app.idioma.t('FECHA_INICIO')) %></label></td>
+                    <td style="width: 97% !important; justify-content: space-between;">
+                        <input id="dtpFechaInicio" name="dtpFechaInicio" />
+                        <br />
+                        <span id="lblErrorFechaInicio" class="error" style="color: red"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 23% !important;" class="tdPadding"><label><% print(window.app.idioma.t('FECHA_FIN')) %></label></td>
+                    <td style="width: 97% !important; justify-content: space-between;">
+                        <input id="dtpFechaFin" name="dtpFechaFin" />
+                        <br/>
+                        <span id="lblErrorFechaFin" class="error" style="color: red"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 23% !important;" class="tdPadding"><label><% print(window.app.idioma.t('MATERIAL')) %></label></td>
+                    <td style="width: 73% !important;">
+                        <select id="cmbMaterial" name="cmbMaterial" />
+                        <br />
+                        <span id="lblErrorMaterial" class="error" style="color: red"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 23% !important;" class="tdPadding"><label><% print(window.app.idioma.t('SALA_COCCION')) %></label></td>
+                    <td style="width: 73% !important;">
+                        <select id="cmbSala" name="cmbSala" />
+                        <br />
+                        <span id="lblErrorSala" class="error" style="color: red"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 23% !important;" class="tdPadding"><label><% print(window.app.idioma.t('NOTAS_ORDEN')) %></label></td>
+                    <td style="width: 73% !important;">
+                        <textarea id="auxEditor" rows="7" style="width: 480px"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <span id="lblError" style="color: red; text-align:center;"></span>
+                        <div style="text-align: center; width: 100%;">
+                            <button id="btnAceptar"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+                            <button id="btnCancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>

@@ -1,0 +1,38 @@
+﻿<style>
+    .circle_cells {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-size: 25px 28px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 25px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-right: 5px;
+    }
+</style>
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('OEE_PLANIFICACION')) %></label>
+</div>
+<div id="divFiltros" class="k-header" style="height:35px;width:100%; padding-top:5px;">
+    <div style="float:left;margin-left:10px;height:25px;">
+        <label><% print(window.app.idioma.t('MEDIA_AC')) %></label>
+        <input type="text" id="txtMediaAC_Bar" style="width:120px;" maxlength="6" data-type="number" data-role="numerictextbox" required />
+        <label><% print(window.app.idioma.t('OEE_PLANIFICACION')) %></label>
+        <input type="text" id="txtOeePlanificado_Bar" style="width:120px;" maxlength="6" data-type="number" data-role="numerictextbox" required />
+        <label><% print(window.app.idioma.t('AJUSTE_OEE')) %></label>
+        <input type="text" id="txtAjusteOEE_Bar" style="width:120px;" maxlength="6" data-type="number" data-role="numerictextbox" required />
+        <label><% print(window.app.idioma.t('INHABILITAR_CALCULO_AC')) %></label>
+        <input type="checkbox" id="chkInhabilitarCalculoAC_Bar" style="width:30px; vertical-align:text-bottom" />
+        <label><% print(window.app.idioma.t('INHABILITAR_CALCULO_OEE')) %></label>
+        <input type="checkbox" id="chkInhabilitarCalculoOEE_Bar" style="width:30px; vertical-align:text-bottom" />
+        <button id="btnAsignarParametros" class="k-button k-button-icontext k-grid-add" style="background-color: green; color: white;">
+            <span class='k-icon k-add'></span><% print(window.app.idioma.t('ASIGNAR')) %>
+        </button>
+    </div>
+</div>
+<div id="gridOEEPlanificaciones"></div>
+

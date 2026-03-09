@@ -1,0 +1,129 @@
+﻿<style>
+    .bloqueZona {
+        width: 130px;
+        height: 150px;
+        background-color: #9FC5F8;
+        border-right: 1px solid #000000;
+        vertical-align: top;
+        border: 1px black solid;
+    }
+
+    .bloqueInfo {
+        background-color: #FFFFFF;
+        vertical-align: top;
+        border: 1px black solid;
+    }
+
+    .textoGrande {
+        line-height: 0.9em;
+        font-size: 40px;
+        font-weight: bold;
+    }
+
+    .textoMediano {
+        line-height: 0.9em;
+        font-size: 35px;
+        font-weight: normal;
+    }
+
+    .textoMedianoNegrita {
+        font-weight: bold;
+        line-height: 0.9em;
+        font-size: 1.9em;
+    }
+
+    .sinOper {
+        line-height: 150px;
+        font-size: 60px;
+        color: red;
+    }
+
+    .sinPaddingLateral {
+        padding-left: 0;
+        padding-right: 0;
+        z-index: 2;
+    }
+
+    .divProgressBar {
+        height: 148px;
+        width: 99.88%;
+        margin-top: 0px;
+        z-index: 1;
+        background-color: #FFFFFF;
+    }
+
+    .k-progressbar > .k-state-selected.k-complete,
+    .k-rtl .k-progressbar > .k-state-selected.k-complete {
+        border-radius: 0px;
+    }
+
+    .k-progressbar > .k-state-selected,
+    .k-rtl .k-progressbar > .k-state-selected.k-complete {
+        border-radius: 0px;
+    }
+</style>
+
+<table style="width: 99%; margin: 10px;">
+    <tr>
+        <td class="bloqueZona">
+            <table style="width: 130px;">
+                <tr>
+                    <td>
+                        <div class="textoGrande" style="color: #FFFFFF; padding-top:5px; width:100%; text-align: center;">
+                            <%= zona.ZonaCarga.Nombre %>
+                        </div>
+                        <div class="textoMedianoNegrita" style="color: #FFFFFF; padding-top:5px; width:100%; text-align: center;">
+                            <%= zona.ZonaCarga.Descripcion %>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td class="bloqueInfo col-md-12 sinPaddingLateral">
+            <% if(zona.SinOperacion){ %>
+            <div align="center">
+                <label id='lblSinOperacion' class="sinOper"><% print(window.app.idioma.t("SIN_OPERACION")) %></label>
+            </div>
+            <% } else { %>
+            <div id="info<%= zona.ZonaCarga.Id %>" class="divProgressBar">
+                <div align="center" class="col-md-3 sinPaddingLateral">
+                    <div style="margin-top: 10px">
+                        <label id='lblMatricula' class="textoMediano"><% print(window.app.idioma.t("MATRICULA")) %>:</label>
+                    </div>
+                    <div style="line-height: 100px;">
+                        <span class="textoGrande"><%= zona.Matricula %></span>
+                    </div>
+                </div>
+                <div align="center" class="col-md-3 sinPaddingLateral">
+                    <div style="margin-top: 10px">
+                        <label id='lblOperacion' class="textoMediano"><% print(window.app.idioma.t("OPERACION")) %>:</label>
+                    </div>
+                    <div style="line-height: 100px;">
+                        <% if(zona.Detenido){ %>
+                        <span class="textoGrande" style="color:red"><%= zona.Operacion %></span>                     
+                        <% } else { %>
+                        <span class="textoGrande"><%= zona.Operacion %></span>
+                        <% } %>
+                    </div>
+                </div>
+                <div align="center" class="col-md-3 sinPaddingLateral">
+                    <div style="margin-top: 10px">
+                        <label id='lblPorcentaje' class="textoMediano"><% print(window.app.idioma.t("PORCENTAJE")) %>:</label>
+                    </div>
+                    <div style="line-height: 100px;">
+                        <span class="textoGrande"><%= zona.PorcentajeLlenado %>%</span>
+                    </div>
+                </div>
+                <div align="center" class="col-md-3 sinPaddingLateral">
+                    <div style="margin-top: 10px">
+                        <label id='lblTiempo' class="textoMediano"><% print(window.app.idioma.t("TIEMPO")) %>:</label>
+                    </div>
+                    <div style="line-height: 100px;">
+                        <span class="textoGrande"><%= zona.TiempoOperacion %></span>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        </td>
+    </tr>
+</table>

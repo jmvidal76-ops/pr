@@ -1,0 +1,151 @@
+﻿<style>
+    #formParoPerdida {
+        margin: 15px;
+    }
+
+    .tdSpan{
+        text-align: right !important;
+    }
+
+    .tablePerdida th, .tablePerdida td {
+        border-top: none !important;
+        text-align: left;
+        padding-right: 5px !important;
+    }
+
+    .tablePerdida tr {
+        height: 60px !important;
+    }
+
+    .tablePerdida input, textarea {
+        margin-left: 5px !important;
+        width: 120px;
+    }
+
+    #btnAceptar, #btnCancelar {
+        height: 55px;
+        width: 40%;
+        float: left;
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+    .tablePerdida, .tablePerdida td, .tablePerdida th {
+        border: none !important;
+    }
+
+    .bold {
+        font-style: normal;
+        font-weight: bold;
+        text-align: right;
+    }
+    /*.k-grid .k-state-selected { background-color:lightyellow; }*/
+</style>
+
+<div style="width: 98%; margin: 0px; padding: 0px;">
+
+    <table class="table borderless tablePerdida">
+        <tbody>
+            <tr>
+                <td class="tdSpan"><span class="bold"><% print(window.app.idioma.t("FECHA_HORAINICIO")) %>: </span></td>
+                <td>
+                    <label id="txtFecHoraVer" style="font-weight: normal !important;"><%= paro.fechaHora %></label></td>
+                <td class="tdSpan"><span class="bold"><% print(window.app.idioma.t("MAQUINA")) %>: </span></td>
+                <td>
+                    <label id="txtLineaVer" style="font-weight: normal !important;"><%=paro.descmaquina %></label></td>
+                <td class="tdSpan"><span class="bold"><% print(window.app.idioma.t("DURACION")) %>: </span></td>
+                <td>
+                    <label id="txtMaquinaVer" style="font-weight: normal !important;">
+                        <%if(paro.IdTipoParoPerdida==1){%>
+                    <%= paro.duracion %>
+                <%}else{%>    
+                    <%= paro.strDuracionPerdidaProduccion %>
+                <%}%></label>
+                </td>
+            </tr>
+             <%if(paro.IdTipoParoPerdida>1){%>
+            <tr>
+                <td class="tdSpan"><span class="bold"><% print(window.app.idioma.t("NUMERO_PAROS_MENORES")) %>:</span></td>
+                    <td>
+                    <label id="Label1" style="font-weight: normal !important;"><%=paro.NumeroParosMenores %></label></td>            
+                <td class="tdSpan"><span class="bold"><% print(window.app.idioma.t("DURACION_PAROS_MENORES")) %>:</span></td>
+                 <td>
+                    <label id="Label2" style="font-weight: normal !important;"><%= paro.StrDuracionParosMenores %></label></td>
+               <td class="tdSpan"><span class="bold"><% print(window.app.idioma.t("DURACION_BAJA_VELOCIDAD")) %>:</span></td>
+                <td>
+                    <label id="Label3" style="font-weight: normal !important;"><%= paro.StrDuracionPerdidas %></label></td>
+                </tr>
+            <%}%>
+            <tr>
+                <td class="tdSpan"><span class="bold"><% print(window.app.idioma.t("MOTIVO")) %>: </span></td>
+                <td>
+                    <label id="txtMotivoVer" style="font-weight: normal !important;"><%= paro.motivo %></label></td>
+                <td class="tdSpan"><span class="bold"><% print(window.app.idioma.t("CAUSA")) %>: </span></td>
+                <td>
+                    <label id="txtCausaVer" style="font-weight: normal !important;"><%= paro.causa %></label></td>
+                <td class="tdSpan"><span class="bold"><% print(window.app.idioma.t("MAQUINA_RESPONSABLE")) %>: </span></td>
+                <td>
+                    <label id="txtMaquinaResponsableVer" style="font-weight: normal !important;"><%= paro.nombreMaquinaResponsable %></label></td>
+            </tr>
+            <tr>
+                <td class="tdSpan"><span class="bold"><% print(window.app.idioma.t("EQUIPO_CONSTRUCTIVO")) %>: </span></td>
+                <td colspan="5">
+                    <label id="txtEqConstructivoVer" style="font-weight: normal !important;"><%= paro.nombreEquipoConstructivo %></label>
+                </td>
+            </tr>
+            <tr>
+                <td class="tdSpan"><span class="bold"><% print(window.app.idioma.t("DESCRIPCION")) %>: </span></td>
+                <td colspan="5">
+                    <label id="txtDescripcionVer" style="font-weight: normal !important;"><%= paro.descripcion %></label>
+                </td>
+            </tr>
+            <tr>
+                <td class="tdSpan"><span class="bold"><% print(window.app.idioma.t("OBSERVACIONES")) %>: </span></td>
+                <td colspan="5">
+                    <textarea id="txtObservacionesVer" style="width: 100%; height: 100px;" readonly="readonly"><%= paro.observaciones %></textarea></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+</div>
+
+
+<!--<table class="table sinBordes" style="width:660px !important;">
+    <tbody>
+        <tr>
+            <td style="width:16% !important;"><% print(window.app.idioma.t("LINEA")) %></td>
+            <td style="width:16% !important;"><input id="txtLinea" type="text" /></td>
+            <td style="width:16% !important;"><% print(window.app.idioma.t("FECHA_HORA")) %></td>
+            <td style="width:16% !important;"><input id="txtFecHora" type="text" /></td>
+            <td style="width:16% !important;"><% print(window.app.idioma.t("MAQUINA")) %></td>
+            <td style="width:16% !important;"><input id="txtMaquina" type="text" /></td>
+        </tr>
+        <tr>
+            <td class="tdLabel"><% print(window.app.idioma.t("DURACION")) %></td>
+            <td><input id="txtLinea" type="text" /></td>
+            <td class="tdLabel"><% print(window.app.idioma.t("ESTADO_LINEA")) %></td>
+            <td><input id="txtFecHora" type="text" /></td>
+            <td class="tdLabel"><% print(window.app.idioma.t("EQ_CONSTRUCTIVO")) %></td>
+            <td><input id="txtMaquina" type="text" /></td>
+        </tr>
+        <tr>
+            <td class="tdLabel"><% print(window.app.idioma.t("MOTIVO")) %></td>
+            <td><input id="txtLinea" type="text" /></td>
+            <td class="tdLabel"><% print(window.app.idioma.t("CAUSA")) %></td>
+            <td><input id="txtFecHora" type="text" /></td>
+            <td class="tdLabel"><% print(window.app.idioma.t("MAQUINA_RESPONSABLE")) %></td>
+            <td><input id="txtMaquina" type="text" /></td>
+        </tr>
+        <tr>
+            <td class="tdLabel" style="width:16% !important;"><% print(window.app.idioma.t("DESCRIPCION")) %></td>
+            <td style="width:84%" colspan="5"><textarea id="txtDescripcion" style="width:100%;" /></td>
+        </tr>
+        <tr>
+            <td class="tdLabel" style="width:16% !important;"><% print(window.app.idioma.t("OBSERVACIONES")) %></td>
+            <td style="width:84%" colspan="5"><textarea id="txtObservaciones" style="width:100%;" /></td>
+        </tr>
+    </tbody>
+</table>-->
+

@@ -1,0 +1,29 @@
+﻿<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('ORDENES_ARRANQUE')) %></label>
+</div>
+
+<!-- Filtros Cambios -->
+<div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+    <div class="filtroFechas" style="float: left;">
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('DESDE')) %></label>
+        <input id="dtpFechaDesde" style="width: 100px;" />
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('HASTA')) %></label>
+        <input id="dtpFechaHasta" style="width: 100px;" />
+        <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+    </div>
+    <div style="float: right; margin-right: 10px;">
+        <button id="btnExportExcel" class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px;">
+            <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+        </button>
+        <button id="btnLimpiarFiltros" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;">
+            <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+        </button>
+        <button id="btnCrearOrdenArranque" class="k-button k-button-icontext k-grid-add" style="margin-left: 5px; background-color: green; color: white">
+            <span class="k-icon k-add"></span><% print(window.app.idioma.t('CREAR_ORDEN_ARRANQUE')) %>
+        </button>
+    </div>
+</div>
+
+<div id="gridSeleccionArranque"></div>

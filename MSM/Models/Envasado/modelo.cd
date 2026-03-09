@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="MSM.Models.Maquina" Collapsed="true">
+    <Position X="7" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABACBAAAACAAIACCYABAAAAgQABBAAAAAUAAAgqAEgA=</HashCode>
+      <FileName>Models\Maquina.cs</FileName>
+      <NewMemberFileName>Models\Planta.cs</NewMemberFileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_tipo" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="_ordenes" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="MSM.Models.Linea" Collapsed="true">
+    <Position X="1.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACQTAAgAEAAAACAYQBAAAAABAAAIAAACAAABAIEEgA=</HashCode>
+      <FileName>Models\Linea.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="_zonas" />
+      <Field Name="_parametros" />
+      <Field Name="_arranques" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="MSM.Models.Planta" Collapsed="true">
+    <Position X="0.5" Y="1.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AQAAIAAAAEBAIACAAAAAAAAAAAAFAAAAAAAIAAIAEAA=</HashCode>
+      <FileName>Models\Planta.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_turnoActual" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="_lineas" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="MSM.Models.Turno" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAHBAAAAaAAIAAC4ABAAAAgQABBAIAggAEAAAiAAAA=</HashCode>
+      <FileName>Models\Turno.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_tipo" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MSM.Models.Orden" Collapsed="true">
+    <Position X="9" Y="4.25" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AIAAAAABCABABABAgANQACAAAQgAACIIAZACAIBCAxA=</HashCode>
+      <FileName>Models\Orden.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_estadoActual" />
+      <Field Name="_producto" />
+      <Field Name="_dispMatPackaging" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MSM.Models.TipoMaquina" Collapsed="true">
+    <Position X="8.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAABAAAAAAAAAAAAAAAAAAAIAAgA=</HashCode>
+      <FileName>Models\TipoMaquina.cs</FileName>
+      <NewMemberFileName>Models\TipoTurno.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MSM.Models.Producto" Collapsed="true">
+    <Position X="11.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAQAACAAEAAAAAAAAAAAAAAAAAAAAoAABA=</HashCode>
+      <FileName>Models\Producto.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_tipoProducto" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="_materiales" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="MSM.Models.TipoProducto" Collapsed="true">
+    <Position X="11.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAABAAAAAAAAAAAAAAAAAAAIAAgA=</HashCode>
+      <FileName>Models\TipoProducto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MSM.Models.TipoTurno" Collapsed="true">
+    <Position X="0.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAABAAAAAAAAAAAAAAAAAAAIAAgA=</HashCode>
+      <FileName>Models\TipoTurno.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MSM.Models.EstadoOrden" Collapsed="true">
+    <Position X="9" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAACAAABAAAAAAAAAAACAAAAAAAIAAgA=</HashCode>
+      <FileName>Models\EstadoOrden.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MSM.Models.NivelDisponibilidad" Collapsed="true">
+    <Position X="9" Y="5.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAACAAABAAAAAAAAAAACAAAAAAAIAAgA=</HashCode>
+      <FileName>Models\NivelDisponibilidad.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MSM.Models.ParoPerdida" Collapsed="true">
+    <Position X="5.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAEAAAABAEACIAAUEAVAAADAACAAAkAAQQAAAEAQCgA=</HashCode>
+      <FileName>Models\ParoPerdida.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MSM.Models.Material" Collapsed="true">
+    <Position X="14" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IEggBDAAAAggIAGEAAEAAgAKCCIBACCAAhAgYAIZBAA=</HashCode>
+      <FileName>Models\Material.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MSM.Models.ClaseMaterial" Collapsed="true">
+    <Position X="14" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAABAAAAAAAAAAAAAAAAAAAIAAgA=</HashCode>
+      <FileName>Models\ClaseMaterial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MSM.Models.ParametrosLinea" Collapsed="true">
+    <Position X="3.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABCAAAAAAABgAECAAAAAAAAAAAAAAAAAAIAAAAQEAAA=</HashCode>
+      <FileName>Models\ParametrosLinea.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MSM.Models.TiemposCambiosProducto" Collapsed="true">
+    <Position X="11.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAEAAABAAAIAAAAAACAAAA=</HashCode>
+      <FileName>Models\TiemposCambiosProducto.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_productoEntrante" />
+      <Field Name="_productoSaliente" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MSM.Models.TiemposArranque" Collapsed="true">
+    <Position X="4.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAEAAAABAAAAABAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Models\TiemposArranque.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_tipoArranque" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MSM.Models.TipoArranque" Collapsed="true">
+    <Position X="5.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\TipoArranque.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MSM.Models.Zona" Collapsed="true">
+    <Position X="4.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kAAAAAghAAAAAACAAABAAADEBIgAAoAAAEAAAAIAAgA=</HashCode>
+      <FileName>Models\Zona.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="_maquinas" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

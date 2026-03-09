@@ -1,0 +1,202 @@
+﻿<style type="text/css">
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        overflow: auto;
+    }
+
+    .cabeceraVista {
+        border: 1px solid black;
+        width: auto;
+        height: 26px;
+        background-color: darkred;
+        color: white;
+        padding: 3px;
+        padding-left: 10px;
+        font-size: 20px;
+    }
+
+    #divFiltrosHeader {
+        display: flex;
+        flex-wrap: wrap;
+        height: auto;
+    }
+
+    #divHTMLContenido {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    .grid-container {
+        padding: 40px;
+        margin: auto;
+        text-align: center;
+        max-width: 80%;
+        height: 77%;
+        overflow: hidden;
+    }
+
+    .k-picker-wrap {
+        width: 190px;
+    }
+
+    .k-grouping-header {
+        padding: 0;
+    }
+
+    .k-i-arrow-s {
+        margin-top: 10px;
+    }
+
+    .k-i-search {
+        margin-top: 5px;
+    }
+
+    .toolbar-left {
+        float: left;
+        gap: 6px;
+    }
+
+    .toolbar-right {
+        display: inline-flex;
+        float: right;
+        margin-top: 4px;
+        margin-right: 4px;
+    }
+
+    .circle_cells {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-size: 25px 28px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 25px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-right: 5px;
+    }
+
+    .k-grid-content {
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+
+    .k-grid-header th[data-field="Prioridad"], .k-grid-header th[data-field="CantidadPedir"] {
+        background-color: #ffcc80 !important;
+        color: #000 !important;
+        font-weight: bold !important;
+    }
+
+    .popup-ancho-especial.k-window {
+        min-width: 560px !important;
+    }
+
+    .popup-ancho-especial #botones {
+        display: flex;
+        margin-left: 20%;
+    }
+
+    .margenInf {
+        margin-bottom: 15px;
+    }
+
+    .divAncho {
+        min-width: 25px;
+    }
+
+    .divTexto {
+        margin-left: 5px;
+        font-size: 17px;
+    }
+
+    .sinBorde .list-group-item {
+        border: none;
+        display: flex;
+    }
+
+    .itemRojo {
+        background-color: #fb0101;
+    }
+
+    .itemAmarillo {
+        background-color: #f9f382;
+    }
+
+    .itemVerde {
+        background-color: #90EE90;
+    }
+
+    #gridCreacionPeticionesMMPPSmile {
+        height: 100% !important;
+        display: flex;
+        flex-direction: column;
+    }
+
+        #gridCreacionPeticionesMMPPSmile .k-grid-content {
+            flex: 1 1 auto;
+            overflow: auto;
+        }
+</style>
+
+<div id="window" style="display:none">
+    <span id="barcode" class="barcode"></span>
+</div>
+
+
+<script type="text/x-kendo-template" id="tmpToolbar">
+
+</script>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('CREACION_PETICIONES_MMPP_SMILE')) %></label>
+</div>
+
+<div id="divFiltrosHeader" class="k-header" style="height: auto; width: 100%; padding-top: 5px;">
+    <div style="float: left;">
+        <input class="k-textbox" id="txtSelectLinea" style="width: 250px; font-weight: bold; background-color: #e1e1e1;margin-left:4px;" disabled />
+        <label style="margin-left: 5px;">WO</label>
+        <select id="selectWO" class="k-input" style="width:360px;"></select>
+        <label class="k-input-label" style="margin-left: 5px;"><% print(window.app.idioma.t('PRODUCTO')) %></label>
+        <input class="k-textbox" id="txtProducto" style="width: 300px;font-weight:bold;" disabled />
+        <label class="k-input-label" style="margin-left: 5px;"><% print(window.app.idioma.t('PRODUCCION_PLANIFICADA')) %></label>
+        <input class="k-textbox" id="txtProduccion" style="width: 60px;" disabled />
+        <label class="k-input-label" style="margin-left: 5px;">(CPBs/<% print(window.app.idioma.t('ENVASES'))%>) <%print(window.app.idioma.t('POR_PALET'))%> </label>
+        <input class="k-textbox" id="txtCPBSEnv" style="width: 100px;" disabled />
+        <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left: 20px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+        <button id="btnLeyenda" class="k-button k-button-icontext" style="margin-left: 5px;"><% print(window.app.idioma.t('DESCRIPCION_COLORES')) %></button>
+    </div>
+    <div style="margin-right:5px;float:right;">
+        <button id="btnPedirMMPP" class="k-button k-button-icontext" style="float:right; background-color: green; color: white;margin-top:5px;margin-left:5px;">
+            <span class="k-icon k-i-play-a"></span><% print(window.app.idioma.t('PEDIR_MMPP')) %>
+        </button>
+    </div>
+</div>
+
+<div id="contenedorGrid" style="height: 100%; display: flex; flex-direction: column;">
+    <div id="gridCreacionPeticionesMMPPSmile" style="flex: 1 1 auto;"></div>
+</div>
+
+
+<script id="templateLeyenda" type="text/x-kendo-template">
+    <ul class="list-group sinBorde margenInf">
+        <li class="list-group-item">
+            <div class='circle_cells itemVerde divAncho'></div>
+            <div class='divTexto'><span><% print(window.app.idioma.t('CREAR_PETICION_VERDE_INFO')) %></span></div>
+        </li>
+        <li class="list-group-item">
+            <div class='circle_cells itemAmarillo divAncho'></div>
+            <div class='divTexto'><span><% print(window.app.idioma.t('CREAR_PETICION_AMARILLO_INFO')) %></span>
+        </li>
+        <li class="list-group-item">
+            <div class='circle_cells itemRojo divAncho'></div>
+            <div class='divTexto'><span><% print(window.app.idioma.t('CREAR_PETICION_ROJO_INFO')) %></span>
+        </li>
+    </ul>
+</script>

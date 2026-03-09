@@ -1,0 +1,64 @@
+﻿<style>
+    .borderless, .borderless td, .borderless th {
+        border: none !important;
+    }
+
+    #btnAceptar, #btnCancelar {
+        height: 30px;
+        width: 30%;
+        /*float:left;*/
+        margin-left: 5px;
+        margin-top: 10px;
+        text-align: center;
+    }
+</style>
+
+<div style="width: 98%; margin: 0px; padding: 0px;">
+    <form id="DuplicarEntry">
+        <table class="table borderless">
+            <tbody>
+                <tr>
+                    <td style="width: 8% !important; text-align: right;">
+                        <label id="lbPhase"><% print(window.app.idioma.t('FASE')) %>: </label>
+                    </td>
+                    <td style="width: 40% !important; text-align: left;">
+                        <input type="text" id="txtPhase" class="k-textbox" style="width: 300px;" disabled="disabled" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 8% !important; text-align: right;">
+                        <label id="lbArea"><% print(window.app.idioma.t('AREA')) %>: </label>
+                    </td>
+                    <td style="width: 40% !important; text-align: left;">
+                        <input type="text" id="txtArea" class="k-textbox" disabled="disabled" style="width: 300px;"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 18% !important; text-align: right;">
+                        <label id="lbMaterial"><% print(window.app.idioma.t('MATERIAL')) %>: </label>
+                    </td>
+                    <td style="width: 47% !important; text-align: left;">
+                        <input id="cmbMaterial" style="width: 300px !important;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 18% !important; text-align: right;">
+                        <label id="lbName"><% print(window.app.idioma.t('NOMBREKOP')) %>: </label>
+                    </td>
+                    <td style="width: 47% !important; text-align: left;">
+                        <input type="text" id="cmbKop" style="width: 300px !important;" />                        
+                    </td>
+                </tr>                
+                <tr>
+                    <td colspan="2">
+                        <div style="width: 100%; text-align: center;">
+                            <button id="btnAceptar"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+                            <button id="btnCancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+

@@ -1,0 +1,19 @@
+﻿    .k-image {
+        width: 16px;
+        height: 16px;
+    }
+    #ALTtree {
+        overflow-y: scroll;     
+    }
+    #alt-left {
+        overflow-y: hidden;     
+    }
+
+    #ALTLibLoctreeView {
+        overflow-y: scroll;     
+        
+    }
+    #comALT {
+         overflow-y: hidden; 
+       
+    }

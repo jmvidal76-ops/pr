@@ -1,0 +1,54 @@
+﻿<style>
+    #gridRegistroCambiosPlanificacion tbody tr td:last-child a{
+        min-width: initial;
+    }
+    #gridRegistroCambiosPlanificacion tbody tr td:last-child a span{
+        margin: 0;
+    }
+    /*#gridRegistroCambiosPlanificacion tbody tr td{
+        overflow: visible;
+    }*/
+    .k-warning {
+        height: 16px !important;
+    }
+
+</style>
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('REGISTRO_CAMBIOS_PLANIFICACION')) %></label>
+</div>
+
+<!-- Filtros Cambios -->
+<div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+    <div class="filtroFechas" style="float: left;">
+        <label class="ml-8"><% print(window.app.idioma.t('DESDE')) %></label>
+        <label class="ml-4"><% print(window.app.idioma.t('ANYO')) %></label>
+        <select class="ml-4" id="selectAnioD" style="width:70px"></select>
+        <label class="ml-8"><% print(window.app.idioma.t('SEMANA')) %></label>
+        <select class="ml-4" id="selectSemanaD" style="width:220px"></select>
+
+        <div style="width: 1px; background-color: #ccc; margin: 0 8px; display: inline-block;height:27px; margin-bottom:-10px"></div>
+
+        <label><% print(window.app.idioma.t('HASTA')) %></label>
+        <label class="ml-4"><% print(window.app.idioma.t('ANYO')) %></label>
+        <select class="ml-4" id="selectAnioH" style="width:70px"></select>
+        <label class="ml-8"><% print(window.app.idioma.t('SEMANA')) %></label>
+        <select class="ml-4" id="selectSemanaH" style="width:220px"></select>
+
+        <button id="btnFiltrar" class="k-button k-button-icontext ml-8"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+    </div>
+    <div style="float: right; margin-right: 10px;">      
+        <button id="btnLimpiarFiltros" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;">
+            <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+        </button>
+        <button id="btnAdd" class="k-button k-button-icontext" style="margin-left: 5px;">
+            <span class="k-icon k-i-plus"></span><% print(window.app.idioma.t('ANADIR')) %>
+        </button>
+        <button id="btnExportExcel" class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px;">
+            <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+        </button>        
+    </div>
+</div>
+
+<div id="gridRegistroCambiosPlanificacion"></div>

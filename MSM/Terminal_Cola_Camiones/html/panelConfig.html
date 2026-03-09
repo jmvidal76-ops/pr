@@ -1,0 +1,67 @@
+﻿<style>
+    .cPanelCfg {
+        background-color: lightgray;
+        width: 250px;
+        height: 100%;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        border-left: 1px solid gray;
+        z-index: 9999;
+    }
+
+    .cabeceraPanel {
+        border: 1px solid black;
+        width: auto;
+        height: 26px;
+        background-color: darkred;
+        color: white;
+        padding: 3px;
+        padding-left: 10px;
+        font-size: 20px;
+    }
+
+    #opciones {
+        margin: 15px;
+    }
+
+        #opciones div {
+            margin-bottom: 12px;
+        }
+
+        #opciones button {
+            width: 100%;
+            height: 50px;
+            padding-top: 6px;
+        }
+
+    #btnCerrarSesion {
+        background-color: #FE2E2E;
+    }
+
+    .k-button .k-image {
+        height: 24px;
+        float: left;
+        margin-top: 2px;
+        margin-left: -2px;
+    }
+</style>
+
+<div class="cabeceraPanel">
+    <img src="img/options.png" />
+    <span><% print(window.app.idioma.t('OPCIONES')) %></span>
+</div>
+
+<div id="opciones">
+    <div>
+        <label><% print(window.app.idioma.t('IDIOMA')) %></label>
+        <select id="selIdioma" type="text">
+            <option value="es-ES"><% print(window.app.idioma.t('ESPAÑOL')) %></option>
+            <option value="en-GB"><% print(window.app.idioma.t('INGLES')) %></option>
+        </select>
+    </div>
+</div>
+
+
+
+

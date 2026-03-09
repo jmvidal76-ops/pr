@@ -1,0 +1,38 @@
+﻿<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('FORMS_ANALISIS_DATOS')) %></label>
+</div>
+
+<!-- Filtros Cambios -->
+<div id="divFiltrosHeader" class="k-header" style="height: 70px; width: 100%; padding-top: 5px;">
+    <div style="display: flex; justify-content: space-between;">
+        <div>
+            <label style="margin-left: 5px;"><% print(window.app.idioma.t('DESDE')) %></label>
+            <input id="dtpFechaDesde" style="margin-left: 3px; width: 175px" />
+            <label style="margin-left: 5px;"><% print(window.app.idioma.t('HASTA')) %></label>
+            <input id="dtpFechaHasta" style="margin-left: 7px; width: 175px" />
+        </div>
+        <div style="margin-right: 10px;">
+            <button id="btnExportExcel" class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px;">
+                <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+            </button>
+            <button id="btnLimpiarFiltros" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;">
+                <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+            </button>
+        </div>
+    </div>
+    <div class="filtroPdv" style="margin-top: 10px;">
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('NIVEL')) %> 1</label>
+        <select id="cmbPdvNivel1" style="width: 175px"></select>
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('NIVEL')) %> 2</label>
+        <select id="cmbPdvNivel2" style="width: 175px"></select>
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('NIVEL')) %> 3</label>
+        <select id="cmbPdvNivel3" style="width: 175px"></select>
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('FORMULARIO')) %></label>
+        <select id="cmbForm" style="width: 420px"></select>
+        <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+    </div>
+</div>
+
+<div id="gridForms"></div>

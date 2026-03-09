@@ -1,0 +1,341 @@
+<style>
+    .fieldlist label {
+        display: block;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 12px;
+        padding-bottom: 2px;
+    }
+
+    .flex-filas {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .w25 {
+        width: 25%
+    }
+
+    .w75 {
+        width: 75%;
+    }
+</style>
+
+<div id="container" class="divFormControlStock" style="overflow-x:hidden; padding: 10px;">
+    <form id="form" style="height:80%;overflow-y:auto;overflow-x:hidden">
+        <div class="col-md-12 form-group divCantidad">
+            <div class="col-lg-3"><label for="vpTxtCantidad"><% print(window.app.idioma.t('VALOR')) %></label></div>
+            <div class="col-lg-7"><input id="vpTxtCantidad" /></div>
+        </div>
+        <div class="col-md-12 form-group divPrioridad">
+            <div class="col-lg-3"><label for="vpTxtPrioridad"><% print(window.app.idioma.t('PRIORIDAD')) %></label></div>
+            <div class="col-lg-7"><input id="vpTxtPrioridad" /></div>
+        </div>
+        <div class="col-md-12 form-group divOption">
+            <div class="col-lg-3"><label for="vpTxtOption"><% print(window.app.idioma.t('SELECCIONE_OPCION')) %></label></div>
+            <div class="col-lg-7"><input id="vpTxtOption" /></div>
+        </div>
+        <div class="col-md-12 form-group divOptionDate">
+            <div class="col-lg-3"><label for="vpTxtOptionDate"><% print(window.app.idioma.t('FECHA')) %></label></div>
+            <div class="col-lg-7"><input id="vpTxtOptionDate" /></div>
+        </div>
+
+        <div class="col-md-12 form-group divOptionMotivo">
+            <div class="col-lg-3"><label for="vpTxtOptionMotivo"><% print(window.app.idioma.t('MOTIVO')) %></label></div>
+            <div class="col-lg-7"><textarea id="vpTxtOptionMotivo" class="k-textbox" style="width:100%"></textarea></div>
+        </div>
+        <div class="col-md-12 form-group divEstadoUbicacion">
+            <div class="col-lg-3"><label for="vpTxtEstadoUbicacion"><% print(window.app.idioma.t('ESTADO_UBICACION')) %></label></div>
+            <div class="col-lg-7"><input id="vpTxtEstadoUbicacion" style="width:100%" /></div>
+        </div>
+        <div class="col-md-12 form-group divUbicacionCambio" style="display:none">
+            <div class="col-lg-3"><label for="vpTxtUbiCambio"><% print(window.app.idioma.t('UBICACION')) %></label></div>
+            <div class="col-lg-7"><input id="vpTxtUbiCambio" name="vpTxtUbiCambio" style="width:100%; margin-bottom:10px" /></div>
+        </div>
+
+        <div class="divLote fieldlist">
+            <div id="liLote" style="display:none">
+                <div class="col-lg-3"><label for="vpTxtLote"><% print(window.app.idioma.t('LOTE')) %></label></div>
+                <div class="col-lg-7"><input id="vpTxtLote" class="k-textbox" type="text" style="width:100%; margin-bottom:10px" disabled /></div>
+            </div>
+            <div id="liProceso" class="flex-filas">
+                <div class="w25"><label for="vpTxtProceso"><% print(window.app.idioma.t('PROCESO')) %></label></div>
+                <div class="w75" style=" margin-bottom:10px">
+                    <input id="vpTxtProceso" name="vpTxtProceso" class="k-dropdown" type="text" required style="width:70%" validationMessage="Campo obligatorio" disabled />
+                    <span class="k-invalid-msg" data-for="vpTxtProceso"></span>
+                </div>
+            </div>
+            <div id="liAlmacen" class="flex-filas">
+                <div class="w25"><label for="vpTxtAlmacen"><% print(window.app.idioma.t('ALMACEN')) %></label></div>
+                <div class="w75" style=" margin-bottom:10px">
+                    <input id="vpTxtAlmacen" class="k-dropdown" type="text" style="width:70%" />
+                </div>
+            </div>
+            <div id="liZona" class="flex-filas">
+                <div class="w25"><label for="vpTxtZona"><% print(window.app.idioma.t('ZONA')) %></label></div>
+                <div class="w75" style=" margin-bottom:10px"><input id="vpTxtZona" class="k-dropdown" type="text" style="width:70%" /></div>
+            </div>
+            <div id="liUbicacion" class="flex-filas">
+                <div class="w25"><label for="vpTxtUbicacion"><% print(window.app.idioma.t('UBICACION')) %></label></div>
+                <div class="w75" style=" margin-bottom:10px">
+                    <input id="vpTxtUbicacion" name="vpTxtUbicacion" class="k-dropdown" type="text" required style="width:70%" validationMessage="Campo obligatorio" />
+                    <span class="k-invalid-msg" data-for="vpTxtUbicacion"></span>
+                </div>
+            </div>
+            <div id="liTipoMaterial" class="flex-filas">
+                <div class="w25"><label for="vpTxtTipoMaterial"><% print(window.app.idioma.t('TIPO_MATERIAL')) %></label></div>
+                <div class="w75" style=" margin-bottom:10px"><input id="vpTxtTipoMaterial" class="k-dropdown" type="text" style="width:70%" /></div>
+            </div>
+            <div id="liClaseMaterial" class="flex-filas">
+                <div class="w25"><label for="vpTxtClaseMaterial"><% print(window.app.idioma.t('CLASE_MATERIAL')) %></label></div>
+                <div class="w75" style=" margin-bottom:10px"><input id="vpTxtClaseMaterial" class="k-dropdown" type="text" style="width:70%" /></div>
+            </div>
+            <div id="liMaterial" class="flex-filas">
+                <div class="w25"><label for="vpTxtMaterial"><% print(window.app.idioma.t('MATERIAL')) %></label></div>
+                <div class="w75" style=" margin-bottom:10px">
+                    <input id="vpTxtMaterial" name="vpTxtMaterial" class="k-dropdown" type="text" required style="width:70%" validationMessage="Campo obligatorio" />
+                    <span class="k-invalid-msg" data-for="vpTxtMaterial"></span>
+                </div>
+            </div>
+            <div id="liProveedor" class="flex-filas">
+                <div class="w25"><label for="vpTxtProveedor"><% print(window.app.idioma.t('PROVEEDOR')) %></label></div>
+                <div class="w75" style=" margin-bottom:10px">
+                    <input id="vpTxtProveedor" name="vpTxtProveedor" class="k-dropdown" type="text" required style="width:70%" validationMessage="Campo obligatorio" />
+                    <span class="k-invalid-msg" data-for="vpTxtProveedor"></span>
+                </div>
+            </div>
+            <div id="liCantidadInicial" class="flex-filas">
+                <div class="w25"><label for="vpTxtCantidadInicial"><% print(window.app.idioma.t('CANTIDAD_INICIAL')) %></label></div>
+                <div class="w75" style=" margin-bottom:10px">
+                    <input id="vpTxtCantidadInicial" name="vpTxtCantidadInicial" style="width:50%;margin-right:5px" validationMessage="Campo obligatorio" />
+                    <span class="k-invalid-msg" data-for="vpTxtCantidadInicial"></span>
+                </div>
+            </div>
+            <div id="liCantidad" class="flex-filas">
+                <div class="w25"><label for="vpTxtCantidadLote"><% print(window.app.idioma.t('CANTIDAD_ACTUAL')) %></label></div>
+                <div class="w75" style=" margin-bottom:10px">
+                    <input id="vpTxtCantidadLote" name="vpTxtCantidadLote" required style="width:50%; margin-right:1.4%" validationMessage="Campo obligatorio" />
+                    <input id="vpTxtUnidadMedida" required style="width:18%" />
+                    <span class="k-invalid-msg" data-for="vpTxtCantidadLote"></span>
+                </div>
+            </div>
+            <div id="liCantidadMover" class="flex-filas">
+                <div class="w25"><label for="vpTxtCantidadMover"><% print(window.app.idioma.t('CANTIDAD')) %></label></div>
+                <div class="w75" style=" margin-bottom:10px">
+                    <input id="vpTxtCantidadMover" name="vpTxtCantidadMover" required style="width:50%;margin-right:5px" validationMessage="Campo obligatorio" />
+                    <span class="k-invalid-msg" data-for="vpTxtCantidadMover"></span>
+                </div>
+            </div>
+            <div id="liLoteProveedor" class="flex-filas">
+                <div class="w25"><label for="vpTxtLoteProveedor"><% print(window.app.idioma.t('LOTE_PROVEEDOR')) %></label></div>
+                <div class="w75" style="margin-bottom:10px">
+                    <input id="vpTxtLoteProveedor" name="vpTxtLoteProveedor" type="text" class="k-textbox" required style="width:70%" validationMessage="Campo obligatorio" />
+                    <span class="k-invalid-msg" data-for="vpTxtLoteProveedor"></span>
+                </div>
+            </div>
+            <div id="liSSCC" class="flex-filas">
+                <div class="w25"><label for="vpTxtSSCC"><% print(window.app.idioma.t('SSCC')) %></label></div>
+                <div class="w75" style="margin-bottom:10px">
+                    <input id="vpTxtSSCC" type="text" class="k-textbox" style="width:70%" />
+                </div>
+            </div>
+            <div id="liFechaCaducidad" class="flex-filas">
+                <div class="w25"><label for="vpTxtFechaCaducidad"><% print(window.app.idioma.t('FECHA_CADUCIDAD')) %></label></div>
+                <div class="w75" style="margin-bottom:10px"><input id="vpTxtFechaCaducidad" style="width:70%" /></div>
+            </div>
+            <div id="liFechaEntradaPlanta" class="liEdicionLote flex-filas">
+                <div class="w25"><label for="vpTxtFechaEntradaPlanta"><% print(window.app.idioma.t('FECHA_ENTRADA_PLANTA')) %></label></div>
+                <div class="w75" style="margin-bottom:10px"><input id="vpTxtFechaEntradaPlanta" style="width:70%;" /></div>
+            </div>
+            <div id="liFechaEntradaUbicacion" class="liEdicionLote flex-filas">
+                <div class="w25"><label for="vpTxtFechaEntradaUbicacion"><% print(window.app.idioma.t('FECHA_ENTRADA_UBICACION')) %></label></div>
+                <div class="w75" style="margin-bottom:10px"><input id="vpTxtFechaEntradaUbicacion" style="width:70%; " /></div>
+            </div>
+            <div id="liFechaInicioConsumo" class="liEdicionLote flex-filas">
+                <div class="w25"><label for="vpTxtFechaInicioConsumo"><% print(window.app.idioma.t('FECHA_INICIO_CONSUMO')) %></label></div>
+                <div class="w75" style="margin-bottom:10px"><input id="vpTxtFechaInicioConsumo" style="width:70%;" /></div>
+            </div>
+            <div id="liFechaFinConsumo" class="liEdicionLote flex-filas">
+                <div class="w25"><label for="vpTxtFechaFinConsumo"><% print(window.app.idioma.t('FECHA_FIN_CONSUMO')) %></label></div>
+                <div class="w75" style="margin-bottom:10px"><input id="vpTxtFechaFinConsumo" style="width:70%;" /></div>
+            </div>
+            <div id="liFechaBloqueo" class="liEdicionLote flex-filas">
+                <div class="w25"><label for="vpTxtFechaBloqueo"><% print(window.app.idioma.t('FECHA_BLOQUEO')) %></label></div>
+                <div class="w75" style="margin-bottom:10px"><input id="vpTxtFechaBloqueo" style="width:70%;" /></div>
+            </div>
+            <div id="liMotivoBloqueo" class="liEdicionLote flex-filas">
+                <div class="w25"><label for="vpTxtMotivoBloqueo"><% print(window.app.idioma.t('MOTIVO_BLOQUEO')) %></label></div>
+                <div class="w75" style="margin-bottom:10px"><input id="vpTxtMotivoBloqueo" type="text" class="k-textbox" style="width:70%;" /></div>
+            </div>
+            <div id="liFechaCuarentena" class="liEdicionLote flex-filas">
+                <div class="w25"><label for="vpTxtFechaCuarentena"><% print(window.app.idioma.t('FECHA_CUARENTENA')) %></label></div>
+                <div class="w75" style="margin-bottom:10px"><input id="vpTxtFechaCuarentena" style="width:70%;" /></div>
+            </div>
+            <div id="liMotivoCuarentena" class="liEdicionLote flex-filas">
+                <div class="w25"><label for="vpTxtMotivoCuarentena"><% print(window.app.idioma.t('MOTIVO_CUARENTENA')) %></label></div>
+                <div class="w75" style="margin-bottom:10px"><input id="vpTxtMotivoCuarentena" type="text" class="k-textbox" style="width:70%;" /></div>
+            </div>
+            <div id="liFechaDefectuoso" class="liEdicionLote flex-filas">
+                <div class="w25"><label for="vpTxtFechaDefectuoso"><% print(window.app.idioma.t('DEFECTUOSO')) %></label></div>
+                <div class="w75" style="margin-bottom:10px"><input id="vpTxtFechaDefectuoso" style="width:70%;" /></div>
+            </div>
+            <div id="liReplicarLote" class="flex-filas">
+                <div class="w25"><label for="vpTxtReplicarLote"><% print(window.app.idioma.t('REPLICAR_LOTE')) %></label></div>
+                <div class="w75" style=" margin-bottom:10px">
+                    <input id="vpTxtReplicarLote" name="vpTxtReplicarLote" required style="width:15%;margin-right:5px" maxlength="2" value="1" />
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="divLote">
+        <ul class="fieldlist">
+            <li id="liLote" style="display:none">
+                <div class="col-lg-3"><label for="vpTxtLote"><% print(window.app.idioma.t('LOTE')) %></label></div>
+                <div class="col-lg-7"><input id="vpTxtLote" class="k-textbox" type="text" style="width:100%; margin-bottom:10px" disabled /></div>
+            </li>
+            <li id="liProceso">
+                <div class="col-lg-3"><label for="vpTxtProceso"><% print(window.app.idioma.t('PROCESO')) %></label></div>
+                <div class="col-lg-7">
+                    <input id="vpTxtProceso" name="vpTxtProceso" class="k-dropdown" type="text" required style="width:70%; margin:5px auto" validationMessage="Campo obligatorio" disabled />
+                    <span class="k-invalid-msg" data-for="vpTxtProceso"></span>
+                </div>
+            </li>
+            <li id="liAlmacen">
+                <div class="col-lg-3"><label for="vpTxtAlmacen"><% print(window.app.idioma.t('ALMACEN')) %></label></div>
+                <div class="col-lg-7">
+                    <input id="vpTxtAlmacen" class="k-dropdown" type="text" style="width:70%; margin:5px auto" />
+                </div>
+            </li>
+            <li id="liZona">
+                <div class="col-lg-3"><label for="vpTxtZona"><% print(window.app.idioma.t('ZONA')) %></label></div>
+                <div class="col-lg-7"><input id="vpTxtZona" class="k-dropdown" type="text" style="width:70%; margin:5px auto" /></div>
+            </li>
+            <li id="liUbicacion">
+                <div class="col-lg-3"><label for="vpTxtUbicacion"><% print(window.app.idioma.t('UBICACION')) %></label></div>
+                <div class="col-lg-7">
+                    <input id="vpTxtUbicacion" name="vpTxtUbicacion" class="k-dropdown" type="text" required style="width:70%; margin:5px auto" validationMessage="Campo obligatorio" />
+                    <span class="k-invalid-msg" data-for="vpTxtUbicacion"></span>
+                </div>
+            </li>
+            <li id="liTipoMaterial">
+                <div class="col-lg-3"><label for="vpTxtTipoMaterial"><% print(window.app.idioma.t('TIPO_MATERIAL')) %></label></div>
+                <div class="col-lg-7"><input id="vpTxtTipoMaterial" class="k-dropdown" type="text" style="width:70%; margin:5px auto" /></div>
+            </li>
+            <li id="liClaseMaterial">
+                <div class="col-lg-3"><label for="vpTxtClaseMaterial"><% print(window.app.idioma.t('CLASE_MATERIAL')) %></label></div>
+                <div class="col-lg-7"><input id="vpTxtClaseMaterial" class="k-dropdown" type="text" style="width:70%; margin:5px auto" /></div>
+            </li>
+            <li id="liMaterial">
+                <div class="col-lg-3"><label for="vpTxtMaterial"><% print(window.app.idioma.t('MATERIAL')) %></label></div>
+                <div class="col-lg-7">
+                    <input id="vpTxtMaterial" name="vpTxtMaterial" class="k-dropdown" type="text" required style="width:70%; margin:5px auto" validationMessage="Campo obligatorio" />
+                    <span class="k-invalid-msg" data-for="vpTxtMaterial"></span>
+                </div>
+            </li>
+            <li id="liProveedor">
+                <div class="col-lg-3"><label for="vpTxtProveedor"><% print(window.app.idioma.t('PROVEEDOR')) %></label></div>
+                <div class="col-lg-7">
+                    <input id="vpTxtProveedor" name="vpTxtProveedor" class="k-dropdown" type="text" required style="width:70%; margin:5px auto" validationMessage="Campo obligatorio" />
+                    <span class="k-invalid-msg" data-for="vpTxtProveedor"></span>
+                </div>
+            </li>
+            <li id="liCantidadInicial">
+                <div class="col-lg-3"><label for="vpTxtCantidadInicial"><% print(window.app.idioma.t('CANTIDAD_INICIAL')) %></label></div>
+                <div class="col-lg-7" style=" margin-bottom:10px">
+                    <input id="vpTxtCantidadInicial" name="vpTxtCantidadInicial" style="width:50%;margin-right:5px" validationMessage="Campo obligatorio" />
+                    <span class="k-invalid-msg" data-for="vpTxtCantidadInicial"></span>
+                </div>
+            </li>
+            <li id="liCantidad">
+                <div class="col-lg-3"><label for="vpTxtCantidadLote"><% print(window.app.idioma.t('CANTIDAD_ACTUAL')) %></label></div>
+                <div class="col-lg-7" style=" margin-bottom:10px">
+                    <input id="vpTxtCantidadLote" name="vpTxtCantidadLote" required style="width:50%;margin-right:5px" validationMessage="Campo obligatorio" />
+                    <input id="vpTxtUnidadMedida" required style="width:18%; " />
+                    <span class="k-invalid-msg" data-for="vpTxtCantidadLote"></span>
+                </div>
+            </li>
+            <li id="liCantidadMover">
+                <div class="col-lg-3"><label for="vpTxtCantidadMover"><% print(window.app.idioma.t('CANTIDAD')) %></label></div>
+                <div class="col-lg-7" style=" margin-bottom:10px">
+                    <input id="vpTxtCantidadMover" name="vpTxtCantidadMover" required style="width:50%;margin-right:5px" validationMessage="Campo obligatorio" />
+                    <span class="k-invalid-msg" data-for="vpTxtCantidadMover"></span>
+                </div>
+            </li>
+            <li id="liLoteProveedor">
+                <div class="col-lg-3"><label for="vpTxtLoteProveedor"><% print(window.app.idioma.t('LOTE_PROVEEDOR')) %></label></div>
+                <div class="col-lg-7">
+                    <input id="vpTxtLoteProveedor" name="vpTxtLoteProveedor" type="text" class="k-textbox" required style="width:70%; margin-bottom:5px" validationMessage="Campo obligatorio" />
+                    <span class="k-invalid-msg" data-for="vpTxtLoteProveedor"></span>
+                </div>
+            </li>
+            <li id="liSSCC">
+                <div class="col-lg-3"><label for="vpTxtSSCC"><% print(window.app.idioma.t('SSCC')) %></label></div>
+                <div class="col-lg-7">
+                    <input id="vpTxtSSCC" type="text" class="k-textbox" style="width:70%; margin:5px auto" />
+                </div>
+            </li>
+            <li id="liFechaCaducidad">
+                <div class="col-lg-3"><label for="vpTxtFechaCaducidad"><% print(window.app.idioma.t('FECHA_CADUCIDAD')) %></label></div>
+                <div class="col-lg-7">
+                    <input id="vpTxtFechaCaducidad" style="width:70%; margin-bottom:5px" />
+                </div>
+            </li>
+            <li id="liFechaEntradaPlanta" class="liEdicionLote">
+                <div class="col-lg-3"><label for="vpTxtFechaEntradaPlanta"><% print(window.app.idioma.t('FECHA_ENTRADA_PLANTA')) %></label></div>
+                <div class="col-lg-7" style="margin-bottom:10px"><input id="vpTxtFechaEntradaPlanta" style="width:100%;" /></div>
+            </li>
+            <li id="liFechaEntradaUbicacion" class="liEdicionLote">
+                <div class="col-lg-3"><label for="vpTxtFechaEntradaUbicacion"><% print(window.app.idioma.t('FECHA_ENTRADA_UBICACION')) %></label></div>
+                <div class="col-lg-7" style="margin-bottom:10px"><input id="vpTxtFechaEntradaUbicacion" style="width:100%; " /></div>
+            </li>
+            <li id="liFechaInicioConsumo" class="liEdicionLote">
+                <div class="col-lg-3"><label for="vpTxtFechaInicioConsumo"><% print(window.app.idioma.t('FECHA_INICIO_CONSUMO')) %></label></div>
+                <div class="col-lg-7" style="margin-bottom:10px"><input id="vpTxtFechaInicioConsumo" style="width:100%;" /></div>
+            </li>
+            <li id="liFechaFinConsumo" class="liEdicionLote">
+                <div class="col-lg-3"><label for="vpTxtFechaFinConsumo"><% print(window.app.idioma.t('FECHA_FIN_CONSUMO')) %></label></div>
+                <div class="col-lg-7" style="margin-bottom:10px"><input id="vpTxtFechaFinConsumo" style="width:100%;" /></div>
+            </li>
+            <li id="liFechaBloqueo" class="liEdicionLote">
+                <div class="col-lg-3"><label for="vpTxtFechaBloqueo"><% print(window.app.idioma.t('FECHA_BLOQUEO')) %></label></div>
+                <div class="col-lg-7" style="margin-bottom:10px"><input id="vpTxtFechaBloqueo" style="width:100%;" /></div>
+            </li>
+            <li id="liMotivoBloqueo" class="liEdicionLote">
+                <div class="col-lg-3"><label for="vpTxtMotivoBloqueo"><% print(window.app.idioma.t('MOTIVO_BLOQUEO')) %></label></div>
+                <div class="col-lg-7" style="margin-bottom:10px"><input id="vpTxtMotivoBloqueo" type="text" class="k-textbox" style="width:100%;" /></div>
+            </li>
+            <li id="liFechaCuarentena" class="liEdicionLote">
+                <div class="col-lg-3"><label for="vpTxtFechaCuarentena"><% print(window.app.idioma.t('FECHA_CUARENTENA')) %></label></div>
+                <div class="col-lg-7" style="margin-bottom:10px"><input id="vpTxtFechaCuarentena" style="width:100%;" /></div>
+            </li>
+            <li id="liMotivoCuarentena" class="liEdicionLote">
+                <div class="col-lg-3"><label for="vpTxtMotivoCuarentena"><% print(window.app.idioma.t('MOTIVO_CUARENTENA')) %></label></div>
+                <div class="col-lg-7" style="margin-bottom:10px"><input id="vpTxtMotivoCuarentena" type="text" class="k-textbox" style="width:100%;" /></div>
+            </li>
+            <li id="liFechaDefectuoso" class="liEdicionLote">
+                <div class="col-lg-3"><label for="vpTxtFechaDefectuoso"><% print(window.app.idioma.t('DEFECTUOSO')) %></label></div>
+                <div class="col-lg-7" style="margin-bottom:10px"><input id="vpTxtFechaDefectuoso" style="width:100%;" /></div>
+            </li>
+            <li id="liReplicarLote" >
+                <div class="col-lg-3"><label for="vpTxtReplicarLote"><% print(window.app.idioma.t('REPLICAR_LOTE')) %></label></div>
+                <div class="col-lg-7" style=" margin-bottom:10px"><input id="vpTxtReplicarLote" name="vpTxtReplicarLote" required style="width:50%;margin-right:5px" validationMessage="Campo obligatorio" /></div>
+            </li>
+        </ul>
+
+    </div>-->
+        <div class="col-md-12" style=" margin-bottom:10px">
+            <center><span id="result" style="color:red" /></center>
+        </div>
+        <div class="col-md-12">
+            <center>
+                <button class="btnAplicarCambio" style="background-color:green;color:white">
+                    <% print(window.app.idioma.t('APLICAR')) %>
+                </button>
+            </center>
+        </div>
+    </form>
+
+    <div id="gridPropiedadesLote" style="height:90%;width:100%"></div>
+</div>
+

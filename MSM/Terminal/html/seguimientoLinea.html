@@ -1,0 +1,103 @@
+﻿<style>
+    .cabeceraVista
+    {
+        border:1px solid black;
+        width:auto;
+        height:26px;
+        background-color:darkred;
+        color:white;padding:3px;
+        padding-left:10px;
+        font-size:20px;
+    }
+    #esquemaLinea{
+        margin:5px;
+        width:99%;
+        height:72%;
+        border:solid 1px black;
+    }
+
+     #tblFiltroResumen {
+      margin:6px;
+      width:99%;
+      padding:0px !important;
+    }
+    .table-bordered > thead > tr > th,
+    .table-bordered > tbody > tr > th,
+    .table-bordered > tfoot > tr > th,
+    .table-bordered > thead > tr > td,
+    .table-bordered > tbody > tr > td,
+    .table-bordered > tfoot > tr > td {
+       font-weight:normal;
+       text-align:center; 
+       vertical-align:middle;
+    }
+
+    #filtroResumen td{
+        text-align:left !important;
+          text-align:center !important; 
+          vertical-align:middle !important;
+    }
+
+    .k-grid{font-size:22px;}
+    .k-grid td{padding:0 2px 0 2px;}
+</style>
+
+<div class="cabeceraVista">
+    <img src="img/iconoCabecera.png" />
+    <span><% print(window.app.idioma.t("SEGUIMIENTO_LINEA")) %></span>
+</div>
+
+<table id="tblFiltroResumen" class="table table-bordered">
+    <tbody>
+        <tr>
+            <td rowspan="3" style="font-size:22px !important; text-align:center; vertical-align:middle;width:10%;"><% print(window.app.idioma.t("TURNO")) %> <br /><% print(window.app.idioma.t("ANTERIOR")) %></td>
+            <td style="width:20%">
+                <span><% print(window.app.idioma.t("DISPONIBILIDAD1")) %> </span>
+                <div id="pbDispTurnoAnt" style="height:26px;width:75%;font-size:12px;"></div>
+            </td>
+            <td><span><% print(window.app.idioma.t("PALETS_PRODUCIDOS_ETIQUETADORA")) %> </span>: <label id="paletsTurnoAnt" style="font-weight: normal !important; width:0px !important"></label></td>
+
+            <td rowspan="3" style="font-size:22px !important; text-align:center; vertical-align:middle; width:10%;"><% print(window.app.idioma.t("TURNO")) %> <br /><% print(window.app.idioma.t("ACTUAL")) %></td>
+            <td style="width:20%">
+                <span><% print(window.app.idioma.t("DISPONIBILIDAD1")) %></span>
+                <div id="pbDispTurnoAct" style="height:26px;width:75%;font-size:12px;"></div>
+            </td>
+            <td><span><% print(window.app.idioma.t("PALETS_PRODUCIDOS_ETIQUETADORA")) %> </span>: <label id="paletsTurnoAct" style="font-weight: normal !important; width:0px !important"></label></td>           
+
+        </tr>
+        <tr>
+            <td>
+                <span><% print(window.app.idioma.t("EFICIENCIA1")) %> </span>
+                <div id="pbRendTurnoAnt" style="height:26px;width:75%;font-size:12px;"></div>
+            </td>
+            <td><span><% print(window.app.idioma.t("CAJAS_PRODUCIDAS")) %> </span>: <label id="cajasTurnoAnt" style="font-weight: normal !important; width:0px !important"></label></td>
+            <td>
+                <span><% print(window.app.idioma.t("EFICIENCIA1")) %> </span>
+                <div id="pbRendTurnoAct" style="height:26px;width:75%;font-size:12px;"></div>
+            </td>
+            <td><span><% print(window.app.idioma.t("CAJAS_PRODUCIDAS")) %> </span>: <label id="cajasTurnoAct" style="font-weight: normal !important; width:0px !important"></label></td>    
+        </tr>
+        <tr>
+            <td>
+                <span>Rend.</span>
+                <div id="pbOEEturnoAnt" style="height:26px;width:75%;font-size:12px;"></div>
+            </td>
+            <td><span><% print(window.app.idioma.t("ENVASES_PRODUCIDOS")) %> </span>: <label id="envasesTurnoAnt" style="font-weight: normal !important; width:0px !important"></label></td>
+            
+
+            <td>
+                <span>Rend.</span>
+                <div id="pbOEEturnoAct" style="height:26px;width:75%;font-size:12px;"></div>
+            </td>
+            <td><span><% print(window.app.idioma.t("ENVASES_PRODUCIDOS")) %> </span>: <label id="envasesTurnoAct" style="font-weight: normal !important; width:0px !important"></label></td>       
+        </tr>
+        <tr>
+    </tbody>
+</table>
+<div style="position:relative;height:100%;">
+    <div id="gridMaquinas">
+
+    </div>
+
+</div>
+

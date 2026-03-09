@@ -1,0 +1,129 @@
+﻿<style>
+    .progress-text {
+        top: 55%;
+        left: 44%;
+        width: 10%;
+        background-color: lightgrey;
+        padding: 1%;
+        border: 1px solid darkgray;
+        border-radius: 4px;
+        text-indent: 0;
+    }
+
+    /* Layout edición/creación (mismo look & feel que Captura Movimientos) */
+    .mv-edit-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+
+    .mv-edit-label {
+        width: 150px;
+        text-align: right;
+        padding-right: 12px;
+        font-weight: 600;
+        color: #333;
+        box-sizing: border-box;
+    }
+
+    .mv-edit-input {
+        flex: 0 0 36%;
+        max-width: 36%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+        .mv-edit-input .k-widget,
+        .mv-edit-input input {
+            width: 100% !important;
+            box-sizing: border-box;
+        }
+
+    .mv-edit-spacer {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .mv-edit-actions {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 22px;
+        padding-top: 12px;
+        border-top: 1px solid #eee;
+        box-sizing: border-box;
+    }
+
+        .mv-edit-actions .k-button {
+            flex: 0 0 100px;
+            max-width: 40%;
+            box-sizing: border-box;
+        }
+
+    .divCabeceraVista {
+        display: flex;
+        align-items: center;
+        padding: 6px 8px;
+    }
+
+    .lblCabeceraVista {
+        margin-left: 8px;
+        font-weight: 600;
+    }
+</style>
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('MERMAS')) %> <% print(window.app.idioma.t('CAPTURA_EXISTENCIAS')) %></label>
+</div>
+
+<!-- Toolbar / acciones (alineado con Captura Movimientos) -->
+<div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+    <div class="filtroFechas" style="float: left;">
+        <!-- Si más adelante filtras por fechas o zona, pon controles aquí -->
+    </div>
+    <div style="float: right; margin-right: 10px;">
+        <button id="btnCrear" class="k-button k-button-icontext" style="margin-left: 5px;">
+            <span class='k-icon k-i-plus'></span><% print(window.app.idioma.t('CREAR')) %>
+        </button>
+        <button id="btnEliminar" class="k-button k-button-icontext k-grid-delete" style="margin-left: 5px;">
+            <span class='k-icon k-i-close'></span><% print(window.app.idioma.t('ELIMINAR')) %>
+        </button>
+        <button id="btnLimpiarFiltros" class="k-button k-button-icontext" style="margin-left: 5px;">
+            <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+        </button>
+        <button id="btnExportarExcel" class="k-button k-button-icontext" style="margin-left: 5px;">
+            <span class='k-icon k-i-excel'></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+        </button>
+    </div>
+</div>
+
+<!-- GRID -->
+<div id="gridConfExistencias"></div>
+
+<script type="text/template" id="templateCrearRegistroExistencias">
+    <div class="mv-edit-container" style="padding:18px; width:100%; box-sizing:border-box; overflow-x: hidden;">
+        <div class="mv-edit-row">
+            <label class="mv-edit-label"><%= window.app.idioma.t("ZONA") %>:</label>
+            <div class="mv-edit-input"><input id="nuevoZona" /></div>
+            <div class="mv-edit-spacer"></div>
+        </div>
+        <div class="mv-edit-row">
+            <label class="mv-edit-label"><%= window.app.idioma.t("FORMULA") %>:</label>
+            <div class="mv-edit-input"><input id="nuevoMetodoCalculo" /></div>
+            <div class="mv-edit-spacer"></div>
+        </div>
+        <div class="mv-edit-row">
+            <label class="mv-edit-label"><%= window.app.idioma.t("UBICACION") %>:</label>
+            <div class="mv-edit-input"><input id="nuevoUbicacion" class="k-textbox" /></div>
+            <div class="mv-edit-spacer"></div>
+        </div>
+
+        <div class="mv-edit-actions" role="group" aria-label="Acciones creación">
+            <button type="button" class="k-button k-primary" id="btnCrearAceptar"><%= window.app.idioma.t("ACEPTAR") %></button>
+            <button type="button" class="k-button" id="btnCrearCancelar"><%= window.app.idioma.t("CANCELAR") %></button>
+        </div>
+    </div>
+</script>

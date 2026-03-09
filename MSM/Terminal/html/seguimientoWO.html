@@ -1,0 +1,339 @@
+﻿<style>
+    .cabeceraVista {
+        border: 1px solid black;
+        width: auto;
+        height: 26px;
+        background-color: darkred;
+        color: white;
+        padding: 3px;
+        padding-left: 10px;
+        font-size: 20px;
+    }
+
+    .table {
+        border: 1px solid #000000;
+        margin: 2px;
+    }
+
+    .table-bordered > thead > tr > th,
+    .table-bordered > tbody > tr > th,
+    .table-bordered > tfoot > tr > th,
+    .table-bordered > thead > tr > td,
+    .table-bordered > tbody > tr > td,
+    .table-bordered > tfoot > tr > td {
+        border: 1px solid black;
+        font-weight: normal;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        padding: 5px !important;
+    }
+
+    .table-bordered > tbody > tr > th {
+        padding: 5px;
+    }
+
+    .table td {
+        text-align: center;
+        font-size: 15px;
+        font-weight: 900 !important;
+    }
+
+    .bordeFinoDashed td {
+        text-align: left !important;
+        border: dashed 1px lightgray !important;
+    }
+
+    .bordeFinoDashed th {
+        line-height: 1 !important;
+        font-weight: normal;
+    }
+
+    .table span {
+        font-weight: normal;
+    }
+
+        .table span.data {
+            font-weight: bold;
+        }
+
+    .k-pane {
+        font-size: 15px;
+    }
+
+    .cantidades {
+        font-size: 14px !important;
+    }
+
+    #tpLlenadoras {
+        margin-top: 7px;
+    }
+</style>
+
+<div class="cabeceraVista">
+    <img src="img/iconoCabecera.png" />
+    <span><% print(window.app.idioma.t("SEGUIMIENTO_WO_EN_CURSO")) %></span>
+</div>
+
+<div id="segWO" style="overflow-y: auto; overflow-x: hidden; float: left;width:100%">
+    <div style="width: auto; margin: 0px; padding: 0px;">
+        <div style="width: 17%; margin: 4px; float: left; height: auto; padding: 0px;">
+            <table class="table bordeFinoDashed">
+                <tbody>
+                    <tr>
+                        <td><span><% print(window.app.idioma.t("FECHA")) %></span> <%=model.cabecera.inicio%> </td>
+                    </tr>
+                    <tr>
+                        <td><span><% print(window.app.idioma.t("TURNO")) %></span> <% print(window.app.idioma.t("TURNO" + model.cabecera.tipo)) %></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 6px;">
+                            <span>Rend.</span>
+                            <div id="pbOEEturno" style="height: 24px; width: 75%; font-size: 12px;"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="width: 81%; margin: 4px; float: left; padding: 0px;">
+            <table class="table bordeFinoDashed">
+                <tbody>
+                    <tr>
+                        <td style="width: 22%"><span><% print(window.app.idioma.t("IDORDEN")) %></span> <%=model.cabecera.idOrden%></td>
+                        <td style="width: 26%"><span><% print(window.app.idioma.t("TIPO_PRODUCTO")) %></span> <%=model.cabecera.tipoCerveza%></td>
+                        <td style="width: 26%"><span><% print(window.app.idioma.t("CODIGO_PRODUCTO")) %></span> <%=model.cabecera.codigoProducto%></td>
+                        <td><span><% print(window.app.idioma.t("PRODUCTO")) %></span> <%=model.cabecera.descripcionProduct%></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 22%"><span><% print(window.app.idioma.t("CANTIDAD_PLANIFICADA")) %></span> <%=model.cabecera.cantidadPlanificada%></td>
+                        <td style="width: 26%"><span><% print(window.app.idioma.t("OEE_OBJETIVO")) %></span> <%=Math.round(model.cabecera.oeeObjetivo)%> %</td>
+                        <td style="width: 26%"><span><% print(window.app.idioma.t("OEE_CRITICO")) %></span> <%=Math.round(model.cabecera.oeeCritico)%> %</td>
+                        <td><span><% print(window.app.idioma.t("VELOCIDAD_NOMINAL")) %></span> <%=model.cabecera.velocidadNominal%></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 6px; width: 22%">
+                            <span><% print(window.app.idioma.t("OEE")) %></span>
+                            <div id="pbOEEorden" style="height: 24px; width: 75%; font-size: 12px;"></div>
+                        </td>
+                        <td style="width: 26%"><span><% print(window.app.idioma.t("FECHA_INICIO_REAL")) %></span> <%=model.cabecera.inicioOrden%></td>
+                        <td style="width: 26%"><span><% print(window.app.idioma.t("FECHA_FIN_ESTIMADA")) %></span> <%=model.cabecera.finOrden%></td>
+                        <td><span><% print(window.app.idioma.t("DURACION_ESTIMADA")) %></span> <%=model.cabecera.duracionOrdenTurno%></td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    <div style="width: auto; margin: 0px; padding: 0px;">
+        <div style="width: 43%; margin: 4px; float: left; clear: left; height: auto;">
+            <table class="table bordeFinoDashed">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th><% print(window.app.idioma.t("DESDE_INICIO_TURNO")) %></th>
+                        <th><% print(window.app.idioma.t("DESDE_INICIO_ORDEN")) %></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row"><% print(window.app.idioma.t("PALETS_PRODUCIDOS_ETIQUETADORA")) %></th>
+                        <td><%=model.valoresDesdeInicioTurno.produccionReal%></td>
+                        <td><%=model.valoresDesdeInicioOrden.palets%></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><% print(window.app.idioma.t("CAJAS_PRODUCIDAS")) %></th>
+                        <td><%=model.valoresDesdeInicioTurno.cajas%></td>
+                        <td><%=model.valoresDesdeInicioOrden.cajas%></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><% print(window.app.idioma.t("ENVASES_PRODUCIDOS")) %></th>
+                        <td><%=model.valoresDesdeInicioTurno.envases%></td>
+                        <td><%=model.valoresDesdeInicioOrden.envases%></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><% print(window.app.idioma.t("RECHAZOS")) %></th>
+                        <td><%=model.valoresDesdeInicioTurno.rechazos%></td>
+                        <td><%=model.valoresDesdeInicioOrden.rechazos%></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><% print(window.app.idioma.t("HL_ENVASADOS")) %></th>
+                        <td><%=model.valoresDesdeInicioTurno.hectolitros.toFixed(2)%></td>
+                        <td><%=model.valoresDesdeInicioOrden.hectolitros.toFixed(2)%></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><% print(window.app.idioma.t("RENDIMIENTO")) %></th>
+                        <td><%=model.valoresDesdeInicioTurno.rendimiento.toFixed(2)%> %</td>
+                        <td>
+                            <!--<%if (!isNaN(model.valoresDesdeInicioOrden.rendimiento)) {%>
+                            <%=model.valoresDesdeInicioOrden.rendimiento.toFixed(2)%>
+				            <%}else{%> 
+				                0.00
+				            <%}%> %-->
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><% print(window.app.idioma.t("OEE_TURNO_ORDEN")) %></th>
+                        <td>
+                            <!--<%=model.valoresDesdeInicioTurno.oee.toFixed(2)%> %-->
+                        </td>
+                        <td><%if (!isNaN(model.valoresDesdeInicioOrden.oee)) {%>
+                            <%=model.valoresDesdeInicioOrden.oee.toFixed(2)%>
+				        <%}else{%> 
+				            0.00
+				        <%}%> %
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><% print(window.app.idioma.t("VELOCIDAD_MEDIA")) %></th>
+                        <td><%=Math.round(model.valoresDesdeInicioTurno.velocidadRealMedia)%></td>
+                        <td><%=Math.round(model.valoresDesdeInicioOrden.velocidadRealMedia)%></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table bordeFinoDashed" style="margin-top: 7px;">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th><%=model.franjasTitles[0]%></th>
+                        <th><%=model.franjasTitles[1]%></th>
+                        <th><%=model.franjasTitles[2]%></th>
+                        <th><%=model.franjasTitles[3]%></th>
+                        <th><%=model.franjasTitles[4]%></th>
+                        <th><%=model.franjasTitles[5]%></th>
+                        <th><%=model.franjasTitles[6]%></th>
+                        <th><%=model.franjasTitles[7]%></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row"><% print(window.app.idioma.t("PALETS_PRODUCIDOS_ETIQUETADORA")) %></th>
+                        <td class="cantidades"><%=model.franjas[0].palets%></td>
+                        <td class="cantidades"><%=model.franjas[1].palets%></td>
+                        <td class="cantidades"><%=model.franjas[2].palets%></td>
+                        <td class="cantidades"><%=model.franjas[3].palets%></td>
+                        <td class="cantidades"><%=model.franjas[4].palets%></td>
+                        <td class="cantidades"><%=model.franjas[5].palets%></td>
+                        <td class="cantidades"><%=model.franjas[6].palets%></td>
+                        <td class="cantidades"><%=model.franjas[7].palets%></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><% print(window.app.idioma.t("CAJAS_PRODUCIDAS")) %></th>
+                        <td class="cantidades"><%=model.franjas[0].cajas%></td>
+                        <td class="cantidades"><%=model.franjas[1].cajas%></td>
+                        <td class="cantidades"><%=model.franjas[2].cajas%></td>
+                        <td class="cantidades"><%=model.franjas[3].cajas%></td>
+                        <td class="cantidades"><%=model.franjas[4].cajas%></td>
+                        <td class="cantidades"><%=model.franjas[5].cajas%></td>
+                        <td class="cantidades"><%=model.franjas[6].cajas%></td>
+                        <td class="cantidades"><%=model.franjas[7].cajas%></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><% print(window.app.idioma.t("ENVASES_PRODUCIDOS")) %></th>
+                        <td class="cantidades"><%=model.franjas[0].envases%></td>
+                        <td class="cantidades"><%=model.franjas[1].envases%></td>
+                        <td class="cantidades"><%=model.franjas[2].envases%></td>
+                        <td class="cantidades"><%=model.franjas[3].envases%></td>
+                        <td class="cantidades"><%=model.franjas[4].envases%></td>
+                        <td class="cantidades"><%=model.franjas[5].envases%></td>
+                        <td class="cantidades"><%=model.franjas[6].envases%></td>
+                        <td class="cantidades"><%=model.franjas[7].envases%></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><% print(window.app.idioma.t("DISPONIBILIDAD")) %></th>
+                        <td class="cantidades"><%=model.franjas[0].disponibilidad.toFixed(2)%></td>
+                        <td class="cantidades"><%=model.franjas[1].disponibilidad.toFixed(2)%></td>
+                        <td class="cantidades"><%=model.franjas[2].disponibilidad.toFixed(2)%></td>
+                        <td class="cantidades"><%=model.franjas[3].disponibilidad.toFixed(2)%></td>
+                        <td class="cantidades"><%=model.franjas[4].disponibilidad.toFixed(2)%></td>
+                        <td class="cantidades"><%=model.franjas[5].disponibilidad.toFixed(2)%></td>
+                        <td class="cantidades"><%=model.franjas[6].disponibilidad.toFixed(2)%></td>
+                        <td class="cantidades"><%=model.franjas[7].disponibilidad.toFixed(2)%></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><% print(window.app.idioma.t("EFICIENCIA")) %></th>
+                        <td class="cantidades"><%=model.franjas[0].eficiencia.toFixed(2)%></td>
+                        <td class="cantidades"><%=model.franjas[1].eficiencia.toFixed(2)%></td>
+                        <td class="cantidades"><%=model.franjas[2].eficiencia.toFixed(2)%></td>
+                        <td class="cantidades"><%=model.franjas[3].eficiencia.toFixed(2)%></td>
+                        <td class="cantidades"><%=model.franjas[4].eficiencia.toFixed(2)%></td>
+                        <td class="cantidades"><%=model.franjas[5].eficiencia.toFixed(2)%></td>
+                        <td class="cantidades"><%=model.franjas[6].eficiencia.toFixed(2)%></td>
+                        <td class="cantidades"><%=model.franjas[7].eficiencia.toFixed(2)%></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><% print(window.app.idioma.t("RENDIMIENTO")) %></th>
+                        <td class="cantidades"><%=model.franjas[0].oee.toFixed(2)%></td>
+                        <td class="cantidades"><%=model.franjas[1].oee.toFixed(2)%></td>
+                        <td class="cantidades"><%=model.franjas[2].oee.toFixed(2)%></td>
+                        <td class="cantidades"><%=model.franjas[3].oee.toFixed(2)%></td>
+                        <td class="cantidades"><%=model.franjas[4].oee.toFixed(2)%></td>
+                        <td class="cantidades"><%=model.franjas[5].oee.toFixed(2)%></td>
+                        <td class="cantidades"><%=model.franjas[6].oee.toFixed(2)%></td>
+                        <td class="cantidades"><%=model.franjas[7].oee.toFixed(2)%></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table bordeFinoDashed" style="margin-top: 7px;">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th><% print(window.app.idioma.t("DESDE_INICIO_TURNO")) %></th>
+                        <th><% print(window.app.idioma.t("DESDE_INICIO_ORDEN")) %></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row"><% print(window.app.idioma.t("ENV_RECHAZADOS_CLASIFICADORES")) %></th>
+                        <td><%=model.valoresDesdeInicioTurno.rechazosClasificadores%></td>
+                        <td><%=model.valoresDesdeInicioOrden.rechazosClasificadores%></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><% print(window.app.idioma.t("ENV_RECHAZADOS_INSPECTOR_VACIOS")) %></th>
+                        <td><%=model.valoresDesdeInicioTurno.rechazosInspectorVacios%></td>
+                        <td><%=model.valoresDesdeInicioOrden.rechazosInspectorVacios%></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><% print(window.app.idioma.t("ENV_RECHAZADOS_LLENADORA")) %></th>
+                        <td><%=model.valoresDesdeInicioTurno.rechazosLlenadora%></td>
+                        <td><%=model.valoresDesdeInicioOrden.rechazosLlenadora%></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><% print(window.app.idioma.t("ENV_RECHAZADOS_PRODUCTO_TERMINADO")) %></th>
+                        <td><%=model.valoresDesdeInicioTurno.rechazosProductoTerminado%></td>
+                        <td><%=model.valoresDesdeInicioOrden.rechazosProductoTerminado%></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div style="width: 55%; margin: 4px; float: left;">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th><% print(window.app.idioma.t("RENDI_LLENADORA")) %></th>
+                        <th><% print(window.app.idioma.t("PAROS_MAY_MEN")) %></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="grafRendLlenadora" style="width: 73%; height: 240px;"></td>
+                        <td id="grafParos" style="width: 27%; height: 240px;"></td>
+                    </tr>
+<!--                    <tr >
+                        <td colspan="2">/td>
+                    </tr>-->
+                </tbody>
+            </table>
+            <table style="width: 100%;">
+                <tr>
+                    <td><div id="tpLlenadoras"></div></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+</div>

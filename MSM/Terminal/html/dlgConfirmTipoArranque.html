@@ -1,0 +1,50 @@
+﻿<style>
+    #msgDialogo {
+        width: auto;
+        font-size: 20px;
+        border-bottom:1px solid black;
+        margin-bottom:5px;
+        margin-top:5px;
+        text-align:center;
+    }
+
+    #imgProcesando {
+        /*margin: 5px;
+        margin-left: 84px;*/
+        display:none;
+    }
+
+    #btnAceptar, #btnCancelar {
+        height: 55px;
+        width: 30%;
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+    
+    .btnFloatNone {
+        float: none !important;
+        padding-top: 4px;
+        float:left;
+        margin-top:18px;
+        height: 80px;
+        width: 150px;    
+    }
+
+</style>
+
+<div id="msgDialogo">
+    <%= msg %>
+</div>
+<div id="imgProcesando" style="text-align: center;">
+    <img src="img/ajax-loader.gif"/>
+</div>
+<div>
+    <div style="margin-left:15px;">
+       <label id="lblArranque" style="width: 150px;"></label>
+       <input id="cmbTipoArranque" style="position: relative; z-index: 100; width: 440px"/>
+    </div>
+    <div style="text-align: center; margin-top: 25px;">
+        <button class="btnFloatNone" id="btnAceptar"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+        <button class="btnFloatNone" id="btnCancelar"><% print(window.app.idioma.t("CANCELAR")) %></button>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+﻿<style>
+    .mb20 {
+        margin-bottom: 20px;
+    }
+
+    .mbi {
+        margin-bottom: initial;
+    }
+
+    .mr20 {
+        margin-right: 20px;
+    }
+
+    .flex-filas {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .flex-aic {
+        align-items: center;
+    }
+
+    a.disabled {
+        pointer-events: none;
+        cursor: not-allowed !important;
+        color: #00000085;
+    }
+
+        a.disabled span {
+            opacity: 0.5 !important;
+        }
+
+    .k-upload {
+        width: 37rem;
+    }
+
+        .k-upload strong {
+            width: initial !important;
+        }
+
+        .k-upload .k-filename {
+            max-width: 20rem;
+        }
+</style>
+
+<div style="padding:6px;height:92%">
+    <div class="mb20" style="height:calc(100% - 49px);">  
+        <div style="display: flex; height: 100%; }">
+            <textarea id="inpt_NotasLote" name="inpt_NotasLote" style="padding: 10px; flex:1"></textarea>
+        </div>        
+    </div>
+    <div class="flex-filas w100" style="justify-content: flex-end; height:29px">
+        <span>
+            <input type="button" data-role="button" class="mr6" id="btnNotasLotesAceptar" value="<% print(window.app.idioma.t('ACEPTAR')) %>" />
+            <input type="button" data-role="button" class="" id="btnNotasLotesCancelar" value="<% print(window.app.idioma.t('CANCELAR')) %>" />
+        </span>
+    </div>
+</div>
+

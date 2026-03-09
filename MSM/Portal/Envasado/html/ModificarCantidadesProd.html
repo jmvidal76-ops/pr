@@ -1,0 +1,35 @@
+﻿
+ <!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('MODIFICACION_CANTIDADES_WO')) %></label>
+</div>
+
+ <!-- Filtros -->
+<div id="divFiltros" class="k-header" style="height:35px;width:100%; padding-top:5px;">
+    <div style="float:left;">
+        <label style="margin-left:5px;"><% print(window.app.idioma.t('LINEA')) %></label>
+            &nbsp;
+        <input id="cmbLinea" name="cmbLinea" style="width:200px;" />
+        &nbsp;&nbsp;&nbsp;
+        <label style="margin-left:5px;"><% print(window.app.idioma.t('FECHA_INICIO')) %></label>
+        <input id="dpFechaInicio" />
+        &nbsp;&nbsp;&nbsp;
+        <label style="margin-left:5px;"><% print(window.app.idioma.t('FECHA_FIN')) %></label>
+        <input id="dpFechaFin" />
+        <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left:5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('FILTRAR')) %></button>
+    </div>
+</div>
+<div id="gridModCantidadesProd"></div>
+
+<!--<!-- Detail Grid -->
+<script type="text/x-kendo-template" id="template">
+
+                        <div class="hora" id="gridhora" style="margin-left:136px;"></div>
+</script>
+
+ <style>
+                .k-detail-cell .k-tabstrip .k-content {
+                    padding: 0.2em;
+                }
+     </style>

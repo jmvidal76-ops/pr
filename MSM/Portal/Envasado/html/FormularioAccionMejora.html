@@ -1,0 +1,140 @@
+﻿<style>
+    .rowfield {
+        padding-bottom: 15px;
+        margin-left: 20px;
+    }
+
+    input, textarea {
+        background-color: white;
+    }
+</style>
+<!-- Bloque Edicion Acciones de Mejora -->
+<div id="divEdicionAccionesMejora" style="overflow:auto;">
+    <div id="divCabeceraVista" class="divCabeceraVista">
+        <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+            <% if(accion=="editar"){ %>
+                <% if(model.tipo==0){ %>
+                    <label class="lblCabeceraVista"><% print(window.app.idioma.t('SINTESIS_PAROS_PERDIDAS')) %> / <% print(window.app.idioma.t('EDITAR_ACCION_MEJORA')) %> / <%=model.id%></label>
+                <% }else{ 
+                    if(model.tipo==1){
+                %>
+                        <label class="lblCabeceraVista"><% print(window.app.idioma.t('SINTESIS_CAMBIOS')) %> / <% print(window.app.idioma.t('EDITAR_ACCION_MEJORA')) %> / <%=model.id%></label>
+                <% }else{ %>
+                        <label class="lblCabeceraVista"><% print(window.app.idioma.t('SINTESIS_ARRANQUE')) %> / <% print(window.app.idioma.t('EDITAR_ACCION_MEJORA')) %> / <%=model.id%></label>
+                <% }} %>
+            <% }else{ %>
+                <% if(model.tipo==0){ %>
+                    <label class="lblCabeceraVista"><% print(window.app.idioma.t('SINTESIS_PAROS_PERDIDAS')) %> / <% print(window.app.idioma.t('CREAR_ACCION_MEJORA')) %></label>
+                <% }else{ 
+                    if(model.tipo==1){
+                %>
+                        <label class="lblCabeceraVista"><% print(window.app.idioma.t('SINTESIS_CAMBIOS')) %> / <% print(window.app.idioma.t('CREAR_ACCION_MEJORA')) %></label>
+                <% }else{ %>
+                        <label class="lblCabeceraVista"><% print(window.app.idioma.t('SINTESIS_ARRANQUE')) %> / <% print(window.app.idioma.t('CREAR_ACCION_MEJORA')) %></label>
+                <% }} %>
+            <% } %>
+    </div>
+    <div class="k-header" style="height:30px;width:100%;">
+        <label style="margin-left:5px; margin-top:5px; font-size:18px;"><% print(window.app.idioma.t('DATOS_ACCION_MEJORA')) %></label>
+    </div>
+    <div style="width: 100%;">
+        <div style="display:inline-block;border:0;">
+            <br />
+            <div class="rowfield">
+                <label style="width:150px;margin-left:5px; vertical-align:top;"><% print(window.app.idioma.t('DESCRIPCION_PROBLEMA')) %></label>
+                <textarea id="txtDescripcionProblema" name="txtDescripcionProblema" style="width:350px;" rows="3"><%=model.descripcionProblema%></textarea>
+
+                <label style="width:110px; margin-left:20px;vertical-align:top;"><% print(window.app.idioma.t('CAUSA')) %></label>
+                <textarea id="txtCausa" name="txtCausa" style="width:350px;" rows="3"><%=model.causa%></textarea>               
+            </div>
+            <div class="rowfield">
+                <label style="width:150px; margin-left:5px; vertical-align:top;"><% print(window.app.idioma.t('ACCION_PROPUESTA')) %></label>
+                <textarea id="txtAccionPropuesta" name="txtAccionPropuesta" style="width:350px;" rows="3"><%=model.accionPropuesta%></textarea>
+
+                <label style="width:110px; margin-left:20px;vertical-align:top;"><% print(window.app.idioma.t('OBSERVACIONES')) %></label>
+                <textarea id="txtObservaciones" name="txtObservaciones" style="width:350px;" rows="3"><%=model.observaciones%></textarea>               
+            </div>
+            <%if(model.tipo==0){%>
+                <div class="rowfield">
+                    <label style="width:150px; margin-left:5px; vertical-align:top;"><% print(window.app.idioma.t('LINEA')) %></label>
+                    <input id="cmbLinea" name="cmbLinea" style="width:356px;" value="<%=model.idLinea%>" />
+                
+                    <label style="width:110px; margin-left:20px;vertical-align:top;"><% print(window.app.idioma.t('MAQUINA')) %></label>
+                    <input id="cmbMaquina" name="cmbMaquina" style="width:356px;" value="<%=model.idMaquina%>"/>               
+                </div>
+                <div class="rowfield">
+                    <label style="width:150px; margin-left:5px; vertical-align:top;"><% print(window.app.idioma.t('EQUIPO_CONSTRUCTIVO')) %></label>
+                    <input id="cmbEquipoConstructivo" name="cmbEquipoConstructivo"  style="width:356px;" type="text" value="<%=model.idEquipoConstructivo%>"/>
+                    
+                    <label style="width:110px; margin-left: 20px; vertical-align:top;"><% print(window.app.idioma.t('FECHA_TURNO')) %></label>
+                    <input id="dtpFechaTurno" style="width: 100px;" />
+                    <label style="width:45px; margin-left: 10px; vertical-align:top;"><% print(window.app.idioma.t('TURNO')) %></label>
+                    <input id="ddlTurno" style="width: 100px;" />
+
+                    <%if(model.id){%>
+                        <label style="width:66px; margin-left:10px; vertical-align:top;"><% print(window.app.idioma.t('FINALIZADA')) %></label>
+                        <input id="cbFechaFinalizada" name="cbFechaFinalizada" type="checkbox" <%= model.fechaFinalizada ? "checked=\"checked\"":""%>/>
+                    <%}%>
+                </div>
+            <%}else{%>
+                <div class="rowfield">
+                    <label style="width:150px;margin-left:5px; vertical-align:top;"><% print(window.app.idioma.t('LINEA')) %></label>
+                    <input id="cmbLinea" name="cmbLinea" style="width:356px;" value="<%=model.idLinea%>" />
+
+                    <label style="width:110px; margin-left: 20px; vertical-align:top;"><% print(window.app.idioma.t('FECHA_TURNO')) %></label>
+                    <input id="dtpFechaTurno" style="width: 100px;" />
+                    <label style="width:45px; margin-left: 10px; vertical-align:top;"><% print(window.app.idioma.t('TURNO')) %></label>
+                    <input id="ddlTurno" style="width: 100px;" />
+                
+                    <%if(model.id){%>
+                        <label style="width:66px; margin-left:10px; vertical-align:top;"><% print(window.app.idioma.t('FINALIZADA')) %></label>
+                        <input id="cbFechaFinalizada" name="cbFechaFinalizada" type="checkbox" <%= model.fechaFinalizada ? "checked=\"checked\"":""%>/>
+                    <%}%>      
+                </div>                            
+            <%}%>
+        </div>
+    </div>
+</div>
+
+<!-- Filtros Paros -->
+<div id="divFiltrosParosHeader" class="k-header" style="height:32px;width:100%; padding-top:5px;margin-top:20px">
+    <div id="divSeparador" style="background-color:#808080;height:2px;width:100%;position: relative;top: -4px;"></div>
+    <div style="float:left;">
+        <label id="lblCabeceraParos" style="margin-left:5px; font-size:18px;"><% print(window.app.idioma.t('ITEMS_ACCIONES_MEJORA_SELECCIONADOS' + model.tipo)) %></label>
+    </div>
+    <div id="divHeaderParosDcho" style="float: right;">
+        <button type='button' id='btnLimpiarFiltros' class='k-button k-button-icontext'>
+            <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+        </button>
+        <button id="btnSeleccionarParosPerdidas" class="k-button k-button-icontext k-grid-add" style="float:right; background-color: green; color: white; margin-left: 5px; margin-right: 5px;">
+            <span class='k-icon k-add'></span><% print(window.app.idioma.t('ANADIR_ITEM_ACCIONES_MEJORA' + model.tipo)) %>
+        </button>
+    </div>
+</div>
+
+<div id="grid"></div>
+
+<!-- Detail grid template Paros y perdidas -->
+<script type="text/x-kendo-template" id="templateParos">
+    <div class="container" style="width:98%;">
+        <div style="float:left; display:inline-block; background-color: Transparent;border:0;">
+            <div style="float:left; display:inline-block;">
+                <label class="lblColumnaTipo1"><% print(window.app.idioma.t('DESCRIPCION_AVERIA')) %></label>
+                <textarea id="txtDescripcion" style="width:350px;" rows="3" disabled="disabled">#= Descripcion #</textarea>
+            </div>
+            <div style="float:left; display:inline-block; margin-left:5px;">
+                <label class="lblColumnaTipo1" style="width:100px !important;"><% print(window.app.idioma.t('OBSERVACIONES')) %></label>
+                <textarea id="txtDescripcion" style="width:350px;" rows="3" disabled="disabled">#= Observaciones #</textarea>
+            </div>
+            <br />
+        </div>
+    </div>
+</script>
+
+<!-- Bloque Botones Edicion Acciones de Mejora -->
+<div id="divBotonesEdicionAccionesMejora">
+    <div style="height:50px;width:100%; text-align:center;margin-top: 8px;"><!--background-color:#f5d1d1;-->
+        <button id="btnGuardarAccionMejora" class="k-button k-button-icontext" style="background-color: green; color: white; margin-right:5px;"><% print(window.app.idioma.t('GUARDAR')) %></button>
+        <button id="btnCancelarAccionMejora" class="k-button k-button-icontext"><% print(window.app.idioma.t('CANCELAR')) %></button>
+    </div>
+</div>

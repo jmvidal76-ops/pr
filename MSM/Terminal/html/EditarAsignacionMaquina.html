@@ -1,0 +1,113 @@
+﻿<style>
+   /* .rTable {
+        display: table;
+    }
+
+    .rTableRow {
+        display: table-row;
+    }
+
+    .rTableCell {
+        display: table-cell;
+        padding: 10px;
+        vertical-align: top;
+    }*/
+
+    /*#divAM .k-numerictextbox .k-link {
+        display: block;
+        height: 0.7em;
+        line-height: 2em;
+        vertical-align: middle;
+        border-width: 0;
+        padding: 0;
+        padding-bottom: 0px;
+        padding-top: 12px;
+    }
+
+
+    #divAM .k-numerictextbox .k-icon {
+        height: 14px;
+        zoom: 1.4;
+    }
+
+    #divAM .k-grid td {
+        font-size: 23px;
+    }
+
+    #divAM .k-grid-header th.k-header > .k-link {
+        font-size: 23px;
+    }
+
+    .k-numerictextbox .k-icon {
+        height: 14px;
+        zoom: 1.5;
+    }*/
+
+    .tableMaquina {
+        float: left;
+        width: 60%;
+    }
+
+    .tableLinea {
+        float: left;
+        width: 35%;
+    }
+
+    .tamanioTd {
+        font-size: 26px !important;
+        font-weight: normal !important;
+    }
+
+    .alturaRadio {
+        height: 33px;
+        width: 32px;
+    }
+
+    #btnAceptarMP, #btnCancelarMP {
+        height: 55px;
+        width: 150px;
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+</style>
+
+<div>
+    <!--<form id="EditarAsignacionMaquina">-->
+        <!--<div style="width: 100%;">
+            <div style="float: left; background-color: Transparent; border: 0;" class="rTable">-->
+                <!--<div id="divAM" style="overflow: hidden; width: 100%;">-->
+                <!-- <div id="gridAM"></div>-->
+                <div class="tableMaquina">
+                    <table class="table table-striped" style="border:none;">
+                        <thead>
+                            <tr>
+                                <th style="font-size: 18px; text-align: center"><% print(window.app.idioma.t("MAQUINA")) %></th>
+                            </tr>
+                        </thead>
+                        <tbody id="listaMaquinas">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tableLinea">
+                    <table class="table table-striped" style="border:none">
+                        <thead>
+                            <tr>
+                                <th style="font-size: 18px"><% print(window.app.idioma.t("LINEA")) %> 11A</th>
+                                <th style="font-size: 18px"><% print(window.app.idioma.t("LINEA")) %> 11B</th>
+                            </tr>
+                        </thead>
+                        <tbody id="listaConfiguracion">
+                        </tbody>
+                    </table>
+                    </div>
+                <!--</div>-->
+                <div id="divAviso" style="color: red; text-align: center; width: 100%; float: left; font-size: 22px" >
+                </div>
+                <div id="div1" style="text-align: center; width: 100%; float: left; padding: 10px;">
+                    <button id="btnAceptarMP"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+                    <button id="btnCancelarMP"><% print(window.app.idioma.t("CANCELAR")) %></button>
+                </div>
+            <!--</div>
+        </div>--> 
+    <!--</form>-->
+</div>

@@ -1,0 +1,529 @@
+﻿html {
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html,
+body,#center-pane {
+    height: 100%;
+    margin: 0;padding: 0;
+    font-size: 13px;
+    overflow: hidden;
+}
+
+#top-pane {
+    background-color: rgba(60, 70, 80, 0.10);
+}
+
+#bottom-pane {
+    background-color: rgba(60, 70, 80, 0.15);
+}
+
+#left-pane, #center-pane {
+    background-color: rgba(60, 70, 80, 0.05);
+}
+
+.pane-content {
+    padding: 5px 5px 5px 10px;
+}
+
+.navbar {
+margin-bottom: 0px;
+}
+
+
+body > .navbar .navbar-default .brand {
+    margin-left: -20px !important;
+    margin-right: -20px !important;
+}
+
+/*Cabecera vista*/
+
+.divCabeceraVista {
+        background-color:#3EA2E0;height:30px;width:100%;
+}
+.lblCabeceraVista {
+    margin-right:10px; font-size:14px; color:white; font-weight:bold;padding-top:6px;
+}
+.divContenidoVista {
+    position: absolute;
+    top: 30px;
+    bottom: 0;
+    width: 100%; 
+}
+
+
+/*Estilos genericos*/
+
+.w-100 {
+    width: 100%;
+}
+.w-20 {
+    width: 20%;
+}
+.w-25 {
+    width: 25%;
+}
+.w-50 {
+    width: 50%;
+}
+.w-72 {
+    width: 72%;
+}
+.w-75 {
+    width: 75%;
+}
+
+.pad-10 {
+    padding: 10px;
+}
+.pt-10 {
+    padding-top: 10px;
+}
+.pb-10 {
+    padding-bottom: 10px;
+}
+.pl-10 {
+    padding-left: 10px;
+}
+.pr-10 {
+    padding-right: 10px;
+}
+.px-10 {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.py-10 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.pad-15 {
+    padding: 15px;
+}
+.pt-15 {
+    padding-top: 15px;
+}
+.pb-15 {
+    padding-bottom: 15px;
+}
+.pl-15 {
+    padding-left: 15px;
+}
+.pr-15 {
+    padding-right: 15px;
+}
+.px-15 {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.py-15 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.pad-20 {
+    padding: 20px;
+}
+.pt-20 {
+    padding-top: 20px;
+}
+.pb-20 {
+    padding-bottom: 20px;
+}
+.pl-20 {
+    padding-left: 20px;
+}
+.pr-20 {
+    padding-right: 20px;
+}
+.px-20 {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+.py-20 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.pad-30 {
+    padding: 30px;
+}
+.pt-30 {
+    padding-top: 30px;
+}
+.pb-30 {
+    padding-bottom: 30px;
+}
+.pl-30 {
+    padding-left: 30px;
+}
+.pr-30 {
+    padding-right: 30px;
+}
+.px-30 {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+.py-30 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.mt-4 {
+    margin-top: 4px;
+}
+.ml-4 {
+    margin-left: 4px;
+}
+.mb-4 {
+    margin-bottom: 4px;
+}
+.mr-4 {
+    margin-right: 4px;
+}
+.mt-8 {
+    margin-top: 8px;
+}
+.ml-8 {
+    margin-left: 8px;
+}
+.mb-8 {
+    margin-bottom: 8px;
+}
+.mr-8 {
+    margin-right: 8px;
+}
+.mt-12 {
+    margin-top: 12px;
+}
+.ml-12 {
+    margin-left: 12px;
+}
+.mb-12 {
+    margin-bottom: 12px;
+}
+.mr-12 {
+    margin-right: 12px;
+}
+.mt-20 {
+    margin-top: 20px;
+}
+.ml-20 {
+    margin-left: 20px;
+}
+.mb-20 {
+    margin-bottom: 20px;
+}
+.mr-20 {
+    margin-right: 20px;
+}
+.mt-25 {
+    margin-top: 25px;
+}
+.ml-25 {
+    margin-left: 25px;
+}
+.mb-25 {
+    margin-bottom: 25px;
+}
+.mr-25 {
+    margin-right: 25px;
+}
+.tac {
+    text-align: center;
+}
+.flex {
+    display: flex;
+}
+.flex-column {
+    flex-direction: column;
+}
+.flex-jc-sa {
+    justify-content: space-around;
+}
+
+input,textarea {
+    box-shadow:none;
+    /*background-color: Transparent;*/
+    text-shadow:none;
+    border: 1px solid #bfbfbf;
+    /*-webkit-appearance: none;*/
+}
+
+.k-filter-menu label > input[type='radio'] {
+    margin-right: 4px;
+}
+
+.k-filter-menu label:nth-of-type(2) > input[type='radio'] {
+    margin-left: 12px;
+}
+
+.warning {
+    margin-bottom: -3px;
+    width: 16px;
+    display: inline-block;
+    height: 15px;
+    background-color: red;
+    -webkit-mask: url('../../Common/img/warning.svg') no-repeat center;
+    mask: url('../../Common/img/warning.svg') no-repeat center;
+}
+
+/* VENTANA LOGIN */
+#dlgLogin {
+    display: none;
+    text-align: center;
+    padding: 8px;
+    font-size: 14px;
+}
+#dlgLogin div{
+    margin:16px;
+}
+
+#dlgLogin label{
+    width:100px;
+}
+
+#dlgLogin input{
+    height:20px;
+}
+
+#dlgLogin button{
+    width:80px;
+    height:30px;
+}
+
+/* LOADER */
+
+.spinner {
+  margin: 100px auto 0;
+  width: 100%;
+  text-align: center;
+  z-index:10;
+  position:absolute;
+}
+
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: #333;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+  animation: bouncedelay 1.4s infinite ease-in-out;
+  /* Prevent first frame from flickering when animation starts */
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+.botonMenu{
+    padding-top:5px !important;
+    margin:6px !important;
+    height:30px;
+}
+
+.botonMenuDisabled{
+    padding-top:5px !important;
+    margin:6px !important;
+    color: gray;
+    background-color: lightgray;
+    height:30px;
+}
+
+/*Estilos Kendo Grid*/
+.k-grid-toolbar a {
+    float:right;
+}
+
+.k-button k-button-icontext k-grid-add {
+    background-color:green; 
+}
+
+.lblColumnaTipo1 {
+    width:80px;
+    vertical-align:top;
+}
+
+.lblColumnaTipo2 {
+    width:100px;
+}
+
+.lblColumnaTipo3 {
+    width:70px;
+    text-align:right;
+}
+
+.lblColumnaTipo4 {
+    width: 140px;
+}
+
+.selected{
+    background: #C31C1C;
+    color: #ffffff;
+}
+
+.notSelected {
+    background: white;
+    color: black;
+}
+
+.k-edit-form-container {
+    width: auto;
+}
+
+
+/* Tamaños grid*/
+
+#gridSintesisTurnoParos{
+  height: 44%;
+}
+
+#gridSintesisTurnoAccionesMejora{
+  height: 44%;
+}
+
+#gridSintesisCambioCambios{
+  height: 44%;
+}
+
+#gridSintesisCambioAccionesMejora{
+  height: 44%;
+}
+
+#gridSintesisArranques{
+  height: 44%;
+}
+
+#gridSintesisArranqueAccionesMejora{
+  height: 44%;
+}
+
+.progress {
+    margin-bottom:0px;
+}
+
+.selectedCabeceraFila {
+    background-color:gainsboro;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.parpadeo {
+    animation: blink 1s;
+    animation-iteration-count: infinite;
+}
+
+#vertical .k-splitbar-vertical:nth-of-type(1) {
+    border-width: 0;
+}
+
+.menuTop {
+    padding-left: 175px !important;
+    position: absolute;
+}
+
+.configuracion {
+    padding: 8px !important;
+}
+
+.ui-pnotify {
+    z-index: 20000;
+}
+
+.k-i-attach {
+    background-position: -293px -220px;
+}
+
+.truncated-text-cell {
+    white-space: pre-wrap;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.3em !important;
+    max-height: 4.6em;
+}
+
+.multiline-tooltip {
+    white-space: pre-wrap;
+    text-align: initial;
+}
+
+/* Estilos del cuadro de mando */
+.bloqueLinea {
+    width: 120px;
+    /*height: 201px;*/
+    background-color: #9FC5F8;
+    border-right: 1px solid #000000;
+    vertical-align: top;
+    border: 1px black solid;
+}
+
+.avisoAveria {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 6px;
+    right: 5px;
+}
+
+.avisoAveria img {
+    width: 100%;
+    height: 100%;
+}
+
+.contadorAverias {
+    position: absolute;
+    bottom: -5px;
+    right: 0px;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000, 1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+}
+
+.avisoAveria button {
+    position: absolute;
+    bottom:0;
+    top:0;
+    right:0;
+    left:0;
+    opacity:0;
+}
+
+/*FIN CUADRO MANDO*/
+
+@media (max-width:1145px) {
+    .navbar-static-top {
+        height: 80px !important;
+    }
+}
+
+.k-filter-menu label > input[type='radio'] {
+    margin-right: 4px;
+}
+
+.k-filter-menu label:nth-of-type(2) > input[type='radio'] {
+    margin-left: 12px;
+}
+
+.mi-dlgVistaInforme .k-window-action .k-icon {
+    transform: scale(2.3) !important;
+}

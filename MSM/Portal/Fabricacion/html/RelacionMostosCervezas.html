@@ -1,0 +1,71 @@
+﻿<style type="text/css">
+    .toolbar-left {
+        display: inline-flex;
+        gap: 6px;
+    }
+
+    .toolbar-right {
+        display: inline-flex;
+        float: right;
+        margin-top: 4px;
+    }
+</style>
+
+<div id="window" style="display:none">
+    <span id="barcode" class="barcode"></span>
+</div>
+
+
+<script type="text/x-kendo-template" id="tmpToolbar">
+
+
+
+</script>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('RELACION_MOSTOS_CERVEZAS')) %></label>
+</div>
+
+<!--<input type="checkbox" id="chkLotesConsumidos" checked style="display:none" />-->
+<div id="gridRelacionMostosCervezas" style="width:100%;height:calc(100% - 30px);">
+
+</div>
+<div id="divWnd"></div>
+
+<script id="RelacionesTemplate" type="text/x-kendo-template">
+    <div style="width: 400px; padding: 14px; display: flex; flex-direction: column; align-items: flex-start;">
+        <div style="width: 100%; margin-bottom: 30px; text-align: center; font-weight: bold;">
+            <input id="inputCerveza" type="text" value="#=CodCervTCP# - #=DescripcionCodCervTCP#"
+                   class="k-input k-textbox" style="width: 98%; text-align: center;" disabled>
+        </div>
+
+        <!-- Combo de actualización -->
+        <div style="width: 100%; margin-bottom: 24px; text-align: center;">
+            <label for="cmbActualizacion" style="font-weight: bold; margin-bottom: 8px; display: block;">#= window.app.idioma.t("ACTUALIZACION") #</label>
+            <select id="cmbActualizacion" style="width: 100px;">
+                <option value="1">#= window.app.idioma.t("AUTOMATICO") #</option>
+                <option value="0">#= window.app.idioma.t("MANUAL") #</option>
+            </select>
+        </div>
+
+        <div style="width: 100%; margin-bottom: 12px; text-align: center;">
+            <label for="cmbMostoFermentacion" style="font-weight: bold; margin-bottom: 8px; display: block;">#= window.app.idioma.t("MOSTO_FERMENTACION") #</label>
+            <select id="cmbMostoFermentacion" style="width: 350px;"></select>
+        </div>
+        <div style="width: 100%; margin-bottom: 12px; text-align: center;">
+            <label for="cmbMostoCoccion" style="font-weight: bold; margin-bottom: 8px; display: block;">#= window.app.idioma.t("MOSTO_COCCION") #</label>
+            <select id="cmbMostoCoccion" style="width: 350px;"></select>
+        </div>
+
+        <!-- Contenedor para botones -->
+        <div style="width: 100%; text-align: center; margin-top: 24px;">
+            <a class="k-button k-button-icontext k-grid-save" id="btnGuardarRelaciones" style="margin-right: 12px;">
+                <span></span>#= window.app.idioma.t("GUARDAR") #
+            </a>
+            <a class="k-button k-button-icontext k-grid-save" id="btnCancelarRelaciones">
+                <span></span>#= window.app.idioma.t("CANCELAR") #
+            </a>
+        </div>
+    </div>
+</script>

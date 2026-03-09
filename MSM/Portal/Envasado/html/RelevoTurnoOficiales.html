@@ -1,0 +1,72 @@
+﻿<style type="text/css">
+    .toolbar-left {
+        display: inline-flex;
+        gap: 6px;
+    }
+
+    .toolbar-right {
+        display: inline-flex;
+        float: right;
+        margin-top: 4px;
+    }
+</style>
+
+<div id="window" style="display:none">
+    <span id="barcode" class="barcode"></span>
+</div>
+
+
+<script type="text/x-kendo-template" id="tmpToolbar">
+
+
+
+</script>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('RELEVO_TURNO_OFICIALES')) %></label>
+</div>
+
+<div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+    <div style="float: left;">
+        <label style="margin-left:5px;"><% print(window.app.idioma.t('FILTRAR_POR')) %></label>
+        <select id="selectLinea" style="width:200px;"></select>
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('DESDE')) %></label>
+        <input id="dtpFechaDesde" style="width: 100px;" />
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('HASTA')) %></label>
+        <input id="dtpFechaHasta" style="width: 100px;" />
+        <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+    </div>
+    <div style="float: right; margin-right: 10px;">
+        <!--<button id="btnLimpiarFiltros" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;">
+            <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+        </button>-->
+        <!--<button id="btnExportExcel" class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px;">
+            <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+        </button>-->
+    </div>
+</div>
+
+<!--<input type="checkbox" id="chkLotesConsumidos" checked style="display:none" />-->
+<div id="gridRelevoTurnoOficiales" style="width:100%;height:calc(100% - 30px);">
+
+</div>
+<div id="divWnd"></div>
+
+<!--Modal Modificar Notas-->
+<script id="notasRelevoTemplate" type="text/x-kendo-template">
+    <div style="width: 600px;padding:18px;display: flex;flex-direction: column;align-items: flex-start;">
+        <div style="width:100%;display: flex;flex-direction: column;align-items: flex-start;margin-bottom:12px;">
+            <!--<strong><label for="inpt_notas">#:window.app.idioma.t("NOTAS")#</label>:</strong>-->
+            <textarea id="inpt_notas" style="width:98%;max-width:98%;padding:1%;height:150px" maxlength="500">#=Notas#</textarea>
+        </div>
+        <div style="width:100%;display: flex;flex-direction: row;align-items: center;justify-content: flex-end;margin-bottom:12px;">
+            <label class="mbi" style="margin-right:10px;">#:window.app.idioma.t("EMPLEADO")#:</label>
+            <input id="inpt_oficial" type="text" value="#=Oficial#" style="width:200px;padding:2%;height:16px;">
+        </div>
+        <span style="align-self: end;">
+            <input type="button" data-role="button" style="margin-right:6px" id="btnGuardarNotas" value="#:window.app.idioma.t("GUARDAR")#"/>
+            <input type="button" data-role="button" id="btnCancelarNotas" value="#:window.app.idioma.t("CANCELAR")#"/>
+       </span>
+    </div>
+</script>

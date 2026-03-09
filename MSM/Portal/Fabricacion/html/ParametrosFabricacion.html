@@ -1,0 +1,30 @@
+﻿<style>
+    .k-grid tbody tr:not(.k-alt) {
+        background-color: white !important; 
+    }
+
+</style>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <!--  AQUI EL TITULO-->
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('PARAMETROS_FABRICACION')) %></label>
+</div>
+
+<!--  AQUI EL CONTENIDO-->
+<div id="divPestanias">
+    <ul>
+        <li id="idFiltracion" class="k-state-active" data-tipoOrden="5">
+            <% print(window.app.idioma.t('FILTRACION')) %>
+        </li>
+        <!--<li id="idCoccion" class="k-state" data-tipoOrden="1">
+            <% print(window.app.idioma.t('COCCION')) %>
+        </li>-->
+    </ul>
+    <div class="k-header">
+        <div id="divParam"></div>
+    </div>
+</div>
+
+
+

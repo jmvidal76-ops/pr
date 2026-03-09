@@ -1,0 +1,48 @@
+﻿<style>
+    #contenido, #botones {        
+        margin:0px;
+        padding-top: 20px;
+        padding-left: 50px;        
+    }
+    #contenido label {
+            min-width:75px;
+    }
+    #botones {
+        text-align:center;
+        margin-bottom:20px;
+    }
+   
+    #botones button {
+        height:55px;
+        width:40%;
+        float:left;
+        margin-left:15px;
+        margin-right:10px;
+    }
+    
+
+</style>
+
+<div id="contenido">
+    <div>
+        <label><% print(window.app.idioma.t('PANTALLA')) %>:</label>
+        <% print((window.app.pantalla) ? window.app.pantalla : $('#menuPrincipal li:first-child').text()) %>
+    </div>
+    <br />
+    <div>
+        <label><% print(window.app.idioma.t('USUARIO')) %>:</label>
+        <% print(window.app.sesion.attributes.usuario) %>
+    </div>
+    <br />
+    <div>
+        <label><% print(window.app.idioma.t('DESCRIPCION_INCIDENCIA')) %>:</label>
+        <br />
+        <textarea id="txtDescripcion" class="keyboardOn" style="width:480px;" rows="5"></textarea>
+    </div>
+    <br />
+</div>
+
+<div id="botones">
+    <div><button id="btnEnviar"><% print(window.app.idioma.t('ENVIAR')) %></button></div>
+    <div><button id="btnCancelar"><% print(window.app.idioma.t('CANCELAR')) %></button></div>
+</div>

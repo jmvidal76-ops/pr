@@ -1,0 +1,85 @@
+﻿<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <!--  AQUI EL TITULO-->
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('KOPS_CURVAS')) %></label>
+</div>
+
+
+<!--  AQUI EL CONTENIDO-->
+<div id="container">
+    <div id="tabsEstados">
+        <ul>
+            <li id="idCoccion" class="k-state-active tipoOrden">
+                <% print(window.app.idioma.t('COCCION')) %>
+            </li>
+            <li id="idFermentacion" class="k-state tipoOrden">
+                <% print(window.app.idioma.t('FERMENTACION')) %>
+            </li>
+            <li id="idTrasiego" class="k-state tipoOrden">
+                <% print(window.app.idioma.t('TRASIEGO')) %>
+            </li>
+            <li id="idGuarda" class="k-state tipoOrden">
+                <% print(window.app.idioma.t('GUARDA')) %>
+            </li>
+            <li id="idFiltracion" class="k-state tipoOrden">
+                <% print(window.app.idioma.t('FILTRACION')) %>
+            </li>
+            <li id="idPrellenado" class="k-state tipoOrden" disable="disabled">
+                <% print(window.app.idioma.t('PRELLENADO')) %>
+            </li>
+            <li id="idConcentrado" class="k-state tipoOrden" disable="disabled">
+                <% print(window.app.idioma.t('CONCENTRADO')) %>
+            </li>
+        </ul>
+        <div>
+            <div id="ZonasCoccion">
+                <label> <% print(window.app.idioma.t('UBICACION')) %></label>&nbsp;<input id="cmbZonas" style="width: auto" />
+                <!--Grid Mostos-->
+                <div id="tabsMateriales" style="margin-top:0.5em; background-color:#FFFFFF;">
+                    <!--Pestanias-->
+                    <ul>
+
+                        <li class="k-state-active"><% print(window.app.idioma.t('MATERIA_DEFECTO')) %></li>
+                        <li class="k-state" id="liMostos"><span id="txtMostos"></span></li>
+
+                    </ul>
+                    <!--Fin Pestanias-->
+                    <div>
+                        <div id="divMaterialesDefecto"></div>
+                    </div>
+                    <div>
+                        <div id="divMosto"></div>
+                    </div>
+
+                </div>
+
+                <!--Fin Grid Mostos-->
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+</div>
+
+<script type="text/x-kendo-template" id="templateDetalleKopMultivalor">
+    <div>
+        <div class="divDetalleMaestroKOPMultivalorCurva" style="float: left; width: 100%;"></div>
+    </div>
+</script>
+
+<script type="text/x-kendo-template" id="templateDetalleKopMultivalorMostos">
+    <div>
+        <div id="gridKOPsMultivalorMostos" class="divDetalleKopMostoKOPMultivalor" style="float: left; width: 100%;"></div>
+    </div>
+</script>
+
+<script type="text/x-kendo-template" id="templateDetalleKopMultivalorMostosPosicion">
+    <div>
+        <div id="gridKOPsMultivalorMostosPosicion" class="divDetalleMostoPosicion" style="float: left; width: 100%;"></div>
+    </div>
+</script>

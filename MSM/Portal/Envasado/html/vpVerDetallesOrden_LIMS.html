@@ -1,0 +1,25 @@
+﻿
+
+<div id="gridLIMS_<%= wo %>"></div>
+
+<script id="lanzarMuestraTemplate" type="text/x-kendo-template">
+            <div style="padding:18px;display: flex;flex-direction: column;align-items: flex-start;">
+                <div style="width:100%;display: flex;flex-direction: row;align-items: center;
+                justify-content: space-between;margin-bottom:12px;">
+                    <strong style="margin-right:18px; width:100px;"><label class="mbi"><% print(window.app.idioma.t('ID_LOTE')) %></label>:</strong>
+                    <label class="mbi">#=IdLoteMES#</label>
+                </div>
+                <div style="width:100%;display: flex;flex-direction: row;align-items: center;justify-content: space-between;margin-bottom:12px;">
+                    <strong style="margin-right:18px; width:100px;"><label class="mbi"><% print(window.app.idioma.t('FLUJO')) %></label>:</strong>
+                    <label class="mbi">#=WorkFlowData#</label>
+                </div>
+                <div style="width:100%;display: flex;flex-direction: column;align-items: flex-start;margin-bottom:12px;">
+                    <strong><label for="inpt_comentarios">#:window.app.idioma.t("COMENTARIOS")#</label>:</strong>
+                    <textarea id="inpt_comentarios" style="width:98%;max-width:98%;padding:1%;height:50px"><% print(window.app.idioma.t('MUESTRA_LANZADA_WO_PORTAL')) %></textarea>
+                </div>
+                <span style="align-self: end;">
+                    <input type="button" data-role="button" style="margin-right:6px" class="btnAceptarLIMS k-button" value="#:window.app.idioma.t('ACEPTAR')#"/>
+                    <input type="button" data-role="button" class="btnCancelarLIMS k-button" value="#:window.app.idioma.t('CANCELAR')#"/>
+               </span>
+            </div>
+</script>

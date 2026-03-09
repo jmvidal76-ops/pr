@@ -1,0 +1,63 @@
+﻿<style>
+    .k-content {
+        background-color: #fff;
+        padding: 2em;
+    }
+</style>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <!--  AQUI EL TITULO-->
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('CONFIGURACION_MAIL')) %></label>
+</div>
+
+<!--  AQUI EL CONTENIDO-->
+<div id="container">
+    <form id="formMailConfiguration">
+        <div class="k-content col-md-12">
+            <div class="col-md-6 form-group">
+                <label for="IPServer"><% print(window.app.idioma.t('SERVIDOR')) %></label>
+                <input type="text" class="k-textbox" name="IPServer" id="IPServer" required="required" style="width: 100%;" /> <!--data-bind="value: configurationSource.data()[0].IPServer, events: { change: change }"-->
+                <span class="k-widget k-invalid-msg" data-for="IPServer" role="alert"></span>
+            </div>
+            <div class="col-md-6 form-group">
+                <label for="MailAddress"><% print(window.app.idioma.t('DIRECCION_CORREO')) %></label>
+                <input type="email" class="k-textbox" name="MailAddress" id="MailAddress" required="required" style="width: 100%;" /> <!--data-bind="value: configurationSource.data()[0].MailAddress, events: { change: change }"-->
+                <span class="k-widget k-invalid-msg" data-for="MailAddress" role="alert"></span>
+            </div>
+            <div class="col-md-6 form-group">
+                <label for="Port"><% print(window.app.idioma.t('PUERTO')) %></label>
+                <input type="text" class="k-textbox" name="Port" id="Port" required="required" style="width: 100%;" /> <!--data-bind="value: configurationSource.data()[0].Port, events: { change: change }"-->
+                <span class="k-widget k-invalid-msg" data-for="Port" role="alert"></span>
+            </div>
+            <div class="col-md-6 form-group">
+                <input type="checkbox" id="chkSSL" name="chkSSL" /> <!--data-bind="checked: configurationSource.data()[0].SSL, events: { change: change }"-->
+                <label for="chkSSL"><% print(window.app.idioma.t('SSL')) %></label>
+            </div>
+            <div class="col-md-6 form-group">
+                <label style="width: 100%;"><% print(window.app.idioma.t('AUTENTICACION_SMTP')) %></label>
+                <input type="radio" id="rbBasica" class="rbAuth" name="optCheck" style="margin-left: 20px;" /><!--data-bind="checked: configurationSource.data()[0].IsBasicAuth, events: { change: change }"-->
+                <label for="rbBasica"><% print(window.app.idioma.t('AUTENTICACION_BASICA')) %></label>             
+                <div class="userPassword" style="margin-top: 10px; margin-bottom:10px; margin-left: 40px">
+                    <label for="Username" style="width: 100%;"><% print(window.app.idioma.t('USUARIO')) %></label>
+                    <input type="text" class="k-textbox" name="Username" id="Username" required="required" style="width: 100%;" /><!--data-bind="value: configurationSource.data()[0].Username, events: { change: change }"-->
+                    <span class="k-widget k-invalid-msg" data-for="Username" role="alert"></span>                   
+                    <label for="Password" style="margin-top: 10px;"><% print(window.app.idioma.t('PASS')) %></label>
+                    <input type="password" class="k-textbox" name="Password" id="Password" required="required" style="width: 100%;" /><!--data-bind="value: configurationSource.data()[0].Password, events: { change: change }"-->
+                    <span class="k-widget k-invalid-msg" data-for="Password" role="alert"></span>
+                </div>
+                <input type="radio" id="rbAnonima" class="rbAuth" name="optCheck" style="margin-left: 20px;" /><!--data-bind="checked: configurationSource.data()[0].IsAnonymousAuth, events: { change: change }"-->
+                <label for="rbAnonima"><% print(window.app.idioma.t('AUTENTICACION_ANONIMA')) %></label>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="TestMail"><% print(window.app.idioma.t('CORREO_PRUEBA')) %></label>
+                <input type="email" class="k-textbox" name="TestMail" id="TestMail" style="width: 100%;" />
+                <span class="k-widget k-invalid-msg" data-for="TestMail" role="alert"></span>
+            </div>
+            <div class="col-md-6 form-group">
+                <button type="button" class="k-button k-primary" id="btnSave" disabled><% print(window.app.idioma.t('GUARDAR')) %></button><!--data-bind="click: save, enabled: hasChanges"-->
+                <button type="button" class="k-button k-primary" id="btnTestMail"><% print(window.app.idioma.t('PROBAR_ENVIO')) %></button><!--data-bind="click: testConnection"-->
+            </div>
+        </div>
+    </form>
+</div>

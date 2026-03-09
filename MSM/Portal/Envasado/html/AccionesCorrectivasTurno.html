@@ -1,0 +1,130 @@
+﻿<style>
+    #gridAcciones [role='gridcell'],
+    #gridAcciones .k-hierarchy-cell:not(.k-detail-row, .k-hierarchy-cell) {
+        border-bottom: 1px solid #d5d5d5;
+    }
+
+    .ac_sub-row-closed {
+        background-color: #64d0646e;
+    }
+
+    .ac_sub-row-open {
+        background-color: #ffec526e;
+    }
+
+    #gridAcciones .k-hierarchy-cell,
+    #gridAcciones .k-hierarchy-col {
+        width: 0 !important;
+        min-width: 0 !important;
+        max-width: 0 !important;
+        overflow: hidden;
+        border: none;
+        padding: 0;
+    }    
+    .observationsDiv {
+       /* position: absolute;
+        top: 0.4em;
+        left: 0.6em;
+        bottom: 0.4em;
+        right: 0.6em;*/
+
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        height: 100%;
+    }
+
+    #gridAcciones td[role="gridcell"] {
+        position: relative;
+    }
+    .ac_turn_1 {
+        background-color: #79cde86e;
+    }
+
+    .ac_turn_2 {
+        background-color: #f493566e;
+    }
+
+    .ac_turn_3 {
+        background-color: #85776e6e;
+    }
+</style>
+
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('ACCIONES_CORRECTIVAS_TURNO')) %></label>
+</div>
+
+<!-- Filtros Cambios -->
+<div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+    <div class="filtroFechas" style="float: left;">
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('DESDE')) %></label>
+        <input id="dtpFechaDesde" style="width: 100px;" />
+        <label style="margin-left: 5px;"><% print(window.app.idioma.t('HASTA')) %></label>
+        <input id="dtpFechaHasta" style="width: 100px;" />
+        <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('CONSULTAR')) %></button>
+    </div>
+    <div style="float: right; margin-right: 10px;">
+        <button id="btnCrearACAuto" class="k-button k-button-icontext" style="margin-left: 5px;">
+            <img class="k-icon" style="background-image:none;" src="../../../Common/img/auto.png" /><% print(window.app.idioma.t('CREAR_ACCIONES_CORRECTIVAS_AUTO')) %>
+        </button>
+        <button id="btnAdd" class="k-button k-button-icontext" style="margin-left: 5px;">
+            <span class="k-icon k-i-plus"></span><% print(window.app.idioma.t('ANADIR')) %>
+        </button>
+        <button id="btnExportExcel" class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px;">
+            <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+        </button>
+        <button id="btnLimpiarFiltros" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;">
+            <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+        </button>
+    </div>
+</div>
+
+<div id="gridAcciones"></div>
+
+<!-- Grid Detail -->
+<script id="templateDetalleOTs" type="text/x-kendo-template">
+    <strong>OTs</strong>
+    <div style="margin-bottom: 6px; margin-left: 80px; display: inline-flex; flex-direction: row; align-items: center;">
+        <!--<input class="manualOTid" type="number" hidden>-->
+        <strong style="margin-top: 4px;"><% print(window.app.idioma.t('OT_MANUAL_JDE')) %>:</strong>
+        <div class="manualOTContainer" style="margin-left: 8px;">
+            <button class="k-button k-button-icontext btnAddOTs" style="min-width: initial;" title="<% print(window.app.idioma.t('ADD_OT_MANUAL')) %>">
+                <span class="k-icon k-i-plus" style="margin: 0"></span>
+            </button>
+            <div class="manualOTinputDiv" style="display:none;">
+                <input class="manualOTinput" type="number">
+                <button class="k-button k-button-icontext btnConfirmOTs" style="min-width: initial;" title="<% print(window.app.idioma.t('CONFIRMAR')) %>">
+                    <span class="k-icon k-update" style="margin: 0"></span>
+                </button>
+                <button class="k-button k-button-icontext btnCancelOTs" style="min-width: initial;" title="<% print(window.app.idioma.t('CANCELAR')) %>">
+                    <span class="k-icon k-cancel" style="margin: 0"></span>
+                </button>
+            </div>
+            <div class="manualOTlabelDiv" style="display: inline-flex;align-items: center;">
+                <span class="manualOTlabel" style=margin-top:4px></span>
+                <button class="k-button k-button-icontext btnEditOTs" style="min-width: initial; margin-left: 8px;" title="<% print(window.app.idioma.t('EDITAR')) %>">
+                    <span class="k-icon k-edit" style="margin: 0"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="gridDetail" style="width: 100%; max-height: 600px;">
+    </div>
+</script>
+
+<script id="templateSendEmail" type="text/x-kendo-template">
+    <div style="padding: 1em;">
+        <div style="display: flex; align-items: center; margin-bottom:1em">
+            <strong><% print(window.app.idioma.t('MANTENIMIENTO_DESTINATARIOS')) %>:</strong>
+            <select id="destinatarios" style="flex-grow: 1;margin-left: 1em;"></select>
+        </div>
+        <textarea id="mailBody" disabled style="width: 99%; max-width: 99%; height: 150px; padding: 1em;"></textarea>
+    </div>
+    <div style="padding: 1em; text-align:right">
+        <input type="button" class="mar-right-25" id="btnEnviarEmail" value="<% print(window.app.idioma.t('ENVIAR')) %>"/>
+    </div>
+</script>

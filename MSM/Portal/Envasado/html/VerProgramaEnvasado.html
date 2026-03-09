@@ -1,0 +1,24 @@
+ <!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('PROGRAMA_DE_ENVASADO')) %></label>
+</div>
+
+<div id="scheduler"></div>
+
+<script id="template" type="text/x-kendo-template">
+    #var uid = target.attr("data-uid");#
+    #var scheduler = target.closest("[data-role=scheduler]").data("kendoScheduler");#
+    #var model = scheduler.occurrenceByUid(uid);#
+    
+       #if(model) {#
+        <strong>#= model.title#</strong><br />
+        <strong>#= window.app.idioma.t('FECHA_INICIO_ESTIMADA')#:</strong> #=kendo.toString(model.start,"dd/MM/yyyy HH:mm")#<br />
+        <strong>#= window.app.idioma.t('FECHA_FIN_ESTIMADA')#:</strong> #=kendo.toString(model.end,"dd/MM/yyyy HH:mm")#<br />
+        <strong>#= window.app.idioma.t('CANTIDAD')#:</strong> #=model.cantidad#<br />
+        <strong>#= window.app.idioma.t('PRODUCTO')#:</strong> #=model.producto#<br />
+    #} #
+        
+    
+</script>
+

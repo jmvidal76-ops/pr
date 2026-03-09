@@ -1,0 +1,109 @@
+<style>
+    #btnAceptarKOP {
+        float: left;
+        margin-left: 150px;
+        margin-top: 10px;
+    }
+
+    #btnCancelarKOP {
+        float: left;
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+
+    .table {
+        border: 1px solid #000000;
+        margin: 2px;
+        table-layout: fixed;
+    }
+
+    .table-bordered > thead > tr > th,
+    .table-bordered > tbody > tr > th,
+    .table-bordered > tfoot > tr > th,
+    .table-bordered > thead > tr > td,
+    .table-bordered > tbody > tr > td,
+    .table-bordered > tfoot > tr > td {
+        border: 1px solid black;
+        /*font-weight: normal;*/
+    }
+
+    .table > tbody > tr > td,
+    .table > tbody > tr > th,
+    .table > tfoot > tr > td,
+    .table > tfoot > tr > th,
+    .table > thead > tr > td,
+    .table > thead > tr > th {
+        vertical-align: middle !important;
+    }
+
+    .table td {
+        text-align: center;
+        /*font-size: 19px;*/
+        /*font-weight: bold !important;*/
+        padding: 4px !important;
+        padding-left: 8px !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+
+    .bordeFinoDashed td {
+        text-align: left !important;
+        border: dashed 1px lightgray !important;
+    }
+
+    .bordeFinoNoDashed td {
+        text-align: left !important;
+        border: hidden !important;
+    }
+
+    /*.table span {
+        font-weight: normal;
+    }*/
+
+    .nowrap {
+        word-wrap: break-word;
+        max-height: 3em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+
+
+
+<div>
+ <form id="EditarKOPS">
+        <div style="float:left;border:0;">
+            <label id="lblIDKOP" style="display:none;"></label>
+             <label id="lblIDOrden"  style="display:none;"></label>
+             <label id="lblCodProc"  style="display:none;"></label>
+            <label id="lblActValPK"  style="display:none;"></label>
+        </div>
+    <table id="tablaOrden" class="table bordeFinoDashed" style="margin-bottom: 8px; float: left;">
+    <tbody>
+        <tr>
+            <td colspan="2"><span style="font-weight:bold;"><label id="lblNombre"></label></span>&nbsp;&nbsp;<label style="font-weight:normal;" id="txtNombre"></label></td>
+            <td><span style="font-weight:bold;"><label id="lblProcedimiento"></label></span>&nbsp;&nbsp;<label style="font-weight:normal;" id="txtProcedimiento"></label></td>
+        </tr>
+         <tr>
+            <td><span style="font-weight:bold;"><label id="lblMinimo"></label></span>&nbsp;&nbsp;<label style="font-weight:normal;" id="txtMinimo"></label></td>
+            <td><span style="font-weight:bold;"><label id="lblValor"></label></span>&nbsp;&nbsp;<input type="text"  id="txtValor" name="txtValor" /></td>
+            <td><span style="font-weight:bold;"><label id="lblMaximo"></label></span>&nbsp;&nbsp;<label style="font-weight:normal;" id="txtMaximo"></label></td>
+        </tr>
+        <tr>
+            <td><span style="font-weight:bold;"><label id="lblTipo"></label></span>&nbsp;&nbsp;<label style="font-weight:normal;" id="txtTipo"></label></td>
+            <td><span style="font-weight:bold;"><label id="lblFecha"></label></span>&nbsp;&nbsp;<input type="text" id="txtFecha" name="txtFecha" /></td>
+            <td><span style="font-weight:bold;"><label id="lblUom"></label></span>&nbsp;&nbsp;<label style="font-weight:normal; text-transform:uppercase;" id="txtUom"></label></td>
+        </tr>
+        </tbody>
+        </table>
+     <div style="float:left; width:60%; text-align:center; margin-left:20%;">
+         <label id="lblErrorValor" style="width:350px; display:none; text-align:right; color:red; font-weight:bold; text-transform:uppercase;"><% print(window.app.idioma.t('ERROR_VALOR_NOSELECCIONADO')) %></label>
+         </div>
+     <div style="float:left; width:60%; text-align:center; margin-left:25%;">
+            <button id="btnAceptarKOP"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+            <button id="btnCancelarKOP"><% print(window.app.idioma.t("CANCELAR")) %></button>
+        </div>
+    </form>
+ </div>
+ 

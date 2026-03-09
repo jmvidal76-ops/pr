@@ -1,0 +1,59 @@
+﻿<style>
+    html,
+    body
+    {
+        height:100%;
+        margin:0;
+        padding:0;
+        overflow:hidden;
+    }
+
+    #gridLotes tbody tr { cursor: move; }
+
+      .placeholder {
+        outline-style: dashed;
+        outline-width: 1px;
+        outline-color: red;
+      }
+
+      #divSplitterColas
+    {
+        height:100%;
+    }
+</style>
+<div id="divCabeceraVista" class="divCabeceraVista">
+            <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+                <!--  AQUI EL TITULO-->
+                 <label class="lblCabeceraVista"><% print(window.app.idioma.t('COLAS_CAMIONES')) %></label>
+        </div>
+
+
+<!--  AQUI EL CONTENIDO-->
+            <div id="divSplitterColas" >
+                <div id="top-pane">
+                   <div class="pane-content">
+                       <label><% print(window.app.idioma.t('UBICACION_RECEPCION_DESCARGA')) %></label>
+                       <div id="gridUbicaciones"></div>
+                   </div>
+                </div>
+              
+                <div id="bottom-pane">
+                    <div class="pane-content">
+                        <div id="gridLotes" ></div>
+                    </div>
+                </div>
+            </div>
+
+<div id="divWnd"></div>
+
+ <script id="template" type="text/x-kendo-template">
+     <div class="col-md-11" style="margin-top:5px;overflow-x:hidden">
+      <center>
+        <label>#=window.app.idioma.t("UBICACION_INTERNA")#</label>
+        <div id="divCmbUbicacionInterna"></div>
+        </center>
+     </div>
+    <!-- <div class="col-md-11" style="margin-top:5px">
+       <center> <a class="k-button" href="\\#" id="btnMoverUbicacionLote">#=window.app.idioma.t("MOVER")#</a></center>
+     </div>-->
+</script>

@@ -1,0 +1,48 @@
+﻿<style>
+    .fila {
+        margin-left: 10px;
+        margin-top: 20px;
+    }
+
+    .textos {
+        width: 140px;
+        text-align: right;
+    }
+
+    .estilosControl {
+        width: 400px;
+        margin-left: 5px;
+    }
+</style>
+
+<div>
+    <form id="CrearLoteCervezaLlenadora">
+        <div class="fila">
+            <label id="lblTipoCerveza" class="textos"><% print(window.app.idioma.t('TIPO_CERVEZA')) %></label>
+            <select id="cmbTipoCerveza" class="estilosControl" />
+        </div>
+        <div class="fila">
+            <label id="lblCodigoCerveza" class="textos"><% print(window.app.idioma.t('CODIGO_CERVEZA')) %></label>
+            <select id="cmbCodigoCerveza" class="estilosControl" />
+        </div>
+        <div class="fila">
+            <label id="lblLinea" class="textos"><% print(window.app.idioma.t('LINEA')) %></label>
+            <select id="cmbLinea" class="estilosControl" />
+        </div>
+        <div class="fila">
+            <label id="lblUbicacion" class="textos"><% print(window.app.idioma.t('UBICACION')) %></label>
+            <select id="cmbUbicacion" class="estilosControl" />
+        </div>
+        <div class="fila">
+            <label id="lblFechaInicioConsumo" class="textos"><% print(window.app.idioma.t('FECHA_INICIO_CONSUMO')) %></label>
+            <input id="dtpFechaInicioConsumo" class="estilosControl" />
+        </div>
+        <div class="fila" id="trError" style="display: none; text-align: center; margin-left: 10px; margin-top: 10px ">
+            <span id="lblError" style="color: red;"><% print(window.app.idioma.t('CAMPOS_OBLIGATORIOS')) %> </span>
+        </div>
+        <div style="text-align: center; margin-top: 15px">
+            <input type="button" id="btnAceptarLoteCerveza" style="margin-right: 20px" value="Aceptar" />
+            <input type="button" id="btnCancelarLoteCerveza" value="Cancelar" />
+        </div>
+    </form>
+</div>

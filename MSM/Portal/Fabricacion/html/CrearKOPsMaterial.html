@@ -1,0 +1,51 @@
+﻿<style>
+    .modal-container {
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+    .fila {
+        display: flex;
+        flex-direction: row; 
+        align-items: center; 
+        justify-content: flex-start; 
+        margin-bottom: 15px;
+    }
+
+    .textos {
+        width: 120px;
+        text-align: right;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    .botones-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+    }
+
+        .botones-container input {
+            margin-left: 10px;
+        }
+</style>
+
+
+<div class="modal-container">
+    <form id="CrearKOPsMaterial" style="margin-right:30px;">
+        <div class="fila">
+            <label id="lblMaterial" class="textos">
+                <% print(window.app.idioma.t('MATERIAL')) %>
+            </label>
+            <select id="cmbMaterial" style="width:326px;min-width:326px;"></select>
+        </div>
+        <p id="avisoMaterial" style="color:red; display: none;">⚠ <% print(window.app.idioma.t('TODAS_PLANTILLAS_KOPS_CREADAS')) %></p>
+
+        <div class="botones-container">
+            <input type="button" data-role="button" id="btnCrearKopsMaterial"
+                   value="<% print(window.app.idioma.t('CREAR')) %> <% print(window.app.idioma.t('PLANTILLAS')) %>" />
+            <input type="button" data-role="button" id="btnCancelarKopsMaterial"
+                   value="<% print(window.app.idioma.t('CANCELAR')) %>" />
+        </div>
+    </form>
+</div>

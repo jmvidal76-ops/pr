@@ -1,0 +1,69 @@
+﻿<style>
+    .w-100 {
+        width: 100%;
+    }
+
+    .pad-10 {
+        padding: 10px;
+    }
+
+    .mar-right-25 {
+        margin-right: 25px;
+    }
+
+    .mar-top-20 {
+        margin-top: 20px;
+    }
+
+    .tac {
+        text-align: center;
+    }
+
+    .flex-filas {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+</style>
+<div>
+    <form id="CrearAccionCorrectivaturno">
+        <div class="" style="padding: 0 12px;">
+            <div id="selectorTurno" class="w-100 mar-top-20" style="display:none;">
+
+            </div>
+
+            <div id="turnoSeleccionado"  class="mar-top-20" style="display:none;">
+                <label id="lblLinea"></label>
+            </div>
+
+            <div class="w-100 mar-top-20">
+                <div id="gridParos" class="w-100"></div>
+            </div>
+
+            <div class="w-100 mar-top-20 flex-filas ">
+                <label for="cmbMaquinaResponsable"><% print(window.app.idioma.t('MAQUINA_RESPONSABLE')) %></label>
+                <select id="cmbMaquinaResponsable" name="cmbMaquinaResponsable" style="width: 85%" />
+            </div>
+            <div class="w-100 mar-top-20">
+                <div class="flex-filas">
+                    <label for="tfResponsable"><% print(window.app.idioma.t('RESPONSABLE')) %></label>
+                    <input class='k-textbox w-100' id="tfResponsable" name="tfResponsable" type='text' style="width: 85%"/>
+                </div>
+                <div class="mar-top-20">
+                    <label for="tfObservaciones" style="display:block;"><% print(window.app.idioma.t('OBSERVACIONES')) %></label>
+                    <textarea class="pad-10 w-100" id="tfObservaciones" name="tfObservaciones" style="max-width: 98%;"></textarea>
+                </div>
+                <div class="mar-top-20">
+                    <label for="tfAccionRealizada" style="display:block;"><% print(window.app.idioma.t('ACCION_REALIZADA')) %></label>
+                    <textarea class="pad-10 w-100" id="tfAccionRealizada" name="tfAccionRealizada" style="max-width: 98%;"></textarea>
+                </div>
+            </div>
+            <div class="tac mar-top-20">
+                <input type="button" class="mar-right-25" id="btnDialogoGestionAceptar" value="<% print(window.app.idioma.t('ACEPTAR')) %>"/>
+                <input type="button" class="" id="btnDialogoGestionCancelar" value="<% print(window.app.idioma.t('CANCELAR')) %>"/>
+            </div>
+            <div id="trError" class="error tac mar-top-20" style="display:none;" colspan="2"></div>
+        </div>
+    </form>
+</div>

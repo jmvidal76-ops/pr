@@ -1,0 +1,114 @@
+﻿<style>
+    .form-group {
+        margin-bottom: 30px;
+    }
+
+    .error {
+        color: red;
+        display: none;
+        font-size: 15px;
+    }
+</style>
+<div>
+    <form id="EditarCrearAnalitica">
+        <div style="float: left; background-color: transparent; border: 0; margin-top: 10px; margin-left: 10px">
+            <div class="form-group">
+                <label id="lblLinea" style="text-align: right;"><% print(window.app.idioma.t('LINEA')) %></label>
+                <select id="cmbLinea" style="width: 250px" />
+                <label id="lblLlenadora" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('LLENADORA')) %></label>
+                <select id="cmbLlenadora" style="width: 220px" />
+                <label id="lblVolumenEnvase" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('VOLUMEN_ENVASE')) %></label>
+                <input id="nVolumenEnvase" style="width: 100px" />
+                <label id="lblIdMuestra" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('ID_MUESTRA')) %></label>
+                <input type="text" class='k-textbox' id="txtIdMuestra" style="width: 100px" />
+                <label id="lblFecha" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('FECHA')) %></label>
+                <input id="dtpFecha" style="width: 200px" />
+            </div>
+            <div class="form-group">
+                <label id="lblComentario" style="text-align: right;"><% print(window.app.idioma.t('COMENTARIO')) %></label>
+                <input type="text" class='k-textbox' id="txtComentario" style="width: 370px" />
+                <label id="lblTCP" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('TCP')) %></label>
+                <input id="nTCP" style="width: 100px" />
+                <label id="lblO2_TCP" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('O2_TCP')) %></label>
+                <input id="nO2_TCP" class="decimales" style="width: 100px" />
+                <label id="lblCO2_TCP" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('CO2_TCP')) %></label>
+                <input id="nCO2_TCP" class="decimales" style="width: 100px" />
+                <label id="lblTipoMuestra" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('TIPO_MUESTRA')) %></label>
+                <input type="text" class='k-textbox' id="txtTipoMuestra" style="width: 70px" />
+                <label id="lblNumGrifo" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('NUM_GRIFO')) %></label>
+                <input id="nNumGrifo" style="width: 80px" />
+            </div>
+            <div class="form-group">
+                <label id="lblTPO" style="text-align: right;"><% print(window.app.idioma.t('TPO')) %></label>
+                <input id="nTPO" class="decimales" style="width: 100px" />
+                <label id="lblUnidadTPO" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('UNIDAD_TPO')) %></label>
+                <select id="cmbUnidadTPO" class="unidades" style="width: 100px" />
+                <label id="lblHSO" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('HSO')) %></label>
+                <input id="nHSO" class="decimales" style="width: 100px" />
+                <label id="lblUnidadHSO" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('UNIDAD_HSO')) %></label>
+                <select id="cmbUnidadHSO" class="unidades" style="width: 100px" />
+                <label id="lblDO" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('DO')) %></label>
+                <input id="nDO" class="decimales" style="width: 100px" />
+                <label id="lblUnidadDO" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('UNIDAD_DO')) %></label>
+                <select id="cmbUnidadDO" class="unidades" style="width: 100px" />
+            </div>
+            <div class="form-group">
+                <label id="lblCO2" style="text-align: right;"><% print(window.app.idioma.t('CO2')) %></label>
+                <input id="nCO2" class="decimales" style="width: 100px" />
+                <label id="lblUnidadCO2" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('UNIDAD_CO2')) %></label>
+                <select id="cmbUnidadCO2" class="unidades" style="width: 100px" />
+                <label id="lblCO2_Ts" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('CO2_TS')) %></label>
+                <input id="nCO2_Ts" class="decimales" style="width: 100px" />
+                <label id="lblUnidadCO2_Ts" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('UNIDAD_CO2_TS')) %></label>
+                <select id="cmbUnidadCO2_Ts" class="unidades" style="width: 100px" />
+                <label id="lblHSV" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('HSV')) %></label>
+                <input id="nHSV" class="decimales" style="width: 100px" />
+                <label id="lblUnidadHSV" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('UNIDAD_HSV')) %></label>
+                <select id="cmbUnidadHSV" class="unidades" style="width: 100px" />
+            </div>
+            <div class="form-group">
+                <label id="lblPresion" style="text-align: right;"><% print(window.app.idioma.t('PRESION')) %></label>
+                <input id="nPresion" class="decimales" style="width: 100px" />
+                <label id="lblUnidadPresion" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('UNIDAD_PRESION')) %></label>
+                <select id="cmbUnidadPresion" class="unidades" style="width: 100px" />
+                <label id="lblTemperatura" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('TEMPERATURA')) %></label>
+                <input id="nTemperatura" class="decimales" style="width: 100px" />
+                <label id="lblUnidadTemperatura" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('UNIDAD_TEMPERATURA')) %></label>
+                <select id="cmbUnidadTemperatura" class="unidades" style="width: 100px" />
+                <label id="lblTemperatura_Ts" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('TEMPERATURA_TS')) %></label>
+                <input id="nTemperatura_Ts" class="decimales" style="width: 100px" />
+                <label id="lblUnidadTemperatura_Ts" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('UNIDAD_TEMPERATURA_TS')) %></label>
+                <select id="cmbUnidadTemperatura_Ts" class="unidades" style="width: 100px" />
+            </div>
+            <div class="form-group">
+                <label id="lblPresionVacio" style="text-align: right;"><% print(window.app.idioma.t('PRESION_VACIO')) %></label>
+                <input id="nPresionVacio" class="decimalPresionVacio" style="width: 100px" />
+                <label id="lblUnidadPresionVacio" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('UNIDAD_PRESION_VACIO')) %></label>
+                <select id="cmbUnidadPresionVacio" class="unidades" style="width: 100px" />
+                <label id="lblPresionEspumado" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('PRESION_ESPUMADO')) %></label>
+                <input id="nPresionEspumado" class="decimales" style="width: 100px" />
+                <label id="lblUnidadPresionEspumado" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('UNIDAD_PRESION_ESPUMADO')) %></label>
+                <select id="cmbUnidadPresionEspumado" class="unidades" style="width: 100px" />
+            </div>
+            <div class="form-group">
+                <label id="lblPresionSoplado" style="text-align: right;"><% print(window.app.idioma.t('PRESION_SOPLADO')) %></label>
+                <input id="nPresionSoplado" class="decimales" style="width: 100px" />
+                <label id="lblUnidadPresionSoplado" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('UNIDAD_PRESION_SOPLADO')) %></label>
+                <select id="cmbUnidadPresionSoplado" class="unidades" style="width: 100px" />
+                <label id="lblConsumoGas" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('CONSUMO_GAS')) %></label>
+                <input id="nConsumoGas" class="decimales" style="width: 100px" />
+                <label id="lblUnidadConsumoGas" style="text-align: right; margin-left: 10px"><% print(window.app.idioma.t('UNIDAD_CONSUMO_GAS')) %></label>
+                <select id="cmbUnidadConsumoGas" class="unidades" style="width: 100px" />
+            </div>
+            <div class="row" style="margin-bottom: 5px">
+                <div class="col-md-6" style="width: 40%; text-align: center">
+                    <span id="lblError" class="error"><% print(window.app.idioma.t('CAMPOS_OBLIGATORIOS_ANALITICA_O2')) %></span>   
+                </div>
+                <div class="col-md-6" style="width: 40%">
+                    <input type="button" id="btnAceptarAna" value="Aceptar" />
+                    <input type="button" id="btnCancelarAna" value="Cancelar" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

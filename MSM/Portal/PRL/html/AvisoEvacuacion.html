@@ -1,0 +1,13 @@
+﻿<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('AVISO_EVACUACION')) %></label>
+</div>
+<div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+    <div style="float: left;">
+        <label style="margin-left: 5px; color: red"><% print(window.app.idioma.t('TEXTO_EVACUACION')) %></label>
+        <button id="btnActivar" class="k-button k-button-icontext" style="margin-left: 5px;"><% print(window.app.idioma.t('ACTIVAR')) %></button>
+        <button id="btnDesactivar" class="k-button k-button-icontext" style="margin-left: 5px;"><% print(window.app.idioma.t('DESACTIVAR')) %></button>
+        <label id="lblEstado" style="margin-left: 5px;"></label>
+    </div>
+</div>

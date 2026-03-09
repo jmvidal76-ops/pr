@@ -1,0 +1,17 @@
+﻿<link rel="stylesheet" href="/Alt/css/ALTDialogEdit.css" />
+<div id="myDialog">
+    <form id="locationTemplate" style="margin-left: 10px;" class="formDialog">
+        <label for="name"><%- window.app.idioma.t("NOMBRE")%></label>
+        <input type="text" class="k-textbox" maxlength="50" name="name" data-bind="value: locationTemplate.name" maxlenght="50" required />
+        <span class="k-invalid-msg" data-for="name"></span>
+        <br /><br />
+        <label for="txtDescript" maxlenght="150" required><%- window.app.idioma.t("DESCRIPCION")%></label>
+        <textarea id="txtDescript" class="k-textbox" data-bind="value: locationTemplate.descript" required></textarea>
+        <span class="k-invalid-msg" data-for="txtDescript" ></span>
+        <br /><br />
+        <div id="toolBarBotones" >
+            <input type="button" id="btnAceptar" value="Aceptar" />
+            <input type="button" id="btnCancelar" value="Cancelar" />
+        </div>
+    </form>
+</div>

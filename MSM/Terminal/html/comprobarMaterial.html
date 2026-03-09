@@ -1,0 +1,143 @@
+﻿<style>
+    .key {
+        height: 85px !important;
+        font-size: 30px;
+        width: 85px;
+        margin-right: 10px;
+        padding: 10px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+
+    .numeric {
+        font-size: 30px;
+    }
+
+    .k-select {
+        display: none;
+    }
+
+    .content {
+        float: left;
+        clear: none;
+        margin-left: 40%;
+    }
+
+    .btnComprobar {
+        margin-right: 10px;
+        padding: 10px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+
+    #btnVolver {
+        height: 60px !important;
+        font-size: 22px;
+        width: 150px;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    ::-ms-clear {
+        display: none;
+    }
+
+    ::-ms-reveal {
+        display: none;
+    }
+
+    #divValidacion {
+        font-size: 22px;
+    }
+
+    #divVal {
+        border-radius: 15px 15px 15px 15px;
+        border-color: #000000;
+        border-style: solid;
+        border-width: 1px;
+        background: #84e184;
+        padding: 20px;
+        height: 35px;
+        text-align: center;
+        color: #fff;
+        display: inline;
+    }
+</style>
+
+<div style="overflow-y: auto; overflow-x: hidden; max-height: 540px; float: left; width: 100%;">
+    <div>
+        <a id="btnVolver" href="javascript:history.back()"><% print(window.app.idioma.t("VOLVER")) %></a>
+        <span style="font-size: 22px;"><% print(window.app.idioma.t("COMPROBACION_MATERIAL")) %></span>
+    </div>
+
+    <div class="content">
+        <div style="float: left;">
+            <table style="margin: auto;">
+                <tr>
+                    <td colspan="3">
+                        <input class="numeric k-textbox" style="width: 280px" id="txtCodEan" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" class="key" id="btnKey7" value="7" />
+                    </td>
+                    <td>
+                        <input type="button" class="key" id="btnKey8" value="8" />
+                    </td>
+                    <td>
+                        <input type="button" class="key" id="btnKey9" value="9" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" class="key" id="btnKey4" value="4" />
+                    </td>
+                    <td>
+                        <input type="button" class="key" id="btnKey5" value="5" />
+                    </td>
+                    <td>
+                        <input type="button" class="key" id="btnKey6" value="6" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" class="key" id="btnKey1" value="1" />
+                    </td>
+                    <td>
+                        <input type="button" class="key" id="btnKey2" value="2" />
+                    </td>
+                    <td>
+                        <input type="button" class="key" id="btnKey3" value="3" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" class="key" id="btnKey0" value="0" />
+                    </td>
+                    <td>
+                        <a id="btnValidar" class="btnComprobar">
+                            <img src="img/validar.png" />
+                        </a>
+                    </td>
+                    <td>
+                        <a id="btnCancelar" class="btnComprobar">
+                            <img src="img/atras.png" />
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="divValidacion" style="float: left; display: none; margin-left: 5px; margin-top:20px;">
+            <div id="divMaterial" style="padding-bottom: 20px;">
+                <label id="lblMaterial"></label>
+                <label id="lblCodMaterial"></label>
+                <label id="DesMaterial"></label>
+            </div>
+            <div id="divVal">
+                <label id="lblMaterialRegistrado"></label>
+            </div>
+        </div>
+
+    </div>
+</div>

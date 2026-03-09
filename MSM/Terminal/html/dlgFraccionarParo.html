@@ -1,0 +1,170 @@
+<style>
+    #formParoPerdida {
+        margin: 15px;
+    }
+
+    .tdSpan{
+        text-align: right !important;
+    }
+
+    .tablePerdida th, .tablePerdida td {
+        border-top: none !important;
+        text-align: left;
+        padding-right: 5px !important;
+    }
+
+    .tablePerdida tr {
+        height: 60px !important;
+    }
+
+    .tablePerdida input, textarea {
+        margin-left: 5px !important;
+        width: 120px;
+    }
+
+    #btnAceptar, #btnCancelar {
+        height: 55px;
+        width: 150px;
+        float: left;
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+    .tablePerdida, .tablePerdida td, .tablePerdida th {
+        border: none !important;
+    }
+
+    .bold {
+        font-style: normal;
+        font-weight: bold;
+        text-align: right;
+    }
+    #Ul1 .k-numerictextbox {
+        margin-left:15px;
+    }
+
+  
+
+
+    .key {
+        height: 50px !important;
+        font-size: 30px;
+        width: 50px;
+        color:black;
+        /*margin-right: 10px;
+        padding: 10px;
+        margin-bottom: 5px;
+        margin-top: 5px;*/
+    }
+    /*.k-grid .k-state-selected { background-color:lightyellow; }*/
+    /* .k-numerictextbox .k-link{height:1.3em;} */
+</style>
+<div id="infoParoAntiguo">
+    <% print(window.app.idioma.t("DURACCION_PARO_FRACCIONAR")) %>: <b> <%= paro.duracion %> </b>
+
+    <br /><br />
+
+    <b> <% print(window.app.idioma.t("NUEVA_DURACION")) %>:</b>
+</div>
+
+<!--<div style=" padding:0;">
+    <ul id="fieldlist" style="margin:0; padding:0; list-style-type:none;">
+        <li style="margin-left:5px">
+            <label for="horas" style="width:30%; float:left;"><% print(window.app.idioma.t('HORAS')) %></label>
+        </li>
+        <li style="margin-left:16px">
+            <label for="minutos" style="width:30%; margin-left:20px; float:left;"><% print(window.app.idioma.t('MINUTOS_LARGO')) %></label>
+        </li>
+<!--        <li style="margin-left:14px">
+            <label for="segundos" style="width:30%; margin-left:20px;"><% print(window.app.idioma.t('SEGUNDOS')) %></label>
+        </li>-->
+    <!--ul>
+    <ul id="Ul1" style="margin:0; padding:0; list-style-type:none;">
+        <li style="margin-left:-10px;">-->
+<div style="width:80%; margin-left:20%; margin-top:10%; float:left;">
+<div id="button" style="width:100%; height:60px; float:left;">
+    <div id="btnH" style="margin-left:10%; float:left; width:60px;">
+          <a href="#">
+              <input type="button" class="key" id="btnSH" value="+"/>
+<!--              <img id="btnSH" style="width:31px;" src="img/add.png" />-->
+
+          </a>
+        </div>
+    <div id="btnH2" style="margin-left:10%; float:left; width:60px;">
+<a href="#">
+    <input type="button" class="key" id="btnSM" value="+"/>
+    
+<!--    <img id="btnSM" style="width:31px;" src="img/add.png" />-->
+
+</a>
+           </div>
+     </div>
+<br /><br />
+
+<div id="Div1" style="width:100%; float:left;margin-top:10px;">
+    <div id="Div2" style="margin-left:10%; float:left; width:60px;">
+            <input id="horas" type="number" value="0" readonly="readonly" style="width:62px; height:40px; font-size:42px; float:left;padding-bottom: 12px; text-align:center;" />
+        </div>
+    <div id="Div3" style="margin-left:10%; float:left; width:60px;">
+<input id="minutos" type="number" readonly="readonly" value="0" style="width:62px; height:40px; font-size:42px; float:left; padding-bottom: 12px; text-align:center;"/>
+           </div>
+     </div>
+
+
+
+
+
+
+<div id="Div7" style="width:100%; height:60px; float:left; margin-top:10px;">
+    <div id="Div8" style="margin-left:10%; float:left; width:60px;">
+<a href="#">
+                            <input type="button" class="key" id="btnRH" value="-"/>
+
+    <!--<img id="btnRH" style="/*width:31px;*/" src="img/del.png" />-->
+
+</a>
+        </div>
+    <div id="Div9" style="margin-left:10%; float:left; width:60px;">
+     <a href="#">
+         
+                                     <input type="button" class="key" id="btnRM" value="-"/>
+<!--<img id="btnRM" style="width:31px;" src="img/del.png" />--></a>
+           </div>
+     </div>
+<br /><br />
+
+    <div id="Div4" style="width:100%; height:30px; float:left; text-align:left;">
+    <div id="Div5" style="margin-left:10%; float:left; width:31%;">
+<% print(window.app.idioma.t("HORAS")) %>         </div>
+    <div id="Div6" style="float:left; width:31%;">
+<% print(window.app.idioma.t("MINUTOS_LARGO")) %> 
+           </div>
+     </div>
+<br /><br />
+    </div>
+        <!--</li>
+        <li style="padding-left:15px;">-->
+
+        <!--</li>-->
+
+<!--        <li style="padding-left:15px;">
+     
+            <input id="segundos" value="0" style="width:30%; font-size:36px;"/>
+        </li>-->
+    <!--</ul>-->
+    &nbsp;&nbsp;&nbsp;&nbsp;
+<br /><br />
+<div id="divError" style="color:red;display:none;">
+    <b><% print(window.app.idioma.t('_EL_VALOR')) %></b>
+</div>
+<!--<br /><br />-->
+<div id="Div10">
+    <% print(window.app.idioma.t("PARO_RESTANTE_DURACION")) %>: <b> <label id="nuevaDuracion"></label> </b>
+</div>
+
+    <div class="fila" style="margin-top:5px; margin-left:25px;">
+        <input type="button" id="btnAceptar" class="boton" value="Aceptar"/>
+        <input type="button" id="btnCancelar" class="boton" style="margin-left:15px;" value="Cancelar"/>
+    </div>
+<!--</div>-->
+

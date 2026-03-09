@@ -1,0 +1,48 @@
+﻿<style>
+    .fila {
+        margin-left: 10px;
+        margin-top: 20px;
+    }
+
+    .textos {
+        width: 90px;
+        text-align: right;
+    }
+
+    .estilosControl {
+        width: 550px; 
+        margin-left: 5px;
+    }
+</style>
+
+<div>
+    <form id="CrearEditarCapturaKOPsLIMs">
+        <div class="fila">
+            <label id="lblTipoWO" class="textos"><% print(window.app.idioma.t('TIPO_WO')) %></label>
+            <select id="cmbTipoWO" class="estilosControl" />
+        </div>
+        <div class="fila">
+            <label id="lblKOP" class="textos"><% print(window.app.idioma.t('KOP')) %></label>
+            <select id="cmbKOP" class="estilosControl" />
+        </div>
+        <div class="fila">
+            <label id="lblCodigoTest" class="textos"><% print(window.app.idioma.t('CODIGO_TEST')) %></label>
+            <input type="text" class="k-textbox estilosControl" id="txtCodigoTest" maxlength="50" />
+        </div>
+        <div class="fila">
+            <label id="lblComponente" class="textos"><% print(window.app.idioma.t('COMPONENTE')) %></label>
+            <input type="text" class="k-textbox estilosControl" id="txtComponente" maxlength="50" />
+        </div>
+        <div class="fila" style="display: flex; align-items: center">
+            <label id="lblActivo" class="textos"><% print(window.app.idioma.t('ACTIVO')) %></label>
+            <input type="checkbox" id="chkActivo" style="width: 30px; margin-bottom: 7px" />
+        </div>
+        <div class="fila" id="trError" style="display: none; text-align: center; margin-left: 10px; margin-top: 10px ">
+            <span id="lblError" style="color: red;"><% print(window.app.idioma.t('CAMPOS_OBLIGATORIOS')) %> </span>
+        </div>
+        <div style="text-align: center; margin-top: 15px">
+            <input type="button" id="btnAceptarCaptura" style="margin-right: 20px" value="Aceptar" />
+            <input type="button" id="btnCancelarCaptura" value="Cancelar" />
+        </div>
+    </form>
+</div>

@@ -1,0 +1,196 @@
+﻿<style>
+    .progress-text {
+        top: 55%;
+        left: 44%;
+        width: 10%;
+        background-color: lightgrey;
+        padding: 1%;
+        border: 1px solid darkgray;
+        border-radius: 4px;
+        text-indent: 0;
+    }
+
+    /* Cabecera */
+    .divCabeceraVista {
+        display: flex;
+        align-items: center;
+        padding: 6px 8px;
+    }
+
+    .lblCabeceraVista {
+        margin-left: 8px;
+        font-weight: 600;
+    }
+
+    #divFiltrosHeader .filtroControles {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Dialogo Crear registro (desktop) */
+    .mermas-form-container {
+        display: flex;
+        gap: 60px;
+        align-items: flex-start;
+    }
+
+    .mermas-col {
+        min-width: 0;
+    }
+
+        .mermas-col:first-child {
+            flex: 0 0 42%;
+            padding-left: 6px;
+        }
+
+        .mermas-col:last-child {
+            flex: 0 0 46%;
+            padding-right: 6px;
+        }
+
+    .mermas-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+        min-width: 0;
+    }
+
+    .mermas-col:first-child .mermas-label,
+    .mermas-label {
+        width: 120px;
+        flex: 0 0 120px;
+        padding-right: 6px;
+        font-weight: 600;
+    }
+
+    .mermas-col:last-child .mermas-label {
+        width: 160px;
+        flex: 0 0 160px;
+        padding-right: 28px;
+        font-weight: 600;
+    }
+
+    .mermas-input {
+        flex: 1;
+        min-width: 0;
+    }
+
+        .mermas-input input,
+        .mermas-input .k-input,
+        .mermas-input .k-textbox {
+            width: 50% !important;
+            max-width: 100%;
+            min-width: 220px;
+        }
+
+    .mermas-actions {
+        text-align: center;
+        margin-top: 14px;
+    }
+
+        .mermas-actions .k-button {
+            min-width: 90px;
+            margin: 0 8px;
+        }
+</style>
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('MERMAS')) %> <% print(window.app.idioma.t('CAPTURA_MOVIMIENTOS')) %></label>
+</div>
+
+<div id="divFiltrosHeader" class="k-header" style="height: 40px; width: 100%; padding-top: 6px;">
+    <div class="filtroControles" style="float: left; margin-left: 8px;">
+        <!-- Espacio para futuros filtros (zona/tipo) si se requieren -->
+    </div>
+
+    <div style="float: right; margin-right: 10px;">
+        <button id="btnCrear" class="k-button k-button-icontext" style="margin-left: 5px;">
+            <span class='k-icon k-i-plus'></span><% print(window.app.idioma.t('CREAR')) %>
+        </button>
+
+        <button id="btnEliminar" class="k-button k-button-icontext k-grid-delete" style="margin-left: 5px;">
+            <span class='k-icon k-i-close'></span><% print(window.app.idioma.t('ELIMINAR')) %>
+        </button>
+
+        <button id="btnLimpiarFiltros" class="k-button k-button-icontext" style="margin-left: 5px;">
+            <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+        </button>
+
+        <button id="btnExportarExcel" class="k-button k-button-icontext" style="margin-left: 5px;">
+            <span class='k-icon k-i-excel'></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+        </button>
+    </div>
+</div>
+
+<!-- GRID -->
+<div id="gridConfExtraccion"></div>
+
+<div id="templateCrearRegistro" style="display:none;">
+
+    <div style="padding: 12px 18px;">
+        <div class="mermas-form-container">
+            <div class="mermas-col">
+                <div class="mermas-row">
+                    <label class="mermas-label"><% print(window.app.idioma ? window.app.idioma.t('ZONA') : 'Zona') %>:</label>
+                    <div class="mermas-input"><input id="nuevoZonaId" type="text" class="k-textbox" /></div>
+                </div>
+
+                <div class="mermas-row">
+                    <label class="mermas-label"><% print(window.app.idioma ? window.app.idioma.t('TIPO') : 'Tipo') %>:</label>
+                    <div class="mermas-input"><input id="nuevoTipo" type="text" class="k-textbox" /></div>
+                </div>
+
+                <div class="mermas-row">
+                    <label class="mermas-label"><% print(window.app.idioma ? window.app.idioma.t('FORMULA') : 'Fórmula') %>:</label>
+                    <div class="mermas-input"><input id="nuevoFormulaCalculoExtracto" type="text" class="k-textbox" /></div>
+                </div>
+
+                <div class="mermas-row">
+                    <label class="mermas-label"><% print(window.app.idioma ? window.app.idioma.t('CODIGO_JDE') : 'Cód. JDE') %>:</label>
+                    <div class="mermas-input"><input id="nuevoCodigoJDE" type="text" class="k-textbox" /></div>
+                </div>
+            </div>
+
+            <div class="mermas-col">
+                <div class="mermas-row">
+                    <label class="mermas-label">IdClaseMaterialOrigen:</label>
+                    <div class="mermas-input"><input id="nuevoIdClaseMaterialOrigen" type="text" class="k-textbox" style="min-width:180px;"/></div>
+                </div>
+
+                <div class="mermas-row">
+                    <label class="mermas-label">ProcesoOrigen:</label>
+                    <div class="mermas-input"><input id="nuevoProcesoOrigen" type="text" class="k-textbox" style="min-width:180px;"/></div>
+                </div>
+
+                <div class="mermas-row">
+                    <label class="mermas-label">UbicacionOrigen:</label>
+                    <div class="mermas-input"><input id="nuevoUbicacionOrigen" type="text" class="k-textbox" style="min-width:180px;"/></div>
+                </div>
+
+                <div style="height:8px;"></div>
+
+                <div class="mermas-row">
+                    <label class="mermas-label">IdClaseMaterialDestino:</label>
+                    <div class="mermas-input"><input id="nuevoIdClaseMaterialDestino" type="text" class="k-textbox" style="min-width:180px;"/></div>
+                </div>
+
+                <div class="mermas-row">
+                    <label class="mermas-label">ProcesoDestino:</label>
+                    <div class="mermas-input"><input id="nuevoProcesoDestino" type="text" class="k-textbox" style="min-width:180px;"/></div>
+                </div>
+
+                <div class="mermas-row">
+                    <label class="mermas-label">UbicacionDestino:</label>
+                    <div class="mermas-input"><input id="nuevoUbicacionDestino" type="text" class="k-textbox" style="min-width:180px;"/></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mermas-actions">
+            <button class="k-button" id="btnCrearAceptar"><% print(window.app.idioma ? window.app.idioma.t('ACEPTAR') : 'Aceptar') %></button>
+            <button class="k-button" id="btnCrearCancelar"><% print(window.app.idioma ? window.app.idioma.t('CANCELAR') : 'Cancelar') %></button>
+        </div>
+    </div>
+</div>

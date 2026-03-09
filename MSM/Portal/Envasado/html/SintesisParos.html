@@ -1,0 +1,101 @@
+﻿<div id="idSintesisParos">
+    <div id="vertical">
+        <div>
+            <!-- CABECERA -->
+            <div id="divCabeceraVista" class="divCabeceraVista">
+                <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+                <label class="lblCabeceraVista"><% print(window.app.idioma.t('SINTESIS_PAROS_PERDIDAS')) %></label>
+            </div>
+
+            <!-- Filtros Acciones -->
+            <div id="divFiltrosAccionesMejora" class="k-header" style="height:32px;width:100%; padding-top:5px;">
+                <div style="float:left;">
+                    <label id="Label1" style="margin-left:10px; font-size:18px;"><% print(window.app.idioma.t('ACCIONES_MEJORA')) %></label>
+                    <label style="margin-left: 5px;"><% print(window.app.idioma.t('DESDE')) %></label>
+                    <input id="dtpFechaDesde" style="width: 100px;" />
+                    <label style="margin-left: 5px;"><% print(window.app.idioma.t('HASTA')) %></label>
+                    <input id="dtpFechaHasta" style="width: 100px;" />
+                    <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('FILTRAR')) %></button>
+                </div>
+                <div id="divHeaderParosDcho" style="float:right;">    
+                    <button id='btnLimpiarFiltros' class='k-button k-button-icontext'>
+                        <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+                    </button>
+                    <button id="btnExportExcel" class="k-button k-button-icontext k-grid-excel">
+                        <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+                    </button>
+                    <button id="btnCrearAccionMejora" class="k-button k-button-icontext k-grid-add" style="float:right;background-color:green; color:white;margin-left:5px;margin-right:5px;">
+                        <span class='k-icon k-add'></span><% print(window.app.idioma.t('CREARACCIONMEJORA')) %>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Grid Acciones Mejora -->
+            <div id="gridAccionesMejora" ></div>
+
+            <!-- Detail grid template Acciones Mejora -->
+            <script type="text/x-kendo-template" id="templateAccionesMejora">
+                <div class="container" style="width:98%;">
+                    <div style="float:left; display:inline-block; background-color: Transparent;border:0;">
+                        <div style="float:left; display:inline-block;">
+                            <label class="lblColumnaTipo1"><% print(window.app.idioma.t('DESCRIPCION_PROBLEMA')) %></label>
+                            <textarea id="txtDescripcion" style="width:350px;" rows="3" disabled="disabled">#if(descripcionProblema){# #= descripcionProblema # #}#</textarea>
+                        </div>
+                        <div style="float:left; display:inline-block; margin-left:5px;">
+                            <label class="lblColumnaTipo1" style="width:100px !important;"><% print(window.app.idioma.t('CAUSA')) %></label>
+                            <textarea id="txtDescripcion" style="width:350px;" rows="3" disabled="disabled">#if(causa){# #= causa # #}#</textarea>
+                        </div>
+                        <br/>
+                        <div style="float:left; display:inline-block;">
+                            <label class="lblColumnaTipo1"><% print(window.app.idioma.t('ACCION_PROPUESTA')) %></label>
+                            <textarea id="txtDescripcion" style="width:350px;" rows="3" disabled="disabled">#if(accionPropuesta){# #= accionPropuesta # #}#</textarea>
+                        </div>
+                        <div style="float:left; display:inline-block; margin-left:5px;">
+                            <label class="lblColumnaTipo1" style="width:100px !important;"><% print(window.app.idioma.t('OBSERVACIONES')) %></label>
+                            <textarea id="txtDescripcion" style="width:350px;" rows="3" disabled="disabled">#if(observaciones){# #= observaciones # #}#</textarea>
+                        </div>
+                    </div>                
+                </div>
+            </script>
+
+        </div>
+        <div>
+            <!-- Separador Grids -->
+            <div id="divSeparadorGrids" style="background-color:#3EA2E0;height:20px;width:100%;"></div>
+        </div>
+        <div>
+             <!-- Filtros Paros -->
+            <div id="divFiltrosParosHeader" class="k-header" style="height:32px;width:100%; padding-top:5px;">
+                <div style="float:left;">
+                    <label id="lblCabeceraParos" style="margin-left:5px; font-size:18px;"><% print(window.app.idioma.t('PAROS_PERDIDAS')) %></label>
+                </div>
+                <div style="float: right;">
+                    <button type='button' id='btnLimpiarFiltrosParos' class='k-button k-button-icontext'>
+                        <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Grid Paros -->
+            <div id="gridSintesisTurnoParos"></div>
+
+            <!-- Detail grid template Paros y perdidas -->
+            <script type="text/x-kendo-template" id="templateParos">
+                <div class="container" style="width:98%;">
+                    <div style="float:left; display:inline-block; background-color: Transparent;border:0;">
+                        <div style="float:left; display:inline-block;">
+                            <label class="lblColumnaTipo1"><% print(window.app.idioma.t('DESCRIPCION_AVERIA')) %></label>
+                            <textarea id="txtDescripcion" style="width:350px;" rows="3" disabled="disabled">#= Descripcion #</textarea>
+                        </div>
+                        <div style="float:left; display:inline-block; margin-left:5px;">
+                            <label class="lblColumnaTipo1" style="width:100px !important;"><% print(window.app.idioma.t('OBSERVACIONES')) %></label>
+                            <textarea id="txtDescripcion" style="width:350px;" rows="3" disabled="disabled">#= Observaciones #</textarea>
+                        </div>
+                        <br />
+                    </div>
+                </div>
+            </script>
+        </div>
+    </div>
+</div>
+ 

@@ -1,0 +1,46 @@
+﻿ <style>
+     .redRow {
+         background-color: #E74C3C;
+         color: white;
+         text-align: center !important;
+         font-weight: bold;
+     }
+
+     #daysToContemplate {
+         width: 80px !important;
+     }
+
+     #center-pane {
+         overflow-y: hidden; 
+         overflow-x: hidden;
+     }
+ </style>   
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('PLANIFICACIONTRASIEGOS')) %></label>
+</div>
+
+<div id="PlanificacionTrasiegos" style="overflow: hidden;">
+    <div id="divPestanias" style="overflow: hidden; height: 75%;">
+        <ul>
+            <li ><% print(window.app.idioma.t('PLANIFICACION')) %></li>
+            <li ><% print(window.app.idioma.t('PARAMETROS')) %></li>
+        </ul>
+
+        <div id="gridPlanificacionTrasiegos" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%;padding:0 !important;">
+            <div id="gridWoPlanning" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%;"></div>
+            <!--<div id="spaceTr" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%; padding:0 !important;">
+                <hr width="30%">
+            </div>-->
+            <div id="gridHDBeerPlanning" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%;"></div>
+        </div>
+        <div id="gridParametros" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%;padding:0 !important;">
+            <div id="gridMostos" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%;"></div>
+            <!--<div id="space" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%; padding:0 !important;">
+                <hr width="30%">
+            </div>-->
+            <div id="gridBeers" style="overflow-y: auto; overflow-x: hidden; float: left; width: 100%;"></div>
+        </div>
+    </div>
+</div>

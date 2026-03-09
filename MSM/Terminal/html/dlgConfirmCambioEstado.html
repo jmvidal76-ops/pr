@@ -1,0 +1,69 @@
+<style>
+    #msgDialogo {
+        width: auto;
+        font-size: 20px;
+        border-bottom: 1px solid black;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    #imgProcesando {
+        margin: 5px;
+        margin-left: 84px;
+        display: none;
+    }
+
+    .btnPausa {
+        margin-left: 27px;
+        width: 150px;
+        height: 80px;
+        padding-top: 4px;
+        float: left;
+        margin-top: 18px;
+    }
+
+    #btnCancelar {
+        margin-top: 18px;
+        margin-left: 110px;
+        float: left;
+        width: 150px;
+        height: 80px;
+        padding-top: 4px;
+        float: left;
+    }
+
+    .lineaBotones {
+        width: 380px;
+    }
+
+    .aviso {
+        float: left;
+        text-align:center;
+        margin-top: 10px;
+    }
+
+    .avisoVentana .k-window-titlebar,
+    .avisoVentana .k-window-actions {
+        background-color: lightCoral;
+    }
+</style>
+
+<div id="msgDialogo">
+    <%= msg %>
+</div>
+<div id="imgProcesando">
+    <img src="img/ajax-loader.gif" />
+</div>
+<div id="botones">
+    <div class="lineaBotones">
+        <button id="btnRespuesta1" class="btnPausa"><% print(window.app.idioma.t('PAUSAR')) %></button>
+        <button id="btnRespuesta2" class="btnPausa"><% print(window.app.idioma.t('FINALIZAR')) %></button>
+    </div>
+    <div class="lineaBotones">
+        <button id="btnCancelar"><% print(window.app.idioma.t('CANCELAR')) %></button>
+    </div>
+    <div class="aviso">
+        <label id="lblAviso"></label>
+    </div>
+</div>

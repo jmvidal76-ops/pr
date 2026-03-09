@@ -1,0 +1,93 @@
+﻿<style>
+    span.k-widget.k-tooltip-validation {
+        display: inline-block;
+        width: 160px;
+        text-align: left;
+        border: 0;
+        padding: 0;
+        margin: 0;
+        background: none;
+        box-shadow: none;
+        color: red;
+    }
+
+    .k-tooltip-validation .k-warning {
+        display: none;
+    }
+
+    .k-grid .k-grid-content tr.k-grid-edit-row > td[role='gridcell'] .k-tooltip-validation > .k-callout-n {
+        left: auto;
+        margin-left: auto;
+    }
+</style>
+
+<script id="tooltip" type="text/x-kendo-template">
+    <div class="k-widget k-tooltip k-tooltip-validation k-invalid-msg k-invalid-msg-delivery" data-for="#= Key #" role="alert">
+        <span class="k-icon k-warning"> </span> #= Message #
+        <div class="k-callout k-callout-n"></div>
+    </div>
+</script>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('GESTION_LOTE_SIN_ASIGNAR')) %></label>
+</div>
+
+
+<div id="container">
+    <div id="grid"></div>
+
+
+</div>
+
+<input type="file" style="display: none" id="inputFile" accept="xls, xlsx" />
+
+<div id="windowForm" style="display:none">
+    <div class="k-content">
+        <div id="validation-success"></div>
+
+        <form id="formEdicionLote">
+            <div class="col-md-11 form-group">
+                <div class="col-lg-3"><label for="ProveedorNew"><% print(window.app.idioma.t('PROVEEDOR')) %>*</label></div>
+                <div class="col-lg-7"><input id="ProveedorNew" style="width:100% !important"></div>
+            </div>
+            <div class="col-md-11 form-group">
+                <div class="col-lg-3"><label for="LoteProveedorNew"><% print(window.app.idioma.t('LOTE_PROVEEDOR')) %>*</label></div>
+                <div class="col-lg-7"><input id="LoteProveedorNew" class="k-textbox" style="width:100% !important"></div>
+            </div>
+            <div class="col-md-11 form-group">
+                <div class="col-lg-3"><label for="MaterialNew"><% print(window.app.idioma.t('MATERIAL')) %>*</label></div>
+                <div class="col-lg-7"><input id="MaterialNew" style="width:100% !important" type="text"></div>
+
+            </div>
+            <div class="col-md-11 form-group">
+                <div class="col-lg-3"><label for="CantidadNew"><% print(window.app.idioma.t('CANTIDAD')) %>*</label></div>
+                <div class="col-lg-7"><input id="CantidadNew" style="width:100% !important"></div>
+
+            </div>
+            <div class="col-md-11 form-group">
+                <div class="col-lg-3"><label for="UnidadNew"><% print(window.app.idioma.t('UNIDAD_MEDIDA')) %>*</label></div>
+                <div class="col-lg-7"><input id="UnidadNew" style="width:100% !important" type="text"></div>
+
+            </div>
+            <div class="col-md-11 form-group">
+                <div class="col-lg-3"><label for="UbicacionNew"><% print(window.app.idioma.t('UBICACION_DESTINO')) %>*</label></div>
+                <div class="col-lg-7"><input id="UbicacionNew" style="width:100% !important" type="text"></div>
+
+            </div>
+            <div class="col-md-11 form-group">
+                <div class="col-lg-3"><label for="OffsetNew"><% print(window.app.idioma.t('OFFSET_FIN_CONSUMO')) %>*</label></div>
+                <div class="col-lg-7"><input id="OffsetNew" style="width:100% !important" type="text"></div>
+
+            </div>
+            <div class="col-md-11">
+                <center>
+                    <label id="error" style="color:red"></label><br />
+                    <button id="btnEditar" class="k-button" type="button" data-role="button" role="button" aria-disabled="false" tabindex="0">
+                        <% print(window.app.idioma.t('EDITAR')) %>
+                    </button>
+                </center>
+            </div>
+        </form>
+    </div>
+</div>

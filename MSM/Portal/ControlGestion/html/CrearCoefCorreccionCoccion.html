@@ -1,0 +1,32 @@
+﻿<style>
+    .fila {
+        margin-left: 10px;
+        margin-top: 20px;
+    }
+
+    .textos {
+        width: 95px;
+        text-align: right;
+    }
+</style>
+
+<div>
+    <form id="CrearCoefCorreccionCoccion">
+        <div class="fila">
+            <label id="lblMosto" class="textos"><% print(window.app.idioma.t('TIPO_MOSTO')) %></label>
+            <select id="cmbMosto" style="width: 540px" />
+        </div>
+        <div class="fila">
+            <label id="lblMaterialCoccion" class="textos"><% print(window.app.idioma.t('MATERIAL')) %></label>
+            <select id="cmbMaterialCoccion" style="width: 540px" />
+        </div>
+        <div class="fila">
+            <label id="lblCoeficienteCoccion" class="textos"><% print(window.app.idioma.t('COEFICIENTE')) %> (%)</label>
+            <input type="text" style="width: 120px" id="ntxtCoeficienteCoccion" data-type="number" data-role="numerictextbox" />
+        </div>
+        <div style="text-align: center; margin-top: 15px">
+            <input type="button" id="btnAceptarCoeficienteCoccion" style="margin-right: 20px" value="Aceptar" />
+            <input type="button" id="btnCancelarCoeficienteCoccion" value="Cancelar" />
+        </div>
+    </form>
+</div>

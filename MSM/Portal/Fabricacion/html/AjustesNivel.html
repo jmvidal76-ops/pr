@@ -1,0 +1,31 @@
+﻿<style>
+    #grid [role='gridcell'] {
+        border-bottom: 1px solid #b8b5b5;
+    }
+</style>
+
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('AJUSTES_NIVEL')) %></label>
+</div>
+
+<!-- Filtros Cambios -->
+<div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+    <div style="float:left;">
+        <label style="margin-left:5px;"><% print(window.app.idioma.t('DESDE')) %></label>
+        <input id="dtpFechaDesde" name="dtpFechaDesde" style="width:180px;" />
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <label style="margin-left:5px;"><% print(window.app.idioma.t('HASTA')) %></label>
+        <input id="dtpFechaHasta" name="dtpFechaHasta" style="width:180px;" />
+        <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left:5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('FILTRAR')) %></button>
+    </div>
+    <div style="float: right; margin-right: 10px;">
+        <button id="btnLimpiarFiltros" class="k-button k-button-icontext k-i-delete" style="margin-left: 5px;">
+            <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+        </button>
+    </div>
+</div>
+
+<div id="grid"></div>

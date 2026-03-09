@@ -1,0 +1,15 @@
+﻿<div class="tituloLinea" style="padding-bottom:15px"><%=linea%></div>
+<div class="tableVW" id="divtableProducto">
+    <div class="rowTableVW">
+        <div class="tituloMedio cellTableVW"><% print(window.app.idioma.t('PRODUCTO_PALETERA')) %></div>
+    </div>
+    <div class="rowTableVW">
+        <div class="valorMedio cellTableVW verde"><%=data.ordenEnPaletizadora == null ? "--" : data.ordenEnPaletizadora.producto.codigo%></div>
+    </div> 
+    <div class="rowTableVW">
+        <div class="tituloMedio cellTableProducto"><% print(window.app.idioma.t('DESCRIPCION')) %></div>
+    </div> 
+    <div class="rowTableVW">
+        <div class="valorSmall cellTableProducto verde"><%=data.ordenEnPaletizadora == null ? "--" : data.ordenEnPaletizadora.producto.nombre.trim()%></div>
+    </div>   
+</div>

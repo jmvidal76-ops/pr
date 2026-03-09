@@ -1,0 +1,806 @@
+﻿<style>
+    .configuracion-opcion {
+        /*margin-top: 6px;
+        margin-bottom: 6px;*/
+        margin: 6px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .w100 {
+        width: 100%
+    }
+
+    .w50 {
+        width: 50%;
+    }
+
+    .mb12 {
+        margin-bottom: 12px;
+    }
+
+    .mb8 {
+        margin-bottom: 8px;
+    }
+
+    .mb20 {
+        margin-bottom: 20px;
+    }
+
+    .mbi {
+        margin-bottom: initial;
+    }
+
+    .mra {
+        margin-right: auto;
+    }
+
+    .mr6 {
+        margin-right: 6px;
+    }
+
+    .ml6 {
+        margin-left: 6px;
+    }
+
+    .ml8 {
+        margin-left: 8px;
+    }
+
+    .flex-columnas {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .flex-filas {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .flex-aic {
+        align-items: center;
+    }
+
+    .flex-g1 {
+        flex-grow: 1;
+    }
+
+    .lineasDDLcolor {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        vertical-align: middle;
+        margin-right: 0.5em;
+    }
+
+    .configuracion-titulo {
+        margin-right: 20px;
+        cursor: help;
+    }
+
+    .k-numeric-wrap:before {
+        content: initial;
+    }
+
+    .k-picker-wrap:before {
+        content: initial;
+    }
+
+    .configuracion-numerictextbox {
+        height: 34px;
+        width: 130px;
+        margin-right: 18px;
+        font-weight: bold;
+    }
+
+    li .configuracion-numerictextbox {
+        margin-right: 0px;
+    }
+
+    .configuracion-dropdownlist {
+        width: 130px;
+        margin-right: 18px;
+    }
+
+    .configuracion-lista {
+        width: calc(100% - 58px);
+        display: none;
+    }
+
+    .configuracion-checkbox {
+        margin-right: 18px !important;
+    }
+
+    .configuracion-lista li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        margin-top: 4px;
+        margin-bottom: 4px;
+    }
+
+    .order_cell {
+        position: relative;
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        border-radius: 3px;
+        border-style: solid;
+        text-align: left;
+        /* border-color: rgb(39 44 38 / 25%);*/
+        border-color: #37ab20;
+        border-width: 2px;
+        box-sizing: border-box;
+        /*      top: -1px;*/
+    }
+
+    .event-tooltip {
+        text-align: start;
+    }
+
+    .evento_wo {
+        height: 100%;
+        pointer-events: none;
+    }
+
+    .order_cell div {
+        margin-left: 3px;
+    }
+
+    .order_cell_grid_hint {
+        position: relative;
+        display: inline-block;
+        white-space: nowrap;
+        box-sizing: border-box;
+        overflow: visible;
+    }
+
+    .hint-hours-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: black;
+    }
+
+        .hint-hours-text .left {
+            position: absolute;
+            bottom: 0.3em;
+            left: 0.8em;
+            font-size: .8em;
+        }
+
+        .hint-hours-text .right {
+            position: absolute;
+            bottom: 0.3em;
+            right: 0.8em;
+            font-size: .8em;
+        }
+
+    .notPlannedSlot {
+        position: absolute;
+        background-color: #ff9e9e47;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    #OrdersScheduler .k-scheduler-header tr:nth-child(2) th {
+        padding-left: 0.2em;
+        padding-right: 0.2em;
+        text-align: center;
+        text-overflow: initial;
+        line-height: 19px;
+    }
+
+    #OrdersScheduler .k-event {
+        overflow: visible;
+        background-color: transparent !important;
+        border-color: transparent !important;
+        border-width: 0 !important;
+    }
+
+    #OrdersScheduler .k-event-actions:first-child {
+        position: absolute;
+        top: 3px;
+        left: -10px;
+    }
+
+    #OrdersScheduler .k-scheduler-content td {
+        position: relative;
+    }
+
+    #OrdersScheduler .k-scheduler-content {
+        overflow: scroll;
+    }
+
+    .tiempoPreparacionWO {
+        position: absolute;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        /*right: calc(100% + 1px);*/
+        height: 50%;
+        width: 14px;
+        top: 25%;
+    }
+
+        .tiempoPreparacionWO span {
+            margin-right: 4px;
+        }
+
+        .tiempoPreparacionWO.prepCambio {
+            height: 50%;
+            width: 14px;
+            top: 25%;
+        }
+
+        .tiempoPreparacionWO.prepArranque {
+            height: 70%;
+            width: 14px;
+            top: 15%;
+        }
+
+        .tiempoPreparacionWO.prepManual {
+            height: 60%;
+            width: 14px;
+            top: 20%;
+        }
+
+    .k-marquee-text {
+        pointer-events: none;
+    }
+
+    .invalid-slot {
+        background: red !important;
+        cursor: no-drop;
+    }
+
+    .sub-header {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /*.k-event-drag-hint .tiempoPreparacionWO {
+        display: none;
+    }*/
+
+    .k-event-drag-hint .k-event-actions {
+        display: none;
+    }
+
+    .k-event-drag-hint .k-resize-handle {
+        display: none;
+    }
+
+    #fechaFinProgress {
+        position: absolute;
+        top: 208px;
+        width: 20px;
+        height: 20px;
+        right: 129px;
+    }
+
+    input[readonly] {
+        border: 1px dashed white;
+        pointer-events: none;
+    }
+
+    .no_MES_product {
+        background-color: lightpink;
+        color: black;
+        cursor: no-drop;
+    }
+
+    .no_SIGI_product {
+        background-color: #ffc900;
+        color: black;
+        cursor: no-drop;
+    }
+
+    .no_SIGI_sign {
+        background-color: orange;
+        color: black;
+        cursor: no-drop;
+    }
+
+    #OrdersGrid, #OrdersScheduler {
+        user-select: none;
+    }
+
+    #exportActive {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #a8b0ffa8;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+    }
+    #exportActive label {
+        font-size: 48px;
+        margin-bottom: 40px;
+    }
+    #exportActive span {
+        font-size: 24px;
+        margin-bottom: 50px;
+    }
+
+    .lineasHeader {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+    }
+</style>
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left:5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('PLANIFICADOR_WO')) %></label>
+</div>
+
+<div id='schedulerSplitter'>
+    <div id='header'>
+        <div class="sub-header">
+            <div style="">
+                <!--<label style="margin-left:5px;"><% print(window.app.idioma.t('LINEA')) %></label>
+                <select id="selectLinea" style="width:200px;"></select>
+                <label style="margin-left: 5px;"><% print(window.app.idioma.t('DESDE')) %></label>
+                <input id="dtpFechaDesde" style="width: 100px;" />
+                <label style="margin-left: 5px;"><% print(window.app.idioma.t('HASTA')) %></label>
+                <input id="dtpFechaHasta" style="width: 100px;" />-->
+                <button id="btnCargar" class="k-button k-button-icontext" data-funcion='ENV_PROD_SCH_1_VisualizacionSecuenciadorWO' disabled style="margin-left: 5px;"><span class="k-icon k-i-search"></span><% print(window.app.idioma.t('CARGAR_DATOS')) %></button>
+            </div>
+            <div style="margin-right: 10px;">
+                <button id="btnGuardarPlanificacion" class="k-button k-button-icontext" data-funcion='ENV_PROD_SCH_1_GestionSecuenciadorWO' disabled style="margin-left: 5px;">
+                    <span><img src="../../../Common/img/save.png" style="width: 14px;opacity: 0.7;" /> </span><% print(window.app.idioma.t('GUARDAR')) %> <% print(window.app.idioma.t('PLANIFICACION')) %>
+                </button>
+                <button id="btnExportarBorrador" class="k-button k-button-icontext" data-funcion='ENV_PROD_SCH_1_GestionSecuenciadorWO' disabled style="margin-left: 5px;">
+                    <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_BORRADOR_PLANIFICACION')) %>
+                </button>
+                <button id="btnExportarPlanificacion" class="k-button k-button-icontext" data-funcion='ENV_PROD_SCH_1_GestionSecuenciadorWO' disabled style="margin-left: 5px;">
+                    <span class='k-icon k-i-folder-up'></span><% print(window.app.idioma.t('EXPORTAR')) %> <% print(window.app.idioma.t('PLANIFICACION')) %>
+                </button>                                
+                <button id="btnCrearWO" class="k-button k-button-icontext" data-funcion='ENV_PROD_SCH_1_GestionSecuenciadorWO' disabled style="margin-left: 5px;">
+                    <span class='k-icon k-i-plus'></span><% print(window.app.idioma.t('CREAR_WO')) %>
+                </button>
+                <button id="btnLimpiarFiltros" class="k-button k-button-icontext" data-funcion='ENV_PROD_SCH_1_VisualizacionSecuenciadorWO' disabled style="margin-left: 5px;">
+                    <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('LIMPIAR_FILTROS')) %>
+                </button>
+                <button id="btnConfiguracion" class="k-button k-button-icontext" data-funcion='ENV_PROD_SCH_1_VisualizacionSecuenciadorWO' style="margin-left: 5px;">
+                    <img class="k-icon" style="background-image:none;" src="img/settings.png" /><% print(window.app.idioma.t('CONFIGURACION')) %>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id='OrdersScheduler'></div>
+    <div id='OrdersGrid'></div>    
+</div>
+<div id='exportActive'><label><% print(window.app.idioma.t('PLANIFICADOR_EXPORTACION_EN_PROGRESO')) %></label><span id="exportProgress"></span><div class="k-loading-image" style="position:initial;width: 48px;height: 48px;"></div></div>
+
+<script id="orderTemplate" type="text/x-kendo-template">
+    #let sch = $("\\#OrdersScheduler").getKendoScheduler();#
+    #let cfg = sch.configurarEventoWO(uid);#
+    #let _color = data.resources[0].color;#
+    <div id="WO_#=id#" class="evento_wo">
+        <div class="tiempoPreparacionWO #:cfg.tiempoPreparacion.class#" style="#:cfg.tiempoPreparacion.style#">
+            <span #:(cfg.tiempoPreparacion.mostrarTiempo ? "" : "hidden")#>#=kendo.toString(new Date(0,0,0,0, data.duracionPreparacion), 'H:mm')#</span>
+        </div>
+        <div class="order_cell" style="background-color:#:_color#;#:cfg.wo.style#;#:(!data.esEditable ? 'border-color:\\#f93737' :'')#" >
+            <div style="#:cfg.wo.titleStyle#">#: title #</div>
+            <div>#: description #</div>
+            <div><span class="cantidad">#: cantidad #</span> - <span>#:(cantidad * relacionesEnvases.envasesPalet * relacionesEnvases.hectolitrosEnvase).toFixed(2)# HL</span></div>
+        </div>
+    </div>
+
+</script>
+
+<script id="slotTemplateDay" type="text/x-kendo-template">
+    #let sch = $("\\#OrdersScheduler").getKendoScheduler();#
+    #let tiempoCelda = 30;#
+    #let planned = sch.turnoPlanificado(data.resources().idLinea, date.addSecs(1))#
+      <div class="sub_slot" data-id_linea="#=data.resources().idLinea#" data-fecha_inicio="#=date.getTime()#" data-fecha_fin="#=date.addMins(tiempoCelda).getTime()#">
+        #if (!planned){#
+            <div class="notPlannedSlot"></div>
+        #}#
+    </div>
+</script>
+
+<script id="slotTemplateWeek" type="text/x-kendo-template">
+    #let sch = $("\\#OrdersScheduler").getKendoScheduler(); #
+    #let tiempoCelda = 360;#
+    #let fechaFin = new Date(date.getTime() + tiempoCelda * 60000);#
+    #let noPlanificado = sch.noPlanificado(data.resources().idLinea, date, fechaFin);#
+    #let _style = "";#
+    <div class="sub_slot" data-id_linea="#=data.resources().idLinea#" data-fecha_inicio="#=date.getTime()#" data-fecha_fin="#=date.addMins(tiempoCelda).getTime()#">
+        # for (let i = 0; i < noPlanificado.length; i++) {#
+            #_style = "left:"+noPlanificado[i].izquierda+"%;right:"+noPlanificado[i].derecha+"%;width:initial";#
+            <div class="notPlannedSlot" style="#:_style#"></div>
+        # } #
+    </div>
+</script>
+
+<script id="slotTemplateMonth" type="text/x-kendo-template">
+    #let sch = $("\\#OrdersScheduler").getKendoScheduler(); #
+    #let tiempoCelda = 720;#
+    #let fechaFin = new Date(date.getTime() + tiempoCelda * 60000);#
+    #let noPlanificado = sch.noPlanificado(data.resources().idLinea, date, fechaFin);#
+    #let _style = "";#
+    <div class="sub_slot" data-id_linea="#=data.resources().idLinea#" data-fecha_inicio="#=date.getTime()#" data-fecha_fin="#=date.addMins(tiempoCelda).getTime()#">
+        # for (let i = 0; i < noPlanificado.length; i++) {#
+            #_style = "left:"+noPlanificado[i].izquierda+"%;right:"+noPlanificado[i].derecha+"%;width:initial";#
+            <div class="notPlannedSlot" style="#:_style#"></div>
+        # } #
+    </div>
+</script>
+
+<script id="orderTemplateDraggable" type="text/x-kendo-template">
+      <div class='k-event order_cell_grid_hint' id='dragTooltip' style="
+                                        width:#= width #px;
+                                        background-color:#= bgColor #;
+                                        color:#=ColorTextoBlancoNegro(bgColor)#;
+                                        border-color: rgb(39 44 38 / 25%);
+                                        border-width: 1px;
+                                        box-sizing: border-box;">
+            <div class='k-event-template'>#: title #</div>
+            <div class='k-event-template'>#: description #</div>
+    </div>
+</script>
+
+<script id="editarWOTemplate" type="text/x-kendo-template">
+    #let self = window.app.vista;#
+    #let datosPrep = wo.decodificarDatosPreparacion();#
+    <div style="padding:6px;">
+        #let id = wo.id; #
+        <span class="mb12" style="display:flex;justify-content:center;"><label>WO:&nbsp</label> #=wo.title#<br/></span>
+        <span class="mb12" style="display:flex;justify-content:center;"><label>#=window.app.idioma.t("PRODUCTO")#:&nbsp</label>#=wo.description#</span>
+        <span class="mb12" style="display:flex;justify-content:center;"><label>#=window.app.idioma.t("DURACION")#:&nbsp</label><span id="editorWO_duracion">#=ConversorHorasMinutosSegundos(wo.duracion*60)#</span>
+        <span id="duracionTotal" style="color:red;margin-left:20px;"
+            title="#:window.app.idioma.t('DURACION_REAL')
+            + ' ('+ConversorHorasMinutos(wo.duracionOffset * 60)+' '
+            + (window.app.idioma.t('NO_PLANIFICADO') || 'no planificado') +')'#">
+            #: (wo.duracionOffset ? window.app.idioma.t('DURACION_REAL') +': '+ ConversorHorasMinutos((wo.duracion + wo.duracionOffset) * 60) : '')#</span>
+        </span>
+        <div class="mb12" style="padding:8px;border:1px solid \\#eee;overflow:auto;max-height:#:height#px">
+            <div class="flex-filas w100 mb8">
+                <div class="flex-columnas w50">
+                    <strong><label class="mb8" for="inpt_fechaInicio_#:id#">#:(window.app.idioma.t("INICIO") + ' ' + window.app.idioma.t("PREPARACION"))#</label>:</strong>
+                    <input id="inpt_fechaInicio_#:id#" style="width:80%"
+                        data-role="datetimepicker"
+                        data-format="#:kendo.culture().calendars.standard.patterns.MES_FechaHora#",
+                        data-culture="#:localStorage.getItem("idiomaSeleccionado")#"
+                        data-value="#=wo.start.toISOString()#"
+                        data-editorwoinpt="#:self.constEditorWOInput.HoraInicio#"/>
+                </div>
+                <div class="flex-columnas w50">
+                    <strong><label class="mb8" for="inpt_fechaInicioWO_#:id#">#:(window.app.idioma.t("INICIO") + ' ' + window.app.idioma.t("WO"))#</label>:</strong>
+                    <input id="inpt_fechaInicioWO_#:id#" style="width:80%" required
+                        data-role="datetimepicker"
+                        data-format="#:kendo.culture().calendars.standard.patterns.MES_FechaHora#",
+                        data-culture="#:localStorage.getItem("idiomaSeleccionado")#"
+                        data-value="#=wo.inicioWO.toISOString()#"
+                        data-editorwoinpt="#:self.constEditorWOInput.HoraInicioWO#"/>
+                </div>
+            </div>
+            <div class="flex-filas w100 mb8">
+                <div class="flex-columnas w50">
+                    <strong><label class="mb8">#:(window.app.idioma.t("DURACION")+ ' ' + window.app.idioma.t("PREPARACION"))#</label>:</strong>
+                    <span class="w100">
+                        <span style="width:70px;display: inline-block;">
+                            <span id="lbl_tipoPreparacionSel">#:(datosPrep.config == self.constConfigPreparacion.Manual ? window.app.idioma.t("PLANIFICADOR_CONFIG_MANUAL") :
+                                datosPrep.tipo == self.constTipoPreparacion.Arranque ? window.app.idioma.t("PLANIFICADOR_CONFIG_ARRANQUE") :
+                                window.app.idioma.t("PLANIFICADOR_CONFIG_CAMBIO"))#</span><span>&nbsp-&nbsp</span>
+                        </span>
+                            <span style="width:26%;display: inline-block;">
+                            <input id="inpt_duracionPrep_#:id#" required style="width:100%;"
+                                data-role="maskedtextbox"
+                                data-rules="{'5':/[0-5]/}"
+                                data-mask="00h:50m"
+                                data-value="#:self.conversorMinutosDuracion(wo.duracionPreparacion)#"
+                                data-editorwoinpt="#:self.constEditorWOInput.DuracionPreparacion#"/>
+                        </span>
+                        <span id="duracionPrepTotal" style="color: red;margin-left: 20px;"
+                                title="#:window.app.idioma.t('DURACION_REAL')
+                                + ' ('+ConversorHorasMinutos(wo.duracionPreparacionOffset * 60)+' '
+                                + (window.app.idioma.t('NO_PLANIFICADO') || 'no planificado')+')'#">
+                                #: (wo.duracionPreparacionOffset ? ConversorHorasMinutos((wo.duracionPreparacion + wo.duracionPreparacionOffset) * 60) : '')#</span>
+                    </span>
+                </div>
+                <div class="flex-columnas w50" style="position:relative;">
+                    <strong><label class="mb8" for="inpt_fechaFin_#:id#">#:(window.app.idioma.t("FIN") + ' ' + window.app.idioma.t("WO"))#</label>:</strong>
+                    <input id="inpt_fechaFin_#:id#" style="width:80%" required
+                        data-format="#:kendo.culture().calendars.standard.patterns.MES_FechaHora#",
+                        data-culture="#:localStorage.getItem("idiomaSeleccionado")#"
+                        data-role="datetimepicker"
+                        data-value="#=wo.end.toISOString()#"
+                        data-editorwoinpt="#:self.constEditorWOInput.HoraFin#"/>
+                #let candadoInicialFecha = self.opciones.EDITOR_CANDADO_INICIAL.valor == self.constCandadoEditor.FECHA_FIN; #
+                    <span id="inpt_bloquearFechaFin" data-active="#: candadoInicialFecha ? 1 : 0 #" class="k-icon k-i-#:candadoInicialFecha ? "lock" : "unlock"#"
+                        onclick="javascript: window.app.vista.BloquearEditor(1);"
+                        style="position: absolute;top: 28px;left: 230px;transform: scale(1.3);cursor: pointer;"></span>
+                </div>
+            </div>
+            <div class="flex-filas w100 mb8">
+                <div class="flex-filas flex-g1">
+                    <strong><label class="mb8" for="inpt_tipoPreparacion_#:id#" style="margin-top:6px;">#:(window.app.idioma.t("TIPO_PREPARACION"))#</label>:&emsp;</strong>
+                    <selec id="inpt_tipoPreparacion_#:id#" name="inpt_tipoPreparacion_#:id#" style="width:50%"
+                                    data-role="dropdownlist"
+                                    data-value="#:(datosPrep.config == self.constConfigPreparacion.Automatico ? 0 :
+                                            datosPrep.config == self.constConfigPreparacion.Manual ? 21 :
+                                            datosPrep.tipo == self.constTipoPreparacion.Cambio ? 20 :
+                                            datosPrep.idArranque)#"
+                                    data-tipoprep="#:datosPrep.tipo#"
+                                    data-configprep="#:datosPrep.config#"
+                                    data-arranqueprep="#:datosPrep.idArranque#"
+                                    data-value-field="Codigo"
+                                    data-text-field="Descripcion">
+                    </selec>
+                    <span id="lbl_tipoPreparacion" style="margin-top:6px;margin-left:12px;">
+                        #=(datosPrep.config == self.constConfigPreparacion.Automatico && datosPrep.tipo == self.constTipoPreparacion.Arranque ?
+                                datosPrep.tiemposArranque.find(f => f.id == datosPrep.idArranque).nombre :
+                                datosPrep.config == self.constConfigPreparacion.Automatico ? window.app.idioma.t("PLANIFICADOR_CONFIG_CAMBIO") : '')#
+                    </span>
+                </div>
+            </div>
+            <div class="flex-filas w100">
+                <strong><label for="inpt_auto_ajuste_#:id#" style="margin-top:3px;" title="#:window.app.idioma.t("PLANIFICADOR_AUTOAJUSTE_HINT")#">#:(window.app.idioma.t("AUTO_AJUSTE"))#</label>:&emsp;</strong>
+                <input id="inpt_auto_ajuste_#:id#" type="checkbox" #=(wo.autoAjuste ? 'checked': '')#
+                    data-role="checkbox" onchange="javascript: window.app.vista.OnChangeEditor('#=wo.id#', #=self.constEditorWOInput.AutoAjuste#)"/>
+            </div>
+            <hr>
+            <div class="flex-columnas w100 mb8" style="position:relative;">
+                <strong><label class="mb8" for="inpt_cantidadPalets_#:id#">#:(window.app.idioma.t("CANTIDAD"))#</label>:</strong>
+                <div class="flex-filas">
+                    <div class="flex-filas flex-g1 mr6">
+                        <label style="margin-top:6px;">#:window.app.idioma.t("PALETS")# (#:(window.app.idioma.t("ORIGINAL") +" "+ wo.orden.cantidadOriginal)#):&emsp;</label>
+                        <input id="inpt_cantidadPalets_#:id#" required
+                            style="width:100px"
+                            data-editorwoinpt="#:self.constEditorWOInput.CantidadPalets#"
+                            data-role="numerictextbox"
+                            data-decimals="0"
+                            data-min="1"
+                            data-format="n0"
+                            data-restrict-decimals="true"
+                            data-value="#:wo.cantidad#"/>
+                    </div>
+                    <div class="flex-filas flex-g1 ml6 mr6">
+                        <label style="margin-top:6px;">#:window.app.idioma.t("CPB")#:&emsp;</label>
+                        <input id="inpt_cantidadCajas_#:id#" #:!wo.relacionesEnvases.CPBPalet? 'disabled':''#
+                            style="width:100px"
+                            data-editorwoinpt="#:self.constEditorWOInput.CantidadCajas#"
+                            data-role="numerictextbox"
+                            data-decimals="0"
+                            data-min="#:wo.relacionesEnvases.CPBPalet#"
+                            data-format="n0"
+                            data-restrict-decimals="true"
+                            data-value="#: (wo.cantidad * wo.relacionesEnvases.CPBPalet)#"/>
+                    </div>
+                    <div class="flex-filas flex-g1 ml6">
+                        <label style="margin-top:6px;">HL:&emsp;</label>
+                        <input id="inpt_cantidadHectolitros_#:id#"
+                            style="width:100px"
+                            data-editorwoinpt="#:self.constEditorWOInput.CantidadHectolitros#"
+                            data-role="numerictextbox"
+                            data-decimals="0"
+                            data-min="#:wo.relacionesEnvases.hectolitrosEnvase * wo.relacionesEnvases.envasesPalet#"
+                            data-format="n0"
+                            data-restrict-decimals="true"
+                            data-value="#: (wo.cantidad * wo.relacionesEnvases.envasesPalet * wo.relacionesEnvases.hectolitrosEnvase)#"/>
+                    </div>
+                </div>
+                <div class="flex-filas">
+                    <strong>#:window.app.idioma.t("ENVASES")#:&emsp;</strong>
+                        <span id="lbl_envases" style="width:80px;display:inline-flex;">#:(wo.cantidad * wo.relacionesEnvases.envasesPalet)#</span>
+                </div>
+                <span id="inpt_bloquearCantidad" data-active="#: !candadoInicialFecha ? 1 : 0 #" class="k-icon k-i-#:!candadoInicialFecha ? "lock" : "unlock"#"
+                        onclick="javascript: window.app.vista.BloquearEditor(0);"
+                        style="position: absolute;top: -1px;left: 143px;transform: scale(1.3);cursor: pointer;"></span>
+            </div>
+            <hr>
+            <div class="flex-filas flex-aic w100">
+                <strong style="width:15%;"><label class="mbi" for="inpt_linea_#:id#">#:(window.app.idioma.t("LINEA"))#</label>:&emsp;</strong>
+                <select class="" id="inpt_linea_#:id#" name="inpt_linea_#:id#" style="width:85%;" #=(wo.orden.idLineas.length > 1? '' : 'disabled')# required
+                                    data-role="dropdownlist"
+                                    data-template="lineasDDLtemplate"
+                                    data-value-template="lineasDDLtemplate"
+                                    data-value="#:wo.idLinea#"
+                                    data-value-field="Codigo"
+                                    data-text-field="Descripcion"></select>
+            </div>
+            <hr>
+            <div class="flex-filas w100 mb8">
+                <div class="flex-filas flex-aic flex-g1">
+                    <strong><label class="mbi" for="inpt_velocidadNominal_#:id#">#:window.app.idioma.t("VELOCIDAD_NOMINAL")#</label>:&emsp;</strong>
+                    <input id="inpt_velocidadNominal_#:id#" required
+                        style="width:125px"
+                        data-role="numerictextbox"
+                        data-editorwoinpt="#:self.constEditorWOInput.VelocidadNominal#"
+                        data-min="1"
+                        data-decimals="2"
+                        data-format="n2"
+                        data-restrict-decimals="true"
+                        data-value="#:wo.parametrosLinea.velocidadNominal#"/>
+                </div>
+                <div class="flex-filas flex-aic flex-g1 ml8">
+                    <strong><label class="mbi" for="inpt_OEE_#:id#">#:window.app.idioma.t("OEE")#</label>:&emsp;</strong>
+                    <input id="inpt_OEE_#:id#" required
+                        style="width:100px"
+                        data-role="numerictextbox"
+                        data-editorwoinpt="#:self.constEditorWOInput.OEE#"
+                        data-min="1"
+                        data-max="100"
+                        data-decimals="2"
+                        data-format="n2"
+                        data-restrict-decimals="true"
+                        data-value="#:wo.parametrosLinea.OEE#"/>
+                </div>
+            </div>
+            <hr>
+            <div class="flex-columnas w100">
+                <strong><label for="inpt_Notas_#:id#">#:window.app.idioma.t("NOTA")#</label>:</strong>
+                <textarea id="inpt_Notas_#:id#" style="width:98%;max-width:98%;padding:1%;height:50px">#:wo.descripcion#</textarea>
+            </div>
+        </div>
+        <div class="flex-filas w100" style="justify-content: space-between;">
+            <span>
+                <input type="button" class="mr6" data-role="button" style="background-color:\\#ff2300;color:white;" id="btnEditarWOEliminar" value="#:window.app.idioma.t("ELIMINAR")#"/>
+                <input type="button" data-role="button" style="" id="btnEditarWOCopiar" value="#:window.app.idioma.t("COPIAR")#"/>
+            </span>
+            <span>
+                <input type="button" data-role="button" class="mr6" id="btnEditarWOAceptar" value="#:window.app.idioma.t("ACEPTAR")#"/>
+                <input type="button" data-role="button" class="" id="btnEditarWOCancelar" value="#:window.app.idioma.t("CANCELAR")#"/>
+            </span>
+        </div>
+    </div>
+</script>
+
+<script id="lineasDDLtemplate" type="text/x-kendo-template">
+    <span class="lineasDDLcolor" style="background-color:#:(data.Color ? data.Color: 'transparent')#;border:1px solid \\#3337;"></span> <span>#:Descripcion#</span>
+</script>
+
+
+<script id="orderTooltipTemplate" type="text/x-kendo-template">
+    #let uid = target.attr("data-uid");#
+    #let scheduler = target.closest("[data-role=scheduler]").data("kendoScheduler");#
+    #let model = scheduler.occurrenceByUid(uid);#
+
+    #if(model) {#
+        <strong>WO:</strong> #:model.title#<br/>
+        <div class="event-tooltip">
+            <span style="display:inline-table;width:270px"><strong>#:(window.app.idioma.t("INICIO")+' '+window.app.idioma.t("PREPARACION"))#:</strong> #=kendo.toString(model.start, 'dd/MM/yyyy HH:mm:ss')#</span>
+            <span style="display:inline-table;width:200px;text-align:right"><strong>#:(window.app.idioma.t("INICIO") + ' ' + window.app.idioma.t("WO"))#:</strong> #=kendo.toString(model.inicioWO, 'dd/MM/yyyy HH:mm:ss')#</span><br/>
+            <span style="width:100%;display:inline-table;text-align:right"><strong>#:(window.app.idioma.t("FIN") + ' ' + window.app.idioma.t("WO"))#:</strong> #=kendo.toString(model.end, 'dd/MM/yyyy HH:mm:ss')#</span><br/>
+            <strong>#:window.app.idioma.t("PRODUCTO")#:</strong> #=model.description#<br />
+            <strong>#:(window.app.idioma.t("CANTIDAD")+' '+ window.app.idioma.t("PALETS"))#:&nbsp</strong>
+                <span>#=model.cantidad#</span>&nbsp<span>(#:(window.app.idioma.t("ORIGINAL") +" "+ model.orden.cantidadOriginal)#)</span>
+                &emsp;&emsp;<strong>#:(window.app.idioma.t("CPB"))#:</strong> #:model.cantidad * model.relacionesEnvases.CPBPalet#
+                &emsp;&emsp;<strong>HL:</strong> #:(model.cantidad * model.relacionesEnvases.envasesPalet * model.relacionesEnvases.hectolitrosEnvase).toFixed(2)#
+            <br/>
+            <strong>#:window.app.idioma.t("DURACION")#:</strong> #=ConversorHorasMinutosSegundos(model.duracion*60)#<br />
+        </div>
+    #} else {#
+        <strong>el evento no tiene datos disponibles</strong>
+    #}#
+</script>
+
+
+<script id="configuracionTemplate" type="text/x-kendo-template">
+    <div class="configuracion-container">
+        #for (let p in opt) {#
+            #if(typeof opt[p] === 'object'){#
+                #let titulo = window.app.idioma.t("PLANIFICADOR_"+p) || "Opcion";#
+                #let hint = window.app.idioma.t("PLANIFICADOR_"+p+"_HINT") || "";#
+                #let id = "SCH_OPT_"+opt[p].id;#
+                <div class="configuracion-opcion">
+                    <label class="configuracion-titulo" for="#:id#" title="#:hint#">#:titulo#:</label>
+                    #if (p == "LINEAS_COLOR" || p == "TIEMPO_PREPARACION_COLOR"){#
+                        #let claves = opt[p].valor;#
+                        <span class="k-icon k-i-arrow-w" style="position: absolute;right: 30px;margin-top: 5px;cursor: pointer;"
+                            onclick="javascript: { let _ul = $('\\#ul_#=id#'); if (_ul.is(':visible')){
+                                _ul.hide(400);
+                                $(this).removeClass('k-i-arrow-s');
+                                $(this).addClass('k-i-arrow-w');
+                            } else{
+                                _ul.show(400);
+                                $(this).removeClass('k-i-arrow-w');
+                                $(this).addClass('k-i-arrow-s');
+                            }
+                        }"></span>
+                        <ul class="configuracion-lista" id="ul_#=id#">
+                            #for (let c in claves){#
+                                #let linea = lineas.find(f => f.numLinea == c);#
+                                #if (linea == null && p == "LINEAS_COLOR"){continue;}#
+                                #let texto = p == "LINEAS_COLOR" ? linea.text : window.app.idioma.t("PLANIFICADOR_CONFIG_"+c) || "-";#
+                                <li>
+                                    <span>#:texto#</span>
+                                    <input id="#=id#" name="#:id#" class="configuracion-colorpicker"
+                                    data-clave="#:c#"
+                                    data-opt-clave="#:p#"
+                                    data-valor="#:claves[c]#"
+                                    data-role="colorpicker"
+                                    data-value="#:claves[c]#"
+                                    data-buttons= "false"/>
+                                </li>
+                            #}#
+                        </ul>
+                    #} else if (p == "HORAS_SIN_WO_ARRANQUE_LIMPIEZA" || p == "HORAS_SIN_WO_ARRANQUE"){#
+                        #let claves = opt[p].valor;#
+                        <span class="k-icon k-i-arrow-w" style="position: absolute;right: 30px;margin-top: 5px;cursor: pointer;"
+                            onclick="javascript: { let _ul = $('\\#ul_#=id#'); if (_ul.is(':visible')){
+                                _ul.hide(400);
+                                $(this).removeClass('k-i-arrow-s');
+                                $(this).addClass('k-i-arrow-w');
+                            } else{
+                                _ul.show(400);
+                                $(this).removeClass('k-i-arrow-w');
+                                $(this).addClass('k-i-arrow-s');
+                            }
+                        }"></span>
+                        <ul class="configuracion-lista" id="ul_#=id#">
+                            #for (let c in claves){#
+                                #let linea = lineas.find(f => f.numLinea == c);#
+                                #if (linea == null){continue;}#
+                                #let texto = linea.text || "-";#
+                                #let min = p == 'HORAS_SIN_WO_ARRANQUE_LIMPIEZA' ? opt['HORAS_SIN_WO_ARRANQUE'].valor[c] : 0;#
+                                <li>
+                                    <span>#:texto#</span>
+                                    <input id="#:id#" name="#:id#" class="configuracion-numerictextbox" type="number" #: (opt[p].id == -1 ? 'disabled': '')#
+                                    data-role="numerictextbox"
+                                    value="#:claves[c]#"
+                                    data-decimals="0"
+                                    data-format="n0"
+                                    data-min="#:parseInt(min)#"
+                                    data-restrict-decimals="true"
+                                    onfocusout="javascript: { let ipt = $(this).getKendoNumericTextBox(); if(ipt.value() < ipt.min()){ return; };  window.app.vista.ActualizarOpciones('#:p#', [#:c#, parseInt(ipt.value())])}"/>
+                                </li>
+                            #}#
+                        </ul>
+                    #} else if (p == "VISTA_INICIAL" || p == "EDITOR_CANDADO_INICIAL"){#
+                        <input id="#:id#" name="#:id#" class="configuracion-dropdownlist"
+                                data-opt="#:p#"
+                                data-role="dropdownlist"
+                                data-value="#:opt[p].valor#"
+                                data-value-field="Codigo"
+                                data-text-field="Descripcion"
+                                onchange="javascript: window.app.vista.OnChangeConfiguracion(this, '#:p#', 'dropdownlist')"/>
+                    #} else {#
+                        #if (opt[p].tipo.toLowerCase() == "number"){#
+                            <input id="#:id#" name="#:id#" class="configuracion-numerictextbox" type="number"
+                                data-role="numerictextbox"
+                                value="#:opt[p].valor#"
+                                data-decimals="0"
+                                data-format="n0"
+                                data-restrict-decimals="true"
+                                onfocusout="javascript: window.app.vista.OnChangeConfiguracion(this, '#:p#', 'numerictextbox')"/>
+                        #} else #
+                        #if (opt[p].tipo.toLowerCase() == "boolean" || opt[p].tipo.toLowerCase() == "bool"){#
+                            <input id="#:id#" class="configuracion-checkbox" name="#:id#" type="checkbox" #= (opt[p].valor ? "checked='checked'" : '') #
+                                data-role="checkbox"
+                                data-checked="#:opt[p].valor.toString()#"
+                                onchange="javascript: window.app.vista.OnChangeConfiguracion(this, '#:p#', 'checkbox')"/>
+                        #} else #
+                        #if (opt[p].tipo.toLowerCase() == "string"){#
+                            <input id="#:id#" class="configuracion-textbox " name="#:id#" class="k-textbox" type="text" value="#:opt[p].valor#"
+                            onchange="javascript: window.app.vista.OnChangeConfiguracion(this, '#:p#', 'textbox')"/>
+                        #}#
+                    #}#
+                </div>
+            #}#
+        #}#
+    </div>
+</script>

@@ -1,0 +1,88 @@
+﻿<style>
+    .k-icon,
+    .k-tool-icon,
+    .k-grouping-dropclue,
+    .k-drop-hint,
+    .k-column-menu .k-sprite,
+    .k-grid-mobile .k-resize-handle-inner::before,
+    .k-grid-mobile .k-resize-handle-inner::after,
+    .k-pager-numbers .k-current-page .k-link::after,
+    .k-scheduler-toolbar > ul.k-scheduler-views > li.k-current-view > .k-link::after {
+        margin-top: 10px;
+    }
+
+    ::-ms-clear {
+        display: none;
+    }
+
+    ::-ms-reveal {
+        display: none;
+    }
+
+    .margenIzq {
+        margin-left: 15px
+    }
+
+    .cabeceraPdv {
+        margin-top: 0px !important;
+        padding-right: 20px;
+        font-weight: bold;
+    }
+
+    .field-icon {
+        position: relative;
+        cursor: pointer;
+    }
+</style>
+
+<div class="loginTerminal">
+    <div id="credenciales" class="row" style="margin-left: 50px">
+        <label><% print(window.app.idioma.t('USUARIO')) %></label>
+        <input id="txtUsuario" class="keyboardOn" type="text" value="" />
+        <label class="margenIzq"><% print(window.app.idioma.t('PASS')) %></label>
+        <input id="txtPassword" type="password" class="keyboardOn" value="" /> <i class="glyphicon glyphicon-eye-open field-icon"></i>
+    </div>
+    <div class="row" style="margin-left: 50px">
+        <label><% print(window.app.idioma.t('LINEAS')) %></label>
+        <select id="cmbLinea" style="margin-left: 11px; width: 295px"></select>
+        <label class="margenIzq"><% print(window.app.idioma.t('ZONAS')) %></label>
+        <select id="cmbZona" style="margin-left: 40px; width: 295px"></select>
+    </div>
+    <div class="panel panel-default margenIzq" style="width: 870px">
+        <div class="panel-heading cabeceraPdv"><% print(window.app.idioma.t('ALT_LOGIN_TERMINAL')) %></div>
+        <div class="panel-body" style="margin-top: 0px">
+            <div class="row" style="margin-left: 0px; margin-top: 5px">
+                <label>Nivel 1</label>
+                <select id="cmbPdvNivel1" style="width: 200px"></select>
+                <label class="margenIzq">Nivel 2</label>
+                <select id="cmbPdvNivel2" style="width: 200px"></select>
+                <label class="margenIzq">Nivel 3</label>
+                <select id="cmbPdvNivel3" style="width: 200px"></select>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default margenIzq" style="width: 870px">
+        <div class="panel-heading cabeceraPdv"><% print(window.app.idioma.t('SEO_LOGIN_TERMINAL')) %></div>
+        <div class="panel-body" style="margin-top: 0px">
+            <div class="row" style="margin-left: 0px; margin-top: 5px">
+                <label>Nivel 1</label>
+                <select id="cmbPdvSEONivel1" style="width: 200px"></select>
+                <label class="margenIzq">Nivel 2</label>
+                <select id="cmbPdvSEONivel2" style="width: 200px"></select>
+                <label class="margenIzq">Nivel 3</label>
+                <select id="cmbPdvSEONivel3" style="width: 200px"></select>
+            </div>
+        </div>
+    </div>
+    <div id="divBotones">
+        <div id="divAceptar" style="float: left; text-align: right; margin-top: 0px; width: 490px">
+            <button id="btnAceptar"><% print(window.app.idioma.t('ACEPTAR')) %></button>
+        </div>
+        <div id="divCancelar" style="float: left; text-align: center; margin-top: 0px; margin-left: 15px">
+            <button id="btnCancelar"><% print(window.app.idioma.t('CANCELAR')) %></button>
+        </div>
+    </div>
+    <div id="imgProcesando" style="text-align: center">
+        <img src="img/ajax-loader.gif" />
+    </div>
+</div>

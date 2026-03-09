@@ -1,0 +1,285 @@
+﻿<style>
+    .k-detail-cell .k-tabstrip .k-content {
+        padding: 0.2em;
+        overflow-y: hidden;
+    }
+
+    .table {
+        border: 1px solid #000000;
+        margin: 2px;
+    }
+
+    .table-bordered > thead > tr > th,
+    .table-bordered > tbody > tr > th,
+    .table-bordered > tfoot > tr > th,
+    .table-bordered > thead > tr > td,
+    .table-bordered > tbody > tr > td,
+    .table-bordered > tfoot > tr > td {
+        border: 1px solid black;
+        font-weight: normal;
+    }
+
+    .rTable {
+        display: table;
+    }
+
+    .rTableRow {
+        display: table-row;
+    }
+
+    .rTableCell {
+        display: table-cell;
+        padding: 5px;
+    }
+
+    .rTableCellP {
+        display: table-cell;
+        padding: 5px;
+    }
+
+    .table > tbody > tr > td,
+    .table > tbody > tr > th,
+    .table > tfoot > tr > td,
+    .table > tfoot > tr > th,
+    .table > thead > tr > td,
+    .table > thead > tr > th {
+        padding: 0 0 0 0;
+        vertical-align: middle;
+    }
+
+    .k-grid td {
+        padding: .3em .3em;
+        line-height: 1.6;
+        vertical-align: middle;
+    }
+
+    hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid #ccc;
+        margin-top: 1em;
+        padding: 0;
+        margin-bottom: 0em;
+    }
+
+    .tabPanel .k-content {
+        overflow: hidden !important;
+    }
+
+    @media (max-width: 1024px) {
+        .rTable {
+            display: block;
+            overflow: auto;
+        }
+    }
+
+    .toolbar-fila {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .toolbar-botonera-derecha {
+        flex: 0 0 auto;
+        /*margin-right: 10px;*/
+    }
+
+        .toolbar-botonera-derecha button {
+            margin-left: 5px;
+        }
+    
+    .toolbar-campos {
+        flex: 1 1;
+        text-align: center;
+    }
+
+        .toolbar-campos:first-child {
+            flex: 0 0 auto;
+        }
+
+        .toolbar-campos label {
+            margin-left: 5px;
+        }
+
+    .toolbar-titulo {
+        width: 100%;
+        text-align: center;
+    }
+
+    .k-datepicker {
+        width: 8em;
+    }
+
+    .boton-aplicar {
+        background-color: green;
+        color: white;
+        margin-right: 1.16em;
+    }
+
+    .k-grid,
+    .k-tabstrip,
+    .k-tabstrip .k-content {
+        margin: 0;
+        padding: 0;
+        border-width: 0;
+        overflow-y: hidden;
+    }
+
+    .k-radio-label {
+        padding-top: 2px;
+    }
+
+    #divHTMLContenido {
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+    }
+
+    #PlanificacionFiltracion .k-splitter {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        border-width: 0;
+    }
+
+    #divPestanias,
+    #divPestanias-parent {
+        height: 100%;
+    }
+
+    .k-grid-toolbar .toolbar-label {
+        margin-top: 5px;
+    }
+
+    .toolbar-campos label {
+        margin-left: 5px;
+    }
+
+    .toolbar-campos input[type=number] {
+        width: 12em;
+    }
+
+    .checkbox {
+        padding: 0 !important;
+    }
+
+    th[role=columnheader] > input[type=checkbox] {
+        width: 14px;
+        height: 14px;
+        padding: 0;
+        margin-top: 4px;
+    }
+
+    td.columna-checkbox > input[type=checkbox] {
+        width: 14px;
+        height: 14px;
+        padding: 0;
+        margin-top: 4px;
+    }
+    
+    .toolbar-campos .k-input-label {
+        margin-left: 5px;
+    }
+
+    .recuadro {
+        display: flex;
+        gap: 4px;
+    }
+
+    .line {
+        padding: 5px 10px;
+        border: 1px solid #999;
+        text-align: center;
+        font-weight: bold;
+    }
+</style>
+
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('AYUDA_FILTRACION')) %></label>
+</div>
+
+<div id="PlanificacionFiltracion" class="divContenidoVista">
+    <div id="divPestanias">
+        <ul>
+            <li class="k-state-active"><% print(window.app.idioma.t('PREVISION')) %></li>
+            <li><% print(window.app.idioma.t('CONFIGURACION')) %></li>
+        </ul>
+
+        <div id="gridPlanificacionFiltracion">
+            <div id="vsplitPanelPlanFiltracion">
+                <div id="gridFilPrevTotal"></div>
+                <div id="gridFilPrevLineas"></div>
+            </div>
+        </div>
+
+        <div id="gridParametros">
+            <div id="vsplitPanelParametros">
+                <div id="gridFilMermas"></div>
+                <div id="gridFilConfiguracion"></div>
+                <div id="gridConexionLinea"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="tmplGridFilPrevTotalToolbar">
+    <div class="toolbar-titulo"><label><% print(window.app.idioma.t("PREVISION_FILTRACIONES")) %></label></div>
+    <div class="k-header toolbar-fila">
+        <div class="toolbar-botonera-derecha" style="width: 100%; display: flex; justify-content: flex-end;">
+            <button id='btnFilPrevTotalActualizar' class='k-button k-button-icontext'>
+                <% print(window.app.idioma.t('ACTUALIZAR')) %>
+            </button>
+            <button id="btnFilPrevTotalExcel" class='k-button k-button-icontext'>
+                <span class='k-icon k-i-excel'></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+            </button>
+            <button id="btnFilPrevTotalLimpiarFiltros" class='k-button k-button-icontext'>
+                <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+            </button>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="tmplGridFilPrevLineasToolbar">
+    <div class="toolbar-titulo"><label><% print(window.app.idioma.t("PREVISION_FILTRACIONES_LINEA")) %></label></div>
+    <div class="k-header toolbar-fila">
+        <div class="toolbar-campos">
+            <div id="lineas" class="recuadro" style="margin-left: 5px"></div>
+        </div>
+        <div class="toolbar-botonera-derecha">
+            <button id="btnFilPrevLineasExcel" class='k-button k-button-icontext'>
+                <span class='k-icon k-i-excel'></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+            </button>
+            <button id="btnFilPrevLineasLimpiarFiltros" class='k-button k-button-icontext'>
+                <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+            </button>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="tmplGridFilMermasToolbar">
+    <div class="toolbar-titulo"><label><% print(window.app.idioma.t("CONFIGURACION")) %> <% print(window.app.idioma.t("MERMAS")) %></label></div>
+    <div class="k-header toolbar-fila">
+        <div class="toolbar-campos">
+            <label class="k-input-label"><% print(window.app.idioma.t("NUEVA_MERMA_ENVASADO") + ':  ') %></label>
+            <input id='txtFilMermas' type="number" style="width: 150px;" min="0" required />
+        </div>
+        <div class="toolbar-botonera-derecha">
+            <button id='btnFilMermasAplicar' class='k-button k-button-icontext boton-aplicar'>
+                <span class='k-icon k-i-pencil'></span><% print(window.app.idioma.t('APLICAR')) %>
+            </button>
+            <button id="btnFilMermasLimpiarFiltros" class="k-button k-button-icontext">
+                <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+            </button>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="tmplGridFilConfiguracionToolbar">
+    <div class="toolbar-titulo"><label><% print(window.app.idioma.t("PARAM_CONFIG")) %></label></div>
+</script>
+
+<script type="text/html" id="tmplGridConexionLineaToolbar">
+    <div class="toolbar-titulo"><label><% print(window.app.idioma.t("CONEXION_TCP_LINEA")) %></label></div>
+</script>

@@ -1,0 +1,180 @@
+<!-- ========= -->
+<!--    CSS    -->
+<!-- ========= -->
+<link rel="stylesheet" href="/Alt/css/ALTForm.css" />
+
+
+<style id="ALTconfigModeOffCSS" type="text/css">
+
+    .ALTconfigModeOff {
+        display: none; /* Hides config items */
+    }   
+  
+</style>
+<style scoped>
+
+    #alt-left-pane {
+        color: #000; 
+        background-color: #eee; 
+        max-width: 180px;
+
+    }
+    #alt-center-pane {
+      
+        overflow-x: hidden;
+        overflow-y: scroll;
+        
+    }
+    
+    #editForm {
+        margin-top: 18px;
+    }
+    #editForm > div  {
+        width: 100%;
+        box-sizing: border-box;
+    }
+   
+</style>
+<div id="myFormTemplate" >
+    <div id="toolbar"></div>
+    <div id="alt-horizontal" >
+        <div id="alt-left-pane">
+            <div id="editForm" class="formALT ALTconfigModeOff" style="padding-left:10px; padding-right:0px">
+                <!-- TOOLBOX ADD FIELD -->
+                <div>
+                    <label for="type"><%- window.app.idioma.t("ALT_TIPO_CAMPO")%></label>
+                    <select id="selType" name="type" data-role="dropdownlist" data-bind="source: typesArr, value: newField.type" data-text-field="name" data-value-field="value"></select>
+                    <br /><br />
+                </div>
+                <div id="idDiv">
+                    <label for="label"><%- window.app.idioma.t("ALT_TEXTO_CAMPO")%></label>
+                    <input id="tboxLabel" type="text" class="k-textbox" name="label" data-bind="value: newField.label" required />
+                    <span class="k-invalid-msg" data-for="label"></span>
+                    <br /><br />
+                </div>
+
+                <div id="rangeDiv">
+                    <label for="min"><%- window.app.idioma.t("MINIMO")%></label>
+                    <input type="number" class="k-textbox" name="min" data-bind="value: newField.min" required />
+                    <span class="k-invalid-msg" data-for="min"></span>
+                    <br /><br />
+                    <label for="max"><%- window.app.idioma.t("MAXIMO")%></label>
+                    <input type="number" class="k-textbox" name="max" data-bind="value: newField.max" required />
+                    <span class="k-invalid-msg" data-for="max"></span>
+                    <br /><br />
+                </div>
+                <div id="textDiv">
+                    <label for="maxLength"><%- window.app.idioma.t("ALT_MAXIMO_CARACTERES")%></label>
+                    <input type="number" class="k-textbox" name="maxLength" data-bind="value: newField.maxLength" required />
+                    <span class="k-invalid-msg" data-for="maxLength"></span>
+                    <br /><br />
+                </div>
+                <div id="rtdsDiv">
+                    <label for="rtdsName"><%- window.app.idioma.t("ALT_RTDS_TAG_NAME")%></label>
+                    <input id="rtdsNameSel" name="rtdsName" data-bind="value: newField.rtdsName" required />
+                    <!--<input class="k-textbox"  name="rtdsName" data-bind="value: newField.rtdsName"  required />-->
+                    <!--<select name="rtdsName" data-role="combobox" data-bind="source: rtdsTags, value: newField.rtdsName" data-text-field="Point" data-value-field="Point"> </select>-->
+                    <span class="k-invalid-msg" data-for="rtdsName"></span>
+
+                    <br /><br />
+                </div>
+                <div id="5SDiv">
+                    <label for="min"><%- window.app.idioma.t("OBJETIVO")%> (%)</label>
+                    <input type="number" class="k-textbox" name="min" data-bind="value: newField.min" required />
+                    <span class="k-invalid-msg" data-for="min"></span>
+                    <br /><br />
+                </div>
+                <div id="div5SLibre">
+                    <label for="min"><%- window.app.idioma.t("OBJETIVO")%> (%)</label>
+                    <input type="number" class="k-textbox" name="min" data-bind="value: newField.min" required />
+                    <span class="k-invalid-msg" data-for="min"></span>
+                    <br /><br />
+                </div>
+                <div id="linkDiv">
+                    <label for="min"><%- window.app.idioma.t("ENLACE")%></label>
+                    <textarea id="txtLink" class="k-textbox" data-bind="value: newField.link"></textarea>
+                    <br /><br />
+                </div>
+                <div id="filesTemDiv">
+                    <label for="checkEditable"><%- window.app.idioma.t("EDITABLE_POR_USUARIO")%></label>
+                    <input id="checkEditable" type="checkbox" name="required" data-bind="checked: newField.editableInRuntime" />
+                    <br /><br />
+                </div>
+                <div id="contenidoDiv">
+                    <label for="required"><%- window.app.idioma.t("REQUERIDO")%></label>
+                    <input id="checkRequire" type="checkbox" name="required" data-bind="checked: newField.required" />
+                    <br /><br />
+                    <div id="checkboxDiv">
+                        <label for="type"><%- window.app.idioma.t("VALOR_REQUERIDO")%></label>
+                        <select id="requireValue" name="requireValue" data-role="dropdownlist" data-bind="source: typesValuesCheck, value: newField.requireValueCheck" data-text-field="text" data-value-field="value"></select>
+                        <br /><br />
+                    </div>
+                    <label for="required"><%- window.app.idioma.t("INFORMACION")%></label>
+                    <textarea id="txtDescript" class="k-textbox" data-bind="value: newField.descript"></textarea>
+                    <br /><br />
+                </div>
+                <!--<div id="tableDiv">
+        <label for="min"><%- window.app.idioma.t("COLUMNAS")%></label>
+        <button id="btnEditFieldTableColumns" class="k-button"  style="width:90%"><%- window.app.idioma.t("EDITAR")%></button>
+        <br /><br />
+    </div>-->
+                <div data-bind="visible: modeEdit">
+                    <button id="btnEditField" class="k-button" style="width:45%"><%- window.app.idioma.t("ACEPTAR")%></button>
+                    <button id="btnCancelEdit" class="k-button" style="width:45%"><%- window.app.idioma.t("CANCELAR")%></button>
+                </div>
+                <div data-bind="visible: modeAdd">
+                    <button id="btnAddField" class="k-button" style="width:90%"><%- window.app.idioma.t("ALT_ADD_CAMPO")%></button>
+                </div>
+                <br /><br />
+                <label id="txtError" style="color: red"></label>
+
+            </div>
+        </div>
+        <div id="alt-center-pane">
+            <div id="pdfViewDiv">
+                <div class="navbar navbar-default navbar-static-top">
+                    <table id="tabla_Cabecera">
+                        <tr>
+                            <td id="logoForm" >
+                          
+                            </td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td colspan="2" id="formName"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" id="formDescript"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" id="formPath"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" id="formStatusID"></td>
+                                    </tr>
+                                    <tr style="height: 2px"></tr>
+                                    <tr>
+                                        <td id="formCreatedOn">
+                                            <label id="lblFechaCreacion"><%- window.app.idioma.t("ALT_CREATEDON")%>:</label>
+                                            <input id="dtpFechaCreacion" style="width: 200px" />
+                                        </td>
+                                        <td id ="formLastModify"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--Cabecera -->             
+                
+                </div>
+                
+                <form id="formTemplate" class="formALT" >
+                       
+                    
+                    <!-- GROUPS OF THE FORM templates for add-->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+     

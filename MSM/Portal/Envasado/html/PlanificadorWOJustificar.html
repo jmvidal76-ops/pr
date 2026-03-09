@@ -1,0 +1,49 @@
+﻿<style>   
+    .error {
+        color: red;
+    }
+
+    .k-multiselect-wrap  {
+        padding:4px;
+    }
+
+    .k-multiselect-wrap ul li:not(:last-child) {
+        margin-right: 4px;
+    }
+</style>
+<div>
+    <form id="JustificarSecuenciacion">
+        <div class="" style="padding: 0 12px;">
+            <div class="w-100 mt-20">                
+                <div class="flex-column">
+                    <div class="mt-8 w-100 flex">
+                        <label class="w-20"><% print(window.app.idioma.t('ANYO')) %></label>
+                        <select class="w-50" id="selectAnioJ"></select>
+                    </div>
+                    <div class="mt-8 w-100 flex">
+                        <label class="w-20"><% print(window.app.idioma.t('SEMANA')) %></label>
+                        <select class="w-50" id="selectSemanaJ"></select>
+                    </div>
+                    <div class="mt-8 w-100 flex">
+                        <label class="w-20"><% print(window.app.idioma.t('LINEAS')) %></label>
+                        <select class="w-75" id="selectLineasJ"></select>
+                    </div>
+                    <div class="mt-8 w-100 flex">
+                        <label class="w-20"><% print(window.app.idioma.t('MOTIVO')) %></label>
+                        <select class="w-50" id="selectMotivoJ"></select>
+                    </div>
+                    <div class="mt-8 w-100 flex">
+                        <label class="w-20"><% print(window.app.idioma.t('COMENTARIO')) %></label>
+                        <textarea id="comentarioJ" maxlength="250" style="height: 50px; padding: 8px; width:73%; max-width: 75%; max-height: 150px;" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="tac mt-20">
+                <input type="button" class="mr-25" id="btnDialogoGestionAceptarJ" value="<% print(window.app.idioma.t('GUARDAR')) %>" />
+                <input type="button" class="" id="btnDialogoGestionCancelarJ" value="<% print(window.app.idioma.t('CANCELAR')) %>" />
+            </div>
+            <div id="trErrorJ" class="error tac mt-20" style="display:none;" colspan="2"></div>
+        </div>
+    </form>
+</div>

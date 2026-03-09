@@ -1,0 +1,41 @@
+﻿<!-- CABECERA -->
+<style type="text/css">
+    #divMensajeAdministracion {
+        margin: 10px;
+    }
+    #divMensajeAdministracion label {
+        display: block
+    }
+
+    #txtMensaje {
+        border-radius: 5px;
+        padding: 15px
+    }
+</style>
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('MENSAJES_ADMINISTRACION')) %></label>
+</div>
+<div id="divMensajeAdministracion">
+    <form id="frmMensajeAdministracion" name="frmMensajeAdministracion">
+        <div class="form-horizontal" style="margin-left:30px">
+            <div class="form-group">
+                <label for="txtMensaje">Mensaje de Administración</label>
+                <textarea id="txtMensaje" name="txtMensaje" rows="5" cols="100" required></textarea>
+                <br />
+                <span class="k-invalid-msg" data-for="txtMensaje"></span>
+            </div>
+            <div class="form-group">
+                <label for="ddlOpcion">Color</label>
+                <input type="text" id="ddlOpcion" name="ddlOpcion" required />
+                <span class="k-invalid-msg" data-for="ddlOpcion"></span>
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox" name="chkActivo" id="chkActivo" /> Activo</label>
+            </div>
+            <div class="form-group">
+                <button id="btnSave" class="k-button k-primary" value="Aceptar"><% print(window.app.idioma.t("ACEPTAR")) %></button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,85 @@
+﻿<style>
+    .k-tabstrip .k-content {
+        margin: 0;
+        padding: 0;
+        border-width: 0;
+        overflow-y: hidden;
+    }
+</style>
+
+<!-- CABECERA -->
+<div id="divCabeceraVista" class="divCabeceraVista">
+    <img src="img/tituloCabecera.png" height="20" style="margin-left: 5px;" />
+    <label class="lblCabeceraVista"><% print(window.app.idioma.t('CONTROL_STOCK_VACIO')) %></label>
+</div>
+
+<div id="ControlStock" class="divContenidoVista">
+    <div id="divPestanias">
+        <ul>
+            <li class="k-state-active"><% print(window.app.idioma.t('CONTROL_STOCK')) %></li>
+            <li><% print(window.app.idioma.t('MERMA_LINEAS_PRODUCCION')) %></li>
+            <li><% print(window.app.idioma.t('PARAMETROS')) %></li>
+            <li><% print(window.app.idioma.t('MINIMOS_MAXIMOS_STOCK')) %></li>
+        </ul>
+        <div>
+            <!-- Filtros Cambios -->
+            <div id="divFiltrosHeader" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+                <div style="float: left;">
+                    <label style="margin-left: 5px;"><% print(window.app.idioma.t('DESDE')) %></label>
+                    <input id="dtpFechaDesde" style="width: 100px;" />
+                    <label style="margin-left: 5px;"><% print(window.app.idioma.t('HASTA')) %></label>
+                    <input id="dtpFechaHasta" style="width: 100px;" />
+                    <button id="btnFiltrar" class="k-button k-button-icontext" style="margin-left: 5px;"><span class='k-icon k-i-search'></span><% print(window.app.idioma.t('FILTRAR')) %></button>
+                </div>
+                <div style="float: right; margin-right: 10px;">
+                    <button id="btnConsumoCajaVacia" class="k-button k-button-icontext" style="margin-left: 5px;"><% print(window.app.idioma.t('CONSUMO_CAJA_VACIA')) %></button>
+                    <button id="btnAjusteManual" class="k-button k-button-icontext" style="margin-left: 5px;"><% print(window.app.idioma.t('AJUSTE_MANUAL')) %></button>
+                    <button id="btnRecalcular" class="k-button k-button-icontext" style="margin-left: 5px;"><% print(window.app.idioma.t('RECALCULAR')) %></button>
+                    <button id="btnLimpiarFiltros" class="k-button k-button-icontext" style="margin-left: 5px;">
+                        <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+                    </button>
+                    <button id="btnExportExcel" class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px;">
+                        <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+                    </button>
+                    <button id="btnImportStockExcel" class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px;">
+                        <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('IMPORTAR_STOCK_EXCEL')) %>
+                    </button>
+                </div>
+            </div>
+            <div id="gridMovimientos"></div>
+            <input type="file" style="display: none" id="inputStockFile" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+        </div>
+        <div>
+            <div id="divFiltros" class="k-header" style="height: 35px; width: 100%; padding-top: 5px;">
+                <div style="float: left; margin-left: 10px; height: 25px;">
+                    <label><% print(window.app.idioma.t('MERMA')) %></label>
+                    <input type="text" id="txtMerma" style="width:120px;" maxlength="6" data-type="number" data-role="numerictextbox" required />
+                    <button id="btnAsignarMermas" class="k-button k-button-icontext k-grid-add" style="background-color: green; color: white;"><span class='k-icon k-add'></span><% print(window.app.idioma.t('ASIGNAR')) %></button>
+                </div>
+            </div>
+            <div id="gridMermas"></div>
+        </div>
+        <div>
+            <div id="gridParametros"></div>
+        </div>
+        <div>
+            <!-- Filtros Cambios -->
+            <div id="divFiltrosHeaderMin" class="k-header" style="height: 32px; width: 100%; padding-top: 5px;">
+                <div style="float: right; margin-right: 10px;">
+                    <button id="btnLimpiarFiltrosMin" class="k-button k-button-icontext" style="margin-left: 5px;">
+                        <span class='k-icon k-i-funnel-clear'></span><% print(window.app.idioma.t('QUITAR_FILTROS')) %>
+                    </button>
+                    <button id="btnImportExcel" class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px;">
+                        <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('IMPORTAR_EXCEL')) %>
+                    </button>
+                    <button id="btnExportExcelMin" class="k-button k-button-icontext k-grid-excel" style="margin-left: 5px;">
+                        <span class="k-icon k-i-excel"></span><% print(window.app.idioma.t('EXPORTAR_EXCEL')) %>
+                    </button>
+                </div>
+            </div>
+            <div id="gridMinimosMaximos"></div>
+            <input type="file" style="display: none" id="inputFile" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+        </div>
+
+    </div>
+</div>

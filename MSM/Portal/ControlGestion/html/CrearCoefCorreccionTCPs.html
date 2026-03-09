@@ -1,0 +1,32 @@
+﻿<style>
+    .fila {
+        margin-left: 10px;
+        margin-top: 20px;
+    }
+
+    .textos {
+        width: 100px;
+        text-align: right;
+    }
+</style>
+
+<div>
+    <form id="CrearCoefCorreccionTCPs">
+        <div class="fila">
+            <label id="lblCerveza" class="textos"><% print(window.app.idioma.t('CODIGO_CERVEZA')) %></label>
+            <select id="cmbCerveza" style="width: 540px" />
+        </div>
+        <div class="fila">
+            <label id="lblMaterialTCPs" class="textos"><% print(window.app.idioma.t('MATERIAL')) %></label>
+            <select id="cmbMaterialTCPs" style="width: 540px" />
+        </div>
+        <div class="fila">
+            <label id="lblCoeficienteTCPs" class="textos"><% print(window.app.idioma.t('COEFICIENTE')) %> (%)</label>
+            <input type="text" style="width: 120px" id="ntxtCoeficienteTCPs" data-type="number" data-role="numerictextbox" />
+        </div>
+        <div style="text-align: center; margin-top: 15px">
+            <input type="button" id="btnAceptarCoeficienteTCPs" style="margin-right: 20px" value="Aceptar" />
+            <input type="button" id="btnCancelarCoeficienteTCPs" value="Cancelar" />
+        </div>
+    </form>
+</div>
