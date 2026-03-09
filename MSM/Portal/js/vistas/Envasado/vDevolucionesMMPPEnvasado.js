@@ -7,6 +7,7 @@ define(['underscore', 'backbone', 'jquery', 'text!../../../Envasado/html/Devoluc
             dsStock: null,
             dsUbiCons: null,
             lineaSel: "",
+            idLinea: "",
             TodasUbicacionesLinea: null,
             prioridad: "",
             esInicio: true,
@@ -68,8 +69,9 @@ define(['underscore', 'backbone', 'jquery', 'text!../../../Envasado/html/Devoluc
                                     return;
                                 }
 
+                                var idLineaStock = self.idLinea || "";
                                 $.ajax({
-                                    url: "../api/solicitudes-mmpp/stock",
+                                    url: "../api/solicitudes-mmpp/stock?IdProducto=&IdLinea=" + encodeURIComponent(idLineaStock) + "&IdMaterial=&IdZona=&AgruparMMPP=false",
                                     dataType: "json",
                                     contentType: "application/json; charset=utf-8",
                                     type: "GET",
@@ -416,8 +418,11 @@ define(['underscore', 'backbone', 'jquery', 'text!../../../Envasado/html/Devoluc
                                 var dropdownlist = this;
                                 var selectedLinea = dropdownlist.dataItem(dropdownlist.select());
 
-                                if (selectedLinea.id !== window.app.idioma.t('SELECCIONE')) {
-                                    self.lineaSel = selectedLinea;
+                                self.lineaSel = selectedLinea || {};
+                                self.idLinea = "";
+
+                                if (selectedLinea && selectedLinea.id && selectedLinea.id !== window.app.idioma.t('SELECCIONE')) {
+                                    self.idLinea = selectedLinea.id;
                                     self.obtenerUbicacionesLinea(selectedLinea.numLinea);
                                     self.consulta();
                                 }
@@ -498,7 +503,7 @@ define(['underscore', 'backbone', 'jquery', 'text!../../../Envasado/html/Devoluc
             consulta: function () {
                 var self = this;
 
-                if (self.lineaSel.id == "") {
+                if (!self.idLinea) {
                     Not.crearNotificacion('warning', window.app.idioma.t('AVISO'), window.app.idioma.t('SELECCIONAR') + ' ' + window.app.idioma.t('LINEA'), 3000);
                     return;
                 }
@@ -521,12 +526,12 @@ define(['underscore', 'backbone', 'jquery', 'text!../../../Envasado/html/Devoluc
                 try {
                     const response = await $.ajax({
                         type: "GET",
-                        url: "../api/ObtenerDatosMaestroClaseSubClaseMMPPUbicacionMaterial?idLinea=" + self.lineaSel.id + "&idMaterial=" + material,
+                        url: "../api/solicitudes-mmpp/datos-maestroClasesUbicaciones?idLinea=" + self.idLinea + "&idMaterial=" + material,
                         dataType: 'json'
                     });
                     return response;
                 } catch (e) {
-                    Not.crearNotificacion('error', window.app.idioma.t('ERROR'), 'api/general/ObtenerDatosMaestroClaseSubClaseMMPPUbicacionMaterial', 4000);
+                    Not.crearNotificacion('error', window.app.idioma.t('ERROR'), 'api/solicitudes-mmpp/datos-maestroClasesUbicaciones', 4000);
                     return null;
                 }
             },
@@ -689,7 +694,7 @@ define(['underscore', 'backbone', 'jquery', 'text!../../../Envasado/html/Devoluc
                             Solicitud: {
                                 IdTipoSolicitud: 2,
                                 IdEstadoSolicitud: 1,
-                                Fuente: self.lineaSel.id,
+                                Fuente: self.idLinea,
                                 Prioridad: self.prioridad,
                                 IdMaterial: item.IdMaterial,
                                 SSCC: sscc,
@@ -788,3 +793,7 @@ define(['underscore', 'backbone', 'jquery', 'text!../../../Envasado/html/Devoluc
 
         return gridDevolucionesMMPPEnvasado;
     });
+
+
+
+

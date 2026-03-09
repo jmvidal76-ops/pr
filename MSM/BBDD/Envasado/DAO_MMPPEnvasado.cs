@@ -1,4 +1,4 @@
-﻿using Clients.ApiClient.Contracts;
+using Clients.ApiClient.Contracts;
 using MSM.Mappers.DTO;
 using MSM.Mappers.DTO.Envasado;
 using MSM.Utilidades;
@@ -25,7 +25,7 @@ namespace MSM.BBDD.Envasado
             string _uriEnvasado = (ConfigurationManager.AppSettings["HostApiEnvasado"] ?? "").ToString();
 
             if (string.IsNullOrWhiteSpace(_uriEnvasado))
-                throw new Exception("HostApiEnvasado no está configurado en appSettings.");
+                throw new Exception("HostApiEnvasado no est� configurado en appSettings.");
 
             BaseEnvasado = (_uriEnvasado ?? string.Empty).TrimEnd('/') + "/api/Envasado/";
         }
@@ -85,25 +85,18 @@ namespace MSM.BBDD.Envasado
         }
         public async Task<DTO_RespuestaAPI<List<DTO_StockEnvasado>>> ObtenerStockMMPPEnvasado(string idProducto, string idLinea, string idMaterial, string idZona, bool agruparMMPP, CancellationToken ct)
         {
-            if (string.IsNullOrWhiteSpace(idProducto))
-                return new DTO_RespuestaAPI<List<DTO_StockEnvasado>>
-                {
-                    Data = new List<DTO_StockEnvasado>(),
-                    Exception = new Exception("idProducto es obligatorio")
-                };
-            if (string.IsNullOrWhiteSpace(idLinea))
-                return new DTO_RespuestaAPI<List<DTO_StockEnvasado>>
-                {
-                    Data = new List<DTO_StockEnvasado>(),
-                    Exception = new Exception("idLinea es obligatorio")
-                };
+            var idproducto = idProducto ?? string.Empty;
+            var idlinea = idLinea ?? string.Empty;
+            var idmaterial = idMaterial ?? string.Empty;
+            var idzona = idZona ?? string.Empty;
+
 
             string urlConParametros = 
                 "ObtenerStockMMPPEnvasado" + 
-                $"?idProducto={Utils.Encode(idProducto)}"+
-                $"&idLinea={Utils.Encode(idLinea)}"+
-                $"&idMaterial={Utils.Encode(idMaterial)}"+
-                $"&idZona={Utils.Encode(idZona)}"+
+                $"?idProducto={Utils.Encode(idproducto)}"+
+                $"&idLinea={Utils.Encode(idlinea)}"+
+                $"&idMaterial={Utils.Encode(idmaterial)}"+
+                $"&idZona={Utils.Encode(idzona)}"+
                 $"&agruparMMPP={agruparMMPP.ToString().ToLower()}";            
 
             return await SafeGet<List<DTO_StockEnvasado>>(urlConParametros, ct);
@@ -124,19 +117,33 @@ namespace MSM.BBDD.Envasado
             return await SafePost<bool>("EnviarSolicitudes", true, ct);            
         }
 
-        public Task<DTO_RespuestaAPI<bool>> CrearDevolucionesMMPPEnvasado(DTO_SolicitudMMPPEnvasado Peticion)
+        public async Task<DTO_RespuestaAPI<bool>> CrearDevolucionesMMPPEnvasado(DTO_SolicitudMMPPEnvasado Peticion)
         {
-            throw new NotImplementedException();
+            if (Peticion == null)
+                return new DTO_RespuestaAPI<bool>
+                {
+                    Data = false,
+                    Exception = new ArgumentNullException(nameof(Peticion))
+                };
+
+            // Las devoluciones se registran como tipo 2 en el mismo flujo de Envasado.
+            Peticion.IdTipoSolicitud = 2;
+            if (Peticion.IdEstadoSolicitud <= 0)
+                Peticion.IdEstadoSolicitud = 1;
+
+            return await SafePost<bool>("CrearSolicitudMMPPEnvasado", Peticion, CancellationToken.None);
         }
 
         public async Task<DTO_RespuestaAPI<List<DTO_MaestroClasesUbicaciones>>> ObtenerDatos_MaestroClasesUbicaciones(string idLinea, string material, CancellationToken ct)
         {
             string urlConParametros =
                 "ObtenerDatos_MaestroClasesUbicaciones" +
-                $"?idLinea={Utils.Encode(idLinea)}" +
+                $"?idLinea={Utils.Encode(idlinea)}" +
                 $"&idMaterial={Utils.Encode(material)}";
 
             return await SafeGet<List<DTO_MaestroClasesUbicaciones>>(urlConParametros, ct);
         }
     }
 }
+
+
