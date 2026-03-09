@@ -1,0 +1,277 @@
+/* ESTRUCTURA GENERAL */
+
+body,
+html {
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+#carrusel {
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.vistaCarrusel {
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    left: 0%;
+    height: 99%;
+    display: none;
+}
+
+.vistaControlAncho {
+    font-weight: bold;
+    width: 99%;
+    text-align: center;
+    position: absolute;
+    left: 0%;
+    height: 99%;
+    display: none;
+}
+
+.vistaCarruselCompleto {
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    left: 0%;
+    height: 100%;
+    display: none;
+}
+
+.vistaCarrusel .titulo {
+    font-size: 10vw;
+}
+
+.vistaControlAncho .tituloBig {
+    font-size: 12vw;
+}
+
+.vistaCarrusel .tituloMedio {
+    font-size: 8vw;
+}
+
+/* Estilos del cuadro de mando */
+.bloqueLinea {
+    width: 120px;
+    /*height: 201px;*/
+    background-color: #9FC5F8;
+    border-right: 1px solid #000000;
+    vertical-align: top;
+    border: 1px black solid;
+}
+
+.avisoAveria {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 6px;
+    right: 5px;
+}
+
+    .avisoAveria img {
+        width: 100%;
+        height: 100%;
+    }
+
+.contadorAverias {
+    position: absolute;
+    bottom: -5px;
+    right: 0px;
+    font-weight: bold;
+    font-size: 25px;
+    color: white;
+    text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000, 1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+}
+/* FINAL CUADRO MANDO*/
+
+.vistaControlAncho .tituloTurno {
+    font-size: 8vw;
+}
+
+.tituloSmall {
+    font-size: 8vw;
+}
+
+.valor {
+    font-size: 16vw;
+}
+
+.vistaControlAncho .valorBig {
+    font-size: 16vw;
+}
+
+.vistaControlAncho .valorTurno {
+    font-size: 14vw;
+}
+
+.vistaCarrusel .valorMedio {
+    font-size: 14vw;
+}
+
+.vistaCarrusel .valorSmall {
+    font-size: 8vw;
+}
+
+.valorWO {
+    font-size: 10vw;
+}
+
+.tituloLinea {
+    font-size: 6vw;
+}
+
+.tituloLineaSmall {
+    font-size: 3.5vw;
+}
+
+.verde {
+    color: #58FA58;
+}
+
+#left {
+    float: left;
+    margin-left: 10%;
+}
+
+#right {
+    float: right;
+    margin-right: 10%;
+}
+
+.center {
+    margin-top: auto;
+}
+
+.tableVW {
+    position: absolute;
+    display: table;
+    width: 100%;
+}
+
+.rowTableVW {
+    vertical-align: middle;
+    display: table-row;
+}
+
+.cellWOTitulo {
+    display: table-cell;
+    line-height: 70%;
+    padding-bottom: 25px;
+}
+
+.cellWO {
+    display: table-cell;
+    line-height: 70%;
+    padding-bottom: 30px;
+}
+
+.cellTableVW {
+    display: table-cell;
+    line-height: 70%;
+    padding-bottom: 25px;
+}
+
+.cellTableProducto {
+    display: table-cell;
+    line-height: 80%;
+    padding-bottom: 50px;
+}
+
+.cellTableOEE {
+    display: table-cell;
+    line-height: 70%;
+    padding-bottom: 90px;
+}
+
+.cellPadding {
+    display: table-cell;
+    line-height: 70%;
+    padding-bottom: 50px;
+}
+
+.cellLeft {
+    display: table-cell;
+}
+
+.cellRight {
+    display: table-cell;
+}
+
+.cellColspanTableVW {
+    display: table-caption;
+    padding-bottom: 50px;
+}
+
+.juliano {
+    height: 100%;
+    margin-left: 30px;
+    margin-top: 70px;
+}
+
+.oeeTurno {
+    padding-left: 20px;
+    text-align: left;
+}
+
+.fondo {
+	background-color: #ff0000;
+	-webkit-animation: MiAnimacion 1s infinite;  /* Safari 4+ */
+	-moz-animation: MiAnimacion 1s infinite;  /* Fx 5+ */
+	-o-animation: MiAnimacion 1s infinite;  /* Opera 12+ */
+	animation: MiAnimacion 1s infinite;  /* IE 10+, Fx 29+ */
+}
+
+.center_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center_container_vertical {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.reloading_videowall {
+    display: none;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    text-align: center;
+    font-size: 60px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    z-index: 10;
+}
+
+@keyframes MiAnimacion	{
+	0%, 49% {
+	    background-color: rgb(255, 255, 255);
+	}
+	50%, 100% {
+	    background-color: rgb(255, 0, 0);
+	}
+}

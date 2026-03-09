@@ -2847,6 +2847,13 @@
     <Content Include="Videowall\js\vistas\vOEE.js" />
     <Content Include="Videowall\js\vistas\vDialogoConfirm.js" />
     <Content Include="Videowall\js\vistas\vWO.js" />
+    <Content Include="PantallaAlmacen\css\pantallaAlmacen.css" />
+    <Content Include="PantallaAlmacen\html\plantillaPantallaAlmacen.html" />
+    <Content Include="PantallaAlmacen\index.html" />
+    <Content Include="PantallaAlmacen\js\app.js" />
+    <Content Include="PantallaAlmacen\js\idioma.js" />
+    <Content Include="PantallaAlmacen\js\main.js" />
+    <Content Include="PantallaAlmacen\js\vistas\vPantallaAlmacen.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -2923,6 +2930,7 @@
     <Compile Include="Controllers\Planta\PlantaController.cs" />
     <Compile Include="Controllers\Planta\UsuariosController.cs" />
     <Compile Include="Controllers\Envasado\VideowallController.cs" />
+    <Compile Include="Controllers\Envasado\PantallaAlmacenController.cs" />
     <Compile Include="Mappers\DTO\DTO_ContingenciasHoras.cs" />
     <Compile Include="Mappers\DTO\DTO_DatosProduccionMaquinaSIT.cs" />
     <Compile Include="Mappers\DTO\DTO_EstadoMaquina.cs" />
